@@ -1,5 +1,15 @@
 {
-  "name": "@unnamed-ui/cli",
+  "name": "@fancn21th/unnamed-cli",
+  "author": "AF",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fancn21th/unnamed-ui.git",
+    "directory": "packages/cli"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "0.0.1",
   "description": "CLI tool for unnamed-ui",
   "type": "module",
@@ -13,7 +23,9 @@
     "build": "tsup",
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "prepublishOnly": "pnpm build",
+    "release": "pnpm build && npm publish --access public"
   },
   "files": [
     "dist"

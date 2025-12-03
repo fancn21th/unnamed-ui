@@ -15,6 +15,17 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "dependencies": ["@radix-ui/react-slot"],
+      "files": [
+        {
+          "path": "registry/wuhan/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

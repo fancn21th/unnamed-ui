@@ -36,6 +36,20 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "prompt-01",
+      "type": "registry:block",
+      "description": "A simple prompt.",
+      "registryDependencies": ["textarea", "button"],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/prompt-01.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {},
+      "categories": []
     }
   ]
 }

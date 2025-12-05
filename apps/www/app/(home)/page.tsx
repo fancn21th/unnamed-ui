@@ -14,6 +14,14 @@ export default function HomePage() {
 
       <p>
         You can open{" "}
+        <Link href="/themes" className="font-medium underline">
+          /themes
+        </Link>{" "}
+        and see how to customize themes.
+      </p>
+
+      <p>
+        You can open{" "}
         <Link href="/libs" className="font-medium underline">
           /libs
         </Link>{" "}

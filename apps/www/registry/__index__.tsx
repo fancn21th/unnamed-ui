@@ -77,5 +77,81 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "prompt-active": {
+      name: "prompt-active",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["prompt"],
+      files: [
+        {
+          path: "registry/wuhan/examples/prompt-active.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/wuhan/examples/prompt-active.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "prompt-default": {
+      name: "prompt-default",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["prompt"],
+      files: [
+        {
+          path: "registry/wuhan/examples/prompt-default.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/wuhan/examples/prompt-default.tsx"
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "prompt-disabled": {
+      name: "prompt-disabled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["prompt"],
+      files: [
+        {
+          path: "registry/wuhan/examples/prompt-disabled.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/wuhan/examples/prompt-disabled.tsx"
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
   },
 };

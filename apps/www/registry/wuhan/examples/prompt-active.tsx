@@ -2,7 +2,7 @@
 
 import { PromptInput, PromptWebSearchButton, PromptSendButton } from "@/registry/wuhan/blocks/prompt-01";
 
-export default function PromptComposedDisabled() {
+export default function PromptComposedActive() {
   return (
     <div className="flex w-full max-w-2xl flex-col rounded-md border p-3 transition-colors border-primary">
       <PromptInput />

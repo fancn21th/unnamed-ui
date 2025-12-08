@@ -122,6 +122,24 @@
 }
 
 @layer components {
+  /* 步骤样式区域 */
+  .steps {
+    &:first-child {
+      @apply !mt-0;
+    }
+
+    &:first-child > h3:first-child {
+      @apply !mt-0;
+    }
+
+    > h3 {
+      @apply !mt-16;
+    }
+
+    > h3 + p {
+      @apply !mt-2;
+    }
+  }
   /* 代码块样式区域 */
   [data-rehype-pretty-code-figure] {
     background-color: var(--color-code);

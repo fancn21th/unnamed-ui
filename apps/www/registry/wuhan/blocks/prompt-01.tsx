@@ -11,13 +11,15 @@ export function PromptInput(props: React.ComponentProps<typeof Textarea>) {
       {...props}
       className={cn(
         "resize-none border-none p-0 shadow-none focus-visible:ring-0",
-        props.className
+        props.className,
       )}
     />
   );
 }
 
-export function PromptWebSearchButton(props: React.ComponentProps<typeof Button>) {
+export function PromptWebSearchButton(
+  props: React.ComponentProps<typeof Button>,
+) {
   return (
     <Button variant="default" size="default" aria-label="Search" {...props}>
       <Search />
@@ -28,7 +30,7 @@ export function PromptWebSearchButton(props: React.ComponentProps<typeof Button>
 
 export function PromptSendButton(props: React.ComponentProps<typeof Button>) {
   return (
-    <Button variant="default"  size="icon" aria-label="Send" {...props}>
+    <Button variant="default" size="icon" aria-label="Send" {...props}>
       <Send />
     </Button>
   );

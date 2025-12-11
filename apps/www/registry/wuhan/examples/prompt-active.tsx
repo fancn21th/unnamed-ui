@@ -1,6 +1,10 @@
 "use client";
 
-import { PromptInput, PromptWebSearchButton, PromptSendButton } from "@/registry/wuhan/blocks/prompt-01";
+import {
+  PromptInput,
+  PromptWebSearchButton,
+  PromptSendButton,
+} from "@/registry/wuhan/blocks/prompt-01";
 
 export default function PromptComposedActive() {
   return (

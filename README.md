@@ -1,5 +1,17 @@
 # unnamed-ui
 
-## references
+## 如何开始 / Getting Started
 
-- [shadcn registry](https://ui.shadcn.com/docs/registry/getting-started)
+```bash
+
+pnpm i
+
+pnpm dev
+
+```
+
+## 分支管理 / Branching
+
+## 哲学 / Philosophy
+
+do less and focus on more important things

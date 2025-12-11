@@ -188,17 +188,17 @@ export const examples: Registry["items"] = [
       },
     ],
   },
-  {
-    name: "button-default",
-    type: "registry:example",
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "examples/button-default.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
+  // {
+  //   name: "button-default",
+  //   type: "registry:example",
+  //   registryDependencies: ["button"],
+  //   files: [
+  //     {
+  //       path: "examples/button-default.tsx",
+  //       type: "registry:example",
+  //     },
+  //   ],
+  // },
   // {
   //   name: "button-secondary",
   //   type: "registry:example",

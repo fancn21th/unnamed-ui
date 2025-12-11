@@ -7,7 +7,11 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "isolatedModules": false,
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
   },
   "include": ["scripts/**/*.{ts,mts}"],
   "exclude": ["node_modules"]

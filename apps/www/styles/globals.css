@@ -153,7 +153,7 @@
   --popover: var(--neutral-0); /* #ffffff */
   --popover-foreground: var(--neutral-900); /* #1e1d26 */
   
-  /* 主色 - 使用品牌色 Brand.brand-600 */
+  /* 主色 - 使用品牌色 Light.Brand.brand-600 */
   --primary: var(--brand-600); /* #4a56ff */
   --primary-foreground: var(--neutral-0); /* #ffffff */
   

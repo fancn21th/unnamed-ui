@@ -19,7 +19,7 @@ import { Send } from "lucide-react";
 
 export default function Themes() {
   return (
-    <ActiveThemeProvider initialTheme="neutral radius-medium">
+    <ActiveThemeProvider initialTheme="brand radius-medium">
       <div 
         className="flex h-[calc(100vh-var(--spacing)*14)] overflow-hidden"
         style={{ gap: 'calc(var(--spacing) * 6)', padding: 'calc(var(--spacing) * 6)' }}

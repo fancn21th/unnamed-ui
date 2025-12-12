@@ -8,11 +8,13 @@ import {
   useState,
 } from "react";
 
-const DEFAULT_THEME = "neutral";
+const DEFAULT_THEME = "brand";
 
 type ThemeContextType = {
   activeTheme: string;
   setActiveTheme: (theme: string) => void;
+  isPrimaryCustomized: boolean;
+  setIsPrimaryCustomized: (customized: boolean) => void;
 };
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -27,6 +29,7 @@ export function ActiveThemeProvider({
   const [activeTheme, setActiveTheme] = useState<string>(
     () => initialTheme || `${DEFAULT_THEME} radius-medium`
   );
+  const [isPrimaryCustomized, setIsPrimaryCustomized] = useState<boolean>(false);
 
   useEffect(() => {
     // 移除所有现有的主题类
@@ -37,7 +40,7 @@ export function ActiveThemeProvider({
       });
     
     // 处理组合主题（多个主题用空格分隔）
-    // 如果没有主题或主题是 "default"，使用中性色作为默认
+    // 如果没有主题或主题是 "default"，使用品牌色作为默认
     let themeToApply = activeTheme || `${DEFAULT_THEME} radius-medium`;
     if (themeToApply === "default") {
       themeToApply = `${DEFAULT_THEME} radius-medium`;
@@ -59,7 +62,7 @@ export function ActiveThemeProvider({
   }, [activeTheme]);
 
   return (
-    <ThemeContext.Provider value={{ activeTheme, setActiveTheme }}>
+    <ThemeContext.Provider value={{ activeTheme, setActiveTheme, isPrimaryCustomized, setIsPrimaryCustomized }}>
       {children}
     </ThemeContext.Provider>
   );

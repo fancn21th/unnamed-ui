@@ -177,7 +177,7 @@ function rgbToOklch(r: number, g: number, b: number): string {
 
 
 export function ThemeEditor() {
-  const { activeTheme } = useThemeConfig();
+  const { activeTheme, setIsPrimaryCustomized } = useThemeConfig();
   const [primaryColor, setPrimaryColor] = React.useState<string>('');
   const [hexValue, setHexValue] = React.useState<string>('#000000');
   const [isCustomColor, setIsCustomColor] = React.useState<boolean>(false);
@@ -237,19 +237,56 @@ export function ThemeEditor() {
   React.useEffect(() => {
     // 延迟初始化，确保 DOM 已准备好
     if (typeof window !== 'undefined') {
+      // 检查是否已经有自定义颜色（通过检查内联样式）
+      const root = document.documentElement;
+      const body = document.body;
+      const rootHasCustom = root.style.getPropertyValue('--primary').trim();
+      const bodyHasCustom = body.style.getPropertyValue('--primary').trim();
+      
+      if (rootHasCustom || bodyHasCustom) {
+        setIsCustomColor(true);
+        setIsPrimaryCustomized(true);
+      }
+      
       // 使用 setTimeout 确保在主题应用后再初始化
       setTimeout(updateColor, 100);
     }
-  }, [updateColor]);
+  }, [updateColor, setIsPrimaryCustomized]);
 
-  // 当主题切换时，重新读取颜色值（但如果用户已经自定义了颜色，则保留自定义颜色）
+  // 同步 isCustomColor 和 isPrimaryCustomized
+  React.useEffect(() => {
+    setIsPrimaryCustomized(isCustomColor);
+  }, [isCustomColor, setIsPrimaryCustomized]);
+  
+  // 当主题切换时，如果用户没有自定义颜色，更新颜色编辑器显示（始终跟随 primary 颜色）
   React.useEffect(() => {
     if (typeof window !== 'undefined' && !isCustomColor) {
       // 延迟一下，确保主题类已经应用
-      const timer = setTimeout(updateColor, 150);
+      const timer = setTimeout(() => {
+        updateColor();
+      }, 200);
       return () => clearTimeout(timer);
     }
-  }, [activeTheme, updateColor, isCustomColor]);
+  }, [activeTheme, isCustomColor, updateColor]);
+  
+  // 监听主题颜色重置事件（当用户选择品牌色时）
+  React.useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    const handleThemeColorReset = () => {
+      // 重置自定义状态
+      setIsCustomColor(false);
+      // 延迟更新颜色，确保主题类已经应用
+      setTimeout(() => {
+        updateColor();
+      }, 100);
+    };
+    
+    window.addEventListener('theme-color-reset', handleThemeColorReset);
+    return () => {
+      window.removeEventListener('theme-color-reset', handleThemeColorReset);
+    };
+  }, [updateColor]);
 
   const handleColorChange = (hex: string) => {
     const rgb = hexToRgb(hex);
@@ -257,17 +294,24 @@ export function ThemeEditor() {
     
     // 标记为用户自定义颜色
     setIsCustomColor(true);
+    setIsPrimaryCustomized(true);
     
     // 转换为 OKLCH 格式以匹配主题
     const oklch = rgbToOklch(rgb.r, rgb.g, rgb.b);
     setColorValue('primary', oklch);
     setPrimaryColor(oklch);
     setHexValue(hex);
+    
+    // 延迟一下，确保状态更新后 ThemeSelector 能正确响应
+    setTimeout(() => {
+      setIsPrimaryCustomized(true);
+    }, 0);
   };
 
   const handleTextChange = (value: string) => {
     // 标记为用户自定义颜色
     setIsCustomColor(true);
+    setIsPrimaryCustomized(true);
     
     // 如果输入的是 OKLCH 格式，直接使用
     if (value.trim().startsWith('oklch(')) {
@@ -285,6 +329,11 @@ export function ThemeEditor() {
       const hex = rgbToHex(rgb.r, rgb.g, rgb.b);
       setHexValue(hex);
     }
+    
+    // 延迟一下，确保状态更新后 ThemeSelector 能正确响应
+    setTimeout(() => {
+      setIsPrimaryCustomized(true);
+    }, 0);
   };
 
   const handleReset = () => {
@@ -303,6 +352,7 @@ export function ThemeEditor() {
     
     // 重置状态
     setIsCustomColor(false);
+    setIsPrimaryCustomized(false);
     
     // 重新读取当前主题的颜色
     setTimeout(updateColor, 100);

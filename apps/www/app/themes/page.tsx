@@ -3,6 +3,8 @@
 import { ActiveThemeProvider } from "@/components/active-theme";
 import { ThemeEditor } from "@/components/theme-editor";
 import { ThemeSelector } from "@/components/theme-selector";
+import { ModeSwitcher } from "@/components/mode-switcher";
+import { CopyCodeButton } from "@/components/copy-code-button";
 import { Button } from "@/registry/wuhan/ui/button";
 import { Textarea } from "@/registry/wuhan/ui/textarea";
 import {
@@ -17,21 +19,27 @@ import { Send } from "lucide-react";
 
 export default function Themes() {
   return (
-    <ActiveThemeProvider>
+    <ActiveThemeProvider initialTheme="neutral radius-medium">
       <div 
         className="flex h-[calc(100vh-var(--spacing)*14)] overflow-hidden"
         style={{ gap: 'calc(var(--spacing) * 6)', padding: 'calc(var(--spacing) * 6)' }}
       >
         {/* 左侧：主题配置区域 */}
         <div className="flex-shrink-0 w-80 flex flex-col overflow-hidden theme-container">
-          <div style={{ marginBottom: 'calc(var(--spacing) * 4)' }}>
-            <h1 className="text-2xl font-semibold tracking-tight">主题配置</h1>
-            <p 
-              className="text-sm text-muted-foreground"
-              style={{ marginTop: 'calc(var(--spacing) * 1)' }}
-            >
-              切换和自定义主题
-            </p>
+          <div style={{ marginBottom: 'calc(var(--spacing) * 4)' }} className="flex items-center justify-between">
+            <div>
+              <h1 className="text-2xl font-semibold tracking-tight">主题配置</h1>
+              <p 
+                className="text-sm text-muted-foreground"
+                style={{ marginTop: 'calc(var(--spacing) * 1)' }}
+              >
+                切换和自定义主题
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <CopyCodeButton variant="outline" size="sm" />
+              <ModeSwitcher />
+            </div>
           </div>
           <div 
             className="flex-1 overflow-y-auto"

@@ -1,13 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useThemeConfig } from "@/components/active-theme";
 import { Button } from "@/registry/wuhan/ui/button";
 import { cn } from "@/lib/utils";
 
-// 定义可用的主题列表
+// 定义可用的主题列表（中性色是默认主题）
 const COLOR_THEMES = [
-  { name: "default", label: "默认" },
+  { name: "neutral", label: "中性色" },
   { name: "brand", label: "品牌色" },
   { name: "success", label: "成功" },
   { name: "warning", label: "警告" },
@@ -15,10 +15,28 @@ const COLOR_THEMES = [
 ] as const;
 
 const RADIUS_THEMES = [
+  { name: "radius-none", label: "无圆角" },
   { name: "radius-small", label: "小圆角" },
   { name: "radius-medium", label: "中圆角" },
   { name: "radius-large", label: "大圆角" },
-  { name: "radius-none", label: "无圆角" },
+] as const;
+
+const SPACING_THEMES = [
+  { name: "spacing-compact", label: "紧凑" },
+  { name: "spacing-normal", label: "正常" },
+  { name: "spacing-comfortable", label: "舒适" },
+] as const;
+
+const SHADOW_THEMES = [
+  { name: "shadow-none", label: "无阴影" },
+  { name: "shadow-basic", label: "基础阴影" },
+  { name: "shadow-medium", label: "中等阴影" },
+  { name: "shadow-high", label: "高阴影" },
+] as const;
+
+const BORDER_WIDTH_THEMES = [
+  { name: "border-thin", label: "细边框" },
+  { name: "border-medium", label: "中等边框" },
 ] as const;
 
 const FONT_THEMES = [
@@ -27,71 +45,121 @@ const FONT_THEMES = [
   { name: "font-display", label: "显示字体" },
 ] as const;
 
-const SPECIAL_THEMES = [
-  { name: "ai", label: "AI 渐变" },
-] as const;
-
 export function ThemeSelector({ className }: React.ComponentProps<"div">) {
   const { activeTheme, setActiveTheme } = useThemeConfig();
   
-  // 从当前主题中解析各个部分
+  // 从当前主题中解析各个部分（中性色是默认）
   const parseThemes = (theme: string) => {
+    if (!theme || theme === "default") {
+      return {
+        color: "neutral",
+        radius: "radius-medium",
+        spacing: null,
+        shadow: null,
+        borderWidth: null,
+        font: null,
+      };
+    }
     const themes = theme.split(" ").filter(Boolean);
     return {
-      color: themes.find(t => COLOR_THEMES.some(ct => ct.name === t)) || "default",
+      color: themes.find(t => COLOR_THEMES.some(ct => ct.name === t)) || "neutral",
       radius: themes.find(t => RADIUS_THEMES.some(rt => rt.name === t)) || "radius-medium",
+      spacing: themes.find(t => SPACING_THEMES.some(st => st.name === t)) || null,
+      shadow: themes.find(t => SHADOW_THEMES.some(st => st.name === t)) || null,
+      borderWidth: themes.find(t => BORDER_WIDTH_THEMES.some(bt => bt.name === t)) || null,
       font: themes.find(t => FONT_THEMES.some(ft => ft.name === t)) || null,
-      special: themes.find(t => SPECIAL_THEMES.some(st => st.name === t)) || null,
     };
   };
 
   const currentThemes = parseThemes(activeTheme);
   const [colorTheme, setColorTheme] = useState(currentThemes.color);
   const [radiusTheme, setRadiusTheme] = useState(currentThemes.radius);
+  const [spacingTheme, setSpacingTheme] = useState<string | null>(currentThemes.spacing);
+  const [shadowTheme, setShadowTheme] = useState<string | null>(currentThemes.shadow);
+  const [borderWidthTheme, setBorderWidthTheme] = useState<string | null>(currentThemes.borderWidth);
   const [fontTheme, setFontTheme] = useState<string | null>(currentThemes.font);
-  const [specialTheme, setSpecialTheme] = useState<string | null>(currentThemes.special);
+  
+  // 初始化时设置默认主题
+  useEffect(() => {
+    if (!activeTheme || activeTheme === "default") {
+      setActiveTheme("neutral radius-medium");
+    }
+  }, [activeTheme, setActiveTheme]);
+  
+  // 当 activeTheme 变化时，更新本地状态
+  useEffect(() => {
+    const themes = parseThemes(activeTheme);
+    setColorTheme(themes.color);
+    setRadiusTheme(themes.radius);
+    setSpacingTheme(themes.spacing);
+    setShadowTheme(themes.shadow);
+    setBorderWidthTheme(themes.borderWidth);
+    setFontTheme(themes.font);
+  }, [activeTheme]);
 
   // 组合主题
   const updateTheme = (
-    type: "color" | "radius" | "font" | "special",
+    type: "color" | "radius" | "spacing" | "shadow" | "borderWidth" | "font",
     value: string | null
   ) => {
     let newColorTheme = colorTheme;
     let newRadiusTheme = radiusTheme;
+    let newSpacingTheme = spacingTheme;
+    let newShadowTheme = shadowTheme;
+    let newBorderWidthTheme = borderWidthTheme;
     let newFontTheme = fontTheme;
-    let newSpecialTheme = specialTheme;
 
     if (type === "color") {
-      newColorTheme = value || "default";
+      newColorTheme = value || "neutral";
       setColorTheme(newColorTheme);
     } else if (type === "radius") {
       newRadiusTheme = value || "radius-medium";
       setRadiusTheme(newRadiusTheme);
+    } else if (type === "spacing") {
+      newSpacingTheme = value;
+      setSpacingTheme(newSpacingTheme);
+    } else if (type === "shadow") {
+      newShadowTheme = value;
+      setShadowTheme(newShadowTheme);
+    } else if (type === "borderWidth") {
+      newBorderWidthTheme = value;
+      setBorderWidthTheme(newBorderWidthTheme);
     } else if (type === "font") {
       newFontTheme = value;
       setFontTheme(newFontTheme);
-    } else if (type === "special") {
-      newSpecialTheme = value;
-      setSpecialTheme(newSpecialTheme);
     }
 
     // 组合所有选中的主题
     const themes = [];
-    if (newColorTheme && newColorTheme !== "default") {
+    // 始终包含颜色主题（neutral 是默认）
+    if (newColorTheme) {
       themes.push(newColorTheme);
+    } else {
+      themes.push("neutral");
     }
+    // 始终包含圆角主题
     if (newRadiusTheme) {
       themes.push(newRadiusTheme);
     }
+    // 可选：间距主题
+    if (newSpacingTheme) {
+      themes.push(newSpacingTheme);
+    }
+    // 可选：阴影主题
+    if (newShadowTheme) {
+      themes.push(newShadowTheme);
+    }
+    // 可选：边框宽度主题
+    if (newBorderWidthTheme) {
+      themes.push(newBorderWidthTheme);
+    }
+    // 可选：字体主题
     if (newFontTheme) {
       themes.push(newFontTheme);
     }
-    if (newSpecialTheme) {
-      themes.push(newSpecialTheme);
-    }
 
     // 设置组合后的主题
-    const combinedTheme = themes.length > 0 ? themes.join(" ") : "default";
+    const combinedTheme = themes.length > 0 ? themes.join(" ") : "neutral radius-medium";
     setActiveTheme(combinedTheme);
   };
 
@@ -146,6 +214,102 @@ export function ThemeSelector({ className }: React.ComponentProps<"div">) {
         </div>
       </div>
 
+      {/* 间距主题 */}
+      <div>
+        <h4 className="text-xs font-medium mb-2 text-muted-foreground">间距主题</h4>
+        <div className="flex flex-wrap gap-2">
+          <Button
+            variant={spacingTheme === null ? "default" : "outline"}
+            size="sm"
+            onClick={() => updateTheme("spacing", null)}
+            className={cn(
+              "text-xs",
+              spacingTheme === null && "bg-primary text-primary-foreground"
+            )}
+          >
+            默认间距
+          </Button>
+          {SPACING_THEMES.map((theme) => (
+            <Button
+              key={theme.name}
+              variant={spacingTheme === theme.name ? "default" : "outline"}
+              size="sm"
+              onClick={() => updateTheme("spacing", theme.name)}
+              className={cn(
+                "text-xs",
+                spacingTheme === theme.name && "bg-primary text-primary-foreground"
+              )}
+            >
+              {theme.label}
+            </Button>
+          ))}
+        </div>
+      </div>
+
+      {/* 阴影主题 */}
+      <div>
+        <h4 className="text-xs font-medium mb-2 text-muted-foreground">阴影主题</h4>
+        <div className="flex flex-wrap gap-2">
+          <Button
+            variant={shadowTheme === null ? "default" : "outline"}
+            size="sm"
+            onClick={() => updateTheme("shadow", null)}
+            className={cn(
+              "text-xs",
+              shadowTheme === null && "bg-primary text-primary-foreground"
+            )}
+          >
+            默认阴影
+          </Button>
+          {SHADOW_THEMES.map((theme) => (
+            <Button
+              key={theme.name}
+              variant={shadowTheme === theme.name ? "default" : "outline"}
+              size="sm"
+              onClick={() => updateTheme("shadow", theme.name)}
+              className={cn(
+                "text-xs",
+                shadowTheme === theme.name && "bg-primary text-primary-foreground"
+              )}
+            >
+              {theme.label}
+            </Button>
+          ))}
+        </div>
+      </div>
+
+      {/* 边框宽度主题 */}
+      <div>
+        <h4 className="text-xs font-medium mb-2 text-muted-foreground">边框宽度</h4>
+        <div className="flex flex-wrap gap-2">
+          <Button
+            variant={borderWidthTheme === null ? "default" : "outline"}
+            size="sm"
+            onClick={() => updateTheme("borderWidth", null)}
+            className={cn(
+              "text-xs",
+              borderWidthTheme === null && "bg-primary text-primary-foreground"
+            )}
+          >
+            默认边框
+          </Button>
+          {BORDER_WIDTH_THEMES.map((theme) => (
+            <Button
+              key={theme.name}
+              variant={borderWidthTheme === theme.name ? "default" : "outline"}
+              size="sm"
+              onClick={() => updateTheme("borderWidth", theme.name)}
+              className={cn(
+                "text-xs",
+                borderWidthTheme === theme.name && "bg-primary text-primary-foreground"
+              )}
+            >
+              {theme.label}
+            </Button>
+          ))}
+        </div>
+      </div>
+
       {/* 字体主题 */}
       <div>
         <h4 className="text-xs font-medium mb-2 text-muted-foreground">字体主题</h4>
@@ -170,38 +334,6 @@ export function ThemeSelector({ className }: React.ComponentProps<"div">) {
               className={cn(
                 "text-xs",
                 fontTheme === theme.name && "bg-primary text-primary-foreground"
-              )}
-            >
-              {theme.label}
-            </Button>
-          ))}
-        </div>
-      </div>
-
-      {/* 特殊主题 */}
-      <div>
-        <h4 className="text-xs font-medium mb-2 text-muted-foreground">特殊主题</h4>
-        <div className="flex flex-wrap gap-2">
-          <Button
-            variant={specialTheme === null ? "default" : "outline"}
-            size="sm"
-            onClick={() => updateTheme("special", null)}
-            className={cn(
-              "text-xs",
-              specialTheme === null && "bg-primary text-primary-foreground"
-            )}
-          >
-            无
-          </Button>
-          {SPECIAL_THEMES.map((theme) => (
-            <Button
-              key={theme.name}
-              variant={specialTheme === theme.name ? "default" : "outline"}
-              size="sm"
-              onClick={() => updateTheme("special", theme.name)}
-              className={cn(
-                "text-xs",
-                specialTheme === theme.name && "bg-primary text-primary-foreground"
               )}
             >
               {theme.label}

@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 
-const DEFAULT_THEME = "default";
+const DEFAULT_THEME = "neutral";
 
 type ThemeContextType = {
   activeTheme: string;
@@ -25,7 +25,7 @@ export function ActiveThemeProvider({
   initialTheme?: string;
 }) {
   const [activeTheme, setActiveTheme] = useState<string>(
-    () => initialTheme || DEFAULT_THEME
+    () => initialTheme || `${DEFAULT_THEME} radius-medium`
   );
 
   useEffect(() => {
@@ -37,8 +37,14 @@ export function ActiveThemeProvider({
       });
     
     // 处理组合主题（多个主题用空格分隔）
-    if (activeTheme && activeTheme !== "default") {
-      const themes = activeTheme.split(" ").filter(Boolean);
+    // 如果没有主题或主题是 "default"，使用中性色作为默认
+    let themeToApply = activeTheme || `${DEFAULT_THEME} radius-medium`;
+    if (themeToApply === "default") {
+      themeToApply = `${DEFAULT_THEME} radius-medium`;
+    }
+    
+    if (themeToApply) {
+      const themes = themeToApply.split(" ").filter(Boolean);
       themes.forEach((theme) => {
         if (theme) {
           document.body.classList.add(`theme-${theme}`);
@@ -47,7 +53,7 @@ export function ActiveThemeProvider({
     }
     
     // 处理特殊主题（如 scaled）
-    if (activeTheme.includes("scaled")) {
+    if (themeToApply.includes("scaled")) {
       document.body.classList.add("theme-scaled");
     }
   }, [activeTheme]);

@@ -1,0 +1,92 @@
+---
+title: Message
+description: Message component for displaying AI and user messages in chat interfaces
+author: AF
+---
+
+<ComponentPreview name="message-demo" description="Message component with AIMessage and UserMessage" className="mb-4" />
+
+Message 组件提供了用于显示 AI 消息和用户消息的基础样式组件，适用于聊天界面、对话系统等场景。
+
+## Features
+
+- **两种消息类型**：`AIMessage`（AI 消息，无背景色）和 `UserMessage`（用户消息，带背景色）
+- **状态管理**：AI 消息支持三种状态（正常、生成中、生成失败），方便展示消息生成过程
+- **反馈区域**：消息下方预留反馈区域，方便添加点赞、点踩、复制等操作按钮
+- **样式隔离**：消息样式不受 fumadoc 等文档框架影响
+- **灵活扩展**：支持自定义内容和样式
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/message-01.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="message-demo" title="registry/wuhan/examples/message/message-demo.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Examples
+
+### Default
+
+基础的消息展示，包含用户消息和 AI 消息。
+
+<ComponentPreview
+  name="message-default"
+  description="Basic message example"
+  className="mb-4"
+/>
+
+### With Feedback
+
+带反馈区域的消息，可以在消息下方添加操作按钮。
+
+<ComponentPreview
+  name="message-with-feedback"
+  description="Message with feedback area"
+  className="mb-4"
+/>
+
+### With Attachment
+
+展示带附件的消息，附件显示在消息上方。
+
+<ComponentPreview
+  name="message-with-attachment"
+  description="Message with attachment"
+  className="mb-4"
+/>
+
+### With Status
+
+展示 AI 消息的不同状态，包括生成中状态和生成失败状态。
+
+<ComponentPreview
+  name="message-with-status"
+  description="Message with status (generating, failed)"
+  className="mb-4"
+/>

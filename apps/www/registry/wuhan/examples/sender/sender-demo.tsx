@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ComposedSender } from "@/registry/wuhan/examples/sender-composed-demo";
+import { ComposedSender } from "@/registry/wuhan/examples/sender/sender-composed-demo";
 import { 
   Search, 
   Brain, 

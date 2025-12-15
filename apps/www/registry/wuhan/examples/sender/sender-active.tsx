@@ -5,16 +5,16 @@ import {
   SenderTextarea,
   SenderActionBar,
   SenderButton,
-} from "@/registry/wuhan/blocks/sender-01";
+} from "@/registry/wuhan/blocks/sender/sender-01";
 import { Search, Brain, Send } from "lucide-react";
 
-export default function SenderComposedDefault() {
+export default function SenderComposedActive() {
   return (
-    <SenderContainer className="max-w-2xl">
+    <SenderContainer className="max-w-2xl border-primary">
       <SenderTextarea placeholder="Type your message..." />
       <SenderActionBar className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <SenderButton variant="outline" size="sm">
+          <SenderButton variant="default" size="sm">
             <Search className="size-4" />
             联网搜索
           </SenderButton>

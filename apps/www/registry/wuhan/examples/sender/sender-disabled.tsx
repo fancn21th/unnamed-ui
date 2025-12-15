@@ -5,7 +5,7 @@ import {
   SenderTextarea,
   SenderActionBar,
   SenderButton,
-} from "@/registry/wuhan/blocks/sender-01";
+} from "@/registry/wuhan/blocks/sender/sender-01";
 import { Search, Send } from "lucide-react";
 
 export default function SenderComposedDisabled() {

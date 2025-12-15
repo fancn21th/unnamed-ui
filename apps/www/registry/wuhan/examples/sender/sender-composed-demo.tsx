@@ -19,8 +19,8 @@ import {
   SenderAttachmentButton,
   SenderModeButton,
   SenderSendButton,
-} from "@/registry/wuhan/blocks/sender-01";
-import { AttachmentCard, AttachmentList } from "@/registry/wuhan/blocks/attachment-list-01";
+} from "@/registry/wuhan/blocks/sender/sender-01";
+import { AttachmentCard, AttachmentList } from "@/registry/wuhan/blocks/attachment-list/attachment-list-01";
 import { Send, Paperclip, Brain, Loader2, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 

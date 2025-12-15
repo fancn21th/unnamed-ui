@@ -1,19 +1,56 @@
 'use client';
 
 import * as React from 'react';
+import { useThemeConfig } from '@/components/active-theme';
 
-// 获取当前 CSS 变量值
-function getColorValue(key: string): string {
+// 获取实际计算后的颜色值（而不是 CSS 变量值）
+function getActualColorValue(key: string): string {
   if (typeof window === 'undefined') return '';
-  const root = document.documentElement;
-  return getComputedStyle(root).getPropertyValue(`--${key}`).trim();
+  
+  // 创建一个临时元素来获取实际计算后的颜色值
+  const temp = document.createElement('div');
+  temp.style.position = 'absolute';
+  temp.style.visibility = 'hidden';
+  temp.style.pointerEvents = 'none';
+  temp.style.width = '1px';
+  temp.style.height = '1px';
+  
+  // 使用 background-color 而不是 color，因为我们需要获取背景色
+  temp.style.backgroundColor = `var(--${key})`;
+  
+  // 添加到 theme-container 中（如果存在），这样可以获取主题应用后的值
+  const themeContainer = document.querySelector('.theme-container');
+  if (themeContainer) {
+    themeContainer.appendChild(temp);
+  } else {
+    document.body.appendChild(temp);
+  }
+  
+  const computedColor = window.getComputedStyle(temp).backgroundColor;
+  
+  // 清理
+  temp.remove();
+  
+  return computedColor;
 }
 
-// 设置 CSS 变量值
+// 设置 CSS 变量值 - 在所有可能的位置设置以确保生效
 function setColorValue(key: string, value: string) {
   if (typeof window === 'undefined') return;
+  
+  // 1. 在 :root 上设置
   const root = document.documentElement;
   root.style.setProperty(`--${key}`, value);
+  
+  // 2. 在 body 上设置
+  const body = document.body;
+  body.style.setProperty(`--${key}`, value);
+  
+  // 3. 在所有 .theme-container 元素上设置（优先级最高，因为内联样式优先级高于 CSS 类）
+  const themeContainers = document.querySelectorAll('.theme-container');
+  themeContainers.forEach((container) => {
+    (container as HTMLElement).style.setProperty(`--${key}`, value);
+  });
 }
 
 // 使用浏览器 API 将任意颜色格式转换为 RGB
@@ -30,10 +67,11 @@ function colorToRgb(color: string): { r: number; g: number; b: number } {
     temp.style.pointerEvents = 'none';
     document.body.appendChild(temp);
     
-    const computed = window.getComputedStyle(temp).color;
+    const computed = window.getComputedStyle(temp).color || window.getComputedStyle(temp).backgroundColor;
     document.body.removeChild(temp);
     
-    const match = computed.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+    // 匹配 rgb() 或 rgba() 格式
+    const match = computed.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
     if (match) {
       return {
         r: parseInt(match[1], 10),
@@ -139,39 +177,142 @@ function rgbToOklch(r: number, g: number, b: number): string {
 
 
 export function ThemeEditor() {
+  const { activeTheme, setIsPrimaryCustomized } = useThemeConfig();
   const [primaryColor, setPrimaryColor] = React.useState<string>('');
   const [hexValue, setHexValue] = React.useState<string>('#000000');
+  const [isCustomColor, setIsCustomColor] = React.useState<boolean>(false);
+
+  // 初始化并更新 Primary 颜色值
+  const updateColor = React.useCallback(() => {
+    if (typeof window === 'undefined') return;
+    
+    // 获取实际计算后的颜色值（RGB 格式）
+    const computedColor = getActualColorValue('primary');
+    
+    if (computedColor && computedColor !== 'rgba(0, 0, 0, 0)' && computedColor !== 'transparent') {
+      // 将 RGB 转换为 Hex
+      const rgb = colorToRgb(computedColor);
+      const hex = rgbToHex(rgb.r, rgb.g, rgb.b);
+      setHexValue(hex);
+      
+      // 转换为 OKLCH 格式用于显示
+      const oklch = rgbToOklch(rgb.r, rgb.g, rgb.b);
+      setPrimaryColor(oklch);
+    } else {
+      // 如果获取不到，尝试从 CSS 变量读取
+      const rootStyle = window.getComputedStyle(document.documentElement);
+      const cssVarValue = rootStyle.getPropertyValue('--primary').trim();
+      
+      if (cssVarValue) {
+        // 如果是 HEX 格式
+        if (cssVarValue.startsWith('#')) {
+          setHexValue(cssVarValue);
+          const rgb = hexToRgb(cssVarValue);
+          if (rgb) {
+            const oklch = rgbToOklch(rgb.r, rgb.g, rgb.b);
+            setPrimaryColor(oklch);
+          }
+        } else {
+          // 尝试解析其他格式
+          const rgb = colorToRgb(cssVarValue);
+          const hex = rgbToHex(rgb.r, rgb.g, rgb.b);
+          setHexValue(hex);
+          const oklch = rgbToOklch(rgb.r, rgb.g, rgb.b);
+          setPrimaryColor(oklch);
+        }
+      } else {
+        // 使用默认值
+        const defaultColor = '#4a56ff';
+        setHexValue(defaultColor);
+        const rgb = hexToRgb(defaultColor);
+        if (rgb) {
+          const oklch = rgbToOklch(rgb.r, rgb.g, rgb.b);
+          setPrimaryColor(oklch);
+        }
+      }
+    }
+  }, []);
 
   // 初始化 Primary 颜色值并转换为 Hex
   React.useEffect(() => {
-    const initColor = () => {
-      const colorValue = getColorValue('primary');
-      if (colorValue) {
-        setPrimaryColor(colorValue);
-        const rgb = colorToRgb(colorValue);
-        const hex = rgbToHex(rgb.r, rgb.g, rgb.b);
-        setHexValue(hex);
-      }
-    };
-    
     // 延迟初始化，确保 DOM 已准备好
     if (typeof window !== 'undefined') {
-      initColor();
+      // 检查是否已经有自定义颜色（通过检查内联样式）
+      const root = document.documentElement;
+      const body = document.body;
+      const rootHasCustom = root.style.getPropertyValue('--primary').trim();
+      const bodyHasCustom = body.style.getPropertyValue('--primary').trim();
+      
+      if (rootHasCustom || bodyHasCustom) {
+        setIsCustomColor(true);
+        setIsPrimaryCustomized(true);
+      }
+      
+      // 使用 setTimeout 确保在主题应用后再初始化
+      setTimeout(updateColor, 100);
     }
-  }, []);
+  }, [updateColor, setIsPrimaryCustomized]);
+
+  // 同步 isCustomColor 和 isPrimaryCustomized
+  React.useEffect(() => {
+    setIsPrimaryCustomized(isCustomColor);
+  }, [isCustomColor, setIsPrimaryCustomized]);
+  
+  // 当主题切换时，如果用户没有自定义颜色，更新颜色编辑器显示（始终跟随 primary 颜色）
+  React.useEffect(() => {
+    if (typeof window !== 'undefined' && !isCustomColor) {
+      // 延迟一下，确保主题类已经应用
+      const timer = setTimeout(() => {
+        updateColor();
+      }, 200);
+      return () => clearTimeout(timer);
+    }
+  }, [activeTheme, isCustomColor, updateColor]);
+  
+  // 监听主题颜色重置事件（当用户选择品牌色时）
+  React.useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    const handleThemeColorReset = () => {
+      // 重置自定义状态
+      setIsCustomColor(false);
+      // 延迟更新颜色，确保主题类已经应用
+      setTimeout(() => {
+        updateColor();
+      }, 100);
+    };
+    
+    window.addEventListener('theme-color-reset', handleThemeColorReset);
+    return () => {
+      window.removeEventListener('theme-color-reset', handleThemeColorReset);
+    };
+  }, [updateColor]);
 
   const handleColorChange = (hex: string) => {
     const rgb = hexToRgb(hex);
     if (!rgb) return;
+    
+    // 标记为用户自定义颜色
+    setIsCustomColor(true);
+    setIsPrimaryCustomized(true);
     
     // 转换为 OKLCH 格式以匹配主题
     const oklch = rgbToOklch(rgb.r, rgb.g, rgb.b);
     setColorValue('primary', oklch);
     setPrimaryColor(oklch);
     setHexValue(hex);
+    
+    // 延迟一下，确保状态更新后 ThemeSelector 能正确响应
+    setTimeout(() => {
+      setIsPrimaryCustomized(true);
+    }, 0);
   };
 
   const handleTextChange = (value: string) => {
+    // 标记为用户自定义颜色
+    setIsCustomColor(true);
+    setIsPrimaryCustomized(true);
+    
     // 如果输入的是 OKLCH 格式，直接使用
     if (value.trim().startsWith('oklch(')) {
       setColorValue('primary', value);
@@ -188,6 +329,33 @@ export function ThemeEditor() {
       const hex = rgbToHex(rgb.r, rgb.g, rgb.b);
       setHexValue(hex);
     }
+    
+    // 延迟一下，确保状态更新后 ThemeSelector 能正确响应
+    setTimeout(() => {
+      setIsPrimaryCustomized(true);
+    }, 0);
+  };
+
+  const handleReset = () => {
+    // 清除所有设置的内联样式
+    if (typeof window !== 'undefined') {
+      const root = document.documentElement;
+      const body = document.body;
+      const themeContainers = document.querySelectorAll('.theme-container');
+      
+      root.style.removeProperty('--primary');
+      body.style.removeProperty('--primary');
+      themeContainers.forEach((container) => {
+        (container as HTMLElement).style.removeProperty('--primary');
+      });
+    }
+    
+    // 重置状态
+    setIsCustomColor(false);
+    setIsPrimaryCustomized(false);
+    
+    // 重新读取当前主题的颜色
+    setTimeout(updateColor, 100);
   };
 
   const displayColor = primaryColor || '';
@@ -195,11 +363,21 @@ export function ThemeEditor() {
   return (
     <div className="space-y-4">
       <div>
-        <label className="text-xs font-medium mb-1.5 block">Primary</label>
+        <div className="flex items-center justify-between mb-1.5">
+          <label className="text-xs font-medium">Primary</label>
+          {isCustomColor && (
+            <button
+              onClick={handleReset}
+              className="text-xs text-muted-foreground hover:text-foreground underline"
+            >
+              重置
+            </button>
+          )}
+        </div>
         <div className="flex items-center gap-1">
           <div
             className="relative flex h-8 w-8 cursor-pointer items-center justify-center overflow-hidden rounded border"
-            style={{ backgroundColor: displayColor }}
+            style={{ backgroundColor: displayColor || hexValue }}
           >
             <input
               type="color"

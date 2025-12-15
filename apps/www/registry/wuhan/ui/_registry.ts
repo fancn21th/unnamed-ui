@@ -9,6 +9,7 @@ export const ui: Registry["items"] = [
       {
         path: "ui/button.tsx",
         type: "registry:ui",
+        target: "components/ui/button.tsx",
       },
     ],
   },
@@ -20,6 +21,7 @@ export const ui: Registry["items"] = [
       {
         path: "ui/collapsible.tsx",
         type: "registry:ui",
+        target: "components/ui/collapsible.tsx",
       },
     ],
   },
@@ -31,6 +33,7 @@ export const ui: Registry["items"] = [
       {
         path: "ui/separator.tsx",
         type: "registry:ui",
+        target: "components/ui/separator.tsx",
       },
     ],
   },
@@ -41,6 +44,7 @@ export const ui: Registry["items"] = [
       {
         path: "ui/textarea.tsx",
         type: "registry:ui",
+        target: "components/ui/textarea.tsx",
       },
     ],
   },
@@ -52,6 +56,54 @@ export const ui: Registry["items"] = [
       {
         path: "ui/tooltip.tsx",
         type: "registry:ui",
+        target: "components/ui/tooltip.tsx",
+      },
+    ],
+  },
+  {
+    name: "card",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/card.tsx",
+        type: "registry:ui",
+        target: "components/ui/card.tsx",
+      },
+    ],
+  },
+  {
+    name: "dialog",
+    type: "registry:ui",
+    dependencies: ["@radix-ui/react-dialog"],
+    files: [
+      {
+        path: "ui/dialog.tsx",
+        type: "registry:ui",
+        target: "components/ui/dialog.tsx",
+      },
+    ],
+  },
+  {
+    name: "drawer",
+    type: "registry:ui",
+    dependencies: ["vaul", "@radix-ui/react-dialog"],
+    files: [
+      {
+        path: "ui/drawer.tsx",
+        type: "registry:ui",
+        target: "components/ui/drawer.tsx",
+      },
+    ],
+  },
+  {
+    name: "tabs",
+    type: "registry:ui",
+    dependencies: ["@radix-ui/react-tabs"],
+    files: [
+      {
+        path: "ui/tabs.tsx",
+        type: "registry:ui",
+        target: "components/ui/tabs.tsx",
       },
     ],
   },

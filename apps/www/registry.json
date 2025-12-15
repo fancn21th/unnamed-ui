@@ -1,28 +1,78 @@
 {
-  "name": "unnnamed-ui",
-  "homepage": "https://unnamed-ui.vercel.app/",
+  "name": "shadcn/ui",
+  "homepage": "https://ui.shadcn.com",
   "items": [
     {
-      "name": "hello-world",
-      "type": "registry:component",
-      "title": "Hello World",
-      "description": "A simple hello world component",
-      "registryDependencies": ["button"],
-      "files": [
-        {
-          "path": "registry/wuhan/blocks/hello-world/hello-world.tsx",
-          "type": "registry:component"
-        }
-      ]
+      "name": "index",
+      "type": "registry:style",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "devDependencies": [
+        "tw-animate-css"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [],
+      "cssVars": {}
+    },
+    {
+      "name": "style",
+      "type": "registry:style",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "devDependencies": [
+        "tw-animate-css"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [],
+      "cssVars": {}
     },
     {
       "name": "button",
       "type": "registry:ui",
-      "dependencies": ["@radix-ui/react-slot"],
+      "dependencies": [
+        "@radix-ui/react-slot"
+      ],
       "files": [
         {
           "path": "registry/wuhan/ui/button.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-collapsible"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/ui/collapsible.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/collapsible.tsx"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-separator"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/ui/separator.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/separator.tsx"
         }
       ]
     },
@@ -32,54 +82,345 @@
       "files": [
         {
           "path": "registry/wuhan/ui/textarea.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/textarea.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/ui/tooltip.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tooltip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/wuhan/ui/card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/ui/dialog.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "dependencies": [
+        "vaul",
+        "@radix-ui/react-dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/ui/drawer.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/drawer.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/ui/tabs.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hello-world",
+      "type": "registry:block",
+      "title": "Hello World",
+      "description": "A simple hello world component",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/hello-world/hello-world.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/components/hello-world.tsx"
+        }
+      ]
+    },
+    {
+      "name": "message-01",
+      "type": "registry:block",
+      "title": "Message",
+      "description": "AI and user message components",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/message/message-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/message-01.tsx"
         }
       ]
     },
     {
       "name": "prompt-01",
       "type": "registry:block",
-      "description": "A simple prompt.",
-      "registryDependencies": ["textarea", "button"],
-      "files": [
-        {
-          "path": "registry/wuhan/blocks/prompt-01.tsx",
-          "type": "registry:component"
-        }
+      "title": "Prompt",
+      "description": "Prompt input component",
+      "registryDependencies": [
+        "textarea",
+        "button"
       ],
-      "meta": {},
-      "categories": []
-    },
-    {
-      "name": "prompt-default",
-      "type": "registry:example",
-      "registryDependencies": ["textarea", "button"],
       "files": [
         {
-          "path": "registry/wuhan/examples/prompt-default.tsx",
-          "type": "registry:example"
+          "path": "registry/wuhan/blocks/prompt/prompt-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/prompt-01.tsx"
         }
       ]
     },
     {
-      "name": "prompt-active",
-      "type": "registry:example",
-      "registryDependencies": ["textarea", "button"],
+      "name": "sender-01",
+      "type": "registry:block",
+      "title": "Sender",
+      "description": "Message sender component",
+      "registryDependencies": [
+        "textarea",
+        "button"
+      ],
       "files": [
         {
-          "path": "registry/wuhan/examples/prompt-active.tsx",
-          "type": "registry:example"
+          "path": "registry/wuhan/blocks/sender/sender-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/sender-01.tsx"
         }
       ]
     },
     {
-      "name": "prompt-disabled",
-      "type": "registry:example",
-      "registryDependencies": ["textarea", "button"],
+      "name": "attachment-list-01",
+      "type": "registry:block",
+      "title": "Attachment List",
+      "description": "Attachment list component",
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
-          "path": "registry/wuhan/examples/prompt-disabled.tsx",
-          "type": "registry:example"
+          "path": "registry/wuhan/blocks/attachment-list/attachment-list-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/attachment-list-01.tsx"
+        }
+      ]
+    },
+    {
+      "name": "message-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "message-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/message/message-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/message-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "message-default",
+      "type": "registry:example",
+      "registryDependencies": [
+        "message-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/message/message-default.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/message-default.tsx"
+        }
+      ]
+    },
+    {
+      "name": "message-composed-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "message-01",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/message/message-composed-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/message-composed-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "message-with-status",
+      "type": "registry:example",
+      "registryDependencies": [
+        "message-01",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/message/message-with-status.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/message-with-status.tsx"
+        }
+      ]
+    },
+    {
+      "name": "message-with-attachment",
+      "type": "registry:example",
+      "registryDependencies": [
+        "message-01",
+        "attachment-list-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/message/message-with-attachment.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/message-with-attachment.tsx"
+        }
+      ]
+    },
+    {
+      "name": "message-with-feedback",
+      "type": "registry:example",
+      "registryDependencies": [
+        "message-01",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/message/message-with-feedback.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/message-with-feedback.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sender-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "sender-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/sender/sender-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/sender-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sender-default",
+      "type": "registry:example",
+      "registryDependencies": [
+        "sender-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/sender/sender-default.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/sender-default.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sender-active",
+      "type": "registry:example",
+      "registryDependencies": [
+        "sender-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/sender/sender-active.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/sender-active.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sender-disabled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "sender-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/sender/sender-disabled.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/sender-disabled.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sender-composed-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "sender-01",
+        "attachment-list-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/sender/sender-composed-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/sender-composed-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "textarea-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/textarea/textarea-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/textarea-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/button/button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/button-demo.tsx"
         }
       ]
     }

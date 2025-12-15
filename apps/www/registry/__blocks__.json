@@ -2,5 +2,21 @@
   {
     "name": "hello-world",
     "description": "A simple hello world component"
+  },
+  {
+    "name": "message-01",
+    "description": "AI and user message components"
+  },
+  {
+    "name": "prompt-01",
+    "description": "Prompt input component"
+  },
+  {
+    "name": "sender-01",
+    "description": "Message sender component"
+  },
+  {
+    "name": "attachment-list-01",
+    "description": "Attachment list component"
   }
 ]

@@ -1,0 +1,296 @@
+/* 默认主题 - 品牌色 */
+/* 默认使用品牌色主题，已在 globals.css 中定义 */
+/* 如果没有应用任何主题类，默认就是品牌色 */
+
+/* 圆角主题 - Small */
+.theme-radius-small,
+.theme-radius-small .theme-container,
+.theme-radius-small [data-radix-popper-content-wrapper] {
+  --radius: 4px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-2xl: 12px;
+  --radius-circle: 999px;
+}
+
+/* 圆角主题 - Medium (默认) */
+.theme-radius-medium,
+.theme-radius-medium .theme-container,
+.theme-radius-medium [data-radix-popper-content-wrapper] {
+  --radius: 6px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-circle: 999px;
+}
+
+/* 圆角主题 - Large */
+.theme-radius-large,
+.theme-radius-large .theme-container,
+.theme-radius-large [data-radix-popper-content-wrapper] {
+  --radius: 8px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-circle: 999px;
+}
+
+/* 圆角主题 - None */
+.theme-radius-none,
+.theme-radius-none .theme-container,
+.theme-radius-none [data-radix-popper-content-wrapper] {
+  --radius: 0;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-2xl: 0;
+  --radius-circle: 999px;
+}
+
+/* 间距主题 - Compact (紧凑) */
+.theme-spacing-compact,
+.theme-spacing-compact .theme-container,
+.theme-spacing-compact [data-radix-popper-content-wrapper] {
+  --spacing: 2px; /* space-1 */
+}
+
+/* 间距主题 - Normal (正常) - 默认 */
+.theme-spacing-normal,
+.theme-spacing-normal .theme-container,
+.theme-spacing-normal [data-radix-popper-content-wrapper] {
+  --spacing: 4px; /* space-2 */
+}
+
+/* 间距主题 - Comfortable (舒适) */
+.theme-spacing-comfortable,
+.theme-spacing-comfortable .theme-container,
+.theme-spacing-comfortable [data-radix-popper-content-wrapper] {
+  --spacing: 6px; /* space-3 */
+}
+
+/* 阴影主题 - None (无阴影) */
+.theme-shadow-none,
+.theme-shadow-none .theme-container,
+.theme-shadow-none [data-radix-popper-content-wrapper] {
+  --shadow-basic: none;
+  --shadow-medium: none;
+  --shadow-high: none;
+}
+
+/* 阴影主题 - Basic (基础阴影) - 默认 */
+.theme-shadow-basic,
+.theme-shadow-basic .theme-container,
+.theme-shadow-basic [data-radix-popper-content-wrapper] {
+  --shadow-basic: 0 1px 10px 0 #0000000d, 0 4px 5px 0 #00000014, 0 2px 4px -1px #0000001f;
+  --shadow-medium: 0 3px 14px 2px #0000000d, 0 8px 10px 1px #0000000f, 0 5px 5px -3px #0000001a;
+  --shadow-high: 0 6px 30px 5px #0000000d, 0 16px 24px 2px #0000000a, 0 8px 10px -5px #0000001f;
+}
+
+/* 阴影主题 - Medium (中等阴影) */
+.theme-shadow-medium,
+.theme-shadow-medium .theme-container,
+.theme-shadow-medium [data-radix-popper-content-wrapper] {
+  --shadow-basic: 0 3px 14px 2px #0000000d, 0 8px 10px 1px #0000000f, 0 5px 5px -3px #0000001a;
+  --shadow-medium: 0 6px 30px 5px #0000000d, 0 16px 24px 2px #0000000a, 0 8px 10px -5px #0000001f;
+  --shadow-high: 0 12px 60px 10px #0000000d, 0 32px 48px 4px #0000000a, 0 16px 20px -10px #0000001f;
+}
+
+/* 阴影主题 - High (高阴影) */
+.theme-shadow-high,
+.theme-shadow-high .theme-container,
+.theme-shadow-high [data-radix-popper-content-wrapper] {
+  --shadow-basic: 0 6px 30px 5px #0000000d, 0 16px 24px 2px #0000000a, 0 8px 10px -5px #0000001f;
+  --shadow-medium: 0 12px 60px 10px #0000000d, 0 32px 48px 4px #0000000a, 0 16px 20px -10px #0000001f;
+  --shadow-high: 0 24px 120px 20px #0000000d, 0 64px 96px 8px #0000000a, 0 32px 40px -20px #0000001f;
+}
+
+/* 字体主题 - PingFang SC (中文) */
+.theme-font-pingfang .theme-container,
+.theme-font-pingfang [data-radix-popper-content-wrapper] {
+  --font-sans: "PingFang SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* 字体主题 - Helvetica Neue (英文) */
+.theme-font-helvetica .theme-container,
+.theme-font-helvetica [data-radix-popper-content-wrapper] {
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* 字体主题 - Source Han Sans SC (显示字体) */
+.theme-font-display .theme-container,
+.theme-font-display [data-radix-popper-content-wrapper] {
+  --font-sans: "Source Han Sans SC", "PingFang SC", sans-serif;
+}
+
+/* Neutral 主题 - 使用中性色 */
+.theme-neutral,
+.theme-neutral .theme-container,
+.theme-neutral [data-radix-popper-content-wrapper] {
+  --primary: var(--neutral-800);
+  --primary-foreground: var(--neutral-0);
+  --ring: var(--neutral-400);
+
+  @variant dark {
+    --primary: var(--neutral-800);
+    --primary-foreground: var(--neutral-0);
+    --ring: var(--neutral-400);
+  }
+}
+
+/* 品牌色主题变体 */
+.theme-brand,
+.theme-brand .theme-container,
+.theme-brand [data-radix-popper-content-wrapper] {
+  --primary: var(--brand-600);
+  --primary-foreground: var(--neutral-0);
+  --ring: var(--brand-300);
+
+  @variant dark {
+    --primary: var(--brand-600);
+    --primary-foreground: #ffffff;
+    --ring: var(--brand-300);
+  }
+}
+
+/* 成功色主题 */
+.theme-success,
+.theme-success .theme-container,
+.theme-success [data-radix-popper-content-wrapper] {
+  --primary: var(--success-600);
+  --primary-foreground: #ffffff;
+  --ring: var(--success-300);
+
+  @variant dark {
+    --primary: var(--success-600);
+    --primary-foreground: #ffffff;
+    --ring: var(--success-300);
+  }
+}
+
+/* 警告色主题 */
+.theme-warning,
+.theme-warning .theme-container,
+.theme-warning [data-radix-popper-content-wrapper] {
+  --primary: var(--warning-600);
+  --primary-foreground: #ffffff;
+  --ring: var(--warning-300);
+
+  @variant dark {
+    --primary: var(--warning-600);
+    --primary-foreground: #ffffff;
+    --ring: var(--warning-300);
+  }
+}
+
+/* 错误色主题 */
+.theme-error,
+.theme-error .theme-container,
+.theme-error [data-radix-popper-content-wrapper] {
+  --primary: var(--error-600);
+  --primary-foreground: #ffffff;
+  --ring: var(--error-300);
+
+  @variant dark {
+    --primary: var(--error-600);
+    --primary-foreground: #ffffff;
+    --ring: var(--error-300);
+  }
+}
+
+/* 缩放主题 - 响应式字体和间距 */
+.theme-scaled .theme-container,
+.theme-scaled [data-radix-popper-content-wrapper] {
+  @media (min-width: 1024px) {
+    --radius: 6px;
+    --text-lg: 1rem;
+    --text-xl: 1.1rem;
+    --text-2xl: 1.2rem;
+    --text-3xl: 1.3rem;
+    --text-4xl: 1.4rem;
+    --text-5xl: 1.5rem;
+    --text-6xl: 1.6rem;
+    --text-7xl: 1.7rem;
+    --text-8xl: 1.8rem;
+    --text-base: 0.85rem;
+    --text-sm: 0.8rem;
+    --spacing: 0.2rem;
+  }
+
+  [data-slot="select-trigger"],
+  [data-slot="toggle-group-item"] {
+    --spacing: 0.2rem;
+  }
+
+  [data-slot="card"] {
+    border-radius: var(--radius);
+    padding-block: calc(var(--spacing) * 4);
+    gap: calc(var(--spacing) * 2);
+  }
+
+  [data-slot="card"].pb-0 {
+    padding-bottom: 0;
+  }
+}
+
+/* 组合主题示例 - 可以组合多个主题类 */
+.theme-rounded-none .theme-container,
+.theme-rounded-none [data-radix-popper-content-wrapper] {
+  --radius: 0;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-2xl: 0;
+  --radius-circle: 999px;
+}
+
+.theme-rounded-small .theme-container,
+.theme-rounded-small [data-radix-popper-content-wrapper] {
+  --radius: 4px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-2xl: 12px;
+  --radius-circle: 999px;
+}
+
+.theme-rounded-medium .theme-container,
+.theme-rounded-medium [data-radix-popper-content-wrapper] {
+  --radius: 6px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-circle: 999px;
+}
+
+.theme-rounded-large .theme-container,
+.theme-rounded-large [data-radix-popper-content-wrapper] {
+  --radius: 8px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-circle: 999px;
+}
+
+.theme-rounded-full .theme-container,
+.theme-rounded-full [data-radix-popper-content-wrapper] {
+  --radius: 999px;
+  --radius-sm: 999px;
+  --radius-md: 999px;
+  --radius-lg: 999px;
+  --radius-xl: 999px;
+  --radius-2xl: 999px;
+  --radius-circle: 999px;
+}

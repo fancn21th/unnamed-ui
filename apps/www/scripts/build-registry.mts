@@ -219,6 +219,37 @@ try {
   console.log("\n🗂️ Building registry/__blocks__.json...")
   await buildBlocksIndex()
 
+  // Generate root registry.json for default style (first style)
+  if (styles.length > 0) {
+    console.log(`\n📝 Generating root registry.json from ${styles[0].name}...`)
+    const defaultStyle = styles[0]
+    const { registry: importedRegistry } = await import(
+      `../registry/${defaultStyle.name}/registry.ts`
+    )
+    const parseResult = registrySchema.safeParse(importedRegistry)
+    if (parseResult.success) {
+      const registry = parseResult.data
+      const fixedRegistry = {
+        ...registry,
+        items: registry.items.map((item) => {
+          const files = item.files?.map((file) => {
+            return {
+              ...file,
+              path: `registry/${defaultStyle.name}/${file.path}`,
+            }
+          })
+          return {
+            ...item,
+            files,
+          }
+        }),
+      }
+      const rootRegistryPath = path.join(process.cwd(), "registry.json")
+      await fs.writeFile(rootRegistryPath, JSON.stringify(fixedRegistry, null, 2))
+      console.log(`✅ Root registry.json generated`)
+    }
+  }
+
   // Clean up intermediate files.
   console.log("\n🧹 Cleaning up intermediate files...")
   for (const style of styles) {

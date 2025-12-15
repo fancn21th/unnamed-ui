@@ -43,7 +43,8 @@
       "files": [
         {
           "path": "registry/wuhan/ui/button.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/button.tsx"
         }
       ]
     },
@@ -56,7 +57,8 @@
       "files": [
         {
           "path": "registry/wuhan/ui/collapsible.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/collapsible.tsx"
         }
       ]
     },
@@ -69,7 +71,8 @@
       "files": [
         {
           "path": "registry/wuhan/ui/separator.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/separator.tsx"
         }
       ]
     },
@@ -79,7 +82,8 @@
       "files": [
         {
           "path": "registry/wuhan/ui/textarea.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/textarea.tsx"
         }
       ]
     },
@@ -92,7 +96,8 @@
       "files": [
         {
           "path": "registry/wuhan/ui/tooltip.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/tooltip.tsx"
         }
       ]
     },
@@ -102,7 +107,8 @@
       "files": [
         {
           "path": "registry/wuhan/ui/card.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/card.tsx"
         }
       ]
     },
@@ -115,7 +121,8 @@
       "files": [
         {
           "path": "registry/wuhan/ui/dialog.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/dialog.tsx"
         }
       ]
     },
@@ -129,7 +136,8 @@
       "files": [
         {
           "path": "registry/wuhan/ui/drawer.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/drawer.tsx"
         }
       ]
     },
@@ -142,7 +150,8 @@
       "files": [
         {
           "path": "registry/wuhan/ui/tabs.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/tabs.tsx"
         }
       ]
     },
@@ -157,7 +166,8 @@
       "files": [
         {
           "path": "registry/wuhan/blocks/hello-world/hello-world.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/wuhan/components/hello-world.tsx"
         }
       ]
     },
@@ -172,7 +182,8 @@
       "files": [
         {
           "path": "registry/wuhan/blocks/message/message-01.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/message-01.tsx"
         }
       ]
     },
@@ -188,7 +199,8 @@
       "files": [
         {
           "path": "registry/wuhan/blocks/prompt/prompt-01.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/prompt-01.tsx"
         }
       ]
     },
@@ -204,7 +216,8 @@
       "files": [
         {
           "path": "registry/wuhan/blocks/sender/sender-01.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/sender-01.tsx"
         }
       ]
     },
@@ -219,7 +232,8 @@
       "files": [
         {
           "path": "registry/wuhan/blocks/attachment-list/attachment-list-01.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/attachment-list-01.tsx"
         }
       ]
     },
@@ -232,7 +246,8 @@
       "files": [
         {
           "path": "registry/wuhan/examples/message/message-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "target": "components/wuhan/examples/message-demo.tsx"
         }
       ]
     },
@@ -245,7 +260,8 @@
       "files": [
         {
           "path": "registry/wuhan/examples/message/message-default.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "target": "components/wuhan/examples/message-default.tsx"
         }
       ]
     },
@@ -259,7 +275,8 @@
       "files": [
         {
           "path": "registry/wuhan/examples/message/message-composed-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "target": "components/wuhan/examples/message-composed-demo.tsx"
         }
       ]
     },
@@ -273,7 +290,8 @@
       "files": [
         {
           "path": "registry/wuhan/examples/message/message-with-status.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "target": "components/wuhan/examples/message-with-status.tsx"
         }
       ]
     },
@@ -287,7 +305,8 @@
       "files": [
         {
           "path": "registry/wuhan/examples/message/message-with-attachment.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "target": "components/wuhan/examples/message-with-attachment.tsx"
         }
       ]
     },
@@ -301,7 +320,8 @@
       "files": [
         {
           "path": "registry/wuhan/examples/message/message-with-feedback.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "target": "components/wuhan/examples/message-with-feedback.tsx"
         }
       ]
     },
@@ -314,7 +334,8 @@
       "files": [
         {
           "path": "registry/wuhan/examples/sender/sender-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "target": "components/wuhan/examples/sender-demo.tsx"
         }
       ]
     },
@@ -327,7 +348,8 @@
       "files": [
         {
           "path": "registry/wuhan/examples/sender/sender-default.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "target": "components/wuhan/examples/sender-default.tsx"
         }
       ]
     },
@@ -340,7 +362,8 @@
       "files": [
         {
           "path": "registry/wuhan/examples/sender/sender-active.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "target": "components/wuhan/examples/sender-active.tsx"
         }
       ]
     },
@@ -353,7 +376,8 @@
       "files": [
         {
           "path": "registry/wuhan/examples/sender/sender-disabled.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "target": "components/wuhan/examples/sender-disabled.tsx"
         }
       ]
     },
@@ -367,7 +391,8 @@
       "files": [
         {
           "path": "registry/wuhan/examples/sender/sender-composed-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "target": "components/wuhan/examples/sender-composed-demo.tsx"
         }
       ]
     },
@@ -380,7 +405,8 @@
       "files": [
         {
           "path": "registry/wuhan/examples/textarea/textarea-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "target": "components/wuhan/examples/textarea-demo.tsx"
         }
       ]
     },
@@ -393,7 +419,8 @@
       "files": [
         {
           "path": "registry/wuhan/examples/button/button-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "target": "components/wuhan/examples/button-demo.tsx"
         }
       ]
     }

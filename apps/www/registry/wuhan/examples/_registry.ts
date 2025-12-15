@@ -10,6 +10,7 @@ export const examples: Registry["items"] = [
       {
         path: "examples/message/message-demo.tsx",
         type: "registry:example",
+        target: "components/wuhan/examples/message-demo.tsx",
       },
     ],
   },
@@ -21,6 +22,7 @@ export const examples: Registry["items"] = [
       {
         path: "examples/message/message-default.tsx",
         type: "registry:example",
+        target: "components/wuhan/examples/message-default.tsx",
       },
     ],
   },
@@ -32,6 +34,7 @@ export const examples: Registry["items"] = [
       {
         path: "examples/message/message-composed-demo.tsx",
         type: "registry:example",
+        target: "components/wuhan/examples/message-composed-demo.tsx",
       },
     ],
   },
@@ -43,6 +46,7 @@ export const examples: Registry["items"] = [
       {
         path: "examples/message/message-with-status.tsx",
         type: "registry:example",
+        target: "components/wuhan/examples/message-with-status.tsx",
       },
     ],
   },
@@ -54,6 +58,7 @@ export const examples: Registry["items"] = [
       {
         path: "examples/message/message-with-attachment.tsx",
         type: "registry:example",
+        target: "components/wuhan/examples/message-with-attachment.tsx",
       },
     ],
   },
@@ -65,6 +70,7 @@ export const examples: Registry["items"] = [
       {
         path: "examples/message/message-with-feedback.tsx",
         type: "registry:example",
+        target: "components/wuhan/examples/message-with-feedback.tsx",
       },
     ],
   },
@@ -77,6 +83,7 @@ export const examples: Registry["items"] = [
       {
         path: "examples/sender/sender-demo.tsx",
         type: "registry:example",
+        target: "components/wuhan/examples/sender-demo.tsx",
       },
     ],
   },
@@ -88,6 +95,7 @@ export const examples: Registry["items"] = [
       {
         path: "examples/sender/sender-default.tsx",
         type: "registry:example",
+        target: "components/wuhan/examples/sender-default.tsx",
       },
     ],
   },
@@ -99,6 +107,7 @@ export const examples: Registry["items"] = [
       {
         path: "examples/sender/sender-active.tsx",
         type: "registry:example",
+        target: "components/wuhan/examples/sender-active.tsx",
       },
     ],
   },
@@ -110,6 +119,7 @@ export const examples: Registry["items"] = [
       {
         path: "examples/sender/sender-disabled.tsx",
         type: "registry:example",
+        target: "components/wuhan/examples/sender-disabled.tsx",
       },
     ],
   },
@@ -121,6 +131,7 @@ export const examples: Registry["items"] = [
       {
         path: "examples/sender/sender-composed-demo.tsx",
         type: "registry:example",
+        target: "components/wuhan/examples/sender-composed-demo.tsx",
       },
     ],
   },
@@ -133,6 +144,7 @@ export const examples: Registry["items"] = [
       {
         path: "examples/textarea/textarea-demo.tsx",
         type: "registry:example",
+        target: "components/wuhan/examples/textarea-demo.tsx",
       },
     ],
   },
@@ -145,6 +157,7 @@ export const examples: Registry["items"] = [
       {
         path: "examples/button/button-demo.tsx",
         type: "registry:example",
+        target: "components/wuhan/examples/button-demo.tsx",
       },
     ],
   },

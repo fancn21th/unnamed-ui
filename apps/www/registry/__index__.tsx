@@ -16,7 +16,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/ui/button.tsx",
           type: "registry:ui",
-          target: "",
+          target: "components/ui/button.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -40,7 +40,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/ui/collapsible.tsx",
           type: "registry:ui",
-          target: "",
+          target: "components/ui/collapsible.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -64,7 +64,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/ui/separator.tsx",
           type: "registry:ui",
-          target: "",
+          target: "components/ui/separator.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -88,7 +88,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/ui/textarea.tsx",
           type: "registry:ui",
-          target: "",
+          target: "components/ui/textarea.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -112,7 +112,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/ui/tooltip.tsx",
           type: "registry:ui",
-          target: "",
+          target: "components/ui/tooltip.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -136,7 +136,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/ui/card.tsx",
           type: "registry:ui",
-          target: "",
+          target: "components/ui/card.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -160,7 +160,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/ui/dialog.tsx",
           type: "registry:ui",
-          target: "",
+          target: "components/ui/dialog.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -184,7 +184,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/ui/drawer.tsx",
           type: "registry:ui",
-          target: "",
+          target: "components/ui/drawer.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -208,7 +208,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/ui/tabs.tsx",
           type: "registry:ui",
-          target: "",
+          target: "components/ui/tabs.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -232,7 +232,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/blocks/hello-world/hello-world.tsx",
           type: "registry:component",
-          target: "",
+          target: "components/wuhan/components/hello-world.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -257,7 +257,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/blocks/message/message-01.tsx",
           type: "registry:component",
-          target: "",
+          target: "components/wuhan/blocks/message-01.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -282,7 +282,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/blocks/prompt/prompt-01.tsx",
           type: "registry:component",
-          target: "",
+          target: "components/wuhan/blocks/prompt-01.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -307,7 +307,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/blocks/sender/sender-01.tsx",
           type: "registry:component",
-          target: "",
+          target: "components/wuhan/blocks/sender-01.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -332,7 +332,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/blocks/attachment-list/attachment-list-01.tsx",
           type: "registry:component",
-          target: "",
+          target: "components/wuhan/blocks/attachment-list-01.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -357,7 +357,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/examples/message/message-demo.tsx",
           type: "registry:example",
-          target: "",
+          target: "components/wuhan/examples/message-demo.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -382,7 +382,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/examples/message/message-default.tsx",
           type: "registry:example",
-          target: "",
+          target: "components/wuhan/examples/message-default.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -407,7 +407,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/examples/message/message-composed-demo.tsx",
           type: "registry:example",
-          target: "",
+          target: "components/wuhan/examples/message-composed-demo.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -432,7 +432,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/examples/message/message-with-status.tsx",
           type: "registry:example",
-          target: "",
+          target: "components/wuhan/examples/message-with-status.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -457,7 +457,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/examples/message/message-with-attachment.tsx",
           type: "registry:example",
-          target: "",
+          target: "components/wuhan/examples/message-with-attachment.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -482,7 +482,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/examples/message/message-with-feedback.tsx",
           type: "registry:example",
-          target: "",
+          target: "components/wuhan/examples/message-with-feedback.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -507,7 +507,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/examples/sender/sender-demo.tsx",
           type: "registry:example",
-          target: "",
+          target: "components/wuhan/examples/sender-demo.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -532,7 +532,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/examples/sender/sender-default.tsx",
           type: "registry:example",
-          target: "",
+          target: "components/wuhan/examples/sender-default.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -557,7 +557,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/examples/sender/sender-active.tsx",
           type: "registry:example",
-          target: "",
+          target: "components/wuhan/examples/sender-active.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -582,7 +582,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/examples/sender/sender-disabled.tsx",
           type: "registry:example",
-          target: "",
+          target: "components/wuhan/examples/sender-disabled.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -607,7 +607,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/examples/sender/sender-composed-demo.tsx",
           type: "registry:example",
-          target: "",
+          target: "components/wuhan/examples/sender-composed-demo.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -632,7 +632,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/examples/textarea/textarea-demo.tsx",
           type: "registry:example",
-          target: "",
+          target: "components/wuhan/examples/textarea-demo.tsx",
         },
       ],
       component: React.lazy(async () => {
@@ -657,7 +657,7 @@ export const Index: Record<string, Record<string, any>> = {
         {
           path: "registry/wuhan/examples/button/button-demo.tsx",
           type: "registry:example",
-          target: "",
+          target: "components/wuhan/examples/button-demo.tsx",
         },
       ],
       component: React.lazy(async () => {

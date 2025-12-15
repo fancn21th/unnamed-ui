@@ -9,6 +9,7 @@ export const ui: Registry["items"] = [
       {
         path: "ui/button.tsx",
         type: "registry:ui",
+        target: "components/ui/button.tsx",
       },
     ],
   },
@@ -20,6 +21,7 @@ export const ui: Registry["items"] = [
       {
         path: "ui/collapsible.tsx",
         type: "registry:ui",
+        target: "components/ui/collapsible.tsx",
       },
     ],
   },
@@ -31,6 +33,7 @@ export const ui: Registry["items"] = [
       {
         path: "ui/separator.tsx",
         type: "registry:ui",
+        target: "components/ui/separator.tsx",
       },
     ],
   },
@@ -41,6 +44,7 @@ export const ui: Registry["items"] = [
       {
         path: "ui/textarea.tsx",
         type: "registry:ui",
+        target: "components/ui/textarea.tsx",
       },
     ],
   },
@@ -52,6 +56,7 @@ export const ui: Registry["items"] = [
       {
         path: "ui/tooltip.tsx",
         type: "registry:ui",
+        target: "components/ui/tooltip.tsx",
       },
     ],
   },
@@ -62,6 +67,7 @@ export const ui: Registry["items"] = [
       {
         path: "ui/card.tsx",
         type: "registry:ui",
+        target: "components/ui/card.tsx",
       },
     ],
   },
@@ -73,6 +79,7 @@ export const ui: Registry["items"] = [
       {
         path: "ui/dialog.tsx",
         type: "registry:ui",
+        target: "components/ui/dialog.tsx",
       },
     ],
   },
@@ -84,6 +91,7 @@ export const ui: Registry["items"] = [
       {
         path: "ui/drawer.tsx",
         type: "registry:ui",
+        target: "components/ui/drawer.tsx",
       },
     ],
   },
@@ -95,6 +103,7 @@ export const ui: Registry["items"] = [
       {
         path: "ui/tabs.tsx",
         type: "registry:ui",
+        target: "components/ui/tabs.tsx",
       },
     ],
   },

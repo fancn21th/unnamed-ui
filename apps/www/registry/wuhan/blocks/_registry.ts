@@ -11,6 +11,7 @@ export const blocks: Registry["items"] = [
       {
         path: "blocks/hello-world/hello-world.tsx",
         type: "registry:component",
+        target: "components/wuhan/components/hello-world.tsx",
       },
     ],
   },
@@ -24,6 +25,7 @@ export const blocks: Registry["items"] = [
       {
         path: "blocks/message/message-01.tsx",
         type: "registry:component",
+        target: "components/wuhan/blocks/message-01.tsx",
       },
     ],
   },
@@ -37,6 +39,7 @@ export const blocks: Registry["items"] = [
       {
         path: "blocks/prompt/prompt-01.tsx",
         type: "registry:component",
+        target: "components/wuhan/blocks/prompt-01.tsx",
       },
     ],
   },
@@ -50,6 +53,7 @@ export const blocks: Registry["items"] = [
       {
         path: "blocks/sender/sender-01.tsx",
         type: "registry:component",
+        target: "components/wuhan/blocks/sender-01.tsx",
       },
     ],
   },
@@ -63,6 +67,7 @@ export const blocks: Registry["items"] = [
       {
         path: "blocks/attachment-list/attachment-list-01.tsx",
         type: "registry:component",
+        target: "components/wuhan/blocks/attachment-list-01.tsx",
       },
     ],
   },

@@ -123,9 +123,9 @@ function ModeSelector({ modes, selectedModes, onToggle }: ModeSelectorProps) {
           <SenderModeButton
             key={mode.id}
             selected={isActive}
-            icon={Icon && <Icon className="size-4" />}
             onClick={() => onToggle(mode.id)}
           >
+            {Icon && <Icon className="size-4" />}
             {mode.label}
           </SenderModeButton>
         );
@@ -205,11 +205,9 @@ export function ComposedSender({
       >
         <div className="flex items-center gap-2">
           {onAttach && (
-            <SenderAttachmentButton
-              icon={<Paperclip className="size-4" />}
-              onClick={onAttach}
-              aria-label="Attach file"
-            />
+            <SenderAttachmentButton onClick={onAttach} aria-label="Attach file">
+              <Paperclip className="size-4" />
+            </SenderAttachmentButton>
           )}
           {modes.length > 0 && (
             <ModeSelector
@@ -224,12 +222,13 @@ export function ComposedSender({
             <SenderSendButton
               disabled={sendDisabled}
               generating={generating}
-              sendIcon={<Send className="size-4 text-white" />}
-              generatingIcon={
+              onClick={onSend}
+              generatingContent={
                 <Loader2 className="size-4 text-white animate-spin" />
               }
-              onClick={onSend}
-            />
+            >
+              <Send className="size-4 text-white" />
+            </SenderSendButton>
           )}
         </div>
       </SenderActionBar>

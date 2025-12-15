@@ -6,7 +6,7 @@ export const blocks: Registry["items"] = [
     type: "registry:block",
     title: "Hello World",
     description: "A simple hello world component",
-    registryDependencies: ["button"],
+    registryDependencies: ["style", "button"],
     files: [
       {
         path: "blocks/hello-world/hello-world.tsx",
@@ -20,7 +20,7 @@ export const blocks: Registry["items"] = [
     type: "registry:block",
     title: "Message",
     description: "AI and user message components",
-    registryDependencies: ["button"],
+    registryDependencies: ["style", "button"],
     files: [
       {
         path: "blocks/message/message-01.tsx",
@@ -34,7 +34,7 @@ export const blocks: Registry["items"] = [
     type: "registry:block",
     title: "Prompt",
     description: "Prompt input component",
-    registryDependencies: ["textarea", "button"],
+    registryDependencies: ["style", "textarea", "button"],
     files: [
       {
         path: "blocks/prompt/prompt-01.tsx",
@@ -48,7 +48,7 @@ export const blocks: Registry["items"] = [
     type: "registry:block",
     title: "Sender",
     description: "Message sender component",
-    registryDependencies: ["textarea", "button"],
+    registryDependencies: ["style", "textarea", "button"],
     files: [
       {
         path: "blocks/sender/sender-01.tsx",
@@ -62,7 +62,7 @@ export const blocks: Registry["items"] = [
     type: "registry:block",
     title: "Attachment List",
     description: "Attachment list component",
-    registryDependencies: ["button"],
+    registryDependencies: ["style", "button"],
     files: [
       {
         path: "blocks/attachment-list/attachment-list-01.tsx",

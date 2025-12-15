@@ -1,0 +1,64 @@
+---
+title: Attachment List
+description: Attachment list and attachment card primitives for chat/file scenarios
+author: AF
+---
+
+<ComponentPreview
+  name="attachment-list-demo"
+  description="Attachment list with normal and loading states"
+  className="mb-4"
+/>
+
+Attachment List 组件提供了用于展示附件卡片与横向滚动附件列表的基础样式原语，适用于聊天输入区、消息附件展示等场景。
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://10.3.73.161:3000/r/wuhan/style.json
+npx shadcn@latest add http://10.3.73.161:3000/r/wuhan/attachment-list-01.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="attachment-list-demo"
+  title="registry/wuhan/examples/attachment-list/attachment-list-demo.tsx"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Examples
+
+### Default
+
+包含图片附件、文件附件，以及上传中的 loading 状态（图片区域居中显示 20px 圆环）。
+
+<ComponentPreview
+  name="attachment-list-demo"
+  description="Default attachment list"
+  className="mb-4"
+/>
+
+

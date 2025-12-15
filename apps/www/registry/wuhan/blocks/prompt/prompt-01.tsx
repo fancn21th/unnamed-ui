@@ -4,6 +4,7 @@ import * as React from "react";
 import { Textarea } from "@/registry/wuhan/ui/textarea";
 import { Button } from "@/registry/wuhan/ui/button";
 import { cn } from "@/lib/utils";
+import { Loader2, Paperclip, Send } from "lucide-react";
 
 // ==================== 类型定义 ====================
 // 完全通用的类型，不强制任何业务概念
@@ -137,17 +138,12 @@ export function RegionPrimitive({
  */
 export interface AttachmentButtonPrimitiveProps extends React.ComponentProps<
   typeof Button
-> {
-  /**
-   * 附件图标（建议使用 React.ReactElement 类型的图标组件）
-   */
-  icon?: React.ReactNode;
-}
+> {}
 
 export const AttachmentButtonPrimitive = React.forwardRef<
   HTMLButtonElement,
   AttachmentButtonPrimitiveProps
->(({ icon, className, ...props }, ref) => {
+>(({ className, children, ...props }, ref) => {
   return (
     <Button
       ref={ref}
@@ -164,7 +160,7 @@ export const AttachmentButtonPrimitive = React.forwardRef<
         className,
       )}
     >
-      {icon}
+      {children ?? <Paperclip className="size-4" />}
     </Button>
   );
 });
@@ -181,20 +177,12 @@ export interface ModeButtonPrimitiveProps extends React.ComponentProps<
    * 是否选中状态
    */
   selected?: boolean;
-  /**
-   * 按钮图标
-   */
-  icon?: React.ReactNode;
-  /**
-   * 按钮文本
-   */
-  children?: React.ReactNode;
 }
 
 export const ModeButtonPrimitive = React.forwardRef<
   HTMLButtonElement,
   ModeButtonPrimitiveProps
->(({ selected = false, icon, children, className, ...props }, ref) => {
+>(({ selected = false, children, className, ...props }, ref) => {
   return (
     <Button
       ref={ref}
@@ -203,39 +191,18 @@ export const ModeButtonPrimitive = React.forwardRef<
         "rounded-lg gap-1 px-3 border border-[var(--border-neutral)]",
         "transition-colors",
         "h-[var(--size-com-md)]",
+        "text-sm",
         // 基础状态：无背景色（透明）
         !selected && "bg-transparent hover:bg-[var(--bg-neutral-light-hover)]",
         // selected 状态
         selected &&
           "bg-[var(--bg-brand-light)] border-[var(--border-brand-light-hover)] hover:bg-[var(--bg-brand-light)]",
+        selected ? "text-[var(--text-brand)]" : "text-[var(--text-primary)]",
         className,
       )}
       aria-pressed={selected}
     >
-      {icon && (
-        <span
-          className={cn(
-            "flex items-center",
-            selected
-              ? "text-[var(--text-brand)]"
-              : "text-[var(--text-primary)]",
-          )}
-        >
-          {icon}
-        </span>
-      )}
-      {children && (
-        <span
-          className={cn(
-            "text-sm",
-            selected
-              ? "text-[var(--text-brand)]"
-              : "text-[var(--text-primary)]",
-          )}
-        >
-          {children}
-        </span>
-      )}
+      {children}
     </Button>
   );
 });
@@ -253,13 +220,10 @@ export interface SendButtonPrimitiveProps extends React.ComponentProps<
    */
   generating?: boolean;
   /**
-   * 发送图标
+   * 生成中内容（通常是加载动画）
+   * - 未提供时，默认复用 children
    */
-  sendIcon?: React.ReactNode;
-  /**
-   * 生成中图标（通常是加载动画）
-   */
-  generatingIcon?: React.ReactNode;
+  generatingContent?: React.ReactNode;
 }
 
 export const SendButtonPrimitive = React.forwardRef<
@@ -269,10 +233,10 @@ export const SendButtonPrimitive = React.forwardRef<
   (
     {
       generating = false,
-      sendIcon,
-      generatingIcon,
+      generatingContent,
       disabled,
       className,
+      children,
       ...props
     },
     ref,
@@ -297,7 +261,11 @@ export const SendButtonPrimitive = React.forwardRef<
         )}
         aria-label={generating ? "Generating" : "Send"}
       >
-        {generating ? generatingIcon || sendIcon : sendIcon}
+        {generating
+          ? (generatingContent ?? children ?? (
+              <Loader2 className="size-4 animate-spin" />
+            ))
+          : (children ?? <Send className="size-4" />)}
       </Button>
     );
   },

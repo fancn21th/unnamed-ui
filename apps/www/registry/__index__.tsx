@@ -227,7 +227,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "hello-world",
       description: "A simple hello world component",
       type: "registry:block",
-      registryDependencies: ["button"],
+      registryDependencies: ["style", "button"],
       files: [
         {
           path: "registry/wuhan/blocks/hello-world/hello-world.tsx",
@@ -252,7 +252,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "message-01",
       description: "AI and user message components",
       type: "registry:block",
-      registryDependencies: ["button"],
+      registryDependencies: ["style", "button"],
       files: [
         {
           path: "registry/wuhan/blocks/message/message-01.tsx",
@@ -277,7 +277,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "prompt-01",
       description: "Prompt input component",
       type: "registry:block",
-      registryDependencies: ["textarea", "button"],
+      registryDependencies: ["style", "textarea", "button"],
       files: [
         {
           path: "registry/wuhan/blocks/prompt/prompt-01.tsx",
@@ -302,7 +302,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "sender-01",
       description: "Message sender component",
       type: "registry:block",
-      registryDependencies: ["textarea", "button"],
+      registryDependencies: ["style", "textarea", "button"],
       files: [
         {
           path: "registry/wuhan/blocks/sender/sender-01.tsx",
@@ -327,7 +327,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "attachment-list-01",
       description: "Attachment list component",
       type: "registry:block",
-      registryDependencies: ["button"],
+      registryDependencies: ["style", "button"],
       files: [
         {
           path: "registry/wuhan/blocks/attachment-list/attachment-list-01.tsx",
@@ -488,6 +488,31 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/examples/message/message-with-feedback.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "attachment-list-demo": {
+      name: "attachment-list-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["attachment-list-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/attachment-list/attachment-list-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/attachment-list-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/attachment-list/attachment-list-demo.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

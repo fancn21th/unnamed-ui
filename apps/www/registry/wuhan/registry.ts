@@ -9,6 +9,7 @@ import { examples } from "./examples/_registry";
 // import { internal } from "./internal/_registry"
 // import { lib } from "./lib/_registry"
 import { ui } from "./ui/_registry";
+import { getWuhanStyleCssVars } from "./style/css-vars";
 
 const DEPRECATED_ITEMS = [
   "toast",
@@ -25,7 +26,7 @@ const NEW_YORK_V4_STYLE = {
   dependencies: ["class-variance-authority", "lucide-react"],
   devDependencies: ["tw-animate-css"],
   registryDependencies: ["utils"],
-  cssVars: {},
+  cssVars: getWuhanStyleCssVars(),
   files: [],
 };
 

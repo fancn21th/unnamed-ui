@@ -60,6 +60,15 @@ export interface AttachmentCardPrimitiveProps extends Omit<
    */
   isImage?: boolean;
   /**
+   * 加载中状态（例如：上传中）
+   * - true 时会用 loadingIndicator 替代 icon，并在图标/图片区域居中展示
+   */
+  loading?: boolean;
+  /**
+   * 自定义加载指示器（默认使用 AttachmentLoadingIndicator）
+   */
+  loadingIndicator?: React.ReactNode;
+  /**
    * 删除图标
    */
   deleteIcon?: React.ReactNode;
@@ -80,6 +89,8 @@ export const AttachmentCardPrimitive = React.forwardRef<
       fileType,
       fileSize,
       isImage = false,
+      loading = false,
+      loadingIndicator,
       deleteIcon,
       onDelete,
       variant,
@@ -93,11 +104,16 @@ export const AttachmentCardPrimitive = React.forwardRef<
     const displayText =
       fileType && fileSize ? `${fileType}·${fileSize}` : fileSize || fileType;
 
+    const renderedIcon = loading
+      ? (loadingIndicator ?? <AttachmentLoadingIndicator />)
+      : icon;
+
     return (
       <div
         ref={ref}
         {...props}
         role="button"
+        aria-busy={loading || undefined}
         tabIndex={props.onClick ? 0 : undefined}
         className={cn(
           buttonVariants({ variant, size }),
@@ -116,7 +132,7 @@ export const AttachmentCardPrimitive = React.forwardRef<
         )}
       >
         {/* 左侧图片/图标 */}
-        {icon && (
+        {renderedIcon && (
           <div
             className={cn(
               "shrink-0",
@@ -127,7 +143,7 @@ export const AttachmentCardPrimitive = React.forwardRef<
               "overflow-hidden",
             )}
           >
-            {icon}
+            {renderedIcon}
           </div>
         )}
 
@@ -155,10 +171,12 @@ export const AttachmentCardPrimitive = React.forwardRef<
                 className={cn(
                   "font-[var(--font-family-cn)]",
                   "font-[var(--font-weight-400)]",
-                  "text-[var(--font-size-1)]",
                   "leading-[var(--line-height-1)]",
                   "text-[var(--text-tertiary)]",
                 )}
+                style={{
+                  fontSize: "var(--font-size-1)",
+                }}
               >
                 {displayText}
               </span>
@@ -202,6 +220,32 @@ export const AttachmentCardPrimitive = React.forwardRef<
   },
 );
 AttachmentCardPrimitive.displayName = "AttachmentCardPrimitive";
+
+/**
+ * 附件加载指示器（默认 20px）
+ * 视觉：3/4 为 brand 边框，1/4 为 divider-neutral-basic 边框
+ */
+export const AttachmentLoadingIndicator = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
+  return (
+    <div
+      ref={ref}
+      role="status"
+      aria-label="Loading"
+      className={cn(
+        "w-5 h-5 rounded-full",
+        "border-2 border-[var(--border-brand)]",
+        "border-t-[var(--divider-neutral-basic)]",
+        "animate-spin",
+        className,
+      )}
+      {...props}
+    />
+  );
+});
+AttachmentLoadingIndicator.displayName = "AttachmentLoadingIndicator";
 
 /**
  * 附件列表容器样式原语

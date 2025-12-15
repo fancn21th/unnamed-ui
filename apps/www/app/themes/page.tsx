@@ -12,7 +12,7 @@ import {
   SenderTextarea,
   SenderActionBar,
   SenderButton,
-} from "@/registry/wuhan/blocks/sender-01";
+} from "@/registry/wuhan/blocks/sender/sender-01";
 import { Card, CardContent, CardHeader, CardTitle } from "@/registry/wuhan/ui/card";
 import { Separator } from "@/registry/wuhan/ui/separator";
 import { Send } from "lucide-react";

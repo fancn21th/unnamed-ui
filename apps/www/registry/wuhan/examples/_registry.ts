@@ -74,6 +74,19 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  // attachment-list examples
+  {
+    name: "attachment-list-demo",
+    type: "registry:example",
+    registryDependencies: ["attachment-list-01"],
+    files: [
+      {
+        path: "examples/attachment-list/attachment-list-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/attachment-list-demo.tsx",
+      },
+    ],
+  },
   // sender examples
   {
     name: "sender-demo",

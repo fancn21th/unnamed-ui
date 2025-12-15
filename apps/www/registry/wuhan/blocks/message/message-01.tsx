@@ -30,13 +30,13 @@ export interface MessagePrimitiveProps extends React.HTMLAttributes<HTMLDivEleme
  * AI 消息原语属性
  * @public
  */
-export interface AIMessagePrimitiveProps extends MessagePrimitiveProps {}
+export type AIMessagePrimitiveProps = MessagePrimitiveProps;
 
 /**
  * 用户消息原语属性
  * @public
  */
-export interface UserMessagePrimitiveProps extends MessagePrimitiveProps {}
+export type UserMessagePrimitiveProps = MessagePrimitiveProps;
 
 /**
  * AI 消息组件属性

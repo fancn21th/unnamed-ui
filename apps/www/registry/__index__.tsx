@@ -61,91 +61,91 @@ export const Index: Record<string, Record<string, any>> = {
       categories: [],
       meta: {},
     },
-    "prompt-01": {
-      name: "prompt-01",
-      description: "A simple prompt.",
+    "sender-01": {
+      name: "sender-01",
+      description: "A simple sender.",
       type: "registry:block",
       registryDependencies: ["textarea","button"],
       files: [{
-        path: "registry/wuhan/blocks/prompt-01.tsx",
+        path: "registry/wuhan/blocks/sender-01.tsx",
         type: "registry:component",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/wuhan/blocks/prompt-01.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "prompt-01"
+        const mod = await import("@/registry/wuhan/blocks/sender-01.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sender-01"
         return { default: mod.default || mod[exportName] }
       }),
       categories: [],
       meta: {},
     },
-    "prompt-default": {
-      name: "prompt-default",
+    "sender-default": {
+      name: "sender-default",
       description: "",
       type: "registry:example",
       registryDependencies: ["textarea","button"],
       files: [{
-        path: "registry/wuhan/examples/prompt-default.tsx",
+        path: "registry/wuhan/examples/sender-default.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/wuhan/examples/prompt-default.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "prompt-default"
+        const mod = await import("@/registry/wuhan/examples/sender-default")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sender-default"
         return { default: mod.default || mod[exportName] }
       }),
       categories: [],
       meta: {},
     },
-    "prompt-active": {
-      name: "prompt-active",
+    "sender-active": {
+      name: "sender-active",
       description: "",
       type: "registry:example",
       registryDependencies: ["textarea","button"],
       files: [{
-        path: "registry/wuhan/examples/prompt-active.tsx",
+        path: "registry/wuhan/examples/sender-active.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/wuhan/examples/prompt-active.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "prompt-active"
+        const mod = await import("@/registry/wuhan/examples/sender-active")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sender-active"
         return { default: mod.default || mod[exportName] }
       }),
       categories: [],
       meta: {},
     },
-    "prompt-disabled": {
-      name: "prompt-disabled",
+    "sender-disabled": {
+      name: "sender-disabled",
       description: "",
       type: "registry:example",
       registryDependencies: ["textarea","button"],
       files: [{
-        path: "registry/wuhan/examples/prompt-disabled.tsx",
+        path: "registry/wuhan/examples/sender-disabled.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/wuhan/examples/prompt-disabled.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "prompt-disabled"
+        const mod = await import("@/registry/wuhan/examples/sender-disabled")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sender-disabled"
         return { default: mod.default || mod[exportName] }
       }),
       categories: [],
       meta: {},
     },
-    "prompt-composed-demo": {
-      name: "prompt-composed-demo",
+    "sender-composed-demo": {
+      name: "sender-composed-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["prompt-01","textarea","button"],
+      registryDependencies: ["sender-01","textarea","button"],
       files: [{
-        path: "registry/wuhan/examples/prompt-composed-demo.tsx",
+        path: "registry/wuhan/examples/sender-composed-demo.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/wuhan/examples/prompt-composed-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "prompt-composed-demo"
+        const mod = await import("@/registry/wuhan/examples/sender-composed-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sender-composed-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: [],
@@ -187,19 +187,19 @@ export const Index: Record<string, Record<string, any>> = {
       categories: [],
       meta: {},
     },
-    "prompt-demo": {
-      name: "prompt-demo",
+    "sender-demo": {
+      name: "sender-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["prompt-01","textarea","button"],
+      registryDependencies: ["sender-01","textarea","button"],
       files: [{
-        path: "registry/wuhan/examples/prompt-demo.tsx",
+        path: "registry/wuhan/examples/sender-demo.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/wuhan/examples/prompt-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "prompt-demo"
+        const mod = await import("@/registry/wuhan/examples/sender-demo")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "sender-demo"
         return { default: mod.default || mod[exportName] }
       }),
       categories: [],

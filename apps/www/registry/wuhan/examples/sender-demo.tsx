@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ComposedPrompt } from "@/registry/wuhan/examples/prompt-composed-demo";
+import { ComposedSender } from "@/registry/wuhan/examples/sender-composed-demo";
 import { 
   Search, 
   Brain, 
@@ -9,7 +9,7 @@ import {
   Image,
 } from "lucide-react";
 
-export default function PromptDemo() {
+export default function SenderDemo() {
   const [value, setValue] = useState("");
   const [selectedModes, setSelectedModes] = useState<string[]>([]);
   const [attachments, setAttachments] = useState([
@@ -78,9 +78,9 @@ export default function PromptDemo() {
   return (
     <div className="flex flex-col gap-4 w-full items-center">
       <div className="w-full max-w-2xl text-sm text-muted-foreground mb-2">
-        示例：使用组合组件构建的 Prompt
+        示例：使用组合组件构建的 Sender
       </div>
-      <ComposedPrompt
+      <ComposedSender
         value={value}
         onChange={setValue}
         placeholder="输入你的提示..."

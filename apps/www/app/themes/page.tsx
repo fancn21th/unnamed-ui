@@ -8,11 +8,11 @@ import { CopyCodeButton } from "@/components/copy-code-button";
 import { Button } from "@/registry/wuhan/ui/button";
 import { Textarea } from "@/registry/wuhan/ui/textarea";
 import {
-  PromptContainer,
-  PromptTextarea,
-  PromptActionBar,
-  PromptButton,
-} from "@/registry/wuhan/blocks/prompt-01";
+  SenderContainer,
+  SenderTextarea,
+  SenderActionBar,
+  SenderButton,
+} from "@/registry/wuhan/blocks/sender-01";
 import { Card, CardContent, CardHeader, CardTitle } from "@/registry/wuhan/ui/card";
 import { Separator } from "@/registry/wuhan/ui/separator";
 import { Send } from "lucide-react";
@@ -92,20 +92,20 @@ export default function Themes() {
           </CardContent>
         </Card>
 
-        {/* Prompt Card */}
+        {/* Sender Card */}
         <Card>
           <CardHeader>
-            <CardTitle>Prompt</CardTitle>
+            <CardTitle>Sender</CardTitle>
           </CardHeader>
           <CardContent>
-            <PromptContainer className="max-w-2xl">
-              <PromptTextarea placeholder="Type your message..." />
-              <PromptActionBar className="flex items-center justify-end">
-                <PromptButton variant="default" size="icon" aria-label="Send">
+            <SenderContainer className="max-w-2xl">
+              <SenderTextarea placeholder="Type your message..." />
+              <SenderActionBar className="flex items-center justify-end">
+                <SenderButton variant="default" size="icon" aria-label="Send">
                   <Send className="size-4" />
-                </PromptButton>
-              </PromptActionBar>
-            </PromptContainer>
+                </SenderButton>
+              </SenderActionBar>
+            </SenderContainer>
           </CardContent>
         </Card>
       </div>

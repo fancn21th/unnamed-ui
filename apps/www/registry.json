@@ -11,7 +11,8 @@
       "files": [
         {
           "path": "registry/wuhan/blocks/hello-world/hello-world.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/wuhan/components/hello-world.tsx"
         }
       ]
     },
@@ -22,7 +23,8 @@
       "files": [
         {
           "path": "registry/wuhan/ui/button.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/button.tsx"
         }
       ]
     },
@@ -32,65 +34,71 @@
       "files": [
         {
           "path": "registry/wuhan/ui/textarea.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/ui/textarea.tsx"
         }
       ]
     },
     {
-      "name": "prompt-01",
+      "name": "sender-01",
       "type": "registry:block",
-      "description": "A simple prompt.",
+      "description": "A simple sender.",
       "registryDependencies": ["textarea", "button"],
       "files": [
         {
-          "path": "registry/wuhan/blocks/prompt-01.tsx",
-          "type": "registry:component"
+          "path": "registry/wuhan/blocks/sender-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/sender-01.tsx"
         }
       ],
       "meta": {},
       "categories": []
     },
     {
-      "name": "prompt-default",
+      "name": "sender-default",
       "type": "registry:example",
       "registryDependencies": ["textarea", "button"],
       "files": [
         {
-          "path": "registry/wuhan/examples/prompt-default.tsx",
-          "type": "registry:example"
+          "path": "registry/wuhan/examples/sender-default.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/sender-default.tsx"
         }
       ]
     },
     {
-      "name": "prompt-active",
+      "name": "sender-active",
       "type": "registry:example",
       "registryDependencies": ["textarea", "button"],
       "files": [
         {
-          "path": "registry/wuhan/examples/prompt-active.tsx",
-          "type": "registry:example"
+          "path": "registry/wuhan/examples/sender-active.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/sender-active.tsx"
         }
       ]
     },
     {
-      "name": "prompt-disabled",
+      "name": "sender-disabled",
       "type": "registry:example",
       "registryDependencies": ["textarea", "button"],
       "files": [
         {
-          "path": "registry/wuhan/examples/prompt-disabled.tsx",
-          "type": "registry:example"
+          "path": "registry/wuhan/examples/sender-disabled.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/sender-disabled.tsx"
         }
       ]
     },
     {
-      "name": "prompt-composed-demo",
+      "name": "sender-composed-demo",
       "type": "registry:example",
-      "registryDependencies": ["prompt-01", "textarea", "button"],
+      "registryDependencies": ["sender-01", "textarea", "button"],
       "files": [
         {
-          "path": "registry/wuhan/examples/prompt-composed-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/wuhan/examples/sender-composed-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/sender-composed-demo.tsx"
         }
       ]
     },
@@ -101,7 +109,8 @@
       "files": [
         {
           "path": "registry/wuhan/examples/button-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "target": "components/wuhan/examples/button-demo.tsx"
         }
       ]
     },
@@ -112,18 +121,20 @@
       "files": [
         {
           "path": "registry/wuhan/examples/textarea-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:example",
+          "target": "components/wuhan/examples/textarea-demo.tsx"
         }
       ]
     },
     {
-      "name": "prompt-demo",
+      "name": "sender-demo",
       "type": "registry:example",
-      "registryDependencies": ["prompt-01", "textarea", "button"],
+      "registryDependencies": ["sender-01", "textarea", "button"],
       "files": [
         {
-          "path": "registry/wuhan/examples/prompt-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/wuhan/examples/sender-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/sender-demo.tsx"
         }
       ]
     }

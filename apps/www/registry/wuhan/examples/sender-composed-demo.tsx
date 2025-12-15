@@ -11,15 +11,15 @@
 
 import { useState } from "react";
 import {
-  PromptTextarea,
-  PromptButton,
-  PromptContainer,
-  PromptInputRegion,
-  PromptActionBar,
-  PromptAttachmentButton,
-  PromptModeButton,
-  PromptSendButton,
-} from "@/registry/wuhan/blocks/prompt-01";
+  SenderTextarea,
+  SenderButton,
+  SenderContainer,
+  SenderInputRegion,
+  SenderActionBar,
+  SenderAttachmentButton,
+  SenderModeButton,
+  SenderSendButton,
+} from "@/registry/wuhan/blocks/sender-01";
 import { AttachmentCard, AttachmentList } from "@/registry/wuhan/blocks/attachment-list-01";
 import { Send, Paperclip, Brain, Loader2, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -110,14 +110,14 @@ function ModeSelector({ modes, selectedModes, onToggle }: ModeSelectorProps) {
         const Icon = mode.icon;
         const isActive = selectedModes.includes(mode.id);
         return (
-          <PromptModeButton
+          <SenderModeButton
             key={mode.id}
             selected={isActive}
             icon={Icon && <Icon className="size-4" />}
             onClick={() => onToggle(mode.id)}
           >
             {mode.label}
-          </PromptModeButton>
+          </SenderModeButton>
         );
       })}
     </div>
@@ -125,10 +125,10 @@ function ModeSelector({ modes, selectedModes, onToggle }: ModeSelectorProps) {
 }
 
 // ==================== 高级组合组件 ====================
-// 基于原语和业务组件构建的完整 Prompt 组件
+// 基于原语和业务组件构建的完整 Sender 组件
 // 用户可以完全自定义或直接使用原语
 
-interface ComposedPromptProps {
+interface ComposedSenderProps {
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
@@ -151,7 +151,7 @@ interface ComposedPromptProps {
   maxWidth?: string;
 }
 
-export function ComposedPrompt({
+export function ComposedSender({
   value,
   onChange,
   placeholder = "Type your message...",
@@ -166,9 +166,9 @@ export function ComposedPrompt({
   generating = false,
   className,
   maxWidth = "max-w-2xl",
-}: ComposedPromptProps) {
+}: ComposedSenderProps) {
   return (
-    <PromptContainer className={cn(maxWidth, className)}>
+    <SenderContainer className={cn(maxWidth, className)}>
       {/* 附件列表 */}
       {attachments.length > 0 && (
         <AttachmentListWrapper
@@ -178,16 +178,16 @@ export function ComposedPrompt({
       )}
 
       {/* 输入区域 */}
-      <PromptInputRegion>
-        <PromptTextarea
+      <SenderInputRegion>
+        <SenderTextarea
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
         />
-      </PromptInputRegion>
+      </SenderInputRegion>
 
       {/* 操作栏 */}
-      <PromptActionBar
+      <SenderActionBar
         className={cn(
           "flex items-center",
           (modes.length > 0 || onAttach) ? "justify-between" : "justify-end"
@@ -195,7 +195,7 @@ export function ComposedPrompt({
       >
         <div className="flex items-center gap-2">
           {onAttach && (
-            <PromptAttachmentButton
+            <SenderAttachmentButton
               icon={<Paperclip className="size-4" />}
               onClick={onAttach}
               aria-label="Attach file"
@@ -211,7 +211,7 @@ export function ComposedPrompt({
         </div>
         <div className="flex items-center gap-2">
           {onSend && (
-            <PromptSendButton
+            <SenderSendButton
               disabled={sendDisabled}
               generating={generating}
               sendIcon={<Send className="size-4 text-white" />}
@@ -220,14 +220,14 @@ export function ComposedPrompt({
             />
           )}
         </div>
-      </PromptActionBar>
-    </PromptContainer>
+      </SenderActionBar>
+    </SenderContainer>
   );
 }
 
 // ==================== 使用示例 ====================
 
-export default function PromptComposedDemo() {
+export default function SenderComposedDemo() {
   const [value, setValue] = useState("");
   const [attachments, setAttachments] = useState<Attachment[]>([
     { id: "1", name: "screenshot.png", size: "2.3 MB" },
@@ -243,10 +243,10 @@ export default function PromptComposedDemo() {
   return (
     <div className="flex flex-col gap-4 w-full items-center">
       <div className="w-full max-w-2xl text-sm text-muted-foreground mb-2">
-        示例：使用组合组件构建的 Prompt（基于原语组件）
+        示例：使用组合组件构建的 Sender（基于原语组件）
       </div>
 
-      <ComposedPrompt
+      <ComposedSender
         value={value}
         onChange={setValue}
         placeholder="输入你的提示..."

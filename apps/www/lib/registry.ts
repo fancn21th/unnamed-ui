@@ -66,7 +66,7 @@ export async function getRegistryItem(name: string, styleName: Style["name"]) {
   }
 
   // Fix file paths.
-  files = fixFilePaths(files)
+  files = fixFilePaths(files, styleName)
 
   const parsed = registryItemSchema.safeParse({
     ...result.data,
@@ -113,28 +113,36 @@ async function getFileContent(file: z.infer<typeof registryItemFileSchema>) {
   return code
 }
 
-function getFileTarget(file: z.infer<typeof registryItemFileSchema>) {
+function getFileTarget(
+  file: z.infer<typeof registryItemFileSchema>,
+  styleName?: Style["name"]
+) {
   let target = file.target
 
   if (!target || target === "") {
     const fileName = file.path.split("/").pop()
-    if (
-      file.type === "registry:block" ||
-      file.type === "registry:component" ||
-      file.type === "registry:example"
-    ) {
-      target = `components/${fileName}`
-    }
-
+    
     if (file.type === "registry:ui") {
+      // UI组件保持扁平结构，因为它们是通用的基础组件
       target = `components/ui/${fileName}`
-    }
-
-    if (file.type === "registry:hook") {
+    } else if (file.type === "registry:block") {
+      // Block组件按插件组织：components/{styleName}/blocks/{fileName}
+      target = styleName
+        ? `components/${styleName}/blocks/${fileName}`
+        : `components/blocks/${fileName}`
+    } else if (file.type === "registry:component") {
+      // Component组件按插件组织：components/{styleName}/components/{fileName}
+      target = styleName
+        ? `components/${styleName}/components/${fileName}`
+        : `components/components/${fileName}`
+    } else if (file.type === "registry:example") {
+      // Example组件按插件组织：components/{styleName}/examples/{fileName}
+      target = styleName
+        ? `components/${styleName}/examples/${fileName}`
+        : `components/examples/${fileName}`
+    } else if (file.type === "registry:hook") {
       target = `hooks/${fileName}`
-    }
-
-    if (file.type === "registry:lib") {
+    } else if (file.type === "registry:lib") {
       target = `lib/${fileName}`
     }
   }
@@ -147,7 +155,10 @@ async function createTempSourceFile(filename: string) {
   return path.join(dir, filename)
 }
 
-function fixFilePaths(files: z.infer<typeof registryItemSchema>["files"]) {
+function fixFilePaths(
+  files: z.infer<typeof registryItemSchema>["files"],
+  styleName?: Style["name"]
+) {
   if (!files) {
     return []
   }
@@ -160,20 +171,59 @@ function fixFilePaths(files: z.infer<typeof registryItemSchema>["files"]) {
     return {
       ...file,
       path: path.relative(firstFilePathDir, file.path),
-      target: getFileTarget(file),
+      target: getFileTarget(file, styleName),
     }
   })
 }
 
 export function fixImport(content: string) {
-  const regex = /@\/(.+?)\/((?:.*?\/)?(?:components|ui|hooks|lib))\/([\w-]+)/g
+  // 匹配 registry 路径，例如：
+  // @/registry/wuhan/ui/button -> @/components/ui/button
+  // @/registry/wuhan/blocks/sender-01 -> @/components/wuhan/blocks/sender-01
+  // @/registry/wuhan/examples/sender-default -> @/components/wuhan/examples/sender-default
+  const regex = /@\/registry\/([\w-]+)\/(ui|blocks|examples|components)\/([\w-/]+)/g
 
   const replacement = (
+    match: string,
+    styleName: string,
+    type: string,
+    component: string
+  ) => {
+    if (type === "ui") {
+      // UI组件保持扁平结构
+      const componentName = component.split("/").pop() || component
+      return `@/components/ui/${componentName}`
+    } else if (type === "blocks") {
+      // Block组件按插件组织
+      return `@/components/${styleName}/blocks/${component}`
+    } else if (type === "examples") {
+      // Example组件按插件组织
+      return `@/components/${styleName}/examples/${component}`
+    } else if (type === "components") {
+      // Component组件按插件组织
+      return `@/components/${styleName}/components/${component}`
+    }
+
+    return match
+  }
+
+  // 先处理新的 registry 路径结构
+  let result = content.replace(regex, replacement)
+
+  // 保留原有的通用路径处理（用于其他情况）
+  const legacyRegex = /@\/(.+?)\/((?:.*?\/)?(?:components|ui|hooks|lib))\/([\w-]+)/g
+
+  const legacyReplacement = (
     match: string,
     path: string,
     type: string,
     component: string
   ) => {
+    // 如果已经被上面的正则处理过，跳过
+    if (match.includes("/components/")) {
+      return match
+    }
+
     if (type.endsWith("components")) {
       return `@/components/${component}`
     } else if (type.endsWith("ui")) {
@@ -187,7 +237,7 @@ export function fixImport(content: string) {
     return match
   }
 
-  return content.replace(regex, replacement)
+  return result.replace(legacyRegex, legacyReplacement)
 }
 
 export type FileTree = {

@@ -13,7 +13,7 @@ pnpm dev
 yarn dev
 ```
 
-Open http://10.3.73.161:3000 with your browser to see the result.
+Open http://localhost:3000 with your browser to see the result.
 
 ## Explore
 

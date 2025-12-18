@@ -1,0 +1,28 @@
+warning: in the working copy of 'apps/www/app/themes/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'apps/www/registry.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'apps/www/registry/__index__.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'apps/www/registry/wuhan/blocks/_registry.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'apps/www/registry/wuhan/blocks/attachment-list/attachment-list-01.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'apps/www/registry/wuhan/blocks/message/message-01.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'apps/www/registry/wuhan/blocks/prompt/prompt-01.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'apps/www/registry/wuhan/blocks/sender/sender-01.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'apps/www/registry/wuhan/examples/_registry.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'apps/www/registry/wuhan/examples/sender/sender-composed-demo.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'apps/www/registry/wuhan/registry.ts', LF will be replaced by CRLF the next time Git touches it
+apps/www/README.md
+apps/www/app/themes/page.tsx
+apps/www/content/docs/blocks/message.mdx
+apps/www/content/docs/blocks/sender.mdx
+apps/www/content/docs/components/button.mdx
+apps/www/content/docs/components/textarea.mdx
+apps/www/content/docs/tokens/colors.mdx
+apps/www/registry.json
+apps/www/registry/__index__.tsx
+apps/www/registry/wuhan/blocks/_registry.ts
+apps/www/registry/wuhan/blocks/attachment-list/attachment-list-01.tsx
+apps/www/registry/wuhan/blocks/message/message-01.tsx
+apps/www/registry/wuhan/blocks/prompt/prompt-01.tsx
+apps/www/registry/wuhan/blocks/sender/sender-01.tsx
+apps/www/registry/wuhan/examples/_registry.ts
+apps/www/registry/wuhan/examples/sender/sender-composed-demo.tsx
+apps/www/registry/wuhan/registry.ts

@@ -74,6 +74,18 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "message-with-avatar-header",
+    type: "registry:example",
+    registryDependencies: ["message-01", "avatar-header-01"],
+    files: [
+      {
+        path: "examples/message/message-with-avatar-header.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/message-with-avatar-header.tsx",
+      },
+    ],
+  },
   // attachment-list examples
   {
     name: "attachment-list-demo",
@@ -84,6 +96,32 @@ export const examples: Registry["items"] = [
         path: "examples/attachment-list/attachment-list-demo.tsx",
         type: "registry:example",
         target: "components/wuhan/examples/attachment-list-demo.tsx",
+      },
+    ],
+  },
+  // avatar-header examples
+  {
+    name: "avatar-header-demo",
+    type: "registry:example",
+    registryDependencies: ["avatar-header-01"],
+    files: [
+      {
+        path: "examples/avatar-header/avatar-header-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/avatar-header-demo.tsx",
+      },
+    ],
+  },
+  // history-item examples
+  {
+    name: "history-item-demo",
+    type: "registry:example",
+    registryDependencies: ["history-item-01", "tooltip"],
+    files: [
+      {
+        path: "examples/history-item/history-item-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/history-item-demo.tsx",
       },
     ],
   },

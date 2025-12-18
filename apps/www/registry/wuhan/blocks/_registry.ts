@@ -71,4 +71,32 @@ export const blocks: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "avatar-header-01",
+    type: "registry:block",
+    title: "Avatar Header",
+    description: "Message avatar header component (avatar + name + time)",
+    registryDependencies: ["style"],
+    files: [
+      {
+        path: "blocks/avatar-header/avatar-header-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/avatar-header-01.tsx",
+      },
+    ],
+  },
+  {
+    name: "history-item-01",
+    type: "registry:block",
+    title: "History Item",
+    description: "History record list item component (default/hover/selected)",
+    registryDependencies: ["style"],
+    files: [
+      {
+        path: "blocks/history-item/history-item-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/history-item-01.tsx",
+      },
+    ],
+  },
 ];

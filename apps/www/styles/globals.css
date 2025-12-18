@@ -711,6 +711,19 @@
   body:has([data-themes-page]) > * {
     min-height: 0;
   }
+
+  /* /compositions 页面：禁用最外层滚动，把滚动交给侧边栏/消息列表内部容器。 */
+  html:has([data-compositions-page]),
+  body:has([data-compositions-page]) {
+    height: 100dvh;
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
+  /* 同上：允许 flex 子级缩小，内部 overflow-y-auto 才能生效 */
+  body:has([data-compositions-page]) > * {
+    min-height: 0;
+  }
   
   a:active,
   button:active {
@@ -749,6 +762,24 @@
   }
   .border-l {
     border-left-width: var(--border-width);
+  }
+  .font-size-1 {
+    font-size: var(--font-size-1);
+  }
+  .font-size-2 {
+    font-size: var(--font-size-2);
+  }
+  .font-size-3 {
+    font-size: var(--font-size-3);
+  }
+  .font-size-4 {
+    font-size: var(--font-size-4);
+  }
+  .font-size-5 {
+    font-size: var(--font-size-5);
+  }
+  .font-size-6 {
+    font-size: var(--font-size-6);
   }
 }
 

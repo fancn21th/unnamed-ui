@@ -1617,6 +1617,38 @@
       ]
     },
     {
+      "name": "avatar-header-01",
+      "type": "registry:block",
+      "title": "Avatar Header",
+      "description": "Message avatar header component (avatar + name + time)",
+      "registryDependencies": [
+        "style"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/avatar-header/avatar-header-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/avatar-header-01.tsx"
+        }
+      ]
+    },
+    {
+      "name": "history-item-01",
+      "type": "registry:block",
+      "title": "History Item",
+      "description": "History record list item component (default/hover/selected)",
+      "registryDependencies": [
+        "style"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/history-item/history-item-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/history-item-01.tsx"
+        }
+      ]
+    },
+    {
       "name": "message-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -1705,6 +1737,21 @@
       ]
     },
     {
+      "name": "message-with-avatar-header",
+      "type": "registry:example",
+      "registryDependencies": [
+        "message-01",
+        "avatar-header-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/message/message-with-avatar-header.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/message-with-avatar-header.tsx"
+        }
+      ]
+    },
+    {
       "name": "attachment-list-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -1715,6 +1762,35 @@
           "path": "registry/wuhan/examples/attachment-list/attachment-list-demo.tsx",
           "type": "registry:example",
           "target": "components/wuhan/examples/attachment-list-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-header-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "avatar-header-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/avatar-header/avatar-header-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/avatar-header-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "history-item-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "history-item-01",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/history-item/history-item-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/history-item-demo.tsx"
         }
       ]
     },

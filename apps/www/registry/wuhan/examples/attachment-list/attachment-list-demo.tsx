@@ -77,7 +77,7 @@ export default function AttachmentListDemo() {
                 "h-14",
                 "flex items-center",
                 item.isImage
-                  ? "w-14 p-0 bg-transparent"
+                  ? "w-14 p-0 bg-transparent bg-[var(--bg-neutral-light)]"
                   : "max-w-[200px] px-[var(--padding-com-md)] gap-[var(--gap-sm)]",
               )}
               onClick={() => {}}
@@ -85,12 +85,12 @@ export default function AttachmentListDemo() {
               <AttachmentCardLeading
                 className={cn(
                   item.isImage
-                    ? "w-full h-full rounded-xl overflow-hidden"
+                    ? "w-full h-full rounded-xl overflow-hidden "
                     : "rounded-lg bg-[var(--bg-container)] w-10 h-10",
                 )}
               >
                 {item.loading ? (
-                  <AttachmentLoadingIndicator />
+                  <AttachmentLoadingIndicator className="bg-transparent" />
                 ) : item.isImage ? (
                   <img
                     className="w-full h-full object-cover"

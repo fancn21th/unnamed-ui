@@ -103,29 +103,34 @@ export function useChat(
   const [isLoading, setIsLoading] = React.useState(false);
   const isSendingRef = React.useRef(false);
 
-  // 当 conversationId 变化时，更新消息
-  // 使用 useRef 来跟踪上一次的 conversationId，避免不必要的更新
+  // 当 conversationId 或 initialMessages 变化时，更新消息
+  // 使用 useRef 来跟踪上一次的值，避免不必要的更新
   const prevConversationIdRef = React.useRef<string | null | undefined>(conversationId);
-
-  React.useEffect(() => {
-    // 只有当 conversationId 真正变化时才更新消息
-    if (prevConversationIdRef.current !== conversationId) {
-      if (conversationId && initialMessages) {
-        setMessages(initialMessages);
-      } else if (!conversationId) {
-        // 如果没有对话ID，清空消息
-        setMessages([]);
-      }
-      prevConversationIdRef.current = conversationId;
-    }
-  }, [conversationId]);
-
-  // 当 initialMessages 变化且 conversationId 匹配时，更新消息
-  // 使用 useRef 来跟踪上一次的 initialMessages，避免不必要的更新
   const prevInitialMessagesRef = React.useRef<ChatMessage[] | undefined>(initialMessages);
 
   React.useEffect(() => {
-    if (conversationId && initialMessages) {
+    const conversationIdChanged = prevConversationIdRef.current !== conversationId;
+    
+    // 如果 conversationId 变化了，立即更新消息
+    if (conversationIdChanged) {
+      prevConversationIdRef.current = conversationId;
+      
+      if (conversationId) {
+        // 如果有对话ID，使用 initialMessages（可能为空数组，表示新对话）
+        if (initialMessages !== undefined) {
+          setMessages(initialMessages);
+          prevInitialMessagesRef.current = initialMessages;
+        }
+      } else {
+        // 如果没有对话ID，清空消息
+        setMessages([]);
+        prevInitialMessagesRef.current = undefined;
+      }
+      return;
+    }
+
+    // 如果 conversationId 没变化，但 initialMessages 变化了，且匹配当前 conversationId
+    if (conversationId && initialMessages !== undefined) {
       // 如果正在发送消息，不要用空数组覆盖当前消息
       if (isSendingRef.current && initialMessages.length === 0) {
         return;
@@ -137,8 +142,12 @@ export function useChat(
         setMessages(initialMessages);
         prevInitialMessagesRef.current = initialMessages;
       }
+    } else if (!conversationId) {
+      // 如果没有对话ID，清空消息
+      setMessages([]);
+      prevInitialMessagesRef.current = undefined;
     }
-  }, [initialMessages, conversationId]);
+  }, [conversationId, initialMessages]);
 
   // 添加用户消息并触发 AI 回复
   const sendMessage = React.useCallback(

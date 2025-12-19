@@ -17,7 +17,7 @@ import { Button } from "@/registry/wuhan/ui/button";
 import { BotIcon, Sparkles, Wand2 } from "lucide-react";
 import { getTimeForIndex } from "../shared";
 import { useChat } from "../hooks/use-chat";
-import { useChatHistory } from "../hooks/use-chat-history";
+import type { UseChatHistoryReturn } from "../hooks/use-chat-history";
 import { LoadingDots } from "../components/loading-dots";
 import {
   ComposerAttachmentStrip,
@@ -95,15 +95,21 @@ function WenxueSender({
   );
 }
 
-export function WenxueChat() {
+export function WenxueChat({ history }: { history: UseChatHistoryReturn }) {
   const [value, setValue] = React.useState("");
-  const history = useChatHistory({ variant: "wenxue" });
   const composer = useComposerAttachments();
+
+  // 使用 useMemo 确保 initialMessages 正确响应 currentConversation 的变化
+  // 使用 currentConversationId 和 currentConversation 作为依赖，确保切换时能正确更新
+  const initialMessages = React.useMemo(() => {
+    if (!history.currentConversationId) return [];
+    return history.currentConversation?.messages || [];
+  }, [history.currentConversationId, history.currentConversation]);
 
   const { messages, isLoading, sendMessage, removeAttachmentFromMessage } = useChat(
     { variant: "wenxue" },
     history.currentConversationId,
-    history.currentConversation?.messages || [],
+    initialMessages,
     (updatedMessages) => {
       if (history.currentConversationId) {
         history.updateConversationMessages(history.currentConversationId, updatedMessages);

@@ -84,9 +84,9 @@ export default function CompositionsPage() {
               : ""
           )}
         >
-          {variant === "wenxue" && <WenxueChat />}
-          {variant === "zijin" && <ZijinChat />}
-          {variant === "medical" && <XiaoboChat />}
+          {variant === "wenxue" && <WenxueChat history={wenxueHistory} />}
+          {variant === "zijin" && <ZijinChat history={zijinHistory} />}
+          {variant === "medical" && <XiaoboChat history={medicalHistory} />}
         </main>
       </div>
     </div>

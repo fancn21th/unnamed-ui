@@ -138,7 +138,6 @@ const AttachmentCardTitle = React.forwardRef<
         "text-[var(--font-size-3)]",
         "leading-[var(--line-height-2)]",
         "truncate w-full",
-        "group-hover/card:whitespace-normal group-hover/card:break-words group-hover/card:overflow-visible",
         "transition-all",
         className,
       )}
@@ -225,6 +224,7 @@ const AttachmentLoadingIndicator = React.forwardRef<
         "w-5 h-5 rounded-full",
         "border-2 border-[var(--border-brand)]",
         "border-t-[var(--divider-neutral-basic)]",
+        "bg-[var(--bg-container)]",
         "animate-spin",
         className,
       )}

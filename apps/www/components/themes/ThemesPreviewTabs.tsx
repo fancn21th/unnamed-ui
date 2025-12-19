@@ -90,7 +90,7 @@ function ChatShowcase() {
             </div>
           </div>
 
-          <div className="rounded-md border bg-muted/10 p-3">
+          <div className="rounded-md border bg-muted/10 p-3 w-full overflow-hidden">
             <div className="text-xs text-muted-foreground mb-2">
               Sender（来自组合 demo）：附件条 + 模式选择 + 发送按钮（均可拆）
             </div>

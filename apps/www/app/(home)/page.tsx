@@ -27,6 +27,13 @@ export default function HomePage() {
         </Link>{" "}
         and see the ai chat framework documentation.
       </p>
+      <p>
+        You can open{" "}
+        <Link href="/compositions" className="font-medium underline">
+          /compositions
+        </Link>{" "}
+        and see the ai chat framework documentation.
+      </p>
     </div>
   );
 }

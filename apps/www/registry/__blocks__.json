@@ -18,5 +18,13 @@
   {
     "name": "attachment-list-01",
     "description": "Attachment list component"
+  },
+  {
+    "name": "avatar-header-01",
+    "description": "Message avatar header component (avatar + name + time)"
+  },
+  {
+    "name": "history-item-01",
+    "description": "History record list item component (default/hover/selected)"
   }
 ]

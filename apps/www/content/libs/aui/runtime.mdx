@@ -1,9 +1,423 @@
 ---
-title: Runtime
-date: 2025-12-01
-description: Runtime for smart vision api
-author: AF
-published: true
+title: 如何自定义Runtime
+description: 使用自定义Runtime定制你自己的业务
 ---
 
-## TBD
+## AUI中的Runtime设计
+由于AUI是一个无头组件框架，它提供了大量的Primitive组件，但是对于某些业务场景，我们需要自定义一些业务，这时就需要使用runtime。
+
+AUI中提供了自定义Runtime的hooks，让你可以自定义一些业务逻辑。而runtime中可以实现一些Adapter，让AUI中的组件和runtime中的业务逻辑进行交互。
+
+其中需要注意的是，AUI中使用了`runtimeHook`的设计，它是一个函数，必须返回一个新的Runtime。
+
+## 自定义会话历史记录
+定一个最基本的Runtime，runtimeHook中实现你Chat相关的Runtime，adapter实现你自定义的会话历史记录逻辑。
+
+```ts
+// 创建符合 assistant-ui 标准的运行时
+export const useSmartVisionChatRuntime = () => {
+  /**
+   * 实现自定义会话历史记录，关键是要实现这个Adapter
+   * */
+  const threadListAdapter = useSmartVisionThreadListAdapter();
+
+  return useRemoteThreadListRuntime({
+    /**
+     * ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️ 注意
+     * 这里必须返回一个新的ChatThreadRuntime实例
+     * 否则会导致线程列表和聊天线程之间的状态混乱
+     * 解释：assistant-ui 每一个聊天会话对应一个聊天的runtime
+     * ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+     * */
+    runtimeHook: () => useSmartVisionChatThreadRuntime(),
+    adapter: threadListAdapter,
+  });
+};
+```
+
+### 实现自定义会话历史记录Adapter
+通过这个Adapter跟你你的后端进行交互。
+
+```tsx
+const useSmartVisionThreadListAdapter = (): RemoteThreadListAdapter => {
+  const { initializeLink, generateTitleLink } =
+    useSmartVisionThreadListAdapterLink();
+  /**
+   * ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️ 注意
+   * 一定要实现这个Provider组件
+   * 否则无法正确注入自定义的历史记录和附件适配器
+   * 这个Adapter的核心关键就是要实现这个Provider，其它的方法都是调用后端API
+   * ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+   * */
+  const unstable_Provider = useCallback<FC<PropsWithChildren>>(
+    function Provider({ children }) {
+      /**
+       * ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️ 注意
+       * 这里的ThreadHistory指的是一个会话的历史消息，它不是会话列表
+       * ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+       * */
+      const history = useSmartVisionThreadHistoryAdapter();
+      /**
+       * ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️ 注意
+       * 这里的附件Adapter不起作用，因为这里还没有迁移到最新的实现
+       * ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+       * */
+      const attachments = useMemo(() => smartVisionFileAttachmentAdapter, []);
+      const adapters = useMemo(
+        () => ({
+          history,
+          attachments,
+        }),
+        [history, attachments],
+      );
+
+      return (
+        <RuntimeAdapterProvider adapters={adapters}>
+          {children}
+        </RuntimeAdapterProvider>
+      );
+    },
+    [],
+  );
+  return {
+    async list() {
+      const threads = await getConversationsList();
+      return {
+        threads: threads.map((d) => ({
+          status: "regular",
+          remoteId: d.id,
+          title: d.name,
+        })),
+      };
+    },
+    async initialize(localId) {
+      const remoteId = await initializeLink(localId);
+      return { remoteId, externalId: localId };
+    },
+    async rename(remoteId, title) {
+      await fetch(`/api/threads/${remoteId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title }),
+      });
+    },
+    async archive(remoteId) {
+      await fetch(`/api/threads/${remoteId}/archive`, { method: "POST" });
+    },
+    async unarchive(remoteId) {
+      await fetch(`/api/threads/${remoteId}/unarchive`, { method: "POST" });
+    },
+    async delete(remoteId) {
+      await fetch(`/api/threads/${remoteId}`, { method: "DELETE" });
+    },
+    async fetch(remoteId) {
+      const response = await fetch(`/api/threads/${remoteId}`);
+      const thread = await response.json();
+      return {
+        status: thread.is_archived ? "archived" : "regular",
+        remoteId: thread.id,
+        title: thread.title,
+      };
+    },
+    async generateTitle(remoteId, messages) {
+      return createAssistantStream(async (controller) => {
+        const title = await generateTitleLink(remoteId);
+        controller.appendText(title);
+      });
+    },
+    unstable_Provider,
+  };
+};
+```
+## 自定义对话
+创建一对话的Runtime，通过这个Runtime，你可以实现自定义的对话逻辑。下面的示例展示了如何自定义发送新消息，以及消息模型转换。
+```tsx
+const useSmartVisionChatThreadRuntime = () => {
+  const [isRunning, setIsRunning] = useState(false);
+  const { messages, sendMessage, setMessages } = useSmartVisionMessages();
+
+  const handleSendMessage = async (newMessages: SmartVisionMessage[]) => {
+    try {
+      setIsRunning(true);
+      await sendMessage(newMessages);
+    } catch (error) {
+      console.error("Error streaming messages:", error);
+    } finally {
+      setIsRunning(false);
+    }
+  };
+
+  // 转换消息格式为 assistant-ui 标准格式
+  const threadMessages = useExternalMessageConverter({
+    callback: convertSmartVisionMessages,
+    messages,
+    isRunning,
+  });
+
+  const contextAdapters = useRuntimeAdapters();
+  const isLoading = useSmartVisionExternalHistory(
+    contextAdapters?.history,
+    getSmartVisionMessage,
+    setMessages,
+  );
+  const runtime = useExternalStoreRuntime({
+    isRunning,
+    messages: threadMessages,
+    setMessages: (messages) =>
+      setMessages(messages.map(getSmartVisionMessage).filter(Boolean).flat()),
+    onNew: async (message) => {
+      console.log("🚀 SmartVision onNew:", message);
+
+      // 创建用户消息
+      const userMessage: SmartVisionMessage = {
+        id: `user_${Date.now()}`,
+        type: "human",
+        content: message.content.map((c) => {
+          if (c.type === "text")
+            return { type: "text", text: c.text } as SmartVisionContentPart;
+          return { type: "text", text: "" } as SmartVisionContentPart;
+        }),
+        attachments: message.attachments,
+      };
+      await handleSendMessage([userMessage]);
+    },
+    onImport: (messages) =>
+      setMessages(messages.map(getSmartVisionMessage).filter(Boolean).flat()),
+    onEdit: async () => {},
+    isLoading,
+    adapters: {
+      /**
+       * ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️ 注意
+       * 附件Adapter依然使用老的方式实现
+       * ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+       * */
+      attachments: smartVisionFileAttachmentAdapter,
+    },
+  });
+  return runtime;
+};
+```
+### 加载对话历史消息
+自定义一个历史消息扩展，在创建Runtime时，你可以使用这个扩展来加载历史消息。
+```tsx
+const useSmartVisionExternalHistory = <TMessage>(
+  historyAdapter: ThreadHistoryAdapter | undefined,
+  toStoreMessage: (messages: ThreadMessage) => TMessage,
+  onSetMessages: (messages: TMessage[]) => void,
+) => {
+  const loadedRef = useRef(false);
+
+  const api = useAssistantApi();
+  const optionalThreadListItem = useCallback(
+    () => (api.threadListItem.source ? api.threadListItem() : null),
+    [api],
+  );
+
+  const [isLoading, setIsLoading] = useState(
+    // we only load history if there is a remote id
+    () => optionalThreadListItem()?.getState().remoteId !== undefined,
+  );
+
+  const historyIds = useRef(new Set<string>());
+
+  const onSetMessagesRef = useRef<typeof onSetMessages>(() => onSetMessages);
+  useEffect(() => {
+    onSetMessagesRef.current = onSetMessages;
+  });
+
+  // Load messages from history adapter on mount
+  useEffect(() => {
+    if (!historyAdapter || loadedRef.current) return;
+
+    const loadHistory = async () => {
+      setIsLoading(true);
+      try {
+        const repo = await historyAdapter.load();
+        if (repo && repo.messages.length > 0) {
+          onSetMessagesRef.current(
+            repo.messages
+              .map((d) => toStoreMessage(d.message))
+              .filter(Boolean)
+              .flat() as TMessage[],
+          );
+
+          historyIds.current = new Set(repo.messages.map((m) => m.message.id));
+        }
+      } catch (error) {
+        console.error("Failed to load message history:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    if (!loadedRef.current) {
+      loadedRef.current = true;
+      if (!optionalThreadListItem()?.getState().remoteId) {
+        setIsLoading(false);
+        return;
+      }
+
+      loadHistory();
+    }
+  }, [api, historyAdapter, optionalThreadListItem]);
+
+  return isLoading;
+};
+```
+
+实现一个自定义的历史Adapter，这个Adapter对接端API进行数据交互及数据转换。
+```tsx
+class SmartVisionThreadHistoryAdapter implements ThreadHistoryAdapter {
+  constructor(private store: AssistantApi) {}
+
+  /**
+   * 加载会话的历史消息
+   * ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️ 注意
+   * 这里的实现是调用后端API获取历史消息
+   * 然后将后端返回的消息格式转换为 Assistant UI 需要的消息格式
+   * ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+   * */
+  async load() {
+    const remoteId = this.store.threadListItem().getState().remoteId;
+    if (!remoteId) return { messages: [] };
+    const data = await getConversationsMessages(remoteId);
+    const messages: { message: ThreadMessage; parentId: string | null }[] = [];
+    data.forEach((d) => {
+      const nanoId = nanoid();
+      messages.push({
+        message: {
+          id: nanoId,
+          createdAt: moment.unix(d.created_at).toDate(),
+          role: "user",
+          content: [
+            {
+              type: "text",
+              text: d.query,
+            },
+          ],
+          attachments: [],
+          metadata: { custom: {} },
+        } as ThreadUserMessage,
+        parentId: null,
+      });
+      messages.push({
+        message: {
+          id: d.id,
+          createdAt: moment.unix(d.created_at).toDate(),
+          role: "assistant",
+          status: { type: "complete", reason: "unknown" },
+          content: [
+            {
+              type: "text",
+              text: d.answer,
+            },
+          ],
+          attachments: [],
+          metadata: {
+            unstable_state: null,
+            unstable_annotations: [],
+            unstable_data: [],
+            steps: [],
+            custom: {},
+          },
+        } as ThreadAssistantMessage,
+        parentId: null,
+      });
+    });
+    return {
+      messages,
+    };
+  }
+  async append() {}
+}
+const useSmartVisionThreadHistoryAdapter = () => {
+  const store = useAssistantApi();
+
+  return useMemo(() => new SmartVisionThreadHistoryAdapter(store), [store]);
+};
+```
+
+### 上传附件
+创建一个自定义的附件上传的Adapter，这个Adapter对接端API进行数据交互及数据转换。
+```tsx
+export const smartVisionFileAttachmentAdapter: AttachmentAdapter = {
+  accept: "*/*",
+  async *add({ file }: { file: File }): AsyncGenerator<PendingAttachment> {
+    const id = nanoid();
+    const queue = new AsyncQueue<UploadEvent>();
+    yield {
+      id,
+      type: file.type.startsWith("image/") ? "image" : "file",
+      name: file.name,
+      file,
+      contentType: file.type,
+      status: {
+        type: "running",
+        progress: 0,
+        reason: "uploading",
+      },
+    };
+    uploadChatFile(file, (progress) => {
+      queue.push({ type: "progress", value: progress });
+    })
+      .then((data) => {
+        queue.push({ type: "complete", value: data });
+      })
+      .catch((error) => {
+        queue.push({ type: "error", value: error });
+        throw error;
+      });
+    // 从队列中yield事件
+    while (true) {
+      const event = await queue.next();
+      if (event.type === "error") {
+        break;
+      }
+      if (event.type === "complete") {
+        fileIdMap[id] = event.value.id;
+        yield {
+          id,
+          type: file.type.startsWith("image/") ? "image" : "file",
+          name: file.name,
+          file,
+          contentType: file.type,
+          status: { type: "requires-action", reason: "composer-send" },
+        };
+        break;
+      }
+      yield {
+        id,
+        type: file.type.startsWith("image/") ? "image" : "file",
+        name: file.name,
+        file,
+        contentType: file.type,
+        status: {
+          type: "running",
+          progress: event.value,
+          reason: "uploading",
+        },
+      };
+    }
+  },
+  async remove(attachment: Attachment) {
+    // noop
+  },
+  async send(attachment: PendingAttachment) {
+    const id = fileIdMap[attachment.id] || attachment.id;
+    delete fileIdMap[attachment.id];
+    return {
+      ...attachment,
+      id,
+      status: { type: "complete" },
+      content: [
+        {
+          type: "file",
+          mimeType: attachment.contentType,
+          filename: attachment.name,
+          data: "",
+        },
+      ],
+    };
+  },
+};
+```

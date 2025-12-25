@@ -1,6 +1,19 @@
 import { type Registry } from "shadcn/schema";
 
 export const examples: Registry["items"] = [
+  // welcome examples
+  {
+    name: "welcome-demo",
+    type: "registry:example",
+    registryDependencies: ["welcome-01"],
+    files: [
+      {
+        path: "examples/welcome/welcome-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/welcome-demo.tsx",
+      },
+    ],
+  },
   // message examples
   {
     name: "message-demo",

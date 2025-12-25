@@ -1547,6 +1547,22 @@
       ]
     },
     {
+      "name": "welcome-01",
+      "type": "registry:block",
+      "title": "Welcome",
+      "description": "Welcome message header for empty state",
+      "registryDependencies": [
+        "style"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/welcome/welcome-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/welcome-01.tsx"
+        }
+      ]
+    },
+    {
       "name": "message-01",
       "type": "registry:block",
       "title": "Message",
@@ -1695,6 +1711,20 @@
           "path": "registry/wuhan/blocks/history-item/history-item-01.tsx",
           "type": "registry:component",
           "target": "components/wuhan/blocks/history-item-01.tsx"
+        }
+      ]
+    },
+    {
+      "name": "welcome-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "welcome-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/welcome/welcome-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/welcome-demo.tsx"
         }
       ]
     },

@@ -248,6 +248,31 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "welcome-01": {
+      name: "welcome-01",
+      description: "Welcome message header for empty state",
+      type: "registry:block",
+      registryDependencies: ["style"],
+      files: [
+        {
+          path: "registry/wuhan/blocks/welcome/welcome-01.tsx",
+          type: "registry:component",
+          target: "components/wuhan/blocks/welcome-01.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/blocks/welcome/welcome-01.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "message-01": {
       name: "message-01",
       description: "AI and user message components",
@@ -466,6 +491,31 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/blocks/history-item/history-item-01.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "welcome-demo": {
+      name: "welcome-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["welcome-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/welcome/welcome-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/welcome-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/welcome/welcome-demo.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

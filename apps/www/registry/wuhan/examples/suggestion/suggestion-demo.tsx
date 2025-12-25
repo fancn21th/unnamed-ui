@@ -16,17 +16,14 @@ export default function SuggestionDemo() {
       </div>
 
       <SuggestionGroup>
-        <SuggestionButton onClick={() => alert("继续编辑")}>
-          继续编辑
+        <SuggestionButton>
+          介绍一下人工智能对互联网行业发展的影响
         </SuggestionButton>
-        <SuggestionButton onClick={() => alert("查看详情")}>
-          查看详情
+        <SuggestionButton>
+          介绍一下人工智能对互联网行业发展的影响，并给出学习计划
         </SuggestionButton>
-        <SuggestionButton onClick={() => alert("分享结果")}>
-          分享结果
-        </SuggestionButton>
-        <SuggestionButton onClick={() => alert("保存草稿")}>
-          保存草稿
+        <SuggestionButton>
+          介绍一下人工智能对互联网行业发展的影响，并给出学习计划
         </SuggestionButton>
       </SuggestionGroup>
     </div>

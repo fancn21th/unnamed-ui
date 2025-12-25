@@ -43,21 +43,20 @@ export interface PromptButtonProps extends Omit<
  * Prompt 按钮组容器
  * 用于包裹 Prompt 按钮，提供合适的间距，并让按钮统一高度
  */
-export const PromptGroup = React.forwardRef<
-  HTMLDivElement,
-  PromptGroupProps
->(({ children, className, ...props }, ref) => {
-  return (
-    <QuickActionGroup
-      ref={ref}
-      className={cn("items-stretch", className)}
-      aria-label="Prompt suggestions"
-      {...props}
-    >
-      {children}
-    </QuickActionGroup>
-  );
-});
+export const PromptGroup = React.forwardRef<HTMLDivElement, PromptGroupProps>(
+  ({ children, className, ...props }, ref) => {
+    return (
+      <QuickActionGroup
+        ref={ref}
+        className={cn("items-stretch", className)}
+        aria-label="Prompt suggestions"
+        {...props}
+      >
+        {children}
+      </QuickActionGroup>
+    );
+  },
+);
 PromptGroup.displayName = "PromptGroup";
 
 /**
@@ -107,7 +106,9 @@ export const PromptButton = React.forwardRef<
       >
         <QuickActionIcon>{withIconSize(icon, "size-4")}</QuickActionIcon>
       </span>
-      <span className="text-left break-words whitespace-normal w-full">{children}</span>
+      <span className="text-left break-words whitespace-normal w-full">
+        {children}
+      </span>
     </QuickActionButton>
   );
 });

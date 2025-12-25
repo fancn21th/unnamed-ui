@@ -48,21 +48,20 @@ export interface PromptGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
 
-export const PromptGroup = React.forwardRef<
-  HTMLDivElement,
-  PromptGroupProps
->(({ children, className, ...props }, ref) => {
-  return (
-    <QuickActionGroup
-      ref={ref}
-      className={className}
-      aria-label="Prompt suggestions"
-      {...props}
-    >
-      {children}
-    </QuickActionGroup>
-  );
-});
+export const PromptGroup = React.forwardRef<HTMLDivElement, PromptGroupProps>(
+  ({ children, className, ...props }, ref) => {
+    return (
+      <QuickActionGroup
+        ref={ref}
+        className={className}
+        aria-label="Prompt suggestions"
+        {...props}
+      >
+        {children}
+      </QuickActionGroup>
+    );
+  },
+);
 PromptGroup.displayName = "PromptGroup";
 
 /**

@@ -4,6 +4,10 @@
     "description": "A simple hello world component"
   },
   {
+    "name": "welcome-01",
+    "description": "Welcome message header for empty state"
+  },
+  {
     "name": "message-01",
     "description": "AI and user message components"
   },

@@ -16,6 +16,20 @@ export const blocks: Registry["items"] = [
     ],
   },
   {
+    name: "welcome-01",
+    type: "registry:block",
+    title: "Welcome",
+    description: "Welcome message header for empty state",
+    registryDependencies: ["style"],
+    files: [
+      {
+        path: "blocks/welcome/welcome-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/welcome-01.tsx",
+      },
+    ],
+  },
+  {
     name: "message-01",
     type: "registry:block",
     title: "Message",

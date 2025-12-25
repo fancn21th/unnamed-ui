@@ -18,7 +18,12 @@ import {
   QuickActionGroup,
   QuickActionIcon,
 } from "@/registry/wuhan/blocks/quick-action/quick-action-01";
-import { BotIcon, Sparkles, Wand2 } from "lucide-react";
+import { Wand2, Sparkles } from "lucide-react";
+import {
+  WelcomeContainer,
+  WelcomeIcon,
+  WelcomeText,
+} from "@/registry/wuhan/blocks/welcome/welcome-01";
 import { getTimeForIndex } from "../shared";
 import { useChat } from "../hooks/use-chat";
 import type { UseChatHistoryReturn } from "../hooks/use-chat-history";
@@ -141,14 +146,12 @@ export function WenxueChat({ history }: { history: UseChatHistoryReturn }) {
       {isEmpty ? (
         <div className="flex-1 min-h-0 flex items-center justify-center">
           <div className="w-full max-w-[800px] flex flex-col items-center gap-6">
-            <div className="flex items-center justify-center gap-2">
-              <div className="inline-flex items-center justify-center size-10 rounded-full bg-[var(--bg-brand-light)] text-[var(--text-brand)] shrink-0">
-                <Wand2 className="size-5" />
-              </div>
-              <div className="text-[var(--text-primary)] font-[var(--font-family-cn)] font-[var(--font-weight-400)] font-size-2 leading-[var(--line-height-2)] tracking-[0px]">
-                你好，我今天能帮你什么？
-              </div>
-            </div>
+            <WelcomeContainer>
+              <WelcomeIcon>
+                <Wand2 />
+              </WelcomeIcon>
+              <WelcomeText>你好，我今天能帮你什么？</WelcomeText>
+            </WelcomeContainer>
 
             <QuickActionGroup>
               <QuickActionButton

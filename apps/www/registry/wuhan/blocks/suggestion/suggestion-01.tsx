@@ -6,7 +6,7 @@ import {
   QuickActionGroup,
   QuickActionIcon,
 } from "@/registry/wuhan/blocks/quick-action/quick-action-01";
-import { ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // ==================== 类型定义 ====================
@@ -63,7 +63,7 @@ export const SuggestionGroup = React.forwardRef<
   return (
     <QuickActionGroup
       ref={ref}
-      className={className}
+      className={cn("flex-start", className)}
       aria-label="Next step suggestions"
       {...props}
     >
@@ -84,7 +84,7 @@ export const SuggestionButton = React.forwardRef<
   (
     {
       children,
-      icon = <ChevronRight />,
+      icon = <ArrowRight />,
       showIcon = true,
       className,
       "aria-label": ariaLabel,
@@ -102,7 +102,7 @@ export const SuggestionButton = React.forwardRef<
       <QuickActionButton
         ref={ref}
         aria-label={resolvedAriaLabel}
-        className={cn("font-size-1",className)}
+        className={cn("font-size-1","gap-[var(--gap-xs)]", className)}
         {...props}
       >
         <span>{children}</span>

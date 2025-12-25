@@ -273,11 +273,37 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "quick-action-01": {
+      name: "quick-action-01",
+      description:
+        "Quick action button components for suggestions and next step guidance (Base Block)",
+      type: "registry:block",
+      registryDependencies: ["style", "button"],
+      files: [
+        {
+          path: "registry/wuhan/blocks/quick-action/quick-action-01.tsx",
+          type: "registry:component",
+          target: "components/wuhan/blocks/quick-action-01.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/blocks/quick-action/quick-action-01.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "prompt-01": {
       name: "prompt-01",
-      description: "Prompt input component",
+      description: "Prompt button (horizontal layout)",
       type: "registry:block",
-      registryDependencies: ["style", "textarea", "button"],
+      registryDependencies: ["style", "quick-action-01"],
       files: [
         {
           path: "registry/wuhan/blocks/prompt/prompt-01.tsx",
@@ -288,6 +314,57 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/blocks/prompt/prompt-01.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "prompt-02": {
+      name: "prompt-02",
+      description: "Prompt button (vertical layout)",
+      type: "registry:block",
+      registryDependencies: ["style", "quick-action-01"],
+      files: [
+        {
+          path: "registry/wuhan/blocks/prompt/prompt-02.tsx",
+          type: "registry:component",
+          target: "components/wuhan/blocks/prompt-02.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/blocks/prompt/prompt-02.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "suggestion-01": {
+      name: "suggestion-01",
+      description:
+        "Suggestion button for next step guidance (text first, icon last)",
+      type: "registry:block",
+      registryDependencies: ["style", "quick-action-01"],
+      files: [
+        {
+          path: "registry/wuhan/blocks/suggestion/suggestion-01.tsx",
+          type: "registry:component",
+          target: "components/wuhan/blocks/suggestion-01.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/blocks/suggestion/suggestion-01.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>
@@ -814,6 +891,331 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/examples/button/button-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "prompt-demo": {
+      name: "prompt-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["prompt-01", "prompt-02"],
+      files: [
+        {
+          path: "registry/wuhan/examples/prompt/prompt-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/prompt-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/prompt/prompt-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "prompt-horizontal": {
+      name: "prompt-horizontal",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["prompt-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/prompt/prompt-horizontal.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/prompt-horizontal.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/prompt/prompt-horizontal.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "prompt-vertical": {
+      name: "prompt-vertical",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["prompt-02"],
+      files: [
+        {
+          path: "registry/wuhan/examples/prompt/prompt-vertical.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/prompt-vertical.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/prompt/prompt-vertical.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "suggestion-demo": {
+      name: "suggestion-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["suggestion-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/suggestion/suggestion-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/suggestion-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/suggestion/suggestion-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "suggestion-default": {
+      name: "suggestion-default",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["suggestion-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/suggestion/suggestion-default.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/suggestion-default.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/suggestion/suggestion-default.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "suggestion-custom-icon": {
+      name: "suggestion-custom-icon",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["suggestion-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/suggestion/suggestion-custom-icon.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/suggestion-custom-icon.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/suggestion/suggestion-custom-icon.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "quick-action-demo": {
+      name: "quick-action-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["quick-action-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/quick-action/quick-action-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/quick-action-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/quick-action/quick-action-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "quick-action-default": {
+      name: "quick-action-default",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["quick-action-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/quick-action/quick-action-default.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/quick-action-default.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/quick-action/quick-action-default.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "quick-action-with-icons": {
+      name: "quick-action-with-icons",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["quick-action-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/quick-action/quick-action-with-icons.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/quick-action-with-icons.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/quick-action/quick-action-with-icons.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "quick-action-single": {
+      name: "quick-action-single",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["quick-action-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/quick-action/quick-action-single.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/quick-action-single.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/quick-action/quick-action-single.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "quick-action-interactive": {
+      name: "quick-action-interactive",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["quick-action-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/quick-action/quick-action-interactive.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/quick-action-interactive.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/quick-action/quick-action-interactive.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "quick-action-disabled": {
+      name: "quick-action-disabled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["quick-action-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/quick-action/quick-action-disabled.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/quick-action-disabled.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/quick-action/quick-action-disabled.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "quick-action-flexible-layout": {
+      name: "quick-action-flexible-layout",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["quick-action-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/quick-action/quick-action-flexible-layout.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/quick-action-flexible-layout.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/quick-action/quick-action-flexible-layout.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

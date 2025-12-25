@@ -30,16 +30,60 @@ export const blocks: Registry["items"] = [
     ],
   },
   {
+    name: "quick-action-01",
+    type: "registry:block",
+    title: "Quick Action",
+    description:
+      "Quick action button components for suggestions and next step guidance (Base Block)",
+    registryDependencies: ["style", "button"],
+    files: [
+      {
+        path: "blocks/quick-action/quick-action-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/quick-action-01.tsx",
+      },
+    ],
+  },
+  {
     name: "prompt-01",
     type: "registry:block",
     title: "Prompt",
-    description: "Prompt input component",
-    registryDependencies: ["style", "textarea", "button"],
+    description: "Prompt button (horizontal layout)",
+    registryDependencies: ["style", "quick-action-01"],
     files: [
       {
         path: "blocks/prompt/prompt-01.tsx",
         type: "registry:component",
         target: "components/wuhan/blocks/prompt-01.tsx",
+      },
+    ],
+  },
+  {
+    name: "prompt-02",
+    type: "registry:block",
+    title: "Prompt",
+    description: "Prompt button (vertical layout)",
+    registryDependencies: ["style", "quick-action-01"],
+    files: [
+      {
+        path: "blocks/prompt/prompt-02.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/prompt-02.tsx",
+      },
+    ],
+  },
+  {
+    name: "suggestion-01",
+    type: "registry:block",
+    title: "Suggestion",
+    description:
+      "Suggestion button for next step guidance (text first, icon last)",
+    registryDependencies: ["style", "quick-action-01"],
+    files: [
+      {
+        path: "blocks/suggestion/suggestion-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/suggestion-01.tsx",
       },
     ],
   },

@@ -1564,20 +1564,70 @@
       ]
     },
     {
+      "name": "quick-action-01",
+      "type": "registry:block",
+      "title": "Quick Action",
+      "description": "Quick action button components for suggestions and next step guidance (Base Block)",
+      "registryDependencies": [
+        "style",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/quick-action/quick-action-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/quick-action-01.tsx"
+        }
+      ]
+    },
+    {
       "name": "prompt-01",
       "type": "registry:block",
       "title": "Prompt",
-      "description": "Prompt input component",
+      "description": "Prompt button (horizontal layout)",
       "registryDependencies": [
         "style",
-        "textarea",
-        "button"
+        "quick-action-01"
       ],
       "files": [
         {
           "path": "registry/wuhan/blocks/prompt/prompt-01.tsx",
           "type": "registry:component",
           "target": "components/wuhan/blocks/prompt-01.tsx"
+        }
+      ]
+    },
+    {
+      "name": "prompt-02",
+      "type": "registry:block",
+      "title": "Prompt",
+      "description": "Prompt button (vertical layout)",
+      "registryDependencies": [
+        "style",
+        "quick-action-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/prompt/prompt-02.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/prompt-02.tsx"
+        }
+      ]
+    },
+    {
+      "name": "suggestion-01",
+      "type": "registry:block",
+      "title": "Suggestion",
+      "description": "Suggestion button for next step guidance (text first, icon last)",
+      "registryDependencies": [
+        "style",
+        "quick-action-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/suggestion/suggestion-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/suggestion-01.tsx"
         }
       ]
     },
@@ -1890,6 +1940,189 @@
           "path": "registry/wuhan/examples/button/button-demo.tsx",
           "type": "registry:example",
           "target": "components/wuhan/examples/button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "prompt-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "prompt-01",
+        "prompt-02"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/prompt/prompt-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/prompt-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "prompt-horizontal",
+      "type": "registry:example",
+      "registryDependencies": [
+        "prompt-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/prompt/prompt-horizontal.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/prompt-horizontal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "prompt-vertical",
+      "type": "registry:example",
+      "registryDependencies": [
+        "prompt-02"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/prompt/prompt-vertical.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/prompt-vertical.tsx"
+        }
+      ]
+    },
+    {
+      "name": "suggestion-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "suggestion-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/suggestion/suggestion-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/suggestion-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "suggestion-default",
+      "type": "registry:example",
+      "registryDependencies": [
+        "suggestion-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/suggestion/suggestion-default.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/suggestion-default.tsx"
+        }
+      ]
+    },
+    {
+      "name": "suggestion-custom-icon",
+      "type": "registry:example",
+      "registryDependencies": [
+        "suggestion-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/suggestion/suggestion-custom-icon.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/suggestion-custom-icon.tsx"
+        }
+      ]
+    },
+    {
+      "name": "quick-action-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "quick-action-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/quick-action/quick-action-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/quick-action-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "quick-action-default",
+      "type": "registry:example",
+      "registryDependencies": [
+        "quick-action-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/quick-action/quick-action-default.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/quick-action-default.tsx"
+        }
+      ]
+    },
+    {
+      "name": "quick-action-with-icons",
+      "type": "registry:example",
+      "registryDependencies": [
+        "quick-action-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/quick-action/quick-action-with-icons.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/quick-action-with-icons.tsx"
+        }
+      ]
+    },
+    {
+      "name": "quick-action-single",
+      "type": "registry:example",
+      "registryDependencies": [
+        "quick-action-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/quick-action/quick-action-single.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/quick-action-single.tsx"
+        }
+      ]
+    },
+    {
+      "name": "quick-action-interactive",
+      "type": "registry:example",
+      "registryDependencies": [
+        "quick-action-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/quick-action/quick-action-interactive.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/quick-action-interactive.tsx"
+        }
+      ]
+    },
+    {
+      "name": "quick-action-disabled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "quick-action-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/quick-action/quick-action-disabled.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/quick-action-disabled.tsx"
+        }
+      ]
+    },
+    {
+      "name": "quick-action-flexible-layout",
+      "type": "registry:example",
+      "registryDependencies": [
+        "quick-action-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/quick-action/quick-action-flexible-layout.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/quick-action-flexible-layout.tsx"
         }
       ]
     }

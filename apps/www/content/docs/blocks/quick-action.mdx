@@ -1,0 +1,105 @@
+---
+title: Quick Action
+description: Quick action button components for displaying suggestions and guiding users to next steps
+author: AF
+---
+
+<ComponentPreview name="quick-action-demo" description="Quick action buttons for suggestions and guidance" className="mb-4" />
+
+Quick Action 组件提供了用于显示快速操作建议的按钮组件，是提示集和下一步建议的基底 block，适用于聊天界面的空状态、对话引导、快捷操作等场景。
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/quick-action-01.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="quick-action-demo" title="registry/wuhan/examples/quick-action/quick-action-demo.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Examples
+
+### Default
+
+基础的快速操作按钮组，展示纯文本操作。
+
+<ComponentPreview
+  name="quick-action-default"
+  description="Basic quick action buttons"
+  className="mb-4"
+/>
+
+### With Icons
+
+带图标的快速操作按钮，让操作更加直观和吸引人。
+
+<ComponentPreview
+  name="quick-action-with-icons"
+  description="Quick action buttons with icons"
+  className="mb-4"
+/>
+
+### Single Button
+
+单独使用快速操作按钮，无需按钮组包裹。
+
+<ComponentPreview
+  name="quick-action-single"
+  description="Single quick action button usage"
+  className="mb-4"
+/>
+
+### Interactive
+
+交互式示例，展示如何响应按钮点击事件。
+
+<ComponentPreview
+  name="quick-action-interactive"
+  description="Interactive quick action buttons with state"
+  className="mb-4"
+/>
+
+### Disabled
+
+禁用状态的快速操作按钮。
+
+<ComponentPreview
+  name="quick-action-disabled"
+  description="Disabled quick action buttons"
+  className="mb-4"
+/>
+
+### Flexible Layout
+
+灵活的内容布局，图标可以放在任意位置。
+
+<ComponentPreview
+  name="quick-action-flexible-layout"
+  description="Flexible layout with icons in different positions"
+  className="mb-4"
+/>
+

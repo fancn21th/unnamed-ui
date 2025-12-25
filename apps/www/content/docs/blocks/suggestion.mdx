@@ -1,0 +1,254 @@
+---
+title: Suggestion
+description: Suggestion button component for next step guidance
+author: AF
+---
+
+<ComponentPreview name="suggestion-demo" description="Suggestion buttons for next step guidance" className="mb-4" />
+
+Suggestion 组件基于 QuickAction 基底 block 构建，专门用于显示下一步建议，采用固定的布局：内容在前，图标在后，暗示"继续前进"的操作方向。
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/suggestion-01.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="suggestion-demo" title="registry/wuhan/examples/suggestion/suggestion-demo.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Examples
+
+### Default
+
+默认使用 ChevronRight 图标的建议按钮。
+
+<ComponentPreview
+  name="suggestion-default"
+  description="Default suggestion buttons with ChevronRight icon"
+  className="mb-4"
+/>
+
+### Custom Icon
+
+自定义图标的建议按钮，适配不同的操作语义。
+
+<ComponentPreview
+  name="suggestion-custom-icon"
+  description="Suggestion buttons with custom icons"
+  className="mb-4"
+/>
+
+## Usage
+
+### Basic Usage
+
+```tsx
+import {
+  SuggestionButton,
+  SuggestionGroup,
+} from "@/registry/wuhan/blocks/suggestion/suggestion-01";
+
+export function MyComponent() {
+  return (
+    <SuggestionGroup>
+      <SuggestionButton onClick={() => console.log("clicked")}>
+        继续编辑
+      </SuggestionButton>
+      <SuggestionButton onClick={() => console.log("clicked")}>
+        查看详情
+      </SuggestionButton>
+    </SuggestionGroup>
+  );
+}
+```
+
+### With Custom Icon
+
+自定义图标以匹配不同的操作类型。
+
+```tsx
+import { ArrowRight, ExternalLink, Download } from "lucide-react";
+
+<SuggestionButton icon={<ArrowRight />} onClick={handleClick}>
+  继续下一步
+</SuggestionButton>
+
+<SuggestionButton icon={<ExternalLink />} onClick={handleClick}>
+  在新窗口打开
+</SuggestionButton>
+
+<SuggestionButton icon={<Download />} onClick={handleClick}>
+  下载文件
+</SuggestionButton>
+```
+
+### Without Icon
+
+隐藏图标，只显示文本。
+
+```tsx
+<SuggestionButton showIcon={false} onClick={handleClick}>
+  继续编辑
+</SuggestionButton>
+```
+
+## API Reference
+
+### SuggestionGroup
+
+Suggestion 按钮组容器。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `React.ReactNode` | - | 按钮组内容 |
+| `className` | `string` | - | 自定义样式类名 |
+
+继承所有标准的 `HTMLDivElement` 属性。
+
+**默认样式：**
+- 使用 `gap-[var(--gap-md)]` 设置按钮间距
+- 支持自动换行
+- 居中对齐
+
+### SuggestionButton
+
+Suggestion 按钮组件。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `React.ReactNode` | - | 文本内容（必需） |
+| `icon` | `React.ReactNode` | `<ChevronRight />` | 自定义图标 |
+| `showIcon` | `boolean` | `true` | 是否显示图标 |
+| `onClick` | `() => void` | - | 点击事件处理函数 |
+| `disabled` | `boolean` | `false` | 是否禁用按钮 |
+| `className` | `string` | - | 自定义样式类名 |
+
+继承所有标准的 `HTMLButtonElement` 属性。
+
+## Design Philosophy
+
+### 固定布局的原因
+
+Suggestion 组件采用**内容在前、图标在后**的固定布局，这是有意为之的设计：
+
+1. **方向暗示**：图标在右侧暗示"向前"、"继续"的动作
+2. **一致性**：所有下一步建议保持统一的视觉模式
+3. **可预测性**：用户能快速识别这是"下一步"类型的操作
+
+### 与 Prompt 的区别
+
+| 特性 | Prompt | Suggestion |
+|------|--------|------------|
+| **用途** | 提示用户可以做什么 | 建议用户接下来做什么 |
+| **布局** | 灵活（horizontal/vertical） | 固定（text-icon） |
+| **图标位置** | 左侧或上方 | 右侧 |
+| **使用场景** | 空状态、功能引导 | 流程引导、下一步操作 |
+
+## Best Practices
+
+### 文本内容
+
+- 使用动词开头，如"继续..."、"查看..."、"保存..."
+- 保持简洁，建议 10 字以内
+- 清晰表达下一步的动作
+
+### 图标选择
+
+- **ChevronRight**（默认）：通用的"继续"、"下一步"
+- **ArrowRight**：更强调方向性
+- **ExternalLink**：跳转到外部链接
+- **Download**：下载操作
+- **Play**：开始/播放操作
+
+### 使用时机
+
+- ✅ 完成某个操作后，提供后续操作建议
+- ✅ 流程中的步骤导航
+- ✅ 引导用户完成任务
+- ❌ 不要用于初始提示（使用 Prompt）
+- ❌ 不要用于并列的功能选择（使用 Prompt）
+
+## Use Cases
+
+### 操作完成后的建议
+
+```tsx
+<div className="text-center">
+  <h3>文档已保存</h3>
+  <p>接下来你可以</p>
+  <SuggestionGroup>
+    <SuggestionButton onClick={handleEdit}>继续编辑</SuggestionButton>
+    <SuggestionButton onClick={handleShare}>分享文档</SuggestionButton>
+    <SuggestionButton onClick={handleView}>查看详情</SuggestionButton>
+  </SuggestionGroup>
+</div>
+```
+
+### 流程引导
+
+```tsx
+<SuggestionGroup>
+  <SuggestionButton icon={<ArrowRight />} onClick={handleNext}>
+    进入下一步
+  </SuggestionButton>
+  <SuggestionButton showIcon={false} onClick={handleSkip}>
+    跳过此步骤
+  </SuggestionButton>
+</SuggestionGroup>
+```
+
+### 外部跳转
+
+```tsx
+<SuggestionButton
+  icon={<ExternalLink />}
+  onClick={() => window.open(url, '_blank')}
+>
+  在新窗口中打开
+</SuggestionButton>
+```
+
+## Accessibility
+
+组件已内置以下无障碍特性：
+
+- ✅ 继承 QuickAction 的所有无障碍特性
+- ✅ 语义化的 HTML 结构
+- ✅ 键盘导航支持
+- ✅ Focus 可见性指示器
+
+## Related Components
+
+- [QuickAction](/docs/blocks/quick-action) - 基底 block，提供灵活的按钮组件
+- [Prompt](/docs/blocks/prompt) - 提示按钮组件
+- [Sender](/docs/blocks/sender) - 消息输入组件
+

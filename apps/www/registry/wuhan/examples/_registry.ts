@@ -212,4 +212,163 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  // prompt examples
+  {
+    name: "prompt-demo",
+    type: "registry:example",
+    registryDependencies: ["prompt-01", "prompt-02"],
+    files: [
+      {
+        path: "examples/prompt/prompt-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/prompt-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "prompt-horizontal",
+    type: "registry:example",
+    registryDependencies: ["prompt-01"],
+    files: [
+      {
+        path: "examples/prompt/prompt-horizontal.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/prompt-horizontal.tsx",
+      },
+    ],
+  },
+  {
+    name: "prompt-vertical",
+    type: "registry:example",
+    registryDependencies: ["prompt-02"],
+    files: [
+      {
+        path: "examples/prompt/prompt-vertical.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/prompt-vertical.tsx",
+      },
+    ],
+  },
+  // suggestion examples
+  {
+    name: "suggestion-demo",
+    type: "registry:example",
+    registryDependencies: ["suggestion-01"],
+    files: [
+      {
+        path: "examples/suggestion/suggestion-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/suggestion-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "suggestion-default",
+    type: "registry:example",
+    registryDependencies: ["suggestion-01"],
+    files: [
+      {
+        path: "examples/suggestion/suggestion-default.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/suggestion-default.tsx",
+      },
+    ],
+  },
+  {
+    name: "suggestion-custom-icon",
+    type: "registry:example",
+    registryDependencies: ["suggestion-01"],
+    files: [
+      {
+        path: "examples/suggestion/suggestion-custom-icon.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/suggestion-custom-icon.tsx",
+      },
+    ],
+  },
+  // quick-action examples
+  {
+    name: "quick-action-demo",
+    type: "registry:example",
+    registryDependencies: ["quick-action-01"],
+    files: [
+      {
+        path: "examples/quick-action/quick-action-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/quick-action-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "quick-action-default",
+    type: "registry:example",
+    registryDependencies: ["quick-action-01"],
+    files: [
+      {
+        path: "examples/quick-action/quick-action-default.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/quick-action-default.tsx",
+      },
+    ],
+  },
+  {
+    name: "quick-action-with-icons",
+    type: "registry:example",
+    registryDependencies: ["quick-action-01"],
+    files: [
+      {
+        path: "examples/quick-action/quick-action-with-icons.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/quick-action-with-icons.tsx",
+      },
+    ],
+  },
+  {
+    name: "quick-action-single",
+    type: "registry:example",
+    registryDependencies: ["quick-action-01"],
+    files: [
+      {
+        path: "examples/quick-action/quick-action-single.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/quick-action-single.tsx",
+      },
+    ],
+  },
+  {
+    name: "quick-action-interactive",
+    type: "registry:example",
+    registryDependencies: ["quick-action-01"],
+    files: [
+      {
+        path: "examples/quick-action/quick-action-interactive.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/quick-action-interactive.tsx",
+      },
+    ],
+  },
+  {
+    name: "quick-action-disabled",
+    type: "registry:example",
+    registryDependencies: ["quick-action-01"],
+    files: [
+      {
+        path: "examples/quick-action/quick-action-disabled.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/quick-action-disabled.tsx",
+      },
+    ],
+  },
+  {
+    name: "quick-action-flexible-layout",
+    type: "registry:example",
+    registryDependencies: ["quick-action-01"],
+    files: [
+      {
+        path: "examples/quick-action/quick-action-flexible-layout.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/quick-action-flexible-layout.tsx",
+      },
+    ],
+  },
 ];

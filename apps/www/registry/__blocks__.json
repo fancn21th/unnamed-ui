@@ -8,8 +8,20 @@
     "description": "AI and user message components"
   },
   {
+    "name": "quick-action-01",
+    "description": "Quick action button components for suggestions and next step guidance (Base Block)"
+  },
+  {
     "name": "prompt-01",
-    "description": "Prompt input component"
+    "description": "Prompt button (horizontal layout)"
+  },
+  {
+    "name": "prompt-02",
+    "description": "Prompt button (vertical layout)"
+  },
+  {
+    "name": "suggestion-01",
+    "description": "Suggestion button for next step guidance (text first, icon last)"
   },
   {
     "name": "sender-01",

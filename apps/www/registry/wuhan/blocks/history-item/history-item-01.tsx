@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
 import { cn } from "@/lib/utils";
 
 // ==================== 样式原语层（Primitives）====================
@@ -11,10 +12,14 @@ import { cn } from "@/lib/utils";
  */
 const HistoryItemPrimitive = React.forwardRef<
   HTMLButtonElement,
-  React.ButtonHTMLAttributes<HTMLButtonElement>
->(({ className, type = "button", ...props }, ref) => {
+  React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    asChild?: boolean;
+  }
+>(({ className, type = "button", asChild, ...props }, ref) => {
+  const Comp = asChild ? Slot : "button";
+  
   return (
-    <button
+    <Comp
       ref={ref}
       type={type}
       className={cn(

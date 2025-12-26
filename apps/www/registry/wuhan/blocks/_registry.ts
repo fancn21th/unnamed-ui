@@ -171,4 +171,18 @@ export const blocks: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "sidebar-01",
+    type: "registry:block",
+    title: "Sidebar",
+    description: "Sidebar primitive components (style-only, no business logic)",
+    registryDependencies: ["style"],
+    files: [
+      {
+        path: "blocks/sidebar/sidebar-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/sidebar-01.tsx",
+      },
+    ],
+  },
 ];

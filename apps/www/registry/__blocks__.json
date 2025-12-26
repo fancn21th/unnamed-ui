@@ -46,5 +46,9 @@
   {
     "name": "quote-content-01",
     "description": "Quote content display component (shown above input field)"
+  },
+  {
+    "name": "sidebar-01",
+    "description": "Sidebar primitive components (style-only, no business logic)"
   }
 ]

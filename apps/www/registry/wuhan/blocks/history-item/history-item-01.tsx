@@ -6,59 +6,41 @@ import { cn } from "@/lib/utils";
 // ==================== 样式原语层（Primitives）====================
 // 这些组件只提供样式，不包含任何逻辑和业务假设
 
-export interface HistoryItemPrimitiveProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  /**
-   * 是否为选中状态
-   */
-  selected?: boolean;
-  /**
-   * 是否保持“hover 激活态”（例如 popover 打开时）
-   * - 选中态下不会生效
-   */
-  active?: boolean;
-}
-
 /**
  * 历史记录项样式原语（可交互）
  */
 const HistoryItemPrimitive = React.forwardRef<
   HTMLButtonElement,
-  HistoryItemPrimitiveProps
->(
-  (
-    { selected = false, active = false, className, type = "button", ...props },
-    ref,
-  ) => {
-    const isActive = !selected && active;
-
-    return (
-      <button
-        ref={ref}
-        type={type}
-        data-active={isActive ? "true" : undefined}
-        className={cn(
-          "group/history-item",
-          "[&_*]:!box-border",
-          "w-[214px] h-[34px]",
-          "flex items-center",
-          "gap-[var(--gap-md)]",
-          "pt-[var(--padding-com-sm)]",
-          "pr-[var(--padding-com-lg)]",
-          "pb-[var(--padding-com-sm)]",
-          "pl-[var(--padding-com-lg)]",
-          "rounded-[var(--radius-circle)]",
-          "transition-colors",
-          "text-left",
-          !selected && "hover:bg-[var(--bg-neutral-light)]",
-          isActive && "bg-[var(--bg-neutral-light)]",
-          selected && "bg-[var(--bg-brand-light)]",
-          className,
-        )}
-        {...props}
-      />
-    );
-  },
-);
+  React.ButtonHTMLAttributes<HTMLButtonElement>
+>(({ className, type = "button", ...props }, ref) => {
+  return (
+    <button
+      ref={ref}
+      type={type}
+      className={cn(
+        "group/history-item",
+        "[&_*]:!box-border",
+        "w-[214px] h-[34px]",
+        "flex items-center",
+        "gap-[var(--gap-md)]",
+        "pt-[var(--padding-com-sm)]",
+        "pr-[var(--padding-com-lg)]",
+        "pb-[var(--padding-com-sm)]",
+        "pl-[var(--padding-com-lg)]",
+        "rounded-[var(--radius-circle)]",
+        "transition-colors",
+        "text-left",
+        "hover:bg-[var(--bg-neutral-light)]",
+        "data-[selected=true]:bg-[var(--bg-brand-light)]",
+        "data-[selected=true]:hover:bg-[var(--bg-brand-light)]",
+        "data-[active=true]:bg-[var(--bg-brand-light)]",
+        "data-[selected=true][data-active=true]:bg-[var(--bg-brand-light)]",
+        className,
+      )}
+      {...props}
+    />
+  );
+});
 HistoryItemPrimitive.displayName = "HistoryItemPrimitive";
 
 /**
@@ -144,59 +126,6 @@ const HistoryItemHoverTrailingPrimitive = React.forwardRef<
 HistoryItemHoverTrailingPrimitive.displayName =
   "HistoryItemHoverTrailingPrimitive";
 
-// ==================== 业务组件层（组合组件）====================
-
-export interface HistoryItemProps extends Omit<
-  HistoryItemPrimitiveProps,
-  "children" | "title"
-> {
-  /**
-   * 标题内容
-   */
-  title: React.ReactNode;
-  /**
-   * 尾部内容（始终显示）
-   */
-  trailing?: React.ReactNode;
-  /**
-   * 尾部内容（hover 时显示）
-   */
-  hoverTrailing?: React.ReactNode;
-}
-
-/**
- * 历史记录项（组合组件）
- */
-const HistoryItem = React.forwardRef<HTMLButtonElement, HistoryItemProps>(
-  (
-    { title, trailing, hoverTrailing, selected, active, className, ...props },
-    ref,
-  ) => {
-    return (
-      <HistoryItemPrimitive
-        ref={ref}
-        selected={selected}
-        active={active}
-        className={className}
-        {...props}
-      >
-        <HistoryItemTitlePrimitive>{title}</HistoryItemTitlePrimitive>
-        {trailing != null && (
-          <HistoryItemTrailingPrimitive>
-            {trailing}
-          </HistoryItemTrailingPrimitive>
-        )}
-        {!selected && hoverTrailing != null && (
-          <HistoryItemHoverTrailingPrimitive>
-            {hoverTrailing}
-          </HistoryItemHoverTrailingPrimitive>
-        )}
-      </HistoryItemPrimitive>
-    );
-  },
-);
-HistoryItem.displayName = "HistoryItem";
-
 // ==================== 统一导出 ====================
 
 export {
@@ -204,5 +133,4 @@ export {
   HistoryItemTitlePrimitive,
   HistoryItemTrailingPrimitive,
   HistoryItemHoverTrailingPrimitive,
-  HistoryItem,
 };

@@ -397,4 +397,22 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  // sidebar examples
+  {
+    name: "sidebar-demo",
+    type: "registry:example",
+    registryDependencies: [
+      "sidebar-01",
+      "history-item-01",
+      "avatar-header-01",
+      "button",
+    ],
+    files: [
+      {
+        path: "examples/sidebar/sidebar-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/sidebar-demo.tsx",
+      },
+    ],
+  },
 ];

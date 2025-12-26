@@ -1731,6 +1731,22 @@
       ]
     },
     {
+      "name": "sidebar-01",
+      "type": "registry:block",
+      "title": "Sidebar",
+      "description": "Sidebar primitive components (style-only, no business logic)",
+      "registryDependencies": [
+        "style"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/sidebar/sidebar-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/sidebar-01.tsx"
+        }
+      ]
+    },
+    {
       "name": "welcome-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -2183,6 +2199,23 @@
           "path": "registry/wuhan/examples/quick-action/quick-action-flexible-layout.tsx",
           "type": "registry:example",
           "target": "components/wuhan/examples/quick-action-flexible-layout.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "sidebar-01",
+        "history-item-01",
+        "avatar-header-01",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/sidebar/sidebar-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/sidebar-demo.tsx"
         }
       ]
     }

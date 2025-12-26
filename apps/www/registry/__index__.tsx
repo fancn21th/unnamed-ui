@@ -526,6 +526,32 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "sidebar-01": {
+      name: "sidebar-01",
+      description:
+        "Sidebar primitive components (style-only, no business logic)",
+      type: "registry:block",
+      registryDependencies: ["style"],
+      files: [
+        {
+          path: "registry/wuhan/blocks/sidebar/sidebar-01.tsx",
+          type: "registry:component",
+          target: "components/wuhan/blocks/sidebar-01.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/blocks/sidebar/sidebar-01.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "welcome-demo": {
       name: "welcome-demo",
       description: "",
@@ -1316,6 +1342,36 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/examples/quick-action/quick-action-flexible-layout.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "sidebar-demo": {
+      name: "sidebar-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "sidebar-01",
+        "history-item-01",
+        "avatar-header-01",
+        "button",
+      ],
+      files: [
+        {
+          path: "registry/wuhan/examples/sidebar/sidebar-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/sidebar-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/sidebar/sidebar-demo.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

@@ -1,0 +1,165 @@
+---
+title: Sidebar
+description: Sidebar primitive components for chat applications (style-only, no business logic)
+author: AF
+---
+
+<ComponentPreview
+  name="sidebar-demo"
+  description="Complete sidebar with header, new button, history search, and footer"
+  className="mb-4"
+  align="start"
+/>
+
+Sidebar 组件提供了侧边栏的基础样式原语，包含头部、新建按钮、历史对话区域和底部等部分。所有组件都是纯样式原语，不包含任何业务逻辑，用户可以根据需求自由组合使用。
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/sidebar-01.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="sidebar-demo"
+  title="registry/wuhan/examples/sidebar/sidebar-demo.tsx"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Components
+
+Sidebar 组件由多个样式原语组成，每个原语都可以独立使用：
+
+### Main Primitives
+
+- **SidebarPrimitive** - 侧边栏主容器（flex 布局，上下结构）
+- **SidebarContentPrimitive** - 内容区域容器（可滚动，flex-1）
+- **SidebarDividerPrimitive** - 分隔线原语
+
+### Header Primitives
+
+- **SidebarHeaderPrimitive** - 头部容器（flex 布局）
+- **SidebarHeaderLeading** - 左侧区域（图标+标题）
+- **SidebarHeaderIcon** - 图标容器
+- **SidebarHeaderTitle** - 标题文本
+- **SidebarHeaderAction** - 右侧操作按钮容器
+
+### New Button Primitives
+
+- **SidebarNewButtonPrimitive** - 新建按钮样式原语（原生 button 元素）
+
+### History Primitives
+
+- **SidebarHistoryPrimitive** - 历史区域容器
+- **SidebarHistoryTitle** - 历史标题
+- **SidebarHistorySearchPrimitive** - 搜索容器
+- **SidebarHistorySearchContainer** - 搜索框容器
+- **SidebarHistorySearchIcon** - 搜索图标容器
+- **SidebarHistorySearchInput** - 搜索输入框（原生 input 元素）
+- **SidebarHistoryListPrimitive** - 列表容器（可滚动）
+- **SidebarHistoryEmpty** - 空状态容器
+
+### Footer Primitives
+
+- **SidebarFooterPrimitive** - 底部容器
+
+## Examples
+
+### Complete Sidebar
+
+完整的侧边栏示例，包含所有部分：
+
+<ComponentPreview
+  name="sidebar-demo"
+  description="Complete sidebar with all components"
+  className="mb-4"
+  align="start"
+/>
+
+### Custom Header
+
+自定义头部内容：
+
+```tsx
+<SidebarHeaderPrimitive>
+  <SidebarHeaderLeading>
+    <SidebarHeaderIcon>
+      <CustomIcon className="size-4" />
+    </SidebarHeaderIcon>
+    <SidebarHeaderTitle>自定义标题</SidebarHeaderTitle>
+  </SidebarHeaderLeading>
+  <SidebarHeaderAction>
+    <CustomButton />
+  </SidebarHeaderAction>
+</SidebarHeaderPrimitive>
+```
+
+### Custom New Button
+
+自定义新建按钮：
+
+```tsx
+<SidebarNewButtonPrimitive onClick={handleCreate}>
+  <Plus className="size-4" />
+  新建对话
+</SidebarNewButtonPrimitive>
+```
+
+### History with Search
+
+带搜索功能的历史对话区域：
+
+```tsx
+<SidebarHistoryPrimitive>
+  <SidebarHistoryTitle>历史对话</SidebarHistoryTitle>
+  <SidebarHistorySearchPrimitive>
+    <SidebarHistorySearchContainer>
+      <SidebarHistorySearchIcon>
+        <Search className="size-4" />
+      </SidebarHistorySearchIcon>
+      <SidebarHistorySearchInput
+        placeholder="搜索"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+    </SidebarHistorySearchContainer>
+  </SidebarHistorySearchPrimitive>
+  <SidebarHistoryListPrimitive>
+    {/* 列表内容 */}
+  </SidebarHistoryListPrimitive>
+</SidebarHistoryPrimitive>
+```
+
+### Empty State
+
+空状态显示：
+
+```tsx
+<SidebarHistoryListPrimitive>
+  <SidebarHistoryEmpty>暂无对话历史</SidebarHistoryEmpty>
+</SidebarHistoryListPrimitive>
+```
+

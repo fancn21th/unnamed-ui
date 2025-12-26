@@ -501,6 +501,31 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "quote-content-01": {
+      name: "quote-content-01",
+      description: "Quote content display component (shown above input field)",
+      type: "registry:block",
+      registryDependencies: ["style"],
+      files: [
+        {
+          path: "registry/wuhan/blocks/quote-content/quote-content-01.tsx",
+          type: "registry:component",
+          target: "components/wuhan/blocks/quote-content-01.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/blocks/quote-content/quote-content-01.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "welcome-demo": {
       name: "welcome-demo",
       description: "",
@@ -716,6 +741,31 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/examples/attachment-list/attachment-list-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "quote-content-demo": {
+      name: "quote-content-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["quote-content-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/quote-content/quote-content-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/quote-content-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/quote-content/quote-content-demo.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

@@ -4,7 +4,7 @@ import * as React from "react";
 import { Textarea } from "@/registry/wuhan/ui/textarea";
 import { Button } from "@/registry/wuhan/ui/button";
 import { cn } from "@/lib/utils";
-import { Loader2, Paperclip, Send } from "lucide-react";
+import { Loader2, Paperclip, ArrowUp } from "lucide-react";
 
 // ==================== 类型定义 ====================
 // 完全通用的类型，不强制任何业务概念
@@ -262,7 +262,7 @@ export const SendButtonPrimitive = React.forwardRef<
         {generating
           ? (generatingContent ??
             children ?? <Loader2 className="size-4 animate-spin" />)
-          : (children ?? <Send className="size-4" />)}
+          : (children ?? <ArrowUp className="size-4" />)}
       </Button>
     );
   },

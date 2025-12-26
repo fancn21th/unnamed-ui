@@ -157,4 +157,18 @@ export const blocks: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "quote-content-01",
+    type: "registry:block",
+    title: "Quote Content",
+    description: "Quote content display component (shown above input field)",
+    registryDependencies: ["style"],
+    files: [
+      {
+        path: "blocks/quote-content/quote-content-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/quote-content-01.tsx",
+      },
+    ],
+  },
 ];

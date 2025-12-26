@@ -42,5 +42,9 @@
   {
     "name": "history-item-01",
     "description": "History record list item component (default/hover/selected)"
+  },
+  {
+    "name": "quote-content-01",
+    "description": "Quote content display component (shown above input field)"
   }
 ]

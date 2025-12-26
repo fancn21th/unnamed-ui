@@ -112,6 +112,19 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  // quote-content examples
+  {
+    name: "quote-content-demo",
+    type: "registry:example",
+    registryDependencies: ["quote-content-01"],
+    files: [
+      {
+        path: "examples/quote-content/quote-content-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/quote-content-demo.tsx",
+      },
+    ],
+  },
   // avatar-header examples
   {
     name: "avatar-header-demo",

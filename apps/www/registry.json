@@ -1715,6 +1715,22 @@
       ]
     },
     {
+      "name": "quote-content-01",
+      "type": "registry:block",
+      "title": "Quote Content",
+      "description": "Quote content display component (shown above input field)",
+      "registryDependencies": [
+        "style"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/quote-content/quote-content-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/quote-content-01.tsx"
+        }
+      ]
+    },
+    {
       "name": "welcome-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -1842,6 +1858,20 @@
           "path": "registry/wuhan/examples/attachment-list/attachment-list-demo.tsx",
           "type": "registry:example",
           "target": "components/wuhan/examples/attachment-list-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "quote-content-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "quote-content-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/quote-content/quote-content-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/quote-content-demo.tsx"
         }
       ]
     },

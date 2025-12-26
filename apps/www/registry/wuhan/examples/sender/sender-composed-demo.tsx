@@ -29,7 +29,21 @@ import {
   AttachmentCardTitle,
   AttachmentList,
 } from "@/registry/wuhan/blocks/attachment-list/attachment-list-01";
-import { Send, Paperclip, Brain, Loader2, X } from "lucide-react";
+import {
+  QuoteContent,
+  QuoteContentLeading,
+  QuoteContentContent,
+  QuoteContentText,
+  QuoteContentCloseButton,
+} from "@/registry/wuhan/blocks/quote-content/quote-content-01";
+import {
+  Send,
+  Paperclip,
+  Brain,
+  Loader2,
+  X,
+  CornerDownRight,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // ==================== 业务特定的类型定义 ====================
@@ -223,6 +237,20 @@ export function ComposedSender({
         onSend?.();
       }}
     >
+      {/* 引用内容 */}
+      <QuoteContent>
+        <QuoteContentLeading>
+          <CornerDownRight className="w-4 h-4" />
+        </QuoteContentLeading>
+        <QuoteContentContent>
+          <QuoteContentText>
+            引用内容引用内容引用内容引用内容引用内容引用内容引用内容引用内容引用内容引用内容引用内容引用内容
+          </QuoteContentText>
+        </QuoteContentContent>
+        <QuoteContentCloseButton onClick={() => {}}>
+          <X className="w-4 h-4" />
+        </QuoteContentCloseButton>
+      </QuoteContent>
       {/* 附件列表 */}
       {attachments.length > 0 && (
         <AttachmentListWrapper
@@ -274,9 +302,7 @@ export function ComposedSender({
               generatingContent={
                 <Loader2 className="size-4 text-white animate-spin" />
               }
-            >
-              <Send className="size-4 text-white" />
-            </SenderSendButton>
+            ></SenderSendButton>
           )}
         </div>
       </SenderActionBar>

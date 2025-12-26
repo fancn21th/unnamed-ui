@@ -34,6 +34,12 @@ export default function AttachmentListDemo() {
         name: "image.png",
       },
       {
+        id: "img-2",
+        isImage: true,
+        thumbnail: "https://placehold.co/56x56",
+        name: "photo.jpg",
+      },
+      {
         id: "img-uploading",
         isImage: true,
         thumbnail: "https://placehold.co/56x56",
@@ -53,6 +59,30 @@ export default function AttachmentListDemo() {
         fileSize: "92KB",
         loading: true,
       },
+      {
+        id: "doc-3",
+        name: "产品设计稿.fig",
+        fileType: "FIG",
+        fileSize: "3.5MB",
+      },
+      {
+        id: "doc-4",
+        name: "用户调研报告.xlsx",
+        fileType: "XLSX",
+        fileSize: "856KB",
+      },
+      {
+        id: "img-3",
+        isImage: true,
+        thumbnail: "https://placehold.co/56x56",
+        name: "screenshot.png",
+      },
+      {
+        id: "doc-5",
+        name: "技术方案.md",
+        fileType: "MD",
+        fileSize: "45KB",
+      },
     ],
     [],
   );
@@ -60,8 +90,8 @@ export default function AttachmentListDemo() {
   const [items, setItems] = useState<DemoAttachment[]>(initial);
 
   return (
-    <div className="w-full max-w-full">
-      <AttachmentList className="max-w-full">
+    <div className="w-full max-w-2xl">
+      <AttachmentList className="w-full">
         {items.map((item) => {
           const meta =
             item.fileType && item.fileSize

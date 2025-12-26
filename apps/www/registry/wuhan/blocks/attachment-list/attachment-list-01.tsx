@@ -196,6 +196,7 @@ const AttachmentCardDeleteButton = React.forwardRef<
         "shadow-sm",
         "flex items-center justify-center",
         "opacity-0 pointer-events-none",
+        "group-hover/card:opacity-100 group-hover/card:pointer-events-auto",
         "transition-opacity duration-150",
         "hover:bg-[var(--bg-neutral-light-hover)]",
         "transition-colors",
@@ -259,21 +260,20 @@ function AttachmentListPrimitive({
 }: AttachmentListPrimitiveProps) {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollContainerRef = React.useRef<HTMLDivElement>(null);
+  const contentRef = React.useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = React.useState(false);
   const [canScrollRight, setCanScrollRight] = React.useState(false);
   const rafIdRef = React.useRef<number | null>(null);
 
   // 检查滚动状态
   const checkScrollability = React.useCallback(() => {
-    if (!scrollContainerRef.current) return;
-
     const scrollContainer = scrollContainerRef.current;
+    if (!scrollContainer) return;
 
     const scrollLeft = scrollContainer.scrollLeft;
     const scrollWidth = scrollContainer.scrollWidth;
     const clientWidth = scrollContainer.clientWidth;
 
-    // 检查内容是否超出容器宽度（添加容差处理浮点数精度问题）
     const needsScroll = scrollWidth > clientWidth + SCROLL_THRESHOLD;
 
     if (needsScroll) {
@@ -282,55 +282,75 @@ function AttachmentListPrimitive({
         scrollLeft < scrollWidth - clientWidth - SCROLL_THRESHOLD,
       );
     } else {
+      // 如果内容不足以滚动，重置滚动位置并隐藏按钮
+      if (scrollLeft > 0) {
+        scrollContainer.scrollLeft = 0;
+      }
       setCanScrollLeft(false);
       setCanScrollRight(false);
     }
   }, []);
 
+  // 调度滚动检查
   const scheduleCheckScrollability = React.useCallback(() => {
     if (rafIdRef.current != null) return;
-    rafIdRef.current = window.requestAnimationFrame(() => {
+    rafIdRef.current = requestAnimationFrame(() => {
       rafIdRef.current = null;
       checkScrollability();
     });
   }, [checkScrollability]);
 
-  // 监听滚动事件
+  // 监听滚动和尺寸变化
   React.useEffect(() => {
     checkScrollability();
 
-    // 监听窗口大小变化和内容变化（ResizeObserver 可能在部分环境不可用）
     if (typeof ResizeObserver === "undefined") return;
 
     const scrollContainer = scrollContainerRef.current;
+    const contentContainer = contentRef.current;
     const resizeObserver = new ResizeObserver(() => {
       scheduleCheckScrollability();
     });
 
-    if (containerRef.current) resizeObserver.observe(containerRef.current);
     if (scrollContainer) resizeObserver.observe(scrollContainer);
+    if (contentContainer) resizeObserver.observe(contentContainer);
+    if (containerRef.current) resizeObserver.observe(containerRef.current);
 
     return () => {
       resizeObserver.disconnect();
     };
   }, [checkScrollability, scheduleCheckScrollability]);
 
+  // 监听 children 变化
+  React.useEffect(() => {
+    let rafId1: number | null = null;
+    const rafId2 = requestAnimationFrame(() => {
+      rafId1 = requestAnimationFrame(() => {
+        scheduleCheckScrollability();
+      });
+    });
+
+    return () => {
+      cancelAnimationFrame(rafId2);
+      if (rafId1 != null) cancelAnimationFrame(rafId1);
+    };
+  }, [children, scheduleCheckScrollability]);
+
+  // 清理 RAF
   React.useEffect(() => {
     return () => {
       if (rafIdRef.current != null) {
-        window.cancelAnimationFrame(rafIdRef.current);
-        rafIdRef.current = null;
+        cancelAnimationFrame(rafIdRef.current);
       }
     };
   }, []);
 
   // 滚动函数
   const scroll = React.useCallback((direction: "left" | "right") => {
-    if (!scrollContainerRef.current) return;
-
     const scrollContainer = scrollContainerRef.current;
-    const scrollAmount = scrollContainer.clientWidth * SCROLL_RATIO;
+    if (!scrollContainer) return;
 
+    const scrollAmount = scrollContainer.clientWidth * SCROLL_RATIO;
     scrollContainer.scrollBy({
       left: direction === "left" ? -scrollAmount : scrollAmount,
       behavior: "smooth",
@@ -349,13 +369,18 @@ function AttachmentListPrimitive({
       <div
         ref={scrollContainerRef}
         onScroll={scheduleCheckScrollability}
-        className="overflow-x-auto overflow-y-visible no-scrollbar relative"
+        className="overflow-x-auto overflow-y-visible no-scrollbar relative [&::-webkit-scrollbar]:hidden"
         style={{
           paddingTop: `${SCROLL_PADDING}px`,
           paddingBottom: `${SCROLL_PADDING}px`,
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
         }}
       >
-        <div className="flex items-center gap-2 w-max min-w-full">
+        <div
+          ref={contentRef}
+          className="flex items-center gap-2 w-max min-w-full"
+        >
           {children}
         </div>
       </div>
@@ -372,6 +397,7 @@ function AttachmentListPrimitive({
               padding: "8px",
               background: `linear-gradient(90deg, var(--bg-container) 0%, var(--bg-container) 40%, transparent 100%)`,
             }}
+            aria-hidden="true"
           />
           {/* 按钮 */}
           <button
@@ -387,6 +413,7 @@ function AttachmentListPrimitive({
               "flex items-center justify-center",
               "hover:bg-[var(--bg-neutral-light-hover)]",
               "transition-colors",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
             )}
             aria-label="Scroll left"
           >
@@ -407,6 +434,7 @@ function AttachmentListPrimitive({
               padding: "8px",
               background: `linear-gradient(270deg, var(--bg-container) 0%, var(--bg-container) 40%, transparent 100%)`,
             }}
+            aria-hidden="true"
           />
           {/* 按钮 */}
           <button
@@ -422,6 +450,7 @@ function AttachmentListPrimitive({
               "flex items-center justify-center",
               "hover:bg-[var(--bg-neutral-light-hover)]",
               "transition-colors",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
             )}
             aria-label="Scroll right"
           >

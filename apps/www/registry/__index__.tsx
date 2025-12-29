@@ -552,6 +552,31 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "feedback-01": {
+      name: "feedback-01",
+      description: "Feedback component for reporting issues",
+      type: "registry:block",
+      registryDependencies: ["style", "button", "sidebar-01"],
+      files: [
+        {
+          path: "registry/wuhan/blocks/feedback/feedback-01.tsx",
+          type: "registry:component",
+          target: "components/wuhan/blocks/feedback-01.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/blocks/feedback/feedback-01.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "welcome-demo": {
       name: "welcome-demo",
       description: "",
@@ -1372,6 +1397,31 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/examples/sidebar/sidebar-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "feedback-demo": {
+      name: "feedback-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["feedback-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/feedback/feedback-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/feedback-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/feedback/feedback-demo.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

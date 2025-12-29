@@ -185,4 +185,18 @@ export const blocks: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "feedback-01",
+    type: "registry:block",
+    title: "Feedback",
+    description: "Feedback component for reporting issues",
+    registryDependencies: ["style", "button", "sidebar-01"],
+    files: [
+      {
+        path: "blocks/feedback/feedback-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/feedback-01.tsx",
+      },
+    ],
+  },
 ];

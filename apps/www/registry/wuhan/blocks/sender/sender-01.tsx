@@ -67,7 +67,7 @@ export const ContainerPrimitive = React.forwardRef<
     <form
       ref={ref}
       className={cn(
-        "relative flex w-full flex-col border transition-colors has-[:focus-visible]:border-primary",
+        "relative flex w-full flex-col border transition-colors",
         "rounded-[var(--radius-2xl)]",
         "p-[var(--padding-com-lg)]",
         "gap-[var(--gap-xl)]",
@@ -239,22 +239,18 @@ export const SendButtonPrimitive = React.forwardRef<
     },
     ref,
   ) => {
-    const isDisabled = disabled || generating;
-
     return (
       <Button
         ref={ref}
         {...props}
-        disabled={isDisabled}
+        disabled={disabled}
         className={cn(
           "w-8 h-8 rounded-full p-2 gap-2",
           "bg-[var(--primary)]",
           "text-[var(--text-inverse)]",
           "transition-opacity",
           // 禁用状态：添加透明度（使用 bg-mask 的 alpha 值 0.8）
-          isDisabled && !generating && "opacity-80",
-          // 生成中状态：完全不透明
-          generating && "opacity-100",
+          disabled && "opacity-80",
           className,
         )}
         aria-label={generating ? "Generating" : "Send"}

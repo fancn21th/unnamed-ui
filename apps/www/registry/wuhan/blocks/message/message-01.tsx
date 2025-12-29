@@ -253,9 +253,7 @@ const MessageAIPrimitive = React.forwardRef<
         </div>
         {feedback && (
           <div
-            className={cn(
-              "[&_*]:!box-border",
-            )}
+            className={cn("[&_*]:!box-border")}
             role="group"
             aria-label="Message feedback"
           >

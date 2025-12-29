@@ -1747,6 +1747,24 @@
       ]
     },
     {
+      "name": "feedback-01",
+      "type": "registry:block",
+      "title": "Feedback",
+      "description": "Feedback component for reporting issues",
+      "registryDependencies": [
+        "style",
+        "button",
+        "sidebar-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/feedback/feedback-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/feedback-01.tsx"
+        }
+      ]
+    },
+    {
       "name": "welcome-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -2216,6 +2234,20 @@
           "path": "registry/wuhan/examples/sidebar/sidebar-demo.tsx",
           "type": "registry:example",
           "target": "components/wuhan/examples/sidebar-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "feedback-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "feedback-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/feedback/feedback-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/feedback-demo.tsx"
         }
       ]
     }

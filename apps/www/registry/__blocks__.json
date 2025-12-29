@@ -50,5 +50,9 @@
   {
     "name": "sidebar-01",
     "description": "Sidebar primitive components (style-only, no business logic)"
+  },
+  {
+    "name": "feedback-01",
+    "description": "Feedback component for reporting issues"
   }
 ]

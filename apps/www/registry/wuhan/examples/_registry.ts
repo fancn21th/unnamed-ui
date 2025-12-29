@@ -415,4 +415,17 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  // feedback examples
+  {
+    name: "feedback-demo",
+    type: "registry:example",
+    registryDependencies: ["feedback-01"],
+    files: [
+      {
+        path: "examples/feedback/feedback-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/feedback-demo.tsx",
+      },
+    ],
+  },
 ];

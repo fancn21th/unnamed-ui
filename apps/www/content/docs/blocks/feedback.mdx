@@ -1,0 +1,89 @@
+---
+title: Feedback
+description: Feedback component for reporting issues and collecting user feedback
+author: AF
+---
+
+<ComponentPreview
+  name="feedback-demo"
+  description="Feedback component with options, input field, and submit button"
+  className="mb-4"
+/>
+
+Feedback 组件提供了用于收集用户反馈的完整界面，包含反馈选项按钮、输入框和提交按钮。适用于消息反馈、内容举报等场景。
+
+## Features
+
+- **反馈选项**：支持多个反馈选项按钮（如：有害/不安全、信息虚假等），支持选中状态
+- **输入框**：复用 sidebar 搜索框样式，提供一致的输入体验
+- **提交按钮**：品牌色提交按钮，支持表单提交
+- **关闭功能**：头部提供关闭按钮，方便用户关闭反馈界面
+- **灵活组合**：所有组件都是样式原语，可以根据需求自由组合使用
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/feedback-01.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="feedback-demo"
+  title="registry/wuhan/examples/feedback/feedback-demo.tsx"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Components
+
+Feedback 组件由多个样式原语组成，每个原语都可以独立使用：
+
+### Container Primitives
+
+- **FeedbackContainerPrimitive** - 反馈容器（主容器，包含所有反馈内容）
+- **FeedbackHeaderPrimitive** - 反馈头部（标题 + 关闭按钮）
+
+### Button Primitives
+
+- **FeedbackButtonPrimitive** - 反馈选项按钮（支持 default、hover、selected 三种状态）
+- **FeedbackButtonGroupPrimitive** - 反馈按钮组（管理多个反馈选项）
+- **FeedbackSubmitButtonPrimitive** - 提交按钮（品牌色按钮）
+
+### Input Primitives
+
+- **FeedbackInputContainerPrimitive** - 输入框容器
+- **FeedbackInputPrimitive** - 反馈输入框（复用 sidebar 搜索框样式）
+
+## Examples
+
+### Default
+
+基础的反馈组件示例，包含完整的反馈流程：
+
+<ComponentPreview
+  name="feedback-demo"
+  description="Complete feedback component example"
+  className="mb-4"
+/>

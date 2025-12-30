@@ -20,9 +20,9 @@ import {
  * @deprecated 请使用 ToggleButtonPrimitive from toggle-button block
  * @public
  */
-interface FeedbackButtonPrimitiveProps extends React.ComponentProps<
+type FeedbackButtonPrimitiveProps = React.ComponentProps<
   typeof ToggleButtonPrimitive
-> {}
+>;
 
 /**
  * 反馈容器原语属性
@@ -58,17 +58,17 @@ interface FeedbackHeaderPrimitiveProps extends Omit<
  * @deprecated 请使用 ToggleButtonGroupPrimitive from toggle-button block
  * @public
  */
-interface FeedbackButtonGroupPrimitiveProps extends React.ComponentProps<
+type FeedbackButtonGroupPrimitiveProps = React.ComponentProps<
   typeof ToggleButtonGroupPrimitive
-> {}
+>;
 
 /**
  * 反馈输入框原语属性
  * @public
  */
-interface FeedbackInputPrimitiveProps extends React.ComponentProps<
+type FeedbackInputPrimitiveProps = React.ComponentProps<
   typeof SidebarHistorySearchInput
-> {}
+>;
 
 /**
  * 反馈提交按钮原语属性

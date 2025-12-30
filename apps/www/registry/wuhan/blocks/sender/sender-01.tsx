@@ -61,7 +61,7 @@ ButtonPrimitive.displayName = "ButtonPrimitive";
  * 容器样式原语
  * 提供基础的容器样式，用户完全控制内容
  */
-export interface ContainerPrimitiveProps extends React.ComponentPropsWithoutRef<"form"> {}
+export type ContainerPrimitiveProps = React.ComponentPropsWithoutRef<"form">;
 
 export const ContainerPrimitive = React.forwardRef<
   HTMLFormElement,
@@ -138,9 +138,9 @@ export function RegionPrimitive({
  * 上传附件按钮样式原语
  * 提供上传附件按钮的基础样式
  */
-export interface AttachmentButtonPrimitiveProps extends React.ComponentProps<
+export type AttachmentButtonPrimitiveProps = React.ComponentProps<
   typeof Button
-> {}
+>;
 
 export const AttachmentButtonPrimitive = React.forwardRef<
   HTMLButtonElement,

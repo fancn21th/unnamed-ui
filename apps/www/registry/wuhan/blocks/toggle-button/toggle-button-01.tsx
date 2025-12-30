@@ -10,8 +10,9 @@ import { cn } from "@/lib/utils";
  * 开关按钮样式原语属性
  * @public
  */
-export interface ToggleButtonPrimitiveProps extends React.ComponentProps<
-  typeof Button
+export interface ToggleButtonPrimitiveProps extends Omit<
+  React.ComponentProps<typeof Button>,
+  "variant"
 > {
   /**
    * 是否选中状态
@@ -204,9 +205,3 @@ export const ToggleButtonGroupPrimitive = React.forwardRef<
   },
 );
 ToggleButtonGroupPrimitive.displayName = "ToggleButtonGroupPrimitive";
-
-// ==================== 统一导出 ====================
-
-export type { ToggleButtonPrimitiveProps, ToggleButtonGroupPrimitiveProps };
-
-export { ToggleButtonPrimitive, ToggleButtonGroupPrimitive };

@@ -50,7 +50,7 @@ export default function SidebarDemo() {
 
   return (
     <div className="w-full max-w-[240px] h-[600px] border border-[var(--border-neutral)] rounded-lg overflow-hidden">
-      <div className="h-full p-[var(--padding-com-lg)] bg-[var(--bg-page-neutral)]">
+      <div className="h-full p-[var(--padding-com-lg)] bg-[var(--bg-page-secondary)]">
         <SidebarPrimitive>
           <SidebarContentPrimitive>
             {/* Header */}

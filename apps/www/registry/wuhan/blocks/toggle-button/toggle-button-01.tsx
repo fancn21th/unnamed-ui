@@ -122,7 +122,7 @@ export const ToggleButtonPrimitive = React.forwardRef<
             "bg-transparent",
             "border-[var(--border-neutral)]",
             "text-[var(--text-primary)]",
-            "hover:bg-[var(--bg-neutral-light-hover)]",
+            "hover:bg-[var(--bg-neutral-light)]",
           ],
           // selected 状态
           selected && [

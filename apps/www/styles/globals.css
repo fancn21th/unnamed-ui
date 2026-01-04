@@ -403,7 +403,8 @@
   /* ==================== Page 页面背景 - Light 主题 ==================== */
   --bg-page: var(--neutral-0);
   --bg-page-brand: var(--brand-50);
-  --bg-page-neutral: var(--neutral-50);
+  --bg-page-secondary: var(--neutral-50);
+  --bg-container-secondary: var(--neutral-50);
   
   /* 边框颜色 */
   --border-brand: var(--brand-600);
@@ -635,7 +636,8 @@
   /* ==================== Page 页面背景 - Dark 主题 ==================== */
   --bg-page: var(--neutral-10);
   --bg-page-brand: var(--brand-50);
-  --bg-page-neutral: var(--neutral-50);
+  --bg-page-secondary: var(--neutral-50);
+  --bg-container-secondary: var(--neutral-50);
   
   /* 边框颜色 */
   --border-brand: var(--brand-600);

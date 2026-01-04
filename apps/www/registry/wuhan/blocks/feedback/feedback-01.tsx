@@ -107,7 +107,7 @@ const FeedbackContainerPrimitive = React.forwardRef<
         "pb-[var(--margin-com-xl)]",
         "pl-[var(--padding-com-xl)]",
         "gap-3",
-        "bg-[var(--bg-page-neutral)]",
+        "bg-[var(--bg-page-secondary)]",
         "flex flex-col",
         className,
       )}

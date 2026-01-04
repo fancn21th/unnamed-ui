@@ -8,9 +8,7 @@ import {
   FeedbackInputPrimitive,
   FeedbackSubmitButtonPrimitive,
 } from "@/registry/wuhan/blocks/feedback/feedback-01";
-import {
-  ToggleButtonGroupPrimitive,
-} from "@/registry/wuhan/blocks/toggle-button/toggle-button-01";
+import { ToggleButtonGroupPrimitive } from "@/registry/wuhan/blocks/toggle-button/toggle-button-01";
 
 export default function FeedbackDemo() {
   const [selectedOption, setSelectedOption] = React.useState<string>("");

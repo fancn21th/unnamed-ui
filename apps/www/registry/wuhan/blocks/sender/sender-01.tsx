@@ -158,7 +158,7 @@ export const AttachmentButtonPrimitive = React.forwardRef<
         "rounded-lg",
         "bg-[var(--bg-container)]",
         "border-[var(--border-neutral)]",
-        "hover:bg-[var(--bg-neutral-light-hover)] transition-colors",
+        "hover:bg-[var(--bg-neutral-light)] transition-colors",
         className,
       )}
     >

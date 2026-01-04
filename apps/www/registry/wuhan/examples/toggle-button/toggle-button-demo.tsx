@@ -113,7 +113,7 @@ export default function ToggleButtonDemo() {
             <p className="text-xs text-[var(--text-tertiary)] mb-2">
               反馈组件中的使用
             </p>
-            <div className="p-4 bg-[var(--bg-page-neutral)] rounded-lg">
+            <div className="p-4 bg-[var(--bg-page-secondary)] rounded-lg">
               <ToggleButtonGroupPrimitive
                 options={feedbackOptions}
                 selectedId={selectedOption}
@@ -127,7 +127,7 @@ export default function ToggleButtonDemo() {
             <p className="text-xs text-[var(--text-tertiary)] mb-2">
               Sender组件中的使用
             </p>
-            <div className="p-4 bg-[var(--bg-page-neutral)] rounded-lg">
+            <div className="p-4 bg-[var(--bg-page-secondary)] rounded-lg">
               <ToggleButtonGroupPrimitive
                 options={modeOptions.map((opt) => ({
                   id: opt.id,

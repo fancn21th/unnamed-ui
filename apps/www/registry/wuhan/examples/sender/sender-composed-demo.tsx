@@ -19,9 +19,7 @@ import {
   SenderAttachmentButton,
   SenderSendButton,
 } from "@/registry/wuhan/blocks/sender/sender-01";
-import {
-  ToggleButtonPrimitive,
-} from "@/registry/wuhan/blocks/toggle-button/toggle-button-01";
+import { ToggleButtonPrimitive } from "@/registry/wuhan/blocks/toggle-button/toggle-button-01";
 import {
   AttachmentCard,
   AttachmentCardContent,

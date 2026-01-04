@@ -372,7 +372,7 @@ function getAllCSSVariables(isDark: boolean = false): Record<string, string> {
     "bg-error", "bg-error-light", "bg-error-light-hover", "bg-error-light-active",
     "bg-error-hover", "bg-error-active",
     "bg-neutral", "bg-neutral-hover", "bg-neutral-active",
-    "bg-mask", "bg-page", "bg-page-brand", "bg-page-neutral",
+    "bg-mask", "bg-page", "bg-page-brand", "bg-page-secondary", "bg-container-secondary",
     // Border colors
     "border-brand", "border-brand-hover", "border-brand-active",
     "border-brand-light", "border-brand-light-hover",

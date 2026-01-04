@@ -13,6 +13,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const SCROLL_THRESHOLD = 1; // 滚动检测容差（处理浮点数精度问题）
 const SCROLL_RATIO = 0.8; // 每次滚动容器宽度的比例
 const SCROLL_PADDING = 0; // 滚动容器的垂直内边距（px）
+const SCROLL_CONTAINER_PADDING_TOP = 4; // 删除按钮向上偏移 4px，需要至少 4px 的 padding-top 才能完整显示
 
 // ==================== 样式原语层（Primitives）====================
 // 这些组件只提供样式，不包含任何逻辑和业务假设
@@ -198,7 +199,7 @@ const AttachmentCardDeleteButton = React.forwardRef<
         "opacity-0 pointer-events-none",
         "group-hover/card:opacity-100 group-hover/card:pointer-events-auto",
         "transition-opacity duration-150",
-        "hover:bg-[var(--bg-neutral-light-hover)]",
+        "hover:bg-[var(--bg-neutral-light)]",
         "transition-colors",
         className,
       )}
@@ -298,8 +299,7 @@ function AttachmentListPrimitive({
   // 只有当内容高度足够（大于滚动按钮高度56px的一半，即28px）时才应用
   const SCROLL_BUTTON_HEIGHT = 56;
   const MIN_CONTENT_HEIGHT_FOR_PADDING = SCROLL_BUTTON_HEIGHT / 2; // 28px
-  const shouldApplyPadding =
-    hasContent && contentHeight >= MIN_CONTENT_HEIGHT_FOR_PADDING;
+  const shouldApplyPadding = hasContent && contentHeight >= MIN_CONTENT_HEIGHT_FOR_PADDING;
 
   // 检查滚动状态
   const checkScrollability = React.useCallback(() => {
@@ -410,8 +410,9 @@ function AttachmentListPrimitive({
         onScroll={scheduleCheckScrollability}
         className="overflow-x-auto overflow-y-visible no-scrollbar relative [&::-webkit-scrollbar]:hidden"
         style={{
-          paddingTop: shouldApplyPadding ? `${SCROLL_PADDING}px` : "0px",
+          paddingTop: `${SCROLL_CONTAINER_PADDING_TOP}px`,
           paddingBottom: shouldApplyPadding ? `${SCROLL_PADDING}px` : "0px",
+          marginTop: "-4px",
           scrollbarWidth: "none",
           msOverflowStyle: "none",
         }}
@@ -450,7 +451,7 @@ function AttachmentListPrimitive({
               "border border-[var(--border-neutral)]",
               "p-[var(--padding-com-xs)]",
               "flex items-center justify-center",
-              "hover:bg-[var(--bg-neutral-light-hover)]",
+              "hover:bg-[var(--bg-neutral-light)]",
               "transition-colors",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
             )}
@@ -487,7 +488,7 @@ function AttachmentListPrimitive({
               "border border-[var(--border-neutral)]",
               "p-[var(--padding-com-xs)]",
               "flex items-center justify-center",
-              "hover:bg-[var(--bg-neutral-light-hover)]",
+              "hover:bg-[var(--bg-neutral-light)]",
               "transition-colors",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
             )}

@@ -58,7 +58,7 @@ export default function CompositionsPage() {
             "shrink-0 w-[240px] p-[var(--padding-com-lg)] opacity-100",
             variant === "zijin" || variant === "medical"
               ? "bg-[var(--bg-page)]"
-              : "bg-[var(--bg-page-neutral)]"
+              : "bg-[var(--bg-page-secondary)]"
           )}
         >
           <SidebarCommon

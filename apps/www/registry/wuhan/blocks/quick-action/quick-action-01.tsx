@@ -42,7 +42,7 @@ export const QuickActionButtonPrimitive = React.forwardRef<
           "rounded-[var(--radius-lg)]",
           "bg-[var(--bg-container)]",
           "border border-[var(--border-neutral)]",
-          "hover:bg-[var(--bg-neutral-light-hover)]",
+          "hover:bg-[var(--bg-neutral-light)]",
           "transition-colors",
           "text-[var(--text-primary)]",
           "font-[var(--font-family-cn)]",

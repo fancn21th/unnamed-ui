@@ -607,6 +607,32 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "deep-thinking-01": {
+      name: "deep-thinking-01",
+      description:
+        "Deep thinking collapsible block for displaying AI thinking process",
+      type: "registry:block",
+      registryDependencies: ["style", "collapsible"],
+      files: [
+        {
+          path: "registry/wuhan/blocks/deep-thinking/deep-thinking-01.tsx",
+          type: "registry:component",
+          target: "components/wuhan/blocks/deep-thinking-01.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/blocks/deep-thinking/deep-thinking-01.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "welcome-demo": {
       name: "welcome-demo",
       description: "",
@@ -1477,6 +1503,106 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/examples/toggle-button/toggle-button-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "deep-thinking-demo": {
+      name: "deep-thinking-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["deep-thinking-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/deep-thinking/deep-thinking-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/deep-thinking-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/deep-thinking/deep-thinking-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "deep-thinking-default": {
+      name: "deep-thinking-default",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["deep-thinking-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/deep-thinking/deep-thinking-default.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/deep-thinking-default.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/deep-thinking/deep-thinking-default.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "deep-thinking-with-status": {
+      name: "deep-thinking-with-status",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["deep-thinking-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/deep-thinking/deep-thinking-with-status.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/deep-thinking-with-status.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/deep-thinking/deep-thinking-with-status.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "deep-thinking-custom": {
+      name: "deep-thinking-custom",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["deep-thinking-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/deep-thinking/deep-thinking-custom.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/deep-thinking-custom.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/deep-thinking/deep-thinking-custom.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

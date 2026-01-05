@@ -58,5 +58,9 @@
   {
     "name": "toggle-button-01",
     "description": "Toggle button component for selection and mode switching"
+  },
+  {
+    "name": "deep-thinking-01",
+    "description": "Deep thinking collapsible block for displaying AI thinking process"
   }
 ]

@@ -441,4 +441,53 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  // deep-thinking examples
+  {
+    name: "deep-thinking-demo",
+    type: "registry:example",
+    registryDependencies: ["deep-thinking-01"],
+    files: [
+      {
+        path: "examples/deep-thinking/deep-thinking-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/deep-thinking-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "deep-thinking-default",
+    type: "registry:example",
+    registryDependencies: ["deep-thinking-01"],
+    files: [
+      {
+        path: "examples/deep-thinking/deep-thinking-default.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/deep-thinking-default.tsx",
+      },
+    ],
+  },
+  {
+    name: "deep-thinking-with-status",
+    type: "registry:example",
+    registryDependencies: ["deep-thinking-01"],
+    files: [
+      {
+        path: "examples/deep-thinking/deep-thinking-with-status.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/deep-thinking-with-status.tsx",
+      },
+    ],
+  },
+  {
+    name: "deep-thinking-custom",
+    type: "registry:example",
+    registryDependencies: ["deep-thinking-01"],
+    files: [
+      {
+        path: "examples/deep-thinking/deep-thinking-custom.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/deep-thinking-custom.tsx",
+      },
+    ],
+  },
 ];

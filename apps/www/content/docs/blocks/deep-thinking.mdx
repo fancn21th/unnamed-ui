@@ -1,0 +1,84 @@
+---
+title: Deep Thinking
+description: Deep thinking collapsible block for displaying AI thinking process
+author: AF
+---
+
+<ComponentPreview name="deep-thinking-demo" description="Deep thinking block with collapsible content" className="mb-4" />
+
+Deep Thinking 组件提供了一个可折叠的思考过程展示块，适用于显示 AI 的深度思考过程、推理步骤等场景。
+
+## Features
+
+- **可折叠交互**：点击头部区域可展开或收起内容
+- **状态管理**：支持思考中、已完成、失败三种状态
+- **动画效果**：思考中状态显示脉冲动画，展开收起有平滑过渡
+- **时长显示**：可显示思考耗时
+- **自定义样式**：支持自定义图标、标题等
+- **样式隔离**：组件样式不受外部框架影响
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/deep-thinking-01.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="deep-thinking-demo" title="registry/wuhan/examples/deep-thinking/deep-thinking-demo.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Examples
+
+### Default
+
+基础的深度思考展示，包含不同状态。
+
+<ComponentPreview
+  name="deep-thinking-default"
+  description="Basic deep thinking examples with different states"
+  className="mb-4"
+/>
+
+### With Status
+
+展示深度思考的不同状态：思考中、已完成、失败。
+
+<ComponentPreview
+  name="deep-thinking-with-status"
+  description="Deep thinking with different status"
+  className="mb-4"
+/>
+
+### Custom
+
+自定义图标和标题的深度思考组件。
+
+<ComponentPreview
+  name="deep-thinking-custom"
+  description="Deep thinking with custom icon and title"
+  className="mb-4"
+/>
+

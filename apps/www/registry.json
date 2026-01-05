@@ -1788,6 +1788,23 @@
       ]
     },
     {
+      "name": "deep-thinking-01",
+      "type": "registry:block",
+      "title": "Deep Thinking",
+      "description": "Deep thinking collapsible block for displaying AI thinking process",
+      "registryDependencies": [
+        "style",
+        "collapsible"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/deep-thinking/deep-thinking-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/deep-thinking-01.tsx"
+        }
+      ]
+    },
+    {
       "name": "welcome-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -2285,6 +2302,62 @@
           "path": "registry/wuhan/examples/toggle-button/toggle-button-demo.tsx",
           "type": "registry:example",
           "target": "components/wuhan/examples/toggle-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "deep-thinking-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "deep-thinking-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/deep-thinking/deep-thinking-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/deep-thinking-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "deep-thinking-default",
+      "type": "registry:example",
+      "registryDependencies": [
+        "deep-thinking-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/deep-thinking/deep-thinking-default.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/deep-thinking-default.tsx"
+        }
+      ]
+    },
+    {
+      "name": "deep-thinking-with-status",
+      "type": "registry:example",
+      "registryDependencies": [
+        "deep-thinking-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/deep-thinking/deep-thinking-with-status.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/deep-thinking-with-status.tsx"
+        }
+      ]
+    },
+    {
+      "name": "deep-thinking-custom",
+      "type": "registry:example",
+      "registryDependencies": [
+        "deep-thinking-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/deep-thinking/deep-thinking-custom.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/deep-thinking-custom.tsx"
         }
       ]
     }

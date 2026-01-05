@@ -213,4 +213,19 @@ export const blocks: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "deep-thinking-01",
+    type: "registry:block",
+    title: "Deep Thinking",
+    description:
+      "Deep thinking collapsible block for displaying AI thinking process",
+    registryDependencies: ["style", "collapsible"],
+    files: [
+      {
+        path: "blocks/deep-thinking/deep-thinking-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/deep-thinking-01.tsx",
+      },
+    ],
+  },
 ];

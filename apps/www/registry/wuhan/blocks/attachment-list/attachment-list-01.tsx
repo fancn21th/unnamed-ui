@@ -299,7 +299,8 @@ function AttachmentListPrimitive({
   // 只有当内容高度足够（大于滚动按钮高度56px的一半，即28px）时才应用
   const SCROLL_BUTTON_HEIGHT = 56;
   const MIN_CONTENT_HEIGHT_FOR_PADDING = SCROLL_BUTTON_HEIGHT / 2; // 28px
-  const shouldApplyPadding = hasContent && contentHeight >= MIN_CONTENT_HEIGHT_FOR_PADDING;
+  const shouldApplyPadding =
+    hasContent && contentHeight >= MIN_CONTENT_HEIGHT_FOR_PADDING;
 
   // 检查滚动状态
   const checkScrollability = React.useCallback(() => {

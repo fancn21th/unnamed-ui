@@ -25,7 +25,9 @@ export default function DeepThinkingDefault() {
         >
           <DeepThinkingIconPrimitive>
             <ThinkingDotsPrimitive />
-            <DeepThinkingTitlePrimitive className="text-[var(--text-secondary)]">深度思考中</DeepThinkingTitlePrimitive>
+            <DeepThinkingTitlePrimitive className="text-[var(--text-secondary)]">
+              深度思考中
+            </DeepThinkingTitlePrimitive>
           </DeepThinkingIconPrimitive>
         </DeepThinkingHeaderPrimitive>
         <DeepThinkingContentPrimitive>

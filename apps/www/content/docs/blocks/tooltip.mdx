@@ -1,0 +1,186 @@
+---
+title: Block Tooltip
+description: Block tooltip component with custom styling for displaying contextual information
+author: AF
+---
+
+<ComponentPreview name="tooltip-demo" description="Block tooltip component with custom styling" className="mb-4" />
+
+Block Tooltip 组件提供了带自定义样式的提示框组件，适用于在用户悬停或聚焦时显示额外的上下文信息、帮助文本或操作说明。
+
+## Features
+
+- **自定义样式**：使用设计系统中的 CSS 变量，确保样式一致性
+- **灵活定位**：支持四个方向的定位（top, right, bottom, left）
+- **响应式宽度**：最小宽度 36px，最大宽度 480px，自动适应内容
+- **深色背景**：使用 `--bg-mask` 作为背景色，提供良好的视觉对比
+- **动画效果**：内置淡入淡出和缩放动画，提供流畅的用户体验
+- **可访问性**：基于 Radix UI，提供完整的键盘导航和屏幕阅读器支持
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/tooltip-01.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="tooltip-demo" title="registry/wuhan/examples/tooltip/tooltip-demo.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+### Basic Usage
+
+基础用法，在触发器元素上悬停时显示提示信息。
+
+```tsx
+import {
+  BlockTooltip,
+  BlockTooltipTrigger,
+  BlockTooltipContent,
+} from "@/registry/wuhan/blocks/tooltip/tooltip-01";
+
+<BlockTooltip>
+  <BlockTooltipTrigger asChild>
+    <Button variant="outline">悬停查看提示</Button>
+  </BlockTooltipTrigger>
+  <BlockTooltipContent>
+    这是一个 Block Tooltip 提示信息
+  </BlockTooltipContent>
+</BlockTooltip>
+```
+
+### Positioning
+
+可以通过 `side` 属性控制提示框的显示位置。
+
+```tsx
+<BlockTooltip>
+  <BlockTooltipTrigger asChild>
+    <Button variant="outline">顶部</Button>
+  </BlockTooltipTrigger>
+  <BlockTooltipContent side="top">
+    顶部提示信息
+  </BlockTooltipContent>
+</BlockTooltip>
+```
+
+支持的 `side` 值：
+- `top` - 显示在触发器上方
+- `right` - 显示在触发器右侧
+- `bottom` - 显示在触发器下方（默认）
+- `left` - 显示在触发器左侧
+
+### With Icons
+
+可以在触发器中使用图标，提示框会自动适配。
+
+```tsx
+<BlockTooltip>
+  <BlockTooltipTrigger asChild>
+    <Button variant="ghost" size="icon">
+      <Info className="size-4" />
+    </Button>
+  </BlockTooltipTrigger>
+  <BlockTooltipContent>
+    点击图标了解更多信息
+  </BlockTooltipContent>
+</BlockTooltip>
+```
+
+## Styling
+
+Block Tooltip 组件使用以下设计系统变量：
+
+- **背景色**：`--bg-mask`（深色半透明背景）
+- **文本颜色**：`--text-inverse`（白色文本）
+- **字体**：`--font-family-cn`（中文字体）
+- **字号**：`--font-size-1`（12px）
+- **行高**：`--line-height-1`（20px）
+- **字重**：`--font-weight-400`（400）
+- **圆角**：`--radius-sm`（4px）
+- **内边距**：
+  - 上下：`--gap-xs`（4px）
+  - 左右：`--gap-sm`（6px）
+- **宽度**：
+  - 最小宽度：36px
+  - 最大宽度：480px
+
+## Examples
+
+### Basic
+
+基础的提示框用法，展示简单的文本提示。
+
+<ComponentPreview
+  name="tooltip-demo"
+  description="Block tooltip basic usage"
+  className="mb-4"
+/>
+
+## API Reference
+
+### BlockTooltip
+
+Tooltip 根组件，提供 tooltip 上下文。
+
+```tsx
+<BlockTooltip>
+  {/* ... */}
+</BlockTooltip>
+```
+
+### BlockTooltipTrigger
+
+Tooltip 触发器组件，通常包裹需要显示提示的元素。
+
+```tsx
+<BlockTooltipTrigger asChild>
+  <Button>Hover me</Button>
+</BlockTooltipTrigger>
+```
+
+**Props**: 继承自 `@radix-ui/react-tooltip` 的 `Trigger` 组件。
+
+### BlockTooltipContent
+
+Tooltip 内容组件，显示提示文本。
+
+```tsx
+<BlockTooltipContent side="top" sideOffset={4}>
+  提示内容
+</BlockTooltipContent>
+```
+
+**Props**:
+- `side?: "top" | "right" | "bottom" | "left"` - 提示框位置
+- `sideOffset?: number` - 与触发器的距离（默认：0）
+- `align?: "start" | "center" | "end"` - 对齐方式
+- `className?: string` - 自定义样式类名
+- `children: React.ReactNode` - 提示内容
+
+**Props**: 继承自 `@radix-ui/react-tooltip` 的 `Content` 组件。
+

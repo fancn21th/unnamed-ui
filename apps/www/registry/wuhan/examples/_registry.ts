@@ -490,4 +490,17 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  // tooltip examples
+  {
+    name: "tooltip-demo",
+    type: "registry:example",
+    registryDependencies: ["tooltip-01", "button"],
+    files: [
+      {
+        path: "examples/tooltip/tooltip-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/tooltip-demo.tsx",
+      },
+    ],
+  },
 ];

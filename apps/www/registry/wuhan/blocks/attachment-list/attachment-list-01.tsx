@@ -4,6 +4,11 @@ import * as React from "react";
 import { buttonVariants } from "@/registry/wuhan/ui/button";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  BlockTooltip,
+  BlockTooltipTrigger,
+  BlockTooltipContent,
+} from "@/registry/wuhan/blocks/tooltip/tooltip-01";
 
 // ==================== 类型定义 ====================
 // 完全通用的类型，不强制任何业务概念
@@ -129,10 +134,22 @@ AttachmentCardContent.displayName = "AttachmentCardContent";
 const AttachmentCardTitle = React.forwardRef<
   HTMLSpanElement,
   React.HTMLAttributes<HTMLSpanElement>
->(({ className, ...props }, ref) => {
-  return (
+>(({ className, children, ...props }, ref) => {
+  const titleRef = React.useRef<HTMLSpanElement>(null);
+
+  const titleText = typeof children === "string" ? children : undefined;
+  const shouldShowTooltip = titleText;
+
+  const titleElement = (
     <span
-      ref={ref}
+      ref={(node) => {
+        if (typeof ref === "function") {
+          ref(node);
+        } else if (ref) {
+          ref.current = node;
+        }
+        titleRef.current = node;
+      }}
       className={cn(
         "font-[var(--font-family-cn)]",
         "font-[var(--font-weight-400)]",
@@ -143,8 +160,21 @@ const AttachmentCardTitle = React.forwardRef<
         className,
       )}
       {...props}
-    />
+    >
+      {children}
+    </span>
   );
+
+  if (shouldShowTooltip) {
+    return (
+      <BlockTooltip>
+        <BlockTooltipTrigger asChild>{titleElement}</BlockTooltipTrigger>
+        <BlockTooltipContent side="top">{titleText}</BlockTooltipContent>
+      </BlockTooltip>
+    );
+  }
+
+  return titleElement;
 });
 AttachmentCardTitle.displayName = "AttachmentCardTitle";
 

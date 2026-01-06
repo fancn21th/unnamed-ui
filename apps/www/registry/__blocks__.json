@@ -62,5 +62,9 @@
   {
     "name": "deep-thinking-01",
     "description": "Deep thinking collapsible block for displaying AI thinking process"
+  },
+  {
+    "name": "tooltip-01",
+    "description": "Block tooltip component with custom styling"
   }
 ]

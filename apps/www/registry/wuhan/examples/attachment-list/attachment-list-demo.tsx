@@ -135,9 +135,7 @@ export default function AttachmentListDemo() {
               {!item.isImage && (
                 <AttachmentCardContent>
                   {item.name && (
-                    <AttachmentCardTitle title={item.name}>
-                      {item.name}
-                    </AttachmentCardTitle>
+                    <AttachmentCardTitle>{item.name}</AttachmentCardTitle>
                   )}
                   {meta && <AttachmentCardMeta>{meta}</AttachmentCardMeta>}
                 </AttachmentCardContent>

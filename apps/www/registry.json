@@ -1677,7 +1677,8 @@
       "description": "Attachment list component",
       "registryDependencies": [
         "style",
-        "button"
+        "button",
+        "tooltip-01"
       ],
       "files": [
         {
@@ -1801,6 +1802,23 @@
           "path": "registry/wuhan/blocks/deep-thinking/deep-thinking-01.tsx",
           "type": "registry:component",
           "target": "components/wuhan/blocks/deep-thinking-01.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tooltip-01",
+      "type": "registry:block",
+      "title": "Block Tooltip",
+      "description": "Block tooltip component with custom styling",
+      "registryDependencies": [
+        "style",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/tooltip/tooltip-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/tooltip-01.tsx"
         }
       ]
     },
@@ -2358,6 +2376,21 @@
           "path": "registry/wuhan/examples/deep-thinking/deep-thinking-custom.tsx",
           "type": "registry:example",
           "target": "components/wuhan/examples/deep-thinking-custom.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tooltip-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "tooltip-01",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/tooltip/tooltip-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/tooltip-demo.tsx"
         }
       ]
     }

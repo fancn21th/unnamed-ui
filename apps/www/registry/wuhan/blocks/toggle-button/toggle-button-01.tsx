@@ -19,6 +19,10 @@ export interface ToggleButtonPrimitiveProps extends Omit<
    */
   selected?: boolean;
   /**
+   * 是否多选模式
+   */
+  multiple?: boolean;
+  /**
    * 按钮变体样式
    * - "default": 默认样式（用于反馈组件等场景）
    * - "compact": 紧凑样式（用于sender组件等场景）
@@ -74,8 +78,10 @@ export interface ToggleButtonGroupPrimitiveProps extends React.HTMLAttributes<HT
 export const ToggleButtonPrimitive = React.forwardRef<
   HTMLButtonElement,
   ToggleButtonPrimitiveProps
->(({ className, selected = false, variant = "default", ...props }, ref) => {
+>(({ className, selected = false, multiple = false, variant = "default", ...props }, ref) => {
   const isCompact = variant === "compact";
+  // 多选模式下，选中状态不需要背景色
+  const shouldHaveBackground = !multiple || !selected;
 
   return (
     <Button
@@ -107,10 +113,10 @@ export const ToggleButtonPrimitive = React.forwardRef<
           ],
           // selected 状态
           selected && [
-            "bg-[var(--bg-container)]",
+            shouldHaveBackground ? "bg-[var(--bg-container)]" : "bg-transparent",
             "border-[var(--border-brand-light-hover)]",
             "text-[var(--text-brand)]",
-            "hover:bg-[var(--bg-container)]",
+            shouldHaveBackground ? "hover:bg-[var(--bg-container)]" : "hover:bg-transparent",
           ],
         ],
         // 紧凑样式（用于sender组件等场景）
@@ -126,10 +132,10 @@ export const ToggleButtonPrimitive = React.forwardRef<
           ],
           // selected 状态
           selected && [
-            "bg-[var(--bg-brand-light)]",
+            shouldHaveBackground ? "bg-[var(--bg-brand-light)]" : "bg-transparent",
             "border-[var(--border-brand-light-hover)]",
             "text-[var(--text-brand)]",
-            "hover:bg-[var(--bg-container)]",
+            shouldHaveBackground ? "hover:bg-[var(--bg-container)]" : "hover:bg-transparent",
           ],
         ],
         className,
@@ -195,6 +201,7 @@ export const ToggleButtonGroupPrimitive = React.forwardRef<
           <ToggleButtonPrimitive
             key={option.id}
             selected={isSelected(option.id)}
+            multiple={multiple}
             variant={variant}
             onClick={() => handleToggle(option.id)}
           >

@@ -120,7 +120,7 @@ export const blocks: Registry["items"] = [
     type: "registry:block",
     title: "Attachment List",
     description: "Attachment list component",
-    registryDependencies: ["style", "button"],
+    registryDependencies: ["style", "button", "tooltip-01"],
     files: [
       {
         path: "blocks/attachment-list/attachment-list-01.tsx",
@@ -225,6 +225,20 @@ export const blocks: Registry["items"] = [
         path: "blocks/deep-thinking/deep-thinking-01.tsx",
         type: "registry:component",
         target: "components/wuhan/blocks/deep-thinking-01.tsx",
+      },
+    ],
+  },
+  {
+    name: "tooltip-01",
+    type: "registry:block",
+    title: "Block Tooltip",
+    description: "Block tooltip component with custom styling",
+    registryDependencies: ["style", "tooltip"],
+    files: [
+      {
+        path: "blocks/tooltip/tooltip-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/tooltip-01.tsx",
       },
     ],
   },

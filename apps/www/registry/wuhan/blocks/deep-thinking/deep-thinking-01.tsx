@@ -274,11 +274,7 @@ const DeepThinkingContentPrimitive = React.forwardRef<
     <CollapsibleContent>
       <div
         ref={ref}
-        className={cn(
-          "[&_*]:!box-border",
-          "flex flex-col",
-          className,
-        )}
+        className={cn("[&_*]:!box-border", "flex flex-col", className)}
         {...props}
       >
         {/* 内容  竖线和内容区域 */}

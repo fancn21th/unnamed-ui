@@ -490,6 +490,19 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  // component-panel examples
+  {
+    name: "component-panel-default",
+    type: "registry:example",
+    registryDependencies: ["component-panel-01"],
+    files: [
+      {
+        path: "examples/component-panel/component-panel-default.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/component-panel-default.tsx",
+      },
+    ],
+  },
   // tooltip examples
   {
     name: "tooltip-demo",

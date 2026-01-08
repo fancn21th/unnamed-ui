@@ -684,6 +684,32 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "component-panel-01": {
+      name: "component-panel-01",
+      description:
+        "Component panel with tabs (全部, MCP, 工具, 工作流) and switch button list",
+      type: "registry:block",
+      registryDependencies: ["style", "tabs", "switch"],
+      files: [
+        {
+          path: "registry/wuhan/blocks/component-panel/component-panel-01.tsx",
+          type: "registry:component",
+          target: "components/wuhan/blocks/component-panel-01.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/blocks/component-panel/component-panel-01.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "welcome-demo": {
       name: "welcome-demo",
       description: "",
@@ -1654,6 +1680,31 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/examples/deep-thinking/deep-thinking-custom.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "component-panel-default": {
+      name: "component-panel-default",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["component-panel-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/component-panel/component-panel-default.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/component-panel-default.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/component-panel/component-panel-default.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

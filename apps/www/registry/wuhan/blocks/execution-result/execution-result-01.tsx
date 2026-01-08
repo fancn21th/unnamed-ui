@@ -388,7 +388,9 @@ const ExecutionResultItemHeaderPrimitive = React.forwardRef<
         )}
         {...props}
       >
-        <div className="flex items-center gap-[var(--gap-md)] flex-1 overflow-hidden text-ellipsis whitespace-nowrap">{children}</div>
+        <div className="flex items-center gap-[var(--gap-md)] flex-1 overflow-hidden text-ellipsis whitespace-nowrap">
+          {children}
+        </div>
         <div className="flex items-center gap-[var(--gap-xs)] text-[var(--text-secondary)]">
           {arrow}
         </div>
@@ -468,7 +470,8 @@ const ExecutionResultItemImagePrimitive = React.forwardRef<
     />
   );
 });
-ExecutionResultItemImagePrimitive.displayName = "ExecutionResultItemImagePrimitive";
+ExecutionResultItemImagePrimitive.displayName =
+  "ExecutionResultItemImagePrimitive";
 
 /**
  * 执行结果列表项工具名称样式原语
@@ -496,7 +499,8 @@ const ExecutionResultItemToolNamePrimitive = React.forwardRef<
     </span>
   );
 });
-ExecutionResultItemToolNamePrimitive.displayName = "ExecutionResultItemToolNamePrimitive";
+ExecutionResultItemToolNamePrimitive.displayName =
+  "ExecutionResultItemToolNamePrimitive";
 
 /**
  * 执行结果列表项内容样式原语
@@ -541,25 +545,24 @@ const ExecutionResultSectionPrimitive = React.forwardRef<
     return (
       <div
         ref={ref}
-        className={cn(
-          "[&_*]:!box-border",
-          "flex flex-col",
-          className,
-        )}
+        className={cn("[&_*]:!box-border", "flex flex-col", className)}
         {...props}
       >
         {(title || showCopyIcon) && (
-
-          <div className={cn("flex items-center justify-between",
-            "gap-[var(--gap-md)]",
-            "bg-[var(--bg-container-secondary)]",
-            "p-[var(--padding-com-sm)]",
-            "pr-[var(--padding-com-md)]",
-            "pb-[var(--padding-com-sm)]",
-            "pl-[var(--padding-com-md)]",
-            "rounded-t-[var(--radius-md)]",
-            "border-b-[1px] border-[var(--border-neutral)]",
-            className)}>
+          <div
+            className={cn(
+              "flex items-center justify-between",
+              "gap-[var(--gap-md)]",
+              "bg-[var(--bg-container-secondary)]",
+              "p-[var(--padding-com-sm)]",
+              "pr-[var(--padding-com-md)]",
+              "pb-[var(--padding-com-sm)]",
+              "pl-[var(--padding-com-md)]",
+              "rounded-t-[var(--radius-md)]",
+              "border-b-[1px] border-[var(--border-neutral)]",
+              className,
+            )}
+          >
             {title && (
               <ExecutionResultSectionTitlePrimitive>
                 {title}
@@ -581,7 +584,7 @@ const ExecutionResultSectionPrimitive = React.forwardRef<
           // padding-left: Padding/padding-com-md;
           // border-bottom-right-radius: 8px;
           // border-bottom-left-radius: 8px;
-          
+
           <div
             className={cn(
               "font-[var(--font-family-cn)]",
@@ -596,11 +599,12 @@ const ExecutionResultSectionPrimitive = React.forwardRef<
               "max-h-[calc(var(--line-height-1)*8)]", // 8行的高度
               "overflow-y-auto",
               "overflow-x-hidden",
-              className)}>
-
+              className,
+            )}
+          >
             {children}
           </div>
-          )}
+        )}
       </div>
     );
   },

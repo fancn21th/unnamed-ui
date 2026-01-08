@@ -1,0 +1,137 @@
+---
+title: Component Panel
+description: Component panel with tabs (全部, MCP, 工具, 工作流) and toggle button list
+author: AF
+---
+
+<ComponentPreview name="component-panel-default" description="Component panel with tabs and toggle buttons" className="mb-4" />
+
+Component Panel 组件提供了一个带标签页的组件面板，支持在不同分类（全部、MCP、工具、工作流）之间切换，每个分类下显示一个可切换的组件列表。
+
+## Features
+
+- **标签页切换**：支持四个标签页（全部、MCP、工具、工作流）
+- **切换按钮**：每个列表项都是独立的切换按钮，可控制选中/未选中状态
+- **自适应布局**：列表项根据屏幕宽度自动调整每行显示数量
+  - 移动端：每行 2 个
+  - 小屏幕：每行 3 个
+  - 中等屏幕及以上：每行 4 个
+- **状态管理**：支持受控和非受控模式
+- **样式隔离**：组件样式不受外部框架影响
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/component-panel-01.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @radix-ui/react-tabs
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="component-panel-default" title="registry/wuhan/examples/component-panel/component-panel-default.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Examples
+
+### Default
+
+基础的组件面板示例，包含四个标签页和切换按钮列表。
+
+<ComponentPreview
+  name="component-panel-default"
+  description="Basic component panel with tabs and toggle buttons"
+  className="mb-4"
+/>
+
+## API
+
+### ComponentPanelContainerPrimitive
+
+组件面板容器，使用 Tabs 组件实现标签页功能。
+
+**Props:**
+
+- `defaultValue?: string` - 默认激活的 tab
+- `value?: string` - 当前激活的 tab（受控模式）
+- `onValueChange?: (value: string) => void` - tab 变化回调
+- `children?: React.ReactNode` - 子元素
+
+### ComponentPanelTabsListPrimitive
+
+标签页列表容器。
+
+**Props:**
+
+- `children?: React.ReactNode` - 子元素（通常是 ComponentPanelTabsTriggerPrimitive）
+
+### ComponentPanelTabsTriggerPrimitive
+
+标签页触发器。
+
+**Props:**
+
+- `value: string` - 标签值
+- `children?: React.ReactNode` - 标签内容
+
+### ComponentPanelTabsContentPrimitive
+
+标签页内容容器。
+
+**Props:**
+
+- `value: string` - 标签值
+- `children?: React.ReactNode` - 内容
+
+### ComponentPanelListPrimitive
+
+列表容器，使用 flex-wrap 实现自适应布局。
+
+**Props:**
+
+- `children?: React.ReactNode` - 子元素（通常是 ComponentPanelListItemPrimitive）
+
+### ComponentPanelListItemPrimitive
+
+列表项样式原语，基于 ToggleButtonPrimitive 实现，提供自适应布局样式。
+只提供样式，不包含任何业务逻辑和状态管理，用户需要自己处理点击事件和状态。
+
+**Props:**
+
+继承自 `ToggleButtonPrimitive` 的所有属性，包括：
+
+- `selected?: boolean` - 是否选中（由用户控制）
+- `onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void` - 点击事件处理（由用户实现）
+- `disabled?: boolean` - 是否禁用
+- `variant?: "default" | "compact"` - 按钮变体样式
+- `multiple?: boolean` - 是否多选模式
+- `children?: React.ReactNode` - 按钮内容（通常是标签文本）
+
+**注意：** 组件只提供样式和布局，状态管理和事件处理完全由用户控制。
+

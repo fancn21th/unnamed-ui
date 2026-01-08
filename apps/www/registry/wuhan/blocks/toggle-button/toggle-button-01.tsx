@@ -30,7 +30,8 @@ export interface ToggleButtonPrimitiveProps extends React.ButtonHTMLAttributes<H
  * 开关按钮组容器样式原语属性
  * @public
  */
-export type ToggleButtonGroupPrimitiveProps = React.HTMLAttributes<HTMLDivElement>;
+export type ToggleButtonGroupPrimitiveProps =
+  React.HTMLAttributes<HTMLDivElement>;
 
 // ==================== 样式原语层（Primitives）====================
 // 这些组件只提供样式，不包含任何逻辑和业务假设
@@ -66,6 +67,7 @@ export const ToggleButtonPrimitive = React.forwardRef<
         className={cn(
           "[&_*]:!box-border",
           "rounded-[var(--radius-lg)]",
+          "w-full",
           "border",
           "gap-1", // gap: 4px
           "transition-colors",
@@ -82,6 +84,7 @@ export const ToggleButtonPrimitive = React.forwardRef<
           "focus-visible:ring-offset-2",
           "disabled:pointer-events-none",
           "disabled:opacity-50",
+          "min-w-0",
           // 默认样式（用于反馈组件等场景）
           !isCompact && [
             "h-8",

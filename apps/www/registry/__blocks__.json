@@ -70,5 +70,9 @@
   {
     "name": "execution-result-01",
     "description": "Execution result block for displaying function call results with collapsible items"
+  },
+  {
+    "name": "component-panel-01",
+    "description": "Component panel with tabs (全部, MCP, 工具, 工作流) and switch button list"
   }
 ]

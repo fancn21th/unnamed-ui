@@ -257,4 +257,19 @@ export const blocks: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "component-panel-01",
+    type: "registry:block",
+    title: "Component Panel",
+    description:
+      "Component panel with tabs (全部, MCP, 工具, 工作流) and toggle button list",
+    registryDependencies: ["style", "tabs", "toggle-button-01"],
+    files: [
+      {
+        path: "blocks/component-panel/component-panel-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/component-panel-01.tsx",
+      },
+    ],
+  },
 ];

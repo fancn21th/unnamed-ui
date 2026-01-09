@@ -22,23 +22,48 @@ export const TextareaPrimitive = React.forwardRef<
   HTMLTextAreaElement,
   React.ComponentProps<typeof Textarea>
 >(({ rows = 2, className, ...props }, ref) => {
+  const textareaClassName = cn(
+    "resize-none border-none p-0 shadow-none focus-visible:ring-0",
+    // 默认两行高度，最多五行，超出显示滚动条
+    // 注意：这里假设 line-height 已经包含了行间距，实际高度可能因 padding 而略有差异
+    "min-h-[calc(var(--line-height-2)*2)]",
+    "max-h-[calc(var(--line-height-2)*5)]",
+    "overflow-y-auto",
+    "leading-[var(--line-height-2)]",
+    "text-sm",
+    // 光标颜色使用主题色
+    "caret-[var(--primary)]",
+    className,
+  );
+
+  if (props.children) {
+    // 如果使用自定义 textarea，将样式类应用到包裹容器
+    // 并尝试将样式类传递给 children（如果 children 可以接收 className）
+    const childrenWithClassName = React.isValidElement(props.children)
+      ? React.cloneElement(
+          props.children as React.ReactElement<{ className?: string }>,
+          {
+            className: cn(
+              textareaClassName,
+              (props.children as React.ReactElement<{ className?: string }>).props?.className
+            ),
+          }
+        )
+      : props.children;
+
+    return (
+      <div className={cn("flex-1 relative", textareaClassName)}>
+        {childrenWithClassName}
+      </div>
+    );
+  }
+
   return (
     <Textarea
       ref={ref}
       rows={rows}
       {...props}
-      className={cn(
-        "resize-none border-none p-0 shadow-none focus-visible:ring-0",
-        // 默认两行高度，最多五行，超出显示滚动条
-        // 注意：这里假设 line-height 已经包含了行间距，实际高度可能因 padding 而略有差异
-        "min-h-[calc(var(--line-height-2)*2)]",
-        "max-h-[calc(var(--line-height-2)*5)]",
-        "overflow-y-auto",
-        "leading-[var(--line-height-2)]",
-        // 光标颜色使用主题色
-        "caret-[var(--primary)]",
-        className,
-      )}
+      className={textareaClassName}
     />
   );
 });

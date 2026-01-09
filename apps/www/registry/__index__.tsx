@@ -687,9 +687,9 @@ export const Index: Record<string, Record<string, any>> = {
     "component-panel-01": {
       name: "component-panel-01",
       description:
-        "Component panel with tabs (全部, MCP, 工具, 工作流) and switch button list",
+        "Component panel with tabs (全部, MCP, 工具, 工作流) and toggle button list",
       type: "registry:block",
-      registryDependencies: ["style", "tabs", "switch"],
+      registryDependencies: ["style", "tabs", "toggle-button-01"],
       files: [
         {
           path: "registry/wuhan/blocks/component-panel/component-panel-01.tsx",

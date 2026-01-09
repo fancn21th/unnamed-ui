@@ -67,7 +67,6 @@ export const ToggleButtonPrimitive = React.forwardRef<
         className={cn(
           "[&_*]:!box-border",
           "rounded-[var(--radius-lg)]",
-          "w-full",
           "border",
           "gap-1", // gap: 4px
           "transition-colors",

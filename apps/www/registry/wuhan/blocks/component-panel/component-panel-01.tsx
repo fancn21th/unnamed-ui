@@ -91,13 +91,13 @@ interface ComponentPanelListPrimitiveProps extends React.HTMLAttributes<HTMLDivE
  * 组件面板列表项原语属性
  * @public
  */
-interface ComponentPanelListItemPrimitiveProps extends React.ComponentPropsWithoutRef<typeof ToggleButtonPrimitive> {}
+type ComponentPanelListItemPrimitiveProps = React.ComponentPropsWithoutRef<typeof ToggleButtonPrimitive>;
 
 /**
  * 组件面板列表项图标占位符原语属性
  * @public
  */
-interface ComponentPanelListItemIconPrimitiveProps extends React.HTMLAttributes<HTMLDivElement> {}
+type ComponentPanelListItemIconPrimitiveProps = React.HTMLAttributes<HTMLDivElement>;
 
 // ==================== 样式原语组件 ====================
 
@@ -152,14 +152,14 @@ const ComponentPanelTabsListPrimitive = React.forwardRef<
   HTMLDivElement,
   ComponentPanelTabsListPrimitiveProps
 >(({ children, className, ...props }, ref) => {
-// height: 58;
-// gap: 24;
-// angle: 0 deg;
-// opacity: 1;
-// padding-top: Padding/padding-com-md;
-// padding-right: Padding/padding-com-xl;
-// padding-bottom: Padding/padding-com-xl;
-// padding-left: Padding/padding-com-xl;
+  // height: 58;
+  // gap: 24;
+  // angle: 0 deg;
+  // opacity: 1;
+  // padding-top: Padding/padding-com-md;
+  // padding-right: Padding/padding-com-xl;
+  // padding-bottom: Padding/padding-com-xl;
+  // padding-left: Padding/padding-com-xl;
 
   return (
     <TabsList
@@ -191,7 +191,7 @@ const ComponentPanelTabsTriggerPrimitive = React.forwardRef<
   HTMLButtonElement,
   ComponentPanelTabsTriggerPrimitiveProps
 >(({ value, children, className, ...props }, ref) => {
-    //选中字体颜色为品牌色，下边框为品牌色
+  //选中字体颜色为品牌色，下边框为品牌色
   return (
     <TabsTrigger
       ref={ref}
@@ -261,7 +261,6 @@ const ComponentPanelListPrimitive = React.forwardRef<
   HTMLDivElement,
   ComponentPanelListPrimitiveProps
 >(({ children, className, ...props }, ref) => {
-
   return (
     <div
       ref={ref}
@@ -329,16 +328,14 @@ const ComponentPanelListItemIconPrimitive = React.forwardRef<
   return (
     <div
       ref={ref}
-      className={cn(
-        "w-6 h-6 shrink-0",
-        className,
-      )}
+      className={cn("w-6 h-6 shrink-0", className)}
       style={{ backgroundColor: "#D9D9D9", ...props.style }}
       {...props}
     />
   );
 });
-ComponentPanelListItemIconPrimitive.displayName = "ComponentPanelListItemIconPrimitive";
+ComponentPanelListItemIconPrimitive.displayName =
+  "ComponentPanelListItemIconPrimitive";
 
 // ==================== 统一导出 ====================
 

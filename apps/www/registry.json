@@ -1843,11 +1843,11 @@
       "name": "component-panel-01",
       "type": "registry:block",
       "title": "Component Panel",
-      "description": "Component panel with tabs (全部, MCP, 工具, 工作流) and switch button list",
+      "description": "Component panel with tabs (全部, MCP, 工具, 工作流) and toggle button list",
       "registryDependencies": [
         "style",
         "tabs",
-        "switch"
+        "toggle-button-01"
       ],
       "files": [
         {

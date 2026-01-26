@@ -138,9 +138,12 @@ export function ComposedMessageList({
   onFeedbackChange,
   className,
 }: ComposedMessageListProps) {
+  // 提供默认值以防止运行时错误
+  const safeMessages = messages || [];
+  
   return (
     <div className={cn("flex flex-col w-full h-full", className)}>
-      {messages.map((message) => (
+      {safeMessages.map((message) => (
         <MessageItemRenderer
           key={message.id}
           message={message}
@@ -149,4 +152,28 @@ export function ComposedMessageList({
       ))}
     </div>
   );
+}
+
+// 默认导出，用于预览
+export default function MessageComposedDemo() {
+  const defaultMessages: MessageItem[] = [
+    {
+      id: "1",
+      role: "user",
+      content: "你好，我想了解一下你们的产品",
+      feedback: {
+        onCopy: () => {},
+      },
+    },
+    {
+      id: "2",
+      role: "assistant",
+      content: "你好！很高兴为您介绍我们的产品。请问您对哪个方面比较感兴趣？",
+      feedback: {
+        onCopy: () => {},
+      },
+    },
+  ];
+
+  return <ComposedMessageList messages={defaultMessages} className="gap-3" />;
 }

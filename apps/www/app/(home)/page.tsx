@@ -1,56 +1,72 @@
-import { Separator } from "@/registry/wuhan/ui/separator";
-import Link from "next/link";
+import { type Metadata } from "next"
+import Link from "next/link"
+import { Button } from "@/registry/wuhan/ui/button"
+import { Separator } from "@/registry/wuhan/ui/separator"
+import { ItemExplorer } from "./components/item-explorer"
+import { ItemPicker } from "./components/item-picker"
+import { Preview } from "./components/preview"
+import { getItemsForStyle } from "./lib/api"
 
-export default function HomePage() {
+export const revalidate = false
+export const dynamic = "force-static"
+
+export const metadata: Metadata = {
+  title: "Component Preview",
+  description: "Preview and explore components",
+}
+
+export default async function HomePage() {
+  const items = await getItemsForStyle("wuhan")
+
+  // 只显示 blocks，过滤掉 examples
+  const filteredItems = items
+    .filter((item) => item !== null && item.type === "registry:block")
+    .map((item) => ({
+      name: item.name,
+      title: item.title || item.name,
+      type: item.type,
+    }))
+
+  const navLinks = [
+    { href: "/docs", label: "Docs" },
+    { href: "/themes", label: "Themes" },
+    { href: "/libs", label: "Libs" },
+    { href: "/compositions", label: "Compositions" },
+  ]
+
   return (
-    <div className="flex flex-col justify-center text-center flex-1">
-      <h1 className="text-2xl font-bold mb-4">unnamed-ui / home</h1>
-      <p>
-        打开{" "}
-        <Link href="/docs" className="font-medium underline">
-          /docs
-        </Link>{" "}
-        你可以看到 设计系统文档 | You can open{" "}
-        <Link href="/docs" className="font-medium underline">
-          /docs
-        </Link>{" "}
-        and see the design system documentation.
-      </p>
-
-      <p>
-        打开{" "}
-        <Link href="/themes" className="font-medium underline">
-          /themes
-        </Link>{" "}
-        你可以看到 token / 主题 切换 | You can open{" "}
-        <Link href="/themes" className="font-medium underline">
-          /themes
-        </Link>{" "}
-        and see how to customize themes.
-      </p>
-
-      <p>
-        打开{" "}
-        <Link href="/libs" className="font-medium underline">
-          /libs
-        </Link>{" "}
-        你可以看到 ai 聊天框架文档 ｜ You can open{" "}
-        <Link href="/libs" className="font-medium underline">
-          /libs
-        </Link>{" "}
-        and see the ai chat framework documentation.
-      </p>
-      <p>
-        打开{" "}
-        <Link href="/compositions" className="font-medium underline">
-          /compositions
-        </Link>{" "}
-        你可以看到 不同 chat 的组合 ｜ You can open{" "}
-        <Link href="/compositions" className="font-medium underline">
-          /compositions
-        </Link>{" "}
-        and see the ai chat variants.
-      </p>
+    <div
+      data-slot="layout"
+      className="relative z-10 flex min-h-svh flex-col"
+    >
+      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="container flex h-14 items-center gap-4 px-4">
+          <div className="mr-4 flex items-center gap-2">
+            <Link href="/">
+              <span className="font-bold text-lg">unnamed-ui</span>
+            </Link>
+          </div>
+          <nav className="flex items-center gap-1">
+            {navLinks.map((link) => (
+              <Link key={link.href} href={link.href}>
+                <Button variant="ghost" size="sm" className="h-9 px-3">
+                  {link.label}
+                </Button>
+              </Link>
+            ))}
+          </nav>
+          <div className="ml-auto flex items-center gap-2">
+            <ItemPicker items={filteredItems} />
+            <Separator orientation="vertical" className="h-6" />
+          </div>
+        </div>
+      </header>
+      <main className="flex flex-1 flex-col pb-16 sm:pb-0">
+        <div className="flex w-full flex-1 flex-col gap-2 p-6 pt-1 pb-4 sm:gap-2 sm:pt-2 md:flex-row md:pb-6 2xl:gap-6">
+          <ItemExplorer items={filteredItems} />
+          <Preview />
+        </div>
+      </main>
     </div>
-  );
+  )
 }

@@ -21,7 +21,7 @@ export function ItemPicker({
     if (!params.item) return null
     // 特殊处理 "all-blocks" 选项
     if (params.item === "all-blocks") {
-      return { name: "all-blocks", title: "全部", type: "registry:block" }
+      return { name: "all-blocks", title: "chat", type: "registry:block" }
     }
     return items.find((item) => item.name === params.item) ?? null
   }, [items, params.item])

@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { ChevronRightIcon } from "lucide-react"
+import { useSearchParams } from "next/navigation"
 import { cn } from "@/lib/utils"
 import {
   Collapsible,
@@ -16,23 +17,27 @@ export function ItemExplorer({
   items: Array<{ name: string; title: string; type: string }>
 }) {
   const [params, setParams] = useHomeSearchParams()
+  const searchParams = useSearchParams()
 
-  // 添加"全部"选项到列表开头
+  // 只显示"chat"选项
   const displayItems = React.useMemo(() => {
     return [
-      { name: "all-blocks", title: "全部", type: "registry:block" },
-      ...items,
+      { name: "all-blocks", title: "chat", type: "registry:block" },
     ]
-  }, [items])
+  }, [])
+
+  // 确保默认选中 "all-blocks"（仅在 URL 中没有参数时设置）
+  React.useEffect(() => {
+    const urlItem = searchParams.get("item")
+    if (!urlItem) {
+      setParams({ item: "all-blocks" })
+    }
+  }, [searchParams, setParams])
 
   const currentItem = React.useMemo(() => {
-    if (!params.item) return null
-    // 特殊处理 "all-blocks" 选项
-    if (params.item === "all-blocks") {
-      return { name: "all-blocks", title: "全部", type: "registry:block" }
-    }
-    return items.find((item) => item.name === params.item) ?? null
-  }, [items, params.item])
+    // 默认选中 "all-blocks"
+    return { name: "all-blocks", title: "chat", type: "registry:block" }
+  }, [])
 
   return (
     <aside className="sticky z-30 hidden h-[calc(100svh-var(--header-height)-2rem)] w-64 overflow-y-auto overscroll-none bg-transparent xl:flex">
@@ -56,7 +61,7 @@ export function ItemExplorer({
                       "hover:bg-accent hover:text-accent-foreground",
                       item.name === currentItem?.name &&
                         "bg-accent text-accent-foreground border-accent",
-                      // "全部"选项特殊样式
+                      // "chat"选项特殊样式
                       item.name === "all-blocks" && "font-semibold"
                     )}
                   >

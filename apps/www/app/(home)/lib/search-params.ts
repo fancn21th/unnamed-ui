@@ -8,7 +8,7 @@ export function useHomeSearchParams() {
   const router = useRouter()
   const pathname = usePathname()
 
-  const item = searchParams.get("item") || ""
+  const item = searchParams.get("item") || "all-blocks"
 
   const setParams = useCallback(
     (params: { item?: string }) => {

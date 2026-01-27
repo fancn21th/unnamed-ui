@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { AntDesignOutlined, RedoOutlined } from "@ant-design/icons";
 import { Actions, Bubble } from "@ant-design/x";

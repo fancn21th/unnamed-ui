@@ -3,6 +3,18 @@ import { notFound } from "next/navigation"
 import { Index } from "@/registry/__index__"
 import { getStyleComponent, getStyleItem } from "@/app/(home)/lib/api"
 
+function getDemoNameForBlock(blockName: string) {
+  // Keep in sync with the demo naming rules used elsewhere.
+  if (blockName === "prompt-01") return "prompt-horizontal"
+  if (blockName === "prompt-02") return "prompt-vertical"
+
+  if (blockName.endsWith("-01")) {
+    return `${blockName.replace(/-01$/, "")}-demo`
+  }
+
+  return `${blockName}-demo`
+}
+
 const getCachedRegistryItem = React.cache(
   async (name: string) => {
     return await getStyleItem(name, "wuhan")
@@ -42,15 +54,24 @@ export default async function PreviewPage({
   params: Promise<{ name: string }>
 }) {
   const paramBag = await params
+  const item = await getCachedRegistryItem(paramBag.name)
+  if (!item) return notFound()
 
-  const [item, Component] = await Promise.all([
-    getCachedRegistryItem(paramBag.name),
-    getCachedRegistryComponent(paramBag.name),
-  ])
-
-  if (!item || !Component) {
-    return notFound()
+  // Blocks often require props, so for block routes we render their demo example
+  // (which provides props) when available.
+  let renderName = paramBag.name
+  if (item.type === "registry:block") {
+    const demoName = getDemoNameForBlock(paramBag.name)
+    const demo = Index.wuhan?.[demoName]
+    if (demo?.type === "registry:example" && demo.component) {
+      renderName = demoName
+    } else {
+      return notFound()
+    }
   }
+
+  const Component = await getCachedRegistryComponent(renderName)
+  if (!Component) return notFound()
 
   return (
     <div className="relative min-h-screen p-8">

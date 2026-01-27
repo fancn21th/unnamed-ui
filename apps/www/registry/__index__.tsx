@@ -710,6 +710,807 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "action-dropdown": {
+      name: "action-dropdown",
+      description: "操作下拉菜单组件",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/ActionDropdown/ActionDropdown.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/action-dropdown.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/ActionDropdown/ActionDropdown.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "chat-radio": {
+      name: "chat-radio",
+      description: "聊天单选组件",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/ChatRadio/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/chat-radio.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/ChatRadio/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "delete-confirm-modal": {
+      name: "delete-confirm-modal",
+      description: "删除确认对话框",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/DeleteConfirmModal/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/delete-confirm-modal.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/DeleteConfirmModal/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "datasource-guide": {
+      name: "datasource-guide",
+      description: "数据来源引导卡片",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/DatasourceGuide/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/datasource-guide.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/DatasourceGuide/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "job-card": {
+      name: "job-card",
+      description: "职位卡片",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/JobCard/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/job-card.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/JobCard/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "message-bubble": {
+      name: "message-bubble",
+      description: "消息气泡",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/MessageBubble/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/message-bubble.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/MessageBubble/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "recruitment-scene": {
+      name: "recruitment-scene",
+      description: "招聘场景",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/RecruitmentScene/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/recruitment-scene.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/RecruitmentScene/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "report-section": {
+      name: "report-section",
+      description: "报告模块容器",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/ReportSection/ReportSection.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/report-section.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/ReportSection/ReportSection.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "resource-upload": {
+      name: "resource-upload",
+      description: "资源上传",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/ResourceUpload/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/resource-upload.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/ResourceUpload/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "similar-job": {
+      name: "similar-job",
+      description: "相似职位参考",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/SimilarJob/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/similar-job.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/SimilarJob/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "status-tag": {
+      name: "status-tag",
+      description: "状态标签",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/StatusTag/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/status-tag.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/StatusTag/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    thinking: {
+      name: "thinking",
+      description: "深度思考组件",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/Thinking/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/thinking.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/Thinking/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "report-card": {
+      name: "report-card",
+      description: "报告卡片",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/ReportCard/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/report-card.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/ReportCard/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "step-detail": {
+      name: "step-detail",
+      description: "步骤详情",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/StepDetail/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/step-detail.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/StepDetail/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "step-overview": {
+      name: "step-overview",
+      description: "步骤总览",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/StepOverview/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/step-overview.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/StepOverview/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "candidates-table": {
+      name: "candidates-table",
+      description: "候选人信息表格",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/CandidatesTable/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/candidates-table.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/CandidatesTable/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "personnel-recommend": {
+      name: "personnel-recommend",
+      description: "人员推荐列表",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/PersonnelRecommend/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/personnel-recommend.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/PersonnelRecommend/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "recruitment-job-table": {
+      name: "recruitment-job-table",
+      description: "招聘岗位表格",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/RecruitmentJobTable/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/recruitment-job-table.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/RecruitmentJobTable/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "interview-process-table": {
+      name: "interview-process-table",
+      description: "面试流程表格",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/InterviewProcessTable/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/interview-process-table.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/InterviewProcessTable/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "todo-list": {
+      name: "todo-list",
+      description: "待办事项列表",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/TodoList/TodoList.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/todo-list.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/TodoList/TodoList.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "work-objective-list": {
+      name: "work-objective-list",
+      description: "工作目标列表",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/WorkObjectiveList/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/work-objective-list.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/WorkObjectiveList/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "work-result-list": {
+      name: "work-result-list",
+      description: "工作结果列表",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/WorkResultList/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/work-result-list.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/WorkResultList/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "repeat-file-modal": {
+      name: "repeat-file-modal",
+      description: "重复文件提示对话框",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/RepeatFileModal/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/repeat-file-modal.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/RepeatFileModal/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "candidate-report": {
+      name: "candidate-report",
+      description: "候选人评估报告",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/CandidateReport/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/candidate-report.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/CandidateReport/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "capability-column": {
+      name: "capability-column",
+      description: "能力对比柱状图",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/CapabilityColumn/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/capability-column.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/CapabilityColumn/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "confirm-jd-form": {
+      name: "confirm-jd-form",
+      description: "JD确认表单",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/ConfirmJDForm/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/confirm-jd-form.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/ConfirmJDForm/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "data-source-list": {
+      name: "data-source-list",
+      description: "数据来源列表",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/DataSourceList/DataSourceList.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/data-source-list.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/DataSourceList/DataSourceList.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "interview-info-form": {
+      name: "interview-info-form",
+      description: "面试信息表单",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/InterviewInfoForm/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/interview-info-form.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/InterviewInfoForm/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "interview-question-panel": {
+      name: "interview-question-panel",
+      description: "面试问题面板",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/InterviewQuestionPanel/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/interview-question-panel.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/InterviewQuestionPanel/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "recruitment-activity-overview": {
+      name: "recruitment-activity-overview",
+      description: "招聘活动概览",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/RecruitmentActivityOverview/RecruitmentActivityOverview.tsx",
+          type: "registry:component",
+          target:
+            "components/wuhan/recruitment/recruitment-activity-overview.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/RecruitmentActivityOverview/RecruitmentActivityOverview.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "resume-evaluation-report": {
+      name: "resume-evaluation-report",
+      description: "简历评估报告",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/ResumeEvaluationReport/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/resume-evaluation-report.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/ResumeEvaluationReport/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    markdown: {
+      name: "markdown",
+      description: "支持流式渲染的 Markdown 组件",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/Markdown/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/markdown.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/Markdown/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "welcome-demo": {
       name: "welcome-demo",
       description: "",
@@ -1780,6 +2581,855 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/examples/execution-result/execution-result-default.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "action-dropdown-demo": {
+      name: "action-dropdown-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["action-dropdown"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/action-dropdown/action-dropdown-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/action-dropdown-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/action-dropdown/action-dropdown-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "candidates-table-demo": {
+      name: "candidates-table-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["candidates-table"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/candidates-table/candidates-table-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/candidates-table-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/candidates-table/candidates-table-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "chat-radio-demo": {
+      name: "chat-radio-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["chat-radio"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/chat-radio/chat-radio-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/recruitment/chat-radio-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/chat-radio/chat-radio-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "datasource-guide-demo": {
+      name: "datasource-guide-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["datasource-guide"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/datasource-guide/datasource-guide-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/datasource-guide-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/datasource-guide/datasource-guide-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "delete-confirm-modal-demo": {
+      name: "delete-confirm-modal-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["delete-confirm-modal"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/delete-confirm-modal/delete-confirm-modal-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/delete-confirm-modal-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/delete-confirm-modal/delete-confirm-modal-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "interview-process-table-demo": {
+      name: "interview-process-table-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["interview-process-table"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/interview-process-table/interview-process-table-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/interview-process-table-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/interview-process-table/interview-process-table-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "job-card-demo": {
+      name: "job-card-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["job-card"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/job-card/job-card-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/recruitment/job-card-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/job-card/job-card-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "message-bubble-demo": {
+      name: "message-bubble-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["message-bubble"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/message-bubble/message-bubble-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/message-bubble-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/message-bubble/message-bubble-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "personnel-recommend-demo": {
+      name: "personnel-recommend-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["personnel-recommend"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/personnel-recommend/personnel-recommend-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/personnel-recommend-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/personnel-recommend/personnel-recommend-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "recruitment-job-table-demo": {
+      name: "recruitment-job-table-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["recruitment-job-table"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/recruitment-job-table/recruitment-job-table-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/recruitment-job-table-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/recruitment-job-table/recruitment-job-table-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "recruitment-scene-demo": {
+      name: "recruitment-scene-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["recruitment-scene"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/recruitment-scene/recruitment-scene-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/recruitment-scene-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/recruitment-scene/recruitment-scene-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "repeat-file-modal-demo": {
+      name: "repeat-file-modal-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["repeat-file-modal"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/repeat-file-modal/repeat-file-modal-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/repeat-file-modal-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/repeat-file-modal/repeat-file-modal-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "report-card-demo": {
+      name: "report-card-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["report-card"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/report-card/report-card-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/recruitment/report-card-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/report-card/report-card-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "report-section-demo": {
+      name: "report-section-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["report-section"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/report-section/report-section-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/report-section-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/report-section/report-section-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "resource-upload-demo": {
+      name: "resource-upload-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["resource-upload"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/resource-upload/resource-upload-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/resource-upload-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/resource-upload/resource-upload-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "sender-recruitment-demo": {
+      name: "sender-recruitment-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/sender-recruitment/sender-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/sender-recruitment-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/sender-recruitment/sender-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "similar-job-demo": {
+      name: "similar-job-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["similar-job"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/similar-job/similar-job-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/recruitment/similar-job-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/similar-job/similar-job-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "status-tag-demo": {
+      name: "status-tag-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["status-tag"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/status-tag/status-tag-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/recruitment/status-tag-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/status-tag/status-tag-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "step-detail-demo": {
+      name: "step-detail-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["step-detail"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/step-detail/step-detail-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/recruitment/step-detail-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/step-detail/step-detail-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "step-overview-demo": {
+      name: "step-overview-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["step-overview"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/step-overview/step-overview-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/step-overview-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/step-overview/step-overview-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "thinking-demo": {
+      name: "thinking-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["thinking"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/thinking/thinking-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/recruitment/thinking-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/thinking/thinking-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "todo-list-demo": {
+      name: "todo-list-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["todo-list"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/todo-list/todo-list-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/recruitment/todo-list-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/todo-list/todo-list-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "work-objective-list-demo": {
+      name: "work-objective-list-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["work-objective-list"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/work-objective-list/work-objective-list-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/work-objective-list-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/work-objective-list/work-objective-list-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "work-result-list-demo": {
+      name: "work-result-list-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["work-result-list"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/work-result-list/work-result-list-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/work-result-list-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/work-result-list/work-result-list-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "candidate-report-demo": {
+      name: "candidate-report-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["candidate-report"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/candidate-report/candidate-report-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/candidate-report-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/candidate-report/candidate-report-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "capability-column-demo": {
+      name: "capability-column-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["capability-column"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/capability-column/capability-column-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/capability-column-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/capability-column/capability-column-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "confirm-jd-form-demo": {
+      name: "confirm-jd-form-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["confirm-jd-form"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/confirm-jd-form/confirm-jd-form-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/confirm-jd-form-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/confirm-jd-form/confirm-jd-form-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "data-source-list-demo": {
+      name: "data-source-list-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["data-source-list"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/data-source-list/data-source-list-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/data-source-list-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/data-source-list/data-source-list-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "interview-info-form-demo": {
+      name: "interview-info-form-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["interview-info-form"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/interview-info-form/interview-info-form-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/interview-info-form-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/interview-info-form/interview-info-form-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "interview-question-panel-demo": {
+      name: "interview-question-panel-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["interview-question-panel"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/interview-question-panel/interview-question-panel-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/interview-question-panel-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/interview-question-panel/interview-question-panel-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "recruitment-activity-overview-demo": {
+      name: "recruitment-activity-overview-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["recruitment-activity-overview"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/recruitment-activity-overview/recruitment-activity-overview-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/recruitment-activity-overview-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/recruitment-activity-overview/recruitment-activity-overview-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "resume-evaluation-report-demo": {
+      name: "resume-evaluation-report-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["resume-evaluation-report"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/resume-evaluation-report/resume-evaluation-report-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/resume-evaluation-report-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/resume-evaluation-report/resume-evaluation-report-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "markdown-demo": {
+      name: "markdown-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["markdown"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/markdown/markdown-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/recruitment/markdown-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/markdown/markdown-demo.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

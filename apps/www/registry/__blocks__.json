@@ -74,5 +74,133 @@
   {
     "name": "component-panel-01",
     "description": "Component panel with tabs (全部, MCP, 工具, 工作流) and toggle button list"
+  },
+  {
+    "name": "action-dropdown",
+    "description": "操作下拉菜单组件"
+  },
+  {
+    "name": "chat-radio",
+    "description": "聊天单选组件"
+  },
+  {
+    "name": "delete-confirm-modal",
+    "description": "删除确认对话框"
+  },
+  {
+    "name": "datasource-guide",
+    "description": "数据来源引导卡片"
+  },
+  {
+    "name": "job-card",
+    "description": "职位卡片"
+  },
+  {
+    "name": "message-bubble",
+    "description": "消息气泡"
+  },
+  {
+    "name": "recruitment-scene",
+    "description": "招聘场景"
+  },
+  {
+    "name": "report-section",
+    "description": "报告模块容器"
+  },
+  {
+    "name": "resource-upload",
+    "description": "资源上传"
+  },
+  {
+    "name": "similar-job",
+    "description": "相似职位参考"
+  },
+  {
+    "name": "status-tag",
+    "description": "状态标签"
+  },
+  {
+    "name": "thinking",
+    "description": "深度思考组件"
+  },
+  {
+    "name": "report-card",
+    "description": "报告卡片"
+  },
+  {
+    "name": "step-detail",
+    "description": "步骤详情"
+  },
+  {
+    "name": "step-overview",
+    "description": "步骤总览"
+  },
+  {
+    "name": "candidates-table",
+    "description": "候选人信息表格"
+  },
+  {
+    "name": "personnel-recommend",
+    "description": "人员推荐列表"
+  },
+  {
+    "name": "recruitment-job-table",
+    "description": "招聘岗位表格"
+  },
+  {
+    "name": "interview-process-table",
+    "description": "面试流程表格"
+  },
+  {
+    "name": "todo-list",
+    "description": "待办事项列表"
+  },
+  {
+    "name": "work-objective-list",
+    "description": "工作目标列表"
+  },
+  {
+    "name": "work-result-list",
+    "description": "工作结果列表"
+  },
+  {
+    "name": "repeat-file-modal",
+    "description": "重复文件提示对话框"
+  },
+  {
+    "name": "candidate-report",
+    "description": "候选人评估报告"
+  },
+  {
+    "name": "capability-column",
+    "description": "能力对比柱状图"
+  },
+  {
+    "name": "confirm-jd-form",
+    "description": "JD确认表单"
+  },
+  {
+    "name": "data-source-list",
+    "description": "数据来源列表"
+  },
+  {
+    "name": "interview-info-form",
+    "description": "面试信息表单"
+  },
+  {
+    "name": "interview-question-panel",
+    "description": "面试问题面板"
+  },
+  {
+    "name": "recruitment-activity-overview",
+    "description": "招聘活动概览"
+  },
+  {
+    "name": "resume-evaluation-report",
+    "description": "简历评估报告"
+  },
+  {
+    "name": "markdown",
+    "description": "支持流式渲染的 Markdown 组件"
   }
 ]

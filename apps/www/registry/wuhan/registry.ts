@@ -9,6 +9,7 @@ import { examples } from "./examples/_registry";
 // import { internal } from "./internal/_registry"
 // import { lib } from "./lib/_registry"
 import { ui } from "./ui/_registry";
+import { recruitmentBlocks } from "./recruitment/_registry";
 import { getWuhanStyleCssVars } from "./style/css-vars";
 
 const DEPRECATED_ITEMS = [
@@ -45,6 +46,7 @@ export const registry = {
       },
       ...ui,
       ...blocks,
+      ...recruitmentBlocks, // Recruitment blocks - easy to remove
       // ...charts,
       // ...lib,
       // ...hooks,

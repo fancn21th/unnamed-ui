@@ -1,0 +1,39 @@
+---
+title: JobCard
+description: 显示职位信息的卡片组件，支持展开/收起功能
+author: AF
+---
+
+<ComponentPreview
+  name="job-card-demo"
+  description="职位卡片基础用法"
+  className="mb-4"
+/>
+
+# JobCard 职位卡片
+
+显示职位信息的卡片组件，包含副标题、主标题和描述。支持展开/收起功能。
+
+## 特性
+
+- ✅ 支持展开/收起描述文本
+- ✅ 支持自定义展开图标
+- ✅ 支持点击事件回调
+- ✅ 支持控制描述文本显示行数
+- ✅ 响应式设计，支持 hover 效果
+
+## API
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| subtitle | 副标题文本 | `string` | `'相似JD参考'` |
+| title | 主标题文本 | `string` | `'高级前端工程师'` |
+| description | 描述文本 | `string` | - |
+| expandable | 是否可展开/收起 | `boolean` | `false` |
+| defaultExpanded | 默认是否展开 | `boolean` | `false` |
+| onSubtitleClick | 副标题点击事件 | `() => void` | - |
+| onClick | 卡片点击事件 | `() => void` | - |
+| expandIcon | 自定义展开图标 | `React.ReactNode` | - |
+| className | 自定义样式类名 | `string` | - |
+| showDescription | 是否显示描述文本 | `boolean` | `true` |
+| descriptionMaxLines | 描述文本最大显示行数 | `number` | `2` |

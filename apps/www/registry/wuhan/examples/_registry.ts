@@ -1,5 +1,426 @@
 import { type Registry } from "shadcn/schema";
 
+// Recruitment examples - separate for easy removal
+const recruitmentExamples: Registry["items"] = [
+  {
+    name: "action-dropdown-demo",
+    type: "registry:example",
+    registryDependencies: ["action-dropdown"],
+    files: [
+      {
+        path: "examples/recruitment/action-dropdown/action-dropdown-demo.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/action-dropdown-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "candidates-table-demo",
+    type: "registry:example",
+    registryDependencies: ["candidates-table"],
+    files: [
+      {
+        path: "examples/recruitment/candidates-table/candidates-table-demo.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/candidates-table-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "chat-radio-demo",
+    type: "registry:example",
+    registryDependencies: ["chat-radio"],
+    files: [
+      {
+        path: "examples/recruitment/chat-radio/chat-radio-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/recruitment/chat-radio-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "datasource-guide-demo",
+    type: "registry:example",
+    registryDependencies: ["datasource-guide"],
+    files: [
+      {
+        path: "examples/recruitment/datasource-guide/datasource-guide-demo.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/datasource-guide-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "delete-confirm-modal-demo",
+    type: "registry:example",
+    registryDependencies: ["delete-confirm-modal"],
+    files: [
+      {
+        path: "examples/recruitment/delete-confirm-modal/delete-confirm-modal-demo.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/delete-confirm-modal-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "interview-process-table-demo",
+    type: "registry:example",
+    registryDependencies: ["interview-process-table"],
+    files: [
+      {
+        path: "examples/recruitment/interview-process-table/interview-process-table-demo.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/interview-process-table-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "job-card-demo",
+    type: "registry:example",
+    registryDependencies: ["job-card"],
+    files: [
+      {
+        path: "examples/recruitment/job-card/job-card-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/recruitment/job-card-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "message-bubble-demo",
+    type: "registry:example",
+    registryDependencies: ["message-bubble"],
+    files: [
+      {
+        path: "examples/recruitment/message-bubble/message-bubble-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/recruitment/message-bubble-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "personnel-recommend-demo",
+    type: "registry:example",
+    registryDependencies: ["personnel-recommend"],
+    files: [
+      {
+        path: "examples/recruitment/personnel-recommend/personnel-recommend-demo.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/personnel-recommend-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "recruitment-job-table-demo",
+    type: "registry:example",
+    registryDependencies: ["recruitment-job-table"],
+    files: [
+      {
+        path: "examples/recruitment/recruitment-job-table/recruitment-job-table-demo.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/recruitment-job-table-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "recruitment-scene-demo",
+    type: "registry:example",
+    registryDependencies: ["recruitment-scene"],
+    files: [
+      {
+        path: "examples/recruitment/recruitment-scene/recruitment-scene-demo.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/recruitment-scene-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "repeat-file-modal-demo",
+    type: "registry:example",
+    registryDependencies: ["repeat-file-modal"],
+    files: [
+      {
+        path: "examples/recruitment/repeat-file-modal/repeat-file-modal-demo.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/repeat-file-modal-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "report-card-demo",
+    type: "registry:example",
+    registryDependencies: ["report-card"],
+    files: [
+      {
+        path: "examples/recruitment/report-card/report-card-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/recruitment/report-card-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "report-section-demo",
+    type: "registry:example",
+    registryDependencies: ["report-section"],
+    files: [
+      {
+        path: "examples/recruitment/report-section/report-section-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/recruitment/report-section-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "resource-upload-demo",
+    type: "registry:example",
+    registryDependencies: ["resource-upload"],
+    files: [
+      {
+        path: "examples/recruitment/resource-upload/resource-upload-demo.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/resource-upload-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "sender-recruitment-demo",
+    type: "registry:example",
+    registryDependencies: [],
+    files: [
+      {
+        path: "examples/recruitment/sender-recruitment/sender-demo.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/sender-recruitment-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "similar-job-demo",
+    type: "registry:example",
+    registryDependencies: ["similar-job"],
+    files: [
+      {
+        path: "examples/recruitment/similar-job/similar-job-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/recruitment/similar-job-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "status-tag-demo",
+    type: "registry:example",
+    registryDependencies: ["status-tag"],
+    files: [
+      {
+        path: "examples/recruitment/status-tag/status-tag-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/recruitment/status-tag-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "step-detail-demo",
+    type: "registry:example",
+    registryDependencies: ["step-detail"],
+    files: [
+      {
+        path: "examples/recruitment/step-detail/step-detail-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/recruitment/step-detail-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "step-overview-demo",
+    type: "registry:example",
+    registryDependencies: ["step-overview"],
+    files: [
+      {
+        path: "examples/recruitment/step-overview/step-overview-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/recruitment/step-overview-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "thinking-demo",
+    type: "registry:example",
+    registryDependencies: ["thinking"],
+    files: [
+      {
+        path: "examples/recruitment/thinking/thinking-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/recruitment/thinking-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "todo-list-demo",
+    type: "registry:example",
+    registryDependencies: ["todo-list"],
+    files: [
+      {
+        path: "examples/recruitment/todo-list/todo-list-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/recruitment/todo-list-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "work-objective-list-demo",
+    type: "registry:example",
+    registryDependencies: ["work-objective-list"],
+    files: [
+      {
+        path: "examples/recruitment/work-objective-list/work-objective-list-demo.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/work-objective-list-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "work-result-list-demo",
+    type: "registry:example",
+    registryDependencies: ["work-result-list"],
+    files: [
+      {
+        path: "examples/recruitment/work-result-list/work-result-list-demo.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/work-result-list-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "candidate-report-demo",
+    type: "registry:example",
+    registryDependencies: ["candidate-report"],
+    files: [
+      {
+        path: "examples/recruitment/candidate-report/candidate-report-demo.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/candidate-report-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "capability-column-demo",
+    type: "registry:example",
+    registryDependencies: ["capability-column"],
+    files: [
+      {
+        path: "examples/recruitment/capability-column/capability-column-demo.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/capability-column-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "confirm-jd-form-demo",
+    type: "registry:example",
+    registryDependencies: ["confirm-jd-form"],
+    files: [
+      {
+        path: "examples/recruitment/confirm-jd-form/confirm-jd-form-demo.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/confirm-jd-form-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "data-source-list-demo",
+    type: "registry:example",
+    registryDependencies: ["data-source-list"],
+    files: [
+      {
+        path: "examples/recruitment/data-source-list/data-source-list-demo.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/data-source-list-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "interview-info-form-demo",
+    type: "registry:example",
+    registryDependencies: ["interview-info-form"],
+    files: [
+      {
+        path: "examples/recruitment/interview-info-form/interview-info-form-demo.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/interview-info-form-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "interview-question-panel-demo",
+    type: "registry:example",
+    registryDependencies: ["interview-question-panel"],
+    files: [
+      {
+        path: "examples/recruitment/interview-question-panel/interview-question-panel-demo.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/interview-question-panel-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "recruitment-activity-overview-demo",
+    type: "registry:example",
+    registryDependencies: ["recruitment-activity-overview"],
+    files: [
+      {
+        path: "examples/recruitment/recruitment-activity-overview/recruitment-activity-overview-demo.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/recruitment-activity-overview-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "resume-evaluation-report-demo",
+    type: "registry:example",
+    registryDependencies: ["resume-evaluation-report"],
+    files: [
+      {
+        path: "examples/recruitment/resume-evaluation-report/resume-evaluation-report-demo.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/resume-evaluation-report-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "markdown-demo",
+    type: "registry:example",
+    registryDependencies: ["markdown"],
+    files: [
+      {
+        path: "examples/recruitment/markdown/markdown-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/recruitment/markdown-demo.tsx",
+      },
+    ],
+  },
+];
+
 export const examples: Registry["items"] = [
   // welcome examples
   {
@@ -541,4 +962,6 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  // Merge recruitment examples
+  ...recruitmentExamples,
 ];

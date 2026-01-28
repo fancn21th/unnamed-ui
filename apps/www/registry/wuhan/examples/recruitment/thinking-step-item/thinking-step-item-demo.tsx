@@ -29,12 +29,7 @@ export default function ThinkingStepItemDemo() {
       />
 
       {/* 取消状态 */}
-      <ThinkingStepItem
-        status="cancel"
-        title="已取消"
-        items={[]}
-        defaultOpen
-      />
+      <ThinkingStepItem status="cancel" title="已取消" items={[]} defaultOpen />
 
       {/* 加载中状态 */}
       <ThinkingStepItem

@@ -1,0 +1,71 @@
+---
+title: Task List
+description: Task list component for task management
+author: AF
+---
+
+<ComponentPreview
+  name="task-list-demo"
+  description="Task list with default layout"
+  className="mb-4"
+/>
+
+Task List 组件提供了用于任务管理的列表样式原语，适用于待办事项、任务清单等场景。
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/task-list-01.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="task-list-demo"
+  title="registry/wuhan/examples/task-list/task-list-demo.tsx"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Examples
+
+### Default
+
+基础待办列表示例。
+
+<ComponentPreview
+  name="task-list-demo"
+  description="Default task list"
+  className="mb-4"
+/>
+
+### Composed Demo
+
+完整的组合示例，展示了如何使用 Task List 构建实际的待办列表应用。
+
+<ComponentPreview
+  name="task-list-composed-demo"
+  description="Task list composed demo with full features"
+  className="mb-4"
+/>

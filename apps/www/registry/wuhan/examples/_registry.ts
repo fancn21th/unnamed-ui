@@ -1066,6 +1066,47 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "intervene-form-demo",
+    type: "registry:example",
+    registryDependencies: ["intervene-form-01"],
+    files: [
+      {
+        path: "examples/intervene-form/intervene-form-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/intervene-form-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "task-list-demo",
+    type: "registry:example",
+    registryDependencies: ["task-list-01"],
+    files: [
+      {
+        path: "examples/task-list/task-list-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/task-list-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "task-list-composed-demo",
+    type: "registry:example",
+    registryDependencies: ["task-list-01"],
+    files: [
+      {
+        path: "examples/task-list/task-list-composed-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/task-list-composed-demo.tsx",
+      },
+      {
+        path: "examples/task-list/task-list-composed/index.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/task-list-composed.tsx",
+      },
+    ],
+  },
   // Merge recruitment examples
   ...recruitmentExamples,
 ];

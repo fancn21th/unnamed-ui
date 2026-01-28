@@ -1892,6 +1892,38 @@
       ]
     },
     {
+      "name": "task-list-01",
+      "type": "registry:block",
+      "title": "Task List",
+      "description": "Task list component with checkable items for task management",
+      "registryDependencies": [
+        "style"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/task-list/task-list-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/task-list-01.tsx"
+        }
+      ]
+    },
+    {
+      "name": "intervene-form-01",
+      "type": "registry:block",
+      "title": "Intervene Form",
+      "description": "Intervene form component for user input and interaction",
+      "registryDependencies": [
+        "style"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/intervene-form/intervene-form-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/intervene-form-01.tsx"
+        }
+      ]
+    },
+    {
       "name": "action-dropdown",
       "type": "registry:block",
       "title": "Action Dropdown",
@@ -2931,6 +2963,53 @@
           "path": "registry/wuhan/examples/execution-result/execution-result-default.tsx",
           "type": "registry:example",
           "target": "components/wuhan/examples/execution-result-default.tsx"
+        }
+      ]
+    },
+    {
+      "name": "intervene-form-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "intervene-form-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/intervene-form/intervene-form-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/intervene-form-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "task-list-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "task-list-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/task-list/task-list-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/task-list-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "task-list-composed-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "task-list-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/task-list/task-list-composed-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/task-list-composed-demo.tsx"
+        },
+        {
+          "path": "registry/wuhan/examples/task-list/task-list-composed/index.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/task-list-composed.tsx"
         }
       ]
     },

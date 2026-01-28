@@ -762,6 +762,57 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "task-list-01": {
+      name: "task-list-01",
+      description:
+        "Task list component with checkable items for task management",
+      type: "registry:block",
+      registryDependencies: ["style"],
+      files: [
+        {
+          path: "registry/wuhan/blocks/task-list/task-list-01.tsx",
+          type: "registry:component",
+          target: "components/wuhan/blocks/task-list-01.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/blocks/task-list/task-list-01.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "intervene-form-01": {
+      name: "intervene-form-01",
+      description: "Intervene form component for user input and interaction",
+      type: "registry:block",
+      registryDependencies: ["style"],
+      files: [
+        {
+          path: "registry/wuhan/blocks/intervene-form/intervene-form-01.tsx",
+          type: "registry:component",
+          target: "components/wuhan/blocks/intervene-form-01.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/blocks/intervene-form/intervene-form-01.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "action-dropdown": {
       name: "action-dropdown",
       description: "操作下拉菜单组件",
@@ -2658,6 +2709,86 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/examples/execution-result/execution-result-default.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "intervene-form-demo": {
+      name: "intervene-form-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["intervene-form-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/intervene-form/intervene-form-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/intervene-form-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/intervene-form/intervene-form-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "task-list-demo": {
+      name: "task-list-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["task-list-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/task-list/task-list-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/task-list-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/task-list/task-list-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "task-list-composed-demo": {
+      name: "task-list-composed-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["task-list-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/task-list/task-list-composed-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/task-list-composed-demo.tsx",
+        },
+        {
+          path: "registry/wuhan/examples/task-list/task-list-composed/index.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/task-list-composed.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/task-list/task-list-composed-demo.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

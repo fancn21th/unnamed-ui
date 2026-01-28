@@ -302,4 +302,32 @@ export const blocks: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "task-list-01",
+    type: "registry:block",
+    title: "Task List",
+    description: "Task list component with checkable items for task management",
+    registryDependencies: ["style"],
+    files: [
+      {
+        path: "blocks/task-list/task-list-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/task-list-01.tsx",
+      },
+    ],
+  },
+  {
+    name: "intervene-form-01",
+    type: "registry:block",
+    title: "Intervene Form",
+    description: "Intervene form component for user input and interaction",
+    registryDependencies: ["style"],
+    files: [
+      {
+        path: "blocks/intervene-form/intervene-form-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/intervene-form-01.tsx",
+      },
+    ],
+  },
 ];

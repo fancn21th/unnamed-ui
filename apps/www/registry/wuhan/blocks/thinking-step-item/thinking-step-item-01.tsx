@@ -577,7 +577,7 @@ const ThinkingStepItemTimelinePrimitive = React.forwardRef<
         )}
       />
       {/* 竖线 */}
-      {(
+      {
         <div
           className={cn(
             "w-[1px]",
@@ -587,7 +587,7 @@ const ThinkingStepItemTimelinePrimitive = React.forwardRef<
             "translate-x-1/2",
           )}
         />
-      )}
+      }
     </div>
   );
 });

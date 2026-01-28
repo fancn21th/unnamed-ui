@@ -65,7 +65,9 @@ export default async function RecruitmentBlocksPage() {
 
   return (
     <ExampleWrapper>
-      <DesignSystemClassApplier />
+      <React.Suspense fallback={null}>
+        <DesignSystemClassApplier />
+      </React.Suspense>
       {demos.map(({ blockName, demoName }) => {
         // 尝试获取 demo 组件，如果没有则获取 block 组件本身
         const Component = Index.wuhan?.[demoName]?.component || Index.wuhan?.[blockName]?.component

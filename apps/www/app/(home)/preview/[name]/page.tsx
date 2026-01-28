@@ -55,7 +55,9 @@ export default async function PreviewPage({
 
   return (
     <div className="relative min-h-screen p-8">
-      <DesignSystemClassApplier />
+      <React.Suspense fallback={null}>
+        <DesignSystemClassApplier />
+      </React.Suspense>
       <React.Suspense
         fallback={
           <div className="flex items-center justify-center h-full min-h-[200px] text-muted-foreground">

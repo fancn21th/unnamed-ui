@@ -56,7 +56,9 @@ export default async function BlockExamplesPage({
 
   return (
     <div className="relative min-h-screen p-8 space-y-8">
-      <DesignSystemClassApplier />
+      <React.Suspense fallback={null}>
+        <DesignSystemClassApplier />
+      </React.Suspense>
       <div className="space-y-2">
         <h1 className="text-2xl font-bold capitalize">
           {blockItem.title || paramBag.name.replace(/-01$/, "").replace(/-/g, " ")}

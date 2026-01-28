@@ -65,7 +65,9 @@ export default async function AllBlocksPage() {
 
   return (
     <ExampleWrapper>
-      <DesignSystemClassApplier />
+      <React.Suspense fallback={null}>
+        <DesignSystemClassApplier />
+      </React.Suspense>
       {demos.map(({ blockName, demoName }) => {
         const Component = Index.wuhan?.[demoName]?.component
 

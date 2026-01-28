@@ -2,18 +2,7 @@ import * as React from "react"
 import { notFound } from "next/navigation"
 import { Index } from "@/registry/__index__"
 import { getStyleComponent, getStyleItem } from "@/app/(home)/lib/api"
-
-function getDemoNameForBlock(blockName: string) {
-  // Keep in sync with the demo naming rules used elsewhere.
-  if (blockName === "prompt-01") return "prompt-horizontal"
-  if (blockName === "prompt-02") return "prompt-vertical"
-
-  if (blockName.endsWith("-01")) {
-    return `${blockName.replace(/-01$/, "")}-demo`
-  }
-
-  return `${blockName}-demo`
-}
+import { DesignSystemClassApplier } from "@/app/(home)/components/design-system-class-applier"
 
 const getCachedRegistryItem = React.cache(
   async (name: string) => {
@@ -38,7 +27,8 @@ export async function generateStaticParams() {
 
   for (const itemName in index) {
     const item = index[itemName]
-    if (item.type === "registry:block" || item.type === "registry:example") {
+    // 方案A：/preview/[name] 只生成 example 静态路由
+    if (item.type === "registry:example") {
       params.push({
         name: itemName,
       })
@@ -57,24 +47,15 @@ export default async function PreviewPage({
   const item = await getCachedRegistryItem(paramBag.name)
   if (!item) return notFound()
 
-  // Blocks often require props, so for block routes we render their demo example
-  // (which provides props) when available.
-  let renderName = paramBag.name
-  if (item.type === "registry:block") {
-    const demoName = getDemoNameForBlock(paramBag.name)
-    const demo = Index.wuhan?.[demoName]
-    if (demo?.type === "registry:example" && demo.component) {
-      renderName = demoName
-    } else {
-      return notFound()
-    }
-  }
+  // 方案A：block 不在这里渲染，统一走 /preview/block/[name]
+  if (item.type === "registry:block") return notFound()
 
-  const Component = await getCachedRegistryComponent(renderName)
+  const Component = await getCachedRegistryComponent(paramBag.name)
   if (!Component) return notFound()
 
   return (
     <div className="relative min-h-screen p-8">
+      <DesignSystemClassApplier />
       <React.Suspense
         fallback={
           <div className="flex items-center justify-center h-full min-h-[200px] text-muted-foreground">

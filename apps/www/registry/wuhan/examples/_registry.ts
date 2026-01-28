@@ -195,7 +195,7 @@ const recruitmentExamples: Registry["items"] = [
   {
     name: "sender-recruitment-demo",
     type: "registry:example",
-    registryDependencies: [],
+    registryDependencies: ["sender-input"],
     files: [
       {
         path: "examples/recruitment/sender-recruitment/sender-demo.tsx",
@@ -262,6 +262,110 @@ const recruitmentExamples: Registry["items"] = [
         path: "examples/recruitment/thinking/thinking-demo.tsx",
         type: "registry:example",
         target: "components/wuhan/examples/recruitment/thinking-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "thinking-process-demo",
+    type: "registry:example",
+    registryDependencies: ["thinking-process-01"],
+    files: [
+      {
+        path: "examples/recruitment/thinking-process/thinking-process-demo.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/thinking-process-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "thinking-process-default",
+    type: "registry:example",
+    registryDependencies: ["thinking-process-01"],
+    files: [
+      {
+        path: "examples/recruitment/thinking-process/thinking-process-default.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/thinking-process-default.tsx",
+      },
+    ],
+  },
+  {
+    name: "thinking-process-with-hint",
+    type: "registry:example",
+    registryDependencies: ["thinking-process-01"],
+    files: [
+      {
+        path: "examples/recruitment/thinking-process/thinking-process-with-hint.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/thinking-process-with-hint.tsx",
+      },
+    ],
+  },
+  {
+    name: "thinking-process-custom",
+    type: "registry:example",
+    registryDependencies: ["thinking-process-01"],
+    files: [
+      {
+        path: "examples/recruitment/thinking-process/thinking-process-custom.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/thinking-process-custom.tsx",
+      },
+    ],
+  },
+  {
+    name: "thinking-step-item-demo",
+    type: "registry:example",
+    registryDependencies: ["thinking-step-item-01"],
+    files: [
+      {
+        path: "examples/recruitment/thinking-step-item/thinking-step-item-demo.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/thinking-step-item-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "thinking-step-item-default",
+    type: "registry:example",
+    registryDependencies: ["thinking-step-item-01"],
+    files: [
+      {
+        path: "examples/recruitment/thinking-step-item/thinking-step-item-default.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/thinking-step-item-default.tsx",
+      },
+    ],
+  },
+  {
+    name: "thinking-step-item-with-attachments",
+    type: "registry:example",
+    registryDependencies: ["thinking-step-item-01"],
+    files: [
+      {
+        path: "examples/recruitment/thinking-step-item/thinking-step-item-with-attachments.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/thinking-step-item-with-attachments.tsx",
+      },
+    ],
+  },
+  {
+    name: "thinking-step-item-with-tags",
+    type: "registry:example",
+    registryDependencies: ["thinking-step-item-01"],
+    files: [
+      {
+        path: "examples/recruitment/thinking-step-item/thinking-step-item-with-tags.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/thinking-step-item-with-tags.tsx",
       },
     ],
   },

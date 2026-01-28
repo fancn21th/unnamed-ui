@@ -72,7 +72,7 @@ const AttachmentCardPrimitive = React.forwardRef<
         "relative",
         "flex items-center",
         "bg-[var(--bg-neutral-light)]",
-        "rounded-xl",
+        "rounded-[var(--radius-xl)]",
         "transition-colors",
         "group/card",
         isInteractive && "cursor-pointer",

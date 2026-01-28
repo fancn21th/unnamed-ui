@@ -76,6 +76,14 @@
     "description": "Component panel with tabs (全部, MCP, 工具, 工作流) and toggle button list"
   },
   {
+    "name": "thinking-process-01",
+    "description": "Multi-stage thinking process component for displaying AI thinking steps with status and time"
+  },
+  {
+    "name": "thinking-step-item-01",
+    "description": "Collapsible execution step item component with status (loading/success/error/cancel), timeline, tool calls, and file list"
+  },
+  {
     "name": "action-dropdown",
     "description": "操作下拉菜单组件"
   },
@@ -202,5 +210,9 @@
   {
     "name": "markdown",
     "description": "支持流式渲染的 Markdown 组件"
+  },
+  {
+    "name": "sender-input",
+    "description": "发送者输入组件"
   }
 ]

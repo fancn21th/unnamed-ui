@@ -108,8 +108,8 @@ function AttachmentListWrapper({
             <AttachmentCardLeading
               className={cn(
                 isImage
-                  ? "w-full h-full rounded-xl"
-                  : "rounded-lg bg-[var(--bg-container)] w-10 h-10",
+                  ? "w-full h-full rounded-[var(--radius-xl)]"
+                  : "rounded-[var(--radius-lg)] bg-[var(--bg-container)] w-10 h-10",
               )}
             >
               {attachment.thumbnail ? (

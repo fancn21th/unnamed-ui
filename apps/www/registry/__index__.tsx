@@ -710,6 +710,58 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "thinking-process-01": {
+      name: "thinking-process-01",
+      description:
+        "Multi-stage thinking process component for displaying AI thinking steps with status and time",
+      type: "registry:block",
+      registryDependencies: ["style", "collapsible"],
+      files: [
+        {
+          path: "registry/wuhan/blocks/thinking-process/thinking-process-01.tsx",
+          type: "registry:component",
+          target: "components/wuhan/blocks/thinking-process-01.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/blocks/thinking-process/thinking-process-01.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "thinking-step-item-01": {
+      name: "thinking-step-item-01",
+      description:
+        "Collapsible execution step item component with status (loading/success/error/cancel), timeline, tool calls, and file list",
+      type: "registry:block",
+      registryDependencies: ["style", "collapsible"],
+      files: [
+        {
+          path: "registry/wuhan/blocks/thinking-step-item/thinking-step-item-01.tsx",
+          type: "registry:component",
+          target: "components/wuhan/blocks/thinking-step-item-01.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/blocks/thinking-step-item/thinking-step-item-01.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "action-dropdown": {
       name: "action-dropdown",
       description: "操作下拉菜单组件",
@@ -1501,6 +1553,31 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/recruitment/Markdown/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "sender-input": {
+      name: "sender-input",
+      description: "发送者输入组件",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/recruitment/Sender/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/recruitment/sender.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/recruitment/Sender/index.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>
@@ -2982,7 +3059,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "sender-recruitment-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: [],
+      registryDependencies: ["sender-input"],
       files: [
         {
           path: "registry/wuhan/examples/recruitment/sender-recruitment/sender-demo.tsx",
@@ -3120,6 +3197,214 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/examples/recruitment/thinking/thinking-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "thinking-process-demo": {
+      name: "thinking-process-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["thinking-process-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/thinking-process/thinking-process-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/thinking-process-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/thinking-process/thinking-process-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "thinking-process-default": {
+      name: "thinking-process-default",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["thinking-process-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/thinking-process/thinking-process-default.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/thinking-process-default.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/thinking-process/thinking-process-default.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "thinking-process-with-hint": {
+      name: "thinking-process-with-hint",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["thinking-process-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/thinking-process/thinking-process-with-hint.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/thinking-process-with-hint.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/thinking-process/thinking-process-with-hint.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "thinking-process-custom": {
+      name: "thinking-process-custom",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["thinking-process-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/thinking-process/thinking-process-custom.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/thinking-process-custom.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/thinking-process/thinking-process-custom.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "thinking-step-item-demo": {
+      name: "thinking-step-item-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["thinking-step-item-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/thinking-step-item/thinking-step-item-demo.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/thinking-step-item-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/thinking-step-item/thinking-step-item-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "thinking-step-item-default": {
+      name: "thinking-step-item-default",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["thinking-step-item-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/thinking-step-item/thinking-step-item-default.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/thinking-step-item-default.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/thinking-step-item/thinking-step-item-default.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "thinking-step-item-with-attachments": {
+      name: "thinking-step-item-with-attachments",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["thinking-step-item-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/thinking-step-item/thinking-step-item-with-attachments.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/thinking-step-item-with-attachments.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/thinking-step-item/thinking-step-item-with-attachments.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "thinking-step-item-with-tags": {
+      name: "thinking-step-item-with-tags",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["thinking-step-item-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/thinking-step-item/thinking-step-item-with-tags.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/thinking-step-item-with-tags.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/thinking-step-item/thinking-step-item-with-tags.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

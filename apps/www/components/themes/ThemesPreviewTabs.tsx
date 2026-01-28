@@ -212,7 +212,7 @@ function PrimitivesShowcase() {
 
             <div className="grid gap-4 lg:grid-cols-[1fr_360px]">
               {/* Left: live preview */}
-              <div className="rounded-xl border bg-gradient-to-b from-muted/15 to-background p-4">
+              <div className="rounded-[var(--radius-xl)] border bg-gradient-to-b from-muted/15 to-background p-4">
                 <div className="flex items-center justify-between gap-3 mb-3">
                   <div className="min-w-0">
                     <div className="text-sm font-medium">Sender Preview</div>
@@ -370,7 +370,7 @@ function PrimitivesShowcase() {
               </div>
 
               {/* Right: composition knobs */}
-              <div className="rounded-xl border bg-muted/10 p-4 grid gap-4">
+              <div className="rounded-[var(--radius-xl)] border bg-muted/10 p-4 grid gap-4">
                 <div>
                   <div className="text-sm font-medium">组合开关</div>
                 </div>
@@ -412,7 +412,7 @@ function PrimitivesShowcase() {
 
                 <div className="grid gap-2">
                   <div className="text-xs font-medium">结构树（示意）</div>
-                  <pre className="text-xs rounded-md border bg-background p-3 overflow-auto leading-relaxed">
+                  <pre className="text-xs rounded-[var(--radius-md)] border bg-background p-3 overflow-auto leading-relaxed">
 {`SenderContainer (form)
   ${canModes && modePlacement === "top" ? "SenderRegion (modes)\n  " : ""}SenderInputRegion
     ${canAttach ? "attachmentButton (slot)\n    " : ""}SenderTextarea

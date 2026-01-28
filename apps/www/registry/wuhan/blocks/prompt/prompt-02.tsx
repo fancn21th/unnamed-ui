@@ -86,7 +86,7 @@ export const PromptButton = React.forwardRef<
         "h-auto",
         "group/prompt-button",
         "flex-col items-start justify-start",
-        "rounded-xl",
+        "rounded-[var(--radius-xl)]",
         "p-[var(--padding-com-lg)]",
         "max-w-[224px]",
         className,

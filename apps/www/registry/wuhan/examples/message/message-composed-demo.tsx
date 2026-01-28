@@ -140,7 +140,7 @@ export function ComposedMessageList({
 }: ComposedMessageListProps) {
   // 提供默认值以防止运行时错误
   const safeMessages = messages || [];
-  
+
   return (
     <div className={cn("flex flex-col w-full h-full", className)}>
       {safeMessages.map((message) => (

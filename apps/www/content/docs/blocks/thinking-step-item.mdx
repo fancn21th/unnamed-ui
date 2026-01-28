@@ -1,0 +1,291 @@
+---
+title: Thinking Step Item
+description: Sub-step item component for displaying nested steps inside thinking process content
+author: AF
+---
+
+<ComponentPreview name="thinking-step-item-demo" description="Sub-step items with different states" className="mb-4" />
+
+Thinking Step Item 组件是用于在思考过程内容中展示子步骤的组件，支持多种状态显示、可折叠内容、文件附件和标签列表等功能。
+
+## Features
+
+- **四种状态**：loading（加载中）、success（成功）、error（错误）、cancel（取消）
+- **状态图标**：每种状态有专属的图标和颜色
+- **可折叠**：子步骤可以展开/收起查看详细内容
+- **原语化设计**：提供完整的原语组件，高度可定制
+- **说明标签**：支持显示蓝色的"说明："标签
+- **灵活内容**：支持文本、文件附件、标签列表等多种内容形式
+- **Hover 高亮**：鼠标悬停时标题和箭头变为品牌色
+- **样式隔离**：组件样式不受外部框架影响
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/thinking-step-item-01.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="thinking-step-item-demo" title="registry/wuhan/examples/recruitment/thinking-step-item/thinking-step-item-demo.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Examples
+
+### Default
+
+基础用法，展示成功状态的子步骤。
+
+<ComponentPreview
+  name="thinking-step-item-default"
+  description="Default success state"
+  className="mb-4"
+/>
+
+### With Attachments
+
+子步骤包含文件附件的展示。
+
+<ComponentPreview
+  name="thinking-step-item-with-attachments"
+  description="Sub-step with file attachments"
+  className="mb-4"
+/>
+
+### With Tags
+
+子步骤包含标签列表的展示。
+
+<ComponentPreview
+  name="thinking-step-item-with-tags"
+  description="Sub-step with tag list"
+  className="mb-4"
+/>
+
+## Usage
+
+### 基础用法
+
+```tsx
+import { ThinkingStepItem } from "@/registry/wuhan/blocks/thinking-step-item/thinking-step-item-01";
+
+<ThinkingStepItem
+  status="success"
+  title="解析简历信息"
+  items={[
+    {
+      content: "成功提取了候选人的基本信息、工作经历、教育背景和技能列表。",
+    },
+  ]}
+  defaultOpen
+/>
+```
+
+### 多个子步骤
+
+```tsx
+import {
+  ThinkingStepItemContainerPrimitive,
+  ThinkingStepItem,
+} from "@/registry/wuhan/blocks/thinking-step-item/thinking-step-item-01";
+
+<ThinkingStepItemContainerPrimitive>
+  <ThinkingStepItem
+    status="success"
+    title="步骤 1"
+    items={[{ content: "已完成" }]}
+  />
+  <ThinkingStepItem
+    status="loading"
+    title="步骤 2"
+    items={[{ content: "正在处理..." }]}
+  />
+  <ThinkingStepItem
+    status="cancel"
+    title="步骤 3"
+    items={[]}
+  />
+</ThinkingStepItemContainerPrimitive>
+```
+
+### 带工具调用
+
+```tsx
+import { ThinkingStepItem } from "@/registry/wuhan/blocks/thinking-step-item/thinking-step-item-01";
+import { Database } from "lucide-react";
+
+<ThinkingStepItem
+  status="success"
+  title="调取知识库"
+  items={[
+    {
+      toolCall: {
+        icon: <Database className="size-4" />,
+        title: "知识库查询",
+        content: "已从知识库中检索到 5 条相关岗位要求信息",
+      },
+    },
+  ]}
+  defaultOpen
+/>
+```
+
+### 带文件列表
+
+```tsx
+import { ThinkingStepItem } from "@/registry/wuhan/blocks/thinking-step-item/thinking-step-item-01";
+
+<ThinkingStepItem
+  status="success"
+  title="处理附件文件"
+  items={[
+    {
+      content: "已成功解析以下文件：",
+      files: [
+        { icon: "📄", name: "resume.pdf" },
+        { icon: "📄", name: "cover-letter.docx" },
+        { icon: "📊", name: "portfolio.xlsx" },
+      ],
+    },
+  ]}
+  defaultOpen
+/>
+```
+
+## 状态说明
+
+| 状态 | 图标 | 颜色 | 典型使用 |
+|------|------|------|---------|
+| `loading` | 旋转圈 | 蓝色（品牌色） | 正在执行的子步骤 |
+| `success` | 勾选 | 绿色（成功色） | 已完成的子步骤 |
+| `error` | 感叹号 | 红色（错误色） | 执行失败的子步骤 |
+| `cancel` | 空圆圈 | 灰色 | 已取消的子步骤 |
+
+## API
+
+### ThinkingStepItem
+
+高级业务组件，封装了常用功能。
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `status` | `'loading' \| 'success' \| 'error' \| 'cancel'` | `'loading'` | 步骤状态 |
+| `title` | `React.ReactNode` | - | 步骤标题（必填） |
+| `items` | `Array<{ content?: React.ReactNode; toolCall?: { icon?: React.ReactNode; title?: React.ReactNode; content?: React.ReactNode; }; files?: Array<{ icon?: string; name: string; }>; }>` | `[]` | 步骤内容项列表 |
+| `statusIcon` | `React.ReactNode` | - | 自定义状态图标 |
+| `arrowIcon` | `React.ReactNode` | - | 自定义折叠箭头图标 |
+| `defaultOpen` | `boolean` | `false` | 是否默认展开 |
+| `open` | `boolean` | - | 控制展开状态（受控） |
+| `onOpenChange` | `(open: boolean) => void` | - | 展开状态变化回调 |
+
+### 原语组件
+
+#### ThinkingStepItemContainerPrimitive
+容器组件，包裹多个步骤，提供统一间距。
+
+#### ThinkingStepItemPrimitive
+单个步骤的容器原语，支持 Collapsible 功能。
+
+#### ThinkingStepItemHeaderPrimitive
+步骤头部原语，可点击展开/收起。
+
+#### ThinkingStepItemContentPrimitive
+步骤内容区域原语，带左侧缩进。
+
+#### ThinkingStepItemTitlePrimitive
+标题文本原语，hover 时变为品牌色。
+
+#### ThinkingStepItemStatusIconPrimitive
+状态图标容器原语，根据状态显示不同颜色。
+
+#### ThinkingStepItemCollapseArrowPrimitive
+折叠箭头原语，展开时旋转 180 度。
+
+#### ThinkingStepItemContentListPrimitive
+内容列表原语，用于展示多个内容项。
+
+#### ThinkingStepItemContentItemPrimitive
+内容项原语，单个内容项的容器。
+
+#### ThinkingStepItemTimelinePrimitive
+时间轴原语，显示左侧的时间轴装饰。
+
+#### ThinkingStepItemContentAreaPrimitive
+内容区域原语，包裹实际内容。
+
+#### ThinkingStepItemRegularContentPrimitive
+普通内容原语，用于显示文本内容。
+
+#### ThinkingStepItemToolCallPrimitive
+工具调用原语，用于显示工具调用信息（图标、标题、内容）。
+
+#### ThinkingStepItemFileListPrimitive
+文件列表原语，用于显示文件列表。
+
+#### ThinkingStepItemFileItemPrimitive
+文件项原语，单个文件的展示。
+
+## 使用场景
+
+- **在 Thinking Process 中使用**：在主思考块的 content 中展示多个子步骤
+- **工具调用展示**：展示调用知识库、搜索引擎等工具的过程
+- **文件处理流程**：展示文件上传、解析、处理的各个子步骤
+- **API 请求链**：展示多个 API 调用的执行状态
+- **数据处理管道**：展示数据清洗、转换、分析等子阶段
+
+## 与 Thinking Process 组合使用
+
+```tsx
+import { ThinkingStep } from "@/registry/wuhan/blocks/thinking-process/thinking-process-01";
+import {
+  ThinkingStepItemContainerPrimitive,
+  ThinkingStepItem,
+} from "@/registry/wuhan/blocks/thinking-step-item/thinking-step-item-01";
+
+<ThinkingStep
+  status="completed"
+  title="分析完成"
+  duration={30}
+  content={
+    <ThinkingStepItemContainerPrimitive>
+      <ThinkingStepItem
+        status="success"
+        title="解析简历"
+        items={[{ content: "已完成" }]}
+      />
+      <ThinkingStepItem
+        status="success"
+        title="分析匹配度"
+        items={[{ content: "匹配度: 85%" }]}
+      />
+      <ThinkingStepItem
+        status="success"
+        title="生成问题"
+        items={[{ content: "已生成 10 个问题" }]}
+      />
+    </ThinkingStepItemContainerPrimitive>
+  }
+/>
+```

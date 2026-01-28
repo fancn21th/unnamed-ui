@@ -789,7 +789,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
           <TabsTrigger value="v3">Tailwind v3</TabsTrigger>
         </TabsList>
         <TabsContent value="v4-oklch">
-          <figure className="!mx-0 mt-0 rounded-lg">
+          <figure className="!mx-0 mt-0 rounded-[var(--radius-lg)]">
             <figcaption className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70">
               <Icons.css className="fill-foreground" />
               app/globals.css
@@ -824,7 +824,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
           </figure>
         </TabsContent>
         <TabsContent value="v4-hsl">
-          <figure className="!mx-0 mt-0 rounded-lg">
+          <figure className="!mx-0 mt-0 rounded-[var(--radius-lg)]">
             <figcaption className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70">
               <Icons.css className="fill-foreground" />
               app/globals.css
@@ -859,7 +859,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
           </figure>
         </TabsContent>
         <TabsContent value="v3">
-          <figure className="!mx-0 mt-0 rounded-lg">
+          <figure className="!mx-0 mt-0 rounded-[var(--radius-lg)]">
             <figcaption className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70">
               <Icons.css className="fill-foreground" />
               app/globals.css
@@ -941,7 +941,7 @@ export function CopyCodeButton({
             </span>
           </Button>
         </DialogTrigger>
-        <DialogContent className="rounded-xl border-none bg-clip-padding shadow-2xl ring-4 ring-neutral-200/80 outline-none md:max-w-2xl dark:bg-neutral-800 dark:ring-neutral-900">
+        <DialogContent className="rounded-[var(--radius-xl)] border-none bg-clip-padding shadow-2xl ring-4 ring-neutral-200/80 outline-none md:max-w-2xl dark:bg-neutral-800 dark:ring-neutral-900">
           <DialogHeader>
             <DialogTitle className="capitalize">{colorTheme}</DialogTitle>
             <DialogDescription>

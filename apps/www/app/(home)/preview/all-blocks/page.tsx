@@ -2,6 +2,7 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 import { Index } from "@/registry/__index__"
 import { getAllBlockDemos } from "@/app/(home)/lib/api"
+import { DesignSystemClassApplier } from "@/app/(home)/components/design-system-class-applier"
 
 const getCachedBlockDemos = React.cache(async () => {
   return await getAllBlockDemos("wuhan")
@@ -64,6 +65,7 @@ export default async function AllBlocksPage() {
 
   return (
     <ExampleWrapper>
+      <DesignSystemClassApplier />
       {demos.map(({ blockName, demoName }) => {
         const Component = Index.wuhan?.[demoName]?.component
 

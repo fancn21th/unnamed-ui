@@ -272,4 +272,34 @@ export const blocks: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "thinking-process-01",
+    type: "registry:block",
+    title: "Thinking Process",
+    description:
+      "Multi-stage thinking process component for displaying AI thinking steps with status and time",
+    registryDependencies: ["style", "collapsible"],
+    files: [
+      {
+        path: "blocks/thinking-process/thinking-process-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/thinking-process-01.tsx",
+      },
+    ],
+  },
+  {
+    name: "thinking-step-item-01",
+    type: "registry:block",
+    title: "Thinking Step Item",
+    description:
+      "Collapsible execution step item component with status (loading/success/error/cancel), timeline, tool calls, and file list",
+    registryDependencies: ["style", "collapsible"],
+    files: [
+      {
+        path: "blocks/thinking-step-item/thinking-step-item-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/thinking-step-item-01.tsx",
+      },
+    ],
+  },
 ];

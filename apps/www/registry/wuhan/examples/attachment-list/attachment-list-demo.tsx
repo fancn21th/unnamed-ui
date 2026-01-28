@@ -115,8 +115,8 @@ export default function AttachmentListDemo() {
               <AttachmentCardLeading
                 className={cn(
                   item.isImage
-                    ? "w-full h-full rounded-xl overflow-hidden "
-                    : "rounded-lg bg-[var(--bg-container)] w-10 h-10",
+                    ? "w-full h-full rounded-[var(--radius-xl)] overflow-hidden "
+                    : "rounded-[var(--radius-lg)] bg-[var(--bg-container)] w-10 h-10",
                 )}
               >
                 {item.loading ? (

@@ -419,4 +419,18 @@ export const recruitmentBlocks: Registry["items"] = [
       },
     ],
   },
+  //sender-input
+  {
+    name: "sender-input",
+    type: "registry:block",
+    title: "Sender Input",
+    description: "发送者输入组件",
+    files: [
+      {
+        path: "recruitment/Sender/index.tsx",
+        type: "registry:component",
+        target: "components/wuhan/recruitment/sender.tsx",
+      },
+    ],
+  },
 ];

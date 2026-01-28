@@ -126,7 +126,7 @@ echo "Hello, World!"
 export default function MarkdownDemo() {
   const [content, setContent] = useState<string>(sampleMarkdown);
   const [status, setStatus] = useState<"loading" | "updating" | "success">(
-    "success"
+    "success",
   );
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const currentIndexRef = useRef<number>(0);

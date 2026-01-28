@@ -1858,6 +1858,40 @@
       ]
     },
     {
+      "name": "thinking-process-01",
+      "type": "registry:block",
+      "title": "Thinking Process",
+      "description": "Multi-stage thinking process component for displaying AI thinking steps with status and time",
+      "registryDependencies": [
+        "style",
+        "collapsible"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/thinking-process/thinking-process-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/thinking-process-01.tsx"
+        }
+      ]
+    },
+    {
+      "name": "thinking-step-item-01",
+      "type": "registry:block",
+      "title": "Thinking Step Item",
+      "description": "Collapsible execution step item component with status (loading/success/error/cancel), timeline, tool calls, and file list",
+      "registryDependencies": [
+        "style",
+        "collapsible"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/thinking-step-item/thinking-step-item-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/thinking-step-item-01.tsx"
+        }
+      ]
+    },
+    {
       "name": "action-dropdown",
       "type": "registry:block",
       "title": "Action Dropdown",
@@ -2270,6 +2304,19 @@
           "path": "registry/wuhan/recruitment/Markdown/index.tsx",
           "type": "registry:component",
           "target": "components/wuhan/recruitment/markdown.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sender-input",
+      "type": "registry:block",
+      "title": "Sender Input",
+      "description": "发送者输入组件",
+      "files": [
+        {
+          "path": "registry/wuhan/recruitment/Sender/index.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/recruitment/sender.tsx"
         }
       ]
     },
@@ -3100,7 +3147,9 @@
     {
       "name": "sender-recruitment-demo",
       "type": "registry:example",
-      "registryDependencies": [],
+      "registryDependencies": [
+        "sender-input"
+      ],
       "files": [
         {
           "path": "registry/wuhan/examples/recruitment/sender-recruitment/sender-demo.tsx",
@@ -3176,6 +3225,118 @@
           "path": "registry/wuhan/examples/recruitment/thinking/thinking-demo.tsx",
           "type": "registry:example",
           "target": "components/wuhan/examples/recruitment/thinking-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "thinking-process-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "thinking-process-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/recruitment/thinking-process/thinking-process-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/recruitment/thinking-process-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "thinking-process-default",
+      "type": "registry:example",
+      "registryDependencies": [
+        "thinking-process-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/recruitment/thinking-process/thinking-process-default.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/recruitment/thinking-process-default.tsx"
+        }
+      ]
+    },
+    {
+      "name": "thinking-process-with-hint",
+      "type": "registry:example",
+      "registryDependencies": [
+        "thinking-process-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/recruitment/thinking-process/thinking-process-with-hint.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/recruitment/thinking-process-with-hint.tsx"
+        }
+      ]
+    },
+    {
+      "name": "thinking-process-custom",
+      "type": "registry:example",
+      "registryDependencies": [
+        "thinking-process-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/recruitment/thinking-process/thinking-process-custom.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/recruitment/thinking-process-custom.tsx"
+        }
+      ]
+    },
+    {
+      "name": "thinking-step-item-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "thinking-step-item-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/recruitment/thinking-step-item/thinking-step-item-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/recruitment/thinking-step-item-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "thinking-step-item-default",
+      "type": "registry:example",
+      "registryDependencies": [
+        "thinking-step-item-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/recruitment/thinking-step-item/thinking-step-item-default.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/recruitment/thinking-step-item-default.tsx"
+        }
+      ]
+    },
+    {
+      "name": "thinking-step-item-with-attachments",
+      "type": "registry:example",
+      "registryDependencies": [
+        "thinking-step-item-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/recruitment/thinking-step-item/thinking-step-item-with-attachments.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/recruitment/thinking-step-item-with-attachments.tsx"
+        }
+      ]
+    },
+    {
+      "name": "thinking-step-item-with-tags",
+      "type": "registry:example",
+      "registryDependencies": [
+        "thinking-step-item-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/recruitment/thinking-step-item/thinking-step-item-with-tags.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/recruitment/thinking-step-item-with-tags.tsx"
         }
       ]
     },

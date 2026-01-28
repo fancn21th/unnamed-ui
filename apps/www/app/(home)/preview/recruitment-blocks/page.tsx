@@ -2,6 +2,7 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 import { Index } from "@/registry/__index__"
 import { getRecruitmentBlockDemos } from "@/app/(home)/lib/api"
+import { DesignSystemClassApplier } from "@/app/(home)/components/design-system-class-applier"
 
 const getCachedRecruitmentBlockDemos = React.cache(async () => {
   return await getRecruitmentBlockDemos("wuhan")
@@ -64,6 +65,7 @@ export default async function RecruitmentBlocksPage() {
 
   return (
     <ExampleWrapper>
+      <DesignSystemClassApplier />
       {demos.map(({ blockName, demoName }) => {
         // 尝试获取 demo 组件，如果没有则获取 block 组件本身
         const Component = Index.wuhan?.[demoName]?.component || Index.wuhan?.[blockName]?.component

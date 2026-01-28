@@ -63,8 +63,8 @@ export function ComposerAttachmentStrip({
               <AttachmentCardLeading
                 className={cn(
                   a.isImage
-                    ? "w-full h-full rounded-xl overflow-hidden"
-                    : "rounded-lg bg-[var(--bg-container)] w-10 h-10",
+                    ? "w-full h-full rounded-[var(--radius-xl)] overflow-hidden"
+                    : "rounded-[var(--radius-lg)] bg-[var(--bg-container)] w-10 h-10",
                 )}
               >
                 {a.loading ? (
@@ -135,8 +135,8 @@ export function MessageAttachments({
             <AttachmentCardLeading
               className={cn(
                 a.isImage
-                  ? "w-full h-full rounded-xl overflow-hidden"
-                  : "rounded-lg bg-[var(--bg-container)] w-10 h-10",
+                  ? "w-full h-full [var(--radius-xl)] overflow-hidden"
+                  : "rounded-[var(--radius-lg)] bg-[var(--bg-container)] w-10 h-10",
               )}
             >
               {a.isImage && a.thumbnail ? (

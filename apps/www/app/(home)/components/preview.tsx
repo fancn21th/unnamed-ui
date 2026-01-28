@@ -1,10 +1,13 @@
 "use client"
 
 import * as React from "react"
+import { useSearchParams } from "next/navigation"
+import { Index } from "@/registry/__index__"
 import { useHomeSearchParams } from "../lib/search-params"
 
 export function Preview() {
   const [params] = useHomeSearchParams()
+  const searchParams = useSearchParams()
   const iframeRef = React.useRef<HTMLIFrameElement>(null)
 
   const iframeSrc = React.useMemo(() => {
@@ -21,9 +24,9 @@ export function Preview() {
       return "/preview/recruitment-blocks"
     }
 
-    // 如果 item 名称以 -01 结尾，认为是 block，使用 block 路由
-    // 否则使用原来的路径（example）
-    if (params.item.endsWith("-01")) {
+    // 方案A：block 统一走 /preview/block/[name]，/preview/[name] 只渲染 example
+    const itemType = Index.wuhan?.[params.item]?.type
+    if (itemType === "registry:block") {
       return `/preview/block/${params.item}`
     }
 
@@ -31,7 +34,13 @@ export function Preview() {
     return `/preview/${params.item}`
   }, [params.item])
 
-  if (!iframeSrc) {
+  const iframeSrcWithParams = React.useMemo(() => {
+    if (!iframeSrc) return null
+    const qs = searchParams.toString()
+    return qs ? `${iframeSrc}?${qs}` : iframeSrc
+  }, [iframeSrc, searchParams])
+
+  if (!iframeSrcWithParams) {
     return (
       <div className="relative -mx-1 flex flex-1 flex-col items-center justify-center sm:mx-0">
         <div className="text-muted-foreground text-center">
@@ -49,7 +58,7 @@ export function Preview() {
         <iframe
           key={params.item}
           ref={iframeRef}
-          src={iframeSrc}
+          src={iframeSrcWithParams}
           className="z-10 size-full flex-1"
           title="Preview"
         />

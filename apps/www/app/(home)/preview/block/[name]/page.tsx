@@ -2,6 +2,7 @@ import * as React from "react"
 import { notFound } from "next/navigation"
 import { Index } from "@/registry/__index__"
 import { getBlockExamples, getStyleItem } from "@/app/(home)/lib/api"
+import { DesignSystemClassApplier } from "@/app/(home)/components/design-system-class-applier"
 
 const getCachedBlockExamples = React.cache(
   async (blockName: string) => {
@@ -55,6 +56,7 @@ export default async function BlockExamplesPage({
 
   return (
     <div className="relative min-h-screen p-8 space-y-8">
+      <DesignSystemClassApplier />
       <div className="space-y-2">
         <h1 className="text-2xl font-bold capitalize">
           {blockItem.title || paramBag.name.replace(/-01$/, "").replace(/-/g, " ")}

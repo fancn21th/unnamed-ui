@@ -28,10 +28,10 @@ export default async function HomePage() {
     }));
 
   const navLinks = [
-    { href: "/docs", label: "Docs" },
+    { href: "/docs", label: "Components" },
     { href: "/themes", label: "Themes" },
     // { href: "/libs", label: "Libs" },
-    { href: "/compositions", label: "Compositions" },
+    { href: "/compositions", label: "Chats" },
   ];
 
   return (

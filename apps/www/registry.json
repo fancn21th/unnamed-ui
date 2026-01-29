@@ -1908,18 +1908,18 @@
       ]
     },
     {
-      "name": "intervene-form-01",
+      "name": "dynamic-form-01",
       "type": "registry:block",
-      "title": "Intervene Form",
-      "description": "Intervene form component for user input and interaction",
+      "title": "Dynamic Form",
+      "description": "Dynamic form component for user input and interaction",
       "registryDependencies": [
         "style"
       ],
       "files": [
         {
-          "path": "registry/wuhan/blocks/intervene-form/intervene-form-01.tsx",
+          "path": "registry/wuhan/blocks/dynamic-form/dynamic-form-01.tsx",
           "type": "registry:component",
-          "target": "components/wuhan/blocks/intervene-form-01.tsx"
+          "target": "components/wuhan/blocks/dynamic-form-01.tsx"
         }
       ]
     },
@@ -3120,16 +3120,16 @@
       ]
     },
     {
-      "name": "intervene-form-demo",
+      "name": "dynamic-form-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "intervene-form-01"
+        "dynamic-form-01"
       ],
       "files": [
         {
-          "path": "registry/wuhan/examples/intervene-form/intervene-form-demo.tsx",
+          "path": "registry/wuhan/examples/dynamic-form/dynamic-form-demo.tsx",
           "type": "registry:example",
-          "target": "components/wuhan/examples/intervene-form-demo.tsx"
+          "target": "components/wuhan/examples/dynamic-form-demo.tsx"
         }
       ]
     },

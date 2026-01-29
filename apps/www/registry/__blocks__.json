@@ -88,8 +88,8 @@
     "description": "Task list primitives (container, list, items)"
   },
   {
-    "name": "intervene-form-01",
-    "description": "Intervene form component for user input and interaction"
+    "name": "dynamic-form-01",
+    "description": "Dynamic Form component for user input and interaction"
   },
   {
     "name": "message",

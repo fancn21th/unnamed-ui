@@ -784,21 +784,21 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "intervene-form-01": {
-      name: "intervene-form-01",
-      description: "Intervene form component for user input and interaction",
+    "dynamic-form-01": {
+      name: "dynamic-form-01",
+      description: "Dynamic Form component for user input and interaction",
       type: "registry:block",
       registryDependencies: ["style"],
       files: [
         {
-          path: "registry/wuhan/blocks/intervene-form/intervene-form-01.tsx",
+          path: "registry/wuhan/blocks/dynamic-form/dynamic-form-01.tsx",
           type: "registry:component",
-          target: "components/wuhan/blocks/intervene-form-01.tsx",
+          target: "components/wuhan/blocks/dynamic-form-01.tsx",
         },
       ],
       component: React.lazy(async () => {
         const mod =
-          await import("@/registry/wuhan/blocks/intervene-form/intervene-form-01.tsx");
+          await import("@/registry/wuhan/blocks/dynamic-form/dynamic-form-01.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>
@@ -2933,21 +2933,21 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "intervene-form-demo": {
-      name: "intervene-form-demo",
+    "dynamic-form-demo": {
+      name: "dynamic-form-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["intervene-form-01"],
+      registryDependencies: ["dynamic-form-01"],
       files: [
         {
-          path: "registry/wuhan/examples/intervene-form/intervene-form-demo.tsx",
+          path: "registry/wuhan/examples/dynamic-form/dynamic-form-demo.tsx",
           type: "registry:example",
-          target: "components/wuhan/examples/intervene-form-demo.tsx",
+          target: "components/wuhan/examples/dynamic-form-demo.tsx",
         },
       ],
       component: React.lazy(async () => {
         const mod =
-          await import("@/registry/wuhan/examples/intervene-form/intervene-form-demo.tsx");
+          await import("@/registry/wuhan/examples/dynamic-form/dynamic-form-demo.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

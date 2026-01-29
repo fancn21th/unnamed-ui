@@ -314,16 +314,16 @@ export const blocks: Registry["items"] = [
     ],
   },
   {
-    name: "intervene-form-01",
+    name: "dynamic-form-01",
     type: "registry:block",
-    title: "Intervene Form",
-    description: "Intervene form component for user input and interaction",
+    title: "Dynamic Form",
+    description: "Dynamic Form component for user input and interaction",
     registryDependencies: ["style"],
     files: [
       {
-        path: "blocks/intervene-form/intervene-form-01.tsx",
+        path: "blocks/dynamic-form/dynamic-form-01.tsx",
         type: "registry:component",
-        target: "components/wuhan/blocks/intervene-form-01.tsx",
+        target: "components/wuhan/blocks/dynamic-form-01.tsx",
       },
     ],
   },

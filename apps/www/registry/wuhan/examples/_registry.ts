@@ -1080,14 +1080,14 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "intervene-form-demo",
+    name: "dynamic-form-demo",
     type: "registry:example",
-    registryDependencies: ["intervene-form-01"],
+    registryDependencies: ["dynamic-form-01"],
     files: [
       {
-        path: "examples/intervene-form/intervene-form-demo.tsx",
+        path: "examples/dynamic-form/dynamic-form-demo.tsx",
         type: "registry:example",
-        target: "components/wuhan/examples/intervene-form-demo.tsx",
+        target: "components/wuhan/examples/dynamic-form-demo.tsx",
       },
     ],
   },

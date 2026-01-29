@@ -2,9 +2,10 @@
 
 import { BookOpen } from "lucide-react";
 import { ThinkingStep } from "@/registry/wuhan/composed/thinking-process/thinking-process";
+import type { ThinkingStepItemProps } from "@/registry/wuhan/composed/thinking-step-item/thinking-step-item";
 
 export default function ThinkingProcessCustom() {
-  const steps = [
+  const steps: ThinkingStepItemProps[] = [
     {
       status: "success",
       title: "整理需求",

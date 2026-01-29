@@ -5,7 +5,7 @@ import {
   Avatar,
   MessageAvatarHeader,
 } from "@/registry/wuhan/blocks/avatar-header/avatar-header-01";
-import { AIMessage, UserMessage } from "@/registry/wuhan/blocks/message/message-01";
+import { AIMessage, UserMessage } from "@/registry/wuhan/composed/message/message";
 import {
   SenderAttachmentButton,
   SenderContainer,

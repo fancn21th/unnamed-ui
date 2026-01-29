@@ -1,4 +1,4 @@
-import { type Registry } from "shadcn/schema";
+import type { Registry } from "shadcn/schema";
 
 // Recruitment examples - separate for easy removal
 const recruitmentExamples: Registry["items"] = [
@@ -353,6 +353,19 @@ const recruitmentExamples: Registry["items"] = [
         type: "registry:example",
         target:
           "components/wuhan/examples/recruitment/thinking-step-item-with-attachments.tsx",
+      },
+    ],
+  },
+  {
+    name: "thinking-step-item-with-overflow-files",
+    type: "registry:example",
+    registryDependencies: ["thinking-step-item-01"],
+    files: [
+      {
+        path: "examples/recruitment/thinking-step-item/thinking-step-item-with-overflow-files.tsx",
+        type: "registry:example",
+        target:
+          "components/wuhan/examples/recruitment/thinking-step-item-with-overflow-files.tsx",
       },
     ],
   },

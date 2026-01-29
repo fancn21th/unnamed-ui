@@ -27,7 +27,6 @@ export default function Example() {
       <ThinkingStep
         status="thinking"
         title="思考中..."
-        duration={14}
         content="正在分析问题..."
         defaultOpen
       />

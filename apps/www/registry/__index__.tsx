@@ -3389,6 +3389,32 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "thinking-step-item-with-overflow-files": {
+      name: "thinking-step-item-with-overflow-files",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["thinking-step-item-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/thinking-step-item/thinking-step-item-with-overflow-files.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/thinking-step-item-with-overflow-files.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/thinking-step-item/thinking-step-item-with-overflow-files.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "thinking-step-item-with-tags": {
       name: "thinking-step-item-with-tags",
       description: "",

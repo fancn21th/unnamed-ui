@@ -212,7 +212,7 @@
           "neutral-0": "#ffffff",
           "neutral-10": "#fcfcfd",
           "neutral-50": "#f9f9fb",
-          "neutral-100": "#f0f0f4",
+          "neutral-100": "#F6F6FA",
           "neutral-200": "#e8e7ed",
           "neutral-300": "#e1e0e7",
           "neutral-400": "#aaa8b3",
@@ -387,11 +387,11 @@
           "line-height-7": "44px",
           "line-height-8": "56px",
           "line-height-9": "72px",
-          "radius-sm": "calc(var(--radius) - 2px)",
-          "radius-md": "var(--radius)",
-          "radius-lg": "calc(var(--radius) + 2px)",
-          "radius-xl": "calc(var(--radius) + 6px)",
-          "radius-2xl": "calc(var(--radius) + 10px)",
+          "radius-sm": "4px",
+          "radius-md": "6px",
+          "radius-lg": "8px",
+          "radius-xl": "12px",
+          "radius-2xl": "16px",
           "radius-circle": "999px",
           "space-1": "2px",
           "space-2": "4px",
@@ -556,7 +556,7 @@
           "neutral-0": "#ffffff",
           "neutral-10": "#fcfcfd",
           "neutral-50": "#f9f9fb",
-          "neutral-100": "#f0f0f4",
+          "neutral-100": "#F6F6FA",
           "neutral-200": "#e8e7ed",
           "neutral-300": "#e1e0e7",
           "neutral-400": "#aaa8b3",
@@ -917,7 +917,7 @@
           "neutral-0": "#ffffff",
           "neutral-10": "#fcfcfd",
           "neutral-50": "#f9f9fb",
-          "neutral-100": "#f0f0f4",
+          "neutral-100": "#F6F6FA",
           "neutral-200": "#e8e7ed",
           "neutral-300": "#e1e0e7",
           "neutral-400": "#aaa8b3",
@@ -1092,11 +1092,11 @@
           "line-height-7": "44px",
           "line-height-8": "56px",
           "line-height-9": "72px",
-          "radius-sm": "calc(var(--radius) - 2px)",
-          "radius-md": "var(--radius)",
-          "radius-lg": "calc(var(--radius) + 2px)",
-          "radius-xl": "calc(var(--radius) + 6px)",
-          "radius-2xl": "calc(var(--radius) + 10px)",
+          "radius-sm": "4px",
+          "radius-md": "6px",
+          "radius-lg": "8px",
+          "radius-xl": "12px",
+          "radius-2xl": "16px",
           "radius-circle": "999px",
           "space-1": "2px",
           "space-2": "4px",
@@ -1261,7 +1261,7 @@
           "neutral-0": "#ffffff",
           "neutral-10": "#fcfcfd",
           "neutral-50": "#f9f9fb",
-          "neutral-100": "#f0f0f4",
+          "neutral-100": "#F6F6FA",
           "neutral-200": "#e8e7ed",
           "neutral-300": "#e1e0e7",
           "neutral-400": "#aaa8b3",
@@ -3323,6 +3323,20 @@
           "path": "registry/wuhan/examples/recruitment/thinking-step-item/thinking-step-item-with-attachments.tsx",
           "type": "registry:example",
           "target": "components/wuhan/examples/recruitment/thinking-step-item-with-attachments.tsx"
+        }
+      ]
+    },
+    {
+      "name": "thinking-step-item-with-overflow-files",
+      "type": "registry:example",
+      "registryDependencies": [
+        "thinking-step-item-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/recruitment/thinking-step-item/thinking-step-item-with-overflow-files.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/recruitment/thinking-step-item-with-overflow-files.tsx"
         }
       ]
     },

@@ -6,6 +6,18 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@keyframes thinking-loading-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @theme inline {
   /* ==================== Font-family 字体族 ==================== */
   --font-family-en: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -238,15 +250,15 @@
   --primary-foreground: var(--neutral-0); /* #ffffff */
   
   /* 次要色 - 基于 tokens Container.bg-neutral-light */
-  --secondary: var(--neutral-100); /* #f0f0f4 */
+  --secondary: var(--neutral-100); /* #F6F6FA */
   --secondary-foreground: var(--neutral-900); /* #1e1d26 */
   
   /* 静音色 - 基于 tokens Container.bg-neutral-light */
-  --muted: var(--neutral-100); /* #f0f0f4 */
+  --muted: var(--neutral-100); /* #F6F6FA */
   --muted-foreground: var(--neutral-700); /* #666473 */
   
   /* 强调色 */
-  --accent: var(--neutral-100); /* #f0f0f4 */
+  --accent: var(--neutral-100); /* #F6F6FA */
   --accent-foreground: var(--neutral-900); /* #1e1d26 */
   
   /* 破坏性操作 - 基于 tokens Error.error-600 */
@@ -276,7 +288,7 @@
   --neutral-0: #ffffff;
   --neutral-10: #fcfcfd;
   --neutral-50: #f9f9fb;
-  --neutral-100: #f0f0f4;
+  --neutral-100: #F6F6FA;
   --neutral-200: #e8e7ed;
   --neutral-300: #e1e0e7;
   --neutral-400: #aaa8b3;

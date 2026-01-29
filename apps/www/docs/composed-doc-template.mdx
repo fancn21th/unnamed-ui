@@ -1,0 +1,139 @@
+---
+title: Component Name
+description: One-line description of the composed component
+author: Your Name
+---
+
+<ComponentPreview
+  name="component-name-demo"
+  description="One-line usage description"
+  className="mb-4"
+/>
+
+组件定位与场景说明（1-2 句话）。
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/component-name.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="component-name"
+  title="registry/wuhan/composed/component-name/component-name.tsx"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Overview
+
+- **定位**：一句话说明 composed 解决的问题
+- **组合方式**：说明 composed 如何基于 primitives 组合
+- **适用范围**：何时使用 composed / 何时用 primitives
+
+## Usage
+
+### 基础用法（Composed）
+
+```tsx
+import { ComponentName } from "@/registry/wuhan/composed/component-name/component-name";
+
+export function Example() {
+  return <ComponentName />;
+}
+```
+
+### 常见变体
+
+```tsx
+// 展示常用 props/变体
+```
+
+## API (Composed)
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `propA` | `string` | `-` | 描述 |
+| `propB` | `boolean` | `false` | 描述 |
+
+## Examples
+
+### Default
+
+基础示例说明。
+
+<ComponentPreview
+  name="component-name-default"
+  description="Default usage"
+  className="mb-4"
+/>
+
+### With Options
+
+变体说明。
+
+<ComponentPreview
+  name="component-name-with-options"
+  description="Variant usage"
+  className="mb-4"
+/>
+
+## Primitives (Advanced)
+
+当需要更深度的布局/交互定制时使用 primitives。
+
+### Installation (Primitives)
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/component-name-01.json
+```
+
+### 原语组合示例
+
+```tsx
+import {
+  PrimitiveA,
+  PrimitiveB,
+} from "@/registry/wuhan/blocks/component-name/component-name-01";
+
+export function AdvancedExample() {
+  return (
+    <PrimitiveA>
+      <PrimitiveB />
+    </PrimitiveA>
+  );
+}
+```
+
+## Behavior Notes
+
+- 受控/非受控说明（如有）
+- 状态/文案默认值（如有）
+
+## Design Tokens
+
+组件只消费全局 token（如 `--text-* / --bg-* / --gap-* / --radius-*`），不输出全局样式。
+

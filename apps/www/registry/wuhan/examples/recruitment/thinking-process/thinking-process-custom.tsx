@@ -1,60 +1,44 @@
 "use client";
 
-import * as React from "react";
-import { ChevronDown, Sparkles } from "lucide-react";
-import {
-  ThinkingStepPrimitive,
-  ThinkingStepHeaderPrimitive,
-  ThinkingStepContentPrimitive,
-  ThinkingStatusLabelPrimitive,
-  ThinkingTimeLabelPrimitive,
-  ThinkingIconContainerPrimitive,
-  ThinkingCollapseArrowPrimitive,
-} from "@/registry/wuhan/blocks/thinking-process/thinking-process-01";
+import { BookOpen } from "lucide-react";
+import { ThinkingStep } from "@/registry/wuhan/composed/thinking-process/thinking-process";
 
 export default function ThinkingProcessCustom() {
+  const steps = [
+    {
+      status: "success",
+      title: "整理需求",
+      items: [
+        {
+          content: "明确目标与范围。",
+          toolCall: {
+            icon: <BookOpen className="size-4" />,
+            title: "调取知识",
+            content: "读取历史资料",
+          },
+        },
+      ],
+    },
+    {
+      status: "loading",
+      title: "分析方案",
+      items: [{ content: "正在生成分析结构..." }],
+    },
+  ];
+
   return (
     <div className="w-full h-full max-w-2xl">
-      {/* 使用原语构建，自定义图标，在 Content 中渲染多步骤列表 */}
-      <ThinkingStepPrimitive status="completed" defaultOpen>
-        <ThinkingStepHeaderPrimitive
-          trailing={
-            <ThinkingCollapseArrowPrimitive>
-              <ChevronDown className="size-4" />
-            </ThinkingCollapseArrowPrimitive>
-          }
-        >
-          <ThinkingIconContainerPrimitive status="completed">
-            <Sparkles className="size-4" />
-          </ThinkingIconContainerPrimitive>
-          <ThinkingStatusLabelPrimitive status="completed">
-            分析完成
-          </ThinkingStatusLabelPrimitive>
-          <ThinkingTimeLabelPrimitive>30s</ThinkingTimeLabelPrimitive>
-        </ThinkingStepHeaderPrimitive>
-        {/* 在 Content 中渲染复杂内容（如多步骤列表） */}
-        <ThinkingStepContentPrimitive>
-          <div className="space-y-3">
-            <p className="text-[var(--text-primary)]">
-              已成功完成简历分析流程：
-            </p>
-            <div className="space-y-2 text-sm text-[var(--text-secondary)]">
-              <div className="flex items-center gap-2">
-                <span className="text-[var(--text-success)]">✓</span>
-                <span>步骤 1: 解析简历信息 (5s)</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-[var(--text-success)]">✓</span>
-                <span>步骤 2: 分析岗位匹配度 (12s)</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-[var(--text-success)]">✓</span>
-                <span>步骤 3: 生成面试问题 (13s)</span>
-              </div>
-            </div>
-          </div>
-        </ThinkingStepContentPrimitive>
-      </ThinkingStepPrimitive>
+      <ThinkingStep
+        status="completed"
+        title="思考完成"
+        duration={24}
+        contentBlocks={[
+          { type: "text", key: "intro", content: "下面是关键子步骤：" },
+          { type: "subSteps", key: "steps", steps },
+          { type: "text", key: "outro", content: "以上步骤已完成。" },
+        ]}
+        defaultOpen
+      />
     </div>
   );
 }

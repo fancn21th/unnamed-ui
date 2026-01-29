@@ -41,12 +41,12 @@ export default function ThinkingProcessDemo() {
   ] satisfies ThinkingStepItemProps[];
 
   return (
-    <div className="w-full h-full max-w-2xl space-y-4">
+    <div className="w-full h-full flex flex-col gap-4 max-w-2xl">
       {/* 思考中状态 - 不显示时间，标题闪烁 */}
       <ThinkingStep
         status="thinking"
         title="思考中..."
-        content="正在分析候选人的简历和岗位要求，评估匹配度..."
+        content="思考中生成的内容"
       />
 
       {/* 已完成状态 - 显示时间 */}
@@ -74,6 +74,7 @@ export default function ThinkingProcessDemo() {
             key: "outro",
             content: "以上步骤完成后，已生成最终结论与问题清单。",
           },
+          { type:"node", key: "node", node: <h1>自定义组件</h1> },
         ]}
       />
 

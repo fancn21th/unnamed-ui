@@ -843,6 +843,7 @@
     }
   }
 
+  /* 代码块样式区域 */
   [data-rehype-pretty-code-figure] {
     background-color: var(--color-code);
     color: var(--color-code-foreground);
@@ -851,7 +852,7 @@
     border-color: var(--border);
     margin-top: calc(var(--spacing) * 6);
     overflow: hidden;
-    font-size: 12px;
+    font-size: var(--text-sm);
     outline: none;
     position: relative;
     @apply -mx-1 md:-mx-1;
@@ -872,19 +873,21 @@
     color: var(--color-code-foreground);
   }
 
+  /* 代码块行号样式区域 */
   [data-line-numbers] {
     display: grid;
     min-width: 100%;
     white-space: pre;
-    border: 0;
-    background: transparent;
+    border: 0 !important;
+    border-width: 0;
+    background: var(--color-code) !important;
     padding: 0;
     counter-reset: line;
     box-decoration-break: clone;
   }
 
   [data-line-numbers] [data-line]::before {
-    font-size: 12px;
+    font-size: var(--text-sm);
     counter-increment: line;
     content: counter(line);
     display: inline-block;
@@ -892,13 +895,13 @@
     padding-right: calc(var(--spacing) * 6);
     text-align: right;
     color: var(--color-code-number);
-    background-color: var(--color-code);
+    background-color: transparent;
     position: sticky;
     left: 0;
   }
 
   [data-line-numbers] [data-highlighted-line][data-line]::before {
-    background-color: var(--color-code-highlight);
+    background-color: transparent;
   }
 
   [data-line] {
@@ -945,5 +948,10 @@
     padding-block: 0.1rem;
     font-family: var(--font-mono);
     font-size: 0.8rem;
+  }
+
+  /* 仅对 docs 的 MDX code block 隐藏 ::before 行号 */
+  [data-mdx-pre] [data-line]::before {
+    display: none !important;
   }
 }

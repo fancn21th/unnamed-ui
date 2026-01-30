@@ -13,11 +13,17 @@ import {
   ToggleButtonPrimitive,
 } from "@/registry/wuhan/blocks/toggle-button/toggle-button-01";
 
+/**
+ * @public
+ */
 export interface FeedbackOption {
   id: string;
   label: React.ReactNode;
 }
 
+/**
+ * @public
+ */
 export interface FeedbackProps {
   title?: React.ReactNode;
   options: FeedbackOption[];
@@ -33,76 +39,103 @@ export interface FeedbackProps {
   onClose?: () => void;
 }
 
-export function FeedbackComposed({
-  title = "有什么问题?",
-  options,
-  selectedId,
-  defaultSelectedId = "",
-  onSelect,
-  inputValue,
-  defaultInputValue = "",
-  onInputChange,
-  placeholder = "请输入详细描述...",
-  submitLabel = "提交",
-  onSubmit,
-  onClose,
-}: FeedbackProps) {
-  const [localSelected, setLocalSelected] = React.useState(defaultSelectedId);
-  const [localInput, setLocalInput] = React.useState(defaultInputValue);
+/**
+ * @public
+ */
+export const FeedbackComposed = React.forwardRef<
+  HTMLFormElement,
+  FeedbackProps
+>(
+  (
+    {
+      title = "有什么问题?",
+      options,
+      selectedId,
+      defaultSelectedId = "",
+      onSelect,
+      inputValue,
+      defaultInputValue = "",
+      onInputChange,
+      placeholder = "请输入详细描述...",
+      submitLabel = "提交",
+      onSubmit,
+      onClose,
+    },
+    ref,
+  ) => {
+    const [localSelected, setLocalSelected] = React.useState(defaultSelectedId);
+    const [localInput, setLocalInput] = React.useState(defaultInputValue);
 
-  const currentSelected = selectedId ?? localSelected;
-  const currentInput = inputValue ?? localInput;
+    const currentSelected = selectedId ?? localSelected;
+    const currentInput = inputValue ?? localInput;
 
-  const handleSelect = (id: string) => {
-    setLocalSelected(id);
-    onSelect?.(id);
-  };
+    const handleSelect = React.useCallback(
+      (id: string) => {
+        setLocalSelected(id);
+        onSelect?.(id);
+      },
+      [onSelect],
+    );
 
-  const handleInputChange = (value: string) => {
-    setLocalInput(value);
-    onInputChange?.(value);
-  };
+    const handleInputChange = React.useCallback(
+      (value: string) => {
+        setLocalInput(value);
+        onInputChange?.(value);
+      },
+      [onInputChange],
+    );
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    onSubmit?.({ selectedId: currentSelected, inputValue: currentInput });
-  };
+    const handleSubmit = React.useCallback(
+      (event: React.FormEvent) => {
+        event.preventDefault();
+        onSubmit?.({ selectedId: currentSelected, inputValue: currentInput });
+      },
+      [currentSelected, currentInput, onSubmit],
+    );
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <FeedbackContainerPrimitive onClose={onClose}>
-        <FeedbackHeaderPrimitive title={title} onClose={onClose} />
+    return (
+      <form ref={ref} onSubmit={handleSubmit} aria-label="Feedback form">
+        <FeedbackContainerPrimitive onClose={onClose}>
+          <FeedbackHeaderPrimitive title={title} onClose={onClose} />
 
-        <ToggleButtonGroupPrimitive>
-          {options.map((option) => (
-            <ToggleButtonPrimitive
-              key={option.id}
-              selected={currentSelected === option.id}
-              onClick={() => handleSelect(option.id)}
-              variant="default"
-            >
-              {option.label}
-            </ToggleButtonPrimitive>
-          ))}
-        </ToggleButtonGroupPrimitive>
+          <ToggleButtonGroupPrimitive>
+            {options.map((option) => (
+              <ToggleButtonPrimitive
+                key={option.id}
+                selected={currentSelected === option.id}
+                onClick={() => handleSelect(option.id)}
+                variant="default"
+              >
+                {option.label}
+              </ToggleButtonPrimitive>
+            ))}
+          </ToggleButtonGroupPrimitive>
 
-        <FeedbackInputContainerPrimitive>
-          <FeedbackInputPrimitive
-            placeholder={placeholder}
-            value={currentInput}
-            onChange={(event) => handleInputChange(event.target.value)}
-          />
-        </FeedbackInputContainerPrimitive>
+          <FeedbackInputContainerPrimitive>
+            <FeedbackInputPrimitive
+              placeholder={placeholder}
+              value={currentInput}
+              onChange={(event) => handleInputChange(event.target.value)}
+            />
+          </FeedbackInputContainerPrimitive>
 
-        <div>
-          <FeedbackSubmitButtonPrimitive type="submit">
-            {submitLabel}
-          </FeedbackSubmitButtonPrimitive>
-        </div>
-      </FeedbackContainerPrimitive>
-    </form>
-  );
-}
+          <div>
+            <FeedbackSubmitButtonPrimitive type="submit">
+              {submitLabel}
+            </FeedbackSubmitButtonPrimitive>
+          </div>
+        </FeedbackContainerPrimitive>
+      </form>
+    );
+  },
+);
+FeedbackComposed.displayName = "FeedbackComposed";
 
+/**
+ * @public
+ */
 export const FeedbackInput = FeedbackInputPrimitive;
+/**
+ * @public
+ */
 export const FeedbackInputContainer = FeedbackInputContainerPrimitive;

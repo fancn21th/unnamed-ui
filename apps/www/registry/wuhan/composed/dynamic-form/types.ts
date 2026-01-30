@@ -4,6 +4,7 @@ import type { z } from "zod";
 /**
  * 表单字段类型枚举
  * 定义了表单支持的所有输入控件类型
+ * @public
  */
 export type FieldType =
   | "input" // 单行文本输入
@@ -19,6 +20,7 @@ export type FieldType =
 /**
  * 选项数据结构
  * 用于 select、radio、checkbox 等选择类控件
+ * @public
  */
 export interface FieldOption {
   /** 选项的值 */
@@ -32,6 +34,7 @@ export interface FieldOption {
 /**
  * 表单字段配置
  * 定义单个表单项的完整配置信息
+ * @public
  */
 export interface FieldSchema {
   /** 字段唯一标识，对应表单值的键名 */
@@ -73,6 +76,7 @@ export interface FieldSchema {
 /**
  * 字段渲染属性
  * 传递给自定义渲染函数的参数
+ * @public
  */
 export interface FieldRenderProps {
   /** 字段配置 */
@@ -94,6 +98,7 @@ export interface FieldRenderProps {
 /**
  * 表单 Schema
  * 定义整个动态表单的配置结构
+ * @public
  */
 export interface FormSchema {
   /** 表单标题 */
@@ -106,6 +111,7 @@ export interface FormSchema {
 
 /**
  * 动态表单组件属性
+ * @public
  */
 export interface DynamicFormProps {
   /** 表单的自定义样式类名 */
@@ -142,6 +148,7 @@ export interface DynamicFormProps {
 /**
  * 动态表单实例方法接口
  * 通过 ref 暴露给父组件的方法集合
+ * @public
  */
 export interface DynamicFormRef {
   /**
@@ -199,6 +206,7 @@ export interface DynamicFormRef {
 
 /**
  * 字段错误信息结构
+ * @public
  */
 export interface FieldErrorInfo {
   name: string;

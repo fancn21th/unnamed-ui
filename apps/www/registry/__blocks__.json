@@ -124,6 +124,46 @@
     "description": "Composed thinking process with steps and content blocks"
   },
   {
+    "name": "welcome",
+    "description": "Composed welcome message header"
+  },
+  {
+    "name": "quick-action",
+    "description": "Composed quick action panel with items"
+  },
+  {
+    "name": "prompt",
+    "description": "Composed prompt list with horizontal/vertical variants"
+  },
+  {
+    "name": "suggestion",
+    "description": "Composed suggestion panel with next step actions"
+  },
+  {
+    "name": "attachment-list",
+    "description": "Composed attachment list with cards"
+  },
+  {
+    "name": "quote-content",
+    "description": "Composed quote content display with close action"
+  },
+  {
+    "name": "history-item",
+    "description": "Composed history list item with trailing slots"
+  },
+  {
+    "name": "avatar-header",
+    "description": "Composed avatar header with name and time"
+  },
+  {
+    "name": "sidebar",
+    "description": "Composed sidebar with header, search, and history list"
+  },
+  {
+    "name": "feedback",
+    "description": "Composed feedback form with options and input"
+  },
+  {
     "name": "dynamic-form",
     "description": "Schema-driven dynamic form with validation and multiple field types"
   },

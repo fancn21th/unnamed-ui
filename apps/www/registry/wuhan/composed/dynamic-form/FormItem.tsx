@@ -26,8 +26,9 @@ import { cn } from "@/lib/utils";
 
 /**
  * FormItem 组件属性
+ * @public
  */
-interface FormItemProps {
+export interface FormItemProps {
   /** 字段配置 */
   field: FieldSchema;
   /** react-hook-form 的 control */
@@ -42,79 +43,85 @@ interface FormItemProps {
  * FormItem 组件
  * 根据字段配置渲染对应的表单控件
  * 统一包裹 Field 布局组件，处理标签、描述、错误提示
+ *
+ * @public
  */
-export function FormItem({ field, control, readonly, error }: FormItemProps) {
-  // 如果是只读模式，渲染只读视图
-  if (readonly) {
-    return (
-      <Field orientation={field.orientation}>
-        <FieldTitle>{field.label}</FieldTitle>
-        <div className="text-sm">
+export const FormItem = React.forwardRef<HTMLDivElement, FormItemProps>(
+  ({ field, control, readonly, error }, ref) => {
+    // 如果是只读模式，渲染只读视图
+    if (readonly) {
+      return (
+        <Field ref={ref} orientation={field.orientation}>
+          <FieldTitle>{field.label}</FieldTitle>
+          <div className="text-sm">
+            <Controller
+              name={field.name}
+              control={control}
+              render={({ field: formField }) => (
+                <span>{getDisplayLabel(formField.value, field)}</span>
+              )}
+            />
+          </div>
+          {field.description && (
+            <FieldDescription>{field.description}</FieldDescription>
+          )}
+        </Field>
+      );
+    }
+
+    // 如果有自定义渲染函数，使用自定义渲染
+    if (field.render) {
+      return (
+        <Field ref={ref} orientation={field.orientation}>
           <Controller
             name={field.name}
             control={control}
             render={({ field: formField }) => (
-              <span>{getDisplayLabel(formField.value, field)}</span>
+              <>
+                {field.render!({
+                  field,
+                  value: formField.value,
+                  onChange: formField.onChange,
+                  onBlur: formField.onBlur,
+                  error,
+                  disabled: field.disabled,
+                  readonly,
+                })}
+              </>
             )}
           />
-        </div>
-        {field.description && (
-          <FieldDescription>{field.description}</FieldDescription>
-        )}
-      </Field>
-    );
-  }
+        </Field>
+      );
+    }
 
-  // 如果有自定义渲染函数，使用自定义渲染
-  if (field.render) {
+    // 根据字段类型渲染对应的控件
     return (
-      <Field orientation={field.orientation}>
+      <Field
+        ref={ref}
+        orientation={field.orientation}
+        data-invalid={!!error}
+        className={cn(field.disabled && "opacity-50")}
+      >
+        <FieldLabel htmlFor={field.name}>
+          {field.label}
+          {field.required && <span className="text-destructive ml-1">*</span>}
+        </FieldLabel>
         <Controller
           name={field.name}
           control={control}
           render={({ field: formField }) => (
-            <>
-              {field.render!({
-                field,
-                value: formField.value,
-                onChange: formField.onChange,
-                onBlur: formField.onBlur,
-                error,
-                disabled: field.disabled,
-                readonly,
-              })}
-            </>
+            <>{renderFieldControl(field, formField, error)}</>
           )}
         />
+        {field.description && (
+          <FieldDescription>{field.description}</FieldDescription>
+        )}
+        {error && <FieldErrorComponent>{error.message}</FieldErrorComponent>}
       </Field>
     );
-  }
-
-  // 根据字段类型渲染对应的控件
-  return (
-    <Field
-      orientation={field.orientation}
-      data-invalid={!!error}
-      className={cn(field.disabled && "opacity-50")}
-    >
-      <FieldLabel htmlFor={field.name}>
-        {field.label}
-        {field.required && <span className="text-destructive ml-1">*</span>}
-      </FieldLabel>
-      <Controller
-        name={field.name}
-        control={control}
-        render={({ field: formField }) => (
-          <>{renderFieldControl(field, formField, error)}</>
-        )}
-      />
-      {field.description && (
-        <FieldDescription>{field.description}</FieldDescription>
-      )}
-      {error && <FieldErrorComponent>{error.message}</FieldErrorComponent>}
-    </Field>
-  );
-}
+  },
+);
+FormItem.displayName = "FormItem";
 
 /**
  * 根据字段类型渲染对应的表单控件

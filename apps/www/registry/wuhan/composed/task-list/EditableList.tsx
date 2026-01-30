@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import { GripVertical, Trash2 } from "lucide-react";
 import {
   DndContext,
@@ -30,9 +31,13 @@ import type { EditableTaskListItemProps } from "./types";
  * 可编辑待办事项列表组件
  * 支持拖拽排序功能
  */
-export default function TaskListComposedEditableList(
-  props: EditableTaskListItemProps,
-) {
+/**
+ * @public
+ */
+const TaskListComposedEditableList = React.forwardRef<
+  HTMLDivElement,
+  EditableTaskListItemProps
+>((props, ref) => {
   const { dataSource, onItemsChange } = props;
 
   // 配置拖拽传感器，要求至少移动1px才触发拖拽
@@ -69,33 +74,38 @@ export default function TaskListComposedEditableList(
   };
 
   return (
-    <DndContext
-      sensors={sensors}
-      modifiers={[restrictToVerticalAxis]}
-      onDragEnd={onDragEnd}
-      id="TodoListEditableList"
-    >
-      <SortableContext
-        items={dataSource.map((item) => item.id)}
-        strategy={verticalListSortingStrategy}
+    <div ref={ref}>
+      <DndContext
+        sensors={sensors}
+        modifiers={[restrictToVerticalAxis]}
+        onDragEnd={onDragEnd}
+        id="TodoListEditableList"
       >
-        <TaskListEditableContainerPrimitive>
-          {dataSource.map((item) => (
-            <EditableListItem
-              key={item.id}
-              id={item.id}
-              content={item.content}
-              onDeleteItem={() => onDeleteItem(item.id)}
-              onContentChange={(newContent) =>
-                onContentChange(item.id, newContent)
-              }
-            />
-          ))}
-        </TaskListEditableContainerPrimitive>
-      </SortableContext>
-    </DndContext>
+        <SortableContext
+          items={dataSource.map((item) => item.id)}
+          strategy={verticalListSortingStrategy}
+        >
+          <TaskListEditableContainerPrimitive>
+            {dataSource.map((item) => (
+              <EditableListItem
+                key={item.id}
+                id={item.id}
+                content={item.content}
+                onDeleteItem={() => onDeleteItem(item.id)}
+                onContentChange={(newContent) =>
+                  onContentChange(item.id, newContent)
+                }
+              />
+            ))}
+          </TaskListEditableContainerPrimitive>
+        </SortableContext>
+      </DndContext>
+    </div>
   );
-}
+});
+TaskListComposedEditableList.displayName = "TaskListComposedEditableList";
+
+export default TaskListComposedEditableList;
 
 function EditableListItem(props: {
   id: string;
@@ -128,6 +138,7 @@ function EditableListItem(props: {
         <button
           type="button"
           className="cursor-grab text-[var(--text-tertiary)]"
+          aria-label="Reorder item"
           {...attributes}
           {...listeners}
         >
@@ -141,6 +152,7 @@ function EditableListItem(props: {
       <button
         type="button"
         className="text-[var(--text-tertiary)]"
+        aria-label="Delete item"
         onClick={onDeleteItem}
       >
         <Trash2 className="size-4" />

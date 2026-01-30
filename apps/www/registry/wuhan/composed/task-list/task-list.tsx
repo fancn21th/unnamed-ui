@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import { useState } from "react";
 import { Button } from "@/registry/wuhan/ui/button";
 
@@ -16,7 +17,13 @@ import TaskListComposedEditableList from "./EditableList";
 import type { TaskListComposedProps } from "./types";
 
 /** 组合式待办清单组件 */
-export default function TaskListComposed(props: TaskListComposedProps) {
+/**
+ * @public
+ */
+const TaskListComposed = React.forwardRef<
+  HTMLDivElement,
+  TaskListComposedProps
+>((props, ref) => {
   const {
     dataSource,
     title = "待办清单",
@@ -77,7 +84,7 @@ export default function TaskListComposed(props: TaskListComposedProps) {
   };
 
   return (
-    <TaskListContainerPrimitive>
+    <TaskListContainerPrimitive ref={ref}>
       <TaskListHeaderPrimitive>
         <TaskListTitlePrimitive>{title}</TaskListTitlePrimitive>
       </TaskListHeaderPrimitive>
@@ -85,6 +92,12 @@ export default function TaskListComposed(props: TaskListComposedProps) {
       {renderFooter()}
     </TaskListContainerPrimitive>
   );
-}
+});
+TaskListComposed.displayName = "TaskListComposed";
 
+export default TaskListComposed;
+
+/**
+ * @public
+ */
 export type { TaskListComposedProps };

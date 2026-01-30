@@ -8,6 +8,9 @@ import {
   AvatarTime,
 } from "@/registry/wuhan/blocks/avatar-header/avatar-header-01";
 
+/**
+ * @public
+ */
 export interface AvatarHeaderProps extends Omit<
   React.HTMLAttributes<HTMLDivElement>,
   "children"
@@ -17,18 +20,19 @@ export interface AvatarHeaderProps extends Omit<
   time?: React.ReactNode;
 }
 
-export function AvatarHeaderComposed({
-  avatar,
-  name,
-  time,
-  className,
-  ...props
-}: AvatarHeaderProps) {
+/**
+ * @public
+ */
+export const AvatarHeaderComposed = React.forwardRef<
+  HTMLDivElement,
+  AvatarHeaderProps
+>(({ avatar, name, time, className, ...props }, ref) => {
   return (
-    <AvatarHeader className={className} {...props}>
+    <AvatarHeader ref={ref} className={className} {...props}>
       {avatar ?? <Avatar aria-hidden="true" />}
       <AvatarName>{name}</AvatarName>
       {time != null && <AvatarTime>{time}</AvatarTime>}
     </AvatarHeader>
   );
-}
+});
+AvatarHeaderComposed.displayName = "AvatarHeaderComposed";

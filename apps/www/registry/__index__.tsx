@@ -838,11 +838,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "sender",
       description: "Composed sender with attachments and modes",
       type: "registry:block",
-      registryDependencies: [
-        "sender-01",
-        "attachment-list-01",
-        "quote-content-01",
-      ],
+      registryDependencies: ["sender-01", "attachment-list", "quote-content"],
       files: [
         {
           path: "registry/wuhan/composed/sender/sender.tsx",
@@ -866,7 +862,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "task-list",
       description: "Composed task list with editable mode",
       type: "registry:block",
-      registryDependencies: ["task-list-01", "sidebar-01", "feedback-01"],
+      registryDependencies: ["task-list-01", "sidebar", "feedback"],
       files: [
         {
           path: "registry/wuhan/composed/task-list/task-list.tsx",
@@ -1017,6 +1013,255 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/composed/thinking-process/thinking-process.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    welcome: {
+      name: "welcome",
+      description: "Composed welcome message header",
+      type: "registry:block",
+      registryDependencies: ["welcome-01"],
+      files: [
+        {
+          path: "registry/wuhan/composed/welcome/welcome.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/welcome.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/composed/welcome/welcome.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "quick-action": {
+      name: "quick-action",
+      description: "Composed quick action panel with items",
+      type: "registry:block",
+      registryDependencies: ["quick-action-01"],
+      files: [
+        {
+          path: "registry/wuhan/composed/quick-action/quick-action.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/quick-action.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/composed/quick-action/quick-action.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    prompt: {
+      name: "prompt",
+      description: "Composed prompt list with horizontal/vertical variants",
+      type: "registry:block",
+      registryDependencies: ["prompt-01", "prompt-02"],
+      files: [
+        {
+          path: "registry/wuhan/composed/prompt/prompt.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/prompt.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/wuhan/composed/prompt/prompt.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    suggestion: {
+      name: "suggestion",
+      description: "Composed suggestion panel with next step actions",
+      type: "registry:block",
+      registryDependencies: ["suggestion-01"],
+      files: [
+        {
+          path: "registry/wuhan/composed/suggestion/suggestion.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/suggestion.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/composed/suggestion/suggestion.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "attachment-list": {
+      name: "attachment-list",
+      description: "Composed attachment list with cards",
+      type: "registry:block",
+      registryDependencies: ["attachment-list-01"],
+      files: [
+        {
+          path: "registry/wuhan/composed/attachment-list/attachment-list.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/attachment-list.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/composed/attachment-list/attachment-list.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "quote-content": {
+      name: "quote-content",
+      description: "Composed quote content display with close action",
+      type: "registry:block",
+      registryDependencies: ["quote-content-01"],
+      files: [
+        {
+          path: "registry/wuhan/composed/quote-content/quote-content.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/quote-content.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/composed/quote-content/quote-content.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "history-item": {
+      name: "history-item",
+      description: "Composed history list item with trailing slots",
+      type: "registry:block",
+      registryDependencies: ["history-item-01"],
+      files: [
+        {
+          path: "registry/wuhan/composed/history-item/history-item.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/history-item.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/composed/history-item/history-item.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "avatar-header": {
+      name: "avatar-header",
+      description: "Composed avatar header with name and time",
+      type: "registry:block",
+      registryDependencies: ["avatar-header-01"],
+      files: [
+        {
+          path: "registry/wuhan/composed/avatar-header/avatar-header.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/avatar-header.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/composed/avatar-header/avatar-header.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    sidebar: {
+      name: "sidebar",
+      description: "Composed sidebar with header, search, and history list",
+      type: "registry:block",
+      registryDependencies: ["sidebar-01", "history-item-01"],
+      files: [
+        {
+          path: "registry/wuhan/composed/sidebar/sidebar.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/sidebar.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/composed/sidebar/sidebar.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    feedback: {
+      name: "feedback",
+      description: "Composed feedback form with options and input",
+      type: "registry:block",
+      registryDependencies: ["feedback-01", "toggle-button-01"],
+      files: [
+        {
+          path: "registry/wuhan/composed/feedback/feedback.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/feedback.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/composed/feedback/feedback.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>
@@ -1903,7 +2148,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "welcome-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["welcome-01"],
+      registryDependencies: ["welcome"],
       files: [
         {
           path: "registry/wuhan/examples/welcome/welcome-demo.tsx",
@@ -2028,7 +2273,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "message-with-attachment",
       description: "",
       type: "registry:example",
-      registryDependencies: ["message", "attachment-list-01"],
+      registryDependencies: ["message", "attachment-list"],
       files: [
         {
           path: "registry/wuhan/examples/message/message-with-attachment.tsx",
@@ -2078,7 +2323,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "message-with-avatar-header",
       description: "",
       type: "registry:example",
-      registryDependencies: ["message", "avatar-header-01"],
+      registryDependencies: ["message", "avatar-header"],
       files: [
         {
           path: "registry/wuhan/examples/message/message-with-avatar-header.tsx",
@@ -2103,7 +2348,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "attachment-list-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["attachment-list-01"],
+      registryDependencies: ["attachment-list"],
       files: [
         {
           path: "registry/wuhan/examples/attachment-list/attachment-list-demo.tsx",
@@ -2128,7 +2373,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "quote-content-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["quote-content-01"],
+      registryDependencies: ["quote-content"],
       files: [
         {
           path: "registry/wuhan/examples/quote-content/quote-content-demo.tsx",
@@ -2153,7 +2398,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "avatar-header-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["avatar-header-01"],
+      registryDependencies: ["avatar-header"],
       files: [
         {
           path: "registry/wuhan/examples/avatar-header/avatar-header-demo.tsx",
@@ -2178,7 +2423,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "history-item-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["history-item-01", "tooltip"],
+      registryDependencies: ["history-item"],
       files: [
         {
           path: "registry/wuhan/examples/history-item/history-item-demo.tsx",
@@ -2303,7 +2548,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "sender-composed-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["sender-01", "attachment-list-01"],
+      registryDependencies: ["sender-01", "attachment-list", "quote-content"],
       files: [
         {
           path: "registry/wuhan/examples/sender/sender-composed-demo.tsx",
@@ -2378,7 +2623,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "prompt-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["prompt-01", "prompt-02"],
+      registryDependencies: ["prompt"],
       files: [
         {
           path: "registry/wuhan/examples/prompt/prompt-demo.tsx",
@@ -2403,7 +2648,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "prompt-horizontal",
       description: "",
       type: "registry:example",
-      registryDependencies: ["prompt-01"],
+      registryDependencies: ["prompt"],
       files: [
         {
           path: "registry/wuhan/examples/prompt/prompt-horizontal.tsx",
@@ -2428,7 +2673,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "prompt-vertical",
       description: "",
       type: "registry:example",
-      registryDependencies: ["prompt-02"],
+      registryDependencies: ["prompt"],
       files: [
         {
           path: "registry/wuhan/examples/prompt/prompt-vertical.tsx",
@@ -2453,7 +2698,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "suggestion-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["suggestion-01"],
+      registryDependencies: ["suggestion"],
       files: [
         {
           path: "registry/wuhan/examples/suggestion/suggestion-demo.tsx",
@@ -2478,7 +2723,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "suggestion-default",
       description: "",
       type: "registry:example",
-      registryDependencies: ["suggestion-01"],
+      registryDependencies: ["suggestion"],
       files: [
         {
           path: "registry/wuhan/examples/suggestion/suggestion-default.tsx",
@@ -2503,7 +2748,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "suggestion-custom-icon",
       description: "",
       type: "registry:example",
-      registryDependencies: ["suggestion-01"],
+      registryDependencies: ["suggestion"],
       files: [
         {
           path: "registry/wuhan/examples/suggestion/suggestion-custom-icon.tsx",
@@ -2528,7 +2773,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "quick-action-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["quick-action-01"],
+      registryDependencies: ["quick-action"],
       files: [
         {
           path: "registry/wuhan/examples/quick-action/quick-action-demo.tsx",
@@ -2553,7 +2798,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "quick-action-default",
       description: "",
       type: "registry:example",
-      registryDependencies: ["quick-action-01"],
+      registryDependencies: ["quick-action"],
       files: [
         {
           path: "registry/wuhan/examples/quick-action/quick-action-default.tsx",
@@ -2578,7 +2823,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "quick-action-with-icons",
       description: "",
       type: "registry:example",
-      registryDependencies: ["quick-action-01"],
+      registryDependencies: ["quick-action"],
       files: [
         {
           path: "registry/wuhan/examples/quick-action/quick-action-with-icons.tsx",
@@ -2603,7 +2848,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "quick-action-single",
       description: "",
       type: "registry:example",
-      registryDependencies: ["quick-action-01"],
+      registryDependencies: ["quick-action"],
       files: [
         {
           path: "registry/wuhan/examples/quick-action/quick-action-single.tsx",
@@ -2628,7 +2873,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "quick-action-interactive",
       description: "",
       type: "registry:example",
-      registryDependencies: ["quick-action-01"],
+      registryDependencies: ["quick-action"],
       files: [
         {
           path: "registry/wuhan/examples/quick-action/quick-action-interactive.tsx",
@@ -2653,7 +2898,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "quick-action-disabled",
       description: "",
       type: "registry:example",
-      registryDependencies: ["quick-action-01"],
+      registryDependencies: ["quick-action"],
       files: [
         {
           path: "registry/wuhan/examples/quick-action/quick-action-disabled.tsx",
@@ -2678,7 +2923,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "quick-action-flexible-layout",
       description: "",
       type: "registry:example",
-      registryDependencies: ["quick-action-01"],
+      registryDependencies: ["quick-action"],
       files: [
         {
           path: "registry/wuhan/examples/quick-action/quick-action-flexible-layout.tsx",
@@ -2703,12 +2948,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "sidebar-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: [
-        "sidebar-01",
-        "history-item-01",
-        "avatar-header-01",
-        "button",
-      ],
+      registryDependencies: ["sidebar", "avatar-header", "button"],
       files: [
         {
           path: "registry/wuhan/examples/sidebar/sidebar-demo.tsx",
@@ -2733,7 +2973,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "feedback-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["feedback-01"],
+      registryDependencies: ["feedback"],
       files: [
         {
           path: "registry/wuhan/examples/feedback/feedback-demo.tsx",
@@ -3809,6 +4049,32 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/examples/recruitment/thinking-process/thinking-process-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "thinking-process-debugging": {
+      name: "thinking-process-debugging",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["thinking-process"],
+      files: [
+        {
+          path: "registry/wuhan/examples/recruitment/thinking-process/thinking-process-debugging.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/recruitment/thinking-process-debugging.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/recruitment/thinking-process/thinking-process-debugging.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

@@ -12,15 +12,24 @@ import {
   ThinkingDotsPrimitive,
 } from "@/registry/wuhan/blocks/deep-thinking/deep-thinking-01";
 
-type DeepThinkingStatus = "thinking" | "completed" | "failed";
+/**
+ * @public
+ */
+export type DeepThinkingStatus = "thinking" | "completed" | "failed";
 
-interface DeepThinkingLabels {
+/**
+ * @public
+ */
+export interface DeepThinkingLabels {
   thinkingTitle?: React.ReactNode;
   completedTitle?: React.ReactNode;
   failedTitle?: React.ReactNode;
 }
 
-interface DeepThinkingProps {
+/**
+ * @public
+ */
+export interface DeepThinkingProps {
   status?: DeepThinkingStatus;
   title?: React.ReactNode;
   content?: React.ReactNode;
@@ -44,58 +53,74 @@ const statusIconMap: Record<DeepThinkingStatus, React.ReactNode> = {
   failed: <AlertCircle className="size-4 text-[var(--text-error)]" />,
 };
 
-export function DeepThinking({
-  status = "thinking",
-  title,
-  content,
-  icon,
-  arrowIcon,
-  defaultOpen = false,
-  open,
-  onOpenChange,
-  labels,
-}: DeepThinkingProps) {
-  const resolvedLabels = { ...defaultLabels, ...labels };
-  const resolvedTitle =
-    title ??
-    (status === "thinking"
-      ? resolvedLabels.thinkingTitle
-      : status === "completed"
-        ? resolvedLabels.completedTitle
-        : resolvedLabels.failedTitle);
-  const resolvedIcon = icon ?? statusIconMap[status] ?? (
-    <Sparkles className="size-4 text-[var(--text-brand)]" />
-  );
+/**
+ * @public
+ */
+export const DeepThinking = React.forwardRef<HTMLDivElement, DeepThinkingProps>(
+  (
+    {
+      status = "thinking",
+      title,
+      content,
+      icon,
+      arrowIcon,
+      defaultOpen = false,
+      open,
+      onOpenChange,
+      labels,
+    },
+    ref,
+  ) => {
+    const resolvedLabels = { ...defaultLabels, ...labels };
+    const contentId = React.useId();
+    const resolvedOpen = open ?? defaultOpen;
+    const resolvedTitle =
+      title ??
+      (status === "thinking"
+        ? resolvedLabels.thinkingTitle
+        : status === "completed"
+          ? resolvedLabels.completedTitle
+          : resolvedLabels.failedTitle);
+    const resolvedIcon = icon ?? statusIconMap[status] ?? (
+      <Sparkles className="size-4 text-[var(--text-brand)]" />
+    );
 
-  return (
-    <DeepThinkingContainerPrimitive
-      defaultOpen={defaultOpen}
-      open={open}
-      onOpenChange={onOpenChange}
-    >
-      <DeepThinkingHeaderPrimitive
-        arrow={
-          <DeepThinkingArrowPrimitive>
-            {arrowIcon || <ChevronDown className="size-4" />}
-          </DeepThinkingArrowPrimitive>
-        }
+    return (
+      <DeepThinkingContainerPrimitive
+        ref={ref}
+        defaultOpen={defaultOpen}
+        open={open}
+        onOpenChange={onOpenChange}
       >
-        <DeepThinkingIconPrimitive>
-          {resolvedIcon}
-          <DeepThinkingTitlePrimitive
-            className={
-              status === "thinking" ? "text-[var(--text-secondary)]" : undefined
-            }
-          >
-            {resolvedTitle}
-          </DeepThinkingTitlePrimitive>
-        </DeepThinkingIconPrimitive>
-      </DeepThinkingHeaderPrimitive>
-      {content && (
-        <DeepThinkingContentPrimitive>{content}</DeepThinkingContentPrimitive>
-      )}
-    </DeepThinkingContainerPrimitive>
-  );
-}
-
-export type { DeepThinkingProps, DeepThinkingStatus, DeepThinkingLabels };
+        <DeepThinkingHeaderPrimitive
+          aria-controls={contentId}
+          aria-expanded={resolvedOpen}
+          arrow={
+            <DeepThinkingArrowPrimitive>
+              {arrowIcon || <ChevronDown className="size-4" />}
+            </DeepThinkingArrowPrimitive>
+          }
+        >
+          <DeepThinkingIconPrimitive>
+            {resolvedIcon}
+            <DeepThinkingTitlePrimitive
+              className={
+                status === "thinking"
+                  ? "text-[var(--text-secondary)]"
+                  : undefined
+              }
+            >
+              {resolvedTitle}
+            </DeepThinkingTitlePrimitive>
+          </DeepThinkingIconPrimitive>
+        </DeepThinkingHeaderPrimitive>
+        {content && (
+          <DeepThinkingContentPrimitive id={contentId}>
+            {content}
+          </DeepThinkingContentPrimitive>
+        )}
+      </DeepThinkingContainerPrimitive>
+    );
+  },
+);
+DeepThinking.displayName = "DeepThinking";

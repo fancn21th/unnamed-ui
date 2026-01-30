@@ -23,9 +23,15 @@ import {
   ExecutionResultArrowPrimitive,
 } from "@/registry/wuhan/blocks/execution-result/execution-result-01";
 
-type ExecutionResultStatus = "success" | "error" | "loading" | "idle";
+/**
+ * @public
+ */
+export type ExecutionResultStatus = "success" | "error" | "loading" | "idle";
 
-interface ExecutionResultSection {
+/**
+ * @public
+ */
+export interface ExecutionResultSection {
   title?: React.ReactNode;
   content?: React.ReactNode;
   copyText?: string;
@@ -33,7 +39,10 @@ interface ExecutionResultSection {
   onCopy?: () => void;
 }
 
-interface ExecutionResultItem {
+/**
+ * @public
+ */
+export interface ExecutionResultItem {
   key?: React.Key;
   status?: ExecutionResultStatus;
   title?: React.ReactNode;
@@ -44,7 +53,10 @@ interface ExecutionResultItem {
   sections?: ExecutionResultSection[];
 }
 
-interface ExecutionResultProps {
+/**
+ * @public
+ */
+export interface ExecutionResultProps {
   title?: React.ReactNode;
   items?: ExecutionResultItem[];
   defaultOpen?: boolean;
@@ -59,105 +71,105 @@ const statusIconMap: Record<ExecutionResultStatus, React.ReactNode> = {
   loading: <Loader2 className="size-4 text-[var(--text-brand)] animate-spin" />,
   idle: <Circle className="size-4 text-[var(--text-tertiary)]" />,
 };
+const defaultArrow = <ChevronDown className="size-4" />;
 
-export function ExecutionResult({
-  title,
-  items = [],
-  defaultOpen = false,
-  open,
-  onOpenChange,
-  arrowIcon,
-}: ExecutionResultProps) {
-  const defaultArrow = <ChevronDown className="size-4" />;
-
-  return (
-    <ExecutionResultContainerPrimitive
-      defaultOpen={defaultOpen}
-      open={open}
-      onOpenChange={onOpenChange}
-    >
-      {title && (
-        <ExecutionResultTitlePrimitive
-          arrow={
-            <ExecutionResultArrowPrimitive>
-              {arrowIcon || defaultArrow}
-            </ExecutionResultArrowPrimitive>
-          }
-        >
-          {title}
-        </ExecutionResultTitlePrimitive>
-      )}
-      {items.length > 0 && (
-        <ExecutionResultContentPrimitive>
-          {items.map((item, index) => {
-            const resolvedStatus = item.status ?? "success";
-            const sections = item.sections ?? [];
-            return (
-              <ExecutionResultItemPrimitive
-                key={item.key ?? index}
-                defaultOpen={item.defaultOpen}
-              >
-                <ExecutionResultItemHeaderPrimitive
-                  arrow={
-                    <ExecutionResultArrowPrimitive>
-                      {arrowIcon || defaultArrow}
-                    </ExecutionResultArrowPrimitive>
-                  }
+/**
+ * @public
+ */
+export const ExecutionResult = React.forwardRef<
+  HTMLDivElement,
+  ExecutionResultProps
+>(
+  (
+    { title, items = [], defaultOpen = false, open, onOpenChange, arrowIcon },
+    ref,
+  ) => {
+    return (
+      <ExecutionResultContainerPrimitive
+        ref={ref}
+        defaultOpen={defaultOpen}
+        open={open}
+        onOpenChange={onOpenChange}
+      >
+        {title && (
+          <ExecutionResultTitlePrimitive
+            arrow={
+              <ExecutionResultArrowPrimitive>
+                {arrowIcon || defaultArrow}
+              </ExecutionResultArrowPrimitive>
+            }
+          >
+            {title}
+          </ExecutionResultTitlePrimitive>
+        )}
+        {items.length > 0 && (
+          <ExecutionResultContentPrimitive>
+            {items.map((item, index) => {
+              const resolvedStatus = item.status ?? "success";
+              const sections = item.sections ?? [];
+              return (
+                <ExecutionResultItemPrimitive
+                  key={item.key ?? index}
+                  defaultOpen={item.defaultOpen}
                 >
-                  <ExecutionResultItemIconPrimitive>
-                    {statusIconMap[resolvedStatus]}
-                  </ExecutionResultItemIconPrimitive>
-                  {item.title && (
-                    <ExecutionResultItemTitlePrimitive>
-                      {item.title}
-                    </ExecutionResultItemTitlePrimitive>
+                  <ExecutionResultItemHeaderPrimitive
+                    arrow={
+                      <ExecutionResultArrowPrimitive>
+                        {arrowIcon || defaultArrow}
+                      </ExecutionResultArrowPrimitive>
+                    }
+                  >
+                    <ExecutionResultItemIconPrimitive
+                      aria-label={`Status: ${resolvedStatus}`}
+                    >
+                      {statusIconMap[resolvedStatus]}
+                    </ExecutionResultItemIconPrimitive>
+                    {item.title && (
+                      <ExecutionResultItemTitlePrimitive>
+                        {item.title}
+                      </ExecutionResultItemTitlePrimitive>
+                    )}
+                    {item.imageSrc && (
+                      <ExecutionResultItemImagePrimitive
+                        src={item.imageSrc}
+                        alt={item.imageAlt}
+                      />
+                    )}
+                    {item.toolName && (
+                      <ExecutionResultItemToolNamePrimitive>
+                        {item.toolName}
+                      </ExecutionResultItemToolNamePrimitive>
+                    )}
+                  </ExecutionResultItemHeaderPrimitive>
+                  {sections.length > 0 && (
+                    <ExecutionResultItemContentPrimitive>
+                      {sections.map((section, sectionIndex) => {
+                        const handleCopy =
+                          section.onCopy ??
+                          (section.copyText
+                            ? () =>
+                                navigator.clipboard.writeText(section.copyText!)
+                            : undefined);
+                        return (
+                          <ExecutionResultSectionPrimitive
+                            key={`${index}-${sectionIndex}`}
+                            title={section.title}
+                            showCopyIcon={section.showCopyIcon}
+                            onCopy={handleCopy}
+                          >
+                            {section.content}
+                          </ExecutionResultSectionPrimitive>
+                        );
+                      })}
+                    </ExecutionResultItemContentPrimitive>
                   )}
-                  {item.imageSrc && (
-                    <ExecutionResultItemImagePrimitive
-                      src={item.imageSrc}
-                      alt={item.imageAlt}
-                    />
-                  )}
-                  {item.toolName && (
-                    <ExecutionResultItemToolNamePrimitive>
-                      {item.toolName}
-                    </ExecutionResultItemToolNamePrimitive>
-                  )}
-                </ExecutionResultItemHeaderPrimitive>
-                {sections.length > 0 && (
-                  <ExecutionResultItemContentPrimitive>
-                    {sections.map((section, sectionIndex) => {
-                      const handleCopy =
-                        section.onCopy ??
-                        (section.copyText
-                          ? () =>
-                              navigator.clipboard.writeText(section.copyText!)
-                          : undefined);
-                      return (
-                        <ExecutionResultSectionPrimitive
-                          key={`${index}-${sectionIndex}`}
-                          title={section.title}
-                          showCopyIcon={section.showCopyIcon}
-                          onCopy={handleCopy}
-                        >
-                          {section.content}
-                        </ExecutionResultSectionPrimitive>
-                      );
-                    })}
-                  </ExecutionResultItemContentPrimitive>
-                )}
-              </ExecutionResultItemPrimitive>
-            );
-          })}
-        </ExecutionResultContentPrimitive>
-      )}
-    </ExecutionResultContainerPrimitive>
-  );
-}
-
-export type {
-  ExecutionResultProps,
-  ExecutionResultItem,
-  ExecutionResultSection,
-  ExecutionResultStatus,
-};
+                </ExecutionResultItemPrimitive>
+              );
+            })}
+          </ExecutionResultContentPrimitive>
+        )}
+      </ExecutionResultContainerPrimitive>
+    );
+  },
+);
+ExecutionResult.displayName = "ExecutionResult";

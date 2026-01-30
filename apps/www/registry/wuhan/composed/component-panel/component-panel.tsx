@@ -16,41 +16,53 @@ import {
   BlockTooltipContent,
 } from "@/registry/wuhan/blocks/tooltip/tooltip-01";
 
-interface ComponentPanelItem {
+/**
+ * @public
+ */
+export interface ComponentPanelItem {
   id: string;
   label: React.ReactNode;
   selected?: boolean;
   onToggle?: () => void;
+  onSelect?: () => void;
   icon?: React.ReactNode;
   tooltip?: React.ReactNode;
 }
 
-interface ComponentPanelTab {
+/**
+ * @public
+ */
+export interface ComponentPanelTab {
   id: string;
   label: React.ReactNode;
   items: ComponentPanelItem[];
 }
 
-interface ComponentPanelProps {
+/**
+ * @public
+ */
+export interface ComponentPanelProps {
   tabs: ComponentPanelTab[];
   defaultTab?: string;
   value?: string;
   onValueChange?: (value: string) => void;
 }
 
-export function ComponentPanel({
-  tabs,
-  defaultTab,
-  value,
-  onValueChange,
-}: ComponentPanelProps) {
+/**
+ * @public
+ */
+export const ComponentPanel = React.forwardRef<
+  HTMLDivElement,
+  ComponentPanelProps
+>(({ tabs, defaultTab, value, onValueChange }, ref) => {
   return (
     <ComponentPanelContainerPrimitive
+      ref={ref}
       defaultValue={defaultTab}
       value={value}
       onValueChange={onValueChange}
     >
-      <ComponentPanelTabsListPrimitive>
+      <ComponentPanelTabsListPrimitive aria-label="Component panel tabs">
         {tabs.map((tab) => (
           <ComponentPanelTabsTriggerPrimitive key={tab.id} value={tab.id}>
             {tab.label}
@@ -65,7 +77,8 @@ export function ComponentPanel({
               <ComponentPanelListItemPrimitive
                 key={item.id}
                 selected={item.selected}
-                onClick={item.onToggle}
+                aria-selected={item.selected}
+                onClick={item.onSelect ?? item.onToggle}
               >
                 {item.icon ? (
                   <span className="w-6 h-6 shrink-0 flex items-center justify-center">
@@ -91,6 +104,5 @@ export function ComponentPanel({
       ))}
     </ComponentPanelContainerPrimitive>
   );
-}
-
-export type { ComponentPanelProps, ComponentPanelItem, ComponentPanelTab };
+});
+ComponentPanel.displayName = "ComponentPanel";

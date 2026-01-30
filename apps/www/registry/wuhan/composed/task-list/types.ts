@@ -1,5 +1,6 @@
 /**
  * 待办事项列表组件的属性类型定义
+ * @public
  */
 export interface TaskListComposedProps {
   /** 数据源 */
@@ -21,6 +22,7 @@ export interface TaskListComposedProps {
 }
 /**
  * 待办事项项的类型定义
+ * @public
  */
 export interface TodoItem {
   /** 唯一标识符 */
@@ -31,13 +33,19 @@ export interface TodoItem {
   order: number;
 }
 
-/** 只读列表组件的属性类型定义 */
+/**
+ * 只读列表组件的属性类型定义
+ * @public
+ */
 export type ReadonlyTaskListItemProps = Pick<
   TaskListComposedProps,
   "dataSource"
 >;
 
-/** 可编辑列表组件的属性类型定义 */
+/**
+ * 可编辑列表组件的属性类型定义
+ * @public
+ */
 export type EditableTaskListItemProps = Pick<
   TaskListComposedProps,
   "dataSource" | "onItemsChange"

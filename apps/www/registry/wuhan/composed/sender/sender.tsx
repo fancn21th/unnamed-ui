@@ -14,7 +14,10 @@ import { AttachmentListComposed } from "@/registry/wuhan/composed/attachment-lis
 import { Paperclip, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-interface Attachment {
+/**
+ * @public
+ */
+export interface Attachment {
   id: string;
   name: string;
   thumbnail?: string;
@@ -22,7 +25,10 @@ interface Attachment {
   icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 }
 
-interface Mode {
+/**
+ * @public
+ */
+export interface Mode {
   id: string;
   label: string;
   icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -87,7 +93,10 @@ function ModeSelector({ modes, selectedModes, onToggle }: ModeSelectorProps) {
   );
 }
 
-interface ComposedSenderProps {
+/**
+ * @public
+ */
+export interface ComposedSenderProps {
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
@@ -108,90 +117,102 @@ interface ComposedSenderProps {
   maxWidth?: string;
 }
 
-export function ComposedSender({
-  value,
-  onChange,
-  placeholder = "Type your message...",
-  quoteContent,
-  attachments = [],
-  onAttachmentRemove,
-  modes = [],
-  selectedModes = [],
-  onModeToggle,
-  onAttach,
-  onSend,
-  sendDisabled,
-  generating = false,
-  className,
-  maxWidth = "max-w-2xl",
-}: ComposedSenderProps) {
-  const canSend = !!value.trim() && !sendDisabled && !generating;
+/**
+ * @public
+ */
+export const ComposedSender = React.forwardRef<
+  HTMLFormElement,
+  ComposedSenderProps
+>(
+  (
+    {
+      value,
+      onChange,
+      placeholder = "Type your message...",
+      quoteContent,
+      attachments = [],
+      onAttachmentRemove,
+      modes = [],
+      selectedModes = [],
+      onModeToggle,
+      onAttach,
+      onSend,
+      sendDisabled,
+      generating = false,
+      className,
+      maxWidth = "max-w-2xl",
+    },
+    ref,
+  ) => {
+    const canSend = !!value.trim() && !sendDisabled && !generating;
 
-  return (
-    <SenderContainer
-      className={cn(maxWidth, className)}
-      onSubmit={(e) => {
-        e.preventDefault();
-        if (!canSend) return;
-        onSend?.();
-      }}
-    >
-      {quoteContent}
-
-      {attachments.length > 0 && (
-        <AttachmentListWrapper
-          attachments={attachments}
-          onRemove={onAttachmentRemove}
-        />
-      )}
-
-      <SenderInputRegion>
-        <SenderTextarea
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder={placeholder}
-        />
-      </SenderInputRegion>
-
-      <SenderActionBar
-        className={cn(
-          "flex items-center",
-          modes.length > 0 || onAttach ? "justify-between" : "justify-end",
-        )}
+    return (
+      <SenderContainer
+        ref={ref}
+        className={cn(maxWidth, className)}
+        aria-label="Message sender"
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (!canSend) return;
+          onSend?.();
+        }}
       >
-        <div className="flex items-center gap-2">
-          {onAttach && (
-            <SenderAttachmentButton
-              type="button"
-              onClick={onAttach}
-              aria-label="Attach file"
-            >
-              <Paperclip className="size-4" />
-            </SenderAttachmentButton>
-          )}
-          {modes.length > 0 && (
-            <ModeSelector
-              modes={modes}
-              selectedModes={selectedModes}
-              onToggle={onModeToggle || (() => {})}
-            />
-          )}
-        </div>
-        <div className="flex items-center gap-2">
-          {onSend && (
-            <SenderSendButton
-              type="submit"
-              disabled={sendDisabled}
-              generating={generating}
-              generatingContent={
-                <Loader2 className="size-4 text-white animate-spin" />
-              }
-            />
-          )}
-        </div>
-      </SenderActionBar>
-    </SenderContainer>
-  );
-}
+        {quoteContent}
 
-export type { Attachment, Mode, ComposedSenderProps };
+        {attachments.length > 0 && (
+          <AttachmentListWrapper
+            attachments={attachments}
+            onRemove={onAttachmentRemove}
+          />
+        )}
+
+        <SenderInputRegion>
+          <SenderTextarea
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            placeholder={placeholder}
+          />
+        </SenderInputRegion>
+
+        <SenderActionBar
+          className={cn(
+            "flex items-center",
+            modes.length > 0 || onAttach ? "justify-between" : "justify-end",
+          )}
+        >
+          <div className="flex items-center gap-2">
+            {onAttach && (
+              <SenderAttachmentButton
+                type="button"
+                onClick={onAttach}
+                aria-label="Attach file"
+              >
+                <Paperclip className="size-4" />
+              </SenderAttachmentButton>
+            )}
+            {modes.length > 0 && (
+              <ModeSelector
+                modes={modes}
+                selectedModes={selectedModes}
+                onToggle={onModeToggle || (() => {})}
+              />
+            )}
+          </div>
+          <div className="flex items-center gap-2">
+            {onSend && (
+              <SenderSendButton
+                type="submit"
+                disabled={sendDisabled}
+                generating={generating}
+                generatingContent={
+                  <Loader2 className="size-4 text-white animate-spin" />
+                }
+              />
+            )}
+          </div>
+        </SenderActionBar>
+      </SenderContainer>
+    );
+  },
+);
+ComposedSender.displayName = "ComposedSender";

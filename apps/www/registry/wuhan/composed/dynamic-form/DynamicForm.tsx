@@ -38,6 +38,8 @@ import { cn } from "@/lib/utils";
  *   onFinish={(values) => console.log(values)}
  * />
  * ```
+ *
+ * @public
  */
 export const DynamicForm = React.forwardRef<DynamicFormRef, DynamicFormProps>(
   (

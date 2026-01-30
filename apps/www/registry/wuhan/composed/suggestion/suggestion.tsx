@@ -6,6 +6,9 @@ import {
   SuggestionGroup as SuggestionGroupPrimitive,
 } from "@/registry/wuhan/blocks/suggestion/suggestion-01";
 
+/**
+ * @public
+ */
 export interface SuggestionItem {
   id: string;
   label: React.ReactNode;
@@ -13,6 +16,9 @@ export interface SuggestionItem {
   onClick?: () => void;
 }
 
+/**
+ * @public
+ */
 export interface SuggestionPanelProps {
   title?: React.ReactNode;
   description?: React.ReactNode;
@@ -20,17 +26,24 @@ export interface SuggestionPanelProps {
   className?: string;
 }
 
+/**
+ * @public
+ */
 export const SuggestionGroup = SuggestionGroupPrimitive;
+/**
+ * @public
+ */
 export const SuggestionButton = SuggestionButtonPrimitive;
 
-export function SuggestionPanel({
-  title,
-  description,
-  items,
-  className,
-}: SuggestionPanelProps) {
+/**
+ * @public
+ */
+export const SuggestionPanel = React.forwardRef<
+  HTMLDivElement,
+  SuggestionPanelProps
+>(({ title, description, items, className }, ref) => {
   return (
-    <div className={className}>
+    <div ref={ref} className={className}>
       {(title || description) && (
         <div className="text-center mb-6">
           {title && (
@@ -45,7 +58,7 @@ export function SuggestionPanel({
           )}
         </div>
       )}
-      <SuggestionGroup>
+      <SuggestionGroup aria-label="Suggestions">
         {items.map((item) => (
           <SuggestionButton
             key={item.id}
@@ -58,4 +71,5 @@ export function SuggestionPanel({
       </SuggestionGroup>
     </div>
   );
-}
+});
+SuggestionPanel.displayName = "SuggestionPanel";

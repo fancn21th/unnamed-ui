@@ -7,17 +7,26 @@ import {
   WelcomeText,
 } from "@/registry/wuhan/blocks/welcome/welcome-01";
 
+/**
+ * @public
+ */
 export interface WelcomeProps {
   icon?: React.ReactNode;
   text: React.ReactNode;
   className?: string;
 }
 
-export function WelcomeMessage({ icon, text, className }: WelcomeProps) {
-  return (
-    <WelcomeContainer className={className}>
-      {icon && <WelcomeIcon>{icon}</WelcomeIcon>}
-      <WelcomeText>{text}</WelcomeText>
-    </WelcomeContainer>
-  );
-}
+/**
+ * @public
+ */
+export const WelcomeMessage = React.forwardRef<HTMLDivElement, WelcomeProps>(
+  ({ icon, text, className }, ref) => {
+    return (
+      <WelcomeContainer ref={ref} className={className}>
+        {icon && <WelcomeIcon>{icon}</WelcomeIcon>}
+        <WelcomeText>{text}</WelcomeText>
+      </WelcomeContainer>
+    );
+  },
+);
+WelcomeMessage.displayName = "WelcomeMessage";

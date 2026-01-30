@@ -7,6 +7,9 @@ import {
   QuickActionIcon as QuickActionIconPrimitive,
 } from "@/registry/wuhan/blocks/quick-action/quick-action-01";
 
+/**
+ * @public
+ */
 export interface QuickActionItem {
   id: string;
   label: React.ReactNode;
@@ -14,6 +17,9 @@ export interface QuickActionItem {
   onClick?: () => void;
 }
 
+/**
+ * @public
+ */
 export interface QuickActionPanelProps {
   title?: React.ReactNode;
   description?: React.ReactNode;
@@ -21,18 +27,28 @@ export interface QuickActionPanelProps {
   className?: string;
 }
 
+/**
+ * @public
+ */
 export const QuickActionGroup = QuickActionGroupPrimitive;
+/**
+ * @public
+ */
 export const QuickActionButton = QuickActionButtonPrimitive;
+/**
+ * @public
+ */
 export const QuickActionIcon = QuickActionIconPrimitive;
 
-export function QuickActionPanel({
-  title,
-  description,
-  items,
-  className,
-}: QuickActionPanelProps) {
+/**
+ * @public
+ */
+export const QuickActionPanel = React.forwardRef<
+  HTMLDivElement,
+  QuickActionPanelProps
+>(({ title, description, items, className }, ref) => {
   return (
-    <div className={className}>
+    <div ref={ref} className={className}>
       {(title || description) && (
         <div className="text-center mb-6">
           {title && (
@@ -47,7 +63,7 @@ export function QuickActionPanel({
           )}
         </div>
       )}
-      <QuickActionGroup>
+      <QuickActionGroup aria-label="Quick actions">
         {items.map((item) => (
           <QuickActionButton key={item.id} onClick={item.onClick}>
             {item.icon && <QuickActionIcon>{item.icon}</QuickActionIcon>}
@@ -57,4 +73,5 @@ export function QuickActionPanel({
       </QuickActionGroup>
     </div>
   );
-}
+});
+QuickActionPanel.displayName = "QuickActionPanel";

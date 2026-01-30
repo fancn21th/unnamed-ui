@@ -11,12 +11,22 @@ import {
   PromptGroup as PromptGroupVertical,
 } from "@/registry/wuhan/blocks/prompt/prompt-02";
 
+/**
+ * @public
+ */
 export type PromptVariant = "horizontal" | "vertical";
 
+/**
+ * @public
+ */
 export interface PromptGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: PromptVariant;
+  children: React.ReactNode;
 }
 
+/**
+ * @public
+ */
 export interface PromptButtonProps extends Omit<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   "children"
@@ -26,6 +36,9 @@ export interface PromptButtonProps extends Omit<
   children: React.ReactNode;
 }
 
+/**
+ * @public
+ */
 export interface PromptItem {
   id: string;
   label: React.ReactNode;
@@ -33,22 +46,40 @@ export interface PromptItem {
   onClick?: () => void;
 }
 
+/**
+ * @public
+ */
 export interface PromptPanelProps {
   variant?: PromptVariant;
   items: PromptItem[];
   className?: string;
 }
 
+/**
+ * @public
+ */
 export const PromptGroup = React.forwardRef<HTMLDivElement, PromptGroupProps>(
-  ({ variant = "horizontal", ...props }, ref) => {
+  ({ variant = "horizontal", children, ...props }, ref) => {
+    const ariaLabel = props["aria-label"] ?? "Prompt suggestions";
     if (variant === "vertical") {
-      return <PromptGroupVertical ref={ref} {...props} />;
+      return (
+        <PromptGroupVertical ref={ref} aria-label={ariaLabel} {...props}>
+          {children}
+        </PromptGroupVertical>
+      );
     }
-    return <PromptGroupHorizontal ref={ref} {...props} />;
+    return (
+      <PromptGroupHorizontal ref={ref} aria-label={ariaLabel} {...props}>
+        {children}
+      </PromptGroupHorizontal>
+    );
   },
 );
 PromptGroup.displayName = "PromptGroup";
 
+/**
+ * @public
+ */
 export const PromptButton = React.forwardRef<
   HTMLButtonElement,
   PromptButtonProps
@@ -72,23 +103,27 @@ export const PromptButton = React.forwardRef<
 });
 PromptButton.displayName = "PromptButton";
 
-export function PromptPanel({
-  variant = "horizontal",
-  items,
-  className,
-}: PromptPanelProps) {
-  return (
-    <PromptGroup variant={variant} className={className}>
-      {items.map((item) => (
-        <PromptButton
-          key={item.id}
-          variant={variant}
-          icon={item.icon}
-          onClick={item.onClick}
-        >
-          {item.label}
-        </PromptButton>
-      ))}
-    </PromptGroup>
-  );
-}
+/**
+ * @public
+ */
+export const PromptPanel = React.forwardRef<HTMLDivElement, PromptPanelProps>(
+  ({ variant = "horizontal", items, className }, ref) => {
+    return (
+      <div ref={ref}>
+        <PromptGroup variant={variant} className={className}>
+          {items.map((item) => (
+            <PromptButton
+              key={item.id}
+              variant={variant}
+              icon={item.icon}
+              onClick={item.onClick}
+            >
+              {item.label}
+            </PromptButton>
+          ))}
+        </PromptGroup>
+      </div>
+    );
+  },
+);
+PromptPanel.displayName = "PromptPanel";

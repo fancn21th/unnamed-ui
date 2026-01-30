@@ -8,6 +8,9 @@ import {
   HistoryItemHoverTrailingPrimitive,
 } from "@/registry/wuhan/blocks/history-item/history-item-01";
 
+/**
+ * @public
+ */
 export interface HistoryItemProps {
   title: React.ReactNode;
   trailing?: React.ReactNode;
@@ -18,31 +21,40 @@ export interface HistoryItemProps {
   className?: string;
 }
 
-export function HistoryItem({
-  title,
-  trailing,
-  hoverTrailing,
-  selected,
-  active,
-  onClick,
-  className,
-}: HistoryItemProps) {
-  return (
-    <HistoryItemPrimitive
-      className={className}
-      data-selected={selected ? "true" : undefined}
-      data-active={active ? "true" : undefined}
-      onClick={onClick}
-    >
-      <HistoryItemTitlePrimitive>{title}</HistoryItemTitlePrimitive>
-      {trailing && (
-        <HistoryItemTrailingPrimitive>{trailing}</HistoryItemTrailingPrimitive>
-      )}
-      {hoverTrailing && (
-        <HistoryItemHoverTrailingPrimitive>
-          {hoverTrailing}
-        </HistoryItemHoverTrailingPrimitive>
-      )}
-    </HistoryItemPrimitive>
-  );
-}
+/**
+ * @public
+ */
+export const HistoryItem = React.forwardRef<
+  HTMLButtonElement,
+  HistoryItemProps
+>(
+  (
+    { title, trailing, hoverTrailing, selected, active, onClick, className },
+    ref,
+  ) => {
+    return (
+      <HistoryItemPrimitive
+        ref={ref}
+        className={className}
+        data-selected={selected ? "true" : undefined}
+        data-active={active ? "true" : undefined}
+        aria-selected={selected}
+        aria-current={active ? "page" : undefined}
+        onClick={onClick}
+      >
+        <HistoryItemTitlePrimitive>{title}</HistoryItemTitlePrimitive>
+        {trailing && (
+          <HistoryItemTrailingPrimitive>
+            {trailing}
+          </HistoryItemTrailingPrimitive>
+        )}
+        {hoverTrailing && (
+          <HistoryItemHoverTrailingPrimitive>
+            {hoverTrailing}
+          </HistoryItemHoverTrailingPrimitive>
+        )}
+      </HistoryItemPrimitive>
+    );
+  },
+);
+HistoryItem.displayName = "HistoryItem";

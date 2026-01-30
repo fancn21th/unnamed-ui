@@ -6,7 +6,7 @@ import {
   Avatar,
   AvatarName,
   AvatarTime,
-} from "@/registry/wuhan/blocks/avatar-header/avatar-header-01";
+} from "@/components/wuhan/blocks/avatar-header-01";
 import { cn } from "@/lib/utils";
 
 /**

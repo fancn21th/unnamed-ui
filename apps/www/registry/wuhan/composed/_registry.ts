@@ -245,7 +245,7 @@ export const composed: Registry["items"] = [
     type: "registry:block",
     title: "Sidebar",
     description: "Composed sidebar with header, search, and history list",
-    registryDependencies: ["sidebar-01", "history-item-01"],
+    registryDependencies: ["sidebar-01", "history-item-01", "avatar-header-01"],
     files: [
       {
         path: "composed/sidebar/sidebar.tsx",

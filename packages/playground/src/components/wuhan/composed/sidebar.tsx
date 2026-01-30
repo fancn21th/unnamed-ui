@@ -8,7 +8,7 @@ import {
   Search,
   Sparkles,
 } from "lucide-react";
-import { Button } from "@/registry/wuhan/ui/button";
+import { Button } from "@/components/wuhan/ui/button";
 import {
   SidebarPrimitive,
   SidebarContentPrimitive,
@@ -28,17 +28,17 @@ import {
   SidebarHistoryListPrimitive,
   SidebarHistoryEmpty,
   SidebarFooterPrimitive,
-} from "@/registry/wuhan/blocks/sidebar/sidebar-01";
+} from "@/components/wuhan/blocks/sidebar-01";
 import {
   HistoryItemPrimitive,
   HistoryItemTitlePrimitive,
   HistoryItemHoverTrailingPrimitive,
-} from "@/registry/wuhan/blocks/history-item/history-item-01";
+} from "@/components/wuhan/blocks/history-item-01";
 import {
   BlockTooltip,
   BlockTooltipContent,
   BlockTooltipTrigger,
-} from "@/registry/wuhan/blocks/tooltip/tooltip-01";
+} from "../blocks/tooltip-01";
 import { cn } from "@/lib/utils";
 
 /**
@@ -191,7 +191,7 @@ export const SidebarComposed = React.forwardRef<HTMLDivElement, SidebarProps>(
           };
 
     const iconButtonClassName =
-      "text-[var(--text-secondary)] hover:bg-[var(--bg-neutral-light)]";
+      "text-[var(--text-secondary)] hover:bg-[var(--bg-neutral-light)] appearance-none border-0 bg-transparent";
 
     const resolvedClassName = cn(
       "w-[240px] min-h-[360px]",

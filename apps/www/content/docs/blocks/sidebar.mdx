@@ -11,7 +11,20 @@ author: AF
   align="start"
 />
 
-Sidebar 是组合组件，提供头部、新建按钮、历史对话区域和底部等默认结构。需要深度定制时可使用 primitives 自由组合。
+Sidebar 是组合组件，开箱即用：默认包含头部、新建按钮、历史对话区域，并支持展开/收起。适合直接用于对话列表、消息历史等场景；需要深度定制时可使用 primitives 自由组合。
+
+## Quick Start
+
+最小可用示例（无需额外配置）：
+
+```tsx
+<SidebarComposed
+  conversations={[
+    { id: "1", title: "Conversation 1" },
+    { id: "2", title: "Conversation 2" },
+  ]}
+/>
+```
 
 ## Installation
 
@@ -85,6 +98,59 @@ Sidebar 组件由多个样式原语组成，每个原语都可以独立使用：
 ### Footer Primitives
 
 - **SidebarFooterPrimitive** - 底部容器
+
+## API (Composed)
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `conversations` | `SidebarConversation[]` | - | 历史列表数据（必传） |
+| `selectedId` | `string \| null` | - | 当前选中项 id |
+| `historyTitle` | `React.ReactNode` | `"历史对话"` | 历史标题 |
+| `emptyText` | `React.ReactNode` | `"暂无对话历史"` | 空状态文案 |
+| `header` | `SidebarHeaderConfig \| null` | 内置默认 | 头部配置；传 `null` 隐藏 |
+| `newButton` | `SidebarNewButtonConfig \| null` | 内置默认 | 新建按钮配置；传 `null` 隐藏 |
+| `search` | `SidebarSearchConfig \| null` | 内置默认 | 搜索配置；传 `null` 隐藏 |
+| `footer` | `React.ReactNode \| (({ collapsed }) => ReactNode) \| null` | - | 底部内容；函数可拿到折叠状态 |
+| `collapsible` | `boolean` | `true` | 是否展示/启用折叠按钮 |
+| `collapsed` | `boolean` | - | 受控折叠状态 |
+| `defaultCollapsed` | `boolean` | `false` | 非受控初始折叠状态 |
+| `onCollapsedChange` | `(collapsed: boolean) => void` | - | 折叠状态变化回调 |
+| `className` | `string` | - | 外层容器样式扩展 |
+| `contentClassName` | `string` | - | 内容区域样式扩展 |
+
+## Behavior Notes
+
+- `header/newButton/search` 传 `null` 可隐藏对应区域；不传则使用默认配置。
+- 收起时顶部显示两个带 tooltip 的 icon 按钮（展开 / 新建）。
+- 收起时宽度为 `56px`，内容区域自动收紧。
+- 未传 `footer` 时不显示底部。
+
+## API (Config Types)
+
+### SidebarHeaderConfig
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `title` | `React.ReactNode` | `"对话"` | 标题内容 |
+| `icon` | `React.ReactNode` | `Sparkles` | 标题左侧图标 |
+| `action` | `React.ReactNode \| null` | 内置折叠按钮 | 右侧操作；传 `null` 隐藏 |
+
+### SidebarNewButtonConfig
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `label` | `React.ReactNode` | `"新对话"` | 按钮文本 |
+| `icon` | `React.ReactNode` | `Plus` | 按钮图标 |
+| `onClick` | `() => void` | - | 点击回调 |
+
+### SidebarSearchConfig
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `value` | `string` | `""` | 输入值 |
+| `onChange` | `(value: string) => void` | - | 输入变化回调 |
+| `placeholder` | `string` | `"搜索"` | 占位文案 |
+| `icon` | `React.ReactNode` | `Search` | 搜索图标 |
 
 ## Examples
 
@@ -161,5 +227,40 @@ Sidebar 组件由多个样式原语组成，每个原语都可以独立使用：
 <SidebarHistoryListPrimitive>
   <SidebarHistoryEmpty>暂无对话历史</SidebarHistoryEmpty>
 </SidebarHistoryListPrimitive>
+```
+
+### Controlled Collapse
+
+受控折叠示例（外部状态驱动）：
+
+```tsx
+const [collapsed, setCollapsed] = React.useState(false);
+
+<SidebarComposed
+  collapsed={collapsed}
+  onCollapsedChange={setCollapsed}
+  conversations={data}
+/>
+```
+
+### Footer Based on Collapse
+
+根据折叠状态渲染不同 footer：
+
+```tsx
+<SidebarComposed
+  conversations={data}
+  footer={({ collapsed }) =>
+    collapsed ? (
+      <AvatarHeaderComposed avatar={<Avatar />} />
+    ) : (
+      <AvatarHeaderComposed
+        avatar={<Avatar />}
+        name="User"
+        time="Online"
+      />
+    )
+  }
+/>
 ```
 

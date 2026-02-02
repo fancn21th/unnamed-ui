@@ -3,7 +3,7 @@
 import * as React from "react";
 import { createPortal } from "react-dom";
 import { FileText, X } from "lucide-react";
-import { cn, unstyledButtonClassName } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import {
   AttachmentCard,
   AttachmentCardContent,
@@ -148,7 +148,7 @@ export const AttachmentListComposed = React.forwardRef<
                 <button
                   type="button"
                   className={cn(
-                    unstyledButtonClassName,
+                    "appearance-none border-0 bg-transparent p-0",
                     "absolute right-3 top-3 rounded-md p-1 text-slate-500 hover:bg-slate-100",
                   )}
                   aria-label="Close preview"

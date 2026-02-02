@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import TaskList from "@/registry/wuhan/composed/task-list/task-list";
-import type { TodoItem } from "@/registry/wuhan/composed/task-list/types";
+import {
+  TaskList,
+  type TodoItem,
+} from "@/registry/wuhan/composed/task-list/task-list";
 
 const initialTasks: TodoItem[] = [
   { id: "1", content: "实现用户认证", order: 1 },
@@ -16,7 +18,7 @@ export default function TaskListPending() {
   const [executed, setExecuted] = useState(false);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 w-full">
       <p className="text-sm text-muted-foreground">
         Pending 状态：显示"修改方案"和"确认并执行"按钮
       </p>

@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import TaskList from "@/registry/wuhan/composed/task-list/task-list";
-import type { TodoItem } from "@/registry/wuhan/composed/task-list/types";
+import {
+  TaskList,
+  type TodoItem,
+} from "@/registry/wuhan/composed/task-list/task-list";
 
 const initialTasks: TodoItem[] = [
   { id: "1", content: "完成项目文档", order: 1 },

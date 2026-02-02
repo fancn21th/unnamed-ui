@@ -3,7 +3,7 @@
 import {
   DynamicForm,
   type FormSchema,
-} from "@/registry/wuhan/composed/dynamic-form";
+} from "@/registry/wuhan/composed/dynamic-form/dynamic-form";
 import { z } from "zod";
 
 const schema: FormSchema = {

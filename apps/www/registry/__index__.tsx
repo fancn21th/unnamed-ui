@@ -862,27 +862,12 @@ export const Index: Record<string, Record<string, any>> = {
       name: "task-list",
       description: "Composed task list with editable mode",
       type: "registry:block",
-      registryDependencies: ["task-list-01", "sidebar", "feedback"],
+      registryDependencies: ["button", "task-list-01", "feedback"],
       files: [
         {
           path: "registry/wuhan/composed/task-list/task-list.tsx",
           type: "registry:component",
           target: "components/wuhan/composed/task-list.tsx",
-        },
-        {
-          path: "registry/wuhan/composed/task-list/ReadonlyList.tsx",
-          type: "registry:component",
-          target: "components/wuhan/composed/task-list-readonly.tsx",
-        },
-        {
-          path: "registry/wuhan/composed/task-list/EditableList.tsx",
-          type: "registry:component",
-          target: "components/wuhan/composed/task-list-editable.tsx",
-        },
-        {
-          path: "registry/wuhan/composed/task-list/types.ts",
-          type: "registry:component",
-          target: "components/wuhan/composed/task-list-types.ts",
         },
       ],
       component: React.lazy(async () => {
@@ -1281,37 +1266,26 @@ export const Index: Record<string, Record<string, any>> = {
       description:
         "Schema-driven dynamic form with validation and multiple field types",
       type: "registry:block",
-      registryDependencies: ["dynamic-form-01"],
+      registryDependencies: [
+        "button",
+        "input",
+        "textarea",
+        "select",
+        "switch",
+        "slider",
+        "field",
+        "dynamic-form-01",
+      ],
       files: [
         {
-          path: "registry/wuhan/composed/dynamic-form/DynamicForm.tsx",
+          path: "registry/wuhan/composed/dynamic-form/dynamic-form.tsx",
           type: "registry:component",
           target: "components/wuhan/composed/dynamic-form.tsx",
-        },
-        {
-          path: "registry/wuhan/composed/dynamic-form/FormItem.tsx",
-          type: "registry:component",
-          target: "components/wuhan/composed/dynamic-form-item.tsx",
-        },
-        {
-          path: "registry/wuhan/composed/dynamic-form/types.ts",
-          type: "registry:component",
-          target: "components/wuhan/composed/dynamic-form-types.ts",
-        },
-        {
-          path: "registry/wuhan/composed/dynamic-form/schema-utils.ts",
-          type: "registry:component",
-          target: "components/wuhan/composed/dynamic-form-schema-utils.ts",
-        },
-        {
-          path: "registry/wuhan/composed/dynamic-form/index.ts",
-          type: "registry:component",
-          target: "components/wuhan/composed/dynamic-form-index.ts",
         },
       ],
       component: React.lazy(async () => {
         const mod =
-          await import("@/registry/wuhan/composed/dynamic-form/DynamicForm.tsx");
+          await import("@/registry/wuhan/composed/dynamic-form/dynamic-form.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

@@ -5,7 +5,7 @@ import {
   DynamicForm,
   type FormSchema,
   generateJsonSchema,
-} from "@/registry/wuhan/composed/dynamic-form";
+} from "@/registry/wuhan/composed/dynamic-form/dynamic-form";
 import { Button } from "@/registry/wuhan/ui/button";
 
 // 模拟 AI 返回的表单配置

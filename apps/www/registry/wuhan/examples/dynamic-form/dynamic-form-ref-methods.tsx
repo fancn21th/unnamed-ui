@@ -5,7 +5,7 @@ import {
   DynamicForm,
   type DynamicFormRef,
   type FormSchema,
-} from "@/registry/wuhan/composed/dynamic-form";
+} from "@/registry/wuhan/composed/dynamic-form/dynamic-form";
 import { Button } from "@/registry/wuhan/ui/button";
 
 const schema: FormSchema = {

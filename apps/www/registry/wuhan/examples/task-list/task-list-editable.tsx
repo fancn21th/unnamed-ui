@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import TaskList from "@/registry/wuhan/composed/task-list/task-list";
-import type { TodoItem } from "@/registry/wuhan/composed/task-list/types";
+import {
+  TaskList,
+  type TodoItem,
+} from "@/registry/wuhan/composed/task-list/task-list";
 
 const initialTasks: TodoItem[] = [
   { id: "1", content: "设计系统架构", order: 1 },
@@ -14,7 +16,7 @@ export default function TaskListEditable() {
   const [tasks, setTasks] = useState<TodoItem[]>(initialTasks);
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-2 w-full">
       <p className="text-sm text-muted-foreground">
         可编辑模式：点击"修改方案"按钮可以添加、编辑、删除和排序任务
       </p>

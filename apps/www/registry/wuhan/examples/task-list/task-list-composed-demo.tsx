@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import TaskList from "@/registry/wuhan/composed/task-list/task-list";
-import type { TodoItem } from "@/registry/wuhan/composed/task-list/types";
+import {
+  TaskList,
+  type TodoItem,
+} from "@/registry/wuhan/composed/task-list/task-list";
 import { Button } from "@/registry/wuhan/ui/button";
 
 const initialTasks: TodoItem[] = [
@@ -14,7 +16,7 @@ const initialTasks: TodoItem[] = [
   { id: "6", content: "测试和调试", order: 6 },
 ];
 
-export default function TaskListComposedDemo() {
+export default function TaskListDemo() {
   const [tasks, setTasks] = useState<TodoItem[]>(initialTasks);
   const [status, setStatus] = useState<"pending" | "confirmed">("pending");
 

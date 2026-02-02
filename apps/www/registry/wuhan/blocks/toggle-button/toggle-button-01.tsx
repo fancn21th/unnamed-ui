@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { cn, unstyledButtonClassName } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 // ==================== 类型定义 ====================
 
@@ -66,7 +66,7 @@ export const ToggleButtonPrimitive = React.forwardRef<
         type="button"
         className={cn(
           "[&_*]:!box-border",
-          unstyledButtonClassName,
+          "appearance-none border-0 bg-transparent p-0",
           "rounded-[var(--radius-lg)]",
           "w-full",
           "border",

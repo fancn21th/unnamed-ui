@@ -8,7 +8,7 @@ import {
   Loader2,
 } from "lucide-react";
 import * as React from "react";
-import { cn, unstyledButtonClassName } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import {
   Collapsible,
   CollapsibleContent,
@@ -507,7 +507,7 @@ const ThinkingStepItemHeaderPrimitive = React.forwardRef<
           type="button"
           disabled={disabled}
           className={cn(
-            unstyledButtonClassName,
+            "appearance-none border-0 bg-transparent p-0",
             BOX_BORDER,
             "group/step-item-trigger",
             "flex items-center",
@@ -1225,7 +1225,7 @@ const ThinkingStepItemExpandButtonPrimitive = React.forwardRef<
       onClick={onToggle}
       aria-expanded={expanded}
       className={cn(
-        unstyledButtonClassName,
+        "appearance-none border-0 bg-transparent p-0",
         BOX_BORDER,
         "h-6",
         "flex items-center justify-center",

@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { cn, unstyledButtonClassName } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 // ==================== 样式原语层（Primitives）====================
 // 这些组件只提供样式，不包含任何逻辑和业务假设
@@ -124,7 +124,7 @@ const QuoteContentCloseButton = React.forwardRef<
       ref={ref}
       type="button"
       className={cn(
-        unstyledButtonClassName,
+        "appearance-none border-0 bg-transparent p-0",
         "shrink-0",
         "flex items-center justify-center",
         "w-4 h-4",

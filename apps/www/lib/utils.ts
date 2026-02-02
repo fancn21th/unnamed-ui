@@ -5,5 +5,3 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export const unstyledButtonClassName =
-  "appearance-none border-0 bg-transparent p-0"

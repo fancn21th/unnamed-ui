@@ -19,7 +19,7 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { Button } from "@/registry/wuhan/ui/button";
-import { cn, unstyledButtonClassName } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import {
   TaskListContainerPrimitive,
   TaskListHeaderPrimitive,
@@ -331,7 +331,7 @@ function EditableListItem(props: {
         <button
           type="button"
           className={cn(
-            unstyledButtonClassName,
+            "appearance-none border-0 bg-transparent p-0",
             "cursor-grab text-[var(--text-tertiary)]",
           )}
           aria-label="Reorder item"
@@ -347,7 +347,10 @@ function EditableListItem(props: {
       </div>
       <button
         type="button"
-        className={cn(unstyledButtonClassName, "text-[var(--text-tertiary)]")}
+        className={cn(
+          "appearance-none border-0 bg-transparent p-0",
+          "text-[var(--text-tertiary)]",
+        )}
         aria-label="Delete item"
         onClick={onDeleteItem}
       >

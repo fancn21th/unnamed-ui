@@ -158,7 +158,6 @@ export function NewPage() {
               </div>
             </div>
           </div>
-          <div className="border-t border-slate-200 px-4 py-3">
             <ComposedSender
               value={value}
               onChange={setValue}
@@ -242,7 +241,6 @@ export function NewPage() {
             {submitHint && (
               <div className="mt-2 text-xs text-slate-500">{submitHint}</div>
             )}
-          </div>
         </section>
 
         <aside className="rounded-lg border border-slate-200 bg-white p-4">

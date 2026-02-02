@@ -12,6 +12,7 @@ import { examples } from "./examples/_registry";
 import { ui } from "./ui/_registry";
 import { recruitmentBlocks } from "./recruitment/_registry";
 import { getWuhanStyleCssVars } from "./style/css-vars";
+import { getWuhanStyleCss } from "./style/css";
 
 const DEPRECATED_ITEMS = [
   "toast",
@@ -29,6 +30,7 @@ const NEW_YORK_V4_STYLE = {
   devDependencies: ["tw-animate-css"],
   registryDependencies: ["utils"],
   cssVars: getWuhanStyleCssVars(),
+  css: getWuhanStyleCss(),
   files: [],
 };
 

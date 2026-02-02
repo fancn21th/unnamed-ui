@@ -387,11 +387,11 @@
           "line-height-7": "44px",
           "line-height-8": "56px",
           "line-height-9": "72px",
-          "radius-sm": "4px",
-          "radius-md": "6px",
-          "radius-lg": "8px",
-          "radius-xl": "12px",
-          "radius-2xl": "16px",
+          "radius-sm": "calc(var(--radius) - 2px)",
+          "radius-md": "var(--radius)",
+          "radius-lg": "calc(var(--radius) + 2px)",
+          "radius-xl": "calc(var(--radius) + 6px)",
+          "radius-2xl": "calc(var(--radius) + 10px)",
           "radius-circle": "999px",
           "space-1": "2px",
           "space-2": "4px",
@@ -704,6 +704,62 @@
           "ai-general": "linear-gradient(90deg, #2e8cff 0%, #6b61ff 30%, #a647ff 60%, #e945ff 100%)",
           "ai-general-hover": "linear-gradient(90deg, #82beff 0%, #a3a0ff 30%, #d191ff 60%, #f98fff 100%)",
           "ai-general-active": "linear-gradient(90deg, #2172db 0%, #584ddb 30%, #8636db 60%, #c235db 100%)"
+        }
+      },
+      "css": {
+        "@utility border": {
+          "border-width": "var(--border-width)"
+        },
+        "@utility border-x": {
+          "border-left-width": "var(--border-width)",
+          "border-right-width": "var(--border-width)"
+        },
+        "@utility border-y": {
+          "border-top-width": "var(--border-width)",
+          "border-bottom-width": "var(--border-width)"
+        },
+        "@utility border-t": {
+          "border-top-width": "var(--border-width)"
+        },
+        "@utility border-r": {
+          "border-right-width": "var(--border-width)"
+        },
+        "@utility border-b": {
+          "border-bottom-width": "var(--border-width)"
+        },
+        "@utility border-l": {
+          "border-left-width": "var(--border-width)"
+        },
+        "@utility font-size-1": {
+          "font-size": "var(--font-size-1)"
+        },
+        "@utility font-size-2": {
+          "font-size": "var(--font-size-2)"
+        },
+        "@utility font-size-3": {
+          "font-size": "var(--font-size-3)"
+        },
+        "@utility font-size-4": {
+          "font-size": "var(--font-size-4)"
+        },
+        "@utility font-size-5": {
+          "font-size": "var(--font-size-5)"
+        },
+        "@utility font-size-6": {
+          "font-size": "var(--font-size-6)"
+        },
+        "@utility font-semibold": {
+          "font-weight": "600"
+        },
+        "@keyframes thinking-loading-pulse": {
+          "0%,\n    100%": {
+            "opacity": "0.3",
+            "transform": "scale(0.8)"
+          },
+          "50%": {
+            "opacity": "1",
+            "transform": "scale(1)"
+          }
         }
       }
     },
@@ -1092,11 +1148,11 @@
           "line-height-7": "44px",
           "line-height-8": "56px",
           "line-height-9": "72px",
-          "radius-sm": "4px",
-          "radius-md": "6px",
-          "radius-lg": "8px",
-          "radius-xl": "12px",
-          "radius-2xl": "16px",
+          "radius-sm": "calc(var(--radius) - 2px)",
+          "radius-md": "var(--radius)",
+          "radius-lg": "calc(var(--radius) + 2px)",
+          "radius-xl": "calc(var(--radius) + 6px)",
+          "radius-2xl": "calc(var(--radius) + 10px)",
           "radius-circle": "999px",
           "space-1": "2px",
           "space-2": "4px",
@@ -1409,6 +1465,62 @@
           "ai-general": "linear-gradient(90deg, #2e8cff 0%, #6b61ff 30%, #a647ff 60%, #e945ff 100%)",
           "ai-general-hover": "linear-gradient(90deg, #82beff 0%, #a3a0ff 30%, #d191ff 60%, #f98fff 100%)",
           "ai-general-active": "linear-gradient(90deg, #2172db 0%, #584ddb 30%, #8636db 60%, #c235db 100%)"
+        }
+      },
+      "css": {
+        "@utility border": {
+          "border-width": "var(--border-width)"
+        },
+        "@utility border-x": {
+          "border-left-width": "var(--border-width)",
+          "border-right-width": "var(--border-width)"
+        },
+        "@utility border-y": {
+          "border-top-width": "var(--border-width)",
+          "border-bottom-width": "var(--border-width)"
+        },
+        "@utility border-t": {
+          "border-top-width": "var(--border-width)"
+        },
+        "@utility border-r": {
+          "border-right-width": "var(--border-width)"
+        },
+        "@utility border-b": {
+          "border-bottom-width": "var(--border-width)"
+        },
+        "@utility border-l": {
+          "border-left-width": "var(--border-width)"
+        },
+        "@utility font-size-1": {
+          "font-size": "var(--font-size-1)"
+        },
+        "@utility font-size-2": {
+          "font-size": "var(--font-size-2)"
+        },
+        "@utility font-size-3": {
+          "font-size": "var(--font-size-3)"
+        },
+        "@utility font-size-4": {
+          "font-size": "var(--font-size-4)"
+        },
+        "@utility font-size-5": {
+          "font-size": "var(--font-size-5)"
+        },
+        "@utility font-size-6": {
+          "font-size": "var(--font-size-6)"
+        },
+        "@utility font-semibold": {
+          "font-weight": "600"
+        },
+        "@keyframes thinking-loading-pulse": {
+          "0%,\n    100%": {
+            "opacity": "0.3",
+            "transform": "scale(0.8)"
+          },
+          "50%": {
+            "opacity": "1",
+            "transform": "scale(1)"
+          }
         }
       }
     },

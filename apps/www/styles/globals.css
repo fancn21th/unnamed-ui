@@ -6,18 +6,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@keyframes thinking-loading-pulse {
-  0%,
-  100% {
-    opacity: 0.3;
-    transform: scale(0.8);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
 @theme inline {
   /* ==================== Font-family 字体族 ==================== */
   --font-family-en: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -224,6 +212,63 @@
 }
 
 :root {
+  /* ==================== Thinking loading pulse animation ==================== */
+  @keyframes thinking-loading-pulse {
+    0%,
+    100% {
+      opacity: 0.3;
+      transform: scale(0.8);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .border {
+    border-width: var(--border-width);
+  }
+  .border-x {
+    border-left-width: var(--border-width);
+    border-right-width: var(--border-width);
+  }
+  .border-y {
+    border-top-width: var(--border-width);
+    border-bottom-width: var(--border-width);
+  }
+  .border-t {
+    border-top-width: var(--border-width);
+  }
+  .border-r {
+    border-right-width: var(--border-width);
+  }
+  .border-b {
+    border-bottom-width: var(--border-width);
+  }
+  .border-l {
+    border-left-width: var(--border-width);
+  }
+  .font-size-1 {
+    font-size: var(--font-size-1);
+  }
+  .font-size-2 {
+    font-size: var(--font-size-2);
+  }
+  .font-size-3 {
+    font-size: var(--font-size-3);
+  }
+  .font-size-4 {
+    font-size: var(--font-size-4);
+  }
+  .font-size-5 {
+    font-size: var(--font-size-5);
+  }
+  .font-size-6 {
+    font-size: var(--font-size-6);
+  }
+  .font-semibold {
+    font-weight: 600;
+  }
   /* 基础圆角 - Medium 主题 (默认) */
   --radius: 6px;
   --radius-sm: 4px;
@@ -743,17 +788,7 @@
   button:active {
     @apply opacity-60 md:opacity-100;
   }
-}
 
-@utility theme-container {
-  @apply font-sans;
-}
-
-/* 让主题变量 `--border-width` 真正影响到组件边框宽度。
- * 说明：Tailwind 的 `.border` / `.border-*` 默认会写死 1px/2px，
- * 我们在 utilities layer 里覆盖它们，使其跟随 CSS 变量。
- */
-@layer utilities {
   .border {
     border-width: var(--border-width);
   }
@@ -795,7 +830,19 @@
   .font-size-6 {
     font-size: var(--font-size-6);
   }
+  .font-semibold {
+    font-weight: 600;
+  }
 }
+
+@utility theme-container {
+  @apply font-sans;
+}
+
+/* 让主题变量 `--border-width` 真正影响到组件边框宽度。
+ * 说明：Tailwind 的 `.border` / `.border-*` 默认会写死 1px/2px，
+ * 我们在 utilities layer 里覆盖它们，使其跟随 CSS 变量。
+ */
 
 @utility container-wrapper {
   @apply mx-auto w-full px-2;

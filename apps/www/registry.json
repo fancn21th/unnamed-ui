@@ -2417,6 +2417,22 @@
       ]
     },
     {
+      "name": "tooltip",
+      "type": "registry:block",
+      "title": "Tooltip",
+      "description": "Composed tooltip with simplified API for quick usage",
+      "registryDependencies": [
+        "tooltip-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/composed/tooltip/tooltip.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/composed/tooltip.tsx"
+        }
+      ]
+    },
+    {
       "name": "action-dropdown",
       "type": "registry:block",
       "title": "Action Dropdown",
@@ -3766,6 +3782,104 @@
           "path": "registry/wuhan/examples/tooltip/tooltip-demo.tsx",
           "type": "registry:example",
           "target": "components/wuhan/examples/tooltip-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tooltip-basic",
+      "type": "registry:example",
+      "registryDependencies": [
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/tooltip/tooltip-basic.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/tooltip-basic.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tooltip-positions",
+      "type": "registry:example",
+      "registryDependencies": [
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/tooltip/tooltip-positions.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/tooltip-positions.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tooltip-with-icons",
+      "type": "registry:example",
+      "registryDependencies": [
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/tooltip/tooltip-with-icons.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/tooltip-with-icons.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tooltip-long-text",
+      "type": "registry:example",
+      "registryDependencies": [
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/tooltip/tooltip-long-text.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/tooltip-long-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tooltip-toolbar",
+      "type": "registry:example",
+      "registryDependencies": [
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/tooltip/tooltip-toolbar.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/tooltip-toolbar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tooltip-table",
+      "type": "registry:example",
+      "registryDependencies": [
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/tooltip/tooltip-table.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/tooltip-table.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tooltip-form",
+      "type": "registry:example",
+      "registryDependencies": [
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/tooltip/tooltip-form.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/tooltip-form.tsx"
         }
       ]
     },

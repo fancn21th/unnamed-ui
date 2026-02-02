@@ -1,21 +1,44 @@
 ---
-title: Block Tooltip
-description: Block tooltip component with custom styling for displaying contextual information
+title: Tooltip
+description: Tooltip component for displaying contextual information on hover or focus
 author: AF
 ---
 
-<ComponentPreview name="tooltip-demo" description="Block tooltip component with custom styling" className="mb-4" />
+<ComponentPreview name="tooltip-basic" description="Tooltip component with simplified API" className="mb-4" />
 
-Block Tooltip 组件提供了带自定义样式的提示框组件，适用于在用户悬停或聚焦时显示额外的上下文信息、帮助文本或操作说明。
+Tooltip 组件用于在用户悬停或聚焦元素时显示额外的上下文信息、帮助文本或操作说明，提供简化的 API 便于快速使用。
+
+## Overview
+
+- **简化的 API**：单个组件封装，无需手动组合多个子组件
+- **灵活定位**：支持四个方向的定位（top, right, bottom, left）
+- **响应式宽度**：最小宽度 36px，最大宽度 480px，自动适应内容
+- **深色背景**：使用设计系统变量，确保样式一致性
+- **流畅动画**：内置淡入淡出和缩放动画
+- **完整的可访问性**：基于 Radix UI，支持键盘导航和屏幕阅读器
+
+## Quick Start
+
+```tsx
+import { Tooltip } from "@/registry/wuhan/composed/tooltip";
+
+export function Example() {
+  return (
+    <Tooltip content="这是提示信息">
+      <Button>悬停查看</Button>
+    </Tooltip>
+  );
+}
+```
 
 ## Features
 
-- **自定义样式**：使用设计系统中的 CSS 变量，确保样式一致性
-- **灵活定位**：支持四个方向的定位（top, right, bottom, left）
-- **响应式宽度**：最小宽度 36px，最大宽度 480px，自动适应内容
-- **深色背景**：使用 `--bg-mask` 作为背景色，提供良好的视觉对比
-- **动画效果**：内置淡入淡出和缩放动画，提供流畅的用户体验
-- **可访问性**：基于 Radix UI，提供完整的键盘导航和屏幕阅读器支持
+- **快速集成**：单个组件即可完成，无需额外配置
+- **自动换行**：长文本自动换行，保持良好的可读性
+- **灵活定位**：支持 4 个方向和 3 种对齐方式
+- **自定义样式**：支持自定义类名和样式
+- **性能优化**：延迟加载和按需渲染
+- **类型安全**：完整的 TypeScript 类型定义
 
 ## Installation
 
@@ -29,7 +52,7 @@ Block Tooltip 组件提供了带自定义样式的提示框组件，适用于在
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add http://localhost:3000/r/wuhan/tooltip-01.json
+npx shadcn@latest add http://localhost:3000/r/wuhan/tooltip.json
 ```
 
 </TabsContent>
@@ -38,11 +61,11 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/tooltip-01.json
 
 <Steps>
 
-<Step>Copy and paste the following code into your project.</Step>
+<Step>复制以下代码到你的项目</Step>
 
-<ComponentSource name="tooltip-demo" title="registry/wuhan/examples/tooltip/tooltip-demo.tsx" />
+<ComponentSource name="tooltip" />
 
-<Step>Update the import paths to match your project setup.</Step>
+<Step>更新导入路径以匹配你的项目设置</Step>
 
 </Steps>
 
@@ -50,137 +73,322 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/tooltip-01.json
 
 </CodeTabs>
 
-## Usage
+## Examples
 
 ### Basic Usage
 
-基础用法，在触发器元素上悬停时显示提示信息。
+基础用法，快速添加提示信息。
 
-```tsx
-import {
-  BlockTooltip,
-  BlockTooltipTrigger,
-  BlockTooltipContent,
-} from "@/registry/wuhan/blocks/tooltip/tooltip-01";
+<ComponentPreview
+  name="tooltip-basic"
+  description="Basic tooltip usage"
+  className="mb-4"
+/>
 
-<BlockTooltip>
-  <BlockTooltipTrigger asChild>
-    <Button variant="outline">悬停查看提示</Button>
-  </BlockTooltipTrigger>
-  <BlockTooltipContent>
-    这是一个 Block Tooltip 提示信息
-  </BlockTooltipContent>
-</BlockTooltip>
-```
+### Different Positions
 
-### Positioning
+不同位置的提示框展示。
 
-可以通过 `side` 属性控制提示框的显示位置。
-
-```tsx
-<BlockTooltip>
-  <BlockTooltipTrigger asChild>
-    <Button variant="outline">顶部</Button>
-  </BlockTooltipTrigger>
-  <BlockTooltipContent side="top">
-    顶部提示信息
-  </BlockTooltipContent>
-</BlockTooltip>
-```
-
-支持的 `side` 值：
-- `top` - 显示在触发器上方
-- `right` - 显示在触发器右侧
-- `bottom` - 显示在触发器下方（默认）
-- `left` - 显示在触发器左侧
+<ComponentPreview
+  name="tooltip-positions"
+  description="Tooltips in different positions"
+  className="mb-4"
+/>
 
 ### With Icons
 
-可以在触发器中使用图标，提示框会自动适配。
-
-```tsx
-<BlockTooltip>
-  <BlockTooltipTrigger asChild>
-    <Button variant="ghost" size="icon">
-      <Info className="size-4" />
-    </Button>
-  </BlockTooltipTrigger>
-  <BlockTooltipContent>
-    点击图标了解更多信息
-  </BlockTooltipContent>
-</BlockTooltip>
-```
-
-## Styling
-
-Block Tooltip 组件使用以下设计系统变量：
-
-- **背景色**：`--bg-mask`（深色半透明背景）
-- **文本颜色**：`--text-inverse`（白色文本）
-- **字体**：`--font-family-cn`（中文字体）
-- **字号**：`--font-size-1`（12px）
-- **行高**：`--line-height-1`（20px）
-- **字重**：`--font-weight-400`（400）
-- **圆角**：`--radius-sm`（4px）
-- **内边距**：
-  - 上下：`--gap-xs`（4px）
-  - 左右：`--gap-sm`（6px）
-- **宽度**：
-  - 最小宽度：36px
-  - 最大宽度：480px
-
-## Examples
-
-### Basic
-
-基础的提示框用法，展示简单的文本提示。
+图标按钮配合 Tooltip 使用。
 
 <ComponentPreview
-  name="tooltip-demo"
-  description="Block tooltip basic usage"
+  name="tooltip-with-icons"
+  description="Tooltips with icon buttons"
+  className="mb-4"
+/>
+
+### Long Text
+
+长文本自动换行显示。
+
+<ComponentPreview
+  name="tooltip-long-text"
+  description="Tooltips with long text content"
   className="mb-4"
 />
 
 ## API Reference
 
-### BlockTooltip
+### Tooltip
 
-Tooltip 根组件，提供 tooltip 上下文。
+简化的 Tooltip 组件，封装了常用的配置和用法。
 
-```tsx
-<BlockTooltip>
-  {/* ... */}
-</BlockTooltip>
-```
+#### Props
 
-### BlockTooltipTrigger
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `content` | `React.ReactNode` | - | 提示内容（必填） |
+| `children` | `React.ReactNode` | - | 触发器元素（必填） |
+| `side` | `"top" \| "right" \| "bottom" \| "left"` | `"top"` | 提示框位置 |
+| `sideOffset` | `number` | `4` | 与触发器的距离（像素） |
+| `align` | `"start" \| "center" \| "end"` | `"center"` | 对齐方式 |
+| `contentClassName` | `string` | - | 自定义内容容器类名 |
+| `delayDuration` | `number` | `0` | 延迟显示时间（毫秒） |
 
-Tooltip 触发器组件，通常包裹需要显示提示的元素。
-
-```tsx
-<BlockTooltipTrigger asChild>
-  <Button>Hover me</Button>
-</BlockTooltipTrigger>
-```
-
-**Props**: 继承自 `@radix-ui/react-tooltip` 的 `Trigger` 组件。
-
-### BlockTooltipContent
-
-Tooltip 内容组件，显示提示文本。
+#### Example
 
 ```tsx
-<BlockTooltipContent side="top" sideOffset={4}>
-  提示内容
-</BlockTooltipContent>
+import { Tooltip } from "@/registry/wuhan/composed/tooltip";
+import { Button } from "@/components/ui/button";
+import { Info } from "lucide-react";
+
+function Example() {
+  return (
+    <div className="space-y-4">
+      {/* 基础用法 */}
+      <Tooltip content="这是提示信息">
+        <Button>悬停查看</Button>
+      </Tooltip>
+      
+      {/* 指定位置 */}
+      <Tooltip content="右侧提示" side="right">
+        <Button variant="outline">右侧提示</Button>
+      </Tooltip>
+      
+      {/* 图标按钮 */}
+      <Tooltip content="了解更多">
+        <Button variant="ghost" size="icon">
+          <Info className="w-4 h-4" />
+        </Button>
+      </Tooltip>
+      
+      {/* 长文本 */}
+      <Tooltip 
+        content="这是一段较长的提示文本，会自动换行显示"
+        side="bottom"
+      >
+        <Button variant="outline">查看详情</Button>
+      </Tooltip>
+    </div>
+  );
+}
 ```
 
-**Props**:
-- `side?: "top" | "right" | "bottom" | "left"` - 提示框位置
-- `sideOffset?: number` - 与触发器的距离（默认：0）
-- `align?: "start" | "center" | "end"` - 对齐方式
-- `className?: string` - 自定义样式类名
-- `children: React.ReactNode` - 提示内容
+### 位置和对齐
 
-**Props**: 继承自 `@radix-ui/react-tooltip` 的 `Content` 组件。
+#### Side（位置）
+
+- `top` - 显示在触发器上方（默认）
+- `right` - 显示在触发器右侧
+- `bottom` - 显示在触发器下方
+- `left` - 显示在触发器左侧
+
+#### Align（对齐）
+
+- `start` - 与触发器起始边对齐
+- `center` - 与触发器中心对齐（默认）
+- `end` - 与触发器结束边对齐
+
+## 使用场景
+
+- **图标按钮说明**：为图标按钮提供文字说明
+- **表单字段帮助**：在表单字段旁显示帮助信息
+- **功能介绍**：介绍功能按钮或选项的作用
+- **状态说明**：解释状态标签或指示器的含义
+- **操作提示**：提示用户可以执行的操作
+- **数据展示**：在表格或列表中显示完整信息
+
+## 最佳实践
+
+1. **内容简洁**：提示内容应简短明了，通常不超过 1-2 句话
+2. **及时响应**：使用默认的 0ms 延迟，确保用户悬停时立即显示
+3. **位置选择**：根据触发器位置和屏幕空间选择合适的方向
+4. **避免重复**：不要在已有文字说明的元素上重复添加 Tooltip
+5. **键盘友好**：确保触发器元素可以通过键盘访问
+6. **移动端考虑**：移动端建议使用其他方式展示提示信息
+
+## 注意事项
+
+- Tooltip 需要触发器元素支持 `asChild` 模式，建议使用 Button 或其他可交互元素
+- 长文本会自动换行，但建议控制在合理长度以保持可读性
+- 在移动设备上，Tooltip 可能不够友好，考虑使用替代方案
+- 避免在 Tooltip 中放置交互元素，因为内容在失去焦点时会关闭
+- 确保提示内容不会遮挡重要信息或操作按钮
+
+## 原语组件
+
+Tooltip 基于以下原语组件构建：
+
+- `BlockTooltip` - Tooltip 根组件
+- `BlockTooltipTrigger` - 触发器组件
+- `BlockTooltipContent` - 内容组件
+- `BlockTooltipProvider` - 提供者组件
+
+原语组件提供了更底层的控制，可以在 [registry/wuhan/blocks/tooltip/tooltip-01.tsx](../../registry/wuhan/blocks/tooltip/tooltip-01.tsx) 中找到。
+
+## 样式定制
+
+组件使用 CSS 变量，可以通过以下方式定制：
+
+```tsx
+// 自定义内容样式
+<Tooltip 
+  content="自定义样式"
+  contentClassName="bg-primary text-primary-foreground"
+>
+  <Button>自定义</Button>
+</Tooltip>
+```
+
+### 设计系统变量
+
+- **背景色**：`--bg-mask`（深色半透明背景）
+- **文本颜色**：`--text-inverse`（白色文本）
+- **字体**：`--font-family-cn`（中文字体）
+- **字号**：12px
+- **行高**：`--line-height-1`
+- **圆角**：`--radius-sm`（4px）
+- **内边距**：上下 `--gap-xs`（4px），左右 `--gap-sm`（6px）
+- **宽度范围**：36px - 480px
+
+## 扩展示例
+
+### Toolbar Integration
+
+工具栏中集成多个 Tooltip。
+
+<ComponentPreview
+  name="tooltip-toolbar"
+  description="Tooltips in a toolbar"
+  className="mb-4"
+/>
+
+### Table Usage
+
+在表格中使用 Tooltip 显示额外信息。
+
+<ComponentPreview
+  name="tooltip-table"
+  description="Tooltips in a table"
+  className="mb-4"
+/>
+
+### Form Help Text
+
+在表单中使用 Tooltip 提供帮助信息。
+
+<ComponentPreview
+  name="tooltip-form"
+  description="Tooltips in a form"
+  className="mb-4"
+/>
+
+### 自定义触发时机
+
+```tsx
+import { Tooltip } from "@/registry/wuhan/composed/tooltip";
+
+function CustomTrigger() {
+  return (
+    <Tooltip content="自定义延迟" delayDuration={500}>
+      <Button>延迟 500ms 显示</Button>
+    </Tooltip>
+  );
+}
+```
+
+### 富文本内容
+
+```tsx
+import { Tooltip } from "@/registry/wuhan/composed/tooltip";
+
+function RichContent() {
+  return (
+    <Tooltip
+      content={
+        <div className="space-y-1">
+          <div className="font-semibold">快捷键</div>
+          <div className="text-xs">⌘ + K 打开搜索</div>
+        </div>
+      }
+    >
+      <Button variant="outline">快捷键</Button>
+    </Tooltip>
+  );
+}
+```
+
+### 条件显示
+
+```tsx
+import { Tooltip } from "@/registry/wuhan/composed/tooltip";
+
+function ConditionalTooltip({ showTooltip }: { showTooltip: boolean }) {
+  const button = <Button>悬停查看</Button>;
+  
+  if (!showTooltip) {
+    return button;
+  }
+  
+  return (
+    <Tooltip content="这是提示信息">
+      {button}
+    </Tooltip>
+  );
+}
+```
+
+### 与其他组件结合
+
+```tsx
+import { Tooltip } from "@/registry/wuhan/composed/tooltip";
+import { Badge } from "@/components/ui/badge";
+
+function CombinedComponents() {
+  return (
+    <div className="flex items-center gap-2">
+      <span>状态：</span>
+      <Tooltip content="项目当前处于开发阶段" side="right">
+        <Badge variant="secondary" className="cursor-help">
+          开发中
+        </Badge>
+      </Tooltip>
+    </div>
+  );
+}
+```
+
+### 动态内容
+
+```tsx
+import { Tooltip } from "@/registry/wuhan/composed/tooltip";
+import { useState } from "react";
+
+function DynamicContent() {
+  const [count, setCount] = useState(0);
+  
+  return (
+    <Tooltip content={`点击次数：${count}`}>
+      <Button onClick={() => setCount(count + 1)}>
+        点击我
+      </Button>
+    </Tooltip>
+  );
+}
+```
+
+### 多语言支持
+
+```tsx
+import { Tooltip } from "@/registry/wuhan/composed/tooltip";
+import { useTranslation } from "react-i18next";
+
+function I18nTooltip() {
+  const { t } = useTranslation();
+  
+  return (
+    <Tooltip content={t("tooltip.help")}>
+      <Button>{t("button.help")}</Button>
+    </Tooltip>
+  );
+}
+```
 

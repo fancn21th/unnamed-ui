@@ -314,4 +314,18 @@ export const composed: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "tooltip",
+    type: "registry:block",
+    title: "Tooltip",
+    description: "Composed tooltip with simplified API for quick usage",
+    registryDependencies: ["tooltip-01"],
+    files: [
+      {
+        path: "composed/tooltip/tooltip.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/tooltip.tsx",
+      },
+    ],
+  },
 ];

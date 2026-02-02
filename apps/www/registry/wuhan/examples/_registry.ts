@@ -1350,6 +1350,90 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "tooltip-basic",
+    type: "registry:example",
+    registryDependencies: ["tooltip"],
+    files: [
+      {
+        path: "examples/tooltip/tooltip-basic.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/tooltip-basic.tsx",
+      },
+    ],
+  },
+  {
+    name: "tooltip-positions",
+    type: "registry:example",
+    registryDependencies: ["tooltip"],
+    files: [
+      {
+        path: "examples/tooltip/tooltip-positions.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/tooltip-positions.tsx",
+      },
+    ],
+  },
+  {
+    name: "tooltip-with-icons",
+    type: "registry:example",
+    registryDependencies: ["tooltip"],
+    files: [
+      {
+        path: "examples/tooltip/tooltip-with-icons.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/tooltip-with-icons.tsx",
+      },
+    ],
+  },
+  {
+    name: "tooltip-long-text",
+    type: "registry:example",
+    registryDependencies: ["tooltip"],
+    files: [
+      {
+        path: "examples/tooltip/tooltip-long-text.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/tooltip-long-text.tsx",
+      },
+    ],
+  },
+  {
+    name: "tooltip-toolbar",
+    type: "registry:example",
+    registryDependencies: ["tooltip"],
+    files: [
+      {
+        path: "examples/tooltip/tooltip-toolbar.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/tooltip-toolbar.tsx",
+      },
+    ],
+  },
+  {
+    name: "tooltip-table",
+    type: "registry:example",
+    registryDependencies: ["tooltip"],
+    files: [
+      {
+        path: "examples/tooltip/tooltip-table.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/tooltip-table.tsx",
+      },
+    ],
+  },
+  {
+    name: "tooltip-form",
+    type: "registry:example",
+    registryDependencies: ["tooltip"],
+    files: [
+      {
+        path: "examples/tooltip/tooltip-form.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/tooltip-form.tsx",
+      },
+    ],
+  },
   // execution-result examples
   {
     name: "execution-result-demo",

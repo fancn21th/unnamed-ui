@@ -1372,6 +1372,31 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    tooltip: {
+      name: "tooltip",
+      description: "Composed tooltip with simplified API for quick usage",
+      type: "registry:block",
+      registryDependencies: ["tooltip-01"],
+      files: [
+        {
+          path: "registry/wuhan/composed/tooltip/tooltip.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/tooltip.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/composed/tooltip/tooltip.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "action-dropdown": {
       name: "action-dropdown",
       description: "操作下拉菜单组件",
@@ -3813,6 +3838,181 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/examples/tooltip/tooltip-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "tooltip-basic": {
+      name: "tooltip-basic",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["tooltip"],
+      files: [
+        {
+          path: "registry/wuhan/examples/tooltip/tooltip-basic.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/tooltip-basic.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/tooltip/tooltip-basic.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "tooltip-positions": {
+      name: "tooltip-positions",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["tooltip"],
+      files: [
+        {
+          path: "registry/wuhan/examples/tooltip/tooltip-positions.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/tooltip-positions.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/tooltip/tooltip-positions.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "tooltip-with-icons": {
+      name: "tooltip-with-icons",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["tooltip"],
+      files: [
+        {
+          path: "registry/wuhan/examples/tooltip/tooltip-with-icons.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/tooltip-with-icons.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/tooltip/tooltip-with-icons.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "tooltip-long-text": {
+      name: "tooltip-long-text",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["tooltip"],
+      files: [
+        {
+          path: "registry/wuhan/examples/tooltip/tooltip-long-text.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/tooltip-long-text.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/tooltip/tooltip-long-text.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "tooltip-toolbar": {
+      name: "tooltip-toolbar",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["tooltip"],
+      files: [
+        {
+          path: "registry/wuhan/examples/tooltip/tooltip-toolbar.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/tooltip-toolbar.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/tooltip/tooltip-toolbar.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "tooltip-table": {
+      name: "tooltip-table",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["tooltip"],
+      files: [
+        {
+          path: "registry/wuhan/examples/tooltip/tooltip-table.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/tooltip-table.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/tooltip/tooltip-table.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "tooltip-form": {
+      name: "tooltip-form",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["tooltip"],
+      files: [
+        {
+          path: "registry/wuhan/examples/tooltip/tooltip-form.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/tooltip-form.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/tooltip/tooltip-form.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

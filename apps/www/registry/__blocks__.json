@@ -1,5 +1,9 @@
 [
   {
+    "name": "tooltip",
+    "description": "Composed tooltip with simplified API for quick usage"
+  },
+  {
     "name": "hello-world",
     "description": "A simple hello world component"
   },

@@ -3,7 +3,13 @@ title: Sender
 author: AF
 ---
 
-<ComponentPreview name="sender-demo" description="A sender" className="mb-4" />
+<ComponentPreview
+  name="sender-demo"
+  description="完整演示：默认样式 + 附件 + 模式 + 发送校验"
+  className="mb-4"
+/>
+
+Sender 是一个面向“对话输入”场景的组合组件，默认提供完整 UI（输入、附件、模式与发送按钮），同时允许通过适配器与插槽扩展业务逻辑。
 
 ## Installation
 
@@ -44,27 +50,227 @@ npm install @radix-ui/react-slot
 
 </CodeTabs>
 
-## Examples
+## Overview
 
-### Default
+- **定位**：对话输入器（输入 + 附件 + 模式 + 发送）
+- **默认样式**：开箱即用，包含发送按钮与操作栏
+- **扩展能力**：支持数据适配、发送校验、插槽重写
+
+## Usage
+
+### 基础用法（推荐起点）
+
+```tsx
+import { useState } from "react";
+import { ComposedSender } from "@/registry/wuhan/composed/sender/sender";
+
+export function Example() {
+  const [value, setValue] = useState("");
+  return (
+    <ComposedSender
+      value={value}
+      onChange={setValue}
+      onSend={() => console.log("send", value)}
+      placeholder="输入你的需求..."
+    />
+  );
+}
+```
+
+### 数据适配（附件）
+
+```tsx
+const attachments = [
+  { key: "1", filename: "design.png", sizeLabel: "1.8MB", kind: "image" },
+];
+
+<ComposedSender
+  value={value}
+  onChange={setValue}
+  attachments={attachments}
+  attachmentAdapter={(item) => ({
+    id: item.key,
+    name: item.filename,
+    fileSize: item.sizeLabel,
+    isImage: item.kind === "image",
+  })}
+/>;
+```
+
+### 模式策略（单选/互斥）
+
+```tsx
+const modes = [
+  { key: "deep", name: "深度思考" },
+  { key: "web", name: "联网搜索" },
+];
+
+<ComposedSender
+  value={value}
+  onChange={setValue}
+  modes={modes}
+  selectedModes={selectedModes}
+  modeAdapter={(mode) => ({ id: mode.key, label: mode.name })}
+  modeSelection="exclusive"
+  onModeChange={(next) => setSelectedModes(next)}
+/>;
+```
+
+### 发送校验与提示
+
+```tsx
+<ComposedSender
+  value={value}
+  onChange={setValue}
+  getCanSend={({ value }) => value.trim().length > 0}
+  onSubmit={({ canSend, reason }) => {
+    if (!canSend) console.log("blocked", reason);
+  }}
+/>;
+```
+
+## Quick Start
+
+最小可用配置：`value`、`onChange`、`onSend` 三个核心入口即可工作。
 
 <ComponentPreview
   name="sender-default"
-  description="A sender"
+  description="最小可用的输入与发送"
   className="mb-4"
 />
 
-### Active
+## Examples
+
+### Feature Overview
+
+完整能力演示：数据适配、附件、模式、提交校验与反馈。
+
+<ComponentPreview
+  name="sender-demo"
+  description="功能总览"
+  className="mb-4"
+/>
+
+### Custom Input & Action Bar
+
+通过 `renderInput` 和 `renderActionBar` 进行 UI 结构重写。
+
+<ComponentPreview
+  name="sender-composed-demo"
+  description="插槽与结构重写"
+  className="mb-4"
+/>
+
+### Primitive States
+
+<ComponentPreview
+  name="sender-default"
+  description="Default state"
+  className="mb-4"
+/>
 
 <ComponentPreview
   name="sender-active"
-  description="A sender"
+  description="Active state"
   className="mb-4"
 />
-### Disabled
 
 <ComponentPreview
   name="sender-disabled"
-  description="A sender"
+  description="Disabled state"
   className="mb-4"
 />
+
+## API (Composed)
+
+为便于快速理解，下面按“输入/附件/模式/发送/布局”分组，每项都解释**它解决什么问题**以及**常见用法**。
+
+### 输入
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `value` | `string` | - | 受控输入值。**你写什么它就显示什么**，必须和 `onChange` 一起使用。 |
+| `onChange` | `(value) => void` | - | 输入变化回调。**用户打字时更新你的状态**。 |
+| `placeholder` | `string` | - | 空输入时的提示文字。 |
+| `inputDisabled` | `boolean` | `false` | 禁用输入框，常用于“生成中/无权限”场景。 |
+| `submitOnEnter` | `boolean` | `false` | 是否按 Enter 发送（自动处理输入法组合态与 Shift+Enter）。 |
+| `renderInput` | `(ctx) => ReactNode` | - | 覆盖输入区域 UI。用于**替换为富文本/Markdown/自定义输入组件**。 |
+
+### 附件
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `attachments` | `T[]` | `[]` | 你的业务附件数组，结构不限。 |
+| `attachmentAdapter` | `(item) => AttachmentItem` | - | 把业务数据转换为 UI 所需结构（`id/name/thumbnail/size` 等）。 |
+| `onAttachmentRemove` | `(id) => void` | - | 删除附件回调。UI 会传回 `AttachmentItem.id`。 |
+| `onAttachmentClick` | `(item) => void` | - | 点击附件卡片时触发，常用于预览/打开。 |
+| `maxAttachments` | `number` | - | 最大附件数量，超过会触发 `onAttachLimitExceed`。 |
+| `accept` | `string` | - | 允许类型（用于你自己的上传控件或提示）。 |
+| `sizeLimit` | `number` | - | 单个附件的大小上限（用于你自己的校验）。 |
+| `onAttachRequest` | `(ctx) => void` | - | 点击“添加附件”时触发。通常在这里打开文件选择器。 |
+| `onAttachLimitExceed` | `(ctx) => void` | - | 超过 `maxAttachments` 时触发，适合展示提示。 |
+
+### 模式
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `modes` | `T[]` | `[]` | 模式数据数组，结构不限（例如“深度思考/联网搜索”）。 |
+| `modeAdapter` | `(mode) => {id,label,icon}` | - | 把模式数据映射到 UI 所需字段。 |
+| `modeSelection` | `"multiple" \| "single" \| "exclusive"` | `"multiple"` | 模式选择策略：多选/单选/互斥。 |
+| `selectedModes` | `string[]` | `[]` | 当前选中的模式 id 列表。 |
+| `onModeChange` | `(next, ctx) => void` | - | 模式变化回调，推荐用它做状态更新。 |
+
+### 发送
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `onSend` | `() => void` | - | 真正“发送”动作。只有当 `getCanSend` 通过时才会触发。 |
+| `sendDisabled` | `boolean` | - | 只控制按钮禁用视觉状态，不改变校验逻辑。 |
+| `generating` | `boolean` | `false` | 发送中/生成中状态（按钮会显示 loading）。 |
+| `getCanSend` | `(ctx) => boolean` | - | 自定义发送规则（比如“有附件即可发送”）。 |
+| `onSubmit` | `(ctx) => void` | - | 点击发送或回车触发，能拿到 `reason`。用于提示“为什么不能发”。 |
+| `getSendDisabledReason` | `(ctx) => reason` | - | 自定义 `reason` 文案来源。 |
+
+### 布局与插槽
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `renderActionBar` | `(ctx) => ReactNode` | - | 覆盖整个操作栏。**你要自己放发送按钮**。 |
+| `renderActionsLeft` | `(ctx) => ReactNode` | - | 覆盖左侧动作区（附件按钮/模式按钮所在区域）。 |
+| `renderActionsRight` | `(ctx) => ReactNode` | - | 覆盖右侧动作区（发送按钮所在区域）。 |
+| `className` | `string` | - | 外层容器样式。 |
+| `maxWidth` | `string` | `"max-w-2xl"` | 最大宽度，默认中等聊天宽度。 |
+
+#### 结构示意（插槽位置）
+
+下面是一个**图形化结构示意**，用框图标出插槽位置（非真实 DOM，仅帮助理解）：
+
+<div className="flex justify-center">
+  <svg width="720" height="360" viewBox="0 0 720 360" role="img" aria-label="Sender layout diagram">
+    <rect x="20" y="20" width="680" height="320" rx="12" fill="#F8FAFC" stroke="#CBD5F5" />
+    <text x="40" y="50" fill="#0F172A" fontSize="14" fontFamily="ui-sans-serif">SenderContainer</text>
+
+    <rect x="40" y="70" width="640" height="48" rx="8" fill="#FFFFFF" stroke="#CBD5E1" />
+    <text x="56" y="99" fill="#334155" fontSize="12">QuoteContent（可选）</text>
+
+    <rect x="40" y="130" width="640" height="48" rx="8" fill="#FFFFFF" stroke="#CBD5E1" />
+    <text x="56" y="159" fill="#334155" fontSize="12">AttachmentList（可选）</text>
+
+    <rect x="40" y="190" width="640" height="60" rx="8" fill="#FFFFFF" stroke="#CBD5E1" />
+    <text x="56" y="214" fill="#334155" fontSize="12">InputRegion（renderInput 可覆盖）</text>
+    <rect x="56" y="224" width="608" height="18" rx="6" fill="#F1F5F9" stroke="#E2E8F0" />
+    <text x="66" y="237" fill="#64748B" fontSize="11">SenderTextarea</text>
+
+    <rect x="40" y="260" width="640" height="64" rx="8" fill="#FFFFFF" stroke="#CBD5E1" />
+    <text x="56" y="286" fill="#334155" fontSize="12">ActionBar（renderActionBar 可覆盖）</text>
+    <rect x="56" y="294" width="360" height="22" rx="6" fill="#F8FAFC" stroke="#E2E8F0" />
+    <text x="66" y="309" fill="#64748B" fontSize="11">LeftActions（renderActionsLeft）</text>
+    <rect x="432" y="294" width="232" height="22" rx="6" fill="#F8FAFC" stroke="#E2E8F0" />
+    <text x="442" y="309" fill="#64748B" fontSize="11">RightActions（renderActionsRight）</text>
+  </svg>
+</div>
+
+## Behavior Notes
+
+- `renderActionsLeft/Right` 会完全替换默认区域，需要自行加入附件/模式/发送按钮。
+- `sendDisabled` 只控制按钮禁用，实际提交还受 `getCanSend` 影响。

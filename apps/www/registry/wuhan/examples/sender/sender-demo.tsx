@@ -1,101 +1,139 @@
 "use client";
 
 import { useState } from "react";
+import type { ComponentType, SVGProps } from "react";
 import { ComposedSender } from "@/registry/wuhan/composed/sender/sender";
-import { Search, Brain, FileText, Image } from "lucide-react";
+import { QuoteContentComposed } from "@/registry/wuhan/composed/quote-content/quote-content";
+import { Brain, Search, FileText, Image, Trash2 } from "lucide-react";
 
 export default function SenderDemo() {
   const [value, setValue] = useState("");
   const [selectedModes, setSelectedModes] = useState<string[]>([]);
+  const [submitHint, setSubmitHint] = useState("");
   const [attachments, setAttachments] = useState([
     {
-      id: "attachment-1",
-      name: "screenshot.png",
-      thumbnail: "https://via.placeholder.com/64",
-      size: "2.3 MB",
-      icon: Image,
+      key: "att-1",
+      filename: "design-reference.png",
+      sizeLabel: "1.8MB",
+      previewUrl:
+        "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=320&auto=format&fit=crop&q=60",
+      kind: "image" as const,
     },
     {
-      id: "attachment-2",
-      name: "document.pdf",
-      size: "1.5 MB",
-      icon: FileText,
-    },
-    {
-      id: "attachment-3",
-      name: "presentation.pptx",
-      size: "5.8 MB",
-      icon: FileText,
-    },
-    {
-      id: "attachment-4",
-      name: "spreadsheet.xlsx",
-      size: "892 KB",
-      icon: FileText,
-    },
-    {
-      id: "attachment-5",
-      name: "video-demo.mp4",
-      size: "15.2 MB",
-      icon: FileText,
-    },
-    {
-      id: "attachment-6",
-      name: "design-mockup.fig",
-      size: "3.4 MB",
-      icon: FileText,
-    },
-    {
-      id: "attachment-7",
-      name: "code-archive.zip",
-      size: "1.2 MB",
-      icon: FileText,
-    },
-    {
-      id: "attachment-8",
-      name: "meeting-notes.docx",
-      size: "456 KB",
-      icon: FileText,
-    },
-    {
-      id: "attachment-9",
-      name: "image.jpg",
-      size: "1.2 MB",
-      icon: Image,
+      key: "att-2",
+      filename: "requirements.docx",
+      sizeLabel: "240KB",
+      kind: "doc" as const,
     },
   ]);
 
   const modes = [
-    // { id: "web-search", label: "联网搜索", icon: Search },
-    { id: "deep-think", label: "深度思考", icon: Brain },
+    { key: "deep", name: "深度思考", icon: Brain },
+    { key: "web", name: "联网搜索", icon: Search },
   ];
+  const canSend = value.trim().length > 0 || attachments.length > 0;
 
   return (
-    <div className="flex flex-col gap-4 w-full items-center">
-      <div className="w-full max-w-2xl text-sm text-muted-foreground mb-2">
-        示例：使用组合组件构建的 Sender
+    <div className="flex w-full flex-col items-center gap-3">
+      <div className="w-full max-w-2xl text-sm text-muted-foreground">
+        组合示例：数据适配、附件限制、模式策略、发送校验一体化
       </div>
       <ComposedSender
         value={value}
         onChange={setValue}
-        placeholder="输入你的提示..."
+        placeholder="输入你的需求，支持附件和模式切换"
+        quoteContent={
+          <QuoteContentComposed content="引用：请帮我总结这段需求，并输出待办列表。" />
+        }
         attachments={attachments}
+        attachmentAdapter={(item) => ({
+          id: item.key,
+          name: item.filename,
+          fileSize: item.sizeLabel,
+          thumbnail: item.previewUrl,
+          isImage: item.kind === "image",
+          icon:
+            item.kind === "image" ? (
+              <Image className="size-4" />
+            ) : (
+              <FileText className="size-4" />
+            ),
+        })}
         onAttachmentRemove={(id) =>
-          setAttachments((prev) => prev.filter((a) => a.id !== id))
+          setAttachments((prev) => prev.filter((item) => item.key !== id))
+        }
+        onAttachmentClick={(item) =>
+          setSubmitHint(`已点击附件：${item.name ?? item.id}`)
+        }
+        maxAttachments={3}
+        accept=".pdf,.docx,.png"
+        sizeLimit={5 * 1024 * 1024}
+        onAttachRequest={() => {
+          const nextId = `att-${Date.now()}`;
+          setAttachments((prev) => [
+            ...prev,
+            {
+              key: nextId,
+              filename: "new-attachment.pdf",
+              sizeLabel: "88KB",
+              kind: "doc" as const,
+            },
+          ]);
+        }}
+        onAttachLimitExceed={({ maxAttachments }) =>
+          setSubmitHint(`最多只能上传 ${maxAttachments ?? 0} 个附件`)
         }
         modes={modes}
         selectedModes={selectedModes}
-        onModeToggle={(modeId) =>
-          setSelectedModes((prev) =>
-            prev.includes(modeId)
-              ? prev.filter((id) => id !== modeId)
-              : [...prev, modeId],
-          )
-        }
-        onAttach={() => console.log("打开附件选择器")}
-        onSend={() => console.log("发送消息:", value)}
-        sendDisabled={!value.trim()}
+        modeAdapter={(mode) => ({
+          id: mode.key,
+          label: mode.name,
+          icon: mode.icon as ComponentType<SVGProps<SVGSVGElement>>,
+        })}
+        modeSelection="exclusive"
+        allowEmptySelection={false}
+        onModeChange={(next) => setSelectedModes(next)}
+        getCanSend={({
+          value: currentValue,
+          attachments: currentAttachments,
+        }) => currentValue.trim().length > 0 || currentAttachments.length > 0}
+        sendDisabled={!canSend}
+        submitOnEnter
+        onSubmit={({ canSend, reason }) => {
+          if (canSend) {
+            setSubmitHint("");
+            return;
+          }
+          setSubmitHint(
+            reason === "empty"
+              ? "请输入内容或添加附件"
+              : reason === "generating"
+                ? "内容生成中，请稍候"
+                : reason === "disabled"
+                  ? "当前不可发送"
+                  : "未满足发送条件",
+          );
+        }}
+        onSend={() => {
+          setValue("");
+        }}
       />
+      {submitHint && (
+        <div className="w-full max-w-2xl text-xs text-slate-500">
+          {submitHint}
+        </div>
+      )}
+      <button
+        type="button"
+        onClick={() => {
+          setValue("");
+          setAttachments([]);
+        }}
+        className="w-full max-w-2xl inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs text-slate-500 hover:bg-slate-100"
+      >
+        <Trash2 className="size-3" />
+        清空输入与附件
+      </button>
     </div>
   );
 }

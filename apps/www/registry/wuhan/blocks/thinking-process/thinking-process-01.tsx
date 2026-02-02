@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { cn } from "@/lib/utils";
+import { cn, unstyledButtonClassName } from "@/lib/utils";
 import {
   Collapsible,
   CollapsibleContent,
@@ -330,6 +330,7 @@ const ThinkingStepHeaderPrimitive = React.forwardRef<
         type="button"
         disabled={disabled}
         className={cn(
+          unstyledButtonClassName,
           BOX_BORDER,
           "group/think-step-trigger",
           "flex items-center",

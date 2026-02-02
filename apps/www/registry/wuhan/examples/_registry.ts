@@ -663,6 +663,42 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "attachment-list-preview",
+    type: "registry:example",
+    registryDependencies: ["attachment-list"],
+    files: [
+      {
+        path: "examples/attachment-list/attachment-list-preview.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/attachment-list-preview.tsx",
+      },
+    ],
+  },
+  {
+    name: "attachment-list-custom-render",
+    type: "registry:example",
+    registryDependencies: ["attachment-list"],
+    files: [
+      {
+        path: "examples/attachment-list/attachment-list-custom-render.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/attachment-list-custom-render.tsx",
+      },
+    ],
+  },
+  {
+    name: "attachment-list-empty",
+    type: "registry:example",
+    registryDependencies: ["attachment-list"],
+    files: [
+      {
+        path: "examples/attachment-list/attachment-list-empty.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/attachment-list-empty.tsx",
+      },
+    ],
+  },
   // quote-content examples
   {
     name: "quote-content-demo",
@@ -673,6 +709,54 @@ export const examples: Registry["items"] = [
         path: "examples/quote-content/quote-content-demo.tsx",
         type: "registry:example",
         target: "components/wuhan/examples/quote-content-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "quote-content-default",
+    type: "registry:example",
+    registryDependencies: ["quote-content"],
+    files: [
+      {
+        path: "examples/quote-content/quote-content-default.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/quote-content-default.tsx",
+      },
+    ],
+  },
+  {
+    name: "quote-content-custom-icon",
+    type: "registry:example",
+    registryDependencies: ["quote-content"],
+    files: [
+      {
+        path: "examples/quote-content/quote-content-custom-icon.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/quote-content-custom-icon.tsx",
+      },
+    ],
+  },
+  {
+    name: "quote-content-adapter",
+    type: "registry:example",
+    registryDependencies: ["quote-content"],
+    files: [
+      {
+        path: "examples/quote-content/quote-content-adapter.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/quote-content-adapter.tsx",
+      },
+    ],
+  },
+  {
+    name: "quote-content-custom-render",
+    type: "registry:example",
+    registryDependencies: ["quote-content"],
+    files: [
+      {
+        path: "examples/quote-content/quote-content-custom-render.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/quote-content-custom-render.tsx",
       },
     ],
   },

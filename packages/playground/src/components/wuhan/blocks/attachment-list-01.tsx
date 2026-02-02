@@ -1,14 +1,14 @@
 "use client";
 
 import * as React from "react";
-import { buttonVariants } from "@/registry/wuhan/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { cn, unstyledButtonClassName } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
   BlockTooltip,
   BlockTooltipTrigger,
   BlockTooltipContent,
-} from "@/registry/wuhan/blocks/tooltip/tooltip-01";
+} from "@/components/wuhan/blocks/tooltip-01";
 
 // ==================== 类型定义 ====================
 // 完全通用的类型，不强制任何业务概念

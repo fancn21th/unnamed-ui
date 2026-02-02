@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { cn } from "@/lib/utils";
+import { cn, unstyledButtonClassName } from "@/lib/utils";
 import {
   Collapsible,
   CollapsibleContent,
@@ -662,6 +662,7 @@ const ExecutionResultCopyIconPrimitive = React.forwardRef<
       onClick={handleCopy}
       className={cn(
         "[&_*]:!box-border",
+        unstyledButtonClassName,
         "size-4",
         "flex items-center justify-center",
         "cursor-pointer",

@@ -5,73 +5,82 @@ import { AttachmentListComposed } from "@/registry/wuhan/composed/attachment-lis
 import { FileText } from "lucide-react";
 
 type DemoAttachment = {
-  id: string;
-  name?: string;
-  fileType?: string;
-  fileSize?: string;
-  isImage?: boolean;
+  key: string;
+  filename?: string;
+  ext?: string;
+  sizeLabel?: string;
+  kind?: "image" | "file";
   loading?: boolean;
-  thumbnail?: string;
+  previewUrl?: string;
 };
 
 export default function AttachmentListDemo() {
   const initial = useMemo<DemoAttachment[]>(
     () => [
       {
-        id: "img-1",
-        isImage: true,
-        thumbnail: "https://placehold.co/56x56",
-        name: "image.png",
+        key: "img-1",
+        kind: "image",
+        previewUrl: "https://placehold.co/400x300",
+        filename: "image.png",
       },
       {
-        id: "img-2",
-        isImage: true,
-        thumbnail: "https://placehold.co/56x56",
-        name: "photo.jpg",
+        key: "img-2",
+        kind: "image",
+        previewUrl: "https://placehold.co/420x320",
+        filename: "photo.jpg",
       },
       {
-        id: "img-uploading",
-        isImage: true,
-        thumbnail: "https://placehold.co/56x56",
-        name: "uploading.jpg",
+        key: "img-uploading",
+        kind: "image",
+        previewUrl: "https://placehold.co/360x260",
+        filename: "uploading.jpg",
         loading: true,
       },
       {
-        id: "doc-1",
-        name: "需求文档.pdf",
-        fileType: "PDF",
-        fileSize: "1.2MB",
+        key: "doc-1",
+        kind: "file",
+        filename: "需求文档.pdf",
+        ext: "PDF",
+        sizeLabel: "1.2MB",
+        url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
       },
       {
-        id: "doc-2",
-        name: "会议纪要.docx",
-        fileType: "DOCX",
-        fileSize: "92KB",
+        key: "doc-2",
+        kind: "file",
+        filename: "会议纪要.docx",
+        ext: "DOCX",
+        sizeLabel: "92KB",
         loading: true,
       },
       {
-        id: "doc-3",
-        name: "产品设计稿.fig",
-        fileType: "FIG",
-        fileSize: "3.5MB",
+        key: "doc-3",
+        kind: "file",
+        filename: "产品设计稿.fig",
+        ext: "FIG",
+        sizeLabel: "3.5MB",
+        url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
       },
       {
-        id: "doc-4",
-        name: "用户调研报告.xlsx",
-        fileType: "XLSX",
-        fileSize: "856KB",
+        key: "doc-4",
+        kind: "file",
+        filename: "用户调研报告.xlsx",
+        ext: "XLSX",
+        sizeLabel: "856KB",
+        url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
       },
       {
-        id: "img-3",
-        isImage: true,
-        thumbnail: "https://placehold.co/56x56",
-        name: "screenshot.png",
+        key: "img-3",
+        kind: "image",
+        previewUrl: "https://placehold.co/380x280",
+        filename: "screenshot.png",
       },
       {
-        id: "doc-5",
-        name: "技术方案.md",
-        fileType: "MD",
-        fileSize: "45KB",
+        key: "doc-5",
+        kind: "file",
+        filename: "技术方案.md",
+        ext: "MD",
+        sizeLabel: "45KB",
+        url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
       },
     ],
     [],
@@ -80,20 +89,48 @@ export default function AttachmentListDemo() {
   const [items, setItems] = useState<DemoAttachment[]>(initial);
 
   return (
-    <div className="w-full max-w-2xl">
+    <div className="w-full max-w-2xl space-y-2">
+      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+        <button
+          type="button"
+          className="rounded-md border px-2 py-1 hover:bg-muted"
+          onClick={() => setItems([])}
+        >
+          清空列表
+        </button>
+        <button
+          type="button"
+          className="rounded-md border px-2 py-1 hover:bg-muted"
+          onClick={() => setItems(initial)}
+        >
+          重置数据
+        </button>
+      </div>
       <AttachmentListComposed
         className="w-full"
-        items={items.map((item) => ({
-          id: item.id,
-          name: item.name,
-          fileType: item.fileType,
-          fileSize: item.fileSize,
-          isImage: item.isImage,
+        attachments={items}
+        attachmentAdapter={(item) => ({
+          id: item.key,
+          name: item.filename,
+          fileType: item.ext,
+          fileSize: item.sizeLabel,
+          isImage: item.kind === "image",
           loading: item.loading,
-          thumbnail: item.thumbnail,
-          icon: item.isImage ? undefined : <FileText className="size-4" />,
-        }))}
-        onRemove={(id) => setItems((prev) => prev.filter((x) => x.id !== id))}
+          thumbnail: item.previewUrl,
+          previewUrl: item.previewUrl,
+          url: item.url,
+          icon:
+            item.kind === "image" ? undefined : <FileText className="size-4" />,
+        })}
+        previewEnabled
+        onRemove={(id) =>
+          setItems((prev) => prev.filter((item) => item.key !== id))
+        }
+        renderEmpty={() => (
+          <div className="text-xs text-muted-foreground">
+            暂无附件，点击上方“重置数据”恢复示例。
+          </div>
+        )}
       />
     </div>
   );

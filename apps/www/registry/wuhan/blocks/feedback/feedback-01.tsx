@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { cn } from "@/lib/utils";
+import { cn, unstyledButtonClassName } from "@/lib/utils";
 import { X } from "lucide-react";
 import {
   SidebarHistorySearchContainer,
@@ -158,6 +158,7 @@ const FeedbackHeaderPrimitive = React.forwardRef<
           type="button"
           onClick={onClose}
           className={cn(
+            unstyledButtonClassName,
             "inline-flex items-center justify-center",
             "size-4",
             "text-[var(--text-secondary)]",

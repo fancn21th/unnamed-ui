@@ -13,7 +13,7 @@ import {
   AttachmentCardTitle,
   AttachmentList,
   AttachmentLoadingIndicator,
-} from "@/registry/wuhan/blocks/attachment-list/attachment-list-01";
+} from "@/components/wuhan/blocks/attachment-list-01";
 
 /**
  * @public
@@ -307,19 +307,19 @@ export const AttachmentListComposed = React.forwardRef<
                       </AttachmentCardContent>
                     ))}
 
-                  {renderDelete?.(context) ??
-                    (onRemove && (
-                      <AttachmentCardDeleteButton
-                        aria-label="Delete attachment"
-                        onMouseDown={(e) => e.stopPropagation()}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          onRemove(item.id, item);
-                        }}
-                      >
-                        <X className="w-3 h-3 text-[var(--text-tertiary)]" />
-                      </AttachmentCardDeleteButton>
-                    ))}
+                {renderDelete?.(context) ??
+                  (onRemove && (
+                    <AttachmentCardDeleteButton
+                      aria-label="Delete attachment"
+                      onMouseDown={(e) => e.stopPropagation()}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onRemove(item.id, item);
+                      }}
+                    >
+                      <X className="w-3 h-3 text-[var(--text-tertiary)]" />
+                    </AttachmentCardDeleteButton>
+                  ))}
                 </AttachmentCard>
               );
             })}

@@ -712,6 +712,54 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "quote-content-default",
+    type: "registry:example",
+    registryDependencies: ["quote-content"],
+    files: [
+      {
+        path: "examples/quote-content/quote-content-default.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/quote-content-default.tsx",
+      },
+    ],
+  },
+  {
+    name: "quote-content-custom-icon",
+    type: "registry:example",
+    registryDependencies: ["quote-content"],
+    files: [
+      {
+        path: "examples/quote-content/quote-content-custom-icon.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/quote-content-custom-icon.tsx",
+      },
+    ],
+  },
+  {
+    name: "quote-content-adapter",
+    type: "registry:example",
+    registryDependencies: ["quote-content"],
+    files: [
+      {
+        path: "examples/quote-content/quote-content-adapter.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/quote-content-adapter.tsx",
+      },
+    ],
+  },
+  {
+    name: "quote-content-custom-render",
+    type: "registry:example",
+    registryDependencies: ["quote-content"],
+    files: [
+      {
+        path: "examples/quote-content/quote-content-custom-render.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/quote-content-custom-render.tsx",
+      },
+    ],
+  },
   // avatar-header examples
   {
     name: "avatar-header-demo",

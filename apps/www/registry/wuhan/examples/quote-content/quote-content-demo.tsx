@@ -37,7 +37,7 @@ export default function QuoteContentDemo() {
         {!showQuote1 && (
           <button
             onClick={() => setShowQuote1(true)}
-            className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+            className="appearance-none border-0 bg-transparent p-0 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
           >
             重新显示引用
           </button>

@@ -48,6 +48,56 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/quote-content.json
 
 </CodeTabs>
 
+## Overview
+
+- **定位**：引用/回复内容条（图标 + 内容 + 关闭）
+- **默认样式**：直接使用即可看到完整 UI
+- **扩展能力**：支持业务数据适配与插槽渲染
+
+## Usage
+
+### 基础用法
+
+```tsx
+import { QuoteContentComposed } from "@/registry/wuhan/composed/quote-content/quote-content";
+
+<QuoteContentComposed content="这是一条引用内容" />;
+```
+
+### 自定义图标与关闭
+
+```tsx
+<QuoteContentComposed
+  content="自定义图标"
+  icon={<MyIcon />}
+  closeIcon={<MyCloseIcon />}
+  onClose={() => console.log("close")}
+/>;
+```
+
+### 数据适配（推荐）
+
+```tsx
+const quote = { id: "q-1", text: "来自业务数据的引用内容" };
+
+<QuoteContentComposed
+  quote={quote}
+  quoteAdapter={(item) => ({ content: item.text })}
+  onCloseQuote={(item) => console.log("close", item.id)}
+/>;
+```
+
+### 插槽渲染（高级）
+
+```tsx
+<QuoteContentComposed
+  content="自定义结构"
+  renderLeading={({ icon }) => <div>{icon}</div>}
+  renderContent={({ content }) => <div>{content}</div>}
+  renderClose={({ onClose }) => <button onClick={onClose}>关闭</button>}
+/>;
+```
+
 ## Examples
 
 ### Default
@@ -60,3 +110,60 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/quote-content.json
   className="mb-4"
 />
 
+### Basic
+
+只传内容的最小示例。
+
+<ComponentPreview
+  name="quote-content-default"
+  description="Minimal usage"
+  className="mb-4"
+/>
+
+### Custom Icon
+
+自定义前缀图标与关闭图标。
+
+<ComponentPreview
+  name="quote-content-custom-icon"
+  description="Custom icons"
+  className="mb-4"
+/>
+
+### Adapter
+
+业务数据适配。
+
+<ComponentPreview
+  name="quote-content-adapter"
+  description="Adapter usage"
+  className="mb-4"
+/>
+
+### Custom Render
+
+自定义渲染结构。
+
+<ComponentPreview
+  name="quote-content-custom-render"
+  description="Custom layout"
+  className="mb-4"
+/>
+
+## API (Composed)
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `content` | `ReactNode` | - | 引用内容（最常用） |
+| `quote` | `T` | - | 业务数据对象 |
+| `quoteAdapter` | `(quote) => { content, icon?, closeIcon? }` | - | 业务数据转组件数据 |
+| `icon` | `ReactNode` | - | 前缀图标 |
+| `closeIcon` | `ReactNode` | - | 关闭图标 |
+| `onClose` | `() => void` | - | 关闭回调 |
+| `onCloseQuote` | `(quote) => void` | - | 关闭回调（带业务数据） |
+| `closable` | `boolean` | `true` | 是否显示关闭按钮 |
+| `renderQuote` | `(ctx) => ReactNode` | - | 覆盖整体渲染 |
+| `renderLeading` | `(ctx) => ReactNode` | - | 覆盖图标区域 |
+| `renderContent` | `(ctx) => ReactNode` | - | 覆盖内容区域 |
+| `renderClose` | `(ctx) => ReactNode` | - | 覆盖关闭按钮 |
+| `className` | `string` | - | 外层容器样式 |

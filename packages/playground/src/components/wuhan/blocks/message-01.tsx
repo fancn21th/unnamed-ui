@@ -66,21 +66,21 @@ const LoadingDots = React.forwardRef<
         {...props}
       >
         <div
-          className="w-1 h-1 rounded-full bg-[var(--bg-brand)]"
+          className="h-1 w-1 rounded-full bg-[var(--bg-brand)]"
           style={{
             animation: "loading-dot-bounce 1.4s ease-in-out infinite",
             animationDelay: "-0.32s",
           }}
         />
         <div
-          className="w-1 h-1 rounded-full bg-[var(--bg-brand)]"
+          className="h-1 w-1 rounded-full bg-[var(--bg-brand)]"
           style={{
             animation: "loading-dot-bounce 1.4s ease-in-out infinite",
             animationDelay: "-0.16s",
           }}
         />
         <div
-          className="w-1 h-1 rounded-full bg-[var(--bg-brand)]"
+          className="h-1 w-1 rounded-full bg-[var(--bg-brand)]"
           style={{
             animation: "loading-dot-bounce 1.4s ease-in-out infinite",
           }}
@@ -96,7 +96,8 @@ LoadingDots.displayName = "LoadingDots";
  * 用于构建生成中状态的UI
  * @public
  */
-interface MessageGeneratingPrimitiveProps extends React.HTMLAttributes<HTMLDivElement> {
+interface MessageGeneratingPrimitiveProps
+  extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * 加载指示器（如 LoadingDots）
    */
@@ -129,7 +130,8 @@ MessageGeneratingPrimitive.displayName = "MessageGeneratingPrimitive";
  * 用于构建失败状态的UI
  * @public
  */
-interface MessageFailedPrimitiveProps extends React.HTMLAttributes<HTMLDivElement> {
+interface MessageFailedPrimitiveProps
+  extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * 错误图标
    */
@@ -213,7 +215,7 @@ const MessageAIPrimitive = React.forwardRef<
             className,
           )}
           style={{
-            fontSize: "var(--font-size-2)",
+            fontSize: "var(--font-size-3)",
             ...style,
           }}
           {...props}
@@ -281,7 +283,7 @@ const MessageUserPrimitive = React.forwardRef<
             className,
           )}
           style={{
-            fontSize: "var(--font-size-2)",
+            fontSize: "var(--font-size-3)",
             ...style,
           }}
           {...props}

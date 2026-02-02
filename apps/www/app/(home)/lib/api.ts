@@ -68,6 +68,7 @@ export async function getAllBlockDemos(styleName: Style["name"] = "wuhan") {
   )
 
   const demos: Array<{ blockName: string; demoName: string }> = []
+  const seenDemoNames = new Set<string>()
 
   for (const block of blocks) {
     // 查找对应的 -demo 示例
@@ -85,6 +86,10 @@ export async function getAllBlockDemos(styleName: Style["name"] = "wuhan") {
 
     // 检查示例是否存在
     if (demoName && index[demoName]?.type === "registry:example") {
+      if (seenDemoNames.has(demoName)) {
+        continue
+      }
+      seenDemoNames.add(demoName)
       demos.push({
         blockName: block.name,
         demoName,

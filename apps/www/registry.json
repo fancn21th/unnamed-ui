@@ -3473,6 +3473,48 @@
       ]
     },
     {
+      "name": "feedback-controlled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "feedback"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/feedback/feedback-controlled.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/feedback-controlled.tsx"
+        }
+      ]
+    },
+    {
+      "name": "feedback-custom-options",
+      "type": "registry:example",
+      "registryDependencies": [
+        "feedback"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/feedback/feedback-custom-options.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/feedback-custom-options.tsx"
+        }
+      ]
+    },
+    {
+      "name": "feedback-report",
+      "type": "registry:example",
+      "registryDependencies": [
+        "feedback"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/feedback/feedback-report.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/feedback-report.tsx"
+        }
+      ]
+    },
+    {
       "name": "toggle-button-demo",
       "type": "registry:example",
       "registryDependencies": [

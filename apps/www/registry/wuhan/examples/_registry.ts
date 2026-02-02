@@ -1106,6 +1106,42 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "feedback-controlled",
+    type: "registry:example",
+    registryDependencies: ["feedback"],
+    files: [
+      {
+        path: "examples/feedback/feedback-controlled.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/feedback-controlled.tsx",
+      },
+    ],
+  },
+  {
+    name: "feedback-custom-options",
+    type: "registry:example",
+    registryDependencies: ["feedback"],
+    files: [
+      {
+        path: "examples/feedback/feedback-custom-options.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/feedback-custom-options.tsx",
+      },
+    ],
+  },
+  {
+    name: "feedback-report",
+    type: "registry:example",
+    registryDependencies: ["feedback"],
+    files: [
+      {
+        path: "examples/feedback/feedback-report.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/feedback-report.tsx",
+      },
+    ],
+  },
   // toggle-button examples
   {
     name: "toggle-button-demo",

@@ -3297,6 +3297,81 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "feedback-controlled": {
+      name: "feedback-controlled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["feedback"],
+      files: [
+        {
+          path: "registry/wuhan/examples/feedback/feedback-controlled.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/feedback-controlled.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/feedback/feedback-controlled.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "feedback-custom-options": {
+      name: "feedback-custom-options",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["feedback"],
+      files: [
+        {
+          path: "registry/wuhan/examples/feedback/feedback-custom-options.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/feedback-custom-options.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/feedback/feedback-custom-options.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "feedback-report": {
+      name: "feedback-report",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["feedback"],
+      files: [
+        {
+          path: "registry/wuhan/examples/feedback/feedback-report.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/feedback-report.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/feedback/feedback-report.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "toggle-button-demo": {
       name: "toggle-button-demo",
       description: "",

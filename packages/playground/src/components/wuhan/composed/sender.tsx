@@ -9,11 +9,11 @@ import {
   SenderAttachmentButton,
   SenderSendButton,
   SenderModeButton,
-} from "@/registry/wuhan/blocks/sender/sender-01";
+} from "@/components/wuhan/blocks/sender-01";
 import {
   AttachmentListComposed,
   type AttachmentItem,
-} from "@/registry/wuhan/composed/attachment-list/attachment-list";
+} from "@/components/wuhan/composed/attachment-list";
 import { Paperclip, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -49,9 +49,7 @@ export interface AttachmentListRenderContext<TAttachment> {
   onItemSelect?: (item: AttachmentItem) => void;
 }
 
-const defaultAttachmentAdapter: AttachmentAdapter<Attachment> = (
-  attachment,
-) => {
+const defaultAttachmentAdapter: AttachmentAdapter<Attachment> = (attachment) => {
   const fileType = attachment.name?.split(".").pop()?.toUpperCase() || "";
   return {
     id: attachment.id,
@@ -385,11 +383,9 @@ function ComposedSenderInner<TAttachment = Attachment, TMode = Mode>(
   };
   const usesCustomCanSend = Boolean(getCanSend);
   const canSend =
-    (
-      getCanSend as
-        | ((context: SenderCanSendContext<TAttachment, TMode>) => boolean)
-        | undefined
-    )?.(baseContext) ?? defaultCanSend(baseContext);
+    (getCanSend as
+      | ((context: SenderCanSendContext<TAttachment, TMode>) => boolean)
+      | undefined)?.(baseContext) ?? defaultCanSend(baseContext);
   const defaultReason = getDefaultSendDisabledReason(
     baseContext,
     usesCustomCanSend,

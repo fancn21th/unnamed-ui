@@ -1,10 +1,20 @@
+import * as React from "react";
 import { SidebarComposed } from "../../components/wuhan/composed/sidebar";
 import { AvatarHeaderComposed } from "../../components/wuhan/composed/avatar-header";
 import { AIMessage, UserMessage } from "../../components/wuhan/composed/message";
 import { ThinkingStep } from "../../components/wuhan/composed/thinking-process";
 import type { ThinkingStepItemProps } from "../../components/wuhan/composed/thinking-step-item";
 import Markdown from "../../components/wuhan/recruitment/Markdown";
-import { BookOpen, Sparkles } from "lucide-react";
+import { QuoteContentComposed } from "../../components/wuhan/composed/quote-content";
+import { ComposedSender } from "../../components/wuhan/composed/sender";
+import {
+  BookOpen,
+  Sparkles,
+  Brain,
+  Search,
+  FileText,
+  Image,
+} from "lucide-react";
 
 const aiFormMessage = `为了给你提供有价值的 AI 发展趋势分析，我需要了解几个关键点：
 
@@ -49,6 +59,46 @@ const thinkingSubSteps = [
 ] satisfies ThinkingStepItemProps[];
 
 export function NewPage() {
+  const [value, setValue] = React.useState("");
+  const [selectedModes, setSelectedModes] = React.useState<string[]>([]);
+  const [submitHint, setSubmitHint] = React.useState("");
+  const [attachments, setAttachments] = React.useState<
+    Array<{
+      key: string;
+      filename: string;
+      sizeLabel?: string;
+      previewUrl?: string;
+      kind: "image" | "doc";
+    }>
+  >([
+    {
+      key: "att-1",
+      filename: "design-reference.png",
+      sizeLabel: "1.8MB",
+      previewUrl:
+        "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=320&auto=format&fit=crop&q=60",
+      kind: "image",
+    },
+    {
+      key: "att-2",
+      filename: "requirements.docx",
+      sizeLabel: "240KB",
+      kind: "doc",
+    },
+  ]);
+
+  const modes = [
+    { key: "deep", name: "深度思考", icon: Brain },
+    { key: "web", name: "联网搜索", icon: Search },
+  ];
+
+  const quoteContent = (
+    <QuoteContentComposed
+      content="引用：请帮我总结这段需求，并输出待办列表。"
+      onClose={() => undefined}
+    />
+  );
+
   return (
     <div className="flex h-[100vh] w-full flex-col overflow-hidden bg-[var(--bg-page)] text-slate-900">
       <header className="flex flex-shrink-0 h-14 items-center justify-between border-b border-slate-200 bg-white px-4">
@@ -61,13 +111,16 @@ export function NewPage() {
       </header>
 
       <main className="flex flex-1 gap-4 px-4 py-4 overflow-hidden">
-        <SidebarComposed 
-        conversations={[{ id: "1", title: "Conversation 1" }]} 
-        header={{
-          title: "Agent Console",
-          icon: <Sparkles className="size-4" />,
-        }}
-        footer={({ collapsed }) => <AvatarHeaderComposed name={!collapsed?"User":null}  />} />
+        <SidebarComposed
+          conversations={[{ id: "1", title: "Conversation 1" }]}
+          header={{
+            title: "Agent Console",
+            icon: <Sparkles className="size-4" />,
+          }}
+          footer={({ collapsed }) => (
+            <AvatarHeaderComposed name={!collapsed ? "User" : null} />
+          )}
+        />
 
         <section className="flex flex-1 flex-col rounded-lg border border-slate-200 bg-white">
           <div className="border-b border-slate-200 px-4 py-3 text-sm font-semibold">
@@ -105,8 +158,89 @@ export function NewPage() {
               </div>
             </div>
           </div>
-          <div className="border-t border-slate-200 px-4 py-3 text-sm text-slate-400">
-            Composer
+          <div className="border-t border-slate-200 px-4 py-3">
+            <ComposedSender
+              value={value}
+              onChange={setValue}
+              placeholder="输入你的需求，支持附件和模式切换"
+              quoteContent={quoteContent}
+              attachments={attachments}
+              attachmentAdapter={(item) => ({
+                id: item.key,
+                name: item.filename,
+                fileSize: item.sizeLabel,
+                thumbnail: item.previewUrl,
+                isImage: item.kind === "image",
+                icon:
+                  item.kind === "image" ? (
+                    <Image className="size-4" />
+                  ) : (
+                    <FileText className="size-4" />
+                  ),
+              })}
+              onAttachmentRemove={(id) =>
+                setAttachments((prev) => prev.filter((item) => item.key !== id))
+              }
+              onAttachmentClick={(item) =>
+                setSubmitHint(`已点击附件：${item.name ?? item.id}`)
+              }
+              maxAttachments={3}
+              accept=".pdf,.docx,.png"
+              sizeLimit={5 * 1024 * 1024}
+              onAttachRequest={() => {
+                const nextId = `att-${Date.now()}`;
+                setAttachments((prev) => [
+                  ...prev,
+                  {
+                    key: nextId,
+                    filename: "new-attachment.pdf",
+                    sizeLabel: "88KB",
+                    kind: "doc",
+                  },
+                ]);
+              }}
+              onAttachLimitExceed={({ maxAttachments }) =>
+                setSubmitHint(`最多只能上传 ${maxAttachments ?? 0} 个附件`)
+              }
+              modes={modes}
+              selectedModes={selectedModes}
+              modeAdapter={(mode) => ({
+                id: mode.key,
+                label: mode.name,
+                icon:
+                  mode.icon as React.ComponentType<
+                    React.SVGProps<SVGSVGElement>
+                  >,
+              })}
+              modeSelection="exclusive"
+              allowEmptySelection={false}
+              onModeChange={(next) => setSelectedModes(next)}
+              getCanSend={({ value, attachments }) =>
+                value.trim().length > 0 || attachments.length > 0
+              }
+              submitOnEnter
+              onSubmit={({ canSend, reason }) => {
+                if (canSend) {
+                  setSubmitHint("");
+                  return;
+                }
+                setSubmitHint(
+                  reason === "empty"
+                    ? "请输入内容或添加附件"
+                    : reason === "generating"
+                      ? "内容生成中，请稍候"
+                      : reason === "disabled"
+                        ? "当前不可发送"
+                        : "未满足发送条件",
+                );
+              }}
+              onSend={() => {
+                setValue("");
+              }}
+            />
+            {submitHint && (
+              <div className="mt-2 text-xs text-slate-500">{submitHint}</div>
+            )}
           </div>
         </section>
 

@@ -1,281 +1,76 @@
 "use client";
 
-/**
- * 示例：基于原语组件构建便捷的组合组件
- *
- * 这个示例展示了如何：
- * 1. 基于原语组件构建业务特定的组合组件
- * 2. 保持完全的可定制性
- * 3. 提供合理的默认值，但不强制使用
- */
-
 import { useState } from "react";
-import {
-  SenderTextarea,
-  SenderButton,
-  SenderContainer,
-  SenderInputRegion,
-  SenderActionBar,
-  SenderAttachmentButton,
-  SenderSendButton,
-  SenderModeButton,
-} from "@/registry/wuhan/blocks/sender/sender-01";
-import { AttachmentListComposed } from "@/registry/wuhan/composed/attachment-list/attachment-list";
+import type { ComponentType, SVGProps } from "react";
+import { ComposedSender } from "@/registry/wuhan/composed/sender/sender";
+import { SenderTextarea } from "@/registry/wuhan/blocks/sender/sender-01";
 import { QuoteContentComposed } from "@/registry/wuhan/composed/quote-content/quote-content";
-import {
-  Send,
-  Paperclip,
-  Brain,
-  Loader2,
-  X,
-  CornerDownRight,
-} from "lucide-react";
-import { cn } from "@/lib/utils";
-
-// ==================== 业务特定的类型定义 ====================
-// 用户可以根据自己的业务需求定义类型
-
-interface Attachment {
-  id: string;
-  name: string;
-  thumbnail?: string;
-  size?: string;
-  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-}
-
-interface Mode {
-  id: string;
-  label: string;
-  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-}
-
-// ==================== 业务特定的组合组件 ====================
-// 这些组件基于原语构建，提供业务特定的便捷封装
-// 但用户仍然可以完全自定义或直接使用原语
-
-interface AttachmentListWrapperProps {
-  attachments: Attachment[];
-  onRemove?: (id: string) => void;
-}
-
-function AttachmentListWrapper({
-  attachments,
-  onRemove,
-}: AttachmentListWrapperProps) {
-  if (attachments.length === 0) return null;
-
-  return (
-    <AttachmentListComposed
-      items={attachments.map((attachment) => {
-        const fileType = attachment.name?.split(".").pop()?.toUpperCase() || "";
-        return {
-          id: attachment.id,
-          name: attachment.name,
-          thumbnail: attachment.thumbnail,
-          fileType,
-          fileSize: attachment.size,
-          icon: attachment.icon ? (
-            <attachment.icon className="size-4" />
-          ) : undefined,
-          isImage: !!attachment.thumbnail,
-        };
-      })}
-      onRemove={onRemove}
-    />
-  );
-}
-
-interface ModeSelectorProps {
-  modes: Mode[];
-  selectedModes: string[];
-  onToggle: (modeId: string) => void;
-}
-
-function ModeSelector({ modes, selectedModes, onToggle }: ModeSelectorProps) {
-  if (modes.length === 0) return null;
-
-  return (
-    <div className="flex items-center gap-2">
-      {modes.map((mode) => {
-        const Icon = mode.icon;
-        const isActive = selectedModes.includes(mode.id);
-        return (
-          <SenderModeButton
-            key={mode.id}
-            selected={isActive}
-            type="button"
-            onClick={() => onToggle(mode.id)}
-          >
-            {Icon && <Icon className="size-4" />}
-            {mode.label}
-          </SenderModeButton>
-        );
-      })}
-    </div>
-  );
-}
-
-// ==================== 高级组合组件 ====================
-// 基于原语和业务组件构建的完整 Sender 组件
-// 用户可以完全自定义或直接使用原语
-
-interface ComposedSenderProps {
-  value: string;
-  onChange: (value: string) => void;
-  placeholder?: string;
-
-  // 可选的功能模块
-  attachments?: Attachment[];
-  onAttachmentRemove?: (id: string) => void;
-  modes?: Mode[];
-  selectedModes?: string[];
-  onModeToggle?: (modeId: string) => void;
-
-  // 按钮
-  onAttach?: () => void;
-  onSend?: () => void;
-  sendDisabled?: boolean;
-  generating?: boolean;
-
-  // 样式
-  className?: string;
-  maxWidth?: string;
-}
-
-export function ComposedSender({
-  value,
-  onChange,
-  placeholder = "Type your message...",
-  attachments = [],
-  onAttachmentRemove,
-  modes = [],
-  selectedModes = [],
-  onModeToggle,
-  onAttach,
-  onSend,
-  sendDisabled,
-  generating = false,
-  className,
-  maxWidth = "max-w-2xl",
-}: ComposedSenderProps) {
-  const canSend = !!value.trim() && !sendDisabled && !generating;
-
-  return (
-    <SenderContainer
-      className={cn(maxWidth, className)}
-      onSubmit={(e) => {
-        e.preventDefault();
-        if (!canSend) return;
-        onSend?.();
-      }}
-    >
-      {/* 引用内容 */}
-      <QuoteContentComposed
-        content="引用内容引用内容引用内容引用内容引用内容引用内容引用内容引用内容引用内容引用内容引用内容引用内容"
-        icon={<CornerDownRight className="w-4 h-4" />}
-        closeIcon={<X className="w-4 h-4" />}
-        onClose={() => {}}
-      />
-      {/* 附件列表 */}
-      {attachments.length > 0 && (
-        <AttachmentListWrapper
-          attachments={attachments}
-          onRemove={onAttachmentRemove}
-        />
-      )}
-
-      {/* 输入区域 */}
-      <SenderInputRegion>
-        <SenderTextarea
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder={placeholder}
-        />
-      </SenderInputRegion>
-
-      {/* 操作栏 */}
-      <SenderActionBar
-        className={cn(
-          "flex items-center",
-          modes.length > 0 || onAttach ? "justify-between" : "justify-end",
-        )}
-      >
-        <div className="flex items-center gap-2">
-          {onAttach && (
-            <SenderAttachmentButton
-              type="button"
-              onClick={onAttach}
-              aria-label="Attach file"
-            >
-              <Paperclip className="size-4" />
-            </SenderAttachmentButton>
-          )}
-          {modes.length > 0 && (
-            <ModeSelector
-              modes={modes}
-              selectedModes={selectedModes}
-              onToggle={onModeToggle || (() => {})}
-            />
-          )}
-        </div>
-        <div className="flex items-center gap-2">
-          {onSend && (
-            <SenderSendButton
-              type="submit"
-              disabled={sendDisabled}
-              generating={generating}
-              generatingContent={
-                <Loader2 className="size-4 text-white animate-spin" />
-              }
-            ></SenderSendButton>
-          )}
-        </div>
-      </SenderActionBar>
-    </SenderContainer>
-  );
-}
-
-// ==================== 使用示例 ====================
+import { Brain, Search, Sparkles } from "lucide-react";
 
 export default function SenderComposedDemo() {
   const [value, setValue] = useState("");
-  const [attachments, setAttachments] = useState<Attachment[]>([
-    { id: "1", name: "screenshot.png", size: "2.3 MB" },
-    { id: "2", name: "document.pdf", size: "1.5 MB" },
-  ]);
-  const [selectedModes, setSelectedModes] = useState<string[]>([]);
+  const [selectedModes, setSelectedModes] = useState<string[]>(["deep"]);
 
-  const modes: Mode[] = [
-    { id: "web-search", label: "联网搜索", icon: Brain },
-    { id: "deep-think", label: "深度思考", icon: Brain },
+  const modes = [
+    { key: "deep", name: "深度思考", icon: Brain },
+    { key: "web", name: "联网搜索", icon: Search },
   ];
 
   return (
-    <div className="flex flex-col gap-4 w-full items-center">
-      <div className="w-full max-w-2xl text-sm text-muted-foreground mb-2">
-        示例：使用组合组件构建的 Sender（基于原语组件）
+    <div className="flex w-full flex-col items-center gap-4">
+      <div className="w-full max-w-2xl text-sm text-muted-foreground">
+        高级示例：自定义输入区域与操作栏（renderInput / renderActionBar）
       </div>
-
       <ComposedSender
         value={value}
         onChange={setValue}
-        placeholder="输入你的提示..."
-        attachments={attachments}
-        onAttachmentRemove={(id) =>
-          setAttachments((prev) => prev.filter((a) => a.id !== id))
+        quoteContent={
+          <QuoteContentComposed content="提示：你可以覆盖输入和操作栏。" />
         }
         modes={modes}
         selectedModes={selectedModes}
-        onModeToggle={(modeId) =>
-          setSelectedModes((prev) =>
-            prev.includes(modeId)
-              ? prev.filter((id) => id !== modeId)
-              : [...prev, modeId],
-          )
-        }
-        onAttach={() => console.log("打开附件选择器")}
-        onSend={() => console.log("发送消息:", value)}
-        sendDisabled={!value.trim()}
+        modeAdapter={(mode) => ({
+          id: mode.key,
+          label: mode.name,
+          icon: mode.icon as ComponentType<SVGProps<SVGSVGElement>>,
+        })}
+        modeSelection="exclusive"
+        allowEmptySelection={false}
+        onModeChange={(next) => setSelectedModes(next)}
+        renderInput={({ placeholder, disabled, onChange, onKeyDown }) => (
+          <div className="rounded-md border border-slate-200 bg-slate-50 px-3 py-2">
+            <SenderTextarea
+              value={value}
+              onChange={(event) => onChange(event.target.value)}
+              placeholder={placeholder ?? "写下你的需求..."}
+              disabled={disabled}
+              onKeyDown={onKeyDown}
+              className="bg-transparent"
+            />
+          </div>
+        )}
+        renderActionBar={({ onAttachRequest, canSend }) => (
+          <div className="flex items-center justify-between gap-3 pt-2">
+            <button
+              type="button"
+              onClick={onAttachRequest}
+              className="inline-flex items-center gap-1 rounded-md border border-slate-200 px-2 py-1 text-xs text-slate-600 hover:bg-slate-100"
+            >
+              <Sparkles className="size-3" />
+              插入灵感
+            </button>
+            <button
+              type="submit"
+              disabled={!canSend}
+              className="rounded-md bg-slate-900 px-3 py-1 text-xs text-white disabled:opacity-60"
+            >
+              发送
+            </button>
+          </div>
+        )}
+        submitOnEnter
+        getCanSend={({ value: currentValue }) => currentValue.trim().length > 0}
+        onSend={() => setValue("")}
       />
     </div>
   );

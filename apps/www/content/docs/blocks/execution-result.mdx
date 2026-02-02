@@ -6,16 +6,58 @@ author: AF
 
 <ComponentPreview name="execution-result-demo" description="Execution result block with collapsible items" className="mb-4" />
 
-Execution Result 组件提供了一个可折叠的执行结果展示块，适用于显示函数调用结果、API 请求响应等场景。
+Execution Result 组件用于展示函数调用、API 请求等执行结果，支持成功、失败、执行中等多种状态，每个执行项可包含多个区块（如请求、响应）并支持一键复制。
+
+## Overview
+
+- **多状态支持**：success（成功）、error（失败）、loading（执行中）、idle（待执行）
+- **可折叠交互**：整体和每个执行项都支持展开/收起
+- **区块展示**：每个执行项可包含多个区块（请求、响应等）
+- **一键复制**：支持复制区块内容到剪贴板
+- **工具信息**：可显示工具名称和图标
+- **类型安全**：完整的 TypeScript 类型定义
+- **轻量级**：基于原语组件构建，无额外依赖
+
+## Quick Start
+
+```tsx
+import { ExecutionResult } from "@/registry/wuhan/composed/execution-result/execution-result";
+
+export function Example() {
+  return (
+    <ExecutionResult
+      title="已执行完成，调用2个组件"
+      items={[
+        {
+          status: "success",
+          title: "调用成功 search_api",
+          sections: [
+            {
+              title: "请求",
+              content: '{"query": "搜索关键词"}',
+              copyText: '{"query": "搜索关键词"}'
+            },
+            {
+              title: "响应",
+              content: '{"results": ["结果1", "结果2"]}',
+              copyText: '{"results": ["结果1", "结果2"]}'
+            }
+          ]
+        }
+      ]}
+    />
+  );
+}
+```
 
 ## Features
 
-- **可折叠交互**：点击列表项头部可展开或收起详细信息
-- **请求响应展示**：每个执行项可展示请求和响应两部分内容
-- **复制功能**：支持一键复制请求或响应内容
-- **状态展示**：支持成功、失败、进行中等不同状态
-- **自定义样式**：支持自定义图标、标题等
-- **样式隔离**：组件样式不受外部框架影响
+- **智能状态管理**：根据 status 自动切换图标和颜色
+- **灵活控制**：支持受控模式和非受控模式
+- **嵌套折叠**：整体可折叠，每个执行项也可单独折叠
+- **复制功能**：自动处理复制到剪贴板，支持自定义复制逻辑
+- **工具展示**：支持显示工具图标和名称
+- **可访问性**：支持 aria 属性，键盘导航友好
 
 ## Installation
 
@@ -38,11 +80,11 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/execution-result.json
 
 <Steps>
 
-<Step>Copy and paste the following code into your project.</Step>
+<Step>复制以下代码到你的项目</Step>
 
-<ComponentSource name="execution-result" title="registry/wuhan/composed/execution-result/execution-result.tsx" />
+<ComponentSource name="execution-result" />
 
-<Step>Update the import paths to match your project setup.</Step>
+<Step>更新导入路径以匹配你的项目设置</Step>
 
 </Steps>
 
@@ -62,102 +104,495 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/execution-result.json
   className="mb-4"
 />
 
+### Controlled
+
+受控模式的执行结果组件，可通过外部状态控制展开和动态添加执行项。
+
+<ComponentPreview
+  name="execution-result-controlled"
+  description="Controlled execution result component"
+  className="mb-4"
+/>
+
+### With Tools
+
+带工具图标的执行结果展示，显示不同工具的调用情况。
+
+<ComponentPreview
+  name="execution-result-with-tools"
+  description="Execution result with tool icons"
+  className="mb-4"
+/>
+
+### Workflow
+
+工作流执行结果展示，适用于多步骤流程和批处理任务。
+
+<ComponentPreview
+  name="execution-result-workflow"
+  description="Workflow execution results"
+  className="mb-4"
+/>
+
 ## API Reference
+
+### ExecutionResult (Composed Component)
+
+执行结果主组件，支持多种状态和完全自定义。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `React.ReactNode` | - | 整体标题（如"已执行完成，调用3个组件"） |
+| `items` | `ExecutionResultItem[]` | `[]` | 执行结果列表项 |
+| `defaultOpen` | `boolean` | `false` | 非受控模式下的默认展开状态 |
+| `open` | `boolean` | - | 受控模式下的展开状态 |
+| `onOpenChange` | `(open: boolean) => void` | - | 展开状态变化回调函数 |
+| `arrowIcon` | `React.ReactNode` | - | 自定义展开/收起箭头图标 |
+
+#### Example
+
+```tsx
+import { ExecutionResult } from "@/registry/wuhan/composed/execution-result/execution-result";
+import { useState } from "react";
+
+function APIResults() {
+  const [isOpen, setIsOpen] = useState(true);
+  
+  return (
+    <div className="flex flex-col gap-4">
+      {/* 非受控模式 */}
+      <ExecutionResult
+        defaultOpen
+        title="已执行完成，调用2个组件"
+        items={[
+          {
+            status: "success",
+            title: "调用成功 search_api",
+            toolName: "search_api",
+            imageSrc: "/icons/search.png",
+            sections: [
+              {
+                title: "请求来自 user",
+                content: JSON.stringify({ query: "AI trends" }, null, 2),
+                copyText: JSON.stringify({ query: "AI trends" }, null, 2)
+              },
+              {
+                title: "响应来自 search_api",
+                content: JSON.stringify({ results: [...] }, null, 2),
+                copyText: JSON.stringify({ results: [...] }, null, 2)
+              }
+            ]
+          },
+          {
+            status: "error",
+            title: "调用失败 database_api",
+            sections: [
+              {
+                title: "错误信息",
+                content: "Connection timeout",
+                showCopyIcon: false
+              }
+            ]
+          }
+        ]}
+      />
+      
+      {/* 受控模式 */}
+      <ExecutionResult
+        title="执行结果"
+        items={items}
+        open={isOpen}
+        onOpenChange={setIsOpen}
+      />
+      
+      {/* 自定义复制逻辑 */}
+      <ExecutionResult
+        items={[
+          {
+            status: "success",
+            title: "数据处理完成",
+            sections: [
+              {
+                title: "结果",
+                content: "Processing completed",
+                onCopy: () => {
+                  console.log("Custom copy logic");
+                  navigator.clipboard.writeText("Custom text");
+                }
+              }
+            ]
+          }
+        ]}
+      />
+    </div>
+  );
+}
+```
+
+### ExecutionResultItem
+
+执行结果列表项配置接口。
+
+```tsx
+interface ExecutionResultItem {
+  /** 列表项唯一标识 */
+  key?: React.Key;
+  /** 执行状态：success | error | loading | idle */
+  status?: ExecutionResultStatus;
+  /** 列表项标题 */
+  title?: React.ReactNode;
+  /** 工具/函数名称 */
+  toolName?: React.ReactNode;
+  /** 工具图标图片地址 */
+  imageSrc?: string;
+  /** 工具图标图片 alt 文本 */
+  imageAlt?: string;
+  /** 是否默认展开详情 */
+  defaultOpen?: boolean;
+  /** 区块列表（请求、响应等） */
+  sections?: ExecutionResultSection[];
+}
+```
+
+### ExecutionResultSection
+
+执行结果区块配置接口。
+
+```tsx
+interface ExecutionResultSection {
+  /** 区块标题（如"请求来自 xxx"、"响应来自 xxx"） */
+  title?: React.ReactNode;
+  /** 区块内容 */
+  content?: React.ReactNode;
+  /** 复制按钮要复制的文本内容 */
+  copyText?: string;
+  /** 是否显示复制图标 */
+  showCopyIcon?: boolean;
+  /** 自定义复制回调函数 */
+  onCopy?: () => void;
+}
+```
+
+### ExecutionResultStatus
+
+状态类型定义。
+
+```tsx
+type ExecutionResultStatus = 
+  | "success"   // 成功
+  | "error"     // 失败
+  | "loading"   // 执行中
+  | "idle";     // 待执行
+```
+
+### 状态默认配置
+
+| Status | Icon | Color |
+|--------|------|-------|
+| `success` | CheckCircle2 | text-success (绿色) |
+| `error` | XCircle | text-error (红色) |
+| `loading` | Loader2 (旋转动画) | text-brand (蓝色) |
+| `idle` | Circle | text-tertiary (灰色) |
+
+## 使用场景
+
+- **AI Agent 执行**：展示 AI Agent 调用的工具/函数列表及其结果
+- **API 请求追踪**：显示 API 请求和响应详情
+- **函数调用日志**：记录函数调用的输入参数和返回结果
+- **工作流执行**：展示工作流各步骤的执行状态和结果
+- **批处理结果**：显示批量任务的执行状态和详细信息
+- **调试信息**：开发调试时查看执行过程和结果
+
+## 最佳实践
+
+1. **状态管理**：根据执行结果及时更新状态（loading → success/error）
+2. **JSON 格式化**：请求/响应内容使用 `JSON.stringify(data, null, 2)` 格式化
+3. **复制文本**：为每个区块提供 `copyText`，方便用户复制
+4. **默认展开**：最新的执行项建议设置 `defaultOpen={true}`
+5. **工具图标**：为不同工具提供独特的图标，提升识别度
+6. **错误处理**：失败状态应在 sections 中提供详细错误信息
+7. **加载状态**：执行中的项使用 `loading` 状态并禁用展开
+
+## 注意事项
+
+- 整体容器和每个执行项都可以独立折叠
+- `copyText` 和 `onCopy` 只需提供其一，优先使用 `onCopy`
+- 设置 `showCopyIcon={false}` 可以隐藏复制按钮
+- `status` 默认为 `"success"`，不提供时显示成功图标
+- `imageSrc` 和 `toolName` 可以同时使用
+- 使用受控模式时必须同时提供 `open` 和 `onOpenChange`
+
+## 原语组件
+
+Execution Result 基于以下原语组件构建：
+
+- `ExecutionResultContainerPrimitive` - 容器，基于 Collapsible
+- `ExecutionResultTitlePrimitive` - 整体标题
+- `ExecutionResultContentPrimitive` - 列表项容器
+- `ExecutionResultItemPrimitive` - 单个执行项
+- `ExecutionResultItemHeaderPrimitive` - 执行项头部
+- `ExecutionResultItemIconPrimitive` - 状态图标容器
+- `ExecutionResultItemTitlePrimitive` - 执行项标题
+- `ExecutionResultItemImagePrimitive` - 工具图标
+- `ExecutionResultItemToolNamePrimitive` - 工具名称
+- `ExecutionResultItemContentPrimitive` - 执行项内容
+- `ExecutionResultSectionPrimitive` - 区块（请求/响应）
+- `ExecutionResultCopyIconPrimitive` - 复制按钮
+- `ExecutionResultArrowPrimitive` - 箭头图标
+
+这些原语可以在 [registry/wuhan/blocks/execution-result/execution-result-01.tsx](../../registry/wuhan/blocks/execution-result/execution-result-01.tsx) 中找到。
+
+## 样式定制
+
+组件使用 Tailwind CSS 和 CSS 变量，可以通过以下方式定制：
+
+```tsx
+// 使用原语组件完全自定义
+import {
+  ExecutionResultContainerPrimitive,
+  ExecutionResultItemPrimitive,
+} from "@/registry/wuhan/blocks/execution-result/execution-result-01";
+
+<ExecutionResultContainerPrimitive>
+  <ExecutionResultItemPrimitive className="bg-blue-50 border-blue-200">
+    {/* 自定义样式 */}
+  </ExecutionResultItemPrimitive>
+</ExecutionResultContainerPrimitive>
+```
+
+## 扩展示例
+
+### 实时更新执行状态
+
+```tsx
+import { ExecutionResult } from "@/registry/wuhan/composed/execution-result/execution-result";
+import { useState, useEffect } from "react";
+
+function LiveExecutionResult() {
+  const [items, setItems] = useState([
+    { status: "loading", title: "正在调用 API...", sections: [] }
+  ]);
+  
+  useEffect(() => {
+    // 模拟 API 调用
+    setTimeout(() => {
+      setItems([
+        {
+          status: "success",
+          title: "调用成功 search_api",
+          sections: [
+            {
+              title: "请求",
+              content: JSON.stringify({ query: "test" }, null, 2),
+              copyText: JSON.stringify({ query: "test" }, null, 2)
+            },
+            {
+              title: "响应",
+              content: JSON.stringify({ data: [...] }, null, 2),
+              copyText: JSON.stringify({ data: [...] }, null, 2)
+            }
+          ]
+        }
+      ]);
+    }, 2000);
+  }, []);
+  
+  return (
+    <ExecutionResult
+      title="执行结果"
+      items={items}
+      defaultOpen
+    />
+  );
+}
+```
+
+### 带工具图标的执行结果
+
+```tsx
+import { ExecutionResult } from "@/registry/wuhan/composed/execution-result/execution-result";
+
+function ToolExecutionResult() {
+  return (
+    <ExecutionResult
+      title="已执行完成，调用3个工具"
+      items={[
+        {
+          status: "success",
+          title: "调用",
+          toolName: "search",
+          imageSrc: "/icons/search.png",
+          imageAlt: "Search tool",
+          sections: [
+            { title: "查询", content: "AI trends 2024" }
+          ]
+        },
+        {
+          status: "success",
+          title: "调用",
+          toolName: "calculator",
+          imageSrc: "/icons/calc.png",
+          imageAlt: "Calculator tool",
+          sections: [
+            { title: "计算", content: "1 + 1 = 2" }
+          ]
+        }
+      ]}
+    />
+  );
+}
+```
+
+### 多层次展示
+
+```tsx
+import { ExecutionResult } from "@/registry/wuhan/composed/execution-result/execution-result";
+import { useState } from "react";
+
+function NestedExecutionResult() {
+  const [open, setOpen] = useState(true);
+  
+  return (
+    <ExecutionResult
+      title="工作流执行结果"
+      open={open}
+      onOpenChange={setOpen}
+      items={[
+        {
+          status: "success",
+          title: "步骤1: 数据获取",
+          defaultOpen: false,
+          sections: [
+            { title: "数据源", content: "database_api" },
+            { title: "记录数", content: "1,234 条" }
+          ]
+        },
+        {
+          status: "success",
+          title: "步骤2: 数据处理",
+          defaultOpen: false,
+          sections: [
+            { title: "处理方式", content: "filter + transform" },
+            { title: "输出", content: "890 条有效记录" }
+          ]
+        },
+        {
+          status: "success",
+          title: "步骤3: 结果保存",
+          defaultOpen: true,
+          sections: [
+            { title: "保存位置", content: "/output/result.json" },
+            { title: "文件大小", content: "125 KB" }
+          ]
+        }
+      ]}
+    />
+  );
+}
+```
+
+---
+
+## Primitive Components API
+
+以下是原语组件的 API 文档，用于需要完全自定义的场景。
 
 ### ExecutionResultContainerPrimitive
 
 执行结果容器组件，用于包裹整个执行结果列表。
 
-**Props:**
-
-- `children` - 子元素
-- `className` - 自定义样式类名
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `children` | `ReactNode` | 子元素 |
+| `className` | `string` | 自定义样式类名 |
 
 ### ExecutionResultTitlePrimitive
 
 执行结果标题组件，用于显示总体执行状态。
 
-**Props:**
-
-- `children` - 标题内容
-- `className` - 自定义样式类名
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `children` | `ReactNode` | 标题内容 |
+| `className` | `string` | 自定义样式类名 |
 
 ### ExecutionResultItemPrimitive
 
 执行结果列表项容器组件，支持展开/收起。
 
-**Props:**
-
-- `children` - 子元素
-- `defaultOpen` - 是否默认展开
-- `open` - 控制展开状态
-- `onOpenChange` - 展开状态变化回调
-- `className` - 自定义样式类名
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `children` | `ReactNode` | 子元素 |
+| `defaultOpen` | `boolean` | 是否默认展开 |
+| `open` | `boolean` | 控制展开状态 |
+| `onOpenChange` | `(open: boolean) => void` | 展开状态变化回调 |
+| `className` | `string` | 自定义样式类名 |
 
 ### ExecutionResultItemHeaderPrimitive
 
 执行结果列表项头部组件。
 
-**Props:**
-
-- `children` - 左侧内容（通常是图标和标题）
-- `arrow` - 右侧内容（通常是箭头图标）
-- `className` - 自定义样式类名
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `children` | `ReactNode` | 左侧内容（通常是图标和标题） |
+| `arrow` | `ReactNode` | 右侧内容（通常是箭头图标） |
+| `className` | `string` | 自定义样式类名 |
 
 ### ExecutionResultItemIconPrimitive
 
 执行结果列表项图标容器组件。
 
-**Props:**
-
-- `children` - 图标内容
-- `className` - 自定义样式类名
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `children` | `ReactNode` | 图标内容 |
+| `className` | `string` | 自定义样式类名 |
 
 ### ExecutionResultItemTitlePrimitive
 
 执行结果列表项标题组件。
 
-**Props:**
-
-- `children` - 标题内容
-- `className` - 自定义样式类名
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `children` | `ReactNode` | 标题内容 |
+| `className` | `string` | 自定义样式类名 |
 
 ### ExecutionResultItemContentPrimitive
 
 执行结果列表项内容容器组件。
 
-**Props:**
-
-- `children` - 内容
-- `className` - 自定义样式类名
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `children` | `ReactNode` | 内容 |
+| `className` | `string` | 自定义样式类名 |
 
 ### ExecutionResultSectionPrimitive
 
 执行结果区块组件（请求/响应部分）。
 
-**Props:**
-
-- `title` - 区块标题
-- `showCopyIcon` - 是否显示复制图标（默认 true）
-- `onCopy` - 复制回调
-- `children` - 内容
-- `className` - 自定义样式类名
+| 参数 | 类型 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `title` | `string` | - | 区块标题 |
+| `showCopyIcon` | `boolean` | `true` | 是否显示复制图标 |
+| `onCopy` | `() => void` | - | 复制回调 |
+| `children` | `ReactNode` | - | 内容 |
+| `className` | `string` | - | 自定义样式类名 |
 
 ### ExecutionResultCopyIconPrimitive
 
 执行结果复制图标组件。
 
-**Props:**
-
-- `onCopy` - 复制回调
-- `className` - 自定义样式类名
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `onCopy` | `() => void` | 复制回调 |
+| `className` | `string` | 自定义样式类名 |
 
 ### ExecutionResultArrowPrimitive
 
 执行结果箭头图标组件。
 
-**Props:**
-
-- `children` - 箭头内容（默认为 ">"）
-- `className` - 自定义样式类名
+| 参数 | 类型 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `children` | `ReactNode` | `">"` | 箭头内容 |
+| `className` | `string` | - | 自定义样式类名 |
 

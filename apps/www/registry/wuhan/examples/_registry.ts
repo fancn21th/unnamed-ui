@@ -1172,6 +1172,42 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "execution-result-controlled",
+    type: "registry:example",
+    registryDependencies: ["execution-result"],
+    files: [
+      {
+        path: "examples/execution-result/execution-result-controlled.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/execution-result-controlled.tsx",
+      },
+    ],
+  },
+  {
+    name: "execution-result-with-tools",
+    type: "registry:example",
+    registryDependencies: ["execution-result"],
+    files: [
+      {
+        path: "examples/execution-result/execution-result-with-tools.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/execution-result-with-tools.tsx",
+      },
+    ],
+  },
+  {
+    name: "execution-result-workflow",
+    type: "registry:example",
+    registryDependencies: ["execution-result"],
+    files: [
+      {
+        path: "examples/execution-result/execution-result-workflow.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/execution-result-workflow.tsx",
+      },
+    ],
+  },
+  {
     name: "dynamic-form-demo",
     type: "registry:example",
     registryDependencies: ["dynamic-form"],

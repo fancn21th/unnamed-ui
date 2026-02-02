@@ -3422,6 +3422,81 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "execution-result-controlled": {
+      name: "execution-result-controlled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["execution-result"],
+      files: [
+        {
+          path: "registry/wuhan/examples/execution-result/execution-result-controlled.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/execution-result-controlled.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/execution-result/execution-result-controlled.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "execution-result-with-tools": {
+      name: "execution-result-with-tools",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["execution-result"],
+      files: [
+        {
+          path: "registry/wuhan/examples/execution-result/execution-result-with-tools.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/execution-result-with-tools.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/execution-result/execution-result-with-tools.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "execution-result-workflow": {
+      name: "execution-result-workflow",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["execution-result"],
+      files: [
+        {
+          path: "registry/wuhan/examples/execution-result/execution-result-workflow.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/execution-result-workflow.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/execution-result/execution-result-workflow.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "dynamic-form-demo": {
       name: "dynamic-form-demo",
       description: "",

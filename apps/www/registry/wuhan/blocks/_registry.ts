@@ -327,4 +327,18 @@ export const blocks: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "status-tag-01",
+    type: "registry:block",
+    title: "Status Tag",
+    description: "Status tag primitive with basic styling and structure",
+    registryDependencies: ["style"],
+    files: [
+      {
+        path: "blocks/status-tag/status-tag-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/status-tag-01.tsx",
+      },
+    ],
+  },
 ];

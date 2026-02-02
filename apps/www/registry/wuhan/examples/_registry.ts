@@ -1160,6 +1160,18 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "dynamic-form-with-extra",
+    type: "registry:example",
+    registryDependencies: ["dynamic-form", "status-tag"],
+    files: [
+      {
+        path: "examples/dynamic-form/dynamic-form-with-extra.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/dynamic-form-with-extra.tsx",
+      },
+    ],
+  },
+  {
     name: "task-list-demo",
     type: "registry:example",
     registryDependencies: ["task-list"],
@@ -1216,6 +1228,54 @@ export const examples: Registry["items"] = [
         path: "examples/task-list/task-list-composed-demo.tsx",
         type: "registry:example",
         target: "components/wuhan/examples/task-list-composed-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "status-tag-demo",
+    type: "registry:example",
+    registryDependencies: ["status-tag"],
+    files: [
+      {
+        path: "examples/status-tag/status-tag-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/status-tag-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "status-tag-default",
+    type: "registry:example",
+    registryDependencies: ["status-tag"],
+    files: [
+      {
+        path: "examples/status-tag/status-tag-default.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/status-tag-default.tsx",
+      },
+    ],
+  },
+  {
+    name: "status-tag-custom",
+    type: "registry:example",
+    registryDependencies: ["status-tag"],
+    files: [
+      {
+        path: "examples/status-tag/status-tag-custom.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/status-tag-custom.tsx",
+      },
+    ],
+  },
+  {
+    name: "status-tag-mixed",
+    type: "registry:example",
+    registryDependencies: ["status-tag"],
+    files: [
+      {
+        path: "examples/status-tag/status-tag-mixed.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/status-tag-mixed.tsx",
       },
     ],
   },

@@ -214,7 +214,9 @@ export const SidebarComposed = React.forwardRef<HTMLDivElement, SidebarProps>(
 
     const showDetails = !isCollapsed;
     const resolvedFooter =
-      typeof footer === "function" ? footer({ collapsed: isCollapsed }) : footer;
+      typeof footer === "function"
+        ? footer({ collapsed: isCollapsed })
+        : footer;
 
     return (
       <SidebarPrimitive
@@ -284,7 +286,9 @@ export const SidebarComposed = React.forwardRef<HTMLDivElement, SidebarProps>(
                         {resolvedHeader.icon}
                       </SidebarHeaderIcon>
                     )}
-                    <SidebarHeaderTitle>{resolvedHeader.title}</SidebarHeaderTitle>
+                    <SidebarHeaderTitle>
+                      {resolvedHeader.title}
+                    </SidebarHeaderTitle>
                   </SidebarHeaderLeading>
                   {resolvedHeader.action && (
                     <SidebarHeaderAction>

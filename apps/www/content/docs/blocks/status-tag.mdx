@@ -1,0 +1,258 @@
+---
+title: Status Tag
+description: Status tag component for displaying various status indicators
+author: AF
+---
+
+<ComponentPreview name="status-tag-demo" description="Status tag with different statuses" className="mb-4" />
+
+Status Tag 组件用于显示各种状态信息，支持预设状态和自定义样式，适用于订单状态、审批流程、任务进度等场景。
+
+## Overview
+
+- **预设状态**：内置多种常用状态样式（待确认、已确认、成功、失败等）
+- **自定义样式**：支持自定义文本、背景色和文本颜色
+- **轻量级**：纯原语组件构建，无额外依赖
+- **类型安全**：完整的 TypeScript 类型定义
+- **响应式**：自适应不同场景和尺寸
+
+## Quick Start
+
+```tsx
+import { StatusTag } from "@/registry/wuhan/composed/status-tag";
+
+export function Example() {
+  return (
+    <div className="flex gap-2">
+      <StatusTag status="pending" />
+      <StatusTag status="confirmed" />
+      <StatusTag status="success" />
+    </div>
+  );
+}
+```
+
+## Features
+
+- **多种预设状态**：pending（待确认）、confirmed（已确认）、success（成功）、error（失败）、warning（警告）、info（提示）
+- **完全自定义**：可自定义文本和样式，不受预设限制
+- **灵活组合**：支持预设与自定义的混合使用
+- **语义化**：清晰的状态类型定义，代码可读性强
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/status-tag.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>复制以下代码到你的项目</Step>
+
+<ComponentSource name="status-tag" />
+
+<Step>更新导入路径以匹配你的项目设置</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Examples
+
+### Default Statuses
+
+基础预设状态展示。
+
+<ComponentPreview
+  name="status-tag-default"
+  description="Default preset statuses"
+  className="mb-4"
+/>
+
+### Custom Styles
+
+自定义样式的状态标签。
+
+<ComponentPreview
+  name="status-tag-custom"
+  description="Custom styled status tags"
+  className="mb-4"
+/>
+
+### Mixed Usage
+
+预设和自定义混合使用。
+
+<ComponentPreview
+  name="status-tag-mixed"
+  description="Mixed preset and custom statuses"
+  className="mb-4"
+/>
+
+## API Reference
+
+### StatusTag
+
+状态标签主组件，支持预设状态和完全自定义。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `status` | `StatusType` | - | 预设状态类型（可选） |
+| `text` | `string` | - | 自定义文本（优先级高于 status） |
+| `bgColor` | `string` | - | 自定义背景色 Tailwind 类名（优先级高于 status） |
+| `textColor` | `string` | - | 自定义文本色 Tailwind 类名（优先级高于 status） |
+| `className` | `string` | - | 额外的样式类名 |
+
+#### Example
+
+```tsx
+import { StatusTag } from "@/registry/wuhan/composed/status-tag";
+
+function OrderStatus() {
+  return (
+    <div className="flex flex-col gap-2">
+      {/* 使用预设状态 */}
+      <StatusTag status="pending" />
+      <StatusTag status="confirmed" />
+      
+      {/* 完全自定义 */}
+      <StatusTag
+        text="进行中"
+        bgColor="bg-purple-50"
+        textColor="text-purple-700"
+      />
+      
+      {/* 混合使用：使用预设状态但自定义文本 */}
+      <StatusTag status="success" text="审核通过" />
+    </div>
+  );
+}
+```
+
+### StatusType
+
+预设状态类型定义。
+
+```tsx
+type StatusType = 
+  | "pending"      // 待确认
+  | "confirmed"    // 已确认
+  | "success"      // 成功
+  | "error"        // 失败
+  | "warning"      // 警告
+  | "info";        // 提示
+```
+
+### 预设状态样式
+
+| Status | Text | Background | Text Color |
+|--------|------|------------|------------|
+| `pending` | 待确认 | 白色 | #666473 |
+| `confirmed` | 已确认 | #E2F8EC | #06BA7E |
+| `success` | 成功 | green-50 | green-700 |
+| `error` | 失败 | red-50 | red-700 |
+| `warning` | 警告 | amber-50 | amber-700 |
+| `info` | 提示 | blue-50 | blue-700 |
+
+## 使用场景
+
+- **订单状态**：订单的待确认、已确认、已发货、已完成等状态
+- **审批流程**：审批中、已通过、已拒绝等状态
+- **任务进度**：待处理、进行中、已完成、已取消等状态
+- **消息通知**：信息、成功、警告、错误等提示
+- **用户状态**：在线、离线、忙碌等状态
+- **支付状态**：待支付、已支付、已退款等状态
+
+## 最佳实践
+
+1. **语义化使用**：选择符合业务语义的状态类型
+2. **颜色一致性**：自定义颜色时保持与设计系统的一致性
+3. **文本简洁**：状态文本应简短明了，通常 2-4 个字
+4. **对比度**：确保文本与背景有足够的对比度
+5. **上下文提示**：在列表或表格中使用时，配合其他信息提供完整上下文
+
+## 注意事项
+
+- `text` 属性优先级高于 `status`，可以覆盖预设文本
+- `bgColor` 和 `textColor` 应使用 Tailwind CSS 类名
+- 如果同时提供 `status` 和自定义颜色，自定义颜色会覆盖预设颜色
+- 不提供 `status` 时，建议同时提供 `text`、`bgColor` 和 `textColor`
+
+## 原语组件
+
+Status Tag 基于以下原语组件构建：
+
+- `StatusTagPrimitive` - 状态标签容器原语
+
+原语组件提供了基础的样式和结构，可以在 [registry/wuhan/blocks/status-tag/status-tag-01.tsx](../../registry/wuhan/blocks/status-tag/status-tag-01.tsx) 中找到。
+
+## 样式定制
+
+组件使用 Tailwind CSS，可以通过以下方式定制：
+
+```tsx
+// 通过 className 添加额外样式
+<StatusTag 
+  status="pending" 
+  className="shadow-md hover:shadow-lg transition-shadow"
+/>
+
+// 自定义颜色
+<StatusTag
+  text="VIP"
+  bgColor="bg-gradient-to-r from-purple-50 to-pink-50"
+  textColor="text-purple-700"
+/>
+```
+
+## 扩展示例
+
+### 带图标的状态标签
+
+```tsx
+import { StatusTag } from "@/registry/wuhan/composed/status-tag";
+import { CheckCircle, Clock, XCircle } from "lucide-react";
+
+function StatusWithIcon() {
+  return (
+    <div className="flex items-center gap-2">
+      <Clock className="w-4 h-4" />
+      <StatusTag status="pending" />
+    </div>
+  );
+}
+```
+
+### 可点击的状态标签
+
+```tsx
+import { StatusTag } from "@/registry/wuhan/composed/status-tag";
+
+function ClickableStatus() {
+  return (
+    <button onClick={() => console.log("clicked")}>
+      <StatusTag 
+        status="pending" 
+        className="cursor-pointer hover:opacity-80 transition-opacity"
+      />
+    </button>
+  );
+}
+```

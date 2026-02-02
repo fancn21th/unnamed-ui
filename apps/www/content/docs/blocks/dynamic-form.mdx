@@ -151,6 +151,16 @@ AI 对话场景中的动态表单生成。
   className="mb-4"
 />
 
+### With Extra
+
+表单头部带额外信息，如状态标签。
+
+<ComponentPreview
+  name="dynamic-form-with-extra"
+  description="Form with status tag in header"
+  className="mb-4"
+/>
+
 ## API Reference
 
 ### DynamicForm
@@ -174,6 +184,7 @@ AI 对话场景中的动态表单生成。
 | `submitText` | `string` | `"提交"` | 提交按钮文本 |
 | `resetText` | `string` | `"重置"` | 重置按钮文本 |
 | `showTitle` | `boolean` | `true` | 是否显示表单标题 |
+| `extra` | `React.ReactNode` | - | 表单头部额外信息（如状态标签） |
 
 #### Ref Methods
 

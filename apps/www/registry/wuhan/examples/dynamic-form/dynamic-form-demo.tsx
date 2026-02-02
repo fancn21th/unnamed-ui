@@ -7,7 +7,7 @@ import {
 
 const schema: FormSchema = {
   title: "快速开始",
-  description: "展示各种字段类型的基本用法",
+  // description: "展示各种字段类型的基本用法",
   fields: [
     {
       name: "name",
@@ -36,7 +36,7 @@ const schema: FormSchema = {
         { value: "medium", label: "中" },
         { value: "high", label: "高" },
       ],
-      orientation: "horizontal",
+      // orientation: "horizontal",
       defaultValue: "medium",
     },
     {

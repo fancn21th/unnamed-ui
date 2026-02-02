@@ -1,16 +1,47 @@
 ---
 title: Avatar Header
-description: Composed avatar header (avatar + name + time)
+description: Avatar header component with customizable icon, size, and image support
 author: AF
 ---
 
-<ComponentPreview
-  name="avatar-header-demo"
-  description="Avatar header with avatar, name and time"
-  className="mb-4"
-/>
+<ComponentPreview name="avatar-header-demo" description="Avatar header with icons and time" className="mb-4" />
 
-Avatar Header 是组合组件，用于展示“头像 + 名称 + 时间”的一行头部信息，适用于聊天消息顶部、评论头部等场景。需要深度定制时可使用 primitives。
+Avatar Header 组件用于展示"头像 + 名称 + 时间"的一行头部信息，支持自定义图标、图片头像、多种尺寸等，适用于聊天消息、评论、用户信息展示等场景。
+
+## Overview
+
+- **灵活头像**：支持图标、图片、自定义内容
+- **多种尺寸**：预设 small、default、large 或自定义数字
+- **图片处理**：支持图片加载错误处理和 CORS 设置
+- **响应式**：自适应不同屏幕尺寸
+- **类型安全**：完整的 TypeScript 类型定义
+- **轻量级**：基于原语组件构建
+
+## Quick Start
+
+```tsx
+import { AvatarHeader } from "@/registry/wuhan/composed/avatar-header/avatar-header";
+import { User } from "lucide-react";
+
+export function Example() {
+  return (
+    <AvatarHeader 
+      icon={<User className="w-3 h-3" />}
+      name="用户名" 
+      time="刚刚" 
+    />
+  );
+}
+```
+
+## Features
+
+- **多种头像类型**：图标、图片 URL、自定义 ReactNode
+- **尺寸控制**：支持预设尺寸（small/default/large）和数字像素值
+- **图片加载**：自动处理图片加载失败，提供 fallback 机制
+- **CORS 支持**：可设置图片跨域属性
+- **时间显示**：可选的时间标签
+- **可访问性**：支持 alt 文本和 aria 属性
 
 ## Installation
 
@@ -33,14 +64,11 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/avatar-header.json
 
 <Steps>
 
-<Step>Copy and paste the following code into your project.</Step>
+<Step>复制以下代码到你的项目</Step>
 
-<ComponentSource
-  name="avatar-header"
-  title="registry/wuhan/composed/avatar-header/avatar-header.tsx"
-/>
+<ComponentSource name="avatar-header" />
 
-<Step>Update the import paths to match your project setup.</Step>
+<Step>更新导入路径以匹配你的项目设置</Step>
 
 </Steps>
 
@@ -48,4 +76,226 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/avatar-header.json
 
 </CodeTabs>
 
+## Examples
 
+### Default
+
+基础用法，展示不同的头像类型。
+
+<ComponentPreview
+  name="avatar-header-default"
+  description="Default avatar header variations"
+  className="mb-4"
+/>
+
+### Sizes
+
+不同尺寸的头像展示。
+
+<ComponentPreview
+  name="avatar-header-sizes"
+  description="Avatar header with different sizes"
+  className="mb-4"
+/>
+
+### Icons
+
+使用不同图标的头像。
+
+<ComponentPreview
+  name="avatar-header-icons"
+  description="Avatar header with custom icons"
+  className="mb-4"
+/>
+
+### Error Handling
+
+图片加载错误处理。
+
+<ComponentPreview
+  name="avatar-header-error"
+  description="Avatar header with error handling"
+  className="mb-4"
+/>
+
+## API Reference
+
+### AvatarHeader
+
+主头像组件，支持图标、图片和自定义内容。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `alt` | `string` | - | 图像无法显示时的替代文本 |
+| `icon` | `React.ReactNode` | - | 设置头像的自定义图标 |
+| `size` | `AvatarSize` | `"default"` | 设置头像的大小 |
+| `src` | `string \| React.ReactNode` | - | 图片类头像的资源地址或者图片元素 |
+| `crossOrigin` | `CrossOrigin` | - | CORS 属性设置 |
+| `onError` | `() => boolean` | - | 图片加载失败的事件，返回 false 会关闭组件默认的 fallback 行为 |
+| `name` | `React.ReactNode` | - | 头像标签 |
+| `time` | `React.ReactNode` | - | 时间标签 |
+| `className` | `string` | - | 自定义样式类名 |
+
+#### Example
+
+```tsx
+import { AvatarHeader } from "@/registry/wuhan/composed/avatar-header/avatar-header";
+import { Bot } from "lucide-react";
+
+function UserHeader() {
+  return (
+    <div className="flex flex-col gap-2">
+      {/* 使用图标 */}
+      <AvatarHeader 
+        icon={<Bot className="w-3 h-3 text-blue-600" />}
+        name="AI 助手"
+        time="在线"
+      />
+      
+      {/* 使用图片 */}
+      <AvatarHeader 
+        src="https://example.com/avatar.jpg"
+        alt="用户头像"
+        name="张三"
+        time="5分钟前"
+        size="large"
+      />
+      
+      {/* 错误处理 */}
+      <AvatarHeader 
+        src="https://invalid-url.com/avatar.jpg"
+        name="加载失败"
+        time="显示默认图标"
+        onError={() => {
+          console.log("图片加载失败");
+          return true; // 使用默认 fallback
+        }}
+      />
+    </div>
+  );
+}
+```
+
+### AvatarSize
+
+头像尺寸类型定义。
+
+```tsx
+type AvatarSize = 
+  | number                    // 自定义像素值
+  | "large"                   // 40px
+  | "small"                   // 20px
+  | "default"                 // 24px
+  | {                         // 响应式尺寸
+      xs?: number;
+      sm?: number;
+      md?: number;
+      lg?: number;
+      xl?: number;
+      xxl?: number;
+    };
+```
+
+### CrossOrigin
+
+CORS 属性类型定义。
+
+```tsx
+type CrossOrigin = "anonymous" | "use-credentials" | "";
+```
+
+### 预设尺寸
+
+| Size | Pixels | Description |
+|------|--------|-------------|
+| `small` | 20px | 小号头像 |
+| `default` | 24px | 默认尺寸 |
+| `large` | 40px | 大号头像 |
+
+## 使用场景
+
+- **聊天消息**：显示发送者头像、名称和时间
+- **评论系统**：展示评论者信息
+- **用户列表**：显示用户基本信息
+- **通知中心**：显示通知来源
+- **社交动态**：展示动态发布者
+- **AI 对话**：区分 AI 和用户消息
+
+## 最佳实践
+
+1. **图标使用**：为不同类型的用户使用不同的图标（如 Bot、User、Admin）
+2. **图片优化**：使用适当尺寸的图片，避免加载过大的图片
+3. **错误处理**：为图片加载失败提供合理的 fallback
+4. **可访问性**：为图片提供有意义的 alt 文本
+5. **尺寸统一**：在同一场景中保持尺寸一致性
+6. **时间格式**：使用相对时间（如"刚刚"、"5分钟前"）提升用户体验
+
+## 注意事项
+
+- 使用 `src` 时，组件会自动处理图片加载错误
+- `onError` 返回 `false` 可以禁用默认的 fallback 行为
+- `size` 支持响应式对象，但默认会取 md/sm/lg 中的第一个有效值
+- `icon` 和 `src` 同时存在时，优先显示 `src`（除非加载失败）
+- 图片加载失败后会自动显示 `icon` 或默认图标
+
+## 原语组件
+
+Avatar Header 基于以下原语组件构建：
+
+- `AvatarHeaderPrimitive` - 头像栏容器
+- `AvatarPrimitive` - 头像样式
+- `AvatarNamePrimitive` - 名称样式
+- `AvatarTimePrimitive` - 时间样式
+
+这些原语可以在 [registry/wuhan/blocks/avatar-header/avatar-header-01.tsx](../../registry/wuhan/blocks/avatar-header/avatar-header-01.tsx) 中找到。
+
+## 样式定制
+
+组件使用 Tailwind CSS 和 CSS 变量，可以通过以下方式定制：
+
+```tsx
+// 自定义头像大小
+<AvatarHeader 
+  size={48}
+  className="gap-4"
+/>
+
+// 自定义样式
+<AvatarHeader 
+  name="用户"
+  className="p-2 bg-gray-50 rounded-lg"
+/>
+```
+
+## 扩展示例
+
+### 带状态指示器
+
+```tsx
+import { AvatarHeader } from "@/registry/wuhan/composed/avatar-header/avatar-header";
+import { StatusTag } from "@/registry/wuhan/composed/status-tag/status-tag";
+
+function UserWithStatus() {
+  return (
+    <div className="flex items-center gap-2">
+      <AvatarHeader 
+        src="https://example.com/avatar.jpg"
+        name="在线用户"
+        time="刚刚"
+      />
+      <StatusTag status="success" text="在线" />
+    </div>
+  );
+}
+```
+
+### 响应式尺寸
+
+```tsx
+<AvatarHeader 
+  size={{ xs: 20, sm: 24, md: 32, lg: 40 }}
+  name="响应式头像"
+/>
+```

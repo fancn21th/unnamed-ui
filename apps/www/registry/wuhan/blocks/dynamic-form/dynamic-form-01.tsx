@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 const DynamicFormLayoutPrimitive = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
+>(({ className, style, ...props }, ref) => {
   return (
     <div
       ref={ref}
@@ -18,8 +18,10 @@ const DynamicFormLayoutPrimitive = React.forwardRef<
         "px-[var(--padding-com-xl)] py-[var(--margin-com-xl)]",
         "rounded-[var(--radius-xl)]",
         "bg-[var(--bg-container-secondary)]",
+        "font-[var(--font-family-cn)]",
         className,
       )}
+      style={{ fontFamily: "var(--font-family-cn)", ...style }}
       {...props}
     />
   );

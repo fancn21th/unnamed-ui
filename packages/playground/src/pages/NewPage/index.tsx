@@ -1,5 +1,5 @@
 import { SidebarComposed } from "../../components/wuhan/composed/sidebar";
-import { AvatarHeaderComposed } from "../../components/wuhan/composed/avatar-header";
+import { AvatarHeader } from "../../components/wuhan/composed/avatar-header";
 import { AIMessage, UserMessage } from "../../components/wuhan/composed/message";
 import { ThinkingStep } from "../../components/wuhan/composed/thinking-process";
 import type { ThinkingStepItemProps } from "../../components/wuhan/composed/thinking-step-item";
@@ -67,7 +67,7 @@ export function NewPage() {
           title: "Agent Console",
           icon: <Sparkles className="size-4" />,
         }}
-        footer={({ collapsed }) => <AvatarHeaderComposed name={!collapsed?"User":null}  />} />
+        footer={({ collapsed }) => <AvatarHeader name={!collapsed?"User":null}  />} />
 
         <section className="flex flex-1 flex-col rounded-lg border border-slate-200 bg-white">
           <div className="border-b border-slate-200 px-4 py-3 text-sm font-semibold">

@@ -689,6 +689,54 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "avatar-header-default",
+    type: "registry:example",
+    registryDependencies: ["avatar-header"],
+    files: [
+      {
+        path: "examples/avatar-header/avatar-header-default.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/avatar-header-default.tsx",
+      },
+    ],
+  },
+  {
+    name: "avatar-header-sizes",
+    type: "registry:example",
+    registryDependencies: ["avatar-header"],
+    files: [
+      {
+        path: "examples/avatar-header/avatar-header-sizes.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/avatar-header-sizes.tsx",
+      },
+    ],
+  },
+  {
+    name: "avatar-header-icons",
+    type: "registry:example",
+    registryDependencies: ["avatar-header"],
+    files: [
+      {
+        path: "examples/avatar-header/avatar-header-icons.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/avatar-header-icons.tsx",
+      },
+    ],
+  },
+  {
+    name: "avatar-header-error",
+    type: "registry:example",
+    registryDependencies: ["avatar-header"],
+    files: [
+      {
+        path: "examples/avatar-header/avatar-header-error.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/avatar-header-error.tsx",
+      },
+    ],
+  },
   // history-item examples
   {
     name: "history-item-demo",

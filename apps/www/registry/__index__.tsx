@@ -2447,6 +2447,106 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "avatar-header-default": {
+      name: "avatar-header-default",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["avatar-header"],
+      files: [
+        {
+          path: "registry/wuhan/examples/avatar-header/avatar-header-default.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/avatar-header-default.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/avatar-header/avatar-header-default.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "avatar-header-sizes": {
+      name: "avatar-header-sizes",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["avatar-header"],
+      files: [
+        {
+          path: "registry/wuhan/examples/avatar-header/avatar-header-sizes.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/avatar-header-sizes.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/avatar-header/avatar-header-sizes.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "avatar-header-icons": {
+      name: "avatar-header-icons",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["avatar-header"],
+      files: [
+        {
+          path: "registry/wuhan/examples/avatar-header/avatar-header-icons.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/avatar-header-icons.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/avatar-header/avatar-header-icons.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "avatar-header-error": {
+      name: "avatar-header-error",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["avatar-header"],
+      files: [
+        {
+          path: "registry/wuhan/examples/avatar-header/avatar-header-error.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/avatar-header-error.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/avatar-header/avatar-header-error.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "history-item-demo": {
       name: "history-item-demo",
       description: "",

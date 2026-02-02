@@ -1,10 +1,10 @@
 import * as React from "react";
 import { SidebarComposed } from "../../components/wuhan/composed/sidebar";
-import { AvatarHeaderComposed } from "../../components/wuhan/composed/avatar-header";
+import { AvatarHeader } from "../../components/wuhan/composed/avatar-header";
 import { AIMessage, UserMessage } from "../../components/wuhan/composed/message";
 import { ThinkingStep } from "../../components/wuhan/composed/thinking-process";
 import type { ThinkingStepItemProps } from "../../components/wuhan/composed/thinking-step-item";
-import Markdown from "../../components/wuhan/recruitment/Markdown";
+import Markdown from "../../components/wuhan/composed/markdown.tsx";
 import { QuoteContentComposed } from "../../components/wuhan/composed/quote-content";
 import { ComposedSender } from "../../components/wuhan/composed/sender";
 import {
@@ -118,7 +118,7 @@ export function NewPage() {
             icon: <Sparkles className="size-4" />,
           }}
           footer={({ collapsed }) => (
-            <AvatarHeaderComposed name={!collapsed ? "User" : null} />
+            <AvatarHeader name={!collapsed ? "User" : null} />
           )}
         />
 

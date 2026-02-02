@@ -1090,4 +1090,55 @@ button:focus-visible {
   body {
     @apply bg-background text-foreground;
   }
+  .font-semibold {
+    font-weight: 600;
+  }
+  .font-size-1 {
+    font-size: var(--font-size-1);
+    line-height: var(--line-height-1);
+  }
+  .font-size-2 {
+    font-size: var(--font-size-2);
+    line-height: var(--line-height-2);
+  }
+  .font-size-3 {
+    font-size: var(--font-size-3);
+    line-height: var(--line-height-3);
+  }
+  .font-size-4 {
+    font-size: var(--font-size-4);
+    line-height: var(--line-height-4);
+  }
+  .font-size-5 {
+    font-size: var(--font-size-5);
+    line-height: var(--line-height-5);
+  }
 }
+
+@keyframes thinking-loading-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@layer utilities {
+  .thinking-loading-pulse {
+    animation: thinking-loading-pulse 1.4s ease-in-out infinite;
+  }
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+}
+

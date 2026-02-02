@@ -1,10 +1,46 @@
 ---
 title: Welcome
-description: Composed welcome message for chat empty state
+description: Composed welcome message for chat empty state and user onboarding
 author: AF
 ---
 
 <ComponentPreview name="welcome-demo" description="Welcome message for empty state" className="mb-4" />
+
+Welcome 组件用于展示聊天界面的空状态欢迎信息，支持图标和自定义文本，适用于新对话开始、功能介绍、用户引导等场景。
+
+## Overview
+
+- **图标支持**：可选的图标元素，增强视觉吸引力
+- **灵活内容**：支持纯文本或 React 组件作为内容
+- **简洁设计**：极简的 API，易于使用
+- **语义化**：清晰的组件结构，易于理解
+- **可定制**：支持自定义样式和布局
+- **响应式**：自适应不同屏幕尺寸
+
+## Quick Start
+
+```tsx
+import { WelcomeMessage } from "@/registry/wuhan/composed/welcome";
+import { Sparkles } from "lucide-react";
+
+export function Example() {
+  return (
+    <WelcomeMessage
+      icon={<Sparkles className="w-6 h-6" />}
+      text="你好！我是 AI 助手，有什么可以帮你的吗？"
+    />
+  );
+}
+```
+
+## Features
+
+- **可选图标**：支持在文本左侧显示图标
+- **富文本支持**：text 属性可以是字符串或 React 组件
+- **简洁 API**：只有 3 个属性，易于使用
+- **灵活布局**：图标和文本自动居中对齐
+- **样式定制**：支持通过 className 自定义样式
+- **轻量级**：基于原语组件，无额外依赖
 
 ## Installation
 
@@ -27,11 +63,11 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/welcome.json
 
 <Steps>
 
-<Step>Copy and paste the following code into your project.</Step>
+<Step>复制以下代码到你的项目</Step>
 
 <ComponentSource name="welcome" title="registry/wuhan/composed/welcome/welcome.tsx" />
 
-<Step>Update the import paths to match your project setup.</Step>
+<Step>更新导入路径以匹配你的项目设置</Step>
 
 </Steps>
 
@@ -41,10 +77,413 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/welcome.json
 
 ## Examples
 
+### Demo
+
+默认和自定义的欢迎消息示例。
+
 <ComponentPreview
   name="welcome-demo"
   description="Welcome message (default and customized)"
   className="mb-4"
 />
 
+## API Reference
 
+### WelcomeMessage
+
+欢迎消息组件，用于展示空状态欢迎信息。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `icon` | `ReactNode` | - | 可选的图标元素，显示在文本左侧 |
+| `text` | `ReactNode` | - | 欢迎文本内容（必填） |
+| `className` | `string` | - | 额外的样式类名 |
+
+#### Example
+
+```tsx
+import { WelcomeMessage } from "@/registry/wuhan/composed/welcome";
+import { Bot, Sparkles, MessageSquare } from "lucide-react";
+
+function WelcomeExamples() {
+  return (
+    <div className="space-y-8">
+      {/* 基础用法 */}
+      <WelcomeMessage
+        icon={<Sparkles className="w-6 h-6 text-primary" />}
+        text="你好！我是 AI 助手，有什么可以帮你的吗？"
+      />
+      
+      {/* 多行文本 */}
+      <WelcomeMessage
+        icon={<Bot className="w-6 h-6" />}
+        text={
+          <div className="text-center">
+            <p className="text-lg font-medium">欢迎使用 AI 助手</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              我可以帮助你解答问题、生成代码、翻译文本等
+            </p>
+          </div>
+        }
+      />
+      
+      {/* 无图标 */}
+      <WelcomeMessage
+        text="开始新对话，探索无限可能"
+      />
+      
+      {/* 自定义样式 */}
+      <WelcomeMessage
+        icon={<MessageSquare className="w-6 h-6" />}
+        text="你好，有什么我可以帮助你的吗？"
+        className="p-8 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg"
+      />
+    </div>
+  );
+}
+```
+
+## 使用场景
+
+- **聊天空状态**：新对话开始时的欢迎信息
+- **功能介绍**：介绍产品功能和使用方法
+- **用户引导**：引导新用户了解产品
+- **品牌展示**：展示品牌形象和价值主张
+- **状态提示**：提示用户当前状态或下一步操作
+- **个性化问候**：根据时间、用户信息显示个性化欢迎语
+
+## 最佳实践
+
+1. **简洁明了**：欢迎文本应简短、友好，快速传达核心信息
+2. **图标选择**：使用与品牌或功能相关的图标
+3. **层次分明**：使用不同字体大小和颜色区分主次信息
+4. **响应式**：确保在移动端和桌面端都有良好的显示效果
+5. **个性化**：可以根据用户信息、时间等显示个性化内容
+6. **配合建议**：通常与 Suggestion 组件配合使用，提供完整的空状态体验
+
+## 注意事项
+
+- `icon` 是可选的，可以不提供
+- `text` 可以是字符串或 React 组件，支持富文本
+- 建议图标大小使用 `w-6 h-6`（24px）
+- 组件默认居中对齐，适合空状态展示
+- 与 Suggestion 组件配合使用时，建议先显示 WelcomeMessage
+
+## 原语组件
+
+Welcome 基于以下原语组件构建：
+
+- `WelcomeContainer` - 容器原语
+- `WelcomeIcon` - 图标容器原语
+- `WelcomeText` - 文本容器原语
+
+原语组件提供了基础的样式和结构，可以在 [registry/wuhan/blocks/welcome/welcome-01.tsx](../../registry/wuhan/blocks/welcome/welcome-01.tsx) 中找到。
+
+## 样式定制
+
+组件使用 Tailwind CSS，可以通过以下方式定制：
+
+```tsx
+// 自定义容器样式
+<WelcomeMessage
+  icon={<Sparkles />}
+  text="欢迎使用"
+  className="p-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg shadow-lg"
+/>
+
+// 自定义文本样式
+<WelcomeMessage
+  icon={<Bot />}
+  text={
+    <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+      你好，欢迎来到未来
+    </span>
+  }
+/>
+```
+
+## 扩展示例
+
+### 时间问候
+
+```tsx
+import { WelcomeMessage } from "@/registry/wuhan/composed/welcome";
+import { Sun, Moon, Sunrise } from "lucide-react";
+
+function TimeBasedGreeting() {
+  const hour = new Date().getHours();
+  
+  const getGreeting = () => {
+    if (hour < 6) {
+      return { 
+        icon: <Moon className="w-6 h-6 text-blue-500" />, 
+        text: "夜深了，注意休息哦！" 
+      };
+    } else if (hour < 12) {
+      return { 
+        icon: <Sunrise className="w-6 h-6 text-orange-500" />, 
+        text: "早上好！新的一天开始了" 
+      };
+    } else if (hour < 18) {
+      return { 
+        icon: <Sun className="w-6 h-6 text-yellow-500" />, 
+        text: "下午好！有什么可以帮助你的吗？" 
+      };
+    } else {
+      return { 
+        icon: <Moon className="w-6 h-6 text-indigo-500" />, 
+        text: "晚上好！今天过得怎么样？" 
+      };
+    }
+  };
+  
+  const greeting = getGreeting();
+  
+  return <WelcomeMessage icon={greeting.icon} text={greeting.text} />;
+}
+```
+
+### 个性化欢迎
+
+```tsx
+import { WelcomeMessage } from "@/registry/wuhan/composed/welcome";
+import { User, Sparkles } from "lucide-react";
+
+function PersonalizedWelcome({ userName }: { userName?: string }) {
+  if (userName) {
+    return (
+      <WelcomeMessage
+        icon={<User className="w-6 h-6 text-primary" />}
+        text={
+          <div className="text-center">
+            <p className="text-lg font-medium">
+              欢迎回来，{userName}！
+            </p>
+            <p className="text-sm text-muted-foreground mt-1">
+              上次对话：2小时前
+            </p>
+          </div>
+        }
+      />
+    );
+  }
+  
+  return (
+    <WelcomeMessage
+      icon={<Sparkles className="w-6 h-6 text-primary" />}
+      text="你好！我是 AI 助手，有什么可以帮你的吗？"
+    />
+  );
+}
+```
+
+### 功能介绍
+
+```tsx
+import { WelcomeMessage } from "@/registry/wuhan/composed/welcome";
+import { Bot } from "lucide-react";
+
+function FeatureIntroduction() {
+  return (
+    <WelcomeMessage
+      icon={<Bot className="w-8 h-8 text-primary" />}
+      text={
+        <div className="max-w-md text-center space-y-3">
+          <h2 className="text-2xl font-bold">欢迎使用 AI 助手</h2>
+          <p className="text-muted-foreground">
+            我可以帮助你：
+          </p>
+          <ul className="text-sm space-y-2 text-left list-disc list-inside">
+            <li>解答各种问题</li>
+            <li>生成和优化代码</li>
+            <li>翻译多种语言</li>
+            <li>创作文章和内容</li>
+          </ul>
+        </div>
+      }
+    />
+  );
+}
+```
+
+### 品牌展示
+
+```tsx
+import { WelcomeMessage } from "@/registry/wuhan/composed/welcome";
+import Image from "next/image";
+
+function BrandedWelcome() {
+  return (
+    <WelcomeMessage
+      icon={
+        <Image 
+          src="/logo.png" 
+          alt="Logo" 
+          width={48} 
+          height={48}
+          className="rounded-lg"
+        />
+      }
+      text={
+        <div className="text-center space-y-2">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            欢迎来到未来
+          </h1>
+          <p className="text-lg text-muted-foreground">
+            探索 AI 的无限可能
+          </p>
+        </div>
+      }
+      className="py-12"
+    />
+  );
+}
+```
+
+### 动画效果
+
+```tsx
+import { WelcomeMessage } from "@/registry/wuhan/composed/welcome";
+import { Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
+
+function AnimatedWelcome() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <WelcomeMessage
+        icon={
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+          >
+            <Sparkles className="w-6 h-6 text-primary" />
+          </motion.div>
+        }
+        text={
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            你好！我是 AI 助手，有什么可以帮你的吗？
+          </motion.p>
+        }
+      />
+    </motion.div>
+  );
+}
+```
+
+### 完整空状态
+
+```tsx
+import { WelcomeMessage } from "@/registry/wuhan/composed/welcome";
+import { SuggestionPanel } from "@/registry/wuhan/composed/suggestion";
+import { Sparkles, MessageSquare, Code, FileText } from "lucide-react";
+
+function CompleteEmptyState() {
+  const suggestions = [
+    { 
+      id: "1", 
+      label: "开始对话", 
+      icon: <MessageSquare className="w-5 h-5" /> 
+    },
+    { 
+      id: "2", 
+      label: "生成代码", 
+      icon: <Code className="w-5 h-5" /> 
+    },
+    { 
+      id: "3", 
+      label: "写文章", 
+      icon: <FileText className="w-5 h-5" /> 
+    },
+  ];
+  
+  return (
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="max-w-2xl space-y-8">
+        <WelcomeMessage
+          icon={<Sparkles className="w-8 h-8 text-primary" />}
+          text={
+            <div className="text-center space-y-2">
+              <h1 className="text-3xl font-bold">你好！我是 AI 助手</h1>
+              <p className="text-muted-foreground">
+                我可以帮助你解答问题、生成代码、创作内容等
+              </p>
+            </div>
+          }
+        />
+        
+        <SuggestionPanel
+          title="快速开始"
+          description="选择一个建议或直接输入你的问题"
+          items={suggestions}
+        />
+      </div>
+    </div>
+  );
+}
+```
+
+### 加载状态
+
+```tsx
+import { WelcomeMessage } from "@/registry/wuhan/composed/welcome";
+import { Loader2, CheckCircle } from "lucide-react";
+import { useState, useEffect } from "react";
+
+function LoadingWelcome() {
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 2000);
+  }, []);
+  
+  if (loading) {
+    return (
+      <WelcomeMessage
+        icon={<Loader2 className="w-6 h-6 animate-spin text-primary" />}
+        text="正在初始化 AI 助手..."
+      />
+    );
+  }
+  
+  return (
+    <WelcomeMessage
+      icon={<CheckCircle className="w-6 h-6 text-green-500" />}
+      text="准备就绪！有什么可以帮你的吗？"
+    />
+  );
+}
+```
+
+### 多语言支持
+
+```tsx
+import { WelcomeMessage } from "@/registry/wuhan/composed/welcome";
+import { Globe } from "lucide-react";
+
+type Language = "zh" | "en" | "ja";
+
+function MultilingualWelcome({ language }: { language: Language }) {
+  const messages = {
+    zh: "你好！我是 AI 助手，有什么可以帮你的吗？",
+    en: "Hello! I'm an AI assistant. How can I help you?",
+    ja: "こんにちは！AI アシスタントです。何かお手伝いできますか？",
+  };
+  
+  return (
+    <WelcomeMessage
+      icon={<Globe className="w-6 h-6 text-primary" />}
+      text={messages[language]}
+    />
+  );
+}
+```

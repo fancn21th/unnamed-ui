@@ -1,10 +1,53 @@
 ---
 title: Suggestion
-description: Composed suggestion panel for next step guidance
+description: Composed suggestion panel for next step guidance and user onboarding
 author: AF
 ---
 
 <ComponentPreview name="suggestion-demo" description="Suggestion buttons for next step guidance" className="mb-4" />
+
+Suggestion 组件用于展示下一步操作建议，支持标题、描述和建议按钮列表，适用于聊天界面的空状态引导、用户引导、操作建议等场景。
+
+## Overview
+
+- **标题描述**：可选的标题和描述文本，提供上下文说明
+- **图标支持**：每个建议按钮可配置独立图标
+- **数据驱动**：通过 items 数组快速生成建议列表
+- **灵活组合**：SuggestionGroup、Button、Panel 可独立或组合使用
+- **网格布局**：自动网格布局，响应式设计
+- **交互友好**：清晰的悬停和点击状态反馈
+
+## Quick Start
+
+```tsx
+import { SuggestionPanel } from "@/registry/wuhan/composed/suggestion";
+import { MessageSquare, FileText, Code } from "lucide-react";
+
+export function Example() {
+  const suggestions = [
+    { id: "1", label: "开始新对话", icon: <MessageSquare /> },
+    { id: "2", label: "查看文档", icon: <FileText /> },
+    { id: "3", label: "示例代码", icon: <Code /> },
+  ];
+  
+  return (
+    <SuggestionPanel
+      title="开始使用"
+      description="选择一个建议快速开始"
+      items={suggestions}
+    />
+  );
+}
+```
+
+## Features
+
+- **标题和描述**：可选的标题和描述，为建议提供上下文
+- **图标配置**：每个建议可配置不同的图标组件
+- **数据驱动**：通过数组数据快速生成建议按钮
+- **独立组件**：SuggestionButton 可单独使用
+- **网格布局**：建议按钮自动排列为网格，响应式适配
+- **点击回调**：每个建议支持独立的点击处理函数
 
 ## Installation
 
@@ -27,11 +70,11 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/suggestion.json
 
 <Steps>
 
-<Step>Copy and paste the following code into your project.</Step>
+<Step>复制以下代码到你的项目</Step>
 
 <ComponentSource name="suggestion" title="registry/wuhan/composed/suggestion/suggestion.tsx" />
 
-<Step>Update the import paths to match your project setup.</Step>
+<Step>更新导入路径以匹配你的项目设置</Step>
 
 </Steps>
 
@@ -41,15 +84,475 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/suggestion.json
 
 ## Examples
 
+### Default
+
+基础的建议按钮列表。
+
 <ComponentPreview
   name="suggestion-default"
   description="Default suggestion buttons"
   className="mb-4"
 />
 
+### Custom Icon
+
+带自定义图标的建议按钮。
+
 <ComponentPreview
   name="suggestion-custom-icon"
   description="Suggestion buttons with custom icons"
   className="mb-4"
 />
+
+## API Reference
+
+### SuggestionPanel
+
+建议面板组件，数据驱动的完整解决方案。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `ReactNode` | - | 面板标题（可选） |
+| `description` | `ReactNode` | - | 面板描述文本（可选） |
+| `items` | `SuggestionItem[]` | - | 建议项数组（必填） |
+| `className` | `string` | - | 额外的样式类名 |
+
+#### SuggestionItem Type
+
+```tsx
+interface SuggestionItem {
+  id: string;              // 唯一标识符，用于 React key
+  label: ReactNode;        // 建议按钮显示的文本或内容
+  icon?: ReactNode;        // 可选的图标元素
+  onClick?: () => void;    // 点击建议按钮时的回调函数
+}
+```
+
+#### Example
+
+```tsx
+import { SuggestionPanel } from "@/registry/wuhan/composed/suggestion";
+import { MessageSquare, FileText, Code, Settings } from "lucide-react";
+
+function Suggestions() {
+  const suggestions = [
+    { 
+      id: "1", 
+      label: "开始新对话", 
+      icon: <MessageSquare className="w-5 h-5" />,
+      onClick: () => console.log("New chat")
+    },
+    { 
+      id: "2", 
+      label: "查看文档", 
+      icon: <FileText className="w-5 h-5" />,
+      onClick: () => window.open("/docs")
+    },
+    { 
+      id: "3", 
+      label: "示例代码", 
+      icon: <Code className="w-5 h-5" />
+    },
+    { 
+      id: "4", 
+      label: "设置选项", 
+      icon: <Settings className="w-5 h-5" />
+    },
+  ];
+  
+  return (
+    <SuggestionPanel
+      title="开始使用"
+      description="选择一个建议快速开始，探索更多功能"
+      items={suggestions}
+    />
+  );
+}
+```
+
+### SuggestionButton
+
+单个建议按钮组件。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | - | 按钮文本内容（必填） |
+| `icon` | `ReactNode` | - | 可选的图标元素 |
+| `onClick` | `() => void` | - | 点击事件处理函数 |
+| `className` | `string` | - | 额外的样式类名 |
+
+#### Example
+
+```tsx
+import { SuggestionButton } from "@/registry/wuhan/composed/suggestion";
+import { Sparkles } from "lucide-react";
+
+function SingleSuggestion() {
+  return (
+    <SuggestionButton 
+      icon={<Sparkles className="w-5 h-5" />}
+      onClick={() => console.log("clicked")}
+    >
+      尝试这个功能
+    </SuggestionButton>
+  );
+}
+```
+
+### SuggestionGroup
+
+建议按钮组容器。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | - | 子元素（通常是 SuggestionButton） |
+| `className` | `string` | - | 额外的样式类名 |
+
+#### Example
+
+```tsx
+import { SuggestionGroup, SuggestionButton } from "@/registry/wuhan/composed/suggestion";
+
+function SuggestionList() {
+  return (
+    <SuggestionGroup>
+      <SuggestionButton>建议 1</SuggestionButton>
+      <SuggestionButton>建议 2</SuggestionButton>
+      <SuggestionButton>建议 3</SuggestionButton>
+    </SuggestionGroup>
+  );
+}
+```
+
+## 使用场景
+
+- **空状态引导**：新用户首次使用时展示功能建议
+- **聊天界面**：对话开始前的话题建议或常见问题
+- **下一步操作**：完成某个步骤后的后续操作建议
+- **功能发现**：帮助用户发现产品功能和特性
+- **快捷入口**：提供常用功能的快速访问入口
+- **学习路径**：引导用户按步骤学习使用产品
+
+## 最佳实践
+
+1. **标题描述**：使用简洁的标题和描述，说明建议的目的
+2. **建议数量**：建议 4-8 个选项，避免选择过载
+3. **图标使用**：为每个建议配置相关图标，增强识别性
+4. **文本清晰**：建议文本应明确，让用户知道点击后会发生什么
+5. **分组展示**：相关建议可以分组展示，提升组织性
+6. **响应式**：确保在移动端和桌面端都有良好的显示效果
+
+## 注意事项
+
+- `title` 和 `description` 都是可选的，可以只使用其中之一
+- 每个 `SuggestionItem` 必须有唯一的 `id`
+- 建议按钮会自动排列为网格布局，响应式适配不同屏幕
+- 图标大小建议使用 `w-5 h-5`（20px）保持一致性
+- 标题和描述使用 CSS 变量 `--text-primary` 和 `--text-secondary`
+
+## 原语组件
+
+Suggestion 基于以下原语组件构建：
+
+- `SuggestionGroupPrimitive` - 按钮组容器原语
+- `SuggestionButtonPrimitive` - 单个按钮原语
+
+原语组件提供了基础的样式和结构，可以在 [registry/wuhan/blocks/suggestion/suggestion-01.tsx](../../registry/wuhan/blocks/suggestion/suggestion-01.tsx) 中找到。
+
+## 样式定制
+
+组件使用 Tailwind CSS，可以通过以下方式定制：
+
+```tsx
+// 自定义按钮样式
+<SuggestionButton 
+  className="bg-gradient-to-r from-purple-500 to-pink-500 text-white"
+>
+  特殊样式
+</SuggestionButton>
+
+// 自定义面板样式
+<SuggestionPanel
+  items={items}
+  className="p-8 bg-gradient-to-b from-background to-muted/50"
+/>
+```
+
+## 扩展示例
+
+### 聊天空状态
+
+```tsx
+import { SuggestionPanel } from "@/registry/wuhan/composed/suggestion";
+import { MessageSquare, Lightbulb, Code, BookOpen } from "lucide-react";
+
+function ChatEmptyState() {
+  const suggestions = [
+    { 
+      id: "1", 
+      label: "帮我写一段代码", 
+      icon: <Code className="w-5 h-5" />,
+      onClick: () => console.log("Code request")
+    },
+    { 
+      id: "2", 
+      label: "解释一个概念", 
+      icon: <Lightbulb className="w-5 h-5" />,
+      onClick: () => console.log("Explain concept")
+    },
+    { 
+      id: "3", 
+      label: "学习新技术", 
+      icon: <BookOpen className="w-5 h-5" />,
+      onClick: () => console.log("Learn tech")
+    },
+    { 
+      id: "4", 
+      label: "开始对话", 
+      icon: <MessageSquare className="w-5 h-5" />,
+      onClick: () => console.log("Start chat")
+    },
+  ];
+  
+  return (
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="max-w-2xl">
+        <SuggestionPanel
+          title="你好！我是 AI 助手"
+          description="选择一个话题开始对话，或者直接在下方输入你的问题"
+          items={suggestions}
+        />
+      </div>
+    </div>
+  );
+}
+```
+
+### 分类建议
+
+```tsx
+import { SuggestionPanel } from "@/registry/wuhan/composed/suggestion";
+import { Code, FileText, MessageSquare, Settings } from "lucide-react";
+
+function CategorizedSuggestions() {
+  const categories = [
+    {
+      title: "编程相关",
+      suggestions: [
+        { id: "code-1", label: "如何学习 React？", icon: <Code className="w-5 h-5" /> },
+        { id: "code-2", label: "TypeScript 最佳实践", icon: <Code className="w-5 h-5" /> },
+      ],
+    },
+    {
+      title: "文档编写",
+      suggestions: [
+        { id: "doc-1", label: "写一篇技术博客", icon: <FileText className="w-5 h-5" /> },
+        { id: "doc-2", label: "API 文档模板", icon: <FileText className="w-5 h-5" /> },
+      ],
+    },
+  ];
+  
+  return (
+    <div className="space-y-8">
+      {categories.map((category, index) => (
+        <SuggestionPanel
+          key={index}
+          title={category.title}
+          items={category.suggestions}
+        />
+      ))}
+    </div>
+  );
+}
+```
+
+### 动态建议
+
+```tsx
+import { SuggestionPanel } from "@/registry/wuhan/composed/suggestion";
+import { useState, useEffect } from "react";
+import { Sparkles } from "lucide-react";
+
+function DynamicSuggestions() {
+  const [suggestions, setSuggestions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    // 模拟 API 调用获取个性化建议
+    setTimeout(() => {
+      setSuggestions([
+        { 
+          id: "1", 
+          label: "基于你的历史，推荐学习 Next.js",
+          icon: <Sparkles className="w-5 h-5" />
+        },
+        { 
+          id: "2", 
+          label: "继续上次的对话",
+          icon: <Sparkles className="w-5 h-5" />
+        },
+        { 
+          id: "3", 
+          label: "探索新功能",
+          icon: <Sparkles className="w-5 h-5" />
+        },
+      ]);
+      setLoading(false);
+    }, 1000);
+  }, []);
+  
+  if (loading) {
+    return <div className="text-center p-4">加载建议中...</div>;
+  }
+  
+  return (
+    <SuggestionPanel
+      title="为你推荐"
+      description="基于你的使用习惯，我们为你推荐以下内容"
+      items={suggestions}
+    />
+  );
+}
+```
+
+### 引导流程
+
+```tsx
+import { SuggestionPanel } from "@/registry/wuhan/composed/suggestion";
+import { useState } from "react";
+import { ArrowRight, Upload, Edit, Share } from "lucide-react";
+
+function OnboardingFlow() {
+  const [step, setStep] = useState(0);
+  
+  const steps = [
+    {
+      title: "欢迎使用",
+      description: "让我们开始你的第一个项目",
+      suggestions: [
+        { 
+          id: "start", 
+          label: "开始新项目", 
+          icon: <ArrowRight className="w-5 h-5" />,
+          onClick: () => setStep(1)
+        },
+      ],
+    },
+    {
+      title: "上传文件",
+      description: "选择要处理的文件",
+      suggestions: [
+        { 
+          id: "upload", 
+          label: "从电脑上传", 
+          icon: <Upload className="w-5 h-5" />,
+          onClick: () => setStep(2)
+        },
+        { 
+          id: "create", 
+          label: "创建新文件", 
+          icon: <Edit className="w-5 h-5" />,
+          onClick: () => setStep(2)
+        },
+      ],
+    },
+    {
+      title: "分享作品",
+      description: "完成后分享给其他人",
+      suggestions: [
+        { 
+          id: "share", 
+          label: "生成分享链接", 
+          icon: <Share className="w-5 h-5" />
+        },
+      ],
+    },
+  ];
+  
+  const currentStep = steps[step];
+  
+  return (
+    <div className="max-w-2xl mx-auto p-6">
+      <div className="mb-4 text-sm text-muted-foreground">
+        步骤 {step + 1} / {steps.length}
+      </div>
+      <SuggestionPanel
+        title={currentStep.title}
+        description={currentStep.description}
+        items={currentStep.suggestions}
+      />
+    </div>
+  );
+}
+```
+
+### 与输入框集成
+
+```tsx
+import { SuggestionPanel } from "@/registry/wuhan/composed/suggestion";
+import { useState } from "react";
+import { Send } from "lucide-react";
+
+function ChatWithSuggestions() {
+  const [input, setInput] = useState("");
+  const [showSuggestions, setShowSuggestions] = useState(true);
+  
+  const suggestions = [
+    { id: "1", label: "如何学习编程？" },
+    { id: "2", label: "推荐一本技术书籍" },
+    { id: "3", label: "解释什么是算法" },
+  ];
+  
+  const handleSuggestionClick = (label: string) => {
+    setInput(label);
+    setShowSuggestions(false);
+  };
+  
+  const handleSend = () => {
+    if (!input.trim()) return;
+    console.log("Send:", input);
+    setInput("");
+    setShowSuggestions(false);
+  };
+  
+  return (
+    <div className="max-w-2xl mx-auto">
+      {showSuggestions && (
+        <SuggestionPanel
+          title="试试这些问题"
+          items={suggestions.map(s => ({
+            ...s,
+            onClick: () => handleSuggestionClick(s.label)
+          }))}
+          className="mb-6"
+        />
+      )}
+      
+      <div className="flex gap-2">
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onFocus={() => !input && setShowSuggestions(true)}
+          onKeyPress={(e) => e.key === "Enter" && handleSend()}
+          placeholder="输入你的问题..."
+          className="flex-1 px-4 py-2 border rounded-lg"
+        />
+        <button 
+          onClick={handleSend}
+          className="px-4 py-2 bg-primary text-primary-foreground rounded-lg"
+        >
+          <Send className="w-4 h-4" />
+        </button>
+      </div>
+    </div>
+  );
+}
+```
 

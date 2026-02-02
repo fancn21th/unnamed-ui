@@ -773,6 +773,54 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "avatar-header-default",
+    type: "registry:example",
+    registryDependencies: ["avatar-header"],
+    files: [
+      {
+        path: "examples/avatar-header/avatar-header-default.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/avatar-header-default.tsx",
+      },
+    ],
+  },
+  {
+    name: "avatar-header-sizes",
+    type: "registry:example",
+    registryDependencies: ["avatar-header"],
+    files: [
+      {
+        path: "examples/avatar-header/avatar-header-sizes.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/avatar-header-sizes.tsx",
+      },
+    ],
+  },
+  {
+    name: "avatar-header-icons",
+    type: "registry:example",
+    registryDependencies: ["avatar-header"],
+    files: [
+      {
+        path: "examples/avatar-header/avatar-header-icons.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/avatar-header-icons.tsx",
+      },
+    ],
+  },
+  {
+    name: "avatar-header-error",
+    type: "registry:example",
+    registryDependencies: ["avatar-header"],
+    files: [
+      {
+        path: "examples/avatar-header/avatar-header-error.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/avatar-header-error.tsx",
+      },
+    ],
+  },
   // history-item examples
   {
     name: "history-item-demo",
@@ -1120,6 +1168,42 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "deep-thinking-controlled",
+    type: "registry:example",
+    registryDependencies: ["deep-thinking"],
+    files: [
+      {
+        path: "examples/deep-thinking/deep-thinking-controlled.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/deep-thinking-controlled.tsx",
+      },
+    ],
+  },
+  {
+    name: "deep-thinking-labels",
+    type: "registry:example",
+    registryDependencies: ["deep-thinking"],
+    files: [
+      {
+        path: "examples/deep-thinking/deep-thinking-labels.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/deep-thinking-labels.tsx",
+      },
+    ],
+  },
+  {
+    name: "deep-thinking-steps",
+    type: "registry:example",
+    registryDependencies: ["deep-thinking"],
+    files: [
+      {
+        path: "examples/deep-thinking/deep-thinking-steps.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/deep-thinking-steps.tsx",
+      },
+    ],
+  },
   // component-panel examples
   {
     name: "component-panel-default",
@@ -1244,6 +1328,18 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "dynamic-form-with-extra",
+    type: "registry:example",
+    registryDependencies: ["dynamic-form", "status-tag"],
+    files: [
+      {
+        path: "examples/dynamic-form/dynamic-form-with-extra.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/dynamic-form-with-extra.tsx",
+      },
+    ],
+  },
+  {
     name: "task-list-demo",
     type: "registry:example",
     registryDependencies: ["task-list"],
@@ -1300,6 +1396,54 @@ export const examples: Registry["items"] = [
         path: "examples/task-list/task-list-composed-demo.tsx",
         type: "registry:example",
         target: "components/wuhan/examples/task-list-composed-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "status-tag-demo",
+    type: "registry:example",
+    registryDependencies: ["status-tag"],
+    files: [
+      {
+        path: "examples/status-tag/status-tag-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/status-tag-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "status-tag-default",
+    type: "registry:example",
+    registryDependencies: ["status-tag"],
+    files: [
+      {
+        path: "examples/status-tag/status-tag-default.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/status-tag-default.tsx",
+      },
+    ],
+  },
+  {
+    name: "status-tag-custom",
+    type: "registry:example",
+    registryDependencies: ["status-tag"],
+    files: [
+      {
+        path: "examples/status-tag/status-tag-custom.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/status-tag-custom.tsx",
+      },
+    ],
+  },
+  {
+    name: "status-tag-mixed",
+    type: "registry:example",
+    registryDependencies: ["status-tag"],
+    files: [
+      {
+        path: "examples/status-tag/status-tag-mixed.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/status-tag-mixed.tsx",
       },
     ],
   },

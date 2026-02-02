@@ -252,9 +252,9 @@ const [collapsed, setCollapsed] = React.useState(false);
   conversations={data}
   footer={({ collapsed }) =>
     collapsed ? (
-      <AvatarHeaderComposed avatar={<Avatar />} />
+      <AvatarHeader avatar={<Avatar />} />
     ) : (
-      <AvatarHeaderComposed
+      <AvatarHeader
         avatar={<Avatar />}
         name="User"
         time="Online"

@@ -4,7 +4,7 @@ import {
   AIMessage,
   UserMessage,
 } from "@/registry/wuhan/composed/message/message";
-import { AvatarHeaderComposed } from "@/registry/wuhan/composed/avatar-header/avatar-header";
+import { AvatarHeader } from "@/registry/wuhan/composed/avatar-header/avatar-header";
 import { BotIcon, UserIcon } from "lucide-react";
 
 export default function MessageWithAvatarHeader() {
@@ -12,10 +12,10 @@ export default function MessageWithAvatarHeader() {
     <div className="flex flex-col gap-4 w-full">
       <div className="flex justify-end w-full">
         <div className="flex flex-col items-end gap-2 max-w-full">
-          <AvatarHeaderComposed
+          <AvatarHeader
             name="User"
             time="12:25"
-            avatar={
+            icon={
               <div className="flex items-center justify-center text-[var(--text-secondary)] size-6 rounded-full bg-[#D9D9D9]">
                 <UserIcon className="size-4" />
               </div>
@@ -27,10 +27,10 @@ export default function MessageWithAvatarHeader() {
 
       <div className="flex justify-start w-full">
         <div className="flex flex-col items-start gap-2 max-w-full">
-          <AvatarHeaderComposed
+          <AvatarHeader
             name="AI"
             time="12:26"
-            avatar={
+            icon={
               <div className="flex items-center justify-center text-[var(--text-secondary)] size-6 rounded-full bg-[#D9D9D9]">
                 <BotIcon className="size-4" />
               </div>

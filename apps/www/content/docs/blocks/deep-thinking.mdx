@@ -6,16 +6,40 @@ author: AF
 
 <ComponentPreview name="deep-thinking-demo" description="Deep thinking block with collapsible content" className="mb-4" />
 
-Deep Thinking 组件提供了一个可折叠的思考过程展示块，适用于显示 AI 的深度思考过程、推理步骤等场景。
+Deep Thinking 组件用于展示 AI 的深度思考过程，支持可折叠交互、状态管理、动画效果等，适用于 AI 对话、推理展示、问题分析等场景。
+
+## Overview
+
+- **三种状态**：思考中、已完成、失败，自动匹配图标和样式
+- **可折叠交互**：点击头部展开/收起思考内容，支持受控和非受控模式
+- **动画效果**：思考中状态显示脉冲动画，展开收起有平滑过渡
+- **完全自定义**：支持自定义标题、图标、内容、箭头等
+- **类型安全**：完整的 TypeScript 类型定义
+- **轻量级**：基于原语组件构建，无额外依赖
+
+## Quick Start
+
+```tsx
+import { DeepThinking } from "@/registry/wuhan/composed/deep-thinking/deep-thinking";
+
+export function Example() {
+  return (
+    <DeepThinking
+      status="thinking"
+      content="正在分析问题的核心要点..."
+    />
+  );
+}
+```
 
 ## Features
 
-- **可折叠交互**：点击头部区域可展开或收起内容
-- **状态管理**：支持思考中、已完成、失败三种状态
-- **动画效果**：思考中状态显示脉冲动画，展开收起有平滑过渡
-- **时长显示**：可显示思考耗时
-- **自定义样式**：支持自定义图标、标题等
-- **样式隔离**：组件样式不受外部框架影响
+- **智能状态管理**：根据 status 自动切换图标、颜色和默认标题
+- **灵活控制**：支持受控模式（controlled）和非受控模式（uncontrolled）
+- **自定义标签**：通过 labels 配置不同状态的默认标题
+- **时长显示**：可在标题中显示思考耗时（如"已完成思考(用时5秒)"）
+- **可访问性**：支持 aria 属性，键盘导航友好
+- **响应式**：自适应不同屏幕尺寸
 
 ## Installation
 
@@ -38,11 +62,11 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/deep-thinking.json
 
 <Steps>
 
-<Step>Copy and paste the following code into your project.</Step>
+<Step>复制以下代码到你的项目</Step>
 
-<ComponentSource name="deep-thinking" title="registry/wuhan/composed/deep-thinking/deep-thinking.tsx" />
+<ComponentSource name="deep-thinking" />
 
-<Step>Update the import paths to match your project setup.</Step>
+<Step>更新导入路径以匹配你的项目设置</Step>
 
 </Steps>
 
@@ -81,4 +105,304 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/deep-thinking.json
   description="Deep thinking with custom icon and title"
   className="mb-4"
 />
+
+### Controlled
+
+受控模式的深度思考组件，可通过外部状态控制展开和状态。
+
+<ComponentPreview
+  name="deep-thinking-controlled"
+  description="Controlled deep thinking component"
+  className="mb-4"
+/>
+
+### Custom Labels
+
+自定义不同状态的标题标签。
+
+<ComponentPreview
+  name="deep-thinking-labels"
+  description="Deep thinking with custom labels"
+  className="mb-4"
+/>
+
+### Step by Step
+
+步骤式展示思考过程。
+
+<ComponentPreview
+  name="deep-thinking-steps"
+  description="Step-by-step thinking display"
+  className="mb-4"
+/>
+
+## API Reference
+
+### DeepThinking
+
+深度思考主组件，支持三种状态和完全自定义。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `status` | `DeepThinkingStatus` | `"thinking"` | 当前状态：thinking（思考中）、completed（已完成）、failed（失败） |
+| `title` | `React.ReactNode` | - | 自定义标题，优先级高于 labels 和默认标题 |
+| `content` | `React.ReactNode` | - | 思考内容，展开后显示的详细信息 |
+| `icon` | `React.ReactNode` | - | 自定义图标，优先级高于状态默认图标 |
+| `arrowIcon` | `React.ReactNode` | - | 自定义展开/收起箭头图标 |
+| `defaultOpen` | `boolean` | `false` | 非受控模式下的默认展开状态 |
+| `open` | `boolean` | - | 受控模式下的展开状态 |
+| `onOpenChange` | `(open: boolean) => void` | - | 展开状态变化回调函数 |
+| `labels` | `DeepThinkingLabels` | - | 自定义不同状态的默认标题 |
+
+#### Example
+
+```tsx
+import { DeepThinking } from "@/registry/wuhan/composed/deep-thinking/deep-thinking";
+import { useState } from "react";
+
+function AIThinking() {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  return (
+    <div className="flex flex-col gap-4">
+      {/* 非受控模式 - 思考中 */}
+      <DeepThinking
+        status="thinking"
+        content="正在分析用户问题的核心意图..."
+      />
+      
+      {/* 受控模式 - 已完成 */}
+      <DeepThinking
+        status="completed"
+        title="分析完成(用时5秒)"
+        content="已识别用户需求：询问深度思考组件的使用方法..."
+        open={isOpen}
+        onOpenChange={setIsOpen}
+      />
+      
+      {/* 自定义标签 */}
+      <DeepThinking
+        status="thinking"
+        labels={{
+          thinkingTitle: "AI 正在深度分析",
+          completedTitle: "分析完毕",
+          failedTitle: "分析异常"
+        }}
+        content="正在进行多维度分析..."
+      />
+      
+      {/* 完全自定义 */}
+      <DeepThinking
+        title="推理过程"
+        icon={<Brain className="w-4 h-4 text-purple-500" />}
+        content="第一步：理解问题\n第二步：查找相关信息\n第三步：综合分析"
+        defaultOpen
+      />
+    </div>
+  );
+}
+```
+
+### DeepThinkingStatus
+
+状态类型定义。
+
+```tsx
+type DeepThinkingStatus = 
+  | "thinking"    // 思考中
+  | "completed"   // 已完成
+  | "failed";     // 失败
+```
+
+### DeepThinkingLabels
+
+标签配置接口，用于自定义不同状态的默认标题。
+
+```tsx
+interface DeepThinkingLabels {
+  /** 思考中状态的标题 */
+  thinkingTitle?: React.ReactNode;
+  /** 已完成状态的标题 */
+  completedTitle?: React.ReactNode;
+  /** 失败状态的标题 */
+  failedTitle?: React.ReactNode;
+}
+```
+
+### 状态默认配置
+
+| Status | Default Title | Icon | Text Color |
+|--------|---------------|------|------------|
+| `thinking` | 深度思考中 | ThinkingDots (脉冲动画) | text-secondary |
+| `completed` | 已完成思考 | CheckCircle2 | text-success (绿色) |
+| `failed` | 思考失败 | AlertCircle | text-error (红色) |
+
+## 使用场景
+
+- **AI 对话**：展示 AI 的思考过程，提升用户体验和信任度
+- **问题分析**：显示复杂问题的分析步骤和推理逻辑
+- **推理展示**：展示 AI 的推理链路和决策过程
+- **错误处理**：显示思考失败的原因和建议
+- **长时任务**：显示耗时任务的处理过程和状态
+- **教育场景**：展示 AI 如何一步步解决问题，帮助学习
+
+## 最佳实践
+
+1. **状态管理**：思考中时使用 `thinking` 状态，完成后切换到 `completed`
+2. **时长显示**：在标题中显示思考耗时，如"已完成思考(用时5秒)"
+3. **内容简洁**：思考内容应简洁明了，避免过长的文本
+4. **默认展开**：思考中状态建议 `defaultOpen={true}`，让用户看到实时过程
+5. **受控模式**：需要外部控制展开状态时使用受控模式（`open` + `onOpenChange`）
+6. **错误处理**：失败状态应提供明确的错误信息和建议
+7. **动画流畅**：利用内置的过渡动画，不要禁用或覆盖
+
+## 注意事项
+
+- `title` 优先级高于 `labels` 和状态默认标题
+- `icon` 优先级高于状态默认图标
+- 使用受控模式时必须同时提供 `open` 和 `onOpenChange`
+- 思考中状态（`thinking`）的标题文本颜色会自动设置为次要文本色
+- `content` 为空时不会渲染内容区域（仅显示头部）
+- 脉冲动画仅在 `thinking` 状态下显示
+
+## 原语组件
+
+Deep Thinking 基于以下原语组件构建：
+
+- `DeepThinkingContainerPrimitive` - 容器，基于 Collapsible
+- `DeepThinkingHeaderPrimitive` - 头部触发器
+- `DeepThinkingIconPrimitive` - 图标容器
+- `DeepThinkingTitlePrimitive` - 标题文本
+- `DeepThinkingContentPrimitive` - 内容区域
+- `DeepThinkingArrowPrimitive` - 箭头图标容器
+- `ThinkingDotsPrimitive` - 思考中脉冲动画
+
+这些原语可以在 [registry/wuhan/blocks/deep-thinking/deep-thinking-01.tsx](../../registry/wuhan/blocks/deep-thinking/deep-thinking-01.tsx) 中找到。
+
+## 样式定制
+
+组件使用 Tailwind CSS 和 CSS 变量，可以通过以下方式定制：
+
+```tsx
+// 自定义样式（使用原语组件）
+import {
+  DeepThinkingContainerPrimitive,
+  DeepThinkingHeaderPrimitive,
+} from "@/registry/wuhan/blocks/deep-thinking/deep-thinking-01";
+
+<DeepThinkingContainerPrimitive>
+  <DeepThinkingHeaderPrimitive className="bg-blue-50 hover:bg-blue-100">
+    {/* 自定义头部样式 */}
+  </DeepThinkingHeaderPrimitive>
+</DeepThinkingContainerPrimitive>
+```
+
+## 扩展示例
+
+### 带进度条的思考
+
+```tsx
+import { DeepThinking } from "@/registry/wuhan/composed/deep-thinking/deep-thinking";
+import { Progress } from "@/components/ui/progress";
+
+function ThinkingWithProgress() {
+  const [progress, setProgress] = useState(0);
+  
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress((prev) => (prev >= 100 ? 100 : prev + 10));
+    }, 500);
+    return () => clearInterval(timer);
+  }, []);
+  
+  return (
+    <DeepThinking
+      status={progress === 100 ? "completed" : "thinking"}
+      title={progress === 100 ? "分析完成" : `分析中... ${progress}%`}
+      defaultOpen
+      content={
+        <div className="space-y-2">
+          <Progress value={progress} />
+          <p className="text-sm text-muted-foreground">
+            正在进行多维度分析，请稍候...
+          </p>
+        </div>
+      }
+    />
+  );
+}
+```
+
+### 步骤式思考展示
+
+```tsx
+import { DeepThinking } from "@/registry/wuhan/composed/deep-thinking/deep-thinking";
+
+function StepByStepThinking() {
+  return (
+    <DeepThinking
+      status="completed"
+      title="推理过程(用时3秒)"
+      defaultOpen
+      content={
+        <div className="space-y-3">
+          <div className="flex gap-2">
+            <span className="text-blue-600 font-semibold">步骤1:</span>
+            <span>理解用户问题核心意图</span>
+          </div>
+          <div className="flex gap-2">
+            <span className="text-blue-600 font-semibold">步骤2:</span>
+            <span>检索相关知识库内容</span>
+          </div>
+          <div className="flex gap-2">
+            <span className="text-blue-600 font-semibold">步骤3:</span>
+            <span>综合分析并生成回答</span>
+          </div>
+        </div>
+      }
+    />
+  );
+}
+```
+
+### 多状态切换
+
+```tsx
+import { DeepThinking } from "@/registry/wuhan/composed/deep-thinking/deep-thinking";
+import { useState, useEffect } from "react";
+
+function DynamicThinking() {
+  const [status, setStatus] = useState<DeepThinkingStatus>("thinking");
+  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setStatus(Math.random() > 0.5 ? "completed" : "failed");
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+  
+  return (
+    <DeepThinking
+      status={status}
+      title={
+        status === "thinking" 
+          ? "AI 正在思考" 
+          : status === "completed"
+          ? "思考完成(用时3秒)"
+          : "思考中断"
+      }
+      content={
+        status === "thinking"
+          ? "正在分析您的问题..."
+          : status === "completed"
+          ? "已完成深度分析，准备回答您的问题。"
+          : "抱歉，思考过程遇到问题，请重试。"
+      }
+      defaultOpen
+    />
+  );
+}
+```
 

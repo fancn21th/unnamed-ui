@@ -33,7 +33,7 @@ AvatarHeaderPrimitive.displayName = "AvatarHeaderPrimitive";
  * 头像样式原语（默认 24px，背景 #D9D9D9）
  * - 默认用作“占位头像”，用户可传入 <img /> 或任意内容
  */
-const AvatarPrimitive = React.forwardRef<
+const DefaultAvatarIcon = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
@@ -51,7 +51,7 @@ const AvatarPrimitive = React.forwardRef<
     />
   );
 });
-AvatarPrimitive.displayName = "AvatarPrimitive";
+DefaultAvatarIcon.displayName = "DefaultAvatarIcon";
 
 /**
  * 名称样式原语
@@ -143,7 +143,7 @@ const MessageAvatarHeader = React.forwardRef<
 >(({ avatar, name, time, className, ...props }, ref) => {
   return (
     <AvatarHeaderPrimitive ref={ref} className={className} {...props}>
-      {avatar ?? <AvatarPrimitive aria-hidden="true" />}
+      {avatar ?? <DefaultAvatarIcon aria-hidden="true" />}
       <AvatarNamePrimitive>{name}</AvatarNamePrimitive>
       {time != null && <AvatarTimePrimitive>{time}</AvatarTimePrimitive>}
     </AvatarHeaderPrimitive>
@@ -155,9 +155,9 @@ MessageAvatarHeader.displayName = "MessageAvatarHeader";
 // 使用 Avatar 前缀避免未来与 UI 组件库中的 avatar 重名
 
 export {
-  AvatarHeaderPrimitive as AvatarHeader,
-  AvatarPrimitive as Avatar,
-  AvatarNamePrimitive as AvatarName,
-  AvatarTimePrimitive as AvatarTime,
+  AvatarHeaderPrimitive,
+  DefaultAvatarIcon,
+  AvatarNamePrimitive,
+  AvatarTimePrimitive,
   MessageAvatarHeader,
 };

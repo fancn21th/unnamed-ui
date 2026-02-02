@@ -182,6 +182,8 @@ export interface DynamicFormProps {
   resetText?: string;
   /** 是否显示表单标题 */
   showTitle?: boolean;
+  /** 表单头部额外信息 */
+  extra?: React.ReactNode;
 }
 
 /**
@@ -295,13 +297,19 @@ export const DynamicForm = React.forwardRef<DynamicFormRef, DynamicFormProps>(
       submitText = "提交",
       resetText = "重置",
       showTitle = true,
+      extra,
     },
     ref,
   ) => {
+    const safeSchema = React.useMemo<FormSchema>(
+      () => schema ?? { fields: [] },
+      [schema],
+    );
+
     // 从 schema 中提取默认值
     const schemaDefaultValues = React.useMemo(
-      () => extractDefaultValues(schema.fields),
-      [schema.fields],
+      () => extractDefaultValues(safeSchema.fields),
+      [safeSchema.fields],
     );
 
     // 合并初始值和 schema 默认值
@@ -369,7 +377,7 @@ export const DynamicForm = React.forwardRef<DynamicFormRef, DynamicFormProps>(
       ref,
       () => ({
         getFieldsError: (nameList?: string[]): FieldErrorInfo[] => {
-          const fieldNames = nameList || schema.fields.map((f) => f.name);
+          const fieldNames = nameList || safeSchema.fields.map((f) => f.name);
           return fieldNames.map((name) => {
             const error = errors[name];
             return {
@@ -442,7 +450,7 @@ export const DynamicForm = React.forwardRef<DynamicFormRef, DynamicFormProps>(
         getForm: () => form,
       }),
       [
-        schema.fields,
+        safeSchema.fields,
         errors,
         getValues,
         trigger,
@@ -461,23 +469,26 @@ export const DynamicForm = React.forwardRef<DynamicFormRef, DynamicFormProps>(
     return (
       <DynamicFormLayoutPrimitive className={cn(className)} style={style}>
         {/* 表单头部 */}
-        {showTitle && schema.title && (
+        {showTitle && safeSchema.title && (
           <DynamicFormHeaderPrimitive>
             <DynamicFormTitlePrimitive>
-              {schema.title}
+              {safeSchema.title}
             </DynamicFormTitlePrimitive>
+            {extra || null}
           </DynamicFormHeaderPrimitive>
         )}
 
         {/* 表单描述 */}
-        {schema.description && (
-          <p className="text-muted-foreground text-sm">{schema.description}</p>
+        {safeSchema.description && (
+          <p className="text-muted-foreground text-sm">
+            {safeSchema.description}
+          </p>
         )}
 
         {/* 表单主体 */}
         <form onSubmit={handleSubmit(onSubmit, onError)}>
           <DynamicFormBodyLayout>
-            {schema.fields.map((field) => (
+            {safeSchema.fields.map((field) => (
               <FormItem
                 key={field.name}
                 field={field}
@@ -629,6 +640,7 @@ function renderFieldControl(
           placeholder={placeholder}
           disabled={disabled}
           aria-invalid={!!error}
+          className={cn("bg-[var(--bg-container)]")}
           {...formField}
         />
       );
@@ -640,6 +652,7 @@ function renderFieldControl(
           placeholder={placeholder}
           disabled={disabled}
           aria-invalid={!!error}
+          className={cn("bg-[var(--bg-container)]")}
           {...formField}
         />
       );
@@ -734,7 +747,7 @@ function renderFieldControl(
 
     case "radio":
       return (
-        <div className="flex flex-col gap-2">
+        <div className="flex gap-2">
           {options?.map((option) => (
             <label
               key={String(option.value)}

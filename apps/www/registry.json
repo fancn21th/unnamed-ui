@@ -2036,6 +2036,22 @@
       ]
     },
     {
+      "name": "status-tag-01",
+      "type": "registry:block",
+      "title": "Status Tag",
+      "description": "Status tag primitive with basic styling and structure",
+      "registryDependencies": [
+        "style"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/status-tag/status-tag-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/status-tag-01.tsx"
+        }
+      ]
+    },
+    {
       "name": "message",
       "type": "registry:block",
       "title": "Message",
@@ -2365,6 +2381,22 @@
           "path": "registry/wuhan/composed/dynamic-form/dynamic-form.tsx",
           "type": "registry:component",
           "target": "components/wuhan/composed/dynamic-form.tsx"
+        }
+      ]
+    },
+    {
+      "name": "status-tag",
+      "type": "registry:block",
+      "title": "Status Tag",
+      "description": "Composed status tag with business API and preset statuses",
+      "registryDependencies": [
+        "status-tag-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/composed/status-tag/status-tag.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/composed/status-tag.tsx"
         }
       ]
     },
@@ -3059,6 +3091,62 @@
       ]
     },
     {
+      "name": "avatar-header-default",
+      "type": "registry:example",
+      "registryDependencies": [
+        "avatar-header"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/avatar-header/avatar-header-default.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/avatar-header-default.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-header-sizes",
+      "type": "registry:example",
+      "registryDependencies": [
+        "avatar-header"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/avatar-header/avatar-header-sizes.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/avatar-header-sizes.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-header-icons",
+      "type": "registry:example",
+      "registryDependencies": [
+        "avatar-header"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/avatar-header/avatar-header-icons.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/avatar-header-icons.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-header-error",
+      "type": "registry:example",
+      "registryDependencies": [
+        "avatar-header"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/avatar-header/avatar-header-error.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/avatar-header-error.tsx"
+        }
+      ]
+    },
+    {
       "name": "history-item-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -3455,6 +3543,48 @@
       ]
     },
     {
+      "name": "deep-thinking-controlled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "deep-thinking"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/deep-thinking/deep-thinking-controlled.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/deep-thinking-controlled.tsx"
+        }
+      ]
+    },
+    {
+      "name": "deep-thinking-labels",
+      "type": "registry:example",
+      "registryDependencies": [
+        "deep-thinking"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/deep-thinking/deep-thinking-labels.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/deep-thinking-labels.tsx"
+        }
+      ]
+    },
+    {
+      "name": "deep-thinking-steps",
+      "type": "registry:example",
+      "registryDependencies": [
+        "deep-thinking"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/deep-thinking/deep-thinking-steps.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/deep-thinking-steps.tsx"
+        }
+      ]
+    },
+    {
       "name": "component-panel-default",
       "type": "registry:example",
       "registryDependencies": [
@@ -3596,6 +3726,21 @@
       ]
     },
     {
+      "name": "dynamic-form-with-extra",
+      "type": "registry:example",
+      "registryDependencies": [
+        "dynamic-form",
+        "status-tag"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/dynamic-form/dynamic-form-with-extra.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/dynamic-form-with-extra.tsx"
+        }
+      ]
+    },
+    {
       "name": "task-list-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -3662,6 +3807,62 @@
           "path": "registry/wuhan/examples/task-list/task-list-composed-demo.tsx",
           "type": "registry:example",
           "target": "components/wuhan/examples/task-list-composed-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "status-tag-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "status-tag"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/status-tag/status-tag-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/status-tag-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "status-tag-default",
+      "type": "registry:example",
+      "registryDependencies": [
+        "status-tag"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/status-tag/status-tag-default.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/status-tag-default.tsx"
+        }
+      ]
+    },
+    {
+      "name": "status-tag-custom",
+      "type": "registry:example",
+      "registryDependencies": [
+        "status-tag"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/status-tag/status-tag-custom.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/status-tag-custom.tsx"
+        }
+      ]
+    },
+    {
+      "name": "status-tag-mixed",
+      "type": "registry:example",
+      "registryDependencies": [
+        "status-tag"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/status-tag/status-tag-mixed.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/status-tag-mixed.tsx"
         }
       ]
     },

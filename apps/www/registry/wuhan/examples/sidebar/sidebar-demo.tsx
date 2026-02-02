@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { SidebarComposed } from "@/registry/wuhan/composed/sidebar/sidebar";
-import { AvatarHeaderComposed } from "@/registry/wuhan/composed/avatar-header/avatar-header";
+import { AvatarHeader } from "@/registry/wuhan/composed/avatar-header/avatar-header";
 import { Button } from "@/registry/wuhan/ui/button";
 import { Menu, Plus, Search, Sparkles, Trash2 } from "lucide-react";
 
@@ -92,7 +92,7 @@ export default function SidebarDemo() {
           })}
           selectedId={currentConversationId}
           emptyText={searchQuery ? "未找到匹配的对话" : "暂无对话历史"}
-          footer={<AvatarHeaderComposed name="User" />}
+          footer={<AvatarHeader name="User" />}
         />
       </div>
     </div>

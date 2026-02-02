@@ -51,7 +51,7 @@ const aiGeneratedSchema: FormSchema = {
         { value: "cultural", label: "文化体验" },
         { value: "food", label: "美食之旅" },
       ],
-      orientation: "horizontal",
+      // orientation: "horizontal",
     },
     {
       name: "interests",

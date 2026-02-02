@@ -182,6 +182,8 @@ export interface DynamicFormProps {
   resetText?: string;
   /** 是否显示表单标题 */
   showTitle?: boolean;
+    /** 表单头部额外信息 */
+  extra?: React.ReactNode;
 }
 
 /**
@@ -295,6 +297,7 @@ export const DynamicForm = React.forwardRef<DynamicFormRef, DynamicFormProps>(
       submitText = "提交",
       resetText = "重置",
       showTitle = true,
+      extra,
     },
     ref,
   ) => {
@@ -636,6 +639,9 @@ function renderFieldControl(
           placeholder={placeholder}
           disabled={disabled}
           aria-invalid={!!error}
+          className={cn(
+            "bg-[var(--bg-container)]",
+          )}
           {...formField}
         />
       );
@@ -647,6 +653,9 @@ function renderFieldControl(
           placeholder={placeholder}
           disabled={disabled}
           aria-invalid={!!error}
+          className={cn(
+            "bg-[var(--bg-container)]",
+          )}
           {...formField}
         />
       );
@@ -741,7 +750,7 @@ function renderFieldControl(
 
     case "radio":
       return (
-        <div className="flex flex-col gap-2">
+        <div className="flex gap-2">
           {options?.map((option) => (
             <label
               key={String(option.value)}

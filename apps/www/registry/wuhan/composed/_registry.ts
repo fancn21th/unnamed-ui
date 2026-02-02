@@ -285,4 +285,18 @@ export const composed: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "status-tag",
+    type: "registry:block",
+    title: "Status Tag",
+    description: "Composed status tag with business API and preset statuses",
+    registryDependencies: ["status-tag-01"],
+    files: [
+      {
+        path: "composed/status-tag/status-tag.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/status-tag.tsx",
+      },
+    ],
+  },
 ];

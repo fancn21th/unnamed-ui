@@ -1346,6 +1346,32 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "toggle-button": {
+      name: "toggle-button",
+      description:
+        "Composed toggle button with single and multiple selection modes",
+      type: "registry:block",
+      registryDependencies: ["toggle-button-01"],
+      files: [
+        {
+          path: "registry/wuhan/composed/toggle-button/toggle-button.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/toggle-button.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/composed/toggle-button/toggle-button.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "action-dropdown": {
       name: "action-dropdown",
       description: "操作下拉菜单组件",
@@ -3387,6 +3413,181 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/examples/toggle-button/toggle-button-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-button-default": {
+      name: "toggle-button-default",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle-button"],
+      files: [
+        {
+          path: "registry/wuhan/examples/toggle-button/toggle-button-default.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/toggle-button-default.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/toggle-button/toggle-button-default.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-button-compact": {
+      name: "toggle-button-compact",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle-button"],
+      files: [
+        {
+          path: "registry/wuhan/examples/toggle-button/toggle-button-compact.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/toggle-button-compact.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/toggle-button/toggle-button-compact.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-button-multiple": {
+      name: "toggle-button-multiple",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle-button"],
+      files: [
+        {
+          path: "registry/wuhan/examples/toggle-button/toggle-button-multiple.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/toggle-button-multiple.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/toggle-button/toggle-button-multiple.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-button-disabled": {
+      name: "toggle-button-disabled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle-button"],
+      files: [
+        {
+          path: "registry/wuhan/examples/toggle-button/toggle-button-disabled.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/toggle-button-disabled.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/toggle-button/toggle-button-disabled.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-button-feedback": {
+      name: "toggle-button-feedback",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle-button"],
+      files: [
+        {
+          path: "registry/wuhan/examples/toggle-button/toggle-button-feedback.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/toggle-button-feedback.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/toggle-button/toggle-button-feedback.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-button-sender": {
+      name: "toggle-button-sender",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle-button"],
+      files: [
+        {
+          path: "registry/wuhan/examples/toggle-button/toggle-button-sender.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/toggle-button-sender.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/toggle-button/toggle-button-sender.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-button-filter": {
+      name: "toggle-button-filter",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle-button"],
+      files: [
+        {
+          path: "registry/wuhan/examples/toggle-button/toggle-button-filter.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/toggle-button-filter.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/toggle-button/toggle-button-filter.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

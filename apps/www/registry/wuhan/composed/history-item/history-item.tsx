@@ -32,12 +32,12 @@ export interface HistoryItemProps {
 
 /**
  * HistoryItem 历史记录项组件
- * 
+ *
  * 用于显示聊天历史、浏览历史等列表项，支持：
  * - 选中和活动状态的视觉反馈
  * - 悬停时显示/隐藏操作按钮
  * - 完整的无障碍支持（ARIA 属性）
- * 
+ *
  * @example
  * ```tsx
  * <HistoryItem
@@ -48,7 +48,7 @@ export interface HistoryItemProps {
  *   onClick={() => console.log("clicked")}
  * />
  * ```
- * 
+ *
  * @public
  */
 export const HistoryItem = React.forwardRef<
@@ -73,14 +73,14 @@ export const HistoryItem = React.forwardRef<
       >
         {/* 标题区域 */}
         <HistoryItemTitlePrimitive>{title}</HistoryItemTitlePrimitive>
-        
+
         {/* 始终显示的尾部内容 */}
         {trailing && (
           <HistoryItemTrailingPrimitive>
             {trailing}
           </HistoryItemTrailingPrimitive>
         )}
-        
+
         {/* 悬停时显示的尾部内容 */}
         {hoverTrailing && (
           <HistoryItemHoverTrailingPrimitive>

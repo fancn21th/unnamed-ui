@@ -9,7 +9,7 @@ import {
 
 /**
  * 欢迎消息组件属性
- * 
+ *
  * @public
  */
 export interface WelcomeProps {
@@ -23,10 +23,10 @@ export interface WelcomeProps {
 
 /**
  * 欢迎消息组件
- * 
+ *
  * 用于展示聊天界面的空状态欢迎信息，支持图标和自定义文本。
  * 适用于新对话开始、功能介绍等场景。
- * 
+ *
  * @example
  * ```tsx
  * // 基础用法
@@ -34,7 +34,7 @@ export interface WelcomeProps {
  *   icon={<Sparkles />}
  *   text="你好！我是 AI 助手，有什么可以帮你的吗？"
  * />
- * 
+ *
  * // 多行文本
  * <WelcomeMessage
  *   icon={<Bot />}
@@ -48,7 +48,7 @@ export interface WelcomeProps {
  *   }
  * />
  * ```
- * 
+ *
  * @public
  */
 export const WelcomeMessage = React.forwardRef<HTMLDivElement, WelcomeProps>(

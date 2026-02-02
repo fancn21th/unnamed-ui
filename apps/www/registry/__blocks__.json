@@ -176,6 +176,10 @@
     "description": "状态标签"
   },
   {
+    "name": "toggle-button",
+    "description": "Composed toggle button with single and multiple selection modes"
+  },
+  {
     "name": "action-dropdown",
     "description": "操作下拉菜单组件"
   },

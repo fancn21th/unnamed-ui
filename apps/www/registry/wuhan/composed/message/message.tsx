@@ -47,30 +47,30 @@ interface AIMessageProps extends AIMessagePrimitiveProps {
 
 /**
  * AI 消息组件
- * 
+ *
  * 用于显示 AI 生成的消息内容，支持：
  * - 三种状态：正常、生成中、失败
  * - 自定义生成中和错误状态的显示内容
  * - 完整的无障碍支持（ARIA live regions）
- * 
+ *
  * @example
  * ```tsx
  * // 正常状态
  * <AIMessage>这是 AI 的回复内容</AIMessage>
- * 
+ *
  * // 生成中状态
- * <AIMessage 
- *   status="generating" 
+ * <AIMessage
+ *   status="generating"
  *   generatingContent={<LoadingDots />}
  * />
- * 
+ *
  * // 失败状态
- * <AIMessage 
- *   status="failed" 
+ * <AIMessage
+ *   status="failed"
  *   errorMessage="生成失败，请重试"
  * />
  * ```
- * 
+ *
  * @public
  */
 const AIMessage = React.forwardRef<HTMLDivElement, AIMessageProps>(
@@ -99,7 +99,7 @@ const AIMessage = React.forwardRef<HTMLDivElement, AIMessageProps>(
 
     // 生成中时使用 polite 让屏幕阅读器播报更新
     const ariaLive = status === "generating" ? "polite" : undefined;
-    
+
     // 设置语义化的 ARIA 标签
     const ariaLabel =
       status === "generating"
@@ -125,14 +125,14 @@ AIMessage.displayName = "AIMessage";
 
 /**
  * 用户消息组件
- * 
+ *
  * 用于显示用户发送的消息内容，简单封装原语组件。
- * 
+ *
  * @example
  * ```tsx
  * <UserMessage>用户的问题或输入</UserMessage>
  * ```
- * 
+ *
  * @public
  */
 const UserMessage = React.forwardRef<HTMLDivElement, UserMessagePrimitiveProps>(

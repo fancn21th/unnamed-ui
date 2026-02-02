@@ -8,7 +8,7 @@ import {
 
 /**
  * 建议项数据接口
- * 
+ *
  * @public
  */
 export interface SuggestionItem {
@@ -24,7 +24,7 @@ export interface SuggestionItem {
 
 /**
  * 建议面板组件属性
- * 
+ *
  * @public
  */
 export interface SuggestionPanelProps {
@@ -41,7 +41,7 @@ export interface SuggestionPanelProps {
 /**
  * 建议按钮组容器组件
  * 用于包裹多个建议按钮，提供网格布局
- * 
+ *
  * @public
  */
 export const SuggestionGroup = SuggestionGroupPrimitive;
@@ -49,31 +49,31 @@ export const SuggestionGroup = SuggestionGroupPrimitive;
 /**
  * 单个建议按钮组件
  * 可独立使用或在 SuggestionGroup 中使用
- * 
+ *
  * @public
  */
 export const SuggestionButton = SuggestionButtonPrimitive;
 
 /**
  * 建议面板组件
- * 
+ *
  * 数据驱动的建议面板，支持标题、描述和建议按钮列表。
  * 适用于聊天界面的空状态引导、下一步操作建议等场景。
- * 
+ *
  * @example
  * ```tsx
  * const suggestions = [
  *   { id: "1", label: "开始新对话", icon: <MessageSquare /> },
  *   { id: "2", label: "查看文档", icon: <FileText /> },
  * ];
- * 
+ *
  * <SuggestionPanel
  *   title="欢迎使用"
  *   description="选择一个建议开始"
  *   items={suggestions}
  * />
  * ```
- * 
+ *
  * @public
  */
 export const SuggestionPanel = React.forwardRef<

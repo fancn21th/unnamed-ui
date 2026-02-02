@@ -62,34 +62,34 @@ export const QuickActionIcon = QuickActionIconPrimitive;
 
 /**
  * QuickActionPanel 组件
- * 
+ *
  * 用于快速创建完整的快捷操作面板，通过数据驱动的方式渲染多个操作按钮。
  * 适用于欢迎页面、空状态提示、常用操作入口等场景。
- * 
+ *
  * @example
  * ```tsx
  * const actions = [
- *   { 
- *     id: "new-chat", 
- *     label: "开始新对话", 
- *     icon: <MessageSquare />, 
- *     onClick: () => {} 
+ *   {
+ *     id: "new-chat",
+ *     label: "开始新对话",
+ *     icon: <MessageSquare />,
+ *     onClick: () => {}
  *   },
- *   { 
- *     id: "upload", 
- *     label: "上传文件", 
- *     icon: <Upload />, 
- *     onClick: () => {} 
+ *   {
+ *     id: "upload",
+ *     label: "上传文件",
+ *     icon: <Upload />,
+ *     onClick: () => {}
  *   },
  * ];
- * 
+ *
  * <QuickActionPanel
  *   title="快速开始"
  *   description="选择一个操作开始使用"
  *   items={actions}
  * />
  * ```
- * 
+ *
  * @public
  */
 export const QuickActionPanel = React.forwardRef<
@@ -113,7 +113,7 @@ export const QuickActionPanel = React.forwardRef<
           )}
         </div>
       )}
-      
+
       {/* 快捷操作按钮组 */}
       <QuickActionGroup aria-label="Quick actions">
         {items.map((item) => (

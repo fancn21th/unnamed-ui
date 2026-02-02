@@ -299,4 +299,19 @@ export const composed: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "toggle-button",
+    type: "registry:block",
+    title: "Toggle Button",
+    description:
+      "Composed toggle button with single and multiple selection modes",
+    registryDependencies: ["toggle-button-01"],
+    files: [
+      {
+        path: "composed/toggle-button/toggle-button.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/toggle-button.tsx",
+      },
+    ],
+  },
 ];

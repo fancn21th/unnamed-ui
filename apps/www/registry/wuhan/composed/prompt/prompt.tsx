@@ -78,10 +78,10 @@ export interface PromptPanelProps {
 
 /**
  * PromptGroup 组件
- * 
+ *
  * 用于包裹多个 PromptButton，提供统一的布局容器。
  * 支持横向和纵向两种布局方式。
- * 
+ *
  * @example
  * ```tsx
  * <PromptGroup variant="horizontal">
@@ -89,7 +89,7 @@ export interface PromptPanelProps {
  *   <PromptButton>示例 2</PromptButton>
  * </PromptGroup>
  * ```
- * 
+ *
  * @public
  */
 export const PromptGroup = React.forwardRef<HTMLDivElement, PromptGroupProps>(
@@ -113,30 +113,30 @@ PromptGroup.displayName = "PromptGroup";
 
 /**
  * PromptButton 组件
- * 
+ *
  * 用于显示单个 Prompt 建议，用户点击后可快速填充输入内容。
- * 
+ *
  * - horizontal 模式：简洁的横向按钮，适合紧凑布局
  * - vertical 模式：带图标的卡片式按钮，适合突出显示
- * 
+ *
  * @example
  * ```tsx
  * // 横向模式
  * <PromptButton variant="horizontal" onClick={() => console.log("clicked")}>
  *   帮我写一篇文章
  * </PromptButton>
- * 
+ *
  * // 纵向模式（带默认图标）
  * <PromptButton variant="vertical">
  *   解释一下量子计算
  * </PromptButton>
- * 
+ *
  * // 自定义图标
  * <PromptButton variant="vertical" icon={<Star />}>
  *   推荐一本书
  * </PromptButton>
  * ```
- * 
+ *
  * @public
  */
 export const PromptButton = React.forwardRef<
@@ -164,9 +164,9 @@ PromptButton.displayName = "PromptButton";
 
 /**
  * PromptPanel 组件
- * 
+ *
  * 快速创建完整的 Prompt 建议面板，通过数据驱动的方式渲染多个 Prompt 按钮。
- * 
+ *
  * @example
  * ```tsx
  * const prompts = [
@@ -174,10 +174,10 @@ PromptButton.displayName = "PromptButton";
  *   { id: "2", label: "你能帮我做什么", onClick: () => {} },
  *   { id: "3", label: "推荐学习资源", icon: <Book />, onClick: () => {} },
  * ];
- * 
+ *
  * <PromptPanel variant="horizontal" items={prompts} />
  * ```
- * 
+ *
  * @public
  */
 export const PromptPanel = React.forwardRef<HTMLDivElement, PromptPanelProps>(

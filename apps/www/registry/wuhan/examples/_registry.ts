@@ -1155,6 +1155,90 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "toggle-button-default",
+    type: "registry:example",
+    registryDependencies: ["toggle-button"],
+    files: [
+      {
+        path: "examples/toggle-button/toggle-button-default.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/toggle-button-default.tsx",
+      },
+    ],
+  },
+  {
+    name: "toggle-button-compact",
+    type: "registry:example",
+    registryDependencies: ["toggle-button"],
+    files: [
+      {
+        path: "examples/toggle-button/toggle-button-compact.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/toggle-button-compact.tsx",
+      },
+    ],
+  },
+  {
+    name: "toggle-button-multiple",
+    type: "registry:example",
+    registryDependencies: ["toggle-button"],
+    files: [
+      {
+        path: "examples/toggle-button/toggle-button-multiple.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/toggle-button-multiple.tsx",
+      },
+    ],
+  },
+  {
+    name: "toggle-button-disabled",
+    type: "registry:example",
+    registryDependencies: ["toggle-button"],
+    files: [
+      {
+        path: "examples/toggle-button/toggle-button-disabled.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/toggle-button-disabled.tsx",
+      },
+    ],
+  },
+  {
+    name: "toggle-button-feedback",
+    type: "registry:example",
+    registryDependencies: ["toggle-button"],
+    files: [
+      {
+        path: "examples/toggle-button/toggle-button-feedback.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/toggle-button-feedback.tsx",
+      },
+    ],
+  },
+  {
+    name: "toggle-button-sender",
+    type: "registry:example",
+    registryDependencies: ["toggle-button"],
+    files: [
+      {
+        path: "examples/toggle-button/toggle-button-sender.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/toggle-button-sender.tsx",
+      },
+    ],
+  },
+  {
+    name: "toggle-button-filter",
+    type: "registry:example",
+    registryDependencies: ["toggle-button"],
+    files: [
+      {
+        path: "examples/toggle-button/toggle-button-filter.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/toggle-button-filter.tsx",
+      },
+    ],
+  },
   // deep-thinking examples
   {
     name: "deep-thinking-demo",

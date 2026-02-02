@@ -92,6 +92,10 @@
     "description": "Dynamic Form component for user input and interaction"
   },
   {
+    "name": "status-tag-01",
+    "description": "Status tag primitive with basic styling and structure"
+  },
+  {
     "name": "message",
     "description": "Composed AI and user message components"
   },
@@ -168,6 +172,10 @@
     "description": "Schema-driven dynamic form with validation and multiple field types"
   },
   {
+    "name": "status-tag",
+    "description": "状态标签"
+  },
+  {
     "name": "action-dropdown",
     "description": "操作下拉菜单组件"
   },
@@ -206,10 +214,6 @@
   {
     "name": "similar-job",
     "description": "相似职位参考"
-  },
-  {
-    "name": "status-tag",
-    "description": "状态标签"
   },
   {
     "name": "thinking",

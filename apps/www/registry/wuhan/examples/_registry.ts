@@ -1337,6 +1337,66 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "component-panel-controlled",
+    type: "registry:example",
+    registryDependencies: ["component-panel", "button"],
+    files: [
+      {
+        path: "examples/component-panel/component-panel-controlled.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/component-panel-controlled.tsx",
+      },
+    ],
+  },
+  {
+    name: "component-panel-single-select",
+    type: "registry:example",
+    registryDependencies: ["component-panel"],
+    files: [
+      {
+        path: "examples/component-panel/component-panel-single-select.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/component-panel-single-select.tsx",
+      },
+    ],
+  },
+  {
+    name: "component-panel-with-icons",
+    type: "registry:example",
+    registryDependencies: ["component-panel"],
+    files: [
+      {
+        path: "examples/component-panel/component-panel-with-icons.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/component-panel-with-icons.tsx",
+      },
+    ],
+  },
+  {
+    name: "component-panel-disabled",
+    type: "registry:example",
+    registryDependencies: ["component-panel"],
+    files: [
+      {
+        path: "examples/component-panel/component-panel-disabled.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/component-panel-disabled.tsx",
+      },
+    ],
+  },
+  {
+    name: "component-panel-tab-controlled",
+    type: "registry:example",
+    registryDependencies: ["component-panel"],
+    files: [
+      {
+        path: "examples/component-panel/component-panel-tab-controlled.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/component-panel-tab-controlled.tsx",
+      },
+    ],
+  },
   // tooltip examples
   {
     name: "tooltip-demo",

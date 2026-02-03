@@ -1346,6 +1346,168 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    markdown: {
+      name: "markdown",
+      description: "Streaming-friendly Markdown renderer with custom blocks",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/composed/markdown/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/markdown/index.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/config.ts",
+          type: "registry:component",
+          target: "components/wuhan/composed/markdown/config.ts",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/declaration.ts",
+          type: "registry:component",
+          target: "components/wuhan/composed/markdown/declaration.ts",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/style.ts",
+          type: "registry:component",
+          target: "components/wuhan/composed/markdown/style.ts",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/utils.ts",
+          type: "registry:component",
+          target: "components/wuhan/composed/markdown/utils.ts",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/icons.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/markdown/icons.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/Code/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/markdown/Code/index.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/Code/style.ts",
+          type: "registry:component",
+          target: "components/wuhan/composed/markdown/Code/style.ts",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/Table/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/markdown/Table/index.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/Table/style.ts",
+          type: "registry:component",
+          target: "components/wuhan/composed/markdown/Table/style.ts",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/components/index.ts",
+          type: "registry:component",
+          target: "components/wuhan/composed/markdown/components/index.ts",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/components/DynamicForm/index.tsx",
+          type: "registry:component",
+          target:
+            "components/wuhan/composed/markdown/components/DynamicForm/index.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/components/DynamicTable/index.tsx",
+          type: "registry:component",
+          target:
+            "components/wuhan/composed/markdown/components/DynamicTable/index.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/components/GptVis/index.tsx",
+          type: "registry:component",
+          target:
+            "components/wuhan/composed/markdown/components/GptVis/index.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/components/GptVis/style.ts",
+          type: "registry:component",
+          target:
+            "components/wuhan/composed/markdown/components/GptVis/style.ts",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/components/HtmlSkeleton/index.tsx",
+          type: "registry:component",
+          target:
+            "components/wuhan/composed/markdown/components/HtmlSkeleton/index.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/components/ImageSkeleton/index.tsx",
+          type: "registry:component",
+          target:
+            "components/wuhan/composed/markdown/components/ImageSkeleton/index.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/components/IncompleteEmphasis/index.tsx",
+          type: "registry:component",
+          target:
+            "components/wuhan/composed/markdown/components/IncompleteEmphasis/index.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/components/IncompleteLink/index.tsx",
+          type: "registry:component",
+          target:
+            "components/wuhan/composed/markdown/components/IncompleteLink/index.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/components/TableSkeleton/index.tsx",
+          type: "registry:component",
+          target:
+            "components/wuhan/composed/markdown/components/TableSkeleton/index.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/components/ThinkComponent/index.tsx",
+          type: "registry:component",
+          target:
+            "components/wuhan/composed/markdown/components/ThinkComponent/index.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/CustomSources/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/markdown/CustomSources/index.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/CustomSources/style.ts",
+          type: "registry:component",
+          target: "components/wuhan/composed/markdown/CustomSources/style.ts",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/CustomSources/SourcesSidebar/index.tsx",
+          type: "registry:component",
+          target:
+            "components/wuhan/composed/markdown/CustomSources/SourcesSidebar/index.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/CustomSources/SourcesSidebar/style.ts",
+          type: "registry:component",
+          target:
+            "components/wuhan/composed/markdown/CustomSources/SourcesSidebar/style.ts",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/utils/tools.ts",
+          type: "registry:component",
+          target: "components/wuhan/composed/markdown/utils/tools.ts",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/composed/markdown/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "toggle-button": {
       name: "toggle-button",
       description:
@@ -3813,6 +3975,132 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/examples/component-panel/component-panel-default.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "component-panel-controlled": {
+      name: "component-panel-controlled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["component-panel", "button"],
+      files: [
+        {
+          path: "registry/wuhan/examples/component-panel/component-panel-controlled.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/component-panel-controlled.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/component-panel/component-panel-controlled.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "component-panel-single-select": {
+      name: "component-panel-single-select",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["component-panel"],
+      files: [
+        {
+          path: "registry/wuhan/examples/component-panel/component-panel-single-select.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/component-panel-single-select.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/component-panel/component-panel-single-select.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "component-panel-with-icons": {
+      name: "component-panel-with-icons",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["component-panel"],
+      files: [
+        {
+          path: "registry/wuhan/examples/component-panel/component-panel-with-icons.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/component-panel-with-icons.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/component-panel/component-panel-with-icons.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "component-panel-disabled": {
+      name: "component-panel-disabled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["component-panel"],
+      files: [
+        {
+          path: "registry/wuhan/examples/component-panel/component-panel-disabled.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/component-panel-disabled.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/component-panel/component-panel-disabled.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "component-panel-tab-controlled": {
+      name: "component-panel-tab-controlled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["component-panel"],
+      files: [
+        {
+          path: "registry/wuhan/examples/component-panel/component-panel-tab-controlled.tsx",
+          type: "registry:example",
+          target:
+            "components/wuhan/examples/component-panel-tab-controlled.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/component-panel/component-panel-tab-controlled.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

@@ -1,23 +1,70 @@
 ---
 title: Component Panel
-description: Component panel with tabs (全部, MCP, 工具, 工作流) and toggle button list
+description: Composed component panel with tabs and cascading selection
 author: AF
 ---
 
-<ComponentPreview name="component-panel-default" description="Component panel with tabs and toggle buttons" className="mb-4" />
+<ComponentPreview
+  name="component-panel-default"
+  description="Component panel with tabs and multiple selection"
+  className="mb-4"
+/>
 
-Component Panel 组件提供了一个带标签页的组件面板，支持在不同分类（全部、MCP、工具、工作流）之间切换，每个分类下显示一个可切换的组件列表。
+Component Panel 是一个级联选择面板组件，通过选项卡切换不同分类，在每个分类下选择选项。支持单选和多选模式，受控和非受控状态，适用于功能开关、工具选择、权限配置等场景。
+
+## Overview
+
+- **级联选择**：通过选项卡切换分类，在分类下选择具体选项
+- **灵活模式**：支持单选和多选两种模式
+- **受控/非受控**：同时支持受控和非受控状态管理
+- **标准数据格式**：使用业界标准的 value/label 数据结构
+- **类型安全**：完整的 TypeScript 类型定义
+- **响应式布局**：自适应不同屏幕尺寸，移动端友好
+
+## Quick Start
+
+```tsx
+import { ComponentPanel } from "@/registry/wuhan/composed/component-panel";
+
+export function Example() {
+  const categories = [
+    {
+      value: "all",
+      label: "全部",
+      options: [
+        { value: "comp1", label: "组件1" },
+        { value: "comp2", label: "组件2" },
+      ],
+    },
+    {
+      value: "tools",
+      label: "工具",
+      options: [
+        { value: "tool1", label: "工具1" },
+        { value: "tool2", label: "工具2" },
+      ],
+    },
+  ];
+
+  return (
+    <ComponentPanel
+      categories={categories}
+      defaultValue={["comp1", "tool1"]}
+      onChange={(values) => console.log(values)}
+    />
+  );
+}
+```
 
 ## Features
 
-- **标签页切换**：支持四个标签页（全部、MCP、工具、工作流）
-- **切换按钮**：每个列表项都是独立的切换按钮，可控制选中/未选中状态
-- **自适应布局**：列表项根据屏幕宽度自动调整每行显示数量
-  - 移动端：每行 2 个
-  - 小屏幕：每行 3 个
-  - 中等屏幕及以上：每行 4 个
-- **状态管理**：支持受控和非受控模式
-- **样式隔离**：组件样式不受外部框架影响
+- **标准化数据结构**：使用 value/label 格式，与主流组件库保持一致
+- **多种选择模式**：支持多选（默认）和单选模式
+- **双向状态控制**：选项选择和选项卡切换均支持受控/非受控
+- **禁用状态**：支持禁用整个分类或单个选项
+- **图标支持**：选项可配置自定义图标
+- **工具提示**：支持为选项添加 tooltip 说明
+- **响应式网格**：选项列表自适应屏幕宽度
 
 ## Installation
 
@@ -40,17 +87,17 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/component-panel.json
 
 <Steps>
 
-<Step>Install the following dependencies:</Step>
+<Step>安装依赖</Step>
 
 ```bash
 npm install @radix-ui/react-tabs
 ```
 
-<Step>Copy and paste the following code into your project.</Step>
+<Step>复制以下代码到你的项目</Step>
 
-<ComponentSource name="component-panel" title="registry/wuhan/composed/component-panel/component-panel.tsx" />
+<ComponentSource name="component-panel" />
 
-<Step>Update the import paths to match your project setup.</Step>
+<Step>更新导入路径以匹配你的项目设置</Step>
 
 </Steps>
 
@@ -60,15 +107,535 @@ npm install @radix-ui/react-tabs
 
 ## Examples
 
-### Default
+### Default Usage
 
-基础的组件面板示例，包含四个标签页和切换按钮列表。
+基础多选模式，使用非受控状态。
 
 <ComponentPreview
   name="component-panel-default"
-  description="Basic component panel with tabs and toggle buttons"
+  description="Default multiple selection mode"
   className="mb-4"
 />
+
+### Controlled Mode
+
+完全受控模式，外部管理选中状态。
+
+<ComponentPreview
+  name="component-panel-controlled"
+  description="Controlled selection state"
+  className="mb-4"
+/>
+
+### Single Selection
+
+单选模式，每次只能选中一个选项。
+
+<ComponentPreview
+  name="component-panel-single-select"
+  description="Single selection mode"
+  className="mb-4"
+/>
+
+### With Icons
+
+为选项添加图标，增强视觉识别。
+
+<ComponentPreview
+  name="component-panel-with-icons"
+  description="Options with icons"
+  className="mb-4"
+/>
+
+### Disabled States
+
+禁用分类或选项，用于权限控制。
+
+<ComponentPreview
+  name="component-panel-disabled"
+  description="Disabled categories and options"
+  className="mb-4"
+/>
+
+### Tab Controlled
+
+受控选项卡切换，外部控制当前分类。
+
+<ComponentPreview
+  name="component-panel-tab-controlled"
+  description="Controlled tab switching"
+  className="mb-4"
+/>
+
+## API Reference
+
+### ComponentPanel
+
+主组件，级联选择面板。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `categories` | `ComponentPanelCategory[]` | - | 分类列表（必填） |
+| `value` | `string[]` | - | 选中的选项值数组（受控） |
+| `defaultValue` | `string[]` | `[]` | 默认选中的选项值数组（非受控） |
+| `onChange` | `(value: string[]) => void` | - | 选中值变化回调 |
+| `activeTab` | `string` | - | 当前激活的选项卡（受控） |
+| `defaultActiveTab` | `string` | - | 默认激活的选项卡（非受控） |
+| `onTabChange` | `(tab: string) => void` | - | 选项卡切换回调 |
+| `multiple` | `boolean` | `true` | 是否支持多选 |
+| `className` | `string` | - | 自定义样式类名 |
+
+#### Example
+
+```tsx
+import { ComponentPanel } from "@/registry/wuhan/composed/component-panel";
+import { useState } from "react";
+
+function App() {
+  const [selected, setSelected] = useState(["comp1"]);
+  const [activeTab, setActiveTab] = useState("all");
+
+  return (
+    <ComponentPanel
+      categories={categories}
+      // 受控选择
+      value={selected}
+      onChange={setSelected}
+      // 受控选项卡
+      activeTab={activeTab}
+      onTabChange={setActiveTab}
+      // 单选模式
+      multiple={false}
+    />
+  );
+}
+```
+
+### ComponentPanelCategory
+
+分类配置接口。
+
+```tsx
+interface ComponentPanelCategory {
+  /** 分类的唯一值 */
+  value: string;
+  /** 分类的显示文本 */
+  label: React.ReactNode;
+  /** 该分类下的选项列表 */
+  options: ComponentPanelOption[];
+  /** 是否禁用该分类 */
+  disabled?: boolean;
+}
+```
+
+**示例**：
+
+```tsx
+const category: ComponentPanelCategory = {
+  value: "tools",
+  label: "工具集",
+  disabled: false,
+  options: [
+    { value: "tool1", label: "工具1" },
+    { value: "tool2", label: "工具2" },
+  ],
+};
+```
+
+### ComponentPanelOption
+
+选项配置接口。
+
+```tsx
+interface ComponentPanelOption {
+  /** 选项的唯一值 */
+  value: string;
+  /** 选项的显示文本 */
+  label: React.ReactNode;
+  /** 选项图标 */
+  icon?: React.ReactNode;
+  /** 选项提示信息 */
+  tooltip?: React.ReactNode;
+  /** 是否禁用该选项 */
+  disabled?: boolean;
+}
+```
+
+**示例**：
+
+```tsx
+import { Wrench } from "lucide-react";
+
+const option: ComponentPanelOption = {
+  value: "builder",
+  label: "构建工具",
+  icon: <Wrench className="size-4" />,
+  tooltip: "用于构建和打包项目",
+  disabled: false,
+};
+```
+
+## 使用场景
+
+- **功能开关面板**：管理应用中各模块功能的启用/禁用状态
+- **工具选择器**：在开发工具、设计工具等分类中选择常用工具
+- **权限配置**：按模块配置用户或角色的权限
+- **插件管理**：管理各类插件的启用状态
+- **组件库选择**：在组件库文档中选择要查看的组件
+- **筛选面板**：多维度筛选数据，如电商网站的商品筛选
+
+## 最佳实践
+
+1. **合理分类**：将选项按逻辑归类到不同 tab，每个 tab 的选项数量适中（建议 3-12 个）
+2. **使用 tooltip**：为复杂或缩写的选项添加 tooltip 说明，提升用户体验
+3. **添加图标**：为选项添加图标可以增强视觉识别，特别适用于工具类选择
+4. **状态持久化**：考虑将选中状态保存到 localStorage 或后端，避免刷新丢失
+5. **受控使用**：涉及复杂业务逻辑时建议使用受控模式，便于状态管理和同步
+6. **禁用反馈**：禁用的选项应该提供 tooltip 说明原因，如"需要高级会员"
+
+## 注意事项
+
+- 组件基于 Radix UI Tabs 构建，需要安装 `@radix-ui/react-tabs` 依赖
+- `categories` 数组不应为空，至少包含一个分类
+- 选项的 `value` 在所有分类中应该是唯一的
+- 单选模式下 `value` 数组只会包含一个元素
+- 禁用的分类无法切换，禁用的选项无法选中
+- 受控模式下，`value` 和 `onChange` 必须配合使用
+
+## 原语组件
+
+Component Panel 基于以下原语组件构建：
+
+### 主要原语
+- `ComponentPanelContainerPrimitive` - 主容器（基于 Radix Tabs.Root）
+- `ComponentPanelTabsListPrimitive` - 选项卡列表
+- `ComponentPanelTabsTriggerPrimitive` - 选项卡触发器
+- `ComponentPanelTabsContentPrimitive` - 选项卡内容
+
+### 列表原语
+- `ComponentPanelListPrimitive` - 选项列表容器
+- `ComponentPanelListItemPrimitive` - 选项列表项
+- `ComponentPanelListItemIconPrimitive` - 选项默认图标
+
+原语组件提供了更底层的控制，可以在 [component-panel-01.tsx](../../registry/wuhan/blocks/component-panel/component-panel-01.tsx) 中找到。
+
+## 样式定制
+
+组件使用 Tailwind CSS 构建，可以通过 `className` 自定义样式：
+
+```tsx
+<ComponentPanel
+  className="custom-panel"
+  categories={categories}
+/>
+```
+
+### 响应式布局
+
+选项列表默认使用响应式网格布局：
+
+- **移动端**：每行 2 个选项
+- **小屏幕**：每行 3 个选项
+- **中等及以上屏幕**：每行 4 个选项
+
+可以通过 CSS 覆盖原语组件的网格样式自定义布局。
+
+## 扩展示例
+
+### 动态分类
+
+根据权限动态显示分类。
+
+```tsx
+import { ComponentPanel } from "@/registry/wuhan/composed/component-panel";
+
+function DynamicCategories() {
+  const userRole = "admin"; // 从上下文获取
+
+  const allCategories = [
+    {
+      value: "basic",
+      label: "基础功能",
+      options: [
+        { value: "view", label: "查看" },
+        { value: "edit", label: "编辑" },
+      ],
+    },
+    {
+      value: "advanced",
+      label: "高级功能",
+      options: [
+        { value: "delete", label: "删除" },
+        { value: "export", label: "导出" },
+      ],
+    },
+  ];
+
+  // 根据角色过滤分类
+  const categories =
+    userRole === "admin"
+      ? allCategories
+      : allCategories.filter((c) => c.value === "basic");
+
+  return <ComponentPanel categories={categories} />;
+}
+```
+
+### 全选/反选
+
+提供全选和反选功能。
+
+```tsx
+import { ComponentPanel, getAllOptions } from "@/registry/wuhan/composed/component-panel";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+
+function SelectAll() {
+  const [selected, setSelected] = useState<string[]>([]);
+
+  const categories = [
+    /* ... */
+  ];
+
+  const allOptions = getAllOptions(categories);
+  const allValues = allOptions.map((opt) => opt.value);
+
+  return (
+    <div className="space-y-4">
+      <div className="flex gap-2">
+        <Button onClick={() => setSelected(allValues)}>全选</Button>
+        <Button onClick={() => setSelected([])}>清空</Button>
+        <Button
+          onClick={() =>
+            setSelected(
+              allValues.filter((v) => !selected.includes(v))
+            )
+          }
+        >
+          反选
+        </Button>
+      </div>
+
+      <ComponentPanel
+        categories={categories}
+        value={selected}
+        onChange={setSelected}
+      />
+    </div>
+  );
+}
+```
+
+### 搜索过滤
+
+为选项添加搜索功能。
+
+```tsx
+import { ComponentPanel } from "@/registry/wuhan/composed/component-panel";
+import { Input } from "@/components/ui/input";
+import { useState, useMemo } from "react";
+
+function SearchablePanel() {
+  const [search, setSearch] = useState("");
+  const [selected, setSelected] = useState<string[]>([]);
+
+  const allCategories = [
+    /* ... */
+  ];
+
+  // 根据搜索词过滤选项
+  const filteredCategories = useMemo(() => {
+    if (!search) return allCategories;
+
+    return allCategories.map((category) => ({
+      ...category,
+      options: category.options.filter((opt) =>
+        String(opt.label).toLowerCase().includes(search.toLowerCase())
+      ),
+    })).filter((category) => category.options.length > 0);
+  }, [search, allCategories]);
+
+  return (
+    <div className="space-y-4">
+      <Input
+        placeholder="搜索选项..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+      <ComponentPanel
+        categories={filteredCategories}
+        value={selected}
+        onChange={setSelected}
+      />
+    </div>
+  );
+}
+```
+
+### 分组统计
+
+显示每个分类的选中统计。
+
+```tsx
+import { ComponentPanel } from "@/registry/wuhan/composed/component-panel";
+import { useState } from "react";
+
+function GroupStats() {
+  const [selected, setSelected] = useState<string[]>([]);
+
+  const categories = [
+    {
+      value: "cat1",
+      label: "分类1",
+      options: [
+        { value: "c1-1", label: "选项1" },
+        { value: "c1-2", label: "选项2" },
+        { value: "c1-3", label: "选项3" },
+      ],
+    },
+    {
+      value: "cat2",
+      label: "分类2",
+      options: [
+        { value: "c2-1", label: "选项1" },
+        { value: "c2-2", label: "选项2" },
+      ],
+    },
+  ];
+
+  // 统计每个分类的选中数
+  const stats = categories.map((cat) => ({
+    ...cat,
+    selectedCount: cat.options.filter((opt) =>
+      selected.includes(opt.value)
+    ).length,
+    totalCount: cat.options.length,
+  }));
+
+  return (
+    <div className="space-y-4">
+      <div className="grid grid-cols-2 gap-4">
+        {stats.map((stat) => (
+          <div key={stat.value} className="p-3 border rounded">
+            <div className="font-medium">{stat.label}</div>
+            <div className="text-sm text-muted-foreground">
+              已选 {stat.selectedCount} / {stat.totalCount}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <ComponentPanel
+        categories={categories}
+        value={selected}
+        onChange={setSelected}
+      />
+    </div>
+  );
+}
+```
+
+### 自定义渲染
+
+完全自定义选项的渲染方式。
+
+```tsx
+import { ComponentPanelContainerPrimitive, /* ... */ } from "@/registry/wuhan/blocks/component-panel/component-panel-01";
+import { Badge } from "@/components/ui/badge";
+import { useState } from "react";
+
+function CustomRender() {
+  const [selected, setSelected] = useState<string[]>([]);
+
+  const categories = [
+    {
+      value: "plugins",
+      label: "插件",
+      options: [
+        { value: "p1", label: "插件1", meta: { downloads: "1.2k", rating: 4.5 } },
+        { value: "p2", label: "插件2", meta: { downloads: "890", rating: 4.2 } },
+      ],
+    },
+  ];
+
+  return (
+    <ComponentPanelContainerPrimitive defaultValue="plugins">
+      <ComponentPanelTabsListPrimitive>
+        {categories.map((cat) => (
+          <ComponentPanelTabsTriggerPrimitive key={cat.value} value={cat.value}>
+            {cat.label}
+          </ComponentPanelTabsTriggerPrimitive>
+        ))}
+      </ComponentPanelTabsListPrimitive>
+
+      {categories.map((cat) => (
+        <ComponentPanelTabsContentPrimitive key={cat.value} value={cat.value}>
+          <div className="grid grid-cols-1 gap-2">
+            {cat.options.map((opt) => (
+              <div
+                key={opt.value}
+                className="p-3 border rounded cursor-pointer hover:bg-muted"
+                onClick={() =>
+                  setSelected((prev) =>
+                    prev.includes(opt.value)
+                      ? prev.filter((v) => v !== opt.value)
+                      : [...prev, opt.value]
+                  )
+                }
+              >
+                <div className="flex items-center justify-between">
+                  <span className="font-medium">{opt.label}</span>
+                  {selected.includes(opt.value) && (
+                    <Badge variant="secondary">已选</Badge>
+                  )}
+                </div>
+                <div className="flex gap-4 text-sm text-muted-foreground mt-1">
+                  <span>下载: {opt.meta.downloads}</span>
+                  <span>评分: {opt.meta.rating}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </ComponentPanelTabsContentPrimitive>
+      ))}
+    </ComponentPanelContainerPrimitive>
+  );
+}
+```
+
+### 状态持久化
+
+将选择状态保存到 localStorage。
+
+```tsx
+import { ComponentPanel } from "@/registry/wuhan/composed/component-panel";
+import { useState, useEffect } from "react";
+
+function PersistentPanel() {
+  const [selected, setSelected] = useState<string[]>(() => {
+    const saved = localStorage.getItem("panel-selection");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("panel-selection", JSON.stringify(selected));
+  }, [selected]);
+
+  const categories = [
+    /* ... */
+  ];
+
+  return (
+    <ComponentPanel
+      categories={categories}
+      value={selected}
+      onChange={setSelected}
+    />
+  );
+}
+```
 
 ## API
 

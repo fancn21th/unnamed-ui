@@ -180,6 +180,10 @@
     "description": "状态标签"
   },
   {
+    "name": "markdown",
+    "description": "支持流式渲染的 Markdown 组件"
+  },
+  {
     "name": "toggle-button",
     "description": "Composed toggle button with single and multiple selection modes"
   },
@@ -302,10 +306,6 @@
   {
     "name": "resume-evaluation-report",
     "description": "简历评估报告"
-  },
-  {
-    "name": "markdown",
-    "description": "支持流式渲染的 Markdown 组件"
   },
   {
     "name": "sender-input",

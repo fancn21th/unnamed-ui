@@ -4,8 +4,10 @@ import * as React from "react";
 import {
   useForm,
   type FieldError,
+  type FieldErrors,
   type Control,
   type UseFormReturn,
+  type ControllerRenderProps,
   Controller,
 } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -87,7 +89,7 @@ export interface FieldSchema {
   /** 字段占位符文本 */
   placeholder?: string;
   /** 默认值 */
-  defaultValue?: any;
+  defaultValue?: unknown;
   /** 是否必填 */
   required?: boolean;
   /** 是否禁用 */
@@ -121,9 +123,9 @@ export interface FieldRenderProps {
   /** 字段配置 */
   field: FieldSchema;
   /** react-hook-form 的字段值 */
-  value: any;
+  value: unknown;
   /** 字段值变更处理函数 */
-  onChange: (value: any) => void;
+  onChange: (value: unknown) => void;
   /** 字段失焦处理函数 */
   onBlur: () => void;
   /** 字段错误信息 */
@@ -160,18 +162,18 @@ export interface DynamicFormProps {
   /** 表单 Schema 配置 */
   schema: FormSchema;
   /** 表单初始值 */
-  initialValues?: Record<string, any>;
+  initialValues?: Record<string, unknown>;
   /** 表单值变化时的回调 */
-  onValuesChange?: (values: Record<string, any>) => void;
+  onValuesChange?: (values: Record<string, unknown>) => void;
   /** 表单提交成功时的回调 */
-  onFinish?: (values: Record<string, any>) => void;
+  onFinish?: (values: Record<string, unknown>) => void;
   /** 表单提交失败时的回调 */
   onFinishFailed?: (errorInfo: {
-    values: Record<string, any>;
-    errors: Record<string, FieldError>;
+    values: Record<string, unknown>;
+    errors: FieldErrors<Record<string, unknown>>;
   }) => void;
   /** Zod 验证 Schema */
-  validateSchema?: z.ZodType<any>;
+  validateSchema?: z.ZodType<Record<string, unknown>>;
   /** 是否只读模式 */
   readonly?: boolean;
   /** 是否显示预置的提交和重置按钮 */
@@ -206,14 +208,14 @@ export interface DynamicFormRef {
    * @param nameList 字段名列表，不传则返回所有字段的值
    * @returns 字段值对象
    */
-  getFieldsValue: (nameList?: string[]) => Record<string, any>;
+  getFieldsValue: (nameList?: string[]) => Record<string, unknown>;
 
   /**
    * 触发表单验证
    * @param nameList 字段名列表，不传则验证所有字段
    * @returns Promise，验证成功返回字段值，验证失败抛出错误
    */
-  validateFields: (nameList?: string[]) => Promise<Record<string, any>>;
+  validateFields: (nameList?: string[]) => Promise<Record<string, unknown>>;
 
   /**
    * 设置一组字段的状态
@@ -222,7 +224,7 @@ export interface DynamicFormRef {
   setFields: (
     fields: Array<{
       name: string;
-      value?: any;
+      value?: unknown;
       errors?: string[];
     }>,
   ) => void;
@@ -242,7 +244,7 @@ export interface DynamicFormRef {
   /**
    * 获取 react-hook-form 的表单实例（高级用法）
    */
-  getForm: () => UseFormReturn<any>;
+  getForm: () => UseFormReturn<Record<string, unknown>>;
 }
 
 /**
@@ -347,7 +349,7 @@ export const DynamicForm = React.forwardRef<DynamicFormRef, DynamicFormProps>(
       if (!onValuesChange) return;
 
       const subscription = watch((values) => {
-        onValuesChange(values as Record<string, any>);
+        onValuesChange(values as Record<string, unknown>);
       });
 
       return () => subscription.unsubscribe();
@@ -355,7 +357,7 @@ export const DynamicForm = React.forwardRef<DynamicFormRef, DynamicFormProps>(
 
     // 表单提交成功处理
     const onSubmit = React.useCallback(
-      (values: Record<string, any>) => {
+      (values: Record<string, unknown>) => {
         onFinish?.(values);
       },
       [onFinish],
@@ -363,7 +365,7 @@ export const DynamicForm = React.forwardRef<DynamicFormRef, DynamicFormProps>(
 
     // 表单提交失败处理
     const onError = React.useCallback(
-      (formErrors: any) => {
+      (formErrors: FieldErrors<Record<string, unknown>>) => {
         onFinishFailed?.({
           values: getValues(),
           errors: formErrors,
@@ -390,7 +392,7 @@ export const DynamicForm = React.forwardRef<DynamicFormRef, DynamicFormProps>(
           });
         },
 
-        getFieldsValue: (nameList?: string[]): Record<string, any> => {
+        getFieldsValue: (nameList?: string[]): Record<string, unknown> => {
           const allValues = getValues();
           if (!nameList) return allValues;
           return pickValues(allValues, nameList);
@@ -398,7 +400,7 @@ export const DynamicForm = React.forwardRef<DynamicFormRef, DynamicFormProps>(
 
         validateFields: async (
           nameList?: string[],
-        ): Promise<Record<string, any>> => {
+        ): Promise<Record<string, unknown>> => {
           const isValid = await trigger(nameList);
           if (!isValid) {
             const currentErrors = form.formState.errors;
@@ -412,7 +414,7 @@ export const DynamicForm = React.forwardRef<DynamicFormRef, DynamicFormProps>(
         setFields: (
           fields: Array<{
             name: string;
-            value?: any;
+            value?: unknown;
             errors?: string[];
           }>,
         ) => {
@@ -435,7 +437,7 @@ export const DynamicForm = React.forwardRef<DynamicFormRef, DynamicFormProps>(
           if (!nameList) {
             reset(mergedDefaultValues);
           } else {
-            const resetValues: Record<string, any> = {};
+            const resetValues: Record<string, unknown> = {};
             nameList.forEach((name) => {
               resetValues[name] = mergedDefaultValues[name];
             });
@@ -530,7 +532,7 @@ interface FormItemProps {
   /** 字段配置 */
   field: FieldSchema;
   /** react-hook-form 的 control */
-  control: Control<any>;
+  control: Control<Record<string, unknown>>;
   /** 是否只读模式 */
   readonly?: boolean;
   /** 字段错误信息 */
@@ -627,7 +629,7 @@ FormItem.displayName = "FormItem";
  */
 function renderFieldControl(
   field: FieldSchema,
-  formField: any,
+  formField: ControllerRenderProps<Record<string, unknown>, string>,
   error?: FieldError,
 ) {
   const { type, placeholder, disabled, options, min, max, step, range } = field;
@@ -642,6 +644,7 @@ function renderFieldControl(
           aria-invalid={!!error}
           className={cn("bg-[var(--bg-container)]")}
           {...formField}
+          value={formField.value as string}
         />
       );
 
@@ -654,13 +657,14 @@ function renderFieldControl(
           aria-invalid={!!error}
           className={cn("bg-[var(--bg-container)]")}
           {...formField}
+          value={formField.value as string}
         />
       );
 
     case "select":
       return (
         <Select
-          value={formField.value}
+          value={String(formField.value ?? "")}
           onValueChange={formField.onChange}
           disabled={disabled}
         >
@@ -686,7 +690,7 @@ function renderFieldControl(
         <div className="flex items-center gap-2">
           <Switch
             id={field.name}
-            checked={formField.value}
+            checked={formField.value as boolean}
             onCheckedChange={formField.onChange}
             disabled={disabled}
           />
@@ -699,7 +703,7 @@ function renderFieldControl(
           <input
             type="checkbox"
             id={field.name}
-            checked={formField.value}
+            checked={formField.value as boolean}
             onChange={(e) => formField.onChange(e.target.checked)}
             disabled={disabled}
             className="h-4 w-4 rounded border-input"
@@ -715,13 +719,13 @@ function renderFieldControl(
             min={range?.min ?? min ?? 0}
             max={range?.max ?? max ?? 100}
             step={range?.step ?? step ?? 1}
-            value={[formField.value]}
+            value={[formField.value as number]}
             onValueChange={(values) => formField.onChange(values[0])}
             disabled={disabled}
             className="flex-1"
           />
           <span className="text-muted-foreground min-w-12 text-right text-sm">
-            {formField.value}
+            {formField.value as number}
           </span>
         </div>
       );
@@ -738,6 +742,7 @@ function renderFieldControl(
           step={step}
           aria-invalid={!!error}
           {...formField}
+          value={formField.value as string | number}
           onChange={(e) => {
             const value = e.target.value === "" ? "" : Number(e.target.value);
             formField.onChange(value);
@@ -776,6 +781,7 @@ function renderFieldControl(
           disabled={disabled}
           aria-invalid={!!error}
           {...formField}
+          value={formField.value as string}
         />
       );
   }
@@ -791,8 +797,8 @@ function renderFieldControl(
  */
 export function extractDefaultValues(
   fields: FieldSchema[],
-): Record<string, any> {
-  const defaultValues: Record<string, any> = {};
+): Record<string, unknown> {
+  const defaultValues: Record<string, unknown> = {};
 
   fields.forEach((field) => {
     if (field.defaultValue !== undefined) {
@@ -829,7 +835,7 @@ export function extractDefaultValues(
  * @returns 显示标签
  * @public
  */
-export function getDisplayLabel(value: any, field: FieldSchema): string {
+export function getDisplayLabel(value: unknown, field: FieldSchema): string {
   if (value === undefined || value === null || value === "") {
     return "-";
   }
@@ -857,10 +863,10 @@ export function getDisplayLabel(value: any, field: FieldSchema): string {
  * @public
  */
 export function pickValues(
-  values: Record<string, any>,
+  values: Record<string, unknown>,
   nameList: string[],
-): Record<string, any> {
-  const picked: Record<string, any> = {};
+): Record<string, unknown> {
+  const picked: Record<string, unknown> = {};
   nameList.forEach((name) => {
     if (name in values) {
       picked[name] = values[name];
@@ -876,11 +882,11 @@ export function pickValues(
  * @returns JSON Schema
  */
 export function generateJsonSchema(fields: FieldSchema[]) {
-  const properties: Record<string, any> = {};
+  const properties: Record<string, unknown> = {};
   const required: string[] = [];
 
   fields.forEach((field) => {
-    const property: any = {
+    const property: Record<string, unknown> = {
       type: getJsonSchemaType(field.type),
       description: field.description || field.label,
     };

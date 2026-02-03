@@ -3710,8 +3710,7 @@
       "name": "sidebar-custom-header",
       "type": "registry:example",
       "registryDependencies": [
-        "sidebar",
-        "history-item"
+        "sidebar"
       ],
       "files": [
         {
@@ -3725,8 +3724,7 @@
       "name": "sidebar-custom-new-button",
       "type": "registry:example",
       "registryDependencies": [
-        "sidebar",
-        "history-item"
+        "sidebar"
       ],
       "files": [
         {
@@ -3740,8 +3738,7 @@
       "name": "sidebar-with-search",
       "type": "registry:example",
       "registryDependencies": [
-        "sidebar",
-        "history-item"
+        "sidebar"
       ],
       "files": [
         {

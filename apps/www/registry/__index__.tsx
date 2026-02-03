@@ -3614,7 +3614,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "sidebar-custom-header",
       description: "",
       type: "registry:example",
-      registryDependencies: ["sidebar", "history-item"],
+      registryDependencies: ["sidebar"],
       files: [
         {
           path: "registry/wuhan/examples/sidebar/sidebar-custom-header.tsx",
@@ -3639,7 +3639,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "sidebar-custom-new-button",
       description: "",
       type: "registry:example",
-      registryDependencies: ["sidebar", "history-item"],
+      registryDependencies: ["sidebar"],
       files: [
         {
           path: "registry/wuhan/examples/sidebar/sidebar-custom-new-button.tsx",
@@ -3664,7 +3664,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "sidebar-with-search",
       description: "",
       type: "registry:example",
-      registryDependencies: ["sidebar", "history-item"],
+      registryDependencies: ["sidebar"],
       files: [
         {
           path: "registry/wuhan/examples/sidebar/sidebar-with-search.tsx",

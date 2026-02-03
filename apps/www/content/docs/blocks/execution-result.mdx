@@ -8,7 +8,7 @@ author: AF
 
 Execution Result 组件用于展示函数调用、API 请求等执行结果，支持成功、失败、执行中等多种状态，每个执行项可包含多个区块（如请求、响应）并支持一键复制。
 
-## Overview
+## 概述
 
 - **多状态支持**：success（成功）、error（失败）、loading（执行中）、idle（待执行）
 - **可折叠交互**：整体和每个执行项都支持展开/收起
@@ -18,7 +18,7 @@ Execution Result 组件用于展示函数调用、API 请求等执行结果，�
 - **类型安全**：完整的 TypeScript 类型定义
 - **轻量级**：基于原语组件构建，无额外依赖
 
-## Quick Start
+## 快速开始
 
 ```tsx
 import { ExecutionResult } from "@/registry/wuhan/composed/execution-result/execution-result";
@@ -50,7 +50,7 @@ export function Example() {
 }
 ```
 
-## Features
+## 特性
 
 - **智能状态管理**：根据 status 自动切换图标和颜色
 - **灵活控制**：支持受控模式和非受控模式
@@ -59,7 +59,7 @@ export function Example() {
 - **工具展示**：支持显示工具图标和名称
 - **可访问性**：支持 aria 属性，键盘导航友好
 
-## Installation
+## 安装
 
 <CodeTabs>
 
@@ -92,9 +92,9 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/execution-result.json
 
 </CodeTabs>
 
-## Examples
+## 代码演示
 
-### Default
+### 基本
 
 基础的执行结果展示，包含不同状态（成功、失败、进行中）。
 
@@ -104,7 +104,7 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/execution-result.json
   className="mb-4"
 />
 
-### Controlled
+### 受控模式
 
 受控模式的执行结果组件，可通过外部状态控制展开和动态添加执行项。
 
@@ -114,7 +114,7 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/execution-result.json
   className="mb-4"
 />
 
-### With Tools
+### 工具图标
 
 带工具图标的执行结果展示，显示不同工具的调用情况。
 
@@ -124,7 +124,7 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/execution-result.json
   className="mb-4"
 />
 
-### Workflow
+### 工作流
 
 工作流执行结果展示，适用于多步骤流程和批处理任务。
 
@@ -134,7 +134,7 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/execution-result.json
   className="mb-4"
 />
 
-## API Reference
+## API
 
 ### ExecutionResult (Composed Component)
 

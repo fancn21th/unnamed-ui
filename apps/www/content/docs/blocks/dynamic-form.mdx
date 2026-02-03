@@ -8,7 +8,7 @@ author: AF
 
 Dynamic Form 是一个基于 Schema 配置的动态表单组件，支持多种表单控件、表单验证和只读模式，特别适用于 AI 对话场景中的用户交互表单。
 
-## Overview
+## 概述
 
 - **Schema 驱动**：通过 JSON 配置动态生成表单
 - **类型安全**：完整的 TypeScript 类型定义
@@ -17,7 +17,7 @@ Dynamic Form 是一个基于 Schema 配置的动态表单组件，支持多种�
 - **只读模式**：支持表单数据的只读展示
 - **实例方法**：类似 Ant Design 的 API 设计
 
-## Quick Start
+## 快速开始
 
 ```tsx
 import { DynamicForm, type FormSchema } from "@/registry/wuhan/composed/dynamic-form";
@@ -49,7 +49,7 @@ export function Example() {
 }
 ```
 
-## Features
+## 特性
 
 - **8 种表单控件**：input、textarea、select、radio、checkbox、switch、slider、number
 - **Zod 验证集成**：强大的表单验证能力
@@ -60,7 +60,7 @@ export function Example() {
 - **响应式布局**：支持 vertical、horizontal、responsive 三种布局方向
 - **AI 场景友好**：提供 generateJsonSchema 辅助 AI 理解表单结构
 
-## Installation
+## 安装
 
 <CodeTabs>
 
@@ -99,9 +99,9 @@ pnpm install react-hook-form @hookform/resolvers zod
 
 </CodeTabs>
 
-## Examples
+## 代码演示
 
-### Default
+### 基本
 
 基础用法，展示多种字段类型。
 
@@ -111,7 +111,7 @@ pnpm install react-hook-form @hookform/resolvers zod
   className="mb-4"
 />
 
-### With Validation
+### 表单验证
 
 带 Zod 验证的表单，展示错误提示。
 
@@ -121,7 +121,7 @@ pnpm install react-hook-form @hookform/resolvers zod
   className="mb-4"
 />
 
-### Readonly Mode
+### 设置只读状态
 
 只读模式展示已填写的表单数据。
 
@@ -131,7 +131,7 @@ pnpm install react-hook-form @hookform/resolvers zod
   className="mb-4"
 />
 
-### Using Ref Methods
+### 实例方法
 
 使用实例方法控制表单。
 
@@ -141,7 +141,7 @@ pnpm install react-hook-form @hookform/resolvers zod
   className="mb-4"
 />
 
-### AI Scenario
+### AI 场景
 
 AI 对话场景中的动态表单生成。
 
@@ -151,7 +151,7 @@ AI 对话场景中的动态表单生成。
   className="mb-4"
 />
 
-### With Extra
+### 设置额外元素
 
 表单头部带额外信息，如状态标签。
 
@@ -161,7 +161,7 @@ AI 对话场景中的动态表单生成。
   className="mb-4"
 />
 
-## API Reference
+## API
 
 ### DynamicForm
 

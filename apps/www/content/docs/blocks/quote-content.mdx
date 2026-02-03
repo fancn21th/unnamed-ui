@@ -12,7 +12,7 @@ author: AF
 
 Quote Content 是组合组件，用于在输入框上方显示引用内容，包含图标、内容与关闭动作。适用于聊天场景中的引用消息、回复内容等场景。需要深度定制时可使用 primitives。
 
-## Installation
+## 安装
 
 <CodeTabs>
 
@@ -48,7 +48,7 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/quote-content.json
 
 </CodeTabs>
 
-## Overview
+## 概述
 
 - **定位**：引用/回复内容条（图标 + 内容 + 关闭）
 - **默认样式**：直接使用即可看到完整 UI
@@ -56,7 +56,7 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/quote-content.json
 
 ## Usage
 
-### 基础用法
+### 基本
 
 ```tsx
 import { QuoteContentComposed } from "@/registry/wuhan/composed/quote-content/quote-content";
@@ -98,49 +98,49 @@ const quote = { id: "q-1", text: "来自业务数据的引用内容" };
 />;
 ```
 
-## Examples
+## 代码演示
 
-### Default
+### 默认展示
 
 基础用法，包含回车图标、引用内容和关闭按钮。
 
 <ComponentPreview
   name="quote-content-demo"
-  description="Default quote content display"
+  description="默认展示"
   className="mb-4"
 />
 
-### Basic
+### 基本
 
 只传内容的最小示例。
 
 <ComponentPreview
   name="quote-content-default"
-  description="Minimal usage"
+  description="最小示例"
   className="mb-4"
 />
 
-### Custom Icon
+### 自定义图标
 
 自定义前缀图标与关闭图标。
 
 <ComponentPreview
   name="quote-content-custom-icon"
-  description="Custom icons"
+  description="自定义图标"
   className="mb-4"
 />
 
-### Adapter
+### 数据适配
 
 业务数据适配。
 
 <ComponentPreview
   name="quote-content-adapter"
-  description="Adapter usage"
+  description="数据适配器"
   className="mb-4"
 />
 
-### Custom Render
+### 自定义渲染
 
 自定义渲染结构。
 

@@ -822,6 +822,66 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "history-item-basic",
+    type: "registry:example",
+    registryDependencies: ["history-item"],
+    files: [
+      {
+        path: "examples/history-item/history-item-basic.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/history-item-basic.tsx",
+      },
+    ],
+  },
+  {
+    name: "history-item-with-actions",
+    type: "registry:example",
+    registryDependencies: ["history-item"],
+    files: [
+      {
+        path: "examples/history-item/history-item-with-actions.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/history-item-with-actions.tsx",
+      },
+    ],
+  },
+  {
+    name: "history-item-with-icons",
+    type: "registry:example",
+    registryDependencies: ["history-item"],
+    files: [
+      {
+        path: "examples/history-item/history-item-with-icons.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/history-item-with-icons.tsx",
+      },
+    ],
+  },
+  {
+    name: "history-item-states",
+    type: "registry:example",
+    registryDependencies: ["history-item"],
+    files: [
+      {
+        path: "examples/history-item/history-item-states.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/history-item-states.tsx",
+      },
+    ],
+  },
+  {
+    name: "history-item-list",
+    type: "registry:example",
+    registryDependencies: ["history-item"],
+    files: [
+      {
+        path: "examples/history-item/history-item-list.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/history-item-list.tsx",
+      },
+    ],
+  },
   // sender examples
   {
     name: "sender-demo",
@@ -1129,6 +1189,78 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "sidebar-custom-header",
+    type: "registry:example",
+    registryDependencies: ["sidebar"],
+    files: [
+      {
+        path: "examples/sidebar/sidebar-custom-header.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/sidebar-custom-header.tsx",
+      },
+    ],
+  },
+  {
+    name: "sidebar-custom-new-button",
+    type: "registry:example",
+    registryDependencies: ["sidebar"],
+    files: [
+      {
+        path: "examples/sidebar/sidebar-custom-new-button.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/sidebar-custom-new-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "sidebar-with-search",
+    type: "registry:example",
+    registryDependencies: ["sidebar"],
+    files: [
+      {
+        path: "examples/sidebar/sidebar-with-search.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/sidebar-with-search.tsx",
+      },
+    ],
+  },
+  {
+    name: "sidebar-empty-state",
+    type: "registry:example",
+    registryDependencies: ["sidebar"],
+    files: [
+      {
+        path: "examples/sidebar/sidebar-empty-state.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/sidebar-empty-state.tsx",
+      },
+    ],
+  },
+  {
+    name: "sidebar-controlled-collapse",
+    type: "registry:example",
+    registryDependencies: ["sidebar", "button"],
+    files: [
+      {
+        path: "examples/sidebar/sidebar-controlled-collapse.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/sidebar-controlled-collapse.tsx",
+      },
+    ],
+  },
+  {
+    name: "sidebar-footer-collapse",
+    type: "registry:example",
+    registryDependencies: ["sidebar", "avatar-header"],
+    files: [
+      {
+        path: "examples/sidebar/sidebar-footer-collapse.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/sidebar-footer-collapse.tsx",
+      },
+    ],
+  },
   // feedback examples
   {
     name: "feedback-demo",
@@ -1182,7 +1314,7 @@ export const examples: Registry["items"] = [
   {
     name: "toggle-button-demo",
     type: "registry:example",
-    registryDependencies: ["toggle-button-01"],
+    registryDependencies: ["toggle-button"],
     files: [
       {
         path: "examples/toggle-button/toggle-button-demo.tsx",
@@ -1291,7 +1423,7 @@ export const examples: Registry["items"] = [
   {
     name: "deep-thinking-default",
     type: "registry:example",
-    registryDependencies: ["deep-thinking-01"],
+    registryDependencies: ["deep-thinking"],
     files: [
       {
         path: "examples/deep-thinking/deep-thinking-default.tsx",
@@ -1373,11 +1505,71 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "component-panel-controlled",
+    type: "registry:example",
+    registryDependencies: ["component-panel", "button"],
+    files: [
+      {
+        path: "examples/component-panel/component-panel-controlled.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/component-panel-controlled.tsx",
+      },
+    ],
+  },
+  {
+    name: "component-panel-single-select",
+    type: "registry:example",
+    registryDependencies: ["component-panel"],
+    files: [
+      {
+        path: "examples/component-panel/component-panel-single-select.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/component-panel-single-select.tsx",
+      },
+    ],
+  },
+  {
+    name: "component-panel-with-icons",
+    type: "registry:example",
+    registryDependencies: ["component-panel"],
+    files: [
+      {
+        path: "examples/component-panel/component-panel-with-icons.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/component-panel-with-icons.tsx",
+      },
+    ],
+  },
+  {
+    name: "component-panel-disabled",
+    type: "registry:example",
+    registryDependencies: ["component-panel"],
+    files: [
+      {
+        path: "examples/component-panel/component-panel-disabled.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/component-panel-disabled.tsx",
+      },
+    ],
+  },
+  {
+    name: "component-panel-tab-controlled",
+    type: "registry:example",
+    registryDependencies: ["component-panel"],
+    files: [
+      {
+        path: "examples/component-panel/component-panel-tab-controlled.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/component-panel-tab-controlled.tsx",
+      },
+    ],
+  },
   // tooltip examples
   {
     name: "tooltip-demo",
     type: "registry:example",
-    registryDependencies: ["tooltip-01", "button"],
+    registryDependencies: ["tooltip", "button"],
     files: [
       {
         path: "examples/tooltip/tooltip-demo.tsx",

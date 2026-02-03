@@ -10,24 +10,12 @@
         "lucide-react"
       ],
       "devDependencies": [
-        "tw-animate-css",
-        "tailwindcss",
-        "@tailwindcss/postcss",
-        "postcss"
+        "tw-animate-css"
       ],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "registry/wuhan/style/globals.css",
-          "type": "registry:style",
-          "target": "app/globals.css"
-        },
-        {
-          "path": "registry/wuhan/style/postcss.config.mjs",
-          "type": "registry:style",
-          "target": "postcss.config.mjs"
-        }
+      "registryDependencies": [
+        "utils"
       ],
+      "files": [],
       "cssVars": {
         "light": {
           "font-family-en": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
@@ -783,24 +771,12 @@
         "lucide-react"
       ],
       "devDependencies": [
-        "tw-animate-css",
-        "tailwindcss",
-        "@tailwindcss/postcss",
-        "postcss"
+        "tw-animate-css"
       ],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "registry/wuhan/style/globals.css",
-          "type": "registry:style",
-          "target": "app/globals.css"
-        },
-        {
-          "path": "registry/wuhan/style/postcss.config.mjs",
-          "type": "registry:style",
-          "target": "postcss.config.mjs"
-        }
+      "registryDependencies": [
+        "utils"
       ],
+      "files": [],
       "cssVars": {
         "light": {
           "font-family-en": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
@@ -1741,9 +1717,6 @@
       "type": "registry:block",
       "title": "Prompt",
       "description": "Prompt button (horizontal layout)",
-      "dependencies": [
-        "lucide-react"
-      ],
       "registryDependencies": [
         "style",
         "quick-action-01"
@@ -1778,9 +1751,6 @@
       "type": "registry:block",
       "title": "Suggestion",
       "description": "Suggestion button for next step guidance (text first, icon last)",
-      "dependencies": [
-        "lucide-react"
-      ],
       "registryDependencies": [
         "style",
         "quick-action-01"
@@ -1798,9 +1768,6 @@
       "type": "registry:block",
       "title": "Sender",
       "description": "Sender primitives (input, actions, buttons)",
-      "dependencies": [
-        "lucide-react"
-      ],
       "registryDependencies": [
         "style",
         "textarea",
@@ -1820,9 +1787,6 @@
       "type": "registry:block",
       "title": "Attachment List",
       "description": "Attachment list component",
-      "dependencies": [
-        "lucide-react"
-      ],
       "registryDependencies": [
         "style",
         "button",
@@ -1857,9 +1821,6 @@
       "type": "registry:block",
       "title": "History Item",
       "description": "History record list item component (default/hover/selected)",
-      "dependencies": [
-        "@radix-ui/react-slot"
-      ],
       "registryDependencies": [
         "style"
       ],
@@ -1908,9 +1869,6 @@
       "type": "registry:block",
       "title": "Feedback",
       "description": "Feedback component for reporting issues",
-      "dependencies": [
-        "lucide-react"
-      ],
       "registryDependencies": [
         "style",
         "button",
@@ -1964,9 +1922,6 @@
       "type": "registry:block",
       "title": "Block Tooltip",
       "description": "Block tooltip component with custom styling",
-      "dependencies": [
-        "@radix-ui/react-tooltip"
-      ],
       "registryDependencies": [
         "style",
         "tooltip"
@@ -1984,9 +1939,6 @@
       "type": "registry:block",
       "title": "Execution Result",
       "description": "Execution result primitives (container, items, sections)",
-      "dependencies": [
-        "lucide-react"
-      ],
       "registryDependencies": [
         "style",
         "collapsible"
@@ -2039,9 +1991,6 @@
       "type": "registry:block",
       "title": "Thinking Step Item",
       "description": "Thinking step item primitives (timeline, tool call, file list, status)",
-      "dependencies": [
-        "lucide-react"
-      ],
       "registryDependencies": [
         "style",
         "collapsible"
@@ -2099,44 +2048,6 @@
           "path": "registry/wuhan/blocks/status-tag/status-tag-01.tsx",
           "type": "registry:component",
           "target": "components/wuhan/blocks/status-tag-01.tsx"
-        }
-      ]
-    },
-    {
-      "name": "custom-sources-01",
-      "type": "registry:block",
-      "title": "Custom Sources",
-      "description": "Source marker and popover card primitives",
-      "dependencies": [
-        "styled-components"
-      ],
-      "registryDependencies": [
-        "style"
-      ],
-      "files": [
-        {
-          "path": "registry/wuhan/blocks/custom-sources/custom-sources-01.tsx",
-          "type": "registry:component",
-          "target": "components/wuhan/blocks/custom-sources-01.tsx"
-        }
-      ]
-    },
-    {
-      "name": "sources-sidebar-01",
-      "type": "registry:block",
-      "title": "Sources Sidebar",
-      "description": "Sources sidebar primitives with tabs and list",
-      "dependencies": [
-        "styled-components"
-      ],
-      "registryDependencies": [
-        "style"
-      ],
-      "files": [
-        {
-          "path": "registry/wuhan/blocks/sources-sidebar/sources-sidebar-01.tsx",
-          "type": "registry:component",
-          "target": "components/wuhan/blocks/sources-sidebar-01.tsx"
         }
       ]
     },
@@ -2495,16 +2406,12 @@
       "title": "Markdown",
       "description": "Streaming-friendly Markdown renderer with custom blocks",
       "dependencies": [
-        "@ant-design/x@^2.2.0",
-        "@ant-design/x-markdown@^2.2.0",
-        "@ant-design/icons@^6.1.0",
-        "@antv/gpt-vis@0.6.0",
-        "antd@^6.2.1",
-        "styled-components@^6.3.8"
-      ],
-      "registryDependencies": [
-        "dynamic-form",
-        "custom-sources"
+        "@ant-design/x",
+        "@ant-design/x-markdown",
+        "@ant-design/icons",
+        "@antv/gpt-vis",
+        "antd",
+        "styled-components"
       ],
       "files": [
         {
@@ -2538,29 +2445,39 @@
           "target": "components/wuhan/composed/markdown/icons.tsx"
         },
         {
-          "path": "registry/wuhan/composed/markdown/components/Code/index.tsx",
+          "path": "registry/wuhan/composed/markdown/Code/index.tsx",
           "type": "registry:component",
-          "target": "components/wuhan/composed/markdown/components/Code/index.tsx"
+          "target": "components/wuhan/composed/markdown/Code/index.tsx"
         },
         {
-          "path": "registry/wuhan/composed/markdown/components/Code/style.ts",
+          "path": "registry/wuhan/composed/markdown/Code/style.ts",
           "type": "registry:component",
-          "target": "components/wuhan/composed/markdown/components/Code/style.ts"
+          "target": "components/wuhan/composed/markdown/Code/style.ts"
         },
         {
-          "path": "registry/wuhan/composed/markdown/components/Table/index.tsx",
+          "path": "registry/wuhan/composed/markdown/Table/index.tsx",
           "type": "registry:component",
-          "target": "components/wuhan/composed/markdown/components/Table/index.tsx"
+          "target": "components/wuhan/composed/markdown/Table/index.tsx"
         },
         {
-          "path": "registry/wuhan/composed/markdown/components/Table/style.ts",
+          "path": "registry/wuhan/composed/markdown/Table/style.ts",
           "type": "registry:component",
-          "target": "components/wuhan/composed/markdown/components/Table/style.ts"
+          "target": "components/wuhan/composed/markdown/Table/style.ts"
         },
         {
           "path": "registry/wuhan/composed/markdown/components/index.ts",
           "type": "registry:component",
           "target": "components/wuhan/composed/markdown/components/index.ts"
+        },
+        {
+          "path": "registry/wuhan/composed/markdown/components/DynamicForm/index.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/composed/markdown/components/DynamicForm/index.tsx"
+        },
+        {
+          "path": "registry/wuhan/composed/markdown/components/DynamicTable/index.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/composed/markdown/components/DynamicTable/index.tsx"
         },
         {
           "path": "registry/wuhan/composed/markdown/components/GptVis/index.tsx",
@@ -2601,51 +2518,31 @@
           "path": "registry/wuhan/composed/markdown/components/ThinkComponent/index.tsx",
           "type": "registry:component",
           "target": "components/wuhan/composed/markdown/components/ThinkComponent/index.tsx"
-        }
-      ]
-    },
-    {
-      "name": "custom-sources",
-      "type": "registry:block",
-      "title": "Custom Sources",
-      "description": "Source markers with popover preview",
-      "dependencies": [
-        "@ant-design/icons",
-        "@ant-design/x-markdown",
-        "antd"
-      ],
-      "registryDependencies": [
-        "custom-sources-01"
-      ],
-      "files": [
-        {
-          "path": "registry/wuhan/composed/custom-sources/custom-sources.tsx",
-          "type": "registry:component",
-          "target": "components/wuhan/composed/custom-sources/custom-sources.tsx"
         },
         {
-          "path": "registry/wuhan/composed/custom-sources/utils.ts",
+          "path": "registry/wuhan/composed/markdown/CustomSources/index.tsx",
           "type": "registry:component",
-          "target": "components/wuhan/composed/custom-sources/utils.ts"
-        }
-      ]
-    },
-    {
-      "name": "sources-sidebar",
-      "type": "registry:block",
-      "title": "Sources Sidebar",
-      "description": "Sources sidebar with tabs and list",
-      "dependencies": [
-        "@ant-design/icons"
-      ],
-      "registryDependencies": [
-        "sources-sidebar-01"
-      ],
-      "files": [
+          "target": "components/wuhan/composed/markdown/CustomSources/index.tsx"
+        },
         {
-          "path": "registry/wuhan/composed/sources-sidebar/sources-sidebar.tsx",
+          "path": "registry/wuhan/composed/markdown/CustomSources/style.ts",
           "type": "registry:component",
-          "target": "components/wuhan/composed/sources-sidebar.tsx"
+          "target": "components/wuhan/composed/markdown/CustomSources/style.ts"
+        },
+        {
+          "path": "registry/wuhan/composed/markdown/CustomSources/SourcesSidebar/index.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/composed/markdown/CustomSources/SourcesSidebar/index.tsx"
+        },
+        {
+          "path": "registry/wuhan/composed/markdown/CustomSources/SourcesSidebar/style.ts",
+          "type": "registry:component",
+          "target": "components/wuhan/composed/markdown/CustomSources/SourcesSidebar/style.ts"
+        },
+        {
+          "path": "registry/wuhan/composed/markdown/utils/tools.ts",
+          "type": "registry:component",
+          "target": "components/wuhan/composed/markdown/utils/tools.ts"
         }
       ]
     },
@@ -3085,6 +2982,19 @@
       ]
     },
     {
+      "name": "markdown",
+      "type": "registry:block",
+      "title": "Markdown",
+      "description": "支持流式渲染的 Markdown 组件",
+      "files": [
+        {
+          "path": "registry/wuhan/recruitment/Markdown/index.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/recruitment/markdown.tsx"
+        }
+      ]
+    },
+    {
       "name": "sender-input",
       "type": "registry:block",
       "title": "Sender Input",
@@ -3429,6 +3339,76 @@
       ]
     },
     {
+      "name": "history-item-basic",
+      "type": "registry:example",
+      "registryDependencies": [
+        "history-item"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/history-item/history-item-basic.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/history-item-basic.tsx"
+        }
+      ]
+    },
+    {
+      "name": "history-item-with-actions",
+      "type": "registry:example",
+      "registryDependencies": [
+        "history-item"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/history-item/history-item-with-actions.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/history-item-with-actions.tsx"
+        }
+      ]
+    },
+    {
+      "name": "history-item-with-icons",
+      "type": "registry:example",
+      "registryDependencies": [
+        "history-item"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/history-item/history-item-with-icons.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/history-item-with-icons.tsx"
+        }
+      ]
+    },
+    {
+      "name": "history-item-states",
+      "type": "registry:example",
+      "registryDependencies": [
+        "history-item"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/history-item/history-item-states.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/history-item-states.tsx"
+        }
+      ]
+    },
+    {
+      "name": "history-item-list",
+      "type": "registry:example",
+      "registryDependencies": [
+        "history-item"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/history-item/history-item-list.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/history-item-list.tsx"
+        }
+      ]
+    },
+    {
       "name": "sender-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -3727,61 +3707,88 @@
       ]
     },
     {
-      "name": "markdown-demo",
+      "name": "sidebar-custom-header",
       "type": "registry:example",
       "registryDependencies": [
-        "markdown"
+        "sidebar"
       ],
       "files": [
         {
-          "path": "registry/wuhan/examples/markdown/markdown-demo.tsx",
+          "path": "registry/wuhan/examples/sidebar/sidebar-custom-header.tsx",
           "type": "registry:example",
-          "target": "components/wuhan/examples/markdown-demo.tsx"
+          "target": "components/wuhan/examples/sidebar-custom-header.tsx"
         }
       ]
     },
     {
-      "name": "markdown-advanced-demo",
+      "name": "sidebar-custom-new-button",
       "type": "registry:example",
       "registryDependencies": [
-        "markdown",
-        "custom-sources",
-        "sources-sidebar"
+        "sidebar"
       ],
       "files": [
         {
-          "path": "registry/wuhan/examples/markdown/markdown-advanced-demo.tsx",
+          "path": "registry/wuhan/examples/sidebar/sidebar-custom-new-button.tsx",
           "type": "registry:example",
-          "target": "components/wuhan/examples/markdown-advanced-demo.tsx"
+          "target": "components/wuhan/examples/sidebar-custom-new-button.tsx"
         }
       ]
     },
     {
-      "name": "custom-sources-demo",
+      "name": "sidebar-with-search",
       "type": "registry:example",
       "registryDependencies": [
-        "custom-sources",
-        "sources-sidebar"
+        "sidebar"
       ],
       "files": [
         {
-          "path": "registry/wuhan/examples/custom-sources/custom-sources-demo.tsx",
+          "path": "registry/wuhan/examples/sidebar/sidebar-with-search.tsx",
           "type": "registry:example",
-          "target": "components/wuhan/examples/custom-sources-demo.tsx"
+          "target": "components/wuhan/examples/sidebar-with-search.tsx"
         }
       ]
     },
     {
-      "name": "sources-sidebar-demo",
+      "name": "sidebar-empty-state",
       "type": "registry:example",
       "registryDependencies": [
-        "sources-sidebar"
+        "sidebar"
       ],
       "files": [
         {
-          "path": "registry/wuhan/examples/sources-sidebar/sources-sidebar-demo.tsx",
+          "path": "registry/wuhan/examples/sidebar/sidebar-empty-state.tsx",
           "type": "registry:example",
-          "target": "components/wuhan/examples/sources-sidebar-demo.tsx"
+          "target": "components/wuhan/examples/sidebar-empty-state.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-controlled-collapse",
+      "type": "registry:example",
+      "registryDependencies": [
+        "sidebar",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/sidebar/sidebar-controlled-collapse.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/sidebar-controlled-collapse.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-footer-collapse",
+      "type": "registry:example",
+      "registryDependencies": [
+        "sidebar",
+        "avatar-header"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/sidebar/sidebar-footer-collapse.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/sidebar-footer-collapse.tsx"
         }
       ]
     },
@@ -3845,7 +3852,7 @@
       "name": "toggle-button-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "toggle-button-01"
+        "toggle-button"
       ],
       "files": [
         {
@@ -3971,7 +3978,7 @@
       "name": "deep-thinking-default",
       "type": "registry:example",
       "registryDependencies": [
-        "deep-thinking-01"
+        "deep-thinking"
       ],
       "files": [
         {
@@ -4066,10 +4073,81 @@
       ]
     },
     {
+      "name": "component-panel-controlled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "component-panel",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/component-panel/component-panel-controlled.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/component-panel-controlled.tsx"
+        }
+      ]
+    },
+    {
+      "name": "component-panel-single-select",
+      "type": "registry:example",
+      "registryDependencies": [
+        "component-panel"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/component-panel/component-panel-single-select.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/component-panel-single-select.tsx"
+        }
+      ]
+    },
+    {
+      "name": "component-panel-with-icons",
+      "type": "registry:example",
+      "registryDependencies": [
+        "component-panel"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/component-panel/component-panel-with-icons.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/component-panel-with-icons.tsx"
+        }
+      ]
+    },
+    {
+      "name": "component-panel-disabled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "component-panel"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/component-panel/component-panel-disabled.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/component-panel-disabled.tsx"
+        }
+      ]
+    },
+    {
+      "name": "component-panel-tab-controlled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "component-panel"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/component-panel/component-panel-tab-controlled.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/component-panel-tab-controlled.tsx"
+        }
+      ]
+    },
+    {
       "name": "tooltip-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "tooltip-01",
+        "tooltip",
         "button"
       ],
       "files": [
@@ -5058,6 +5136,20 @@
           "path": "registry/wuhan/examples/recruitment/resume-evaluation-report/resume-evaluation-report-demo.tsx",
           "type": "registry:example",
           "target": "components/wuhan/examples/recruitment/resume-evaluation-report-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "markdown-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "markdown"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/recruitment/markdown/markdown-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/recruitment/markdown-demo.tsx"
         }
       ]
     }

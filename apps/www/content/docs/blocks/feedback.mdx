@@ -8,7 +8,7 @@ author: AF
 
 Feedback 反馈表单组件用于收集用户反馈，支持多选项按钮、详细描述输入和表单提交，适用于内容举报、问题反馈、满意度调查等场景。
 
-## Overview
+## 概述
 
 - **反馈选项**：支持多个反馈类型选项，用户可快速选择问题类型
 - **详细描述**：提供输入框收集详细的反馈信息
@@ -17,7 +17,7 @@ Feedback 反馈表单组件用于收集用户反馈，支持多选项按钮、�
 - **可关闭**：提供关闭按钮，方便用户退出反馈界面
 - **灵活定制**：可自定义标题、选项、占位符和提交按钮文本
 
-## Quick Start
+## 快速开始
 
 ```tsx
 import { FeedbackComposed } from "@/registry/wuhan/composed/feedback/feedback";
@@ -40,7 +40,7 @@ export function Example() {
 }
 ```
 
-## Features
+## 特性
 
 - **多种反馈类型**：通过选项按钮快速分类问题
 - **详细信息收集**：输入框支持用户补充详细描述
@@ -49,7 +49,7 @@ export function Example() {
 - **无障碍支持**：包含适当的 ARIA 标签
 - **响应式设计**：自适应不同屏幕尺寸
 
-## Installation
+## 安装
 
 <CodeTabs>
 
@@ -82,9 +82,9 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/feedback.json
 
 </CodeTabs>
 
-## Examples
+## 代码演示
 
-### Default
+### 基本
 
 基础的反馈组件示例，包含完整的反馈流程。
 
@@ -94,7 +94,7 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/feedback.json
   className="mb-4"
 />
 
-### Controlled Mode
+### 受控模式
 
 使用受控模式管理反馈状态，适合需要外部状态管理的场景。
 
@@ -104,7 +104,7 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/feedback.json
   className="mb-4"
 />
 
-### Custom Options
+### 自定义选项
 
 自定义反馈选项，支持不同的业务场景。
 
@@ -114,7 +114,7 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/feedback.json
   className="mb-4"
 />
 
-### Report Content
+### 定义内容
 
 内容举报场景，包含常见的举报理由选项。
 
@@ -124,7 +124,7 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/feedback.json
   className="mb-4"
 />
 
-## API Reference
+## API
 
 ### FeedbackComposed
 

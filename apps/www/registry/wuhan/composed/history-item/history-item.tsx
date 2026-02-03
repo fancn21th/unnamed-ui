@@ -26,6 +26,10 @@ export interface HistoryItemProps {
   active?: boolean;
   /** 点击事件处理函数 */
   onClick?: () => void;
+  /** 鼠标进入事件处理函数 */
+  onMouseEnter?: React.MouseEventHandler<HTMLButtonElement>;
+  /** 鼠标离开事件处理函数 */
+  onMouseLeave?: React.MouseEventHandler<HTMLButtonElement>;
   /** 自定义样式类名 */
   className?: string;
 }
@@ -56,7 +60,17 @@ export const HistoryItem = React.forwardRef<
   HistoryItemProps
 >(
   (
-    { title, trailing, hoverTrailing, selected, active, onClick, className },
+    {
+      title,
+      trailing,
+      hoverTrailing,
+      selected,
+      active,
+      onClick,
+      onMouseEnter,
+      onMouseLeave,
+      className,
+    },
     ref,
   ) => {
     return (
@@ -70,6 +84,8 @@ export const HistoryItem = React.forwardRef<
         aria-selected={selected}
         aria-current={active ? "page" : undefined}
         onClick={onClick}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
       >
         {/* 标题区域 */}
         <HistoryItemTitlePrimitive>{title}</HistoryItemTitlePrimitive>

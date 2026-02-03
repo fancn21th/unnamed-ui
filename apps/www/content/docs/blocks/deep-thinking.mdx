@@ -8,7 +8,7 @@ author: AF
 
 Deep Thinking 组件用于展示 AI 的深度思考过程，支持可折叠交互、状态管理、动画效果等，适用于 AI 对话、推理展示、问题分析等场景。
 
-## Overview
+## 概述
 
 - **三种状态**：思考中、已完成、失败，自动匹配图标和样式
 - **可折叠交互**：点击头部展开/收起思考内容，支持受控和非受控模式
@@ -17,7 +17,7 @@ Deep Thinking 组件用于展示 AI 的深度思考过程，支持可折叠交�
 - **类型安全**：完整的 TypeScript 类型定义
 - **轻量级**：基于原语组件构建，无额外依赖
 
-## Quick Start
+## 快速开始
 
 ```tsx
 import { DeepThinking } from "@/registry/wuhan/composed/deep-thinking/deep-thinking";
@@ -32,7 +32,7 @@ export function Example() {
 }
 ```
 
-## Features
+## 特性
 
 - **智能状态管理**：根据 status 自动切换图标、颜色和默认标题
 - **灵活控制**：支持受控模式（controlled）和非受控模式（uncontrolled）
@@ -41,7 +41,7 @@ export function Example() {
 - **可访问性**：支持 aria 属性，键盘导航友好
 - **响应式**：自适应不同屏幕尺寸
 
-## Installation
+## 安装
 
 <CodeTabs>
 
@@ -74,9 +74,9 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/deep-thinking.json
 
 </CodeTabs>
 
-## Examples
+## 代码演示
 
-### Default
+### 基本
 
 基础的深度思考展示，包含不同状态。
 
@@ -86,7 +86,7 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/deep-thinking.json
   className="mb-4"
 />
 
-### With Status
+### 状态设置
 
 展示深度思考的不同状态：思考中、已完成、失败。
 
@@ -96,7 +96,7 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/deep-thinking.json
   className="mb-4"
 />
 
-### Custom
+### 自定义
 
 自定义图标和标题的深度思考组件。
 
@@ -106,7 +106,7 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/deep-thinking.json
   className="mb-4"
 />
 
-### Controlled
+### 受控
 
 受控模式的深度思考组件，可通过外部状态控制展开和状态。
 
@@ -116,7 +116,7 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/deep-thinking.json
   className="mb-4"
 />
 
-### Custom Labels
+### 自定义标签
 
 自定义不同状态的标题标签。
 
@@ -126,7 +126,7 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/deep-thinking.json
   className="mb-4"
 />
 
-### Step by Step
+### 步骤展示
 
 步骤式展示思考过程。
 
@@ -136,7 +136,7 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/deep-thinking.json
   className="mb-4"
 />
 
-## API Reference
+## API
 
 ### DeepThinking
 

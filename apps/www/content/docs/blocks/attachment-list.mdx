@@ -12,7 +12,7 @@ author: AF
 
 Attachment List 是组合组件，提供附件卡片与横向滚动列表的默认布局，适用于聊天输入区、消息附件展示等场景。需要深度定制时可使用 primitives。
 
-## Installation
+## 安装
 
 <CodeTabs>
 
@@ -48,7 +48,7 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/attachment-list.json
 
 </CodeTabs>
 
-## Overview
+## 概述
 
 - **定位**：附件卡片列表（图片/文件统一展示）
 - **默认样式**：默认卡片 + 删除按钮 + 横向滚动
@@ -170,9 +170,9 @@ const attachments = [
 />;
 ```
 
-## Examples
+## 代码演示
 
-### Default
+### 基本
 
 包含图片附件、文件附件，以及上传中的 loading 状态（图片区域居中显示 20px 圆环）。
 
@@ -182,7 +182,7 @@ const attachments = [
   className="mb-4"
 />
 
-### Preview
+### 附件预览
 
 点击卡片即可预览图片或文件。
 
@@ -192,7 +192,7 @@ const attachments = [
   className="mb-4"
 />
 
-### Custom Render
+### 自定义渲染
 
 自定义 Meta 与删除按钮。
 
@@ -202,7 +202,7 @@ const attachments = [
   className="mb-4"
 />
 
-### Empty State
+### 空状态
 
 空列表占位。
 

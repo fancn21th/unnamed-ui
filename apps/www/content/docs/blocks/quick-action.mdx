@@ -8,7 +8,7 @@ author: AF
 
 Quick Action 组件用于展示快速操作建议，支持标题、描述和图标，适用于聊天界面的空状态、对话引导、快捷操作等场景。
 
-## Overview
+## 概述
 
 - **标题和描述**：可选的标题和描述文本，提供上下文说明
 - **图标支持**：每个操作按钮可配置独立图标
@@ -17,7 +17,7 @@ Quick Action 组件用于展示快速操作建议，支持标题、描述和图�
 - **响应式布局**：自动适应容器宽度，按钮自动换行
 - **交互友好**：清晰的悬停和点击状态反馈
 
-## Quick Start
+## 快速开始
 
 ```tsx
 import { QuickActionPanel } from "@/registry/wuhan/composed/quick-action";
@@ -41,7 +41,7 @@ export function Example() {
 }
 ```
 
-## Features
+## 特性
 
 - **标题描述**：可选的标题和描述，为操作提供上下文
 - **图标配置**：每个操作可配置不同的图标组件
@@ -50,7 +50,7 @@ export function Example() {
 - **灵活布局**：按钮自动换行，适应不同屏幕尺寸
 - **禁用状态**：支持禁用单个或全部操作按钮
 
-## Installation
+## 安装
 
 <CodeTabs>
 
@@ -83,49 +83,49 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/quick-action.json
 
 </CodeTabs>
 
-## Examples
+## 代码演示
 
-### Default
+### 基本
 
 基础的快速操作按钮组，展示纯文本操作。
 
 <ComponentPreview
   name="quick-action-default"
-  description="Basic quick action buttons"
+  description="基础用法"
   className="mb-4"
 />
 
-### With Icons
+### 带图标
 
 带图标的快速操作按钮，让操作更加直观和吸引人。
 
 <ComponentPreview
   name="quick-action-with-icons"
-  description="Quick action buttons with icons"
+  description="带图标按钮"
   className="mb-4"
 />
 
-### Single Button
+### 单个按钮
 
 单独使用快速操作按钮，无需按钮组包裹。
 
 <ComponentPreview
   name="quick-action-single"
-  description="Single quick action button usage"
+  description="单个按钮"
   className="mb-4"
 />
 
-### Interactive
+### 交互示例
 
 交互式示例，展示如何响应按钮点击事件。
 
 <ComponentPreview
   name="quick-action-interactive"
-  description="Interactive quick action buttons with state"
+  description="交互式示例"
   className="mb-4"
 />
 
-### Disabled
+### 禁用状态
 
 禁用状态的快速操作按钮。
 
@@ -135,7 +135,7 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/quick-action.json
   className="mb-4"
 />
 
-### Flexible Layout
+### 灵活布局
 
 灵活的内容布局，图标可以放在任意位置。
 
@@ -145,7 +145,7 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/quick-action.json
   className="mb-4"
 />
 
-## API Reference
+## API
 
 ### QuickActionPanel
 

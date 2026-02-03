@@ -11,7 +11,7 @@ author: AF
 
 Sender 是一个面向“对话输入”场景的组合组件，默认提供完整 UI（输入、附件、模式与发送按钮），同时允许通过适配器与插槽扩展业务逻辑。
 
-## Installation
+## 安装
 
 <CodeTabs>
 
@@ -50,7 +50,7 @@ npm install @radix-ui/react-slot
 
 </CodeTabs>
 
-## Overview
+## 概述
 
 - **定位**：对话输入器（输入 + 附件 + 模式 + 发送）
 - **默认样式**：开箱即用，包含发送按钮与操作栏
@@ -129,7 +129,7 @@ const modes = [
 />;
 ```
 
-## Quick Start
+## 快速开始
 
 最小可用配置：`value`、`onChange`、`onSend` 三个核心入口即可工作。
 
@@ -139,9 +139,9 @@ const modes = [
   className="mb-4"
 />
 
-## Examples
+## 代码演示
 
-### Feature Overview
+### 功能总览
 
 完整能力演示：数据适配、附件、模式、提交校验与反馈。
 
@@ -151,7 +151,7 @@ const modes = [
   className="mb-4"
 />
 
-### Custom Input & Action Bar
+### 自定义输入框与操作栏
 
 通过 `renderInput` 和 `renderActionBar` 进行 UI 结构重写。
 
@@ -161,23 +161,23 @@ const modes = [
   className="mb-4"
 />
 
-### Primitive States
+### 原语状态
 
 <ComponentPreview
   name="sender-default"
-  description="Default state"
+  description="默认状态"
   className="mb-4"
 />
 
 <ComponentPreview
   name="sender-active"
-  description="Active state"
+  description="激活状态"
   className="mb-4"
 />
 
 <ComponentPreview
   name="sender-disabled"
-  description="Disabled state"
+  description="禁用状态"
   className="mb-4"
 />
 

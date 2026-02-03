@@ -8,7 +8,7 @@ author: AF
 
 Toggle Button 组件提供了用于选择和多选场景的开关按钮样式，支持单选和多选模式，适用于反馈选项选择、模式切换（如深度思考、联网搜索）等场景。
 
-## Overview
+## 概述
 
 - **两种变体样式**：default（默认，高度 32px）和 compact（紧凑，使用 CSS 变量）
 - **单选和多选模式**：支持单选按钮组和多选按钮组
@@ -17,7 +17,7 @@ Toggle Button 组件提供了用于选择和多选场景的开关按钮样式，
 - **类型安全**：完整的 TypeScript 类型定义
 - **灵活组合**：基于原语组件构建，可自由组合使用
 
-## Quick Start
+## 快速开始
 
 ```tsx
 import { ToggleButton } from "@/registry/wuhan/composed/toggle-button";
@@ -39,7 +39,7 @@ export function Example() {
 }
 ```
 
-## Features
+## 特性
 
 - **两种变体样式**：default 适用于反馈组件等场景，compact 适用于 sender 组件等场景
 - **单选模式**：点击选中，再次点击取消选择
@@ -48,7 +48,7 @@ export function Example() {
 - **状态管理**：内置状态管理逻辑，简化使用
 - **样式定制**：支持自定义按钮和容器样式
 
-## Installation
+## 安装
 
 <CodeTabs>
 
@@ -81,49 +81,49 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/toggle-button.json
 
 </CodeTabs>
 
-## Examples
+## 代码演示
 
-### Default Variant
+### 默认样式
 
 默认样式的开关按钮，适用于反馈组件等场景。
 
 <ComponentPreview
   name="toggle-button-default"
-  description="Default variant toggle button"
+  description="默认样式"
   className="mb-4"
 />
 
-### Compact Variant
+### 紧凑样式
 
 紧凑样式的开关按钮，适用于 sender 组件等场景。
 
 <ComponentPreview
   name="toggle-button-compact"
-  description="Compact variant toggle button"
+  description="紧凑样式"
   className="mb-4"
 />
 
-### Multiple Selection
+### 多选模式
 
 多选模式示例。
 
 <ComponentPreview
   name="toggle-button-multiple"
-  description="Multiple selection mode"
+  description="多选模式"
   className="mb-4"
 />
 
-### Disabled Options
+### 禁用选项
 
 带禁用选项的开关按钮。
 
 <ComponentPreview
   name="toggle-button-disabled"
-  description="Toggle button with disabled options"
+  description="禁用选项"
   className="mb-4"
 />
 
-## API Reference
+## API
 
 ### ToggleButton
 

@@ -8,7 +8,7 @@ author: AF
 
 Task List 组件提供了完整的任务管理功能，支持任务的创建、编辑、完成状态切换和反馈，适用于待办事项、任务清单、工作流管理等场景。
 
-## Overview
+## 概述
 
 - **双模式切换**：支持只读模式和编辑模式，灵活适应不同场景
 - **任务操作**：完成/未完成切换、添加新任务、编辑任务、删除任务
@@ -17,7 +17,7 @@ Task List 组件提供了完整的任务管理功能，支持任务的创建、�
 - **响应式设计**：自适应不同屏幕尺寸
 - **类型安全**：完整的 TypeScript 类型定义
 
-## Quick Start
+## 快速开始
 
 ```tsx
 import { TaskList } from "@/registry/wuhan/composed/task-list";
@@ -37,7 +37,7 @@ export function Example() {
 }
 ```
 
-## Features
+## 特性
 
 - **任务管理**：创建、编辑、删除、完成状态切换
 - **编辑模式**：一键切换到编辑模式，修改任务内容
@@ -47,7 +47,7 @@ export function Example() {
 - **状态持久化**：任务状态实时更新
 - **空状态处理**：无任务时显示友好提示
 
-## Installation
+## 安装
 
 <CodeTabs>
 
@@ -80,49 +80,49 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/task-list.json
 
 </CodeTabs>
 
-## Examples
+## 代码演示
 
-### Default
+### 只读模式
 
 基础只读模式，展示任务列表。
 
 <ComponentPreview
   name="task-list-default"
-  description="Default readonly task list"
+  description="只读模式"
   className="mb-4"
 />
 
-### Editable Mode
+### 可编辑模式
 
 可编辑模式，支持任务的增删改。
 
 <ComponentPreview
   name="task-list-editable"
-  description="Editable task list with actions"
+  description="可编辑模式"
   className="mb-4"
 />
 
-### With Feedback
+### 带反馈功能
 
 带反馈功能的任务列表。
 
 <ComponentPreview
   name="task-list-feedback"
-  description="Task list with feedback options"
+  description="带反馈功能"
   className="mb-4"
 />
 
-### Full Features
+### 完整功能
 
 完整功能展示，包含编辑、反馈、状态管理。
 
 <ComponentPreview
   name="task-list-composed-demo"
-  description="Task list with all features"
+  description="完整功能"
   className="mb-4"
 />
 
-## API Reference
+## API
 
 ### TaskList
 

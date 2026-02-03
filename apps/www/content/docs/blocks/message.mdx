@@ -8,7 +8,7 @@ author: AF
 
 Message 组件提供了用于显示 AI 消息和用户消息的完整样式组件，支持消息状态管理、反馈区域、附件展示等功能，适用于聊天界面、对话系统、AI 助手等场景。
 
-## Overview
+## 概述
 
 - **两种消息类型**：AIMessage（AI 消息）和 UserMessage（用户消息），样式自动区分
 - **状态管理**：AI 消息支持 idle、generating、failed 三种状态
@@ -17,7 +17,7 @@ Message 组件提供了用于显示 AI 消息和用户消息的完整样式组�
 - **样式隔离**：消息样式不受文档框架影响，保持一致性
 - **无障碍访问**：支持 ARIA live regions，屏幕阅读器友好
 
-## Quick Start
+## 快速开始
 
 ```tsx
 import { AIMessage, UserMessage } from "@/registry/wuhan/composed/message";
@@ -38,7 +38,7 @@ export function Example() {
 }
 ```
 
-## Features
+## 特性
 
 - **AI 消息状态**：idle（正常）、generating（生成中）、failed（失败）三种状态
 - **智能内容渲染**：根据状态自动渲染 content 或 children
@@ -47,7 +47,7 @@ export function Example() {
 - **附件支持**：可在消息上方展示附件（图片、文件等）
 - **错误处理**：失败状态自动显示错误信息
 
-## Installation
+## 安装
 
 <CodeTabs>
 
@@ -80,9 +80,9 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/message.json
 
 </CodeTabs>
 
-## Examples
+## 代码演示
 
-### Default
+### 基本
 
 基础的消息展示，包含用户消息和 AI 消息。
 
@@ -92,7 +92,7 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/message.json
   className="mb-4"
 />
 
-### With Status
+### 状态的消息
 
 展示 AI 消息的不同状态，包括生成中状态和生成失败状态。
 
@@ -102,7 +102,7 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/message.json
   className="mb-4"
 />
 
-### With Feedback
+### 消息反馈
 
 带反馈区域的消息，可以在消息下方添加操作按钮。
 
@@ -112,7 +112,7 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/message.json
   className="mb-4"
 />
 
-### With Attachment
+### 显示附件
 
 展示带附件的消息，附件显示在消息上方。
 
@@ -122,7 +122,7 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/message.json
   className="mb-4"
 />
 
-## API Reference
+## API
 
 ### AIMessage
 

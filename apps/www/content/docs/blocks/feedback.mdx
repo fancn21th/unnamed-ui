@@ -4,21 +4,50 @@ description: Composed feedback form for reporting issues and collecting feedback
 author: AF
 ---
 
-<ComponentPreview
-  name="feedback-demo"
-  description="Feedback component with options, input field, and submit button"
-  className="mb-4"
-/>
+<ComponentPreview name="feedback-demo" description="Feedback component with options, input field, and submit button" className="mb-4" />
 
-Feedback 是组合组件，提供完整的反馈表单界面，包含反馈选项、输入框和提交按钮。适用于消息反馈、内容举报等场景。
+Feedback 反馈表单组件用于收集用户反馈，支持多选项按钮、详细描述输入和表单提交，适用于内容举报、问题反馈、满意度调查等场景。
+
+## Overview
+
+- **反馈选项**：支持多个反馈类型选项，用户可快速选择问题类型
+- **详细描述**：提供输入框收集详细的反馈信息
+- **表单提交**：内置提交按钮和表单处理逻辑
+- **受控/非受控**：支持受控和非受控两种使用模式
+- **可关闭**：提供关闭按钮，方便用户退出反馈界面
+- **灵活定制**：可自定义标题、选项、占位符和提交按钮文本
+
+## Quick Start
+
+```tsx
+import { FeedbackComposed } from "@/registry/wuhan/composed/feedback/feedback";
+
+export function Example() {
+  return (
+    <FeedbackComposed
+      title="有什么问题?"
+      options={[
+        { id: "harmful", label: "有害/不安全" },
+        { id: "false", label: "信息虚假" },
+        { id: "inappropriate", label: "内容不当" },
+        { id: "other", label: "其他" },
+      ]}
+      onSubmit={(data) => {
+        console.log("反馈数据:", data);
+      }}
+    />
+  );
+}
+```
 
 ## Features
 
-- **反馈选项**：支持多个反馈选项按钮（如：有害/不安全、信息虚假等），支持选中状态
-- **输入框**：复用 sidebar 搜索框样式，提供一致的输入体验
-- **提交按钮**：品牌色提交按钮，支持表单提交
-- **关闭功能**：头部提供关闭按钮，方便用户关闭反馈界面
-- **灵活组合**：如需深度定制，可使用 primitives 重新组合
+- **多种反馈类型**：通过选项按钮快速分类问题
+- **详细信息收集**：输入框支持用户补充详细描述
+- **双模式支持**：受控模式用于复杂表单，非受控模式用于简单场景
+- **表单验证**：内置表单提交处理，可扩展验证逻辑
+- **无障碍支持**：包含适当的 ARIA 标签
+- **响应式设计**：自适应不同屏幕尺寸
 
 ## Installation
 
@@ -41,14 +70,11 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/feedback.json
 
 <Steps>
 
-<Step>Copy and paste the following code into your project.</Step>
+<Step>复制以下代码到你的项目</Step>
 
-<ComponentSource
-  name="feedback"
-  title="registry/wuhan/composed/feedback/feedback.tsx"
-/>
+<ComponentSource name="feedback" />
 
-<Step>Update the import paths to match your project setup.</Step>
+<Step>更新导入路径以匹配你的项目设置</Step>
 
 </Steps>
 
@@ -56,36 +82,325 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/feedback.json
 
 </CodeTabs>
 
-## Components
-
-Feedback 组件由多个样式原语组成，每个原语都可以独立使用：
-
-### Container Primitives
-
-- **FeedbackContainerPrimitive** - 反馈容器（主容器，包含所有反馈内容）
-- **FeedbackHeaderPrimitive** - 反馈头部（标题 + 关闭按钮）
-
-### Button Primitives
-
-- **FeedbackButtonPrimitive** - 反馈选项按钮（已废弃，请使用 `ToggleButtonPrimitive` from `toggle-button` block with `variant="default"`）
-- **FeedbackButtonGroupPrimitive** - 反馈按钮组（已废弃，请使用 `ToggleButtonGroupPrimitive` from `toggle-button` block with `variant="default"`）
-- **FeedbackSubmitButtonPrimitive** - 提交按钮（品牌色按钮）
-
-> **注意**：`FeedbackButtonPrimitive` 和 `FeedbackButtonGroupPrimitive` 已废弃，为了向后兼容仍然保留。建议直接使用 `ToggleButtonPrimitive` 和 `ToggleButtonGroupPrimitive` from `toggle-button` block。
-
-### Input Primitives
-
-- **FeedbackInputContainerPrimitive** - 输入框容器
-- **FeedbackInputPrimitive** - 反馈输入框（复用 sidebar 搜索框样式）
-
 ## Examples
 
 ### Default
 
-基础的反馈组件示例，包含完整的反馈流程：
+基础的反馈组件示例，包含完整的反馈流程。
 
 <ComponentPreview
   name="feedback-demo"
   description="Complete feedback component example"
   className="mb-4"
 />
+
+### Controlled Mode
+
+使用受控模式管理反馈状态，适合需要外部状态管理的场景。
+
+<ComponentPreview
+  name="feedback-controlled"
+  description="Controlled feedback with external state"
+  className="mb-4"
+/>
+
+### Custom Options
+
+自定义反馈选项，支持不同的业务场景。
+
+<ComponentPreview
+  name="feedback-custom-options"
+  description="Feedback with custom option labels"
+  className="mb-4"
+/>
+
+### Report Content
+
+内容举报场景，包含常见的举报理由选项。
+
+<ComponentPreview
+  name="feedback-report"
+  description="Content report feedback form"
+  className="mb-4"
+/>
+
+## API Reference
+
+### FeedbackComposed
+
+反馈表单主组件，提供完整的反馈收集界面。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `ReactNode` | `"有什么问题?"` | 反馈表单标题 |
+| `options` | `FeedbackOption[]` | - | 反馈选项列表（必填） |
+| `selectedId` | `string` | - | 受控模式：当前选中的选项 ID |
+| `defaultSelectedId` | `string` | `""` | 非受控模式：默认选中的选项 ID |
+| `onSelect` | `(id: string) => void` | - | 选项选择变化时的回调 |
+| `inputValue` | `string` | - | 受控模式：输入框的当前值 |
+| `defaultInputValue` | `string` | `""` | 非受控模式：输入框的默认值 |
+| `onInputChange` | `(value: string) => void` | - | 输入框内容变化时的回调 |
+| `placeholder` | `string` | `"请输入详细描述..."` | 输入框占位符 |
+| `submitLabel` | `ReactNode` | `"提交"` | 提交按钮文本 |
+| `onSubmit` | `(payload: { selectedId: string; inputValue: string }) => void` | - | 表单提交时的回调 |
+| `onClose` | `() => void` | - | 关闭按钮点击时的回调 |
+
+#### Example
+
+```tsx
+import { FeedbackComposed } from "@/registry/wuhan/composed/feedback/feedback";
+import { useState } from "react";
+
+function FeedbackExample() {
+  const [selectedId, setSelectedId] = useState("");
+  const [inputValue, setInputValue] = useState("");
+
+  return (
+    <FeedbackComposed
+      title="反馈问题"
+      options={[
+        { id: "bug", label: "Bug 报告" },
+        { id: "feature", label: "功能建议" },
+        { id: "question", label: "使用问题" },
+      ]}
+      // 受控模式
+      selectedId={selectedId}
+      onSelect={setSelectedId}
+      inputValue={inputValue}
+      onInputChange={setInputValue}
+      // 提交处理
+      onSubmit={(data) => {
+        console.log("提交:", data);
+        // 发送到服务器...
+      }}
+      onClose={() => {
+        console.log("关闭反馈");
+      }}
+    />
+  );
+}
+```
+
+### FeedbackOption
+
+反馈选项类型定义。
+
+```tsx
+interface FeedbackOption {
+  id: string;          // 选项的唯一标识符
+  label: ReactNode;    // 选项显示的标签
+}
+```
+
+## 使用场景
+
+- **内容举报**：用户举报不当内容、虚假信息、有害内容等
+- **问题反馈**：收集用户遇到的问题和 Bug 报告
+- **功能建议**：收集用户的产品改进建议和新功能需求
+- **满意度调查**：收集用户对服务、产品的满意度反馈
+- **客服咨询**：用户提交咨询问题的表单
+- **质量评价**：对内容、服务质量的评价和意见收集
+
+## 最佳实践
+
+1. **选项设计**：反馈选项应涵盖常见问题类型，并提供"其他"选项
+2. **输入引导**：使用清晰的占位符文本引导用户输入详细信息
+3. **提交反馈**：提交成功后给予明确的反馈提示
+4. **数据验证**：提交前验证必填项，确保收集到有效信息
+5. **隐私保护**：明确告知用户数据用途，保护用户隐私
+6. **响应及时**：收到反馈后及时响应，提升用户体验
+
+## 注意事项
+
+- `options` 是必填属性，至少需要提供一个选项
+- 受控模式下需要同时提供 `selectedId` 和 `onSelect`、`inputValue` 和 `onInputChange`
+- 非受控模式下可以使用 `defaultSelectedId` 和 `defaultInputValue` 设置初始值
+- `onSubmit` 回调会接收包含 `selectedId` 和 `inputValue` 的对象
+- 表单提交会自动调用 `preventDefault()`，需要在 `onSubmit` 中处理实际的提交逻辑
+
+## 样式定制
+
+组件使用 Tailwind CSS，可以通过原语组件进行完全定制：
+
+```tsx
+import {
+  FeedbackContainerPrimitive,
+  FeedbackHeaderPrimitive,
+  FeedbackInputPrimitive,
+  FeedbackSubmitButtonPrimitive,
+} from "@/registry/wuhan/blocks/feedback/feedback-01";
+
+function CustomFeedback() {
+  return (
+    <FeedbackContainerPrimitive className="bg-gray-50 rounded-lg">
+      <FeedbackHeaderPrimitive 
+        title="自定义反馈" 
+        className="border-b border-gray-200"
+      />
+      <FeedbackInputPrimitive 
+        placeholder="输入您的反馈..." 
+        className="border-2 border-blue-200 focus:border-blue-500"
+      />
+      <FeedbackSubmitButtonPrimitive className="bg-purple-500 hover:bg-purple-600">
+        发送反馈
+      </FeedbackSubmitButtonPrimitive>
+    </FeedbackContainerPrimitive>
+  );
+}
+```
+
+## 扩展示例
+
+### 带验证的反馈表单
+
+```tsx
+import { FeedbackComposed } from "@/registry/wuhan/composed/feedback/feedback";
+import { useState } from "react";
+
+function ValidatedFeedback() {
+  const [selectedId, setSelectedId] = useState("");
+  const [inputValue, setInputValue] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = (data: { selectedId: string; inputValue: string }) => {
+    // 验证
+    if (!data.selectedId) {
+      setError("请选择反馈类型");
+      return;
+    }
+    if (!data.inputValue.trim()) {
+      setError("请输入详细描述");
+      return;
+    }
+    
+    // 提交
+    console.log("提交反馈:", data);
+    setError("");
+  };
+
+  return (
+    <div>
+      <FeedbackComposed
+        options={[
+          { id: "bug", label: "Bug" },
+          { id: "feature", label: "功能" },
+        ]}
+        selectedId={selectedId}
+        onSelect={setSelectedId}
+        inputValue={inputValue}
+        onInputChange={setInputValue}
+        onSubmit={handleSubmit}
+      />
+      {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+    </div>
+  );
+}
+```
+
+### 异步提交的反馈表单
+
+```tsx
+import { FeedbackComposed } from "@/registry/wuhan/composed/feedback/feedback";
+import { useState } from "react";
+
+function AsyncFeedback() {
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const handleSubmit = async (data: { selectedId: string; inputValue: string }) => {
+    setLoading(true);
+    try {
+      await fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      setSuccess(true);
+    } catch (error) {
+      console.error("提交失败:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (success) {
+    return <div className="text-green-600">感谢您的反馈！</div>;
+  }
+
+  return (
+    <FeedbackComposed
+      options={[
+        { id: "good", label: "👍 很好" },
+        { id: "bad", label: "👎 不好" },
+      ]}
+      submitLabel={loading ? "提交中..." : "提交"}
+      onSubmit={handleSubmit}
+    />
+  );
+}
+```
+
+## Primitive Components
+
+Feedback 组件基于以下原语组件构建，可用于需要完全自定义的场景。
+
+### FeedbackContainerPrimitive
+
+反馈容器组件，包含所有反馈内容。
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `children` | `ReactNode` | 子元素 |
+| `onClose` | `() => void` | 关闭回调 |
+| `className` | `string` | 自定义样式类名 |
+
+### FeedbackHeaderPrimitive
+
+反馈头部组件，包含标题和关闭按钮。
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `title` | `ReactNode` | 标题内容 |
+| `onClose` | `() => void` | 关闭回调 |
+| `className` | `string` | 自定义样式类名 |
+
+### FeedbackInputContainerPrimitive
+
+输入框容器组件。
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `children` | `ReactNode` | 子元素 |
+| `className` | `string` | 自定义样式类名 |
+
+### FeedbackInputPrimitive
+
+反馈输入框组件，复用 sidebar 搜索框样式。
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `placeholder` | `string` | 占位符文本 |
+| `value` | `string` | 输入框值 |
+| `onChange` | `(e: ChangeEvent) => void` | 变化回调 |
+| `className` | `string` | 自定义样式类名 |
+
+### FeedbackSubmitButtonPrimitive
+
+提交按钮组件，品牌色样式。
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `children` | `ReactNode` | 按钮文本 |
+| `type` | `"submit" \| "button"` | 按钮类型 |
+| `className` | `string` | 自定义样式类名 |
+
+### 已废弃的原语
+
+> **注意**：以下组件已废弃，建议使用 `toggle-button` block 中的组件。
+
+- **FeedbackButtonPrimitive** - 已废弃，请使用 `ToggleButtonPrimitive`
+- **FeedbackButtonGroupPrimitive** - 已废弃，请使用 `ToggleButtonGroupPrimitive`
+
+原语组件可以在 [registry/wuhan/blocks/feedback/feedback-01.tsx](../../registry/wuhan/blocks/feedback/feedback-01.tsx) 中找到。

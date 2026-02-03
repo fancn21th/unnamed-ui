@@ -4,22 +4,49 @@ description: Toggle button component for selection and mode switching
 author: AF
 ---
 
-<ComponentPreview
-  name="toggle-button-demo"
-  description="Toggle button component with default and compact variants"
-  className="mb-4"
-/>
+<ComponentPreview name="toggle-button-default" description="Toggle button with default variant" className="mb-4" />
 
-Toggle Button 组件提供了用于选择和多选场景的开关按钮样式原语，支持两种变体样式。适用于反馈选项选择、模式切换（如深度思考、联网搜索）等场景。
+Toggle Button 组件提供了用于选择和多选场景的开关按钮样式，支持单选和多选模式，适用于反馈选项选择、模式切换（如深度思考、联网搜索）等场景。
+
+## Overview
+
+- **两种变体样式**：default（默认，高度 32px）和 compact（紧凑，使用 CSS 变量）
+- **单选和多选模式**：支持单选按钮组和多选按钮组
+- **清晰的状态反馈**：选中/未选中视觉反馈明确
+- **禁用选项支持**：可单独禁用某些选项
+- **类型安全**：完整的 TypeScript 类型定义
+- **灵活组合**：基于原语组件构建，可自由组合使用
+
+## Quick Start
+
+```tsx
+import { ToggleButton } from "@/registry/wuhan/composed/toggle-button";
+
+export function Example() {
+  const [selected, setSelected] = useState<string>();
+  
+  return (
+    <ToggleButton
+      options={[
+        { id: "harmful", label: "有害/不安全" },
+        { id: "false", label: "信息虚假" },
+        { id: "inappropriate", label: "内容不当" },
+      ]}
+      value={selected}
+      onChange={setSelected}
+    />
+  );
+}
+```
 
 ## Features
 
-- **两种变体样式**：
-  - `default`: 默认样式，用于反馈组件等场景（高度 32px）
-  - `compact`: 紧凑样式，用于 sender 组件等场景（高度使用 CSS 变量）
-- **单选和多选模式**：支持单选按钮组和多选按钮组
-- **选中状态**：清晰的选中/未选中视觉反馈
-- **灵活组合**：所有组件都是样式原语，可以根据需求自由组合使用
+- **两种变体样式**：default 适用于反馈组件等场景，compact 适用于 sender 组件等场景
+- **单选模式**：点击选中，再次点击取消选择
+- **多选模式**：可同时选中多个选项
+- **禁用状态**：支持单独禁用某些选项，禁用的选项无法被选中
+- **状态管理**：内置状态管理逻辑，简化使用
+- **样式定制**：支持自定义按钮和容器样式
 
 ## Installation
 
@@ -33,7 +60,7 @@ Toggle Button 组件提供了用于选择和多选场景的开关按钮样式原
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add http://localhost:3000/r/wuhan/toggle-button-01.json
+npx shadcn@latest add http://localhost:3000/r/wuhan/toggle-button.json
 ```
 
 </TabsContent>
@@ -42,14 +69,11 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/toggle-button-01.json
 
 <Steps>
 
-<Step>Copy and paste the following code into your project.</Step>
+<Step>复制以下代码到你的项目</Step>
 
-<ComponentSource
-  name="toggle-button-demo"
-  title="registry/wuhan/examples/toggle-button/toggle-button-demo.tsx"
-/>
+<ComponentSource name="toggle-button" />
 
-<Step>Update the import paths to match your project setup.</Step>
+<Step>更新导入路径以匹配你的项目设置</Step>
 
 </Steps>
 
@@ -57,115 +81,388 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/toggle-button-01.json
 
 </CodeTabs>
 
-## Components
-
-Toggle Button 组件由多个样式原语组成，每个原语都可以独立使用：
-
-### Button Primitives
-
-- **ToggleButtonPrimitive** - 单个开关按钮（支持 default、hover、selected 三种状态）
-- **ToggleButtonGroupPrimitive** - 开关按钮组（管理多个开关按钮，支持单选和多选模式）
-
-## Variants
-
-### Default Variant
-
-默认样式适用于反馈组件等场景，具有以下特点：
-- 高度：32px (`h-8`)
-- 内边距：使用 CSS 变量 `var(--padding-com-md)`
-- 未选中状态：中性边框和背景
-- 选中状态：品牌色边框和文字
-
-### Compact Variant
-
-紧凑样式适用于 sender 组件等场景，具有以下特点：
-- 高度：使用 CSS 变量 `var(--size-com-md)`
-- 内边距：`px-3`
-- 未选中状态：透明背景，中性边框
-- 选中状态：品牌色浅背景和边框
-
 ## Examples
 
 ### Default Variant
 
-默认样式的开关按钮示例：
+默认样式的开关按钮，适用于反馈组件等场景。
 
 <ComponentPreview
-  name="toggle-button-demo"
-  description="Toggle button with default variant"
+  name="toggle-button-default"
+  description="Default variant toggle button"
   className="mb-4"
 />
 
 ### Compact Variant
 
-紧凑样式的开关按钮示例（常用于 sender 组件）：
+紧凑样式的开关按钮，适用于 sender 组件等场景。
 
 <ComponentPreview
-  name="toggle-button-demo"
-  description="Toggle button with compact variant"
+  name="toggle-button-compact"
+  description="Compact variant toggle button"
   className="mb-4"
 />
 
-## Usage
+### Multiple Selection
 
-### Single Toggle Button
+多选模式示例。
+
+<ComponentPreview
+  name="toggle-button-multiple"
+  description="Multiple selection mode"
+  className="mb-4"
+/>
+
+### Disabled Options
+
+带禁用选项的开关按钮。
+
+<ComponentPreview
+  name="toggle-button-disabled"
+  description="Toggle button with disabled options"
+  className="mb-4"
+/>
+
+## API Reference
+
+### ToggleButton
+
+开关按钮主组件，支持单选和多选模式。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `options` | `ToggleOption[]` | - | 按钮选项列表（必填） |
+| `value` | `string` | - | 当前选中的选项 ID（单选模式） |
+| `values` | `string[]` | - | 当前选中的选项 ID 列表（多选模式） |
+| `onChange` | `(value: string \| undefined) => void` | - | 选项变化回调（单选模式） |
+| `onValuesChange` | `(values: string[]) => void` | - | 选项变化回调（多选模式） |
+| `multiple` | `boolean` | `false` | 是否为多选模式 |
+| `variant` | `"default" \| "compact"` | `"default"` | 按钮变体样式 |
+| `className` | `string` | - | 按钮自定义类名 |
+| `groupClassName` | `string` | - | 按钮容器自定义类名 |
+
+#### ToggleOption Type
 
 ```tsx
-import { ToggleButtonPrimitive } from "@/registry/wuhan/blocks/toggle-button/toggle-button-01";
-
-// 默认样式
-<ToggleButtonPrimitive>未选中</ToggleButtonPrimitive>
-<ToggleButtonPrimitive selected>已选中</ToggleButtonPrimitive>
-
-// 紧凑样式
-<ToggleButtonPrimitive variant="compact">未选中</ToggleButtonPrimitive>
-<ToggleButtonPrimitive variant="compact" selected>已选中</ToggleButtonPrimitive>
+interface ToggleOption {
+  id: string;        // 选项唯一标识
+  label: string;     // 选项显示文本
+  disabled?: boolean; // 是否禁用
+}
 ```
 
-### Single Selection Group
-
-单选按钮组（适用于反馈组件等场景）：
+#### Example
 
 ```tsx
-import { ToggleButtonGroupPrimitive } from "@/registry/wuhan/blocks/toggle-button/toggle-button-01";
+import { ToggleButton } from "@/registry/wuhan/composed/toggle-button";
 
-const options = [
-  { id: "harmful", label: "有害/不安全" },
-  { id: "false", label: "信息虚假" },
-  { id: "inappropriate", label: "内容不当" },
-];
+function FeedbackSelector() {
+  const [feedback, setFeedback] = useState<string | undefined>();
+  
+  return (
+    <div>
+      {/* 单选模式 */}
+      <ToggleButton
+        options={[
+          { id: "harmful", label: "有害/不安全" },
+          { id: "false", label: "信息虚假" },
+          { id: "inappropriate", label: "内容不当" },
+        ]}
+        value={feedback}
+        onChange={setFeedback}
+        variant="default"
+      />
+    </div>
+  );
+}
 
-<ToggleButtonGroupPrimitive
+function ModeSelector() {
+  const [modes, setModes] = useState<string[]>([]);
+  
+  return (
+    <div>
+      {/* 多选模式 */}
+      <ToggleButton
+        options={[
+          { id: "web-search", label: "联网搜索" },
+          { id: "deep-think", label: "深度思考" },
+        ]}
+        values={modes}
+        onValuesChange={setModes}
+        multiple
+        variant="compact"
+      />
+    </div>
+  );
+}
+```
+
+### 变体样式
+
+#### Default Variant
+
+- 高度：32px (`h-8`)
+- 内边距：使用 CSS 变量 `var(--padding-com-md)`
+- 未选中状态：中性边框和背景
+- 选中状态：品牌色边框和文字
+- 适用场景：反馈组件、问卷选择等
+
+#### Compact Variant
+
+- 高度：使用 CSS 变量 `var(--size-com-md)`
+- 内边距：`px-3`
+- 未选中状态：透明背景，中性边框
+- 选中状态：品牌色浅背景和边框（单选）或透明背景（多选）
+- 适用场景：Sender 组件、工具栏等
+
+## 使用场景
+
+- **反馈选择**：用户反馈选项，如"有害/不安全"、"信息虚假"等
+- **模式切换**：启用/禁用某些功能模式，如"联网搜索"、"深度思考"
+- **兴趣选择**：多选用户兴趣标签
+- **筛选器**：内容分类筛选，可多选
+- **偏好设置**：用户偏好选项的开关
+- **表单选择**：问卷调查、表单中的选择题
+
+## 最佳实践
+
+1. **选择合适的变体**：反馈场景使用 default，工具栏场景使用 compact
+2. **选择合适的模式**：互斥选择用单选，非互斥选择用多选
+3. **选项数量控制**：单行建议不超过 5 个选项，过多时考虑换行或其他组件
+4. **文本简洁**：选项文本应简短明了，通常 2-6 个字
+5. **状态反馈**：在单选模式下，可以通过再次点击取消选择
+6. **禁用状态**：合理使用禁用状态，并提供必要的提示信息
+
+## 注意事项
+
+- 单选模式使用 `value` 和 `onChange`，多选模式使用 `values` 和 `onValuesChange`
+- 单选模式下点击已选中的选项会取消选择（value 变为 undefined）
+- 多选模式下，选中状态的背景色根据 `multiple` 属性自动调整
+- 禁用的选项无法被选中或取消选中
+- 建议在使用多选模式时，至少保留一个选项可选（如果需要的话）
+
+## 原语组件
+
+Toggle Button 基于以下原语组件构建：
+
+- `ToggleButtonPrimitive` - 单个开关按钮原语
+- `ToggleButtonGroupPrimitive` - 开关按钮组容器原语
+
+原语组件提供了基础的样式和结构，可以在 [registry/wuhan/blocks/toggle-button/toggle-button-01.tsx](../../registry/wuhan/blocks/toggle-button/toggle-button-01.tsx) 中找到。
+
+## 样式定制
+
+组件使用 Tailwind CSS，可以通过以下方式定制：
+
+```tsx
+// 通过 className 定制按钮样式
+<ToggleButton
   options={options}
-  selectedId={selectedOption}
-  onOptionChange={setSelectedOption}
-  variant="default"
+  value={selected}
+  onChange={setSelected}
+  className="font-bold"
+/>
+
+// 通过 groupClassName 定制容器样式
+<ToggleButton
+  options={options}
+  value={selected}
+  onChange={setSelected}
+  groupClassName="gap-4"
 />
 ```
 
-### Multiple Selection Group
+## 扩展示例
 
-多选按钮组（适用于 sender 组件的模式切换等场景）：
+### Feedback Scene
+
+完整的反馈场景示例，包含提交逻辑。
+
+<ComponentPreview
+  name="toggle-button-feedback"
+  description="Feedback scene with submit logic"
+  className="mb-4"
+/>
+
+### Sender Mode Switching
+
+Sender 组件中的模式切换示例。
+
+<ComponentPreview
+  name="toggle-button-sender"
+  description="Sender mode switching example"
+  className="mb-4"
+/>
+
+### Content Filter
+
+内容筛选器示例，支持"全部"选项的特殊逻辑。
+
+<ComponentPreview
+  name="toggle-button-filter"
+  description="Content filter with special logic"
+  className="mb-4"
+/>
+
+### 带图标的开关按钮
 
 ```tsx
-import { ToggleButtonGroupPrimitive } from "@/registry/wuhan/blocks/toggle-button/toggle-button-01";
+import { ToggleButton } from "@/registry/wuhan/composed/toggle-button";
+import { Globe, Brain } from "lucide-react";
 
-const modeOptions = [
-  { id: "web-search", label: "联网搜索" },
-  { id: "deep-think", label: "深度思考" },
-];
-
-<ToggleButtonGroupPrimitive
-  options={modeOptions}
-  selectedIds={selectedModes}
-  multiple
-  onOptionsChange={setSelectedModes}
-  variant="compact"
-/>
+function IconToggleButton() {
+  const [modes, setModes] = useState<string[]>([]);
+  
+  return (
+    <div className="space-y-4">
+      <ToggleButton
+        options={[
+          { id: "web-search", label: "联网搜索" },
+          { id: "deep-think", label: "深度思考" },
+        ]}
+        values={modes}
+        onValuesChange={setModes}
+        multiple
+        variant="compact"
+      />
+      
+      {/* 显示已启用的模式图标 */}
+      <div className="flex gap-2">
+        {modes.includes("web-search") && (
+          <span className="flex items-center gap-1 text-sm text-primary">
+            <Globe className="w-4 h-4" />
+            联网搜索已启用
+          </span>
+        )}
+        {modes.includes("deep-think") && (
+          <span className="flex items-center gap-1 text-sm text-primary">
+            <Brain className="w-4 h-4" />
+            深度思考已启用
+          </span>
+        )}
+      </div>
+    </div>
+  );
+}
 ```
 
-## Related Components
+### 动态选项加载
 
-- **Feedback** - 反馈组件使用了 Toggle Button 的 default 变体
-- **Sender** - Sender 组件使用了 Toggle Button 的 compact 变体
+```tsx
+import { ToggleButton } from "@/registry/wuhan/composed/toggle-button";
 
+function DynamicOptions() {
+  const [options, setOptions] = useState<ToggleOption[]>([]);
+  const [selected, setSelected] = useState<string>();
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    // 模拟从 API 加载选项
+    setTimeout(() => {
+      setOptions([
+        { id: "opt1", label: "选项 1" },
+        { id: "opt2", label: "选项 2" },
+        { id: "opt3", label: "选项 3" },
+      ]);
+      setLoading(false);
+    }, 1000);
+  }, []);
+  
+  if (loading) {
+    return <div>加载中...</div>;
+  }
+  
+  return (
+    <ToggleButton
+      options={options}
+      value={selected}
+      onChange={setSelected}
+    />
+  );
+}
+```
+
+### 条件禁用
+
+```tsx
+import { ToggleButton } from "@/registry/wuhan/composed/toggle-button";
+
+function ConditionalDisable() {
+  const [selected, setSelected] = useState<string>();
+  const isPremiumUser = false; // 假设这是从用户状态获取的
+  
+  const options = [
+    { id: "basic", label: "基础功能" },
+    { id: "advanced", label: "高级功能", disabled: !isPremiumUser },
+    { id: "pro", label: "专业功能", disabled: !isPremiumUser },
+  ];
+  
+  return (
+    <div className="space-y-2">
+      <ToggleButton
+        options={options}
+        value={selected}
+        onChange={setSelected}
+      />
+      {!isPremiumUser && (
+        <p className="text-sm text-muted-foreground">
+          部分功能需要升级为高级用户
+        </p>
+      )}
+    </div>
+  );
+}
+```
+
+### 表单集成
+
+```tsx
+import { ToggleButton } from "@/registry/wuhan/composed/toggle-button";
+import { useForm } from "react-hook-form";
+
+function FormIntegration() {
+  const { register, setValue, watch } = useForm({
+    defaultValues: {
+      feedback: undefined,
+      interests: [],
+    },
+  });
+  
+  const feedback = watch("feedback");
+  const interests = watch("interests");
+  
+  return (
+    <form className="space-y-4">
+      {/* 单选字段 */}
+      <div>
+        <label className="text-sm font-medium mb-2 block">反馈类型</label>
+        <ToggleButton
+          options={[
+            { id: "helpful", label: "有帮助" },
+            { id: "unhelpful", label: "没帮助" },
+          ]}
+          value={feedback}
+          onChange={(value) => setValue("feedback", value)}
+        />
+      </div>
+      
+      {/* 多选字段 */}
+      <div>
+        <label className="text-sm font-medium mb-2 block">感兴趣的主题</label>
+        <ToggleButton
+          options={[
+            { id: "tech", label: "科技" },
+            { id: "sports", label: "体育" },
+            { id: "music", label: "音乐" },
+          ]}
+          values={interests}
+          onValuesChange={(values) => setValue("interests", values)}
+          multiple
+        />
+      </div>
+    </form>
+  );
+}
+```

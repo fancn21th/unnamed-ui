@@ -1,6 +1,6 @@
 ---
 title: History Item
-description: Composed history list item with trailing slots
+description: Composed history list item with trailing slots and interactive states
 author: AF
 ---
 
@@ -10,7 +10,47 @@ author: AF
   className="mb-4"
 />
 
-History Item 是组合组件，用于展示“历史记录列表”中的单个条目，支持默认 / hover / selected 状态，并提供尾部与 hover 操作区。需要深度定制时可使用 primitives。
+History Item 组件用于展示历史记录列表中的单个条目，支持选中、激活状态管理，并提供常驻和悬停时的尾部操作区，适用于聊天历史、浏览记录、文档历史等场景。
+
+## Overview
+
+- **多状态支持**：支持选中(selected)和激活(active)两种独立状态
+- **双尾部插槽**：常驻尾部内容 + 悬停时显示的操作按钮
+- **无障碍访问**：完整的 ARIA 属性支持，提升可访问性
+- **交互优化**：悬停、点击等交互状态清晰可见
+- **灵活扩展**：基于原语组件构建，支持深度定制
+
+## Quick Start
+
+```tsx
+import { HistoryItem } from "@/registry/wuhan/composed/history-item";
+import { Trash2 } from "lucide-react";
+
+export function Example() {
+  return (
+    <HistoryItem
+      title="今天的对话"
+      selected={true}
+      trailing={<span className="text-xs text-muted-foreground">10:30</span>}
+      hoverTrailing={
+        <button className="p-1 hover:bg-muted rounded">
+          <Trash2 className="w-4 h-4" />
+        </button>
+      }
+      onClick={() => console.log("clicked")}
+    />
+  );
+}
+```
+
+## Features
+
+- **选中状态(selected)**：用于标识当前激活的历史记录项
+- **活动状态(active)**：用于标识鼠标悬停或键盘焦点的项
+- **常驻尾部内容**：始终显示的尾部信息（如时间戳、徽章等）
+- **悬停操作区**：仅在悬停时显示的操作按钮（如删除、编辑等）
+- **ARIA 支持**：自动添加 aria-selected 和 aria-current 属性
+- **可点击**：支持点击事件处理
 
 ## Installation
 
@@ -33,19 +73,246 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/history-item.json
 
 <Steps>
 
-<Step>Copy and paste the following code into your project.</Step>
+<Step>复制以下代码到你的项目</Step>
 
 <ComponentSource
   name="history-item"
   title="registry/wuhan/composed/history-item/history-item.tsx"
 />
 
-<Step>Update the import paths to match your project setup.</Step>
+<Step>更新导入路径以匹配你的项目设置</Step>
 
 </Steps>
 
 </TabsContent>
 
 </CodeTabs>
+
+## Examples
+
+### Default
+
+基础的历史记录项展示。
+
+<ComponentPreview
+  name="history-item-demo"
+  description="Default history item with states"
+  className="mb-4"
+/>
+
+## API Reference
+
+### HistoryItem
+
+历史记录列表项组件，支持多种状态和交互。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `string` | - | 历史记录项的标题文本（必填） |
+| `trailing` | `ReactNode` | - | 常驻的尾部内容，始终显示 |
+| `hoverTrailing` | `ReactNode` | - | 仅在悬停时显示的尾部内容（通常用于操作按钮） |
+| `selected` | `boolean` | `false` | 是否为选中状态 |
+| `active` | `boolean` | `false` | 是否为激活状态（悬停或焦点） |
+| `onClick` | `() => void` | - | 点击事件处理函数 |
+| `className` | `string` | - | 额外的样式类名 |
+
+#### Example
+
+```tsx
+import { HistoryItem } from "@/registry/wuhan/composed/history-item";
+import { Clock, Trash2, Pin } from "lucide-react";
+
+function ChatHistory() {
+  const [selectedId, setSelectedId] = React.useState("1");
+  
+  return (
+    <div className="w-64 space-y-1">
+      {/* 基础用法 */}
+      <HistoryItem
+        title="关于 React 的讨论"
+        selected={selectedId === "1"}
+        onClick={() => setSelectedId("1")}
+      />
+      
+      {/* 带时间戳的历史项 */}
+      <HistoryItem
+        title="TypeScript 最佳实践"
+        selected={selectedId === "2"}
+        trailing={
+          <span className="text-xs text-muted-foreground">
+            2小时前
+          </span>
+        }
+        onClick={() => setSelectedId("2")}
+      />
+      
+      {/* 带悬停操作的历史项 */}
+      <HistoryItem
+        title="如何学习 Next.js"
+        selected={selectedId === "3"}
+        trailing={<Clock className="w-3 h-3 text-muted-foreground" />}
+        hoverTrailing={
+          <div className="flex gap-1">
+            <button className="p-1 hover:bg-accent rounded">
+              <Pin className="w-3 h-3" />
+            </button>
+            <button className="p-1 hover:bg-accent rounded text-destructive">
+              <Trash2 className="w-3 h-3" />
+            </button>
+          </div>
+        }
+        onClick={() => setSelectedId("3")}
+      />
+    </div>
+  );
+}
+```
+
+## 使用场景
+
+- **聊天历史**：显示历史对话列表，支持选中当前会话、删除会话等操作
+- **浏览记录**：展示用户的浏览历史，支持快速访问和管理
+- **文档历史**：显示最近打开的文档列表
+- **搜索历史**：展示用户的搜索记录，支持删除和重新搜索
+- **操作历史**：记录用户的操作轨迹，支持回溯
+- **收藏列表**：展示收藏的内容，支持管理操作
+
+## 最佳实践
+
+1. **状态管理**：使用 selected 标识当前激活项，active 由组件自动管理悬停状态
+2. **操作按钮**：将破坏性操作（如删除）放在 hoverTrailing 中，避免误触
+3. **视觉层次**：使用 trailing 显示次要信息，保持标题的视觉优先级
+4. **交互反馈**：确保点击和悬停有明确的视觉反馈
+5. **键盘导航**：配合键盘事件实现上下键导航
+6. **无障碍性**：组件已内置 ARIA 属性，无需手动添加
+
+## 注意事项
+
+- `selected` 和 `active` 是两个独立的状态，可以同时存在
+- `hoverTrailing` 会在悬停时替换 `trailing` 的显示
+- 点击 `hoverTrailing` 中的按钮时需要阻止事件冒泡，避免触发 `onClick`
+- 建议在父组件中管理选中状态，而非在 HistoryItem 内部
+- 标题文本过长时会自动截断并显示省略号
+
+## 原语组件
+
+History Item 基于以下原语组件构建：
+
+- `HistoryItemPrimitive` - 历史项容器原语
+- `HistoryItemTitlePrimitive` - 标题文本原语
+- `HistoryItemTrailingPrimitive` - 尾部内容原语
+- `HistoryItemHoverTrailingPrimitive` - 悬停尾部原语
+
+原语组件提供了基础的样式和结构，可以在 [registry/wuhan/blocks/history-item/history-item-01.tsx](../../registry/wuhan/blocks/history-item/history-item-01.tsx) 中找到。
+
+## 样式定制
+
+组件使用 Tailwind CSS，可以通过以下方式定制：
+
+```tsx
+// 通过 className 添加额外样式
+<HistoryItem 
+  title="自定义样式项"
+  className="border-l-4 border-primary"
+  selected={true}
+/>
+
+// 自定义 trailing 样式
+<HistoryItem
+  title="带徽章的项"
+  trailing={
+    <span className="px-2 py-0.5 text-xs bg-primary text-primary-foreground rounded-full">
+      新
+    </span>
+  }
+/>
+```
+
+## 扩展示例
+
+### 带图标的历史项
+
+```tsx
+import { HistoryItem } from "@/registry/wuhan/composed/history-item";
+import { MessageSquare, FileText, Code } from "lucide-react";
+
+function HistoryWithIcons() {
+  return (
+    <div className="w-64 space-y-1">
+      <div className="flex items-center gap-2 px-2 py-1.5">
+        <MessageSquare className="w-4 h-4 text-muted-foreground" />
+        <HistoryItem title="聊天记录" selected={true} />
+      </div>
+      <div className="flex items-center gap-2 px-2 py-1.5">
+        <FileText className="w-4 h-4 text-muted-foreground" />
+        <HistoryItem title="文档编辑" />
+      </div>
+    </div>
+  );
+}
+```
+
+### 分组历史列表
+
+```tsx
+import { HistoryItem } from "@/registry/wuhan/composed/history-item";
+
+function GroupedHistory() {
+  return (
+    <div className="w-64">
+      <div className="px-2 py-1 text-xs font-medium text-muted-foreground">
+        今天
+      </div>
+      <div className="space-y-1">
+        <HistoryItem title="React 性能优化" selected={true} />
+        <HistoryItem title="TypeScript 类型体操" />
+      </div>
+      
+      <div className="px-2 py-1 mt-2 text-xs font-medium text-muted-foreground">
+        昨天
+      </div>
+      <div className="space-y-1">
+        <HistoryItem title="Next.js 路由配置" />
+        <HistoryItem title="Tailwind CSS 技巧" />
+      </div>
+    </div>
+  );
+}
+```
+
+### 键盘导航支持
+
+```tsx
+import { HistoryItem } from "@/registry/wuhan/composed/history-item";
+import { useState } from "react";
+
+function KeyboardNavigableHistory() {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const items = ["项目 1", "项目 2", "项目 3"];
+  
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowDown") {
+      setSelectedIndex((prev) => Math.min(prev + 1, items.length - 1));
+    } else if (e.key === "ArrowUp") {
+      setSelectedIndex((prev) => Math.max(prev - 1, 0));
+    }
+  };
+  
+  return (
+    <div className="w-64 space-y-1" onKeyDown={handleKeyDown} tabIndex={0}>
+      {items.map((item, index) => (
+        <HistoryItem
+          key={index}
+          title={item}
+          selected={selectedIndex === index}
+          onClick={() => setSelectedIndex(index)}
+        />
+      ))}
+    </div>
+  );
+}
+```
 
 

@@ -1,10 +1,53 @@
 ---
 title: Prompt
-description: Composed prompt list with horizontal and vertical variants
+description: Composed prompt list with horizontal and vertical variants for quick input suggestions
 author: AF
 ---
 
 <ComponentPreview name="prompt-demo" description="Prompt button components" className="mb-4" />
+
+Prompt 组件用于展示快速输入建议，支持水平和垂直两种布局变体，适用于聊天输入提示、搜索建议、快捷回复等场景。
+
+## Overview
+
+- **双布局模式**：水平紧凑布局和垂直卡片布局，适应不同场景需求
+- **数据驱动**：支持数组数据渲染，方便动态生成提示内容
+- **图标支持**：垂直布局默认支持 Sparkles 图标，可自定义
+- **组合灵活**：PromptGroup、PromptButton、PromptPanel 可独立或组合使用
+- **交互友好**：清晰的悬停和点击状态反馈
+- **类型安全**：完整的 TypeScript 类型定义
+
+## Quick Start
+
+```tsx
+import { PromptButton, PromptPanel } from "@/registry/wuhan/composed/prompt";
+import { Sparkles } from "lucide-react";
+
+export function Example() {
+  const prompts = [
+    { text: "解释一下 React Hooks", icon: Sparkles },
+    { text: "如何优化性能？", icon: Sparkles },
+    { text: "什么是虚拟 DOM？", icon: Sparkles },
+  ];
+  
+  return (
+    <PromptPanel 
+      items={prompts}
+      variant="vertical"
+      onPromptClick={(text) => console.log(text)}
+    />
+  );
+}
+```
+
+## Features
+
+- **水平布局(horizontal)**：紧凑的按钮排列，适合空间有限的场景
+- **垂直布局(vertical)**：卡片式布局，支持图标，视觉更丰富
+- **PromptButton**：单个提示按钮，可独立使用
+- **PromptPanel**：数据驱动的提示面板，自动渲染按钮列表
+- **PromptGroup**：按钮容器，控制布局方向
+- **自定义图标**：垂直布局支持为每个提示配置不同图标
 
 ## Installation
 
@@ -26,11 +69,11 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/prompt.json
 
 <Steps>
 
-<Step>Copy and paste the following code into your project.</Step>
+<Step>复制以下代码到你的项目</Step>
 
 <ComponentSource name="prompt" title="registry/wuhan/composed/prompt/prompt.tsx" />
 
-<Step>Update the import paths to match your project setup.</Step>
+<Step>更新导入路径以匹配你的项目设置</Step>
 
 </Steps>
 
@@ -40,19 +83,443 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/prompt.json
 
 ## Examples
 
-### Prompt 01
+### Horizontal
+
+紧凑的水平布局，适合工具栏或输入框下方。
 
 <ComponentPreview
   name="prompt-horizontal"
-  description="Prompt 01 component"
+  description="Horizontal layout prompt buttons"
   className="mb-4"
 />
 
-### Prompt 02
+### Vertical
+
+卡片式垂直布局，支持图标，视觉更丰富。
 
 <ComponentPreview
   name="prompt-vertical"
-  description="Prompt 02 component"
+  description="Vertical layout prompt cards"
   className="mb-4"
 />
+
+## API Reference
+
+### PromptButton
+
+单个提示按钮组件，支持水平和垂直两种变体。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"horizontal" \| "vertical"` | `"horizontal"` | 布局变体 |
+| `icon` | `LucideIcon` | `Sparkles` | 图标组件（仅 vertical 模式） |
+| `children` | `ReactNode` | - | 提示文本内容（必填） |
+| `onClick` | `() => void` | - | 点击事件处理函数 |
+| `className` | `string` | - | 额外的样式类名 |
+
+#### Example
+
+```tsx
+import { PromptButton } from "@/registry/wuhan/composed/prompt";
+import { Lightbulb } from "lucide-react";
+
+function PromptButtons() {
+  return (
+    <div className="space-y-2">
+      {/* 水平布局 */}
+      <PromptButton 
+        variant="horizontal"
+        onClick={() => console.log("clicked")}
+      >
+        快速提问
+      </PromptButton>
+      
+      {/* 垂直布局，默认 Sparkles 图标 */}
+      <PromptButton variant="vertical">
+        帮我写一段代码
+      </PromptButton>
+      
+      {/* 自定义图标 */}
+      <PromptButton 
+        variant="vertical"
+        icon={Lightbulb}
+      >
+        给我一些建议
+      </PromptButton>
+    </div>
+  );
+}
+```
+
+### PromptGroup
+
+提示按钮容器组件，控制子按钮的布局方向。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"horizontal" \| "vertical"` | `"horizontal"` | 布局变体 |
+| `children` | `ReactNode` | - | 子元素（通常是 PromptButton） |
+| `className` | `string` | - | 额外的样式类名 |
+
+#### Example
+
+```tsx
+import { PromptGroup, PromptButton } from "@/registry/wuhan/composed/prompt";
+
+function PromptList() {
+  return (
+    <PromptGroup variant="horizontal">
+      <PromptButton>提示 1</PromptButton>
+      <PromptButton>提示 2</PromptButton>
+      <PromptButton>提示 3</PromptButton>
+    </PromptGroup>
+  );
+}
+```
+
+### PromptPanel
+
+数据驱动的提示面板，根据数组自动渲染按钮列表。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `items` | `PromptItem[]` | - | 提示项数组（必填） |
+| `variant` | `"horizontal" \| "vertical"` | `"horizontal"` | 布局变体 |
+| `onPromptClick` | `(text: string) => void` | - | 点击提示时的回调函数 |
+| `className` | `string` | - | 额外的样式类名 |
+
+#### PromptItem Type
+
+```tsx
+interface PromptItem {
+  text: string;        // 提示文本
+  icon?: LucideIcon;   // 可选图标（仅 vertical 模式）
+}
+```
+
+#### Example
+
+```tsx
+import { PromptPanel } from "@/registry/wuhan/composed/prompt";
+import { MessageSquare, Code, Lightbulb } from "lucide-react";
+
+function ChatPrompts() {
+  const prompts = [
+    { text: "解释 React Hooks 的工作原理" },
+    { text: "如何优化 React 性能？" },
+    { text: "什么是虚拟 DOM？" },
+  ];
+  
+  const verticalPrompts = [
+    { text: "帮我写一段代码", icon: Code },
+    { text: "给我一些建议", icon: Lightbulb },
+    { text: "开始聊天", icon: MessageSquare },
+  ];
+  
+  return (
+    <div className="space-y-4">
+      {/* 水平布局 */}
+      <PromptPanel 
+        items={prompts}
+        variant="horizontal"
+        onPromptClick={(text) => console.log("Clicked:", text)}
+      />
+      
+      {/* 垂直布局，带图标 */}
+      <PromptPanel 
+        items={verticalPrompts}
+        variant="vertical"
+        onPromptClick={(text) => console.log("Clicked:", text)}
+      />
+    </div>
+  );
+}
+```
+
+### PromptVariant
+
+布局变体类型定义。
+
+```tsx
+type PromptVariant = "horizontal" | "vertical";
+```
+
+## 使用场景
+
+- **聊天输入提示**：在聊天框下方显示常用问题或快捷回复
+- **空状态引导**：新用户首次使用时的操作建议
+- **搜索建议**：搜索框下方的热门搜索或历史记录
+- **快捷操作**：提供常用操作的快速入口
+- **内容发现**：推荐用户可能感兴趣的话题或问题
+- **教学引导**：帮助用户了解功能的示例问题
+
+## 最佳实践
+
+1. **布局选择**：空间充足时使用 vertical 布局，空间有限时使用 horizontal
+2. **提示数量**：建议 3-6 个提示，避免选择过载
+3. **文本长度**：提示文本应简洁明了，建议 10-20 字以内
+4. **图标使用**：垂直布局建议使用图标，增强视觉吸引力
+5. **动态更新**：根据上下文动态更新提示内容，提升相关性
+6. **点击反馈**：点击后应有明确的操作响应，如填充输入框或直接执行
+
+## 注意事项
+
+- `icon` 属性仅在 `variant="vertical"` 时生效
+- 垂直布局默认使用 Sparkles 图标，可通过 `icon` 属性自定义
+- `PromptPanel` 的 `onPromptClick` 回调接收点击的文本内容
+- 水平布局的按钮会自动换行，适应容器宽度
+- 建议在移动端使用垂直布局，视觉效果更好
+
+## 原语组件
+
+Prompt 基于以下原语组件构建：
+
+- **prompt-01 (horizontal)**：水平布局原语组件
+  - `PromptGroupPrimitive` - 按钮组容器
+  - `PromptButtonPrimitive` - 紧凑按钮样式
+  
+- **prompt-02 (vertical)**：垂直布局原语组件
+  - `PromptGroupPrimitive` - 按钮组容器
+  - `PromptButtonPrimitive` - 卡片式按钮
+  - `PromptIconPrimitive` - 图标容器
+
+原语组件提供了基础的样式和结构，可以在以下位置找到：
+- [registry/wuhan/blocks/prompt/prompt-01.tsx](../../registry/wuhan/blocks/prompt/prompt-01.tsx)（水平布局）
+- [registry/wuhan/blocks/prompt/prompt-02.tsx](../../registry/wuhan/blocks/prompt/prompt-02.tsx)（垂直布局）
+
+## 样式定制
+
+组件使用 Tailwind CSS，可以通过以下方式定制：
+
+```tsx
+// 自定义按钮样式
+<PromptButton 
+  variant="horizontal"
+  className="bg-primary text-primary-foreground hover:bg-primary/90"
+>
+  自定义样式
+</PromptButton>
+
+// 自定义容器样式
+<PromptGroup 
+  variant="vertical"
+  className="gap-4 grid grid-cols-2"
+>
+  {/* ... */}
+</PromptGroup>
+
+// 自定义面板样式
+<PromptPanel
+  items={items}
+  className="p-4 border rounded-lg"
+/>
+```
+
+## 扩展示例
+
+### 带分类的提示列表
+
+```tsx
+import { PromptPanel } from "@/registry/wuhan/composed/prompt";
+import { Code, FileText, MessageSquare } from "lucide-react";
+
+function CategorizedPrompts() {
+  const categories = [
+    {
+      title: "编程相关",
+      prompts: [
+        { text: "如何学习 React？", icon: Code },
+        { text: "TypeScript 最佳实践", icon: Code },
+      ],
+    },
+    {
+      title: "文档编写",
+      prompts: [
+        { text: "写一篇技术博客", icon: FileText },
+        { text: "API 文档模板", icon: FileText },
+      ],
+    },
+  ];
+  
+  return (
+    <div className="space-y-6">
+      {categories.map((category) => (
+        <div key={category.title}>
+          <h3 className="mb-2 text-sm font-medium text-muted-foreground">
+            {category.title}
+          </h3>
+          <PromptPanel 
+            items={category.prompts}
+            variant="vertical"
+            onPromptClick={(text) => console.log(text)}
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+### 搜索框集成
+
+```tsx
+import { PromptButton } from "@/registry/wuhan/composed/prompt";
+import { useState } from "react";
+import { Search } from "lucide-react";
+
+function SearchWithPrompts() {
+  const [query, setQuery] = useState("");
+  const suggestions = [
+    "React 性能优化",
+    "TypeScript 类型体操",
+    "Next.js 最佳实践",
+  ];
+  
+  const handlePromptClick = (text: string) => {
+    setQuery(text);
+    // 执行搜索
+  };
+  
+  return (
+    <div className="space-y-2">
+      <div className="relative">
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="搜索..."
+          className="w-full pl-10 pr-4 py-2 border rounded-lg"
+        />
+      </div>
+      
+      {!query && (
+        <div className="flex flex-wrap gap-2">
+          {suggestions.map((suggestion) => (
+            <PromptButton
+              key={suggestion}
+              variant="horizontal"
+              onClick={() => handlePromptClick(suggestion)}
+            >
+              {suggestion}
+            </PromptButton>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+### 动态加载提示
+
+```tsx
+import { PromptPanel } from "@/registry/wuhan/composed/prompt";
+import { useState, useEffect } from "react";
+
+function DynamicPrompts() {
+  const [prompts, setPrompts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    // 模拟 API 调用
+    setTimeout(() => {
+      setPrompts([
+        { text: "今天天气怎么样？" },
+        { text: "推荐一部电影" },
+        { text: "讲个笑话" },
+      ]);
+      setLoading(false);
+    }, 1000);
+  }, []);
+  
+  if (loading) {
+    return <div>加载中...</div>;
+  }
+  
+  return (
+    <PromptPanel
+      items={prompts}
+      variant="horizontal"
+      onPromptClick={(text) => console.log(text)}
+    />
+  );
+}
+```
+
+### 聊天界面集成
+
+```tsx
+import { PromptPanel } from "@/registry/wuhan/composed/prompt";
+import { useState } from "react";
+import { Send } from "lucide-react";
+
+function ChatInterface() {
+  const [input, setInput] = useState("");
+  const [messages, setMessages] = useState([]);
+  
+  const prompts = [
+    { text: "解释一下 React Hooks" },
+    { text: "如何优化性能？" },
+    { text: "什么是虚拟 DOM？" },
+  ];
+  
+  const handlePromptClick = (text: string) => {
+    setInput(text);
+  };
+  
+  const handleSend = () => {
+    if (!input.trim()) return;
+    setMessages([...messages, { role: "user", content: input }]);
+    setInput("");
+  };
+  
+  return (
+    <div className="flex flex-col h-screen">
+      {/* 消息列表 */}
+      <div className="flex-1 overflow-y-auto p-4">
+        {messages.length === 0 && (
+          <div className="flex items-center justify-center h-full">
+            <div className="text-center space-y-4">
+              <h2 className="text-2xl font-bold">开始对话</h2>
+              <PromptPanel
+                items={prompts}
+                variant="vertical"
+                onPromptClick={handlePromptClick}
+              />
+            </div>
+          </div>
+        )}
+        {/* 渲染消息... */}
+      </div>
+      
+      {/* 输入框 */}
+      <div className="border-t p-4">
+        <div className="flex gap-2">
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyPress={(e) => e.key === "Enter" && handleSend()}
+            placeholder="输入消息..."
+            className="flex-1 px-4 py-2 border rounded-lg"
+          />
+          <button 
+            onClick={handleSend}
+            className="px-4 py-2 bg-primary text-primary-foreground rounded-lg"
+          >
+            <Send className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+```
 

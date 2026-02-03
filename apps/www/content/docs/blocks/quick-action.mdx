@@ -6,7 +6,49 @@ author: AF
 
 <ComponentPreview name="quick-action-demo" description="Quick action buttons for suggestions and guidance" className="mb-4" />
 
-Quick Action 是组合组件，用于展示快速操作建议，适用于聊天界面的空状态、对话引导、快捷操作等场景。需要深度定制时可使用 primitives。
+Quick Action 组件用于展示快速操作建议，支持标题、描述和图标，适用于聊天界面的空状态、对话引导、快捷操作等场景。
+
+## Overview
+
+- **标题和描述**：可选的标题和描述文本，提供上下文说明
+- **图标支持**：每个操作按钮可配置独立图标
+- **数据驱动**：通过 items 数组快速生成操作列表
+- **灵活组合**：QuickActionGroup、Button、Icon、Panel 可独立或组合使用
+- **响应式布局**：自动适应容器宽度，按钮自动换行
+- **交互友好**：清晰的悬停和点击状态反馈
+
+## Quick Start
+
+```tsx
+import { QuickActionPanel } from "@/registry/wuhan/composed/quick-action";
+import { MessageSquare, FileText, Code } from "lucide-react";
+
+export function Example() {
+  const actions = [
+    { text: "开始新对话", icon: MessageSquare },
+    { text: "查看文档", icon: FileText },
+    { text: "示例代码", icon: Code },
+  ];
+  
+  return (
+    <QuickActionPanel
+      title="快速开始"
+      description="选择一个操作开始使用"
+      items={actions}
+      onActionClick={(text) => console.log(text)}
+    />
+  );
+}
+```
+
+## Features
+
+- **标题描述**：可选的标题和描述，为操作提供上下文
+- **图标配置**：每个操作可配置不同的图标组件
+- **数据驱动**：通过数组数据快速生成操作按钮
+- **独立组件**：QuickActionButton 可单独使用
+- **灵活布局**：按钮自动换行，适应不同屏幕尺寸
+- **禁用状态**：支持禁用单个或全部操作按钮
 
 ## Installation
 
@@ -29,11 +71,11 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/quick-action.json
 
 <Steps>
 
-<Step>Copy and paste the following code into your project.</Step>
+<Step>复制以下代码到你的项目</Step>
 
 <ComponentSource name="quick-action" title="registry/wuhan/composed/quick-action/quick-action.tsx" />
 
-<Step>Update the import paths to match your project setup.</Step>
+<Step>更新导入路径以匹配你的项目设置</Step>
 
 </Steps>
 
@@ -102,4 +144,419 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/quick-action.json
   description="Flexible layout with icons in different positions"
   className="mb-4"
 />
+
+## API Reference
+
+### QuickActionPanel
+
+快速操作面板组件，数据驱动的完整解决方案。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `string` | - | 面板标题（可选） |
+| `description` | `string` | - | 面板描述文本（可选） |
+| `items` | `QuickActionItem[]` | - | 操作项数组（必填） |
+| `onActionClick` | `(text: string) => void` | - | 点击操作时的回调函数 |
+| `className` | `string` | - | 额外的样式类名 |
+
+#### QuickActionItem Type
+
+```tsx
+interface QuickActionItem {
+  text: string;           // 操作按钮文本
+  icon?: LucideIcon;      // 可选图标组件
+  disabled?: boolean;     // 是否禁用
+  onClick?: () => void;   // 自定义点击处理（优先级高于 onActionClick）
+}
+```
+
+#### Example
+
+```tsx
+import { QuickActionPanel } from "@/registry/wuhan/composed/quick-action";
+import { MessageSquare, FileText, Code, Settings } from "lucide-react";
+
+function QuickActions() {
+  const actions = [
+    { text: "开始新对话", icon: MessageSquare },
+    { text: "查看文档", icon: FileText },
+    { text: "示例代码", icon: Code },
+    { text: "设置选项", icon: Settings, disabled: true },
+  ];
+  
+  return (
+    <QuickActionPanel
+      title="快速开始"
+      description="选择一个操作开始使用"
+      items={actions}
+      onActionClick={(text) => {
+        console.log("Clicked:", text);
+        // 执行相应操作
+      }}
+    />
+  );
+}
+```
+
+### QuickActionButton
+
+单个快速操作按钮组件。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | - | 按钮文本内容（必填） |
+| `disabled` | `boolean` | `false` | 是否禁用 |
+| `onClick` | `() => void` | - | 点击事件处理函数 |
+| `className` | `string` | - | 额外的样式类名 |
+
+#### Example
+
+```tsx
+import { QuickActionButton } from "@/registry/wuhan/composed/quick-action";
+
+function SingleAction() {
+  return (
+    <QuickActionButton onClick={() => console.log("clicked")}>
+      点击这里
+    </QuickActionButton>
+  );
+}
+```
+
+### QuickActionIcon
+
+快速操作图标组件。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `icon` | `LucideIcon` | - | Lucide 图标组件（必填） |
+| `className` | `string` | - | 额外的样式类名 |
+
+#### Example
+
+```tsx
+import { QuickActionIcon } from "@/registry/wuhan/composed/quick-action";
+import { Sparkles } from "lucide-react";
+
+function IconExample() {
+  return <QuickActionIcon icon={Sparkles} />;
+}
+```
+
+### QuickActionGroup
+
+快速操作按钮组容器。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | - | 子元素（通常是 QuickActionButton） |
+| `className` | `string` | - | 额外的样式类名 |
+
+#### Example
+
+```tsx
+import { QuickActionGroup, QuickActionButton } from "@/registry/wuhan/composed/quick-action";
+
+function ActionGroup() {
+  return (
+    <QuickActionGroup>
+      <QuickActionButton>操作 1</QuickActionButton>
+      <QuickActionButton>操作 2</QuickActionButton>
+      <QuickActionButton>操作 3</QuickActionButton>
+    </QuickActionGroup>
+  );
+}
+```
+
+## 使用场景
+
+- **空状态引导**：新用户首次使用时展示可用操作
+- **聊天界面**：对话开始前的快捷问题或操作建议
+- **工作流引导**：引导用户完成多步骤流程
+- **功能发现**：帮助用户发现产品功能
+- **快捷操作**：提供常用功能的快速入口
+- **错误恢复**：操作失败后提供可选的下一步操作
+
+## 最佳实践
+
+1. **标题描述**：使用简洁的标题和描述，说明操作的目的
+2. **操作数量**：建议 3-6 个操作，避免选择过载
+3. **图标使用**：为每个操作配置相关图标，增强识别性
+4. **文本清晰**：操作文本应明确，让用户知道点击后会发生什么
+5. **禁用状态**：对不可用的操作使用禁用状态，而非隐藏
+6. **响应式**：确保在移动端和桌面端都有良好的显示效果
+
+## 注意事项
+
+- `title` 和 `description` 都是可选的，可以只使用其中之一
+- `QuickActionItem` 中的 `onClick` 优先级高于 `QuickActionPanel` 的 `onActionClick`
+- 禁用的按钮不会触发点击事件
+- 图标使用 Lucide React，确保已安装该依赖
+- 按钮会自动换行，适应容器宽度
+
+## 原语组件
+
+Quick Action 基于以下原语组件构建：
+
+- `QuickActionGroupPrimitive` - 按钮组容器原语
+- `QuickActionButtonPrimitive` - 单个按钮原语
+- `QuickActionIconPrimitive` - 图标容器原语
+
+原语组件提供了基础的样式和结构，可以在 [registry/wuhan/blocks/quick-action/quick-action-01.tsx](../../registry/wuhan/blocks/quick-action/quick-action-01.tsx) 中找到。
+
+## 样式定制
+
+组件使用 Tailwind CSS，可以通过以下方式定制：
+
+```tsx
+// 自定义按钮样式
+<QuickActionButton 
+  className="bg-primary text-primary-foreground hover:bg-primary/90"
+>
+  自定义样式
+</QuickActionButton>
+
+// 自定义面板样式
+<QuickActionPanel
+  items={items}
+  className="p-6 border-2 rounded-xl"
+/>
+
+// 自定义图标样式
+<QuickActionIcon 
+  icon={Sparkles}
+  className="text-primary"
+/>
+```
+
+## 扩展示例
+
+### 聊天空状态
+
+```tsx
+import { QuickActionPanel } from "@/registry/wuhan/composed/quick-action";
+import { MessageSquare, Lightbulb, Code, FileText } from "lucide-react";
+
+function ChatEmptyState() {
+  const actions = [
+    { text: "开始新对话", icon: MessageSquare },
+    { text: "获取建议", icon: Lightbulb },
+    { text: "查看示例代码", icon: Code },
+    { text: "阅读文档", icon: FileText },
+  ];
+  
+  return (
+    <div className="flex items-center justify-center h-screen">
+      <div className="max-w-md text-center">
+        <h1 className="mb-4 text-3xl font-bold">欢迎使用 AI 助手</h1>
+        <QuickActionPanel
+          description="选择一个操作开始，或直接在下方输入框中提问"
+          items={actions}
+          onActionClick={(text) => {
+            console.log("Starting action:", text);
+            // 处理操作
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+```
+
+### 工作流引导
+
+```tsx
+import { QuickActionPanel } from "@/registry/wuhan/composed/quick-action";
+import { Upload, Edit, Share, Download } from "lucide-react";
+
+function WorkflowGuide() {
+  const [step, setStep] = useState(0);
+  
+  const steps = [
+    {
+      title: "步骤 1: 上传文件",
+      description: "选择要处理的文件",
+      actions: [
+        { text: "从电脑上传", icon: Upload },
+        { text: "从云端导入", icon: Download },
+      ],
+    },
+    {
+      title: "步骤 2: 编辑内容",
+      description: "对文件进行编辑和调整",
+      actions: [
+        { text: "开始编辑", icon: Edit },
+        { text: "使用模板", icon: FileText },
+      ],
+    },
+    {
+      title: "步骤 3: 分享结果",
+      description: "完成后分享你的作品",
+      actions: [
+        { text: "分享链接", icon: Share },
+        { text: "下载文件", icon: Download },
+      ],
+    },
+  ];
+  
+  const currentStep = steps[step];
+  
+  return (
+    <div className="max-w-2xl mx-auto p-6">
+      <QuickActionPanel
+        title={currentStep.title}
+        description={currentStep.description}
+        items={currentStep.actions}
+        onActionClick={(text) => {
+          console.log("Action:", text);
+          if (step < steps.length - 1) {
+            setStep(step + 1);
+          }
+        }}
+      />
+    </div>
+  );
+}
+```
+
+### 错误恢复
+
+```tsx
+import { QuickActionPanel } from "@/registry/wuhan/composed/quick-action";
+import { RefreshCw, Home, HelpCircle } from "lucide-react";
+
+function ErrorRecovery() {
+  const recoveryActions = [
+    { 
+      text: "重试操作", 
+      icon: RefreshCw,
+      onClick: () => {
+        // 重新执行失败的操作
+        console.log("Retrying...");
+      }
+    },
+    { 
+      text: "返回首页", 
+      icon: Home,
+      onClick: () => {
+        // 导航到首页
+        window.location.href = "/";
+      }
+    },
+    { 
+      text: "获取帮助", 
+      icon: HelpCircle,
+      onClick: () => {
+        // 打开帮助中心
+        window.open("/help", "_blank");
+      }
+    },
+  ];
+  
+  return (
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="max-w-md text-center space-y-4">
+        <div className="text-6xl">⚠️</div>
+        <h2 className="text-2xl font-bold">操作失败</h2>
+        <p className="text-muted-foreground">
+          抱歉，操作未能完成。请选择下一步操作。
+        </p>
+        <QuickActionPanel
+          items={recoveryActions}
+        />
+      </div>
+    </div>
+  );
+}
+```
+
+### 动态操作列表
+
+```tsx
+import { QuickActionPanel } from "@/registry/wuhan/composed/quick-action";
+import { useState, useEffect } from "react";
+
+function DynamicActions() {
+  const [actions, setActions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    // 模拟 API 调用获取可用操作
+    setTimeout(() => {
+      setActions([
+        { text: "推荐操作 1", icon: Sparkles },
+        { text: "推荐操作 2", icon: Lightbulb },
+        { text: "推荐操作 3", icon: MessageSquare },
+      ]);
+      setLoading(false);
+    }, 1000);
+  }, []);
+  
+  if (loading) {
+    return <div className="text-center p-4">加载中...</div>;
+  }
+  
+  return (
+    <QuickActionPanel
+      title="为你推荐"
+      description="基于你的使用习惯，我们为你推荐以下操作"
+      items={actions}
+      onActionClick={(text) => console.log(text)}
+    />
+  );
+}
+```
+
+### 分组操作
+
+```tsx
+import { QuickActionGroup, QuickActionButton, QuickActionIcon } from "@/registry/wuhan/composed/quick-action";
+import { Code, FileText, MessageSquare, Settings } from "lucide-react";
+
+function GroupedActions() {
+  return (
+    <div className="space-y-6">
+      <div>
+        <h3 className="mb-2 text-sm font-medium text-muted-foreground">
+          创建内容
+        </h3>
+        <QuickActionGroup>
+          <QuickActionButton>
+            <QuickActionIcon icon={Code} />
+            新建代码
+          </QuickActionButton>
+          <QuickActionButton>
+            <QuickActionIcon icon={FileText} />
+            新建文档
+          </QuickActionButton>
+        </QuickActionGroup>
+      </div>
+      
+      <div>
+        <h3 className="mb-2 text-sm font-medium text-muted-foreground">
+          其他操作
+        </h3>
+        <QuickActionGroup>
+          <QuickActionButton>
+            <QuickActionIcon icon={MessageSquare} />
+            开始对话
+          </QuickActionButton>
+          <QuickActionButton>
+            <QuickActionIcon icon={Settings} />
+            设置选项
+          </QuickActionButton>
+        </QuickActionGroup>
+      </div>
+    </div>
+  );
+}
+```
 

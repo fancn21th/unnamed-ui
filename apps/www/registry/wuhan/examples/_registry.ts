@@ -1106,6 +1106,42 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "feedback-controlled",
+    type: "registry:example",
+    registryDependencies: ["feedback"],
+    files: [
+      {
+        path: "examples/feedback/feedback-controlled.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/feedback-controlled.tsx",
+      },
+    ],
+  },
+  {
+    name: "feedback-custom-options",
+    type: "registry:example",
+    registryDependencies: ["feedback"],
+    files: [
+      {
+        path: "examples/feedback/feedback-custom-options.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/feedback-custom-options.tsx",
+      },
+    ],
+  },
+  {
+    name: "feedback-report",
+    type: "registry:example",
+    registryDependencies: ["feedback"],
+    files: [
+      {
+        path: "examples/feedback/feedback-report.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/feedback-report.tsx",
+      },
+    ],
+  },
   // toggle-button examples
   {
     name: "toggle-button-demo",
@@ -1116,6 +1152,90 @@ export const examples: Registry["items"] = [
         path: "examples/toggle-button/toggle-button-demo.tsx",
         type: "registry:example",
         target: "components/wuhan/examples/toggle-button-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "toggle-button-default",
+    type: "registry:example",
+    registryDependencies: ["toggle-button"],
+    files: [
+      {
+        path: "examples/toggle-button/toggle-button-default.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/toggle-button-default.tsx",
+      },
+    ],
+  },
+  {
+    name: "toggle-button-compact",
+    type: "registry:example",
+    registryDependencies: ["toggle-button"],
+    files: [
+      {
+        path: "examples/toggle-button/toggle-button-compact.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/toggle-button-compact.tsx",
+      },
+    ],
+  },
+  {
+    name: "toggle-button-multiple",
+    type: "registry:example",
+    registryDependencies: ["toggle-button"],
+    files: [
+      {
+        path: "examples/toggle-button/toggle-button-multiple.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/toggle-button-multiple.tsx",
+      },
+    ],
+  },
+  {
+    name: "toggle-button-disabled",
+    type: "registry:example",
+    registryDependencies: ["toggle-button"],
+    files: [
+      {
+        path: "examples/toggle-button/toggle-button-disabled.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/toggle-button-disabled.tsx",
+      },
+    ],
+  },
+  {
+    name: "toggle-button-feedback",
+    type: "registry:example",
+    registryDependencies: ["toggle-button"],
+    files: [
+      {
+        path: "examples/toggle-button/toggle-button-feedback.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/toggle-button-feedback.tsx",
+      },
+    ],
+  },
+  {
+    name: "toggle-button-sender",
+    type: "registry:example",
+    registryDependencies: ["toggle-button"],
+    files: [
+      {
+        path: "examples/toggle-button/toggle-button-sender.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/toggle-button-sender.tsx",
+      },
+    ],
+  },
+  {
+    name: "toggle-button-filter",
+    type: "registry:example",
+    registryDependencies: ["toggle-button"],
+    files: [
+      {
+        path: "examples/toggle-button/toggle-button-filter.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/toggle-button-filter.tsx",
       },
     ],
   },
@@ -1230,6 +1350,90 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "tooltip-basic",
+    type: "registry:example",
+    registryDependencies: ["tooltip"],
+    files: [
+      {
+        path: "examples/tooltip/tooltip-basic.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/tooltip-basic.tsx",
+      },
+    ],
+  },
+  {
+    name: "tooltip-positions",
+    type: "registry:example",
+    registryDependencies: ["tooltip"],
+    files: [
+      {
+        path: "examples/tooltip/tooltip-positions.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/tooltip-positions.tsx",
+      },
+    ],
+  },
+  {
+    name: "tooltip-with-icons",
+    type: "registry:example",
+    registryDependencies: ["tooltip"],
+    files: [
+      {
+        path: "examples/tooltip/tooltip-with-icons.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/tooltip-with-icons.tsx",
+      },
+    ],
+  },
+  {
+    name: "tooltip-long-text",
+    type: "registry:example",
+    registryDependencies: ["tooltip"],
+    files: [
+      {
+        path: "examples/tooltip/tooltip-long-text.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/tooltip-long-text.tsx",
+      },
+    ],
+  },
+  {
+    name: "tooltip-toolbar",
+    type: "registry:example",
+    registryDependencies: ["tooltip"],
+    files: [
+      {
+        path: "examples/tooltip/tooltip-toolbar.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/tooltip-toolbar.tsx",
+      },
+    ],
+  },
+  {
+    name: "tooltip-table",
+    type: "registry:example",
+    registryDependencies: ["tooltip"],
+    files: [
+      {
+        path: "examples/tooltip/tooltip-table.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/tooltip-table.tsx",
+      },
+    ],
+  },
+  {
+    name: "tooltip-form",
+    type: "registry:example",
+    registryDependencies: ["tooltip"],
+    files: [
+      {
+        path: "examples/tooltip/tooltip-form.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/tooltip-form.tsx",
+      },
+    ],
+  },
   // execution-result examples
   {
     name: "execution-result-demo",
@@ -1252,6 +1456,42 @@ export const examples: Registry["items"] = [
         path: "examples/execution-result/execution-result-default.tsx",
         type: "registry:example",
         target: "components/wuhan/examples/execution-result-default.tsx",
+      },
+    ],
+  },
+  {
+    name: "execution-result-controlled",
+    type: "registry:example",
+    registryDependencies: ["execution-result"],
+    files: [
+      {
+        path: "examples/execution-result/execution-result-controlled.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/execution-result-controlled.tsx",
+      },
+    ],
+  },
+  {
+    name: "execution-result-with-tools",
+    type: "registry:example",
+    registryDependencies: ["execution-result"],
+    files: [
+      {
+        path: "examples/execution-result/execution-result-with-tools.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/execution-result-with-tools.tsx",
+      },
+    ],
+  },
+  {
+    name: "execution-result-workflow",
+    type: "registry:example",
+    registryDependencies: ["execution-result"],
+    files: [
+      {
+        path: "examples/execution-result/execution-result-workflow.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/execution-result-workflow.tsx",
       },
     ],
   },

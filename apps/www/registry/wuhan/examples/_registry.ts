@@ -1156,7 +1156,7 @@ export const examples: Registry["items"] = [
   {
     name: "sidebar-custom-header",
     type: "registry:example",
-    registryDependencies: ["sidebar", "history-item"],
+    registryDependencies: ["sidebar"],
     files: [
       {
         path: "examples/sidebar/sidebar-custom-header.tsx",
@@ -1168,7 +1168,7 @@ export const examples: Registry["items"] = [
   {
     name: "sidebar-custom-new-button",
     type: "registry:example",
-    registryDependencies: ["sidebar", "history-item"],
+    registryDependencies: ["sidebar"],
     files: [
       {
         path: "examples/sidebar/sidebar-custom-new-button.tsx",
@@ -1180,7 +1180,7 @@ export const examples: Registry["items"] = [
   {
     name: "sidebar-with-search",
     type: "registry:example",
-    registryDependencies: ["sidebar", "history-item"],
+    registryDependencies: ["sidebar"],
     files: [
       {
         path: "examples/sidebar/sidebar-with-search.tsx",

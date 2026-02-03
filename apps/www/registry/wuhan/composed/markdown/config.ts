@@ -2,7 +2,7 @@ import Latex from "@ant-design/x-markdown/plugins/Latex";
 import type XMarkdown from "@ant-design/x-markdown";
 import { findFirstForbiddenCharIndex } from "./utils";
 
-type MarkdownConfig = NonNullable<
+export type MarkdownConfig = NonNullable<
   React.ComponentProps<typeof XMarkdown>["config"]
 >;
 

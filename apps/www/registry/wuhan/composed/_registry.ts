@@ -312,6 +312,7 @@ export const composed: Registry["items"] = [
       "antd",
       "styled-components",
     ],
+    registryDependencies: ["dynamic-form", "custom-sources"],
     files: [
       {
         path: "composed/markdown/index.tsx",
@@ -344,41 +345,29 @@ export const composed: Registry["items"] = [
         target: "components/wuhan/composed/markdown/icons.tsx",
       },
       {
-        path: "composed/markdown/Code/index.tsx",
+        path: "composed/markdown/components/Code/index.tsx",
         type: "registry:component",
-        target: "components/wuhan/composed/markdown/Code/index.tsx",
+        target: "components/wuhan/composed/markdown/components/Code/index.tsx",
       },
       {
-        path: "composed/markdown/Code/style.ts",
+        path: "composed/markdown/components/Code/style.ts",
         type: "registry:component",
-        target: "components/wuhan/composed/markdown/Code/style.ts",
+        target: "components/wuhan/composed/markdown/components/Code/style.ts",
       },
       {
-        path: "composed/markdown/Table/index.tsx",
+        path: "composed/markdown/components/Table/index.tsx",
         type: "registry:component",
-        target: "components/wuhan/composed/markdown/Table/index.tsx",
+        target: "components/wuhan/composed/markdown/components/Table/index.tsx",
       },
       {
-        path: "composed/markdown/Table/style.ts",
+        path: "composed/markdown/components/Table/style.ts",
         type: "registry:component",
-        target: "components/wuhan/composed/markdown/Table/style.ts",
+        target: "components/wuhan/composed/markdown/components/Table/style.ts",
       },
       {
         path: "composed/markdown/components/index.ts",
         type: "registry:component",
         target: "components/wuhan/composed/markdown/components/index.ts",
-      },
-      {
-        path: "composed/markdown/components/DynamicForm/index.tsx",
-        type: "registry:component",
-        target:
-          "components/wuhan/composed/markdown/components/DynamicForm/index.tsx",
-      },
-      {
-        path: "composed/markdown/components/DynamicTable/index.tsx",
-        type: "registry:component",
-        target:
-          "components/wuhan/composed/markdown/components/DynamicTable/index.tsx",
       },
       {
         path: "composed/markdown/components/GptVis/index.tsx",
@@ -427,32 +416,40 @@ export const composed: Registry["items"] = [
         target:
           "components/wuhan/composed/markdown/components/ThinkComponent/index.tsx",
       },
+    ],
+  },
+  {
+    name: "custom-sources",
+    type: "registry:block",
+    title: "Custom Sources",
+    description: "Source markers with popover preview",
+    dependencies: ["@ant-design/icons", "@ant-design/x-markdown", "antd"],
+    registryDependencies: ["custom-sources-01"],
+    files: [
       {
-        path: "composed/markdown/CustomSources/index.tsx",
+        path: "composed/custom-sources/custom-sources.tsx",
         type: "registry:component",
-        target: "components/wuhan/composed/markdown/CustomSources/index.tsx",
+        target: "components/wuhan/composed/custom-sources/custom-sources.tsx",
       },
       {
-        path: "composed/markdown/CustomSources/style.ts",
+        path: "composed/custom-sources/utils.ts",
         type: "registry:component",
-        target: "components/wuhan/composed/markdown/CustomSources/style.ts",
+        target: "components/wuhan/composed/custom-sources/utils.ts",
       },
+    ],
+  },
+  {
+    name: "sources-sidebar",
+    type: "registry:block",
+    title: "Sources Sidebar",
+    description: "Sources sidebar with tabs and list",
+    dependencies: ["@ant-design/icons"],
+    registryDependencies: ["sources-sidebar-01"],
+    files: [
       {
-        path: "composed/markdown/CustomSources/SourcesSidebar/index.tsx",
+        path: "composed/sources-sidebar/sources-sidebar.tsx",
         type: "registry:component",
-        target:
-          "components/wuhan/composed/markdown/CustomSources/SourcesSidebar/index.tsx",
-      },
-      {
-        path: "composed/markdown/CustomSources/SourcesSidebar/style.ts",
-        type: "registry:component",
-        target:
-          "components/wuhan/composed/markdown/CustomSources/SourcesSidebar/style.ts",
-      },
-      {
-        path: "composed/markdown/utils/tools.ts",
-        type: "registry:component",
-        target: "components/wuhan/composed/markdown/utils/tools.ts",
+        target: "components/wuhan/composed/sources-sidebar.tsx",
       },
     ],
   },

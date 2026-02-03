@@ -406,19 +406,6 @@ export const recruitmentBlocks: Registry["items"] = [
       },
     ],
   },
-  {
-    name: "markdown",
-    type: "registry:block",
-    title: "Markdown",
-    description: "支持流式渲染的 Markdown 组件",
-    files: [
-      {
-        path: "recruitment/Markdown/index.tsx",
-        type: "registry:component",
-        target: "components/wuhan/recruitment/markdown.tsx",
-      },
-    ],
-  },
   //sender-input
   {
     name: "sender-input",

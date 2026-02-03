@@ -1,0 +1,149 @@
+---
+title: Markdown
+description: Streaming-friendly Markdown renderer with custom blocks
+author: AF
+---
+
+Markdown 是一个支持流式渲染的组件。你只需要传 `content` 和 `status`。
+
+## 先看效果
+
+<ComponentPreview
+  name="markdown-demo"
+  description="Streaming markdown with rich blocks"
+  className="mb-4"
+/>
+
+<ComponentPreview
+  name="markdown-advanced-demo"
+  description="Custom components + data sources + block preset"
+  className="mb-4"
+/>
+
+## 最小用法（复制即可）
+
+```tsx
+import Markdown from "@/registry/wuhan/composed/markdown";
+
+export function Example() {
+  return <Markdown content="# 标题\n\n内容" status="success" />;
+}
+```
+
+## 三步上手
+
+1. **复制组件**：见下面 Installation。
+2. **渲染内容**：传 `content` + `status`。
+3. **需要自定义**：用 `components` 或 `renderPlugins`。
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/markdown.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>安装依赖</Step>
+
+```bash
+pnpm install @ant-design/x @ant-design/x-markdown @ant-design/icons @antv/gpt-vis antd styled-components
+```
+
+<Step>复制以下代码到你的项目</Step>
+
+<ComponentSource
+  name="markdown"
+  title="registry/wuhan/composed/markdown/index.tsx"
+/>
+
+<Step>更新导入路径以匹配你的项目设置</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## 常用自定义（最容易理解）
+
+### 1. 自定义组件
+
+```tsx
+<Markdown
+  content={"<callout>这是一个提示块</callout>"}
+  status="success"
+  components={{ callout: Callout }}
+/>
+```
+
+### 2. 数据来源标记
+
+```tsx
+<Markdown
+  content={"引用来源示例<sup>1</sup>"}
+  status="success"
+  sources={[{ key: 1, title: "内部知识库", content: "摘要" }]}
+  components={{ sup: CustomSources }}
+/>
+```
+
+### 3. Block 组件（避免嵌套报错）
+
+如果 Markdown 里放了 `div` 级别的组件，请用：
+
+```tsx
+<Markdown
+  content={"<thinking-process></thinking-process>"}
+  status="success"
+  preset="block"
+/>
+```
+
+## 扩展规则（不想踩坑就看这条）
+
+合并顺序：`preset` → `components` → `renderPlugins`（后面的覆盖前面的）。 
+
+## API（只保留最重要的）
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `content` | `string` | - | Markdown 内容 |
+| `status` | `"loading" \| "updating" \| "success"` | - | 渲染状态 |
+| `preset` | `"default" \| "minimal" \| "block"` | `"default"` | 选择模式 |
+| `components` | `Record<string, Component>` | - | 自定义标签渲染 |
+| `renderPlugins` | `MarkdownPlugin[]` | - | 高级扩展 |
+| `sources` | `SourceItem[]` | - | 数据来源列表 |
+| `onOpenSidebar` | `(payload) => void` | - | 点击来源回调 |
+
+## FAQ（新手常问）
+
+**Q1：为什么我用了自定义组件会报 `<div>` 嵌套 `<p>`？**  
+用 `preset="block"`。
+
+**Q2：怎么渲染数据来源？**  
+在内容里用 `<sup>1</sup>`，并传 `sources` + `components={{ sup: CustomSources }}`。
+
+**Q3：我不会插件怎么办？**  
+先别用插件。90% 的需求只要 `components` 就够了。
+
+## Migration
+
+如果你之前用 `dataSourceComponent`，改成这样：
+
+```tsx
+<Markdown components={{ sup: CustomSources }} />
+```

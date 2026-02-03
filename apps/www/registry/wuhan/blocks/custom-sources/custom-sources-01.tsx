@@ -1,3 +1,5 @@
+"use client";
+
 import styled, { css } from "styled-components";
 
 // 多行文本溢出显示省略号
@@ -8,17 +10,17 @@ const multiLineEllipsis = (lines: number) => css`
   overflow: hidden;
 `;
 
-export const StyledCustomSourcesWrapper = styled.div`
+export const CustomSourcesWrapper = styled.span`
   display: inline-block;
   position: relative;
 `;
 
-interface StyledSourceMarkerProps {
+export interface CustomSourcesMarkerProps {
   $isExternal?: boolean;
   $isSelected?: boolean;
 }
 
-export const StyledSourceMarker = styled.span<StyledSourceMarkerProps>`
+export const CustomSourcesMarker = styled.span<CustomSourcesMarkerProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -29,13 +31,10 @@ export const StyledSourceMarker = styled.span<StyledSourceMarkerProps>`
   font-family: var(--font-family-cn);
   font-weight: 400;
   font-size: var(--font-size-1);
-  /* 使用与 height 相同的 line-height，确保文本在容器内垂直居中 */
   line-height: 16px;
   letter-spacing: 0;
   text-align: center;
-  /* 重置 sup 标签的默认样式，使用 baseline 对齐 */
   vertical-align: baseline;
-  /* 重置 sup 标签的默认位置偏移 */
   position: relative;
   top: 0;
   padding-right: var(--padding-com-xs);
@@ -45,10 +44,8 @@ export const StyledSourceMarker = styled.span<StyledSourceMarkerProps>`
   transition:
     background-color 0.2s ease,
     color 0.2s ease;
-  /* 微调垂直位置：向上调整以与文本中线对齐 */
   transform: translateY(-0.05em);
 
-  /* 内部来源 - 未选中 */
   ${(props) =>
     !props.$isExternal &&
     !props.$isSelected &&
@@ -57,7 +54,6 @@ export const StyledSourceMarker = styled.span<StyledSourceMarkerProps>`
       color: var(--text-primary);
     `}
 
-  /* 内部来源 - 选中 */
   ${(props) =>
     !props.$isExternal &&
     props.$isSelected &&
@@ -66,7 +62,6 @@ export const StyledSourceMarker = styled.span<StyledSourceMarkerProps>`
       color: var(--text-inverse);
     `}
 
-  /* 外部来源 - 未选中 */
   ${(props) =>
     props.$isExternal &&
     !props.$isSelected &&
@@ -75,7 +70,6 @@ export const StyledSourceMarker = styled.span<StyledSourceMarkerProps>`
       color: var(--text-brand);
     `}
 
-  /* 外部来源 - 选中 */
   ${(props) =>
     props.$isExternal &&
     props.$isSelected &&
@@ -84,7 +78,6 @@ export const StyledSourceMarker = styled.span<StyledSourceMarkerProps>`
       color: var(--text-inverse);
     `}
 
-  /* 默认状态（如果没有指定 props，使用内部来源未选中样式） */
   ${(props) =>
     props.$isExternal === undefined &&
     props.$isSelected === undefined &&
@@ -94,45 +87,7 @@ export const StyledSourceMarker = styled.span<StyledSourceMarkerProps>`
     `}
 `;
 
-export const StyledSourceCard = styled.div`
-  position: fixed;
-  z-index: 1000;
-  width: 320px;
-  max-width: calc(100vw - 32px);
-  background: var(--bg-container);
-  border: 1px solid var(--border-neutral);
-  border-radius: var(--radius-lg);
-  padding: var(--padding-com-md);
-  box-sizing: border-box;
-  cursor: pointer;
-  animation: fadeIn 0.2s ease-in-out;
-  box-shadow: var(--shadow-medium);
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-8px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  &:hover {
-    box-shadow: var(--shadow-high);
-  }
-`;
-
-export const StyledSourceCardHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: var(--margin-com-xs);
-  gap: var(--gap-sm);
-`;
-
-export const StyledSourceCardContent = styled.div`
+export const CustomSourcesCardContent = styled.div`
   width: 320px;
   max-width: calc(100vw - 32px);
   background: var(--bg-container);
@@ -145,7 +100,15 @@ export const StyledSourceCardContent = styled.div`
   gap: var(--gap-xs);
 `;
 
-export const StyledSourceCardSiteInfo = styled.div`
+export const CustomSourcesCardHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--margin-com-xs);
+  gap: var(--gap-sm);
+`;
+
+export const CustomSourcesCardSiteInfo = styled.div`
   display: flex;
   align-items: center;
   gap: var(--gap-xs);
@@ -153,7 +116,7 @@ export const StyledSourceCardSiteInfo = styled.div`
   min-width: 0;
 `;
 
-export const StyledSourceCardLogo = styled.div`
+export const CustomSourcesCardLogo = styled.div`
   width: 16px;
   height: 16px;
   flex-shrink: 0;
@@ -166,7 +129,7 @@ export const StyledSourceCardLogo = styled.div`
   }
 `;
 
-export const StyledSourceCardSiteName = styled.div`
+export const CustomSourcesCardSiteName = styled.div`
   font-family: var(--font-family-cn);
   font-size: var(--font-size-1);
   line-height: var(--line-height-2);
@@ -179,7 +142,7 @@ export const StyledSourceCardSiteName = styled.div`
   min-width: 0;
 `;
 
-export const StyledSourceCardAction = styled.div`
+export const CustomSourcesCardAction = styled.div`
   width: 20px;
   height: 20px;
   display: flex;
@@ -196,7 +159,7 @@ export const StyledSourceCardAction = styled.div`
   }
 `;
 
-export const StyledSourceCardTitle = styled.div`
+export const CustomSourcesCardTitle = styled.div`
   font-family: var(--font-family-cn);
   font-size: var(--font-size-2);
   line-height: var(--line-height-2);
@@ -206,7 +169,7 @@ export const StyledSourceCardTitle = styled.div`
   ${multiLineEllipsis(2)};
 `;
 
-export const StyledSourceCardDescription = styled.div`
+export const CustomSourcesCardDescription = styled.div`
   font-family: var(--font-family-cn);
   font-size: var(--font-size-1);
   line-height: var(--line-height-2);

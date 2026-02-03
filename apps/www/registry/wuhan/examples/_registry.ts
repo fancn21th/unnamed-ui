@@ -537,18 +537,6 @@ const recruitmentExamples: Registry["items"] = [
       },
     ],
   },
-  {
-    name: "markdown-demo",
-    type: "registry:example",
-    registryDependencies: ["markdown"],
-    files: [
-      {
-        path: "examples/recruitment/markdown/markdown-demo.tsx",
-        type: "registry:example",
-        target: "components/wuhan/examples/recruitment/markdown-demo.tsx",
-      },
-    ],
-  },
 ];
 
 export const examples: Registry["items"] = [
@@ -1090,6 +1078,54 @@ export const examples: Registry["items"] = [
         path: "examples/sidebar/sidebar-demo.tsx",
         type: "registry:example",
         target: "components/wuhan/examples/sidebar-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "markdown-demo",
+    type: "registry:example",
+    registryDependencies: ["markdown"],
+    files: [
+      {
+        path: "examples/markdown/markdown-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/markdown-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "markdown-advanced-demo",
+    type: "registry:example",
+    registryDependencies: ["markdown", "custom-sources", "sources-sidebar"],
+    files: [
+      {
+        path: "examples/markdown/markdown-advanced-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/markdown-advanced-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "custom-sources-demo",
+    type: "registry:example",
+    registryDependencies: ["custom-sources", "sources-sidebar"],
+    files: [
+      {
+        path: "examples/custom-sources/custom-sources-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/custom-sources-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "sources-sidebar-demo",
+    type: "registry:example",
+    registryDependencies: ["sources-sidebar"],
+    files: [
+      {
+        path: "examples/sources-sidebar/sources-sidebar-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/sources-sidebar-demo.tsx",
       },
     ],
   },

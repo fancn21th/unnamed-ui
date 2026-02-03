@@ -1,9 +1,13 @@
 "use client";
 
-import type { MarkdownProps } from "./declaration";
+import type {
+  MarkdownComponents,
+  MarkdownPluginContext,
+  MarkdownProps,
+} from "./declaration";
 import { markdownConfig } from "./config";
 // import CustomSource from '@/components/Chat/CustomSource';
-import CustomSources from "./CustomSources";
+import CustomSources from "@/registry/wuhan/composed/custom-sources/custom-sources";
 import { lazy, Suspense, useDeferredValue } from "react";
 import {
   ImageSkeleton,
@@ -11,26 +15,16 @@ import {
   TableSkeleton,
   HtmlSkeleton,
   IncompleteEmphasis,
+  Code,
+  Table,
 } from "./components";
 import { StyledMarkdownWrapper } from "./style";
 import "@ant-design/x-markdown/themes/light.css";
 import { useCallback } from "react";
-import Code from "./Code";
-import Table from "./Table";
-
 const GptVis = lazy(() =>
   import("./components/GptVis").then((mod) => ({ default: mod.GptVis })),
 );
-const DynamicForm = lazy(() =>
-  import("./components/DynamicForm").then((mod) => ({
-    default: mod.DynamicForm,
-  })),
-);
-const DynamicTable = lazy(() =>
-  import("./components/DynamicTable").then((mod) => ({
-    default: mod.DynamicTable,
-  })),
-);
+
 const ThinkComponent = lazy(() =>
   import("./components/ThinkComponent").then((mod) => ({
     default: mod.ThinkComponent,
@@ -42,6 +36,12 @@ const Markdown: React.FC<MarkdownProps> = ({
   content,
   status,
   messageId,
+  sources,
+  onOpenSidebar,
+  preset = "default",
+  renderPlugins,
+  components,
+  config,
   ...props
 }) => {
   /**
@@ -52,32 +52,99 @@ const Markdown: React.FC<MarkdownProps> = ({
   const deferredValue = useDeferredValue(content);
   const CustomSourcesCb = useCallback(
     // @ts-ignore
-    (props) => <CustomSources messageId={messageId} {...props} />,
-    [messageId],
+    (props) => (
+      <CustomSources
+        messageId={messageId}
+        sources={sources}
+        onOpenSidebar={onOpenSidebar}
+        {...props}
+      />
+    ),
+    [messageId, sources, onOpenSidebar],
   );
-  return (
-    <Suspense fallback={<div></div>}>
-      <StyledMarkdownWrapper
-        content={deferredValue as string}
-        // paragraphTag="div"
-        config={markdownConfig}
-        components={{
+  const baseComponents: MarkdownComponents =
+    preset === "minimal"
+      ? {
           code: Code,
-          "dynamic-form": DynamicForm,
-          "dynamic-table": DynamicTable,
+          table: Table,
+        }
+      : {
+          code: Code,
           think: ThinkComponent,
           "gpt-vis": GptVis,
-          // 'custom-source': CustomSourceCb,
-          // 'custom-sources': CustomSourcesCb,
           sup: CustomSourcesCb,
           table: Table,
-
           "incomplete-image": ImageSkeleton,
           "incomplete-link": IncompleteLink,
           "incomplete-table": TableSkeleton,
           "incomplete-html": HtmlSkeleton,
           "incomplete-emphasis": IncompleteEmphasis,
-        }}
+        };
+
+  const mergedComponents = {
+    ...baseComponents,
+    ...(components ?? {}),
+  } as MarkdownComponents;
+
+  const resolvedSupComponent = useCallback(
+    // @ts-ignore
+    (props) => {
+      const userSup = mergedComponents.sup;
+      if (typeof userSup === "function") {
+        const Sup = userSup as any;
+        return (
+          <Sup
+            messageId={messageId}
+            sources={sources}
+            onOpenSidebar={onOpenSidebar}
+            {...props}
+          />
+        );
+      }
+      if (typeof userSup === "string") {
+        const Tag = userSup as any;
+        return <Tag {...props} />;
+      }
+      return (
+        <CustomSources
+          messageId={messageId}
+          sources={sources}
+          onOpenSidebar={onOpenSidebar}
+          {...props}
+        />
+      );
+    },
+    [mergedComponents.sup, messageId, sources, onOpenSidebar],
+  );
+
+  const pluginContext = (renderPlugins ?? []).reduce<MarkdownPluginContext>(
+    (acc, plugin) => {
+      const next = (plugin(acc) ?? {}) as Partial<MarkdownPluginContext>;
+      if (!next) {
+        return acc;
+      }
+      return {
+        components: next.components ?? acc.components,
+        config: next.config ?? acc.config,
+      };
+    },
+    {
+      components: {
+        ...mergedComponents,
+        sup: resolvedSupComponent,
+      },
+      config: config ?? markdownConfig,
+    },
+  );
+  const resolvedParagraphTag =
+    props.paragraphTag ?? (preset === "block" ? "div" : "p");
+  return (
+    <Suspense fallback={<div></div>}>
+      <StyledMarkdownWrapper
+        content={deferredValue as string}
+        paragraphTag={resolvedParagraphTag}
+        config={pluginContext.config}
+        components={pluginContext.components}
         streaming={{
           hasNextChunk: status === "updating",
           enableAnimation: true,

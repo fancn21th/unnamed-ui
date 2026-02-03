@@ -1,3 +1,5 @@
+"use client";
+
 import styled, { css } from "styled-components";
 
 // 多行文本溢出显示省略号
@@ -8,7 +10,7 @@ const multiLineEllipsis = (lines: number) => css`
   overflow: hidden;
 `;
 
-export const StyledSourcesSidebar = styled.div`
+export const SourcesSidebarWrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -17,7 +19,7 @@ export const StyledSourcesSidebar = styled.div`
   background: var(--bg-container);
 `;
 
-export const StyledSourcesSidebarTabs = styled.div`
+export const SourcesSidebarTabs = styled.div`
   display: flex;
   align-items: center;
   padding-left: var(--padding-com-md);
@@ -26,7 +28,7 @@ export const StyledSourcesSidebarTabs = styled.div`
   gap: var(--gap-md);
 `;
 
-export const StyledSourcesSidebarClose = styled.button`
+export const SourcesSidebarClose = styled.button`
   width: 24px;
   height: 24px;
   padding: 0;
@@ -54,11 +56,11 @@ export const StyledSourcesSidebarClose = styled.button`
   }
 `;
 
-interface StyledSourcesTabProps {
+export interface SourcesSidebarTabProps {
   $active?: boolean;
 }
 
-export const StyledSourcesTab = styled.button<StyledSourcesTabProps>`
+export const SourcesSidebarTab = styled.button<SourcesSidebarTabProps>`
   padding: var(--padding-com-sm) 0;
   border: none;
   background: transparent;
@@ -89,7 +91,7 @@ export const StyledSourcesTab = styled.button<StyledSourcesTabProps>`
   }
 `;
 
-export const StyledSourcesSidebarList = styled.div`
+export const SourcesSidebarList = styled.div`
   flex: 1;
   overflow-y: auto;
   padding: var(--padding-com-md);
@@ -98,7 +100,7 @@ export const StyledSourcesSidebarList = styled.div`
   gap: var(--gap-md);
 `;
 
-export const StyledSourcesListItem = styled.div`
+export const SourcesSidebarListItem = styled.div`
   width: 100%;
   background: var(--bg-container);
   border-radius: var(--radius-xl);
@@ -115,13 +117,13 @@ export const StyledSourcesListItem = styled.div`
   }
 `;
 
-export const StyledSourcesListItemHeader = styled.div`
+export const SourcesSidebarListItemHeader = styled.div`
   display: flex;
   align-items: center;
   gap: var(--gap-xs);
 `;
 
-export const StyledSourcesListItemNumber = styled.span`
+export const SourcesSidebarListItemNumber = styled.span`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -139,13 +141,12 @@ export const StyledSourcesListItemNumber = styled.span`
   padding-right: var(--padding-com-xs);
   padding-left: var(--padding-com-xs);
   user-select: none;
-  /* 内部来源未选中样式 */
   background: var(--bg-neutral-light-hover);
   color: var(--text-primary);
   flex-shrink: 0;
 `;
 
-export const StyledSourcesListItemSiteInfo = styled.div`
+export const SourcesSidebarListItemSiteInfo = styled.div`
   display: flex;
   align-items: center;
   gap: var(--gap-xs);
@@ -153,7 +154,7 @@ export const StyledSourcesListItemSiteInfo = styled.div`
   min-width: 0;
 `;
 
-export const StyledSourcesListItemLogo = styled.div`
+export const SourcesSidebarListItemLogo = styled.div`
   width: 16px;
   height: 16px;
   flex-shrink: 0;
@@ -173,7 +174,7 @@ export const StyledSourcesListItemLogo = styled.div`
   }
 `;
 
-export const StyledSourcesListItemSiteName = styled.div`
+export const SourcesSidebarListItemSiteName = styled.div`
   font-family: var(--font-family-cn);
   font-size: var(--font-size-1);
   line-height: var(--line-height-2);
@@ -186,7 +187,7 @@ export const StyledSourcesListItemSiteName = styled.div`
   min-width: 0;
 `;
 
-export const StyledSourcesListItemTitle = styled.div`
+export const SourcesSidebarListItemTitle = styled.div`
   font-family: var(--font-family-cn);
   font-size: var(--font-size-2);
   line-height: var(--line-height-2);
@@ -196,7 +197,7 @@ export const StyledSourcesListItemTitle = styled.div`
   ${multiLineEllipsis(2)};
 `;
 
-export const StyledSourcesListItemDescription = styled.div`
+export const SourcesSidebarListItemDescription = styled.div`
   font-family: var(--font-family-cn);
   font-size: var(--font-size-1);
   line-height: var(--line-height-2);

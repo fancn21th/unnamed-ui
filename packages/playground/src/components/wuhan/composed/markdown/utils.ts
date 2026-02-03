@@ -1,7 +1,3 @@
-/**
- * 查找字符串中第一个禁止字符的索引
- * 用于截断非标准 Markdown 链接（纯 URL）后面的中文或标点符号
- */
 export const findFirstForbiddenCharIndex = (() => {
   // 预定义常量，避免重复创建
   const FORBIDDEN_CHARS = new Set([

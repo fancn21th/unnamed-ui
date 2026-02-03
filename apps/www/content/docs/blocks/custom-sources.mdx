@@ -1,0 +1,110 @@
+---
+title: Custom Sources
+description: Source marker with popover preview and external/internal status
+author: AF
+---
+
+<ComponentPreview
+  name="custom-sources-demo"
+  description="Source marker with popover preview"
+  className="mb-4"
+/>
+
+CustomSources 用于在文本中以 `<sup>` 标记来源，并在悬浮时展示来源卡片信息。适合与 Markdown 渲染配合使用。
+
+## Overview
+
+- **来源标记**：以数字角标形式展示
+- **来源区分**：支持内部与外部来源样式
+- **悬浮卡片**：展示标题与摘要
+- **侧边栏联动**：点击角标可触发外部侧边栏
+
+## Quick Start
+
+```tsx
+import CustomSources from "@/registry/wuhan/composed/custom-sources/custom-sources";
+
+const sources = [
+  { key: 1, title: "内部知识库", content: "内部摘要", sourceType: "internal" },
+  {
+    key: 2,
+    title: "外部报告",
+    content: "外部摘要",
+    url: "https://example.com/report",
+    sourceType: "external",
+    domain: "example.com",
+  },
+];
+
+export function Example() {
+  return (
+    <p>
+      引用来源示例
+      <CustomSources sources={sources} onOpenSidebar={() => {}}>
+        1
+      </CustomSources>
+    </p>
+  );
+}
+```
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/custom-sources.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="custom-sources"
+  title="registry/wuhan/composed/custom-sources/custom-sources.tsx"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Components
+
+### Primitives
+
+- **CustomSourcesWrapper** - 外层容器
+- **CustomSourcesMarker** - 角标样式
+- **CustomSourcesCardContent** - 弹层卡片容器
+- **CustomSourcesCardHeader** - 卡片头部
+- **CustomSourcesCardSiteInfo** - 站点信息容器
+- **CustomSourcesCardLogo** - 站点图标
+- **CustomSourcesCardSiteName** - 站点名称
+- **CustomSourcesCardAction** - 操作按钮容器
+- **CustomSourcesCardTitle** - 标题文本
+- **CustomSourcesCardDescription** - 描述文本
+
+## API (Composed)
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `sources` | `SourceItem[]` | `[]` | 来源数据列表 |
+| `activeKey` | `number` | - | 强制指定当前来源 key |
+| `onOpenSidebar` | `(payload: { sources: SourceItem[]; activeKey?: number }) => void` | - | 点击角标回调 |
+| `messageId` | `string` | - | 预留扩展字段 |
+| `children` | `React.ReactNode` | - | `<sup>` 中的文本 |

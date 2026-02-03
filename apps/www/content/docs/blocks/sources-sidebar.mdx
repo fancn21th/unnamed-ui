@@ -1,0 +1,104 @@
+---
+title: Sources Sidebar
+description: Sources sidebar with tabs and list
+author: AF
+---
+
+<ComponentPreview
+  name="sources-sidebar-demo"
+  description="Sources sidebar with tabs and list"
+  className="mb-4"
+/>
+
+SourcesSidebar 用于展示来源列表，支持内部/外部分组与快速切换，适合与 CustomSources 组合使用。
+
+## Overview
+
+- **双 Tab 分类**：内部来源与外部来源
+- **列表展示**：标题 + 摘要信息
+- **可扩展**：支持点击回调和自定义跳转
+
+## Quick Start
+
+```tsx
+import SourcesSidebar from "@/registry/wuhan/composed/sources-sidebar/sources-sidebar";
+
+const sources = [
+  { key: 1, title: "内部知识库", content: "内部摘要", sourceType: "internal" },
+  {
+    key: 2,
+    title: "外部报告",
+    content: "外部摘要",
+    url: "https://example.com/report",
+    sourceType: "external",
+    domain: "example.com",
+  },
+];
+
+export function Example() {
+  return <SourcesSidebar sources={sources} />;
+}
+```
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/sources-sidebar.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="sources-sidebar"
+  title="registry/wuhan/composed/sources-sidebar/sources-sidebar.tsx"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Components
+
+### Primitives
+
+- **SourcesSidebarWrapper** - 侧边栏容器
+- **SourcesSidebarTabs** - Tab 容器
+- **SourcesSidebarTab** - 单个 Tab
+- **SourcesSidebarClose** - 关闭按钮
+- **SourcesSidebarList** - 列表容器
+- **SourcesSidebarListItem** - 列表项容器
+- **SourcesSidebarListItemHeader** - 列表项头部
+- **SourcesSidebarListItemNumber** - 序号
+- **SourcesSidebarListItemSiteInfo** - 站点信息容器
+- **SourcesSidebarListItemLogo** - 站点图标
+- **SourcesSidebarListItemSiteName** - 站点名称
+- **SourcesSidebarListItemTitle** - 标题
+- **SourcesSidebarListItemDescription** - 描述
+
+## API (Composed)
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `sources` | `SourceItem[]` | - | 来源数据列表 |
+| `initialTab` | `"external" \| "internal"` | - | 初始 Tab |
+| `onClose` | `() => void` | - | 关闭回调 |
+| `onItemClick` | `(source: SourceItem) => void` | - | 点击列表项回调 |

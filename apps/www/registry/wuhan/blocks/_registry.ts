@@ -63,6 +63,7 @@ export const blocks: Registry["items"] = [
     type: "registry:block",
     title: "Prompt",
     description: "Prompt button (horizontal layout)",
+    dependencies: ["lucide-react"],
     registryDependencies: ["style", "quick-action-01"],
     files: [
       {
@@ -92,6 +93,7 @@ export const blocks: Registry["items"] = [
     title: "Suggestion",
     description:
       "Suggestion button for next step guidance (text first, icon last)",
+    dependencies: ["lucide-react"],
     registryDependencies: ["style", "quick-action-01"],
     files: [
       {
@@ -106,6 +108,7 @@ export const blocks: Registry["items"] = [
     type: "registry:block",
     title: "Sender",
     description: "Sender primitives (input, actions, buttons)",
+    dependencies: ["lucide-react"],
     registryDependencies: ["style", "textarea", "button", "toggle-button-01"],
     files: [
       {
@@ -120,6 +123,7 @@ export const blocks: Registry["items"] = [
     type: "registry:block",
     title: "Attachment List",
     description: "Attachment list component",
+    dependencies: ["lucide-react"],
     registryDependencies: ["style", "button", "tooltip-01"],
     files: [
       {
@@ -148,6 +152,7 @@ export const blocks: Registry["items"] = [
     type: "registry:block",
     title: "History Item",
     description: "History record list item component (default/hover/selected)",
+    dependencies: ["@radix-ui/react-slot"],
     registryDependencies: ["style"],
     files: [
       {
@@ -190,6 +195,7 @@ export const blocks: Registry["items"] = [
     type: "registry:block",
     title: "Feedback",
     description: "Feedback component for reporting issues",
+    dependencies: ["lucide-react"],
     registryDependencies: ["style", "button", "sidebar-01", "toggle-button-01"],
     files: [
       {
@@ -232,6 +238,7 @@ export const blocks: Registry["items"] = [
     type: "registry:block",
     title: "Block Tooltip",
     description: "Block tooltip component with custom styling",
+    dependencies: ["@radix-ui/react-tooltip"],
     registryDependencies: ["style", "tooltip"],
     files: [
       {
@@ -246,6 +253,7 @@ export const blocks: Registry["items"] = [
     type: "registry:block",
     title: "Execution Result",
     description: "Execution result primitives (container, items, sections)",
+    dependencies: ["lucide-react"],
     registryDependencies: ["style", "collapsible"],
     files: [
       {
@@ -290,6 +298,7 @@ export const blocks: Registry["items"] = [
     title: "Thinking Step Item",
     description:
       "Thinking step item primitives (timeline, tool call, file list, status)",
+    dependencies: ["lucide-react"],
     registryDependencies: ["style", "collapsible"],
     files: [
       {
@@ -338,6 +347,36 @@ export const blocks: Registry["items"] = [
         path: "blocks/status-tag/status-tag-01.tsx",
         type: "registry:component",
         target: "components/wuhan/blocks/status-tag-01.tsx",
+      },
+    ],
+  },
+  {
+    name: "custom-sources-01",
+    type: "registry:block",
+    title: "Custom Sources",
+    description: "Source marker and popover card primitives",
+    dependencies: ["styled-components"],
+    registryDependencies: ["style"],
+    files: [
+      {
+        path: "blocks/custom-sources/custom-sources-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/custom-sources-01.tsx",
+      },
+    ],
+  },
+  {
+    name: "sources-sidebar-01",
+    type: "registry:block",
+    title: "Sources Sidebar",
+    description: "Sources sidebar primitives with tabs and list",
+    dependencies: ["styled-components"],
+    registryDependencies: ["style"],
+    files: [
+      {
+        path: "blocks/sources-sidebar/sources-sidebar-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/sources-sidebar-01.tsx",
       },
     ],
   },

@@ -13,8 +13,8 @@ export const StyledMarkdownTableWrapper = styled.div`
   margin-top: var(--margin-com-xl) !important;
   margin-bottom: var(--margin-com-xl) !important;
 
-  border: 1px solid var(--border-neutral);
-  border-radius: var(--radius-lg);
+  border-top: 1px solid var(--border-neutral);
+  border-bottom: 1px solid var(--border-neutral);
   background: var(--bg-container);
 
   &:hover .md-table-toolbar {
@@ -32,9 +32,6 @@ export const StyledMarkdownTableScroll = styled.div`
 
   /* 约显示：表头 + 5 行（不含表头） */
   max-height: 282px;
-
-  /* 让圆角裁切生效（避免 sticky 单元格溢出破坏圆角） */
-  border-radius: var(--radius-lg);
 `;
 
 export const StyledMarkdownTable = styled.table`

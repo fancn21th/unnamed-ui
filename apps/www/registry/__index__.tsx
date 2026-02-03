@@ -834,6 +834,56 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "custom-sources-01": {
+      name: "custom-sources-01",
+      description: "Source marker and popover card primitives",
+      type: "registry:block",
+      registryDependencies: ["style"],
+      files: [
+        {
+          path: "registry/wuhan/blocks/custom-sources/custom-sources-01.tsx",
+          type: "registry:component",
+          target: "components/wuhan/blocks/custom-sources-01.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/blocks/custom-sources/custom-sources-01.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "sources-sidebar-01": {
+      name: "sources-sidebar-01",
+      description: "Sources sidebar primitives with tabs and list",
+      type: "registry:block",
+      registryDependencies: ["style"],
+      files: [
+        {
+          path: "registry/wuhan/blocks/sources-sidebar/sources-sidebar-01.tsx",
+          type: "registry:component",
+          target: "components/wuhan/blocks/sources-sidebar-01.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/blocks/sources-sidebar/sources-sidebar-01.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     message: {
       name: "message",
       description: "Composed AI and user message components",
@@ -1336,6 +1386,187 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/composed/status-tag/status-tag.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    markdown: {
+      name: "markdown",
+      description: "Streaming-friendly Markdown renderer with custom blocks",
+      type: "registry:block",
+      registryDependencies: ["dynamic-form", "custom-sources"],
+      files: [
+        {
+          path: "registry/wuhan/composed/markdown/index.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/markdown/index.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/config.ts",
+          type: "registry:component",
+          target: "components/wuhan/composed/markdown/config.ts",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/declaration.ts",
+          type: "registry:component",
+          target: "components/wuhan/composed/markdown/declaration.ts",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/style.ts",
+          type: "registry:component",
+          target: "components/wuhan/composed/markdown/style.ts",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/utils.ts",
+          type: "registry:component",
+          target: "components/wuhan/composed/markdown/utils.ts",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/icons.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/markdown/icons.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/components/Code/index.tsx",
+          type: "registry:component",
+          target:
+            "components/wuhan/composed/markdown/components/Code/index.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/components/Code/style.ts",
+          type: "registry:component",
+          target: "components/wuhan/composed/markdown/components/Code/style.ts",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/components/Table/index.tsx",
+          type: "registry:component",
+          target:
+            "components/wuhan/composed/markdown/components/Table/index.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/components/Table/style.ts",
+          type: "registry:component",
+          target:
+            "components/wuhan/composed/markdown/components/Table/style.ts",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/components/index.ts",
+          type: "registry:component",
+          target: "components/wuhan/composed/markdown/components/index.ts",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/components/GptVis/index.tsx",
+          type: "registry:component",
+          target:
+            "components/wuhan/composed/markdown/components/GptVis/index.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/components/GptVis/style.ts",
+          type: "registry:component",
+          target:
+            "components/wuhan/composed/markdown/components/GptVis/style.ts",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/components/HtmlSkeleton/index.tsx",
+          type: "registry:component",
+          target:
+            "components/wuhan/composed/markdown/components/HtmlSkeleton/index.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/components/ImageSkeleton/index.tsx",
+          type: "registry:component",
+          target:
+            "components/wuhan/composed/markdown/components/ImageSkeleton/index.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/components/IncompleteEmphasis/index.tsx",
+          type: "registry:component",
+          target:
+            "components/wuhan/composed/markdown/components/IncompleteEmphasis/index.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/components/IncompleteLink/index.tsx",
+          type: "registry:component",
+          target:
+            "components/wuhan/composed/markdown/components/IncompleteLink/index.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/components/TableSkeleton/index.tsx",
+          type: "registry:component",
+          target:
+            "components/wuhan/composed/markdown/components/TableSkeleton/index.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/markdown/components/ThinkComponent/index.tsx",
+          type: "registry:component",
+          target:
+            "components/wuhan/composed/markdown/components/ThinkComponent/index.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/composed/markdown/index.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "custom-sources": {
+      name: "custom-sources",
+      description: "Source markers with popover preview",
+      type: "registry:block",
+      registryDependencies: ["custom-sources-01"],
+      files: [
+        {
+          path: "registry/wuhan/composed/custom-sources/custom-sources.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/custom-sources/custom-sources.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/custom-sources/utils.ts",
+          type: "registry:component",
+          target: "components/wuhan/composed/custom-sources/utils.ts",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/composed/custom-sources/custom-sources.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "sources-sidebar": {
+      name: "sources-sidebar",
+      description: "Sources sidebar with tabs and list",
+      type: "registry:block",
+      registryDependencies: ["sources-sidebar-01"],
+      files: [
+        {
+          path: "registry/wuhan/composed/sources-sidebar/sources-sidebar.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/sources-sidebar.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/composed/sources-sidebar/sources-sidebar.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>
@@ -2163,31 +2394,6 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/recruitment/ResumeEvaluationReport/index.tsx");
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object",
-          ) || item.name;
-        return { default: mod.default || mod[exportName] };
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    markdown: {
-      name: "markdown",
-      description: "支持流式渲染的 Markdown 组件",
-      type: "registry:block",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/wuhan/recruitment/Markdown/index.tsx",
-          type: "registry:component",
-          target: "components/wuhan/recruitment/markdown.tsx",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod =
-          await import("@/registry/wuhan/recruitment/Markdown/index.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>
@@ -3313,6 +3519,106 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/examples/sidebar/sidebar-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "markdown-demo": {
+      name: "markdown-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["markdown"],
+      files: [
+        {
+          path: "registry/wuhan/examples/markdown/markdown-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/markdown-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/markdown/markdown-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "markdown-advanced-demo": {
+      name: "markdown-advanced-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["markdown", "custom-sources", "sources-sidebar"],
+      files: [
+        {
+          path: "registry/wuhan/examples/markdown/markdown-advanced-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/markdown-advanced-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/markdown/markdown-advanced-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "custom-sources-demo": {
+      name: "custom-sources-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["custom-sources", "sources-sidebar"],
+      files: [
+        {
+          path: "registry/wuhan/examples/custom-sources/custom-sources-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/custom-sources-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/custom-sources/custom-sources-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "sources-sidebar-demo": {
+      name: "sources-sidebar-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["sources-sidebar"],
+      files: [
+        {
+          path: "registry/wuhan/examples/sources-sidebar/sources-sidebar-demo.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/sources-sidebar-demo.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/sources-sidebar/sources-sidebar-demo.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>
@@ -5622,31 +5928,6 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/examples/recruitment/resume-evaluation-report/resume-evaluation-report-demo.tsx");
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object",
-          ) || item.name;
-        return { default: mod.default || mod[exportName] };
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    "markdown-demo": {
-      name: "markdown-demo",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["markdown"],
-      files: [
-        {
-          path: "registry/wuhan/examples/recruitment/markdown/markdown-demo.tsx",
-          type: "registry:example",
-          target: "components/wuhan/examples/recruitment/markdown-demo.tsx",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod =
-          await import("@/registry/wuhan/examples/recruitment/markdown/markdown-demo.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

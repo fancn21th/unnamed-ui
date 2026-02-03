@@ -100,6 +100,14 @@
     "description": "Status tag primitive with basic styling and structure"
   },
   {
+    "name": "custom-sources-01",
+    "description": "Source marker and popover card primitives"
+  },
+  {
+    "name": "sources-sidebar-01",
+    "description": "Sources sidebar primitives with tabs and list"
+  },
+  {
     "name": "message",
     "description": "Composed AI and user message components"
   },
@@ -178,6 +186,18 @@
   {
     "name": "status-tag",
     "description": "状态标签"
+  },
+  {
+    "name": "markdown",
+    "description": "Streaming-friendly Markdown renderer with custom blocks"
+  },
+  {
+    "name": "custom-sources",
+    "description": "Source markers with popover preview"
+  },
+  {
+    "name": "sources-sidebar",
+    "description": "Sources sidebar with tabs and list"
   },
   {
     "name": "toggle-button",
@@ -302,10 +322,6 @@
   {
     "name": "resume-evaluation-report",
     "description": "简历评估报告"
-  },
-  {
-    "name": "markdown",
-    "description": "支持流式渲染的 Markdown 组件"
   },
   {
     "name": "sender-input",

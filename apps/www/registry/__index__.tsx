@@ -2960,6 +2960,131 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "history-item-basic": {
+      name: "history-item-basic",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["history-item"],
+      files: [
+        {
+          path: "registry/wuhan/examples/history-item/history-item-basic.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/history-item-basic.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/history-item/history-item-basic.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "history-item-with-actions": {
+      name: "history-item-with-actions",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["history-item"],
+      files: [
+        {
+          path: "registry/wuhan/examples/history-item/history-item-with-actions.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/history-item-with-actions.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/history-item/history-item-with-actions.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "history-item-with-icons": {
+      name: "history-item-with-icons",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["history-item"],
+      files: [
+        {
+          path: "registry/wuhan/examples/history-item/history-item-with-icons.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/history-item-with-icons.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/history-item/history-item-with-icons.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "history-item-states": {
+      name: "history-item-states",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["history-item"],
+      files: [
+        {
+          path: "registry/wuhan/examples/history-item/history-item-states.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/history-item-states.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/history-item/history-item-states.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "history-item-list": {
+      name: "history-item-list",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["history-item"],
+      files: [
+        {
+          path: "registry/wuhan/examples/history-item/history-item-list.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/history-item-list.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/history-item/history-item-list.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "sender-demo": {
       name: "sender-demo",
       description: "",
@@ -3475,6 +3600,156 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/examples/sidebar/sidebar-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "sidebar-custom-header": {
+      name: "sidebar-custom-header",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["sidebar", "history-item"],
+      files: [
+        {
+          path: "registry/wuhan/examples/sidebar/sidebar-custom-header.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/sidebar-custom-header.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/sidebar/sidebar-custom-header.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "sidebar-custom-new-button": {
+      name: "sidebar-custom-new-button",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["sidebar", "history-item"],
+      files: [
+        {
+          path: "registry/wuhan/examples/sidebar/sidebar-custom-new-button.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/sidebar-custom-new-button.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/sidebar/sidebar-custom-new-button.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "sidebar-with-search": {
+      name: "sidebar-with-search",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["sidebar", "history-item"],
+      files: [
+        {
+          path: "registry/wuhan/examples/sidebar/sidebar-with-search.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/sidebar-with-search.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/sidebar/sidebar-with-search.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "sidebar-empty-state": {
+      name: "sidebar-empty-state",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["sidebar"],
+      files: [
+        {
+          path: "registry/wuhan/examples/sidebar/sidebar-empty-state.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/sidebar-empty-state.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/sidebar/sidebar-empty-state.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "sidebar-controlled-collapse": {
+      name: "sidebar-controlled-collapse",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["sidebar", "button"],
+      files: [
+        {
+          path: "registry/wuhan/examples/sidebar/sidebar-controlled-collapse.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/sidebar-controlled-collapse.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/sidebar/sidebar-controlled-collapse.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "sidebar-footer-collapse": {
+      name: "sidebar-footer-collapse",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["sidebar", "avatar-header"],
+      files: [
+        {
+          path: "registry/wuhan/examples/sidebar/sidebar-footer-collapse.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/sidebar-footer-collapse.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/sidebar/sidebar-footer-collapse.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

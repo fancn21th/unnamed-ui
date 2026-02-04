@@ -2812,19 +2812,6 @@
       ]
     },
     {
-      "name": "status-tag",
-      "type": "registry:block",
-      "title": "Status Tag",
-      "description": "状态标签",
-      "files": [
-        {
-          "path": "registry/wuhan/recruitment/StatusTag/index.tsx",
-          "type": "registry:component",
-          "target": "components/wuhan/recruitment/status-tag.tsx"
-        }
-      ]
-    },
-    {
       "name": "thinking",
       "type": "registry:block",
       "title": "Thinking",
@@ -4935,20 +4922,6 @@
           "path": "registry/wuhan/examples/recruitment/similar-job/similar-job-demo.tsx",
           "type": "registry:example",
           "target": "components/wuhan/examples/recruitment/similar-job-demo.tsx"
-        }
-      ]
-    },
-    {
-      "name": "status-tag-demo",
-      "type": "registry:example",
-      "registryDependencies": [
-        "status-tag"
-      ],
-      "files": [
-        {
-          "path": "registry/wuhan/examples/recruitment/status-tag/status-tag-demo.tsx",
-          "type": "registry:example",
-          "target": "components/wuhan/examples/recruitment/status-tag-demo.tsx"
         }
       ]
     },

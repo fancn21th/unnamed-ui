@@ -185,7 +185,7 @@
   },
   {
     "name": "status-tag",
-    "description": "状态标签"
+    "description": "Composed status tag with business API and preset statuses"
   },
   {
     "name": "markdown",

@@ -133,19 +133,6 @@ export const recruitmentBlocks: Registry["items"] = [
     ],
   },
   {
-    name: "status-tag",
-    type: "registry:block",
-    title: "Status Tag",
-    description: "状态标签",
-    files: [
-      {
-        path: "recruitment/StatusTag/index.tsx",
-        type: "registry:component",
-        target: "components/wuhan/recruitment/status-tag.tsx",
-      },
-    ],
-  },
-  {
     name: "thinking",
     type: "registry:block",
     title: "Thinking",

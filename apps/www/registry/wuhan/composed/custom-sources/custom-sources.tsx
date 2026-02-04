@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { memo, useMemo, useState } from "react";
 import { type ComponentProps } from "@ant-design/x-markdown";
 import { Popover } from "antd";
@@ -18,17 +19,20 @@ import {
 } from "@/registry/wuhan/blocks/custom-sources/custom-sources-01";
 import { isExternalSource, type SourceItem } from "./utils";
 
-export interface CustomSourcesProps extends ComponentProps {
+export interface CustomSourcesProps
+  extends Omit<ComponentProps, "domNode" | "streamStatus"> {
   messageId?: string;
   sources?: SourceItem[];
   activeKey?: number;
+  domNode?: ComponentProps["domNode"];
+  streamStatus?: ComponentProps["streamStatus"];
   onOpenSidebar?: (payload: {
     sources: SourceItem[];
     activeKey?: number;
   }) => void;
 }
 
-const parseActiveKey = (children: ComponentProps["children"]) => {
+const parseActiveKey = (children: ReactNode | undefined | null) => {
   const raw = typeof children === "string" ? children : String(children ?? "");
   const parsed = Number.parseInt(raw, 10);
   return Number.isNaN(parsed) ? 0 : parsed;
@@ -47,7 +51,7 @@ const CustomSources: React.FC<CustomSourcesProps> = ({
     if (activeKey !== undefined) {
       return activeKey;
     }
-    return parseActiveKey(props?.children);
+    return parseActiveKey(props?.children as ReactNode | undefined);
   }, [activeKey, props?.children]);
 
   const activeSource = useMemo(() => {

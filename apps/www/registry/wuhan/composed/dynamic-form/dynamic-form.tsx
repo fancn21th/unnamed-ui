@@ -39,6 +39,10 @@ import {
   FieldError as FieldErrorComponent,
 } from "@/registry/wuhan/ui/field";
 import { cn } from "@/lib/utils";
+import {
+  StatusTag,
+  type StatusType,
+} from "@/registry/wuhan/composed/status-tag/status-tag";
 
 // ==================== 类型定义 ====================
 
@@ -176,6 +180,8 @@ export interface DynamicFormProps {
   validateSchema?: z.ZodType<Record<string, unknown>>;
   /** 是否只读模式 */
   readonly?: boolean;
+  /** 状态 - 仅支持 pending 和 confirmed，confirmed 状态会自动设置为只读并隐藏 Footer */
+  status?: "pending" | "confirmed";
   /** 是否显示预置的提交和重置按钮 */
   showActions?: boolean;
   /** 提交按钮文本 */
@@ -295,6 +301,7 @@ export const DynamicForm = React.forwardRef<DynamicFormRef, DynamicFormProps>(
       onFinishFailed,
       validateSchema,
       readonly = false,
+      status,
       showActions = true,
       submitText = "提交",
       resetText = "重置",
@@ -303,6 +310,9 @@ export const DynamicForm = React.forwardRef<DynamicFormRef, DynamicFormProps>(
     },
     ref,
   ) => {
+    // 如果 status 是 confirmed，自动设置为只读
+    const effectiveReadonly = readonly || status === "confirmed";
+
     const safeSchema = React.useMemo<FormSchema>(
       () => schema ?? { fields: [] },
       [schema],
@@ -476,6 +486,9 @@ export const DynamicForm = React.forwardRef<DynamicFormRef, DynamicFormProps>(
             <DynamicFormTitlePrimitive>
               {safeSchema.title}
             </DynamicFormTitlePrimitive>
+            {status && (status === "pending" || status === "confirmed") && (
+              <StatusTag status={status} />
+            )}
             {extra || null}
           </DynamicFormHeaderPrimitive>
         )}
@@ -495,14 +508,14 @@ export const DynamicForm = React.forwardRef<DynamicFormRef, DynamicFormProps>(
                 key={field.name}
                 field={field}
                 control={control}
-                readonly={readonly}
+                readonly={effectiveReadonly}
                 error={errors[field.name] as FieldError}
               />
             ))}
           </DynamicFormBodyLayout>
 
-          {/* 表单操作按钮 */}
-          {showActions && !readonly && (
+          {/* 表单操作按钮 - confirmed 状态不显示 */}
+          {showActions && !effectiveReadonly && (
             <DynamicFormFooterPrimitive className="mt-6">
               <Button
                 type="button"

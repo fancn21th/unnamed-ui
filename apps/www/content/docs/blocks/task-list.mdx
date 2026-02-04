@@ -112,6 +112,26 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/task-list.json
   className="mb-4"
 />
 
+### Pending 状态
+
+Pending 状态，显示状态标签，支持编辑和确认操作。
+
+<ComponentPreview
+  name="task-list-pending"
+  description="Pending 状态"
+  className="mb-4"
+/>
+
+### Confirmed 状态
+
+Confirmed 状态，显示状态标签，隐藏 Footer 按钮，不支持编辑。
+
+<ComponentPreview
+  name="task-list-confirmed"
+  description="Confirmed 状态"
+  className="mb-4"
+/>
+
 ### 完整功能
 
 完整功能展示，包含编辑、反馈、状态管理。
@@ -135,6 +155,7 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/task-list.json
 | `tasks` | `Task[]` | - | 任务列表（必填） |
 | `onTasksChange` | `(tasks: Task[]) => void` | - | 任务变更回调（必填） |
 | `editable` | `boolean` | `false` | 是否可编辑 |
+| `status` | `"pending" \| "confirmed"` | - | 状态，只支持 pending 和 confirmed，confirmed 状态下不显示 Footer |
 | `showFeedback` | `boolean` | `true` | 是否显示反馈按钮 |
 | `onFeedback` | `(taskId, type) => void` | - | 反馈回调 |
 | `className` | `string` | - | 自定义样式类名 |

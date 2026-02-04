@@ -86,7 +86,7 @@ export default function TodoList(props: TodoListProps) {
    * 只在待办状态且允许编辑时显示
    */
   const renderFooter = () => {
-    if (!(editable)) return null;
+    if (!editable) return null;
     return (
       <StyledTodoListFooter align="center" justify="flex-end" gap={8}>
         <Button onClick={onTriggerEdit}>{modifyButtonText}</Button>

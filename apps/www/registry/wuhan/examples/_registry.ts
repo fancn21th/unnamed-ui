@@ -1796,6 +1796,30 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "dynamic-form-pending",
+    type: "registry:example",
+    registryDependencies: ["dynamic-form"],
+    files: [
+      {
+        path: "examples/dynamic-form/dynamic-form-pending.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/dynamic-form-pending.tsx",
+      },
+    ],
+  },
+  {
+    name: "dynamic-form-confirmed",
+    type: "registry:example",
+    registryDependencies: ["dynamic-form"],
+    files: [
+      {
+        path: "examples/dynamic-form/dynamic-form-confirmed.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/dynamic-form-confirmed.tsx",
+      },
+    ],
+  },
+  {
     name: "task-list-demo",
     type: "registry:example",
     registryDependencies: ["task-list"],
@@ -1840,6 +1864,30 @@ export const examples: Registry["items"] = [
         path: "examples/task-list/task-list-feedback.tsx",
         type: "registry:example",
         target: "components/wuhan/examples/task-list-feedback.tsx",
+      },
+    ],
+  },
+  {
+    name: "task-list-pending",
+    type: "registry:example",
+    registryDependencies: ["task-list"],
+    files: [
+      {
+        path: "examples/task-list/task-list-pending.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/task-list-pending.tsx",
+      },
+    ],
+  },
+  {
+    name: "task-list-confirmed",
+    type: "registry:example",
+    registryDependencies: ["task-list"],
+    files: [
+      {
+        path: "examples/task-list/task-list-confirmed.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/task-list-confirmed.tsx",
       },
     ],
   },

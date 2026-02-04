@@ -5047,6 +5047,56 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "dynamic-form-pending": {
+      name: "dynamic-form-pending",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["dynamic-form"],
+      files: [
+        {
+          path: "registry/wuhan/examples/dynamic-form/dynamic-form-pending.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/dynamic-form-pending.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/dynamic-form/dynamic-form-pending.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "dynamic-form-confirmed": {
+      name: "dynamic-form-confirmed",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["dynamic-form"],
+      files: [
+        {
+          path: "registry/wuhan/examples/dynamic-form/dynamic-form-confirmed.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/dynamic-form-confirmed.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/dynamic-form/dynamic-form-confirmed.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "task-list-demo": {
       name: "task-list-demo",
       description: "",
@@ -5137,6 +5187,56 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/examples/task-list/task-list-feedback.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "task-list-pending": {
+      name: "task-list-pending",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["task-list"],
+      files: [
+        {
+          path: "registry/wuhan/examples/task-list/task-list-pending.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/task-list-pending.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/task-list/task-list-pending.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "task-list-confirmed": {
+      name: "task-list-confirmed",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["task-list"],
+      files: [
+        {
+          path: "registry/wuhan/examples/task-list/task-list-confirmed.tsx",
+          type: "registry:example",
+          target: "components/wuhan/examples/task-list-confirmed.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/task-list/task-list-confirmed.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

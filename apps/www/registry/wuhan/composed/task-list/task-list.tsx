@@ -4,6 +4,10 @@ import * as React from "react";
 import { useState } from "react";
 import { GripVertical, Trash2 } from "lucide-react";
 import {
+  StatusTag,
+  type StatusType,
+} from "@/registry/wuhan/composed/status-tag/status-tag";
+import {
   DndContext,
   PointerSensor,
   useSensor,
@@ -57,8 +61,8 @@ export interface TaskListComposedProps {
   dataSource: TodoItem[];
   /** 标题 */
   title?: string;
-  /** 状态 */
-  status: "pending" | "confirmed";
+  /** 状态 - 仅支持 pending 和 confirmed */
+  status?: "pending" | "confirmed";
   /** 是否启用编辑 */
   editable?: boolean;
   /** 修改按钮文字 */
@@ -158,6 +162,8 @@ export const TaskList = React.forwardRef<HTMLDivElement, TaskListComposedProps>(
     };
 
     const renderFooter = () => {
+      // confirmed 状态不显示 Footer
+      if (status === "confirmed") return null;
       if (!(status === "pending" && editable)) return null;
       return (
         <TaskListFooterPrimitive>
@@ -179,6 +185,9 @@ export const TaskList = React.forwardRef<HTMLDivElement, TaskListComposedProps>(
       <TaskListContainerPrimitive ref={ref}>
         <TaskListHeaderPrimitive>
           <TaskListTitlePrimitive>{title}</TaskListTitlePrimitive>
+          {status && (status === "pending" || status === "confirmed") && (
+            <StatusTag status={status} />
+          )}
         </TaskListHeaderPrimitive>
         {renderContent()}
         {renderFooter()}

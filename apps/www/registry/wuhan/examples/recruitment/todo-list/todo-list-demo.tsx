@@ -14,7 +14,6 @@ export default function TodoListDemo() {
     <TodoList
       dataSource={dataSource}
       title="我的待办"
-      status="pending"
       editable={false}
       onItemsChange={() => {}}
       onConfirmExecute={() => {}}

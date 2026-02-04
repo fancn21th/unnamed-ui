@@ -1,5 +1,3 @@
-import type { StatusType } from "../StatusTag";
-
 /**
  * 待办事项列表组件的属性类型定义
  */
@@ -8,8 +6,6 @@ export interface TodoListProps {
   dataSource: TodoItem[];
   /** 标题 */
   title?: string;
-  /** 状态 */
-  status: StatusType;
   /** 是否启用编辑 */
   editable?: boolean;
   /** 当待办事项列表发生变化时的回调函数 */

@@ -12,7 +12,6 @@ import {
 } from "./styles";
 import type { TodoListProps, TodoItem } from "./types";
 import { EditableList } from "./EditableList";
-import StatusTag from "../StatusTag";
 
 /**
  * 待办事项列表组件
@@ -23,7 +22,6 @@ export default function TodoList(props: TodoListProps) {
     dataSource,
     title = "待办清单",
     editable = false,
-    status = "pending",
     onItemsChange,
     onConfirmExecute,
   } = props;
@@ -88,7 +86,7 @@ export default function TodoList(props: TodoListProps) {
    * 只在待办状态且允许编辑时显示
    */
   const renderFooter = () => {
-    if (!(status === "pending" && editable)) return null;
+    if (!(editable)) return null;
     return (
       <StyledTodoListFooter align="center" justify="flex-end" gap={8}>
         <Button onClick={onTriggerEdit}>{modifyButtonText}</Button>
@@ -106,7 +104,6 @@ export default function TodoList(props: TodoListProps) {
     <StyledTodoListContainer vertical gap={16}>
       <StyledTodoListHeader align="center" justify="space-between">
         <StyledTodoListTitle>{title}</StyledTodoListTitle>
-        <StatusTag status={status} />
       </StyledTodoListHeader>
       {renderContent()}
       {renderFooter()}

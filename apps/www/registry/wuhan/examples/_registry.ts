@@ -218,18 +218,6 @@ const recruitmentExamples: Registry["items"] = [
     ],
   },
   {
-    name: "status-tag-demo",
-    type: "registry:example",
-    registryDependencies: ["status-tag"],
-    files: [
-      {
-        path: "examples/recruitment/status-tag/status-tag-demo.tsx",
-        type: "registry:example",
-        target: "components/wuhan/examples/recruitment/status-tag-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "step-detail-demo",
     type: "registry:example",
     registryDependencies: ["step-detail"],

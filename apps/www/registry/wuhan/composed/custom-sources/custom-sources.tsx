@@ -19,8 +19,10 @@ import {
 } from "@/registry/wuhan/blocks/custom-sources/custom-sources-01";
 import { isExternalSource, type SourceItem } from "./utils";
 
-export interface CustomSourcesProps
-  extends Omit<ComponentProps, "domNode" | "streamStatus"> {
+export interface CustomSourcesProps extends Omit<
+  ComponentProps,
+  "domNode" | "streamStatus"
+> {
   messageId?: string;
   sources?: SourceItem[];
   activeKey?: number;

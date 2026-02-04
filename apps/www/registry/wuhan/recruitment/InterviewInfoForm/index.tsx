@@ -12,7 +12,6 @@ import {
   StyledCheckboxGroup,
   StyledCheckboxGroupContainer,
 } from "./style";
-import StatusTag from "../StatusTag";
 import UploadField from "./UploadField";
 import {
   DEFAULT_TITLE,
@@ -400,7 +399,6 @@ const InterviewInfoForm: React.FC<InterviewInfoFormProps> = ({
             {title}
           </StyledInterviewInfoFormTitle>
         )}
-        <StatusTag status={status} />
       </div>
       <Form
         form={form}

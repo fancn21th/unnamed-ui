@@ -79,12 +79,6 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/button.json
 
 按钮支持四种类型：实心（solid）、文字（text）、边框（outline）和链接（link）。
 
-<ComponentPreview
-  name="button-demo"
-  description="按钮类型演示"
-  className="mb-4"
-/>
-
 ```tsx
 <Button variant="solid" color="primary">实心按钮</Button>
 <Button variant="text" color="primary">文字按钮</Button>
@@ -96,12 +90,6 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/button.json
 
 按钮支持三种颜色：主色（primary）、次要色（secondary）和危险色（danger）。
 
-<ComponentPreview
-  name="button-demo"
-  description="按钮颜色演示"
-  className="mb-4"
-/>
-
 ```tsx
 <Button variant="solid" color="primary">主色</Button>
 <Button variant="solid" color="secondary">次要色</Button>
@@ -111,12 +99,6 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/button.json
 ### 按钮尺寸
 
 按钮支持三种尺寸：小（sm）、中（md）、大（lg）。
-
-<ComponentPreview
-  name="button-demo"
-  description="按钮尺寸演示"
-  className="mb-4"
-/>
 
 ```tsx
 <Button size="sm" color="primary">小按钮</Button>
@@ -128,11 +110,6 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/button.json
 
 支持在按钮前后添加图标。
 
-<ComponentPreview
-  name="button-demo"
-  description="带图标按钮演示"
-  className="mb-4"
-/>
 
 ```tsx
 <Button variant="solid" color="primary" icon={Send}>发送</Button>
@@ -143,12 +120,6 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/button.json
 ### 加载状态
 
 通过 `loading` 属性显示加载状态。
-
-<ComponentPreview
-  name="button-demo"
-  description="加载状态演示"
-  className="mb-4"
-/>
 
 ```tsx
 const [loading, setLoading] = useState(false);
@@ -167,12 +138,6 @@ const [loading, setLoading] = useState(false);
 
 通过 `progress` 和 `progressValue` 显示进度状态，适用于上传、下载等场景。
 
-<ComponentPreview
-  name="button-demo"
-  description="进度状态演示"
-  className="mb-4"
-/>
-
 ```tsx
 <Button
   variant="outline"
@@ -186,12 +151,6 @@ const [loading, setLoading] = useState(false);
 
 ### 禁用状态
 
-<ComponentPreview
-  name="button-demo"
-  description="禁用状态演示"
-  className="mb-4"
-/>
-
 ```tsx
 <Button variant="solid" color="primary" disabled>禁用实心</Button>
 <Button variant="outline" color="primary" disabled>禁用边框</Button>
@@ -202,11 +161,6 @@ const [loading, setLoading] = useState(false);
 
 通过 `block` 属性使按钮占满父容器宽度。
 
-<ComponentPreview
-  name="button-demo"
-  description="全宽按钮演示"
-  className="mb-4"
-/>
 
 ```tsx
 <Button variant="solid" color="primary" block>全宽按钮</Button>

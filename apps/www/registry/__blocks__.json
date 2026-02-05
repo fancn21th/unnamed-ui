@@ -1,9 +1,5 @@
 [
   {
-    "name": "button",
-    "description": "Composed button with icon support, block mode, and convenient props"
-  },
-  {
     "name": "tooltip",
     "description": "Composed tooltip with simplified API for quick usage"
   },
@@ -232,11 +228,15 @@
     "description": "Composed toggle button with single and multiple selection modes"
   },
   {
+    "name": "block-button",
+    "description": "Composed button with icon support, block mode, and convenient props"
+  },
+  {
     "name": "select-card",
     "description": "Composed card selection with single/multiple modes and grid layout"
   },
   {
-    "name": "select",
+    "name": "block-select",
     "description": "选择器"
   },
   {

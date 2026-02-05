@@ -276,6 +276,7 @@ export const composed: Registry["items"] = [
       "slider",
       "field",
       "dynamic-form-01",
+      "status-tag",
     ],
     files: [
       {
@@ -498,7 +499,7 @@ export const composed: Registry["items"] = [
     ],
   },
   {
-    name: "button",
+    name: "block-button",
     type: "registry:block",
     title: "Button",
     description:
@@ -507,9 +508,9 @@ export const composed: Registry["items"] = [
     registryDependencies: ["button-01"],
     files: [
       {
-        path: "composed/button/button.tsx",
+        path: "composed/block-button/block-button.tsx",
         type: "registry:component",
-        target: "components/wuhan/composed/button.tsx",
+        target: "components/wuhan/composed/block-button.tsx",
       },
     ],
   },
@@ -529,7 +530,7 @@ export const composed: Registry["items"] = [
     ],
   },
   {
-    name: "select",
+    name: "block-select",
     type: "registry:block",
     title: "Select",
     description: "选择器",

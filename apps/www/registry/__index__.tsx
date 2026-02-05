@@ -1518,6 +1518,7 @@ export const Index: Record<string, Record<string, any>> = {
         "slider",
         "field",
         "dynamic-form-01",
+        "status-tag",
       ],
       files: [
         {
@@ -1822,8 +1823,8 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    button: {
-      name: "button",
+    "block-button": {
+      name: "block-button",
       description:
         "Composed button with icon support, block mode, and convenient props",
       type: "registry:block",
@@ -1836,7 +1837,7 @@ export const Index: Record<string, Record<string, any>> = {
         },
       ],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/wuhan/composed/button/button.tsx");
+        const mod = await import("@/registry/wuhan/composed/block-button/block-button");
         const exportName =
           Object.keys(mod).find(
             (key) =>
@@ -1873,8 +1874,8 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    select: {
-      name: "select",
+    "block-select": {
+      name: "block-select",
       description: "选择器",
       type: "registry:block",
       registryDependencies: ["select-01"],

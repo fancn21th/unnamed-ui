@@ -2543,7 +2543,8 @@
         "switch",
         "slider",
         "field",
-        "dynamic-form-01"
+        "dynamic-form-01",
+        "status-tag"
       ],
       "files": [
         {
@@ -2780,7 +2781,7 @@
       ]
     },
     {
-      "name": "button",
+      "name": "block-button",
       "type": "registry:block",
       "title": "Button",
       "description": "Composed button with icon support, block mode, and convenient props",
@@ -2816,7 +2817,7 @@
       ]
     },
     {
-      "name": "select",
+      "name": "block-select",
       "type": "registry:block",
       "title": "Select",
       "description": "选择器",

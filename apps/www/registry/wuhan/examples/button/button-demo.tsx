@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button } from "@/registry/wuhan/composed/button/button";
+import { Button } from "@/registry/wuhan/composed/block-button/block-button";
 import {
   Send,
   Download,

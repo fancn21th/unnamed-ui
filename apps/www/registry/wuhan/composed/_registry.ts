@@ -482,4 +482,35 @@ export const composed: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "button",
+    type: "registry:block",
+    title: "Button",
+    description:
+      "Composed button with icon support, block mode, and convenient props",
+    dependencies: ["lucide-react", "@radix-ui/react-slot"],
+    registryDependencies: ["button-01"],
+    files: [
+      {
+        path: "composed/button/button.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/button.tsx",
+      },
+    ],
+  },
+  {
+    name: "select-card",
+    type: "registry:block",
+    title: "Select Card",
+    description:
+      "Composed card selection with single/multiple modes and grid layout",
+    registryDependencies: ["select-card-01"],
+    files: [
+      {
+        path: "composed/select-card/select-card.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/select-card.tsx",
+      },
+    ],
+  },
 ];

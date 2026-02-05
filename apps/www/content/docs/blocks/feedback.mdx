@@ -10,14 +10,17 @@ Feedback 反馈表单组件用于收集用户反馈，支持多选项按钮、�
 
 ## 概述
 
-- **反馈选项**：支持多个反馈类型选项，用户可快速选择问题类型
+- **反馈选项**：支持多个反馈类型选项，用户可快速选择问题类型（默认为多选模式）
 - **详细描述**：提供输入框收集详细的反馈信息
 - **表单提交**：内置提交按钮和表单处理逻辑
+- **多选/单选**：支持多选和单选两种模式，默认为多选模式
 - **受控/非受控**：支持受控和非受控两种使用模式
 - **可关闭**：提供关闭按钮，方便用户退出反馈界面
 - **灵活定制**：可自定义标题、选项、占位符和提交按钮文本
 
 ## 快速开始
+
+多选模式（默认）：用户可以选择多个反馈选项。
 
 ```tsx
 import { FeedbackComposed } from "@/registry/wuhan/composed/feedback/feedback";
@@ -25,7 +28,6 @@ import { FeedbackComposed } from "@/registry/wuhan/composed/feedback/feedback";
 export function Example() {
   return (
     <FeedbackComposed
-      title="有什么问题?"
       options={[
         { id: "harmful", label: "有害/不安全" },
         { id: "false", label: "信息虚假" },
@@ -34,6 +36,32 @@ export function Example() {
       ]}
       onSubmit={(data) => {
         console.log("反馈数据:", data);
+        // data.selectedIds: 选中的选项 ID 数组
+        // data.inputValue: 输入框内容
+      }}
+    />
+  );
+}
+```
+
+单选模式：用户只能选择一个选项。
+
+```tsx
+import { FeedbackComposed } from "@/registry/wuhan/composed/feedback/feedback";
+
+export function Example() {
+  return (
+    <FeedbackComposed
+      multiple={false}
+      title="有什么问题?"
+      options={[
+        { id: "harmful", label: "有害/不安全" },
+        { id: "false", label: "信息虚假" },
+      ]}
+      onSubmit={(data) => {
+        console.log("反馈数据:", data);
+        // data.selectedId: 选中的选项 ID（单选模式）
+        // data.inputValue: 输入框内容
       }}
     />
   );
@@ -43,6 +71,7 @@ export function Example() {
 ## 特性
 
 - **多种反馈类型**：通过选项按钮快速分类问题
+- **多选支持**：默认为多选模式，用户可选择多个选项（单选模式需设置 `multiple={false}`）
 - **详细信息收集**：输入框支持用户补充详细描述
 - **双模式支持**：受控模式用于复杂表单，非受控模式用于简单场景
 - **表单验证**：内置表单提交处理，可扩展验证逻辑
@@ -136,18 +165,48 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/feedback.json
 |------|------|---------|-------------|
 | `title` | `ReactNode` | `"有什么问题?"` | 反馈表单标题 |
 | `options` | `FeedbackOption[]` | - | 反馈选项列表（必填） |
-| `selectedId` | `string` | - | 受控模式：当前选中的选项 ID |
-| `defaultSelectedId` | `string` | `""` | 非受控模式：默认选中的选项 ID |
-| `onSelect` | `(id: string) => void` | - | 选项选择变化时的回调 |
+| `multiple` | `boolean` | `true` | 是否支持多选模式 |
+| `selectedId` | `string` | - | 单选模式：受控模式当前选中的选项 ID |
+| `selectedIds` | `string[]` | - | 多选模式：受控模式当前选中的选项 ID 列表 |
+| `defaultSelectedId` | `string` | `""` | 单选模式：非受控模式默认选中的选项 ID |
+| `defaultSelectedIds` | `string[]` | `[]` | 多选模式：非受控模式默认选中的选项 ID 列表 |
+| `onSelect` | `(id: string) => void` | - | 单选模式：选项选择变化时的回调 |
+| `onSelectChange` | `(ids: string[]) => void` | - | 多选模式：选项选择变化时的回调 |
 | `inputValue` | `string` | - | 受控模式：输入框的当前值 |
 | `defaultInputValue` | `string` | `""` | 非受控模式：输入框的默认值 |
 | `onInputChange` | `(value: string) => void` | - | 输入框内容变化时的回调 |
 | `placeholder` | `string` | `"请输入详细描述..."` | 输入框占位符 |
 | `submitLabel` | `ReactNode` | `"提交"` | 提交按钮文本 |
-| `onSubmit` | `(payload: { selectedId: string; inputValue: string }) => void` | - | 表单提交时的回调 |
+| `onSubmit` | `(payload: { selectedId: string; selectedIds: string[]; inputValue: string }) => void` | - | 表单提交时的回调 |
 | `onClose` | `() => void` | - | 关闭按钮点击时的回调 |
 
 #### Example
+
+多选模式（默认）：
+
+```tsx
+import { FeedbackComposed } from "@/registry/wuhan/composed/feedback/feedback";
+
+function FeedbackExample() {
+  return (
+    <FeedbackComposed
+      options={[
+        { id: "bug", label: "Bug 报告" },
+        { id: "feature", label: "功能建议" },
+        { id: "question", label: "使用问题" },
+      ]}
+      onSubmit={(data) => {
+        console.log("提交:", data);
+        // data.selectedIds: 选中的选项 ID 数组
+        // data.selectedId: 空字符串（多选模式）
+        // data.inputValue: 输入框内容
+      }}
+    />
+  );
+}
+```
+
+单选模式：
 
 ```tsx
 import { FeedbackComposed } from "@/registry/wuhan/composed/feedback/feedback";
@@ -159,13 +218,14 @@ function FeedbackExample() {
 
   return (
     <FeedbackComposed
+      multiple={false}
       title="反馈问题"
       options={[
         { id: "bug", label: "Bug 报告" },
         { id: "feature", label: "功能建议" },
         { id: "question", label: "使用问题" },
       ]}
-      // 受控模式
+      // 单选模式受控
       selectedId={selectedId}
       onSelect={setSelectedId}
       inputValue={inputValue}
@@ -173,7 +233,9 @@ function FeedbackExample() {
       // 提交处理
       onSubmit={(data) => {
         console.log("提交:", data);
-        // 发送到服务器...
+        // data.selectedId: 选中的选项 ID
+        // data.selectedIds: 空数组（单选模式）
+        // data.inputValue: 输入框内容
       }}
       onClose={() => {
         console.log("关闭反馈");
@@ -215,9 +277,13 @@ interface FeedbackOption {
 ## 注意事项
 
 - `options` 是必填属性，至少需要提供一个选项
-- 受控模式下需要同时提供 `selectedId` 和 `onSelect`、`inputValue` 和 `onInputChange`
-- 非受控模式下可以使用 `defaultSelectedId` 和 `defaultInputValue` 设置初始值
-- `onSubmit` 回调会接收包含 `selectedId` 和 `inputValue` 的对象
+- 多选模式（默认）：使用 `selectedIds` / `defaultSelectedIds` 和 `onSelectChange`
+- 单选模式：使用 `selectedId` / `defaultSelectedId` 和 `onSelect`
+- 受控模式下需要同时提供 `selectedId` / `selectedIds` 和对应的回调函数、`inputValue` 和 `onInputChange`
+- 非受控模式下可以使用 `defaultSelectedId` / `defaultSelectedIds` 和 `defaultInputValue` 设置初始值
+- `onSubmit` 回调会接收包含 `selectedId`、`selectedIds` 和 `inputValue` 的对象
+  - 多选模式下：`selectedIds` 为选中的 ID 数组，`selectedId` 为空字符串
+  - 单选模式下：`selectedId` 为选中的 ID，`selectedIds` 为空数组
 - 表单提交会自动调用 `preventDefault()`，需要在 `onSubmit` 中处理实际的提交逻辑
 
 ## 样式定制
@@ -253,28 +319,28 @@ function CustomFeedback() {
 
 ## 扩展示例
 
-### 带验证的反馈表单
+### 带验证的反馈表单（多选模式）
 
 ```tsx
 import { FeedbackComposed } from "@/registry/wuhan/composed/feedback/feedback";
 import { useState } from "react";
 
 function ValidatedFeedback() {
-  const [selectedId, setSelectedId] = useState("");
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (data: { selectedId: string; inputValue: string }) => {
+  const handleSubmit = (data: { selectedIds: string[]; inputValue: string }) => {
     // 验证
-    if (!data.selectedId) {
-      setError("请选择反馈类型");
+    if (data.selectedIds.length === 0) {
+      setError("请至少选择一个反馈类型");
       return;
     }
     if (!data.inputValue.trim()) {
       setError("请输入详细描述");
       return;
     }
-    
+
     // 提交
     console.log("提交反馈:", data);
     setError("");
@@ -286,9 +352,10 @@ function ValidatedFeedback() {
         options={[
           { id: "bug", label: "Bug" },
           { id: "feature", label: "功能" },
+          { id: "other", label: "其他" },
         ]}
-        selectedId={selectedId}
-        onSelect={setSelectedId}
+        selectedIds={selectedIds}
+        onSelectChange={setSelectedIds}
         inputValue={inputValue}
         onInputChange={setInputValue}
         onSubmit={handleSubmit}
@@ -309,7 +376,7 @@ function AsyncFeedback() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  const handleSubmit = async (data: { selectedId: string; inputValue: string }) => {
+  const handleSubmit = async (data: { selectedIds: string[]; inputValue: string }) => {
     setLoading(true);
     try {
       await fetch("/api/feedback", {
@@ -333,6 +400,7 @@ function AsyncFeedback() {
     <FeedbackComposed
       options={[
         { id: "good", label: "👍 很好" },
+        { id: "helpful", label: "有帮助" },
         { id: "bad", label: "👎 不好" },
       ]}
       submitLabel={loading ? "提交中..." : "提交"}

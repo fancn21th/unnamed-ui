@@ -69,6 +69,12 @@ export interface ToggleButtonProps {
   variant?: "default" | "compact";
 
   /**
+   * 是否无边框模式
+   * @default false
+   */
+  borderless?: boolean;
+
+  /**
    * 自定义类名
    */
   className?: string;
@@ -126,6 +132,7 @@ export const ToggleButton = React.forwardRef<HTMLDivElement, ToggleButtonProps>(
       onValuesChange,
       multiple = false,
       variant = "default",
+      borderless = false,
       className,
       groupClassName,
     },
@@ -173,6 +180,7 @@ export const ToggleButton = React.forwardRef<HTMLDivElement, ToggleButtonProps>(
             selected={isSelected(option.id)}
             multiple={multiple}
             variant={variant}
+            borderless={borderless}
             disabled={option.disabled}
             onClick={() => {
               if (option.disabled) return;

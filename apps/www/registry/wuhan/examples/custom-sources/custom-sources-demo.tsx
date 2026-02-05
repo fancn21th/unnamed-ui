@@ -49,20 +49,14 @@ export default function CustomSourcesDemo() {
       <div className="min-w-[280px] flex-1 rounded-lg border border-[var(--border-neutral)] p-4">
         <p className="text-sm text-[var(--text-secondary)]">
           这是一个带有来源标记的文本示例
-          <CustomSources
-            sources={sources}
-            onOpenSidebar={handleOpenSidebar}
-          >
+          <CustomSources sources={sources} onOpenSidebar={handleOpenSidebar}>
             1
           </CustomSources>
           ，点击角标可打开引用来源侧边栏。
         </p>
         <p className="mt-3 text-sm text-[var(--text-secondary)]">
           外部引用示例
-          <CustomSources
-            sources={sources}
-            onOpenSidebar={handleOpenSidebar}
-          >
+          <CustomSources sources={sources} onOpenSidebar={handleOpenSidebar}>
             3
           </CustomSources>
           ，支持弹出卡片预览与来源区分。

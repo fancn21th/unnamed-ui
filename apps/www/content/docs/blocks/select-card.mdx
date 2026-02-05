@@ -1,0 +1,412 @@
+---
+title: Select Card
+description: Card selection component with single/multiple selection modes
+author: AF
+---
+
+<ComponentPreview name="select-card-demo" description="Card selection component with grid layout" className="mb-4" />
+
+Select Card 卡片选择组件用于以卡片形式展示多个选项，支持单选和多选两种模式，支持图标、标签和 tooltip，适用于功能选择、分类选择、标签选择等场景。
+
+## 概述
+
+- **卡片式展示**：以卡片形式展示选项，支持图标和文字组合
+- **单选/多选**：支持单选和多选两种模式，默认为多选
+- **网格布局**：自动适应网格排列，支持自定义列数
+- **受控/非受控**：支持受控和非受控两种使用模式
+- **图标支持**：支持自定义图标或使用默认图标占位符
+- **Tooltip 支持**：支持为选项添加提示信息
+
+## 快速开始
+
+多选模式（默认）：用户可以选择多个卡片选项。
+
+```tsx
+import { SelectCard } from "@/registry/wuhan/composed/select-card/select-card";
+import { LayoutDashboard, Bot } from "lucide-react";
+
+export function Example() {
+  return (
+    <SelectCard
+      options={[
+        {
+          value: "dashboard",
+          label: "仪表盘",
+          icon: <LayoutDashboard className="w-6 h-6" />,
+          tooltip: "仪表盘视图",
+        },
+        {
+          value: "agent",
+          label: "智能体",
+          icon: <Bot className="w-6 h-6" />,
+          tooltip: "智能体配置",
+        },
+      ]}
+      onChange={(values) => {
+        console.log("选中的值:", values);
+      }}
+    />
+  );
+}
+```
+
+单选模式：用户只能选择一个卡片选项。
+
+```tsx
+import { SelectCard } from "@/registry/wuhan/composed/select-card/select-card";
+
+export function Example() {
+  return (
+    <SelectCard
+      multiple={false}
+      options={[
+        { value: "small", label: "S 小" },
+        { value: "medium", label: "M 中" },
+        { value: "large", label: "L 大" },
+      ]}
+      onChange={(values) => {
+        console.log("选中的值:", values[0]);
+      }}
+    />
+  );
+}
+```
+
+## 特性
+
+- **卡片式布局**：紧凑卡片设计，支持图标和文字水平排列
+- **多选支持**：默认为多选模式，可切换为单选模式
+- **网格排列**：自动适应网格布局，支持自定义列数
+- **双模式支持**：受控模式用于复杂表单，非受控模式用于简单场景
+- **禁用支持**：可禁用单个卡片选项
+- **图标支持**：支持自定义图标或使用默认占位符
+- **Tooltip 支持**：支持为选项添加提示信息
+- **无障碍支持**：包含适当的 ARIA 标签
+
+## 安装
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/select-card.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>复制以下代码到你的项目</Step>
+
+<ComponentSource name="select-card" />
+
+<Step>更新导入路径以匹配你的项目设置</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## 代码演示
+
+### 基本
+
+基础的卡片选择组件示例。
+
+<ComponentPreview
+  name="select-card-demo"
+  description="Basic card selection example"
+  className="mb-4"
+/>
+
+### 单选模式
+
+单选模式的卡片选择组件，用户只能选择一个选项。
+
+<ComponentPreview
+  name="select-card-single"
+  description="Single selection mode"
+  className="mb-4"
+/>
+
+### 受控模式
+
+使用受控模式管理选择状态，适合需要外部状态管理的场景。
+
+<ComponentPreview
+  name="select-card-controlled"
+  description="Controlled selection with buttons"
+  className="mb-4"
+/>
+
+### 带图标和 Tooltip
+
+支持图标和提示信息的卡片选择组件。
+
+<ComponentPreview
+  name="select-card-with-icon"
+  description="Card selection with icons and tooltips"
+  className="mb-4"
+/>
+
+## API
+
+### SelectCard
+
+卡片选择组组件，提供卡片式的单选/多选功能。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `options` | `SelectCardOption[]` | - | 选项列表（必填） |
+| `value` | `string[]` | - | 受控模式：当前选中的选项值列表 |
+| `defaultValue` | `string[]` | `[]` | 非受控模式：默认选中的选项值列表 |
+| `onChange` | `(value: string[]) => void` | - | 选项选择变化时的回调 |
+| `multiple` | `boolean` | `true` | 是否支持多选模式 |
+| `columns` | `number \| string` | `4` | 网格列数配置 |
+| `className` | `string` | - | 自定义样式类名 |
+
+#### Example
+
+多选模式（默认）：
+
+```tsx
+import { SelectCard } from "@/registry/wuhan/composed/select-card/select-card";
+import { useState } from "react";
+import { LayoutDashboard, Bot } from "lucide-react";
+
+function SelectCardExample() {
+  return (
+    <SelectCard
+      options={[
+        {
+          value: "dashboard",
+          label: "仪表盘",
+          icon: <LayoutDashboard className="w-6 h-6" />,
+        },
+        {
+          value: "agent",
+          label: "智能体",
+          icon: <Bot className="w-6 h-6" />,
+        },
+      ]}
+      defaultValue={["dashboard"]}
+      onChange={(values) => {
+        console.log("选中的值:", values);
+      }}
+    />
+  );
+}
+```
+
+单选模式：
+
+```tsx
+import { SelectCard } from "@/registry/wuhan/composed/select-card/select-card";
+
+function SelectCardSingle() {
+  return (
+    <SelectCard
+      multiple={false}
+      options={[
+        { value: "s", label: "S 小" },
+        { value: "m", label: "M 中" },
+        { value: "l", label: "L 大" },
+      ]}
+      defaultValue={["m"]}
+      onChange={(values) => {
+        console.log("选中的值:", values[0]);
+      }}
+      columns={3}
+    />
+  );
+}
+```
+
+受控模式：
+
+```tsx
+import { SelectCard } from "@/registry/wuhan/composed/select-card/select-card";
+import { useState } from "react";
+
+function SelectCardControlled() {
+  const [selected, setSelected] = useState<string[]>(["opt1"]);
+
+  return (
+    <SelectCard
+      options={options}
+      value={selected}
+      onChange={setSelected}
+      columns={4}
+    />
+  );
+}
+```
+
+### SelectCardItem
+
+卡片选择项组件，包含图标、标签和 tooltip 功能，可独立使用。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `option` | `SelectCardOption` | - | 选项数据（必填） |
+| `selected` | `boolean` | `false` | 是否选中状态 |
+| `onClick` | `() => void` | - | 点击事件回调 |
+
+#### Example
+
+```tsx
+import { SelectCardItem } from "@/registry/wuhan/composed/select-card/select-card";
+import { useState } from "react";
+import { Bot } from "lucide-react";
+
+function SingleCardItem() {
+  const [selected, setSelected] = useState(false);
+
+  return (
+    <SelectCardItem
+      option={{
+        value: "agent",
+        label: "智能体",
+        icon: <Bot className="w-6 h-6" />,
+        tooltip: "配置智能体选项",
+      }}
+      selected={selected}
+      onClick={() => setSelected(!selected)}
+    />
+  );
+}
+```
+
+### SelectCardOption
+
+卡片选项类型定义。
+
+```tsx
+interface SelectCardOption {
+  value: string;           // 选项的唯一值（必填）
+  label: ReactNode;        // 选项的显示文本（必填）
+  icon?: ReactNode;        // 选项图标
+  tooltip?: ReactNode;     // 选项提示信息
+  disabled?: boolean;      // 是否禁用该选项
+}
+```
+
+### SelectCardItemIcon
+
+卡片选择项图标占位符组件，用于显示默认图标样式。
+
+```tsx
+import { SelectCardItemIcon } from "@/registry/wuhan/composed/select-card/select-card";
+
+function Example() {
+  return <SelectCardItemIcon />;
+}
+```
+
+## 使用场景
+
+- **功能选择**：选择需要启用的功能模块
+- **分类选择**：从多个分类中选择一项或多项
+- **标签选择**：为内容添加标签
+- **模式选择**：选择不同的工作模式或显示模式
+- **尺寸选择**：选择尺寸、规格等选项
+- **配置选择**：选择系统配置选项
+
+## 最佳实践
+
+1. **卡片内容**：卡片内容应简洁明了，建议包含图标和简短文字
+2. **选项数量**：建议选项数量在 2-12 个之间，过多可考虑分页或滚动
+3. **布局选择**：根据选项数量选择合适的列数，通常 3-6 列效果较好
+4. **禁用状态**：禁用不可选的选项，提供清晰的视觉反馈
+5. **选中反馈**：确保选中状态有明显的视觉区分
+
+## 注意事项
+
+- `options` 是必填属性，至少需要一个选项
+- 多选模式（默认）：使用 `value` / `defaultValue` 和 `onChange`
+- 单选模式：设置 `multiple={false}`，`onChange` 返回单元素数组
+- `columns` 支持数字（如 `4`）或 CSS 字符串（如 `"repeat(auto-fill, minmax(200px, 1fr))"`）
+- 禁用选项时，`onChange` 不会触发
+
+## 样式定制
+
+组件使用 Tailwind CSS，可以通过原语组件进行完全定制：
+
+```tsx
+import {
+  SelectCardItemPrimitive,
+} from "@/registry/wuhan/blocks/select-card/select-card-01";
+
+function CustomSelectCard() {
+  return (
+    <div className="grid grid-cols-4 gap-4">
+      <SelectCardItemPrimitive
+        selected={isSelected}
+        className="bg-blue-50 border-blue-200 data-[selected]:bg-blue-100"
+      >
+        <Icon className="w-6 h-6 text-blue-500" />
+        <span className="font-medium">自定义</span>
+      </SelectCardItemPrimitive>
+    </div>
+  );
+}
+```
+
+## Primitive Components
+
+Select Card 组件基于以下原语组件构建，可用于需要完全自定义的场景。
+
+### SelectCardItemPrimitive
+
+单个卡片选择项原语，提供卡片式选择的基础样式和选中/未选中状态。
+
+| 参数 | 类型 | 说明 |
+| --- | --- | --- |
+| `selected` | `boolean` | 是否选中状态 |
+| `multiple` | `boolean` | 是否多选模式 |
+| `children` | `ReactNode` | 子元素 |
+| `className` | `string` | 自定义样式类名 |
+
+```tsx
+import {
+  SelectCardItemPrimitive,
+} from "@/registry/wuhan/blocks/select-card/select-card-01";
+
+function CustomCard() {
+  return (
+    <SelectCardItemPrimitive selected className="custom-class">
+      <Icon className="w-6 h-6" />
+      <span className="font-medium">选项</span>
+    </SelectCardItemPrimitive>
+  );
+}
+```
+
+### SelectCardItemIconPrimitive
+
+单个卡片选择项图标占位符原语，提供默认图标样式。
+
+```tsx
+import {
+  SelectCardItemIconPrimitive,
+} from "@/registry/wuhan/blocks/select-card/select-card-01";
+
+function Example() {
+  return <SelectCardItemIconPrimitive />;
+}
+```
+
+原语组件可以在 [registry/wuhan/blocks/select-card/select-card-01.tsx](../../registry/wuhan/blocks/select-card/select-card-01.tsx) 中找到。

@@ -1915,6 +1915,55 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  // select-card examples
+  {
+    name: "select-card-demo",
+    type: "registry:example",
+    registryDependencies: ["select-card"],
+    files: [
+      {
+        path: "examples/select-card/select-card-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/select-card-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "select-card-single",
+    type: "registry:example",
+    registryDependencies: ["select-card"],
+    files: [
+      {
+        path: "examples/select-card/select-card-single.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/select-card-single.tsx",
+      },
+    ],
+  },
+  {
+    name: "select-card-controlled",
+    type: "registry:example",
+    registryDependencies: ["select-card", "button"],
+    files: [
+      {
+        path: "examples/select-card/select-card-controlled.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/select-card-controlled.tsx",
+      },
+    ],
+  },
+  {
+    name: "button-demo",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/button/button-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/button-demo.tsx",
+      },
+    ],
+  },
   // Merge recruitment examples
   ...recruitmentExamples,
 ];

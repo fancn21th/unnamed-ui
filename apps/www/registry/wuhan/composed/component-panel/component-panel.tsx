@@ -15,6 +15,10 @@ import {
   BlockTooltipTrigger,
   BlockTooltipContent,
 } from "@/registry/wuhan/blocks/tooltip/tooltip-01";
+import {
+  SelectCardItemPrimitive,
+  SelectCardItemIconPrimitive,
+} from "@/registry/wuhan/blocks/select-card/select-card-01";
 
 // ==================== 类型定义 ====================
 
@@ -282,7 +286,7 @@ export function getAllOptions(
  * @returns 对应的选项或 undefined
  * @public
  */
-export function getOptionByValue(
+export function getOptionByValueFromCategory(
   categories: ComponentPanelCategory[],
   value: string,
 ): ComponentPanelOption | undefined {
@@ -300,11 +304,11 @@ export function getOptionByValue(
  * @returns 对应的选项数组
  * @public
  */
-export function getOptionsByValues(
+export function getOptionsByValuesFromCategory(
   categories: ComponentPanelCategory[],
   values: string[],
 ): ComponentPanelOption[] {
   return values
-    .map((value) => getOptionByValue(categories, value))
+    .map((value) => getOptionByValueFromCategory(categories, value))
     .filter((opt): opt is ComponentPanelOption => opt !== undefined);
 }

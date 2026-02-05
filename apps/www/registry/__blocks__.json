@@ -1,5 +1,9 @@
 [
   {
+    "name": "button",
+    "description": "Composed button with icon support, block mode, and convenient props"
+  },
+  {
     "name": "tooltip",
     "description": "Composed tooltip with simplified API for quick usage"
   },
@@ -105,7 +109,15 @@
   },
   {
     "name": "sources-sidebar-01",
-    "description": "Sources sidebar primitives with tabs and list"
+    "description": "Sources sidebar component"
+  },
+  {
+    "name": "button-01",
+    "description": "Button primitive with solid/text/outline/link variants, multiple colors, and sizes"
+  },
+  {
+    "name": "select-card-01",
+    "description": "Card selection item primitive with selected state"
   },
   {
     "name": "message",
@@ -202,6 +214,10 @@
   {
     "name": "toggle-button",
     "description": "Composed toggle button with single and multiple selection modes"
+  },
+  {
+    "name": "select-card",
+    "description": "Composed card selection with single/multiple modes and grid layout"
   },
   {
     "name": "action-dropdown",

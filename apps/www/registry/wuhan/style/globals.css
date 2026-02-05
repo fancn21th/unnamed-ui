@@ -4,9 +4,224 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  /* ==================== 颜色系统 ==================== */
+  
+  /* Brand - 主色 */
+  --text-brand: #4A56FF;
+  --text-brand-hover: #3B46E6;
+  --text-brand-active: #2F36CC;
+  
+  --bg-brand: #4A56FF;
+  --bg-brand-hover: #3B46E6;
+  --bg-brand-active: #2F36CC;
+  --bg-brand-light: #E8EAFF;
+  --bg-brand-light-hover: #D8DAFF;
+  --bg-brand-light-active: #C8CAFA;
+  
+  --border-brand: #4A56FF;
+  
+  /* Secondary - 次要色 */
+  --text-secondary: #6B7280;
+  --text-secondary-hover: #5B6178;
+  --text-secondary-active: #4B5168;
+  
+  --bg-secondary: #6B7280;
+  --bg-secondary-hover: #5B6178;
+  --bg-secondary-active: #4B5168;
+  --bg-secondary-light: #F3F4F6;
+  --bg-secondary-light-hover: #E5E7EB;
+  --bg-secondary-light-active: #D1D5DB;
+  
+  --border-secondary: #6B7280;
+  
+  /* Danger - 危险色 */
+  --text-error: #F04438;
+  --text-error-hover: #D32D24;
+  --text-error-active: #C1261A;
+  
+  --bg-error: #F04438;
+  --bg-error-hover: #D32D24;
+  --bg-error-active: #C1261A;
+  --bg-error-light: #FEE2E2;
+  --bg-error-light-hover: #FECACA;
+  --bg-error-light-active: #FECACA;
+  
+  --border-error: #F04438;
+  
+  /* Neutral - 中性色 */
+  --text-primary: #1F2937;
+  --text-secondary-2nd: #4B5563;
+  --text-tertiary: #9CA3AF;
+  --text-placeholder: #D1D5DB;
+  --text-inverse: #FFFFFF;
+  
+  --bg-container: #FFFFFF;
+  --bg-container-secondary: #F9FAFB;
+  --bg-neutral: #F3F4F6;
+  --bg-neutral-light: #F9FAFB;
+  --bg-neutral-light-hover: #F3F4F6;
+  --bg-neutral-light-active: #E5E7EB;
+  --bg-container-disable: #F3F4F6;
+  
+  --bg-mask: rgba(0, 0, 0, 0.5);
+  
+  --text-disable: #9CA3AF;
+  
+  /* 边框颜色 */
+  --border-neutral: #E5E7EB;
+  --border-neutral-basic: #E5E7EB;
+  
+  /* ==================== 间距系统 ==================== */
+  
+  /* Gap */
+  --gap-xs: 4px;
+  --gap-sm: 6px;
+  --gap-md: 8px;
+  --gap-lg: 12px;
+  --gap-xl: 16px;
+  
+  /* Padding - Com */
+  --padding-com-xs: 4px;
+  --padding-com-sm: 6px;
+  --padding-com-md: 8px;
+  --padding-com-lg: 12px;
+  --padding-com-xl: 16px;
+  --padding-com-2xl: 24px;
+  
+  /* Padding - Side */
+  --padding-side-xs: 4px;
+  --padding-side-sm: 8px;
+  --padding-side-md: 12px;
+  --padding-side-lg: 16px;
+  --padding-side-xl: 20px;
+  --padding-side-2xl: 24px;
+  
+  /* Space */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  
+  /* Margin - Com */
+  --margin-com-xs: 4px;
+  --margin-com-sm: 6px;
+  --margin-com-md: 8px;
+  --margin-com-lg: 12px;
+  --margin-com-xl: 16px;
+  
+  /* ==================== 圆角系统 ==================== */
+  
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-circle: 9999px;
+  --radius-full: 9999px;
+  
+  /* ==================== 字体系统 ==================== */
+  
+  --font-family-cn: "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-family-en: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  
+  --font-size-1: 12px;
+  --font-size-2: 14px;
+  --font-size-3: 16px;
+  --font-size-4: 18px;
+  --font-size-5: 20px;
+  --font-size-6: 24px;
+  
+  --line-height-1: 18px;
+  --line-height-2: 20px;
+  --line-height-3: 24px;
+  --line-height-4: 28px;
+  --line-height-5: 32px;
+  
+  /* ==================== 边框宽度 ==================== */
+  
+  --border-width: 1px;
+  --border-width-2: 2px;
+  
+  /* ==================== 阴影系统 ==================== */
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
 }
 
 .dark {
+  /* ==================== 深色模式颜色 ==================== */
+  
+  /* Brand - 主色 */
+  --text-brand: #6B72FF;
+  --text-brand-hover: #8289FF;
+  --text-brand-active: #4A56FF;
+  
+  --bg-brand: #6B72FF;
+  --bg-brand-hover: #8289FF;
+  --bg-brand-active: #4A56FF;
+  --bg-brand-light: #1F2352;
+  --bg-brand-light-hover: #2A3070;
+  --bg-brand-light-active: #353D8F;
+  
+  --border-brand: #6B72FF;
+  
+  /* Secondary - 次要色 */
+  --text-secondary: #9CA3AF;
+  --text-secondary-hover: #ADAFBE;
+  --text-secondary-active: #BDBDCD;
+  
+  --bg-secondary: #4B5563;
+  --bg-secondary-hover: #5B6178;
+  --bg-secondary-active: #6B7280;
+  --bg-secondary-light: #1F2937;
+  --bg-secondary-light-hover: #2D3342;
+  --bg-secondary-light-active: #3B4252;
+  
+  --border-secondary: #4B5563;
+  
+  /* Danger - 危险色 */
+  --text-error: #F66B5C;
+  --text-error-hover: #F88073;
+  --text-error-active: #F04438;
+  
+  --bg-error: #F66B5C;
+  --bg-error-hover: #F88073;
+  --bg-error-active: #F04438;
+  --bg-error-light: #450A0A;
+  --bg-error-light-hover: #5C1313;
+  --bg-error-light-active: #741B1B;
+  
+  --border-error: #F66B5C;
+  
+  /* Neutral - 中性色 */
+  --text-primary: #F9FAFB;
+  --text-secondary-2nd: #D1D5DB;
+  --text-tertiary: #6B7280;
+  --text-placeholder: #4B5563;
+  --text-inverse: #1F2937;
+  
+  --bg-container: #1F2937;
+  --bg-container-secondary: #111827;
+  --bg-neutral: #374151;
+  --bg-neutral-light: #1F2937;
+  --bg-neutral-light-hover: #2D3342;
+  --bg-neutral-light-active: #3B4252;
+  --bg-container-disable: #1F2937;
+  
+  --bg-mask: rgba(0, 0, 0, 0.6);
+  
+  --text-disable: #6B7280;
+  
+  /* 边框颜色 */
+  --border-neutral: #374151;
+  --border-neutral-basic: #374151;
 }
 
 @theme inline {

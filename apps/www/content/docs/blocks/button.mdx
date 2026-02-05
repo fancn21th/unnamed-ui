@@ -1,0 +1,303 @@
+---
+title: Button
+description: Button component with multiple variants, colors, and states
+author: AF
+---
+
+<ComponentPreview name="button-demo" description="Button component demos" className="mb-4" />
+
+Button 组件支持多种类型、颜色和状态，适用于各种交互场景。
+
+## 概述
+
+- **四种按钮类型**：solid（实心）、text（文字）、outline（边框）、link（链接）
+- **三种颜色**：primary（主色）、secondary（次要色）、danger（危险色）
+- **三种尺寸**：sm（小）、md（中）、lg（大）
+- **六种状态**：default、hover、pressed、disabled、loading、progress
+- **图标支持**：支持前置图标和后置图标
+- **进度条**：支持进度状态显示
+- **CSS Token**：使用 CSS 变量实现主题化
+
+## 快速开始
+
+```tsx
+import { Button } from "@/registry/wuhan/composed/button/button";
+
+export function Example() {
+  return (
+    <Button variant="solid" color="primary">
+      按钮文字
+    </Button>
+  );
+}
+```
+
+## 特性
+
+- **多种变体**：满足不同视觉权重需求
+- **完整状态**：覆盖所有交互状态
+- **图标支持**：灵活的图标配置
+- **进度显示**：支持上传/下载等场景
+- **主题化**：基于 CSS 变量，易于定制
+
+## 安装
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/button.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>复制以下代码到你的项目</Step>
+
+<ComponentSource name="button" />
+
+<Step>更新导入路径以匹配你的项目设置</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## 代码演示
+
+### 按钮类型
+
+按钮支持四种类型：实心（solid）、文字（text）、边框（outline）和链接（link）。
+
+<ComponentPreview
+  name="button-demo"
+  description="按钮类型演示"
+  className="mb-4"
+/>
+
+```tsx
+<Button variant="solid" color="primary">实心按钮</Button>
+<Button variant="text" color="primary">文字按钮</Button>
+<Button variant="outline" color="primary">边框按钮</Button>
+<Button variant="link" color="primary">链接按钮</Button>
+```
+
+### 按钮颜色
+
+按钮支持三种颜色：主色（primary）、次要色（secondary）和危险色（danger）。
+
+<ComponentPreview
+  name="button-demo"
+  description="按钮颜色演示"
+  className="mb-4"
+/>
+
+```tsx
+<Button variant="solid" color="primary">主色</Button>
+<Button variant="solid" color="secondary">次要色</Button>
+<Button variant="solid" color="danger">危险</Button>
+```
+
+### 按钮尺寸
+
+按钮支持三种尺寸：小（sm）、中（md）、大（lg）。
+
+<ComponentPreview
+  name="button-demo"
+  description="按钮尺寸演示"
+  className="mb-4"
+/>
+
+```tsx
+<Button size="sm" color="primary">小按钮</Button>
+<Button size="md" color="primary">中按钮</Button>
+<Button size="lg" color="primary">大按钮</Button>
+```
+
+### 带图标按钮
+
+支持在按钮前后添加图标。
+
+<ComponentPreview
+  name="button-demo"
+  description="带图标按钮演示"
+  className="mb-4"
+/>
+
+```tsx
+<Button variant="solid" color="primary" icon={Send}>发送</Button>
+<Button variant="outline" color="primary" icon={Download}>下载</Button>
+<Button variant="text" color="primary" iconRight={ArrowRight}>下一步</Button>
+```
+
+### 加载状态
+
+通过 `loading` 属性显示加载状态。
+
+<ComponentPreview
+  name="button-demo"
+  description="加载状态演示"
+  className="mb-4"
+/>
+
+```tsx
+const [loading, setLoading] = useState(false);
+
+<Button
+  variant="solid"
+  color="primary"
+  loading={loading}
+  onClick={() => setLoading(true)}
+>
+  {loading ? "加载中..." : "点击加载"}
+</Button>
+```
+
+### 进度状态
+
+通过 `progress` 和 `progressValue` 显示进度状态，适用于上传、下载等场景。
+
+<ComponentPreview
+  name="button-demo"
+  description="进度状态演示"
+  className="mb-4"
+/>
+
+```tsx
+<Button
+  variant="outline"
+  color="primary"
+  progress={progress < 100}
+  progressValue={progress}
+>
+  {progress === 0 ? "开始上传" : progress < 100 ? `上传中 ${progress}%` : "完成"}
+</Button>
+```
+
+### 禁用状态
+
+<ComponentPreview
+  name="button-demo"
+  description="禁用状态演示"
+  className="mb-4"
+/>
+
+```tsx
+<Button variant="solid" color="primary" disabled>禁用实心</Button>
+<Button variant="outline" color="primary" disabled>禁用边框</Button>
+<Button variant="text" color="primary" disabled>禁用文字</Button>
+```
+
+### 全宽按钮
+
+通过 `block` 属性使按钮占满父容器宽度。
+
+<ComponentPreview
+  name="button-demo"
+  description="全宽按钮演示"
+  className="mb-4"
+/>
+
+```tsx
+<Button variant="solid" color="primary" block>全宽按钮</Button>
+```
+
+## API
+
+### Button Props
+
+| 参数 | 说明 | 类型 | 默认值 |
+|------|------|------|--------|
+| variant | 按钮类型 | `'solid' \| 'text' \| 'outline' \| 'link'` | `'solid'` |
+| color | 按钮颜色 | `'primary' \| 'secondary' \| 'danger'` | `'primary'` |
+| size | 按钮尺寸 | `'sm' \| 'md' \| 'lg'` | `'md'` |
+| loading | 是否加载中 | `boolean` | `false` |
+| disabled | 是否禁用 | `boolean` | `false` |
+| progress | 是否显示进度 | `boolean` | `false` |
+| progressValue | 进度值 0-100 | `number` | - |
+| icon | 前置图标 | `React.ComponentType<SVGProps<SVGSVGElement>>` | - |
+| iconRight | 后置图标 | `React.ComponentType<SVGProps<SVGSVGElement>>` | - |
+| block | 是否全宽 | `boolean` | `false` |
+| asChild | 作为子组件渲染 | `boolean` | `false` |
+| children | 按钮内容 | `React.ReactNode` | - |
+| onClick | 点击事件 | `() => void` | - |
+
+## 设计规范
+
+### 尺寸规范
+
+| 尺寸 | 高度 | 水平内边距 | 字号 | 行高 |
+|------|------|-----------|------|------|
+| sm | 28px (h-7) | 12px (px-3) | 12px (text-xs) | 16px |
+| md | 32px (h-8) | 16px (px-4) | 14px (text-sm) | 20px |
+| lg | 40px (h-10) | 24px (px-6) | 16px (text-base) | 24px |
+
+### 基础样式
+
+| 变体 | 圆角 | 间距 | 字体 |
+|------|------|------|------|
+| solid/text/outline | 8px (radius-md) | 8px (gap-md) | font-family-cn |
+| link | - | 4px (gap-xs) | font-family-cn |
+
+### 颜色规范
+
+#### Primary 主色
+
+| 状态 | Solid | Text | Outline | Link |
+|------|-------|------|---------|------|
+| default | bg-brand, text-inverse | bg-container, **border-brand**, text-brand | bg-container, text-brand | bg-transparent, text-brand |
+| hover | bg-brand-hover, text-inverse | bg-brand-light, text-brand | bg-container, **text-brand-hover** | bg-transparent, **text-brand-hover** |
+| pressed | bg-brand-active, text-inverse | bg-brand-light-active, text-brand | bg-container, **text-brand-active** | bg-transparent, **text-brand-active** |
+| disabled | opacity-50 | bg-container-disable, text-disable | bg-container-disable, text-disable | bg-transparent, text-disable |
+| loading | opacity-50 | bg-container-disable, text-disable | bg-container-disable, text-disable | bg-transparent, text-disable |
+| progress | bg-brand, text-inverse | 带 border-brand | bg-container, text-brand | bg-transparent, text-brand |
+
+#### Secondary 次要色
+
+| 状态 | Solid | Text | Outline | Link |
+|------|-------|------|---------|------|
+| default | bg-secondary, text-inverse | bg-container, **border-secondary**, text-secondary | bg-container, text-secondary | bg-transparent, text-secondary |
+| hover | bg-secondary-hover, text-inverse | bg-secondary-light, text-secondary-hover | bg-container, **text-secondary-hover** | bg-transparent, **text-secondary-hover** |
+| pressed | bg-secondary-active, text-inverse | bg-secondary-light-active, text-secondary-active | bg-container, **text-secondary-active** | bg-transparent, **text-secondary-active** |
+| disabled | opacity-50 | bg-container-disable, text-disable | bg-container-disable, text-disable | bg-transparent, text-disable |
+| loading | opacity-50 | bg-container-disable, text-disable | bg-container-disable, text-disable | bg-transparent, text-disable |
+| progress | bg-secondary, text-inverse | 带 border-secondary | bg-container, text-secondary | bg-transparent, text-secondary |
+
+#### Danger 危险色
+
+| 状态 | Solid | Text | Outline | Link |
+|------|-------|------|---------|------|
+| default | bg-error, text-inverse | bg-container, **border-error**, text-error | bg-container, text-error | bg-transparent, text-error |
+| hover | bg-error-hover, text-inverse | bg-error-light, text-error-hover | bg-container, **text-error-hover** | bg-transparent, **text-error-hover** |
+| pressed | bg-error-active, text-inverse | bg-error-light-active, text-error-active | bg-container, **text-error-active** | bg-transparent, **text-error-active** |
+| disabled | opacity-50 | bg-container-disable, text-disable | bg-container-disable, text-disable | bg-transparent, text-disable |
+| loading | opacity-50 | bg-container-disable, text-disable | bg-container-disable, text-disable | bg-transparent, text-disable |
+| progress | bg-error, text-inverse | 带 border-error | bg-container, text-error | bg-transparent, text-error |
+
+## 注意事项
+
+1. **CSS 变量**：组件使用 CSS 变量实现主题化，需要在全局样式中定义对应的变量
+2. **加载状态**：加载状态时会禁用按钮并显示加载图标
+3. **进度状态**：进度状态和加载状态互斥，不能同时使用
+4. **禁用状态**：禁用状态会覆盖加载和进度状态
+
+## 交互规范
+
+- **实心按钮**：用于主要操作，视觉权重最高
+- **文字/边框按钮**：用于次要操作，视觉权重较低
+- **危险按钮**：用于删除、移除等危险操作
+- **尺寸选择**：小按钮用于紧凑场景，大按钮用于主要操作
+- **加载状态**：加载状态时禁止重复点击
+- **危险操作**：建议使用危险颜色
+- **主要操作**：使用实心主色按钮
+

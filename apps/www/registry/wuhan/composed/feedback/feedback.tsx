@@ -33,14 +33,22 @@ export interface FeedbackOption {
 export interface FeedbackProps {
   /** 反馈表单标题 */
   title?: React.ReactNode;
-  /** 反馈选项列表，用户可以选择其中一个 */
+  /** 反馈选项列表，用户可以选择其中一个或多个 */
   options: FeedbackOption[];
-  /** 受控模式：当前选中的选项 ID */
+  /** 是否支持多选模式，默认为 true */
+  multiple?: boolean;
+  /** 受控模式：当前选中的选项 ID（单选模式） */
   selectedId?: string;
+  /** 受控模式：当前选中的选项 ID 列表（多选模式） */
+  selectedIds?: string[];
   /** 非受控模式：默认选中的选项 ID */
   defaultSelectedId?: string;
-  /** 选项选择变化时的回调函数 */
+  /** 非受控模式：默认选中的选项 ID 列表 */
+  defaultSelectedIds?: string[];
+  /** 单选模式：选项选择变化时的回调函数 */
   onSelect?: (id: string) => void;
+  /** 多选模式：选项选择变化时的回调函数 */
+  onSelectChange?: (ids: string[]) => void;
   /** 受控模式：输入框的当前值 */
   inputValue?: string;
   /** 非受控模式：输入框的默认值 */
@@ -51,8 +59,12 @@ export interface FeedbackProps {
   placeholder?: string;
   /** 提交按钮显示的标签 */
   submitLabel?: React.ReactNode;
-  /** 表单提交时的回调函数，接收选中的选项 ID 和输入值 */
-  onSubmit?: (payload: { selectedId: string; inputValue: string }) => void;
+  /** 表单提交时的回调函数 */
+  onSubmit?: (payload: {
+    selectedId: string;
+    selectedIds: string[];
+    inputValue: string;
+  }) => void;
   /** 关闭按钮点击时的回调函数 */
   onClose?: () => void;
 }
@@ -66,27 +78,29 @@ export interface FeedbackProps {
  * - 提交按钮
  * - 关闭功能
  *
- * 支持受控和非受控两种模式
+ * 支持单选和多选两种模式，默认为多选模式
  *
  * @example
  * ```tsx
- * // 非受控模式
+ * // 多选模式（默认）
  * <FeedbackComposed
+ *   options={[
+ *     { id: "harmful", label: "有害/不安全" },
+ *     { id: "false", label: "信息虚假" },
+ *     { id: "other", label: "其他" }
+ *   ]}
+ *   onSubmit={(data) => console.log(data.selectedIds)}
+ * />
+ *
+ * // 单选模式
+ * <FeedbackComposed
+ *   multiple={false}
  *   title="有什么问题?"
  *   options={[
  *     { id: "harmful", label: "有害/不安全" },
  *     { id: "false", label: "信息虚假" }
  *   ]}
- *   onSubmit={(data) => console.log(data)}
- * />
- *
- * // 受控模式
- * <FeedbackComposed
- *   selectedId={selectedId}
- *   onSelect={setSelectedId}
- *   inputValue={inputValue}
- *   onInputChange={setInputValue}
- *   onSubmit={handleSubmit}
+ *   onSubmit={(data) => console.log(data.selectedId)}
  * />
  * ```
  *
@@ -100,9 +114,13 @@ export const FeedbackComposed = React.forwardRef<
     {
       title = "有什么问题?",
       options,
+      multiple = true,
       selectedId,
+      selectedIds,
       defaultSelectedId = "",
+      defaultSelectedIds = [],
       onSelect,
+      onSelectChange,
       inputValue,
       defaultInputValue = "",
       onInputChange,
@@ -115,19 +133,48 @@ export const FeedbackComposed = React.forwardRef<
   ) => {
     // 内部状态：用于非受控模式
     const [localSelected, setLocalSelected] = React.useState(defaultSelectedId);
+    const [localSelectedIds, setLocalSelectedIds] =
+      React.useState(defaultSelectedIds);
     const [localInput, setLocalInput] = React.useState(defaultInputValue);
 
     // 当前值：优先使用受控模式的值，否则使用内部状态
-    const currentSelected = selectedId ?? localSelected;
+    const currentSelected = multiple
+      ? undefined
+      : (selectedId ?? localSelected);
+    const currentSelectedIds = multiple
+      ? (selectedIds ?? localSelectedIds)
+      : [];
     const currentInput = inputValue ?? localInput;
+
+    // 判断选项是否选中
+    const isSelected = React.useCallback(
+      (id: string) => {
+        if (multiple) {
+          return currentSelectedIds.includes(id);
+        }
+        return currentSelected === id;
+      },
+      [multiple, currentSelected, currentSelectedIds],
+    );
 
     // 选项选择处理函数
     const handleSelect = React.useCallback(
       (id: string) => {
-        setLocalSelected(id);
-        onSelect?.(id);
+        if (multiple) {
+          // 多选模式
+          const newIds = currentSelectedIds.includes(id)
+            ? currentSelectedIds.filter((i) => i !== id)
+            : [...currentSelectedIds, id];
+          setLocalSelectedIds(newIds);
+          onSelectChange?.(newIds);
+        } else {
+          // 单选模式
+          const newId = currentSelected === id ? "" : id;
+          setLocalSelected(newId);
+          onSelect?.(id);
+        }
       },
-      [onSelect],
+      [multiple, currentSelected, currentSelectedIds, onSelect, onSelectChange],
     );
 
     // 输入框变化处理函数
@@ -143,9 +190,13 @@ export const FeedbackComposed = React.forwardRef<
     const handleSubmit = React.useCallback(
       (event: React.FormEvent) => {
         event.preventDefault();
-        onSubmit?.({ selectedId: currentSelected, inputValue: currentInput });
+        onSubmit?.({
+          selectedId: currentSelected ?? "",
+          selectedIds: currentSelectedIds,
+          inputValue: currentInput,
+        });
       },
-      [currentSelected, currentInput, onSubmit],
+      [currentSelected, currentSelectedIds, currentInput, onSubmit],
     );
 
     return (
@@ -159,7 +210,8 @@ export const FeedbackComposed = React.forwardRef<
             {options.map((option) => (
               <ToggleButtonPrimitive
                 key={option.id}
-                selected={currentSelected === option.id}
+                selected={isSelected(option.id)}
+                multiple={multiple}
                 onClick={() => handleSelect(option.id)}
                 variant="default"
               >

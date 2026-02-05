@@ -168,6 +168,9 @@ importers:
       '@types/node':
         specifier: ^24.10.0
         version: 24.10.1
+      '@types/prompts':
+        specifier: ^2.4.9
+        version: 2.4.9
       '@types/react':
         specifier: ^19.2.2
         version: 19.2.3
@@ -186,6 +189,9 @@ importers:
       prettier:
         specifier: ^3.4.2
         version: 3.7.4
+      prompts:
+        specifier: ^2.4.2
+        version: 2.4.2
       tailwindcss:
         specifier: ^4.1.16
         version: 4.1.17
@@ -3311,6 +3317,9 @@ packages:
 
   '@types/prismjs@1.26.5':
     resolution: {integrity: sha512-AUZTa7hQ2KY5L7AmtSiqxlhWxb4ina0yd8hNbl4TWuqnv/pFP0nDMb3YrfSBf4hJVGLh2YEIBfKaBW/9UEl6IQ==}
+
+  '@types/prompts@2.4.9':
+    resolution: {integrity: sha512-qTxFi6Buiu8+50/+3DGIWLHM6QuWsEKugJnnP6iv2Mc4ncxE4A/OJkjuVOA+5X0X1S/nq5VJRa8Lu+nwcvbrKA==}
 
   '@types/react-dom@19.2.2':
     resolution: {integrity: sha512-9KQPoO6mZCi7jcIStSnlOWn2nEF3mNmyr3rIAsGnAbQKYbRLyqmeSc39EVgtxXVia+LMT8j3knZLAZAh+xLmrw==}
@@ -11421,6 +11430,11 @@ snapshots:
   '@types/pbf@3.0.5': {}
 
   '@types/prismjs@1.26.5': {}
+
+  '@types/prompts@2.4.9':
+    dependencies:
+      '@types/node': 24.10.1
+      kleur: 3.0.3
 
   '@types/react-dom@19.2.2(@types/react@19.2.3)':
     dependencies:

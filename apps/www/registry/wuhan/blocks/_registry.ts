@@ -438,16 +438,44 @@ export const blocks: Registry["items"] = [
     ],
   },
   {
-    name: "select-01",
+    name: "checkbox-01",
     type: "registry:block",
-    title: "Select",
+    title: "Checkbox",
+    description: "多选框",
+    registryDependencies: ["style"],
+    files: [
+      {
+        path: "blocks/checkbox/checkbox-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/checkbox-01.tsx",
+      },
+    ],
+  },
+  {
+    name: "radio-01",
+    type: "registry:block",
+    title: "Radio",
+    description: "单选框",
+    registryDependencies: ["style"],
+    files: [
+      {
+        path: "blocks/radio/radio-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/radio-01.tsx",
+      },
+    ],
+  },
+  {
+    name: "block-select-01",
+    type: "registry:block",
+    title: "BlockSelect",
     description: "选择器",
     registryDependencies: ["style"],
     files: [
       {
-        path: "blocks/select/select-01.tsx",
+        path: "blocks/block-select/block-select-01.tsx",
         type: "registry:component",
-        target: "components/wuhan/blocks/select-01.tsx",
+        target: "components/wuhan/blocks/block-select-01.tsx",
       },
     ],
   },

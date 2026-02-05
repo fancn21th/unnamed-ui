@@ -1027,21 +1027,70 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "select-01": {
-      name: "select-01",
+    "checkbox-01": {
+      name: "checkbox-01",
+      description: "多选框",
+      type: "registry:block",
+      registryDependencies: ["style"],
+      files: [
+        {
+          path: "registry/wuhan/blocks/checkbox/checkbox-01.tsx",
+          type: "registry:component",
+          target: "components/wuhan/blocks/checkbox-01.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/blocks/checkbox/checkbox-01.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "radio-01": {
+      name: "radio-01",
+      description: "单选框",
+      type: "registry:block",
+      registryDependencies: ["style"],
+      files: [
+        {
+          path: "registry/wuhan/blocks/radio/radio-01.tsx",
+          type: "registry:component",
+          target: "components/wuhan/blocks/radio-01.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/wuhan/blocks/radio/radio-01.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "block-select-01": {
+      name: "block-select-01",
       description: "选择器",
       type: "registry:block",
       registryDependencies: ["style"],
       files: [
         {
-          path: "registry/wuhan/blocks/select/select-01.tsx",
+          path: "registry/wuhan/blocks/block-select/block-select-01.tsx",
           type: "registry:component",
-          target: "components/wuhan/blocks/select-01.tsx",
+          target: "components/wuhan/blocks/block-select-01.tsx",
         },
       ],
       component: React.lazy(async () => {
         const mod =
-          await import("@/registry/wuhan/blocks/select/select-01.tsx");
+          await import("@/registry/wuhan/blocks/block-select/block-select-01.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>
@@ -1831,13 +1880,14 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button-01"],
       files: [
         {
-          path: "registry/wuhan/composed/button/button.tsx",
+          path: "registry/wuhan/composed/block-button/block-button.tsx",
           type: "registry:component",
-          target: "components/wuhan/composed/button.tsx",
+          target: "components/wuhan/composed/block-button.tsx",
         },
       ],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/wuhan/composed/block-button/block-button");
+        const mod =
+          await import("@/registry/wuhan/composed/block-button/block-button.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>
@@ -1874,20 +1924,70 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    checkbox: {
+      name: "checkbox",
+      description: "多选框",
+      type: "registry:block",
+      registryDependencies: ["checkbox-01"],
+      files: [
+        {
+          path: "registry/wuhan/composed/checkbox/checkbox.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/checkbox.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/composed/checkbox/checkbox.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    radio: {
+      name: "radio",
+      description: "单选框",
+      type: "registry:block",
+      registryDependencies: ["radio-01"],
+      files: [
+        {
+          path: "registry/wuhan/composed/radio/radio.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/radio.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/wuhan/composed/radio/radio.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "block-select": {
       name: "block-select",
       description: "选择器",
       type: "registry:block",
-      registryDependencies: ["select-01"],
+      registryDependencies: ["block-select-01"],
       files: [
         {
-          path: "registry/wuhan/composed/select/select.tsx",
+          path: "registry/wuhan/composed/block-select/block-select.tsx",
           type: "registry:component",
-          target: "components/wuhan/composed/select.tsx",
+          target: "components/wuhan/composed/block-select.tsx",
         },
       ],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/wuhan/composed/select/select.tsx");
+        const mod =
+          await import("@/registry/wuhan/composed/block-select/block-select.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>
@@ -6909,21 +7009,521 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "select-default": {
-      name: "select-default",
+    "checkbox-demo": {
+      name: "checkbox-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["select"],
+      registryDependencies: ["checkbox"],
       files: [
         {
-          path: "registry/wuhan/examples/select/select-default.tsx",
+          path: "registry/wuhan/examples/checkbox/checkbox-demo.tsx",
           type: "registry:example",
           target: "",
         },
       ],
       component: React.lazy(async () => {
         const mod =
-          await import("@/registry/wuhan/examples/select/select-default.tsx");
+          await import("@/registry/wuhan/examples/checkbox/checkbox-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "checkbox-controlled": {
+      name: "checkbox-controlled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["checkbox"],
+      files: [
+        {
+          path: "registry/wuhan/examples/checkbox/checkbox-controlled.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/checkbox/checkbox-controlled.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "checkbox-indeterminate": {
+      name: "checkbox-indeterminate",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["checkbox"],
+      files: [
+        {
+          path: "registry/wuhan/examples/checkbox/checkbox-indeterminate.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/checkbox/checkbox-indeterminate.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "checkbox-group-demo": {
+      name: "checkbox-group-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["checkbox"],
+      files: [
+        {
+          path: "registry/wuhan/examples/checkbox/checkbox-group-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/checkbox/checkbox-group-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "checkbox-group-controlled": {
+      name: "checkbox-group-controlled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["checkbox"],
+      files: [
+        {
+          path: "registry/wuhan/examples/checkbox/checkbox-group-controlled.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/checkbox/checkbox-group-controlled.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "checkbox-group-disabled": {
+      name: "checkbox-group-disabled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["checkbox"],
+      files: [
+        {
+          path: "registry/wuhan/examples/checkbox/checkbox-group-disabled.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/checkbox/checkbox-group-disabled.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "checkbox-custom-style": {
+      name: "checkbox-custom-style",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["checkbox"],
+      files: [
+        {
+          path: "registry/wuhan/examples/checkbox/checkbox-custom-style.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/checkbox/checkbox-custom-style.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "radio-demo": {
+      name: "radio-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["radio"],
+      files: [
+        {
+          path: "registry/wuhan/examples/radio/radio-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/radio/radio-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "radio-controlled": {
+      name: "radio-controlled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["radio"],
+      files: [
+        {
+          path: "registry/wuhan/examples/radio/radio-controlled.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/radio/radio-controlled.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "radio-group-options": {
+      name: "radio-group-options",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["radio"],
+      files: [
+        {
+          path: "registry/wuhan/examples/radio/radio-group-options.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/radio/radio-group-options.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "radio-vertical": {
+      name: "radio-vertical",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["radio"],
+      files: [
+        {
+          path: "registry/wuhan/examples/radio/radio-vertical.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/radio/radio-vertical.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "radio-disabled": {
+      name: "radio-disabled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["radio"],
+      files: [
+        {
+          path: "registry/wuhan/examples/radio/radio-disabled.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/radio/radio-disabled.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "radio-group-controlled": {
+      name: "radio-group-controlled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["radio"],
+      files: [
+        {
+          path: "registry/wuhan/examples/radio/radio-group-controlled.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/radio/radio-group-controlled.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "radio-custom-style": {
+      name: "radio-custom-style",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["radio"],
+      files: [
+        {
+          path: "registry/wuhan/examples/radio/radio-custom-style.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/radio/radio-custom-style.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "block-select-demo": {
+      name: "block-select-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["block-select"],
+      files: [
+        {
+          path: "registry/wuhan/examples/block-select/block-select-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/block-select/block-select-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "block-select-controlled": {
+      name: "block-select-controlled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["block-select"],
+      files: [
+        {
+          path: "registry/wuhan/examples/block-select/block-select-controlled.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/block-select/block-select-controlled.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "block-select-multiple": {
+      name: "block-select-multiple",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["block-select"],
+      files: [
+        {
+          path: "registry/wuhan/examples/block-select/block-select-multiple.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/block-select/block-select-multiple.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "block-select-icon": {
+      name: "block-select-icon",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["block-select"],
+      files: [
+        {
+          path: "registry/wuhan/examples/block-select/block-select-icon.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/block-select/block-select-icon.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "block-select-full-rounded": {
+      name: "block-select-full-rounded",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["block-select"],
+      files: [
+        {
+          path: "registry/wuhan/examples/block-select/block-select-full-rounded.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/block-select/block-select-full-rounded.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "block-select-disabled": {
+      name: "block-select-disabled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["block-select"],
+      files: [
+        {
+          path: "registry/wuhan/examples/block-select/block-select-disabled.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/block-select/block-select-disabled.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "block-select-advanced": {
+      name: "block-select-advanced",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["block-select"],
+      files: [
+        {
+          path: "registry/wuhan/examples/block-select/block-select-advanced.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/block-select/block-select-advanced.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

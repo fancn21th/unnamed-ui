@@ -1,0 +1,413 @@
+---
+title: Checkbox
+description: Checkbox component with support for single and group selection
+author: AF
+---
+
+<ComponentPreview name="checkbox-demo" description="Checkbox 基础用法" className="mb-4" />
+
+Checkbox 复选框组件，用于在一组选项中进行多项选择，支持单个复选框和复选框组两种使用方式。
+
+## 概述
+
+- **单选/多选**：支持单个复选框和复选框组
+- **受控/非受控**：支持受控和非受控两种模式
+- **半选状态**：支持 indeterminate 半选状态
+- **自定义样式**：支持 classNames 和 styles 自定义各部分样式
+- **类型安全**：完整的 TypeScript 类型定义
+
+## 快速开始
+
+```tsx
+import { Checkbox, CheckboxGroup } from "@/registry/wuhan/composed/checkbox";
+
+export function Example() {
+  return (
+    <div className="flex flex-col gap-4">
+      {/* 单个复选框 */}
+      <Checkbox>我同意用户协议</Checkbox>
+      
+      {/* 复选框组 */}
+      <CheckboxGroup
+        options={[
+          { label: "苹果", value: "apple" },
+          { label: "橙子", value: "orange" },
+        ]}
+      />
+    </div>
+  );
+}
+```
+
+## 特性
+
+- **多种状态**：支持默认、选中、禁用、半选等多种状态
+- **灵活组合**：CheckboxGroup 支持 options 和 children 两种方式
+- **样式定制**：通过 classNames 和 styles 精细控制各语义化部分样式
+- **事件回调**：支持 onChange、onFocus、onBlur 等事件
+- **完全可控**：支持 value/defaultValue 双向绑定
+
+## 安装
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://unnamed-ui.com/r/wuhan/checkbox"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>安装依赖</Step>
+
+```bash
+npm install @radix-ui/react-checkbox lucide-react
+```
+
+<Step>复制以下代码到你的项目</Step>
+
+<ComponentSource name="checkbox" />
+
+<Step>更新导入路径以匹配你的项目设置</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## 代码演示
+
+### 基础用法
+
+基础的单个复选框用法。
+
+<ComponentPreview
+  name="checkbox-demo"
+  description="基础用法"
+  className="mb-4"
+/>
+
+### 受控模式
+
+使用 checked 和 onChange 实现受控模式。
+
+<ComponentPreview
+  name="checkbox-controlled"
+  description="受控模式"
+  className="mb-4"
+/>
+
+### 半选状态
+
+使用 indeterminate 属性显示半选状态，常用于全选场景。
+
+<ComponentPreview
+  name="checkbox-indeterminate"
+  description="半选状态"
+  className="mb-4"
+/>
+
+### 复选框组
+
+使用 CheckboxGroup 创建复选框组。
+
+<ComponentPreview
+  name="checkbox-group-demo"
+  description="复选框组"
+  className="mb-4"
+/>
+
+### 复选框组受控
+
+CheckboxGroup 的受控模式。
+
+<ComponentPreview
+  name="checkbox-group-controlled"
+  description="复选框组受控"
+  className="mb-4"
+/>
+
+### 禁用状态
+
+整组禁用或单个选项禁用。
+
+<ComponentPreview
+  name="checkbox-group-disabled"
+  description="禁用状态"
+  className="mb-4"
+/>
+
+### 自定义样式
+
+通过 classNames 和 styles 自定义样式。
+
+<ComponentPreview
+  name="checkbox-custom-style"
+  description="自定义样式"
+  className="mb-4"
+/>
+
+## API
+
+### Checkbox
+
+单个复选框组件。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `checked` | `boolean` | - | 指定当前是否选中（受控） |
+| `defaultChecked` | `boolean` | `false` | 初始是否选中（非受控） |
+| `disabled` | `boolean` | `false` | 失效状态 |
+| `indeterminate` | `boolean` | `false` | 设置半选状态，只负责样式控制 |
+| `children` | `ReactNode` | - | 复选框文本标签 |
+| `className` | `string` | - | 容器自定义类名 |
+| `classNames` | `CheckboxClassNames \| Function` | - | 自定义各语义化结构的 class |
+| `styles` | `CheckboxStyles \| Function` | - | 自定义各语义化结构的 style |
+| `onChange` | `(e: CheckboxChangeEvent) => void` | - | 变化时的回调函数 |
+| `onBlur` | `() => void` | - | 失去焦点时的回调 |
+| `onFocus` | `() => void` | - | 获得焦点时的回调 |
+| `value` | `string \| number` | - | 复选框的值 |
+| `name` | `string` | - | input 的 name 属性 |
+| `id` | `string` | - | input 的 id 属性 |
+
+#### CheckboxClassNames
+
+```tsx
+interface CheckboxClassNames {
+  root?: string;      // 复选框本体
+  indicator?: string; // 勾选图标
+  label?: string;     // 文本标签
+  wrapper?: string;   // 外层容器
+}
+```
+
+#### CheckboxStyles
+
+```tsx
+interface CheckboxStyles {
+  root?: React.CSSProperties;
+  indicator?: React.CSSProperties;
+  label?: React.CSSProperties;
+  wrapper?: React.CSSProperties;
+}
+```
+
+#### Example
+
+```tsx
+import { Checkbox } from "@/registry/wuhan/composed/checkbox";
+
+function Example() {
+  const [checked, setChecked] = useState(false);
+
+  return (
+    <Checkbox
+      checked={checked}
+      onChange={(e) => setChecked(e.target.checked)}
+      classNames={{
+        wrapper: "p-2 bg-gray-50 rounded",
+        label: "text-blue-600 font-semibold",
+      }}
+    >
+      同意用户协议
+    </Checkbox>
+  );
+}
+```
+
+### CheckboxGroup
+
+复选框组组件，用于管理一组复选框。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `defaultValue` | `(string \| number)[]` | `[]` | 默认选中的选项（非受控） |
+| `value` | `(string \| number \| boolean)[]` | - | 指定选中的选项（受控） |
+| `disabled` | `boolean` | `false` | 整组失效 |
+| `name` | `string` | - | CheckboxGroup 下所有 checkbox 的 name 属性 |
+| `options` | `(string \| number \| CheckboxOption)[]` | `[]` | 指定可选项 |
+| `title` | `string` | - | 选项组标题 |
+| `className` | `string` | - | 容器自定义类名 |
+| `style` | `React.CSSProperties` | - | 容器自定义样式 |
+| `onChange` | `(checkedValues: T[]) => void` | - | 变化时的回调函数 |
+| `children` | `ReactNode` | - | 子元素（与 options 二选一） |
+
+#### CheckboxOption
+
+```tsx
+interface CheckboxOption {
+  label: React.ReactNode;   // 选项文本
+  value: string | number;   // 选项值
+  disabled?: boolean;       // 是否禁用
+  title?: string;          // 选项的 title 属性
+  className?: string;      // 选项自定义类名
+  style?: React.CSSProperties; // 选项自定义样式
+}
+```
+
+#### Example
+
+```tsx
+import { CheckboxGroup } from "@/registry/wuhan/composed/checkbox";
+
+function FruitSelector() {
+  const [fruits, setFruits] = useState(["apple"]);
+
+  return (
+    <CheckboxGroup
+      value={fruits}
+      onChange={setFruits}
+      options={[
+        { label: "苹果", value: "apple" },
+        { label: "橙子", value: "orange" },
+        { label: "香蕉", value: "banana", disabled: true },
+      ]}
+    />
+  );
+}
+```
+
+## 使用场景
+
+- **表单选择**：问卷调查、兴趣选择等多选场景
+- **权限配置**：用户权限、角色权限等配置
+- **筛选条件**：商品筛选、数据过滤等
+- **任务列表**：待办事项、任务清单等
+- **批量操作**：批量选择、全选/反选等
+- **协议确认**：用户协议、隐私政策确认
+
+## 最佳实践
+
+1. **文本清晰**：复选框文本应简洁明了，准确描述选项含义
+2. **合理分组**：相关选项使用 CheckboxGroup 组织，提高可用性
+3. **状态反馈**：及时反馈选中状态，必要时显示已选数量
+4. **禁用说明**：禁用选项应提供禁用原因的提示
+5. **键盘支持**：确保键盘可以正常操作复选框
+
+## 注意事项
+
+- `checked` 和 `defaultChecked` 不要同时使用，会导致受控/非受控冲突
+- `indeterminate` 状态仅影响视觉呈现，不影响 checked 值
+- CheckboxGroup 的 `options` 和 `children` 二选一使用
+- 自定义样式时注意保持足够的可点击区域
+
+## 原语组件
+
+Checkbox 组件基于以下原语组件构建：
+
+- `CheckboxRootPrimitive` - 复选框本体原语
+- `CheckboxIndicatorPrimitive` - 勾选指示器原语
+- `CheckboxLabelPrimitive` - 文本标签原语
+
+原语组件提供了基础的样式和交互，可以在需要更灵活定制时直接使用。
+
+## 样式定制
+
+### 通过 classNames 定制
+
+```tsx
+<Checkbox
+  classNames={{
+    root: "w-5 h-5 rounded-md",
+    indicator: "text-blue-500",
+    label: "text-lg font-bold",
+    wrapper: "gap-3 p-2 hover:bg-gray-50",
+  }}
+>
+  自定义样式
+</Checkbox>
+```
+
+### 通过 styles 定制
+
+```tsx
+<Checkbox
+  styles={{
+    root: { width: 20, height: 20, borderRadius: 6 },
+    label: { fontSize: 16, fontWeight: 600 },
+  }}
+>
+  自定义样式
+</Checkbox>
+```
+
+### 动态样式
+
+```tsx
+<Checkbox
+  classNames={(info) => ({
+    root: info.props.checked ? "bg-blue-500" : "bg-gray-100",
+    label: info.props.disabled ? "text-gray-400" : "text-gray-900",
+  })}
+>
+  动态样式
+</Checkbox>
+```
+
+## 扩展示例
+
+### 全选功能
+
+```tsx
+function SelectAll() {
+  const [checkedList, setCheckedList] = useState<string[]>([]);
+  const allOptions = ["apple", "orange", "banana"];
+  const indeterminate = checkedList.length > 0 && checkedList.length < allOptions.length;
+  const checkAll = checkedList.length === allOptions.length;
+
+  return (
+    <div className="flex flex-col gap-2">
+      <Checkbox
+        indeterminate={indeterminate}
+        checked={checkAll}
+        onChange={(e) => {
+          setCheckedList(e.target.checked ? allOptions : []);
+        }}
+      >
+        全选
+      </Checkbox>
+      <CheckboxGroup
+        value={checkedList}
+        onChange={setCheckedList}
+        options={allOptions}
+      />
+    </div>
+  );
+}
+```
+
+### 带计数的复选框组
+
+```tsx
+function CheckboxWithCount() {
+  const [selected, setSelected] = useState<string[]>([]);
+
+  return (
+    <div>
+      <div className="mb-2 text-sm text-gray-500">
+        已选择 {selected.length} 项
+      </div>
+      <CheckboxGroup
+        value={selected}
+        onChange={setSelected}
+        options={["选项1", "选项2", "选项3"]}
+      />
+    </div>
+  );
+}
+```

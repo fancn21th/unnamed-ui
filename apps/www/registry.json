@@ -2205,18 +2205,50 @@
       ]
     },
     {
-      "name": "select-01",
+      "name": "checkbox-01",
       "type": "registry:block",
-      "title": "Select",
+      "title": "Checkbox",
+      "description": "多选框",
+      "registryDependencies": [
+        "style"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/checkbox/checkbox-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/checkbox-01.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radio-01",
+      "type": "registry:block",
+      "title": "Radio",
+      "description": "单选框",
+      "registryDependencies": [
+        "style"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/radio/radio-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/radio-01.tsx"
+        }
+      ]
+    },
+    {
+      "name": "block-select-01",
+      "type": "registry:block",
+      "title": "BlockSelect",
       "description": "选择器",
       "registryDependencies": [
         "style"
       ],
       "files": [
         {
-          "path": "registry/wuhan/blocks/select/select-01.tsx",
+          "path": "registry/wuhan/blocks/block-select/block-select-01.tsx",
           "type": "registry:component",
-          "target": "components/wuhan/blocks/select-01.tsx"
+          "target": "components/wuhan/blocks/block-select-01.tsx"
         }
       ]
     },
@@ -2794,9 +2826,9 @@
       ],
       "files": [
         {
-          "path": "registry/wuhan/composed/button/button.tsx",
+          "path": "registry/wuhan/composed/block-button/block-button.tsx",
           "type": "registry:component",
-          "target": "components/wuhan/composed/button.tsx"
+          "target": "components/wuhan/composed/block-button.tsx"
         }
       ]
     },
@@ -2817,18 +2849,50 @@
       ]
     },
     {
-      "name": "block-select",
+      "name": "checkbox",
       "type": "registry:block",
-      "title": "Select",
-      "description": "选择器",
+      "title": "Checkbox",
+      "description": "多选框",
       "registryDependencies": [
-        "select-01"
+        "checkbox-01"
       ],
       "files": [
         {
-          "path": "registry/wuhan/composed/select/select.tsx",
+          "path": "registry/wuhan/composed/checkbox/checkbox.tsx",
           "type": "registry:component",
-          "target": "components/wuhan/composed/select.tsx"
+          "target": "components/wuhan/composed/checkbox.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radio",
+      "type": "registry:block",
+      "title": "Radio",
+      "description": "单选框",
+      "registryDependencies": [
+        "radio-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/composed/radio/radio.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/composed/radio.tsx"
+        }
+      ]
+    },
+    {
+      "name": "block-select",
+      "type": "registry:block",
+      "title": "BlockSelect",
+      "description": "选择器",
+      "registryDependencies": [
+        "block-select-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/composed/block-select/block-select.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/composed/block-select.tsx"
         }
       ]
     },
@@ -5611,14 +5675,274 @@
       ]
     },
     {
-      "name": "select-default",
+      "name": "checkbox-demo",
       "type": "registry:example",
       "registryDependencies": [
-        "select"
+        "checkbox"
       ],
       "files": [
         {
-          "path": "registry/wuhan/examples/select/select-default.tsx",
+          "path": "registry/wuhan/examples/checkbox/checkbox-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-controlled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/checkbox/checkbox-controlled.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-indeterminate",
+      "type": "registry:example",
+      "registryDependencies": [
+        "checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/checkbox/checkbox-indeterminate.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-group-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/checkbox/checkbox-group-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-group-controlled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/checkbox/checkbox-group-controlled.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-group-disabled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/checkbox/checkbox-group-disabled.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-custom-style",
+      "type": "registry:example",
+      "registryDependencies": [
+        "checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/checkbox/checkbox-custom-style.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "radio-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "radio"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/radio/radio-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "radio-controlled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "radio"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/radio/radio-controlled.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "radio-group-options",
+      "type": "registry:example",
+      "registryDependencies": [
+        "radio"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/radio/radio-group-options.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "radio-vertical",
+      "type": "registry:example",
+      "registryDependencies": [
+        "radio"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/radio/radio-vertical.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "radio-disabled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "radio"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/radio/radio-disabled.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "radio-group-controlled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "radio"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/radio/radio-group-controlled.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "radio-custom-style",
+      "type": "registry:example",
+      "registryDependencies": [
+        "radio"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/radio/radio-custom-style.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "block-select-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "block-select"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/block-select/block-select-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "block-select-controlled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "block-select"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/block-select/block-select-controlled.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "block-select-multiple",
+      "type": "registry:example",
+      "registryDependencies": [
+        "block-select"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/block-select/block-select-multiple.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "block-select-icon",
+      "type": "registry:example",
+      "registryDependencies": [
+        "block-select"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/block-select/block-select-icon.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "block-select-full-rounded",
+      "type": "registry:example",
+      "registryDependencies": [
+        "block-select"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/block-select/block-select-full-rounded.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "block-select-disabled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "block-select"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/block-select/block-select-disabled.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "block-select-advanced",
+      "type": "registry:example",
+      "registryDependencies": [
+        "block-select"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/block-select/block-select-advanced.tsx",
           "type": "registry:example"
         }
       ]

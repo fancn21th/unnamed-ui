@@ -1,0 +1,371 @@
+---
+title: Radio
+description: 单选框组件，用于在多个选项中选择单个值
+author: AF
+---
+
+<ComponentPreview name="radio-demo" description="单选框基础示例" className="mb-4" />
+
+Radio 单选框组件用于在多个选项中选择单个值，支持受控和非受控模式，提供丰富的自定义选项和灵活的布局方式。
+
+## 概述
+
+- **单选限制**：确保同一组中只能选择一个选项
+- **受控/非受控**：支持两种使用模式，灵活适配不同场景
+- **多种配置**：支持通过 options 数组或 children 两种方式配置
+- **自定义样式**：支持 classNames 和 styles 自定义各部分样式
+- **方向布局**：支持水平和垂直两种排列方式
+- **禁用状态**：支持整组禁用或单个选项禁用
+- **类型安全**：完整的 TypeScript 类型定义
+
+## 快速开始
+
+```tsx
+import { Radio, RadioGroup } from "@/registry/wuhan/composed/radio/radio";
+
+export function Example() {
+  return (
+    <RadioGroup defaultValue="option1">
+      <Radio value="option1" id="option1">
+        选项 1
+      </Radio>
+      <Radio value="option2" id="option2">
+        选项 2
+      </Radio>
+      <Radio value="option3" id="option3">
+        选项 3
+      </Radio>
+    </RadioGroup>
+  );
+}
+```
+
+## 特性
+
+- **灵活的值类型**：value 支持 string、number、boolean 等类型
+- **Context 集成**：RadioGroup 通过 Context 管理子 Radio 的状态
+- **函数式样式**：classNames 和 styles 支持对象或函数形式
+- **完整的事件支持**：onChange 回调提供完整的状态变更信息
+- **无障碍支持**：完整的 ARIA 属性和键盘导航支持
+
+## 安装
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/radio.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>复制以下代码到你的项目</Step>
+
+<ComponentSource name="radio-01" />
+
+<ComponentSource name="radio" />
+
+<Step>更新导入路径以匹配你的项目设置</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## 代码演示
+
+### 基础用法
+
+基础的单选框组使用。
+
+<ComponentPreview
+  name="radio-demo"
+  description="基础单选框组"
+  className="mb-4"
+/>
+
+### 受控模式
+
+通过 value 和 onChange 控制选中状态。
+
+<ComponentPreview
+  name="radio-controlled"
+  description="受控模式"
+  className="mb-4"
+/>
+
+### Options 配置
+
+通过 options 数组配置选项列表。
+
+<ComponentPreview
+  name="radio-group-options"
+  description="使用 options 配置"
+  className="mb-4"
+/>
+
+### 垂直布局
+
+设置 orientation 为 vertical 实现垂直排列。
+
+<ComponentPreview
+  name="radio-vertical"
+  description="垂直布局"
+  className="mb-4"
+/>
+
+### 禁用状态
+
+支持禁用整个组或单个选项。
+
+<ComponentPreview
+  name="radio-disabled"
+  description="禁用状态"
+  className="mb-4"
+/>
+
+### 受控组
+
+RadioGroup 的受控模式。
+
+<ComponentPreview
+  name="radio-group-controlled"
+  description="受控组"
+  className="mb-4"
+/>
+
+### 自定义样式
+
+通过 classNames 和 styles 自定义样式。
+
+<ComponentPreview
+  name="radio-custom-style"
+  description="自定义样式"
+  className="mb-4"
+/>
+
+## API
+
+### Radio
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| checked | 指定当前是否选中 | `boolean` | `false` |
+| defaultChecked | 初始是否选中 | `boolean` | `false` |
+| disabled | 禁用 Radio | `boolean` | `false` |
+| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | `RadioClassNames \| (info: { props }) => RadioClassNames` | - |
+| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | `RadioStyles \| (info: { props }) => RadioStyles` | - |
+| value | 根据 value 进行比较，判断是否选中 | `any` | - |
+| id | Radio 的 id 属性 | `string` | - |
+| name | Radio 的 name 属性 | `string` | - |
+| children | Radio 标签内容 | `React.ReactNode` | - |
+
+### RadioGroup
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| block | 将 RadioGroup 宽度调整为其父宽度的选项 | `boolean` | `false` |
+| buttonStyle | RadioButton 的风格样式，目前有描边和填色两种风格 | `"outline" \| "solid"` | `"outline"` |
+| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | `RadioClassNames \| (info: { props }) => RadioClassNames` | - |
+| defaultValue | 默认选中的值 | `any` | - |
+| disabled | 禁选所有子单选器 | `boolean` | `false` |
+| name | RadioGroup 下所有 input[type="radio"] 的 name 属性 | `string` | - |
+| options | 以配置形式设置子元素 | `(string \| number \| RadioOptionType)[]` | `[]` |
+| optionType | 用于设置 Radio options 类型 | `"default" \| "button"` | `"default"` |
+| orientation | 排列方向 | `"horizontal" \| "vertical"` | `"horizontal"` |
+| size | 大小，只对按钮样式生效 | `"large" \| "middle" \| "small"` | `"middle"` |
+| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | `RadioStyles \| (info: { props }) => RadioStyles` | - |
+| value | 用于设置当前选中的值 | `any` | - |
+| vertical | 值为 true，Radio Group 为垂直方向 | `boolean` | `false` |
+| onChange | 选项变化时的回调函数 | `(value: any) => void` | - |
+| children | 子元素 | `React.ReactNode` | - |
+| className | 组容器的类名 | `string` | - |
+| style | 组容器的内联样式 | `React.CSSProperties` | - |
+| title | 组的标题 | `string` | - |
+
+### RadioClassNames
+
+| 属性 | 说明 | 类型 |
+| --- | --- | --- |
+| root | 单选框根元素的类名 | `string` |
+| indicator | 选中指示器的类名 | `string` |
+| label | 标签的类名 | `string` |
+| wrapper | 外层包装器的类名 | `string` |
+
+### RadioStyles
+
+| 属性 | 说明 | 类型 |
+| --- | --- | --- |
+| root | 单选框根元素的样式 | `React.CSSProperties` |
+| indicator | 选中指示器的样式 | `React.CSSProperties` |
+| label | 标签的样式 | `React.CSSProperties` |
+| wrapper | 外层包装器的样式 | `React.CSSProperties` |
+
+### RadioOptionType
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| label | 用于作为 Radio 选项展示的文本 | `React.ReactNode` | - |
+| value | 关联 Radio 选项的值 | `string \| number \| boolean` | - |
+| style | 应用到 Radio 选项的 style | `React.CSSProperties` | - |
+| className | Radio 选项的类名 | `string` | - |
+| disabled | 指定 Radio 选项是否要禁用 | `boolean` | `false` |
+| title | 添加 Title 属性值 | `string` | - |
+| id | 添加 Radio Id 属性值 | `string` | - |
+| required | 指定 Radio 选项是否必填 | `boolean` | `false` |
+
+## 使用场景
+
+### 表单选择
+
+在表单中收集用户的单选输入。
+
+```tsx
+<RadioGroup name="gender" defaultValue="male">
+  <Radio value="male" id="male">男</Radio>
+  <Radio value="female" id="female">女</Radio>
+  <Radio value="other" id="other">其他</Radio>
+</RadioGroup>
+```
+
+### 配置选项
+
+用于设置应用的配置选项。
+
+```tsx
+<RadioGroup
+  title="通知方式"
+  defaultValue="email"
+  orientation="vertical"
+>
+  <Radio value="email" id="email">邮件通知</Radio>
+  <Radio value="sms" id="sms">短信通知</Radio>
+  <Radio value="both" id="both">邮件和短信</Radio>
+</RadioGroup>
+```
+
+### 问卷调查
+
+在问卷中收集单选答案。
+
+```tsx
+<RadioGroup
+  title="您对我们的服务满意吗？"
+  defaultValue="satisfied"
+  orientation="vertical"
+  options={[
+    { label: "非常满意", value: "very-satisfied" },
+    { label: "满意", value: "satisfied" },
+    { label: "一般", value: "neutral" },
+    { label: "不满意", value: "unsatisfied" },
+  ]}
+/>
+```
+
+## 最佳实践
+
+### 选项数量
+
+- **2-5个选项**：最适合使用 Radio
+- **超过5个选项**：考虑使用 Select 下拉选择
+
+### 标签文本
+
+- 使用清晰、简洁的标签文本
+- 避免使用过长的描述性文本
+- 保持选项之间的一致性
+
+### 默认选中
+
+- 为常用场景提供合理的默认值
+- 对于必填项，建议设置默认选中值
+- 避免在没有明确偏好时强制默认选中
+
+### 布局方向
+
+- **水平布局**：适合选项较少且文本简短的情况
+- **垂直布局**：适合选项较多或文本较长的情况
+
+### 无障碍
+
+- 始终提供有意义的 label 文本
+- 使用 fieldset 和 legend 对相关选项进行分组
+- 确保键盘可以正常导航和选择
+
+## 扩展示例
+
+### 带描述的选项
+
+```tsx
+<RadioGroup defaultValue="plan1" orientation="vertical">
+  <Radio value="plan1" id="plan1">
+    <div>
+      <div className="font-medium">基础版</div>
+      <div className="text-sm text-gray-500">适合个人用户</div>
+    </div>
+  </Radio>
+  <Radio value="plan2" id="plan2">
+    <div>
+      <div className="font-medium">专业版</div>
+      <div className="text-sm text-gray-500">适合小团队</div>
+    </div>
+  </Radio>
+</RadioGroup>
+```
+
+### 卡片样式
+
+```tsx
+<RadioGroup defaultValue="option1">
+  {["选项 1", "选项 2", "选项 3"].map((label, index) => (
+    <Radio
+      key={index}
+      value={`option${index + 1}`}
+      id={`card-${index + 1}`}
+      classNames={{
+        wrapper: "border rounded-lg p-4 hover:bg-gray-50"
+      }}
+    >
+      {label}
+    </Radio>
+  ))}
+</RadioGroup>
+```
+
+### 带图标的选项
+
+```tsx
+import { Mail, MessageSquare, Phone } from "lucide-react";
+
+<RadioGroup defaultValue="email">
+  <Radio value="email" id="email">
+    <div className="flex items-center gap-2">
+      <Mail className="h-4 w-4" />
+      <span>邮件</span>
+    </div>
+  </Radio>
+  <Radio value="message" id="message">
+    <div className="flex items-center gap-2">
+      <MessageSquare className="h-4 w-4" />
+      <span>消息</span>
+    </div>
+  </Radio>
+  <Radio value="phone" id="phone">
+    <div className="flex items-center gap-2">
+      <Phone className="h-4 w-4" />
+      <span>电话</span>
+    </div>
+  </Radio>
+</RadioGroup>
+```

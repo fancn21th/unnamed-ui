@@ -2077,12 +2077,232 @@ export const examples: Registry["items"] = [
   // Merge recruitment examples
   ...recruitmentExamples,
   {
-    name: "select-default",
+    name: "checkbox-demo",
     type: "registry:example",
-    registryDependencies: ["select"],
+    registryDependencies: ["checkbox"],
     files: [
       {
-        path: "examples/select/select-default.tsx",
+        path: "examples/checkbox/checkbox-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "checkbox-controlled",
+    type: "registry:example",
+    registryDependencies: ["checkbox"],
+    files: [
+      {
+        path: "examples/checkbox/checkbox-controlled.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "checkbox-indeterminate",
+    type: "registry:example",
+    registryDependencies: ["checkbox"],
+    files: [
+      {
+        path: "examples/checkbox/checkbox-indeterminate.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "checkbox-group-demo",
+    type: "registry:example",
+    registryDependencies: ["checkbox"],
+    files: [
+      {
+        path: "examples/checkbox/checkbox-group-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "checkbox-group-controlled",
+    type: "registry:example",
+    registryDependencies: ["checkbox"],
+    files: [
+      {
+        path: "examples/checkbox/checkbox-group-controlled.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "checkbox-group-disabled",
+    type: "registry:example",
+    registryDependencies: ["checkbox"],
+    files: [
+      {
+        path: "examples/checkbox/checkbox-group-disabled.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "checkbox-custom-style",
+    type: "registry:example",
+    registryDependencies: ["checkbox"],
+    files: [
+      {
+        path: "examples/checkbox/checkbox-custom-style.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "radio-demo",
+    type: "registry:example",
+    registryDependencies: ["radio"],
+    files: [
+      {
+        path: "examples/radio/radio-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "radio-controlled",
+    type: "registry:example",
+    registryDependencies: ["radio"],
+    files: [
+      {
+        path: "examples/radio/radio-controlled.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "radio-group-options",
+    type: "registry:example",
+    registryDependencies: ["radio"],
+    files: [
+      {
+        path: "examples/radio/radio-group-options.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "radio-vertical",
+    type: "registry:example",
+    registryDependencies: ["radio"],
+    files: [
+      {
+        path: "examples/radio/radio-vertical.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "radio-disabled",
+    type: "registry:example",
+    registryDependencies: ["radio"],
+    files: [
+      {
+        path: "examples/radio/radio-disabled.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "radio-group-controlled",
+    type: "registry:example",
+    registryDependencies: ["radio"],
+    files: [
+      {
+        path: "examples/radio/radio-group-controlled.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "radio-custom-style",
+    type: "registry:example",
+    registryDependencies: ["radio"],
+    files: [
+      {
+        path: "examples/radio/radio-custom-style.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "block-select-demo",
+    type: "registry:example",
+    registryDependencies: ["block-select"],
+    files: [
+      {
+        path: "examples/block-select/block-select-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "block-select-controlled",
+    type: "registry:example",
+    registryDependencies: ["block-select"],
+    files: [
+      {
+        path: "examples/block-select/block-select-controlled.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "block-select-multiple",
+    type: "registry:example",
+    registryDependencies: ["block-select"],
+    files: [
+      {
+        path: "examples/block-select/block-select-multiple.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "block-select-icon",
+    type: "registry:example",
+    registryDependencies: ["block-select"],
+    files: [
+      {
+        path: "examples/block-select/block-select-icon.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "block-select-full-rounded",
+    type: "registry:example",
+    registryDependencies: ["block-select"],
+    files: [
+      {
+        path: "examples/block-select/block-select-full-rounded.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "block-select-disabled",
+    type: "registry:example",
+    registryDependencies: ["block-select"],
+    files: [
+      {
+        path: "examples/block-select/block-select-disabled.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "block-select-advanced",
+    type: "registry:example",
+    registryDependencies: ["block-select"],
+    files: [
+      {
+        path: "examples/block-select/block-select-advanced.tsx",
         type: "registry:example",
       },
     ],

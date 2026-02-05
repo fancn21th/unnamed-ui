@@ -1,0 +1,425 @@
+---
+title: Block Select
+description: 下拉选择组件，支持单选、多选、icon 定制等功能
+author: AF
+---
+
+<ComponentPreview name="block-select-demo" description="下拉选择基础示例" className="mb-4" />
+
+BlockSelect 下拉选择组件提供丰富的配置选项，支持单选和多选模式，可自定义 icon 位置、圆角样式等，适用于各种表单场景。
+
+## 概述
+
+- **单选/多选**：支持单选和多选两种模式
+- **Icon 定制**：支持自定义 icon 及位置（前缀/后缀）
+- **多选展示**：多选模式下以 tag 形式展示选中项
+- **圆角控制**：支持圆角 100% 显示
+- **状态丰富**：支持默认、hover、focus、disabled 等状态
+- **完全受控**：支持受控和非受控两种模式
+- **类型安全**：完整的 TypeScript 类型定义
+
+## 快速开始
+
+```tsx
+import { BlockSelect } from "@/registry/wuhan/composed/block-select/block-select";
+
+export function Example() {
+  return (
+    <BlockSelect
+      options={[
+        { label: "选项 1", value: "option1" },
+        { label: "选项 2", value: "option2" },
+        { label: "选项 3", value: "option3" },
+      ]}
+      placeholder="请选择"
+    />
+  );
+}
+```
+
+## 特性
+
+- **基于 Radix UI**：构建在 [@radix-ui/react-select](https://www.radix-ui.com/themes/docs/components/select) 之上
+- **灵活的配置**：通过 options 数组或 children 两种方式配置选项
+- **多选支持**：集成 Checkbox，支持多项选择
+- **Tag 展示**：多选模式下以可关闭的 tag 形式展示
+- **无障碍支持**：完整的 ARIA 属性和键盘导航
+- **透传属性**：支持所有 Radix UI Select 的原生属性
+
+## 安装
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/block-select.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>复制以下代码到你的项目</Step>
+
+<ComponentSource name="block-select-01" />
+
+<ComponentSource name="block-select" />
+
+<Step>更新导入路径以匹配你的项目设置</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## 代码演示
+
+### 基础用法
+
+基础的下拉选择使用。
+
+<ComponentPreview
+  name="block-select-demo"
+  description="基础下拉选择"
+  className="mb-4"
+/>
+
+### 受控模式
+
+通过 value 和 onValueChange 控制选中状态。
+
+<ComponentPreview
+  name="block-select-controlled"
+  description="受控模式"
+  className="mb-4"
+/>
+
+### 多选模式
+
+支持多项选择，选中项以 tag 形式展示。
+
+<ComponentPreview
+  name="block-select-multiple"
+  description="多选模式"
+  className="mb-4"
+/>
+
+### Icon 位置
+
+Icon 可以放在前缀或后缀位置。
+
+<ComponentPreview
+  name="block-select-icon"
+  description="Icon 位置"
+  className="mb-4"
+/>
+
+### 圆角样式
+
+支持圆角 100% 显示。
+
+<ComponentPreview
+  name="block-select-full-rounded"
+  description="圆角 100%"
+  className="mb-4"
+/>
+
+### 禁用状态
+
+支持禁用整个组件或单个选项。
+
+<ComponentPreview
+  name="block-select-disabled"
+  description="禁用状态"
+  className="mb-4"
+/>
+
+### 高级用法
+
+使用子组件进行更灵活的配置。
+
+<ComponentPreview
+  name="block-select-advanced"
+  description="高级用法"
+  className="mb-4"
+/>
+
+## API
+
+### BlockSelect
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| value | 受控模式下的选中值 | `string \| string[]` | - |
+| defaultValue | 非受控模式下的默认值 | `string \| string[]` | - |
+| onValueChange | 值变化时的回调 | `(value: string \| string[]) => void` | - |
+| options | 选项配置数组 | `SelectOption[]` | `[]` |
+| placeholder | 占位文本 | `string` | `"请选择..."` |
+| triggerClassName | Trigger 的自定义类名 | `string` | - |
+| contentClassName | Content 的自定义类名 | `string` | - |
+| fullRounded | 是否圆角 100% | `boolean` | `false` |
+| icon | 自定义 icon | `React.ReactNode` | `<ChevronDown />` |
+| iconPosition | Icon 位置 | `"prefix" \| "suffix"` | `"suffix"` |
+| multiple | 是否多选 | `boolean` | `false` |
+| disabled | 是否禁用 | `boolean` | `false` |
+| name | 表单 name 属性 | `string` | - |
+| required | 是否必填 | `boolean` | - |
+| dir | 文本方向 | `"ltr" \| "rtl"` | - |
+| open | 受控的打开状态 | `boolean` | - |
+| onOpenChange | 打开状态变化回调 | `(open: boolean) => void` | - |
+| position | 下拉内容定位方式 | `"item-aligned" \| "popper"` | `"popper"` |
+| side | 下拉内容显示位置 | `"top" \| "right" \| "bottom" \| "left"` | - |
+| align | 下拉内容对齐方式 | `"start" \| "center" \| "end"` | - |
+| children | 子元素（用于高级用法） | `React.ReactNode` | - |
+
+### SelectOption
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| label | 选项显示文本 | `string` | - |
+| value | 选项值 | `string` | - |
+| disabled | 是否禁用该选项 | `boolean` | `false` |
+
+### 子组件
+
+使用子组件可以实现更灵活的配置：
+
+- `SelectGroup` - 选项组
+- `SelectLabel` - 组标签
+- `SelectItem` - 选项
+- `SelectSeparator` - 分隔线
+- `SelectTrigger` - 触发器（原语）
+- `SelectContent` - 内容容器（原语）
+- `SelectValue` - 值显示（原语）
+
+## Radix UI 属性
+
+BlockSelect 组件支持透传以下 Radix UI Select 的属性：
+
+- **value** / **onValueChange** - 受控值
+- **defaultValue** / **defaultOpen** - 默认值
+- **open** / **onOpenChange** - 打开状态控制
+- **dir** - 文本方向（RTL 支持）
+- **name** / **disabled** / **required** - 表单属性
+- **position** / **side** / **align** - 下拉位置控制
+
+更多属性请参考 [Radix UI Select 文档](https://www.radix-ui.com/themes/docs/components/select)。
+
+## 使用场景
+
+### 表单选择
+
+在表单中收集用户的选择输入。
+
+```tsx
+<BlockSelect
+  name="category"
+  required
+  options={[
+    { label: "技术", value: "tech" },
+    { label: "设计", value: "design" },
+    { label: "产品", value: "product" },
+  ]}
+  placeholder="选择分类"
+/>
+```
+
+### 多选标签
+
+选择多个标签或分类。
+
+```tsx
+<BlockSelect
+  multiple
+  options={[
+    { label: "React", value: "react" },
+    { label: "Vue", value: "vue" },
+    { label: "Angular", value: "angular" },
+  ]}
+  placeholder="选择技术栈"
+/>
+```
+
+### 搜索框样式
+
+使用圆角和前缀 icon 创建搜索框样式。
+
+```tsx
+import { Search } from "lucide-react";
+
+<BlockSelect
+  fullRounded
+  iconPosition="prefix"
+  icon={<Search className="h-4 w-4" />}
+  options={searchOptions}
+  placeholder="搜索..."
+/>
+```
+
+## 最佳实践
+
+### 选项数量
+
+- **少于 5 个选项**：可以考虑使用 Radio 单选框
+- **5-15 个选项**：使用 Select 下拉选择
+- **超过 15 个选项**：考虑添加搜索功能或分组
+
+### 标签文本
+
+- 使用清晰、简洁的标签文本
+- 避免使用过长的选项文本
+- 保持选项之间的一致性
+
+### 多选模式
+
+- 限制可选数量，避免选择过多
+- 提供"全选"/"清空"快捷操作
+- 考虑使用 tag 的最大显示数量
+
+### 默认值
+
+- 为常用场景提供合理的默认值
+- 对于必填项，考虑设置默认选中项
+- 避免在没有明确偏好时强制默认选中
+
+### 无障碍
+
+- 始终提供有意义的 placeholder 文本
+- 使用 SelectLabel 对选项进行分组
+- 确保键盘可以正常导航和选择
+
+## 扩展示例
+
+### 带搜索的选择器
+
+```tsx
+"use client";
+
+import { useState } from "react";
+import { BlockSelect } from "@/registry/wuhan/composed/block-select/block-select";
+import { Search } from "lucide-react";
+
+export function SelectWithSearch() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const allOptions = [
+    { label: "苹果", value: "apple" },
+    { label: "香蕉", value: "banana" },
+    { label: "橙子", value: "orange" },
+    // ... more options
+  ];
+
+  const filteredOptions = allOptions.filter((option) =>
+    option.label.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder="搜索..."
+        className="mb-2 w-full px-3 py-2 border rounded"
+      />
+      <BlockSelect
+        options={filteredOptions}
+        placeholder="选择水果"
+      />
+    </div>
+  );
+}
+```
+
+### 动态加载选项
+
+```tsx
+"use client";
+
+import { useState, useEffect } from "react";
+import { BlockSelect } from "@/registry/wuhan/composed/block-select/block-select";
+
+export function DynamicSelect() {
+  const [options, setOptions] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // 模拟 API 调用
+    fetch("/api/options")
+      .then((res) => res.json())
+      .then((data) => {
+        setOptions(data);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <div>加载中...</div>;
+  }
+
+  return (
+    <BlockSelect
+      options={options}
+      placeholder="选择选项"
+    />
+  );
+}
+```
+
+### 级联选择
+
+```tsx
+"use client";
+
+import { useState } from "react";
+import { BlockSelect } from "@/registry/wuhan/composed/block-select/block-select";
+
+export function CascadeSelect() {
+  const [province, setProvince] = useState("");
+  const [city, setCity] = useState("");
+
+  const cityOptions = {
+    guangdong: [
+      { label: "广州", value: "guangzhou" },
+      { label: "深圳", value: "shenzhen" },
+    ],
+    zhejiang: [
+      { label: "杭州", value: "hangzhou" },
+      { label: "宁波", value: "ningbo" },
+    ],
+  };
+
+  return (
+    <div className="flex gap-4">
+      <BlockSelect
+        value={province}
+        onValueChange={(val) => {
+          setProvince(val as string);
+          setCity(""); // 重置城市
+        }}
+        options={[
+          { label: "广东", value: "guangdong" },
+          { label: "浙江", value: "zhejiang" },
+        ]}
+        placeholder="选择省份"
+      />
+      
+      <BlockSelect
+        value={city}
+        onValueChange={(val) => setCity(val as string)}
+        options={province ? cityOptions[province] : []}
+        placeholder="选择城市"
+        disabled={!province}
+      />
+    </div>
+  );
+}
+```

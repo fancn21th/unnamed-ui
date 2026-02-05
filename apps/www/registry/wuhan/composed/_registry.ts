@@ -530,16 +530,44 @@ export const composed: Registry["items"] = [
     ],
   },
   {
-    name: "block-select",
+    name: "checkbox",
     type: "registry:block",
-    title: "Select",
-    description: "选择器",
-    registryDependencies: ["select-01"],
+    title: "Checkbox",
+    description: "多选框",
+    registryDependencies: ["checkbox-01"],
     files: [
       {
-        path: "composed/select/select.tsx",
+        path: "composed/checkbox/checkbox.tsx",
         type: "registry:component",
-        target: "components/wuhan/composed/select.tsx",
+        target: "components/wuhan/composed/checkbox.tsx",
+      },
+    ],
+  },
+  {
+    name: "radio",
+    type: "registry:block",
+    title: "Radio",
+    description: "单选框",
+    registryDependencies: ["radio-01"],
+    files: [
+      {
+        path: "composed/radio/radio.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/radio.tsx",
+      },
+    ],
+  },
+  {
+    name: "block-select",
+    type: "registry:block",
+    title: "BlockSelect",
+    description: "选择器",
+    registryDependencies: ["block-select-01"],
+    files: [
+      {
+        path: "composed/block-select/block-select.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/block-select.tsx",
       },
     ],
   },

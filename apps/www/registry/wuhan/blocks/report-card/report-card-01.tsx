@@ -14,11 +14,11 @@ const ReportCardPrimitive = React.forwardRef<
       className={cn(
         "w-full",
         "flex flex-col",
-        "gap-[var(--gap-lg)]",
-        "px-[var(--padding-com-lg)] py-[var(--padding-com-lg)]",
-        "rounded-[var(--radius-lg)]",
-        "bg-[var(--bg-container-primary)]",
-        "border border-[var(--border-secondary)]",
+        "gap-[var(--gap-md)]",
+        "px-[var(--padding-com-xl)] py-[var(--margin-com-xl)]",
+        "rounded-[var(--radius-xl)]",
+        "bg-[var(--bg-page-brand)]",
+        "border border-[var(--border-brand-light)]",
         className,
       )}
       {...props}

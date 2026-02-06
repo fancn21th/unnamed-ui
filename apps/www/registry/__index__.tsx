@@ -7609,5 +7609,30 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "split-pane-three": {
+      name: "split-pane-three",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["split-pane-01"],
+      files: [
+        {
+          path: "registry/wuhan/examples/split-pane/split-pane-three.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/split-pane/split-pane-three.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
   },
 };

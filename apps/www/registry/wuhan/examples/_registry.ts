@@ -2318,4 +2318,15 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "split-pane-three",
+    type: "registry:example",
+    registryDependencies: ["split-pane-01"],
+    files: [
+      {
+        path: "examples/split-pane/split-pane-three.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ];

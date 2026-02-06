@@ -61,6 +61,16 @@ npx shadcn@latest add "https://unnamed-ui.com/r/wuhan/split-pane"
   className="mb-4"
 />
 
+### 三栏分割面板
+
+使用 SplitPaneItemPrimitive 创建带标题和折叠图标的三栏分割面板。
+
+<ComponentPreview
+  name="split-pane-three"
+  description="三栏分割面板"
+  className="mb-4"
+/>
+
 ## API
 
 ### SplitPane
@@ -74,10 +84,27 @@ npx shadcn@latest add "https://unnamed-ui.com/r/wuhan/split-pane"
 | `children` | `ReactNode` | `"SplitPane"` | 组件内容 |
 | `className` | `string` | - | 容器自定义类名 |
 
+### SplitPaneItemPrimitive
+
+带标题和折叠图标的面板项原语组件，基于 react-split-pane 的 Pane 组件。
+
+#### Props
+
+继承 react-split-pane 的 `PaneProps`，额外包含：
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `ReactNode` | - | 面板标题 |
+| `collapsibleIcon` | `ReactNode` | `<PanelLeft />` | 折叠图标 |
+| `headerClassName` | `string` | - | header 的自定义类名 |
+| `bodyClassName` | `string` | - | body 的自定义类名 |
+| `children` | `ReactNode` | - | 内容区域的子元素 |
+
 ## 原语组件
 
 SplitPane 组件基于以下原语组件构建：
 
 - `SplitPaneContainerPrimitive`: 容器组件
+- `SplitPaneItemPrimitive`: 面板项组件，包含标题和内容区域
 
 如需更灵活的定制，可以直接使用这些原语组件。

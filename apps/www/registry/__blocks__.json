@@ -128,6 +128,10 @@
     "description": "选择器"
   },
   {
+    "name": "task-card-01",
+    "description": "Task card component with progress tracking and status indicators"
+  },
+  {
     "name": "message",
     "description": "Composed AI and user message components"
   },
@@ -238,6 +242,10 @@
   {
     "name": "block-select",
     "description": "选择器"
+  },
+  {
+    "name": "task-card",
+    "description": "Composed task card with progress tracking and status indicators"
   },
   {
     "name": "action-dropdown",

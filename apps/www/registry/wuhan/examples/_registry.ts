@@ -2087,4 +2087,16 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "task-card-demo",
+    type: "registry:example",
+    registryDependencies: ["task-card"],
+    files: [
+      {
+        path: "examples/task-card/task-card-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/task-card-demo.tsx",
+      },
+    ],
+  },
 ];

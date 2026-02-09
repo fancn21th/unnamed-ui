@@ -451,4 +451,19 @@ export const blocks: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "task-card-01",
+    type: "registry:block",
+    title: "Task Card",
+    description: "Task card component with progress tracking and status indicators",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["style"],
+    files: [
+      {
+        path: "blocks/task-card/task-card-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/task-card-01.tsx",
+      },
+    ],
+  },
 ];

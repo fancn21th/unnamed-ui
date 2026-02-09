@@ -1,0 +1,375 @@
+---
+title: Task Card
+description: Collapsible task card component with progress tracking and status indicators
+author: AF
+---
+
+<ComponentPreview name="task-card-demo" description="Task card with collapsible steps" className="mb-4" />
+
+Task Card 组件用于展示任务流程和进度追踪，支持可折叠交互、三种任务状态、动画效果，适用于招聘流程、项目进度、工作流等场景。
+
+## 概述
+
+- **三种状态**：pending（待处理）、running（进行中）、completed（已完成）
+- **可折叠交互**：点击头部展开/收起任务列表，支持受控和非受控模式
+- **智能进度显示**：自动计算当前步骤序号（找到第一个 running 或 pending 的步骤）
+- **动画效果**：展开收起有平滑过渡，进行中状态显示旋转动画
+- **完全自定义**：支持自定义标题、图标、内容等
+- **类型安全**：完整的 TypeScript 类型定义
+- **轻量级**：基于原语组件构建，无额外依赖
+
+## 快速开始
+
+```tsx
+import { TaskCard } from "@/registry/wuhan/composed/task-card/task-card";
+
+const items = [
+  { id: "1", text: "简历筛选", status: "completed" },
+  { id: "2", text: "初试", status: "completed" },
+  { id: "3", text: "复试", status: "running" },
+  { id: "4", text: "终面", status: "pending" },
+];
+
+<TaskCard
+  title="招聘流程"
+  stepText="复试"
+  items={items}
+/>
+```
+
+## 特性
+
+- **智能状态管理**：根据 items 自动计算当前步骤和进度
+- **灵活控制**：支持受控模式（controlled）和非受控模式（uncontrolled）
+- **自定义图标**：支持自定义步骤图标和头部图标
+- **可访问性**：支持 aria 属性，键盘导航友好
+- **响应式**：自适应不同屏幕尺寸
+
+## 安装
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/task-card.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>安装依赖</Step>
+
+```bash
+npm install lucide-react
+```
+
+<Step>复制以下代码到你的项目</Step>
+
+<ComponentSource name="task-card" />
+
+<Step>更新导入路径以匹配你的项目设置</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## 代码演示
+
+### 基础
+
+<ComponentPreview
+  name="task-card-demo"
+  description="基础任务卡片"
+  className="mb-4"
+/>
+
+### 不同状态
+
+<ComponentPreview
+  name="task-card-demo"
+  description="不同状态的任务卡片"
+  className="mb-4"
+/>
+
+## API
+
+### TaskCard
+
+任务卡片主组件，支持可折叠交互和状态管理。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `string` | `"任务列表"` | 标题（展开时显示） |
+| `stepText` | `string` | - | 当前步骤文本（收起时显示） |
+| `stepIcon` | `React.ReactNode` | - | 当前步骤图标（收起时显示） |
+| `items` | `TaskCardItem[]` | `[]` | 任务列表数据 |
+| `defaultOpen` | `boolean` | `false` | 非受控模式下的默认展开状态 |
+| `open` | `boolean` | - | 受控模式下的展开状态 |
+| `onOpenChange` | `(open: boolean) => void` | - | 展开状态变化回调函数 |
+| `className` | `string` | - | 容器自定义类名 |
+
+#### Example
+
+```tsx
+import { TaskCard, type TaskCardItem } from "@/registry/wuhan/composed/task-card/task-card";
+import { useState } from "react";
+import { CheckCircle2, Circle, Loader2 } from "lucide-react";
+
+function TaskExample() {
+  const [items, setItems] = useState<TaskCardItem[]>([
+    { id: "1", text: "简历筛选", status: "completed" },
+    { id: "2", text: "初试", status: "completed" },
+    { id: "3", text: "复试", status: "running" },
+    { id: "4", text: "终面", status: "pending" },
+  ]);
+
+  // 获取当前步骤
+  const currentItem = items.find(
+    (item) => item.status === "running" || item.status === "pending"
+  );
+
+  return (
+    <TaskCard
+      title="招聘流程"
+      stepText={currentItem?.text || "暂无任务"}
+      stepIcon={
+        currentItem?.status === "running" ? (
+          <Loader2 className="size-4 animate-spin text-[var(--text-brand)]" />
+        ) : (
+          <Circle className="size-4 text-[var(--text-tertiary)]" />
+        )
+      }
+      items={items}
+    />
+  );
+}
+```
+
+### TaskCardItem
+
+任务项类型定义。
+
+```tsx
+interface TaskCardItem {
+  /** 唯一标识符 */
+  id: string;
+  /** 任务文本 */
+  text: string;
+  /** 任务状态 */
+  status: "pending" | "running" | "completed";
+}
+```
+
+### TaskCardStatus
+
+任务状态类型定义。
+
+```tsx
+type TaskCardStatus = 
+  | "pending"    // 待处理
+  | "running"    // 进行中
+  | "completed"; // 已完成
+```
+
+### TaskCardPrimitive
+
+自包含折叠功能的原语组件，提供更灵活的定制能力。
+
+```tsx
+import { TaskCardPrimitive } from "@/registry/wuhan/blocks/task-card/task-card-01";
+
+<TaskCardPrimitive
+  heading="招聘流程"
+  stepText="复试"
+  stepIcon={<Loader2 className="size-4 animate-spin" />}
+  currentStep={3}
+  total={5}
+  defaultOpen={false}
+  steps={[
+    { id: "1", text: "简历筛选", status: "completed" },
+    { id: "2", text: "初试", status: "completed" },
+    { id: "3", text: "复试", status: "running" },
+    { id: "4", text: "终面", status: "pending" },
+  ]}
+/>
+```
+
+#### TaskCardPrimitive Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `heading` | `React.ReactNode` | - | 标题（展开时显示） |
+| `stepText` | `React.ReactNode` | - | 当前步骤文本（收起时显示） |
+| `stepIcon` | `React.ReactNode` | - | 当前步骤图标（收起时显示） |
+| `currentStep` | `number` | `0` | 当前步骤序号（从1开始） |
+| `total` | `number` | `0` | 总步骤数 |
+| `steps` | `Array<{id, text, status, icon}>` | `[]` | 步骤列表 |
+| `defaultOpen` | `boolean` | `false` | 非受控模式下的默认展开状态 |
+| `open` | `boolean` | - | 受控模式下的展开状态 |
+| `onOpenChange` | `(open: boolean) => void` | - | 展开状态变化回调函数 |
+| `className` | `string` | - | 容器自定义类名 |
+
+## 状态默认配置
+
+| Status | Default Icon | Text Color |
+|--------|-------------|------------|
+| `pending` | Circle | text-tertiary |
+| `running` | Loader2 (旋转动画) | text-brand |
+| `completed` | CheckCircle2 | text-success |
+
+## 使用场景
+
+- **招聘流程**：展示候选人筛选进度（简历筛选→初试→复试→终面）
+- **项目进度**：展示项目各阶段完成情况
+- **工作流**：展示审批、任务处理等流程状态
+- **教程步骤**：展示学习路径、操作步骤等
+- **订单状态**：展示订单处理各环节
+
+## 最佳实践
+
+1. **状态清晰**：使用语义化的状态类型，保持状态语义一致
+2. **步骤顺序**：确保 items 中的步骤按实际顺序排列
+3. **进度计算**：组件会自动计算当前步骤（第一个 running 或 pending）
+4. **自定义图标**：根据业务需求自定义图标，增强视觉效果
+5. **受控模式**：需要外部控制展开状态时使用受控模式
+
+## 注意事项
+
+- `currentStep` 组件会自动计算，无需手动传入
+- `stepIcon` 和 `stepText` 配合使用，展示当前进行中步骤
+- 收起状态始终显示进度：`currentStep / total`
+- 展开状态显示完整步骤列表
+
+## 原语组件
+
+TaskCard 基于以下原语组件构建：
+
+- `TaskCardContainerPrimitive` - 容器
+- `TaskCardCollapsedHeaderPrimitive` - 收起状态头部
+- `TaskCardTitlePrimitive` - 标题（展开状态）
+- `TaskCardStepListPrimitive` - 步骤列表容器
+- `TaskCardStepItemPrimitive` - 步骤项
+- `TaskCardCollapseArrowPrimitive` - 折叠箭头
+- `TaskCardPrimitive` - 完整组件（自包含折叠功能）
+
+如需更灵活的定制，可以直接使用这些原语组件。
+
+## 样式定制
+
+组件使用 Tailwind CSS 和 CSS 变量，可以通过以下方式定制：
+
+```tsx
+// 使用原语组件自定义样式
+import {
+  TaskCardPrimitive,
+  TaskCardContainerPrimitive,
+  TaskCardStepListPrimitive,
+} from "@/registry/wuhan/blocks/task-card/task-card-01";
+
+<TaskCardPrimitive
+  heading="招聘流程"
+  currentStep={3}
+  total={5}
+  steps={[...]}
+  className="bg-blue-50 hover:bg-blue-100"
+/>
+```
+
+## 扩展示例
+
+### 带点击交互的卡片
+
+```tsx
+import { TaskCard, type TaskCardItem } from "@/registry/wuhan/composed/task-card/task-card";
+import { useState } from "react";
+
+function InteractiveTaskCard() {
+  const [items, setItems] = useState<TaskCardItem[]>([
+    { id: "1", text: "简历筛选", status: "completed" },
+    { id: "2", text: "初试", status: "completed" },
+    { id: "3", text: "复试", status: "pending" },
+  ]);
+
+  // 点击任务项更新状态
+  const handleItemClick = (id: string) => {
+    setItems((prev) =>
+      prev.map((item) => {
+        if (item.id === id) {
+          const nextStatus: TaskCardItem["status"] =
+            item.status === "completed"
+              ? "pending"
+              : item.status === "pending"
+                ? "running"
+                : "completed";
+          return { ...item, status: nextStatus };
+        }
+        return item;
+      }),
+    );
+  };
+
+  return (
+    <TaskCard
+      title="招聘流程"
+      items={items}
+    />
+  );
+}
+```
+
+### 自定义步骤图标
+
+```tsx
+import { TaskCard } from "@/registry/wuhan/composed/task-card/task-card";
+import { User, FileText, MessageSquare, Briefcase } from "lucide-react";
+
+function CustomIconsCard() {
+  const items = [
+    {
+      id: "1",
+      text: "简历筛选",
+      status: "completed",
+      icon: <FileText className="size-4" />,
+    },
+    {
+      id: "2",
+      text: "初试沟通",
+      status: "completed",
+      icon: <MessageSquare className="size-4" />,
+    },
+    {
+      id: "3",
+      text: "技术面试",
+      status: "running",
+      icon: <User className="size-4" />,
+    },
+    {
+      id: "4",
+      text: "发放 Offer",
+      status: "pending",
+      icon: <Briefcase className="size-4" />,
+    },
+  ];
+
+  return (
+    <TaskCard
+      title="面试流程"
+      stepText="技术面试"
+      items={items}
+    />
+  );
+}
+```

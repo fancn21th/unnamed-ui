@@ -1,0 +1,337 @@
+---
+title: Divider
+description: Divider component for separating content with horizontal or vertical lines
+author: AF
+---
+
+<ComponentPreview name="divider-demo" description="分割线组件" className="mb-4" />
+
+Divider 组件用于分隔内容区域，支持水平和垂直方向、实线和虚线样式、自定义颜色和粗细，以及在分割线中显示文本内容。
+
+## 概述
+
+- **双向支持**：支持水平和垂直两种方向
+- **多种样式**：实线（solid）和虚线（dashed）两种样式
+- **高度自定义**：可自定义颜色、粗细、文本内容和位置
+- **轻量级**：纯原语组件构建，无额外依赖
+- **类型安全**：完整的 TypeScript 类型定义
+
+## 快速开始
+
+```tsx
+import { Divider } from "@/registry/wuhan/composed/divider";
+
+export function Example() {
+  return (
+    <div className="space-y-4">
+      <p>内容上方</p>
+      <Divider />
+      <p>内容下方</p>
+      <Divider>带文本的分割线</Divider>
+    </div>
+  );
+}
+```
+
+## 特性
+
+- **水平/垂直方向**：根据场景选择合适的分割方向
+- **实线/虚线样式**：提供不同的视觉层次
+- **文本支持**：可在分割线中显示文本，支持左中右对齐
+- **颜色定制**：使用 CSS 变量或自定义颜色
+- **粗细调整**：支持自定义分割线粗细
+- **合理间距**：水平分割线上下边距 11px，垂直分割线左右边距 11px
+
+## 安装
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://unnamed-ui.com/r/wuhan/divider"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>复制以下代码到你的项目</Step>
+
+<ComponentSource name="divider" />
+
+<Step>更新导入路径以匹配你的项目设置</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## 代码演示
+
+### 基础用法
+
+默认水平分割线。
+
+<ComponentPreview
+  name="divider-default"
+  description="默认分割线"
+  className="mb-4"
+/>
+
+### 样式变体
+
+实线和虚线样式。
+
+<ComponentPreview
+  name="divider-variants"
+  description="样式变体"
+  className="mb-4"
+/>
+
+### 带文本的分割线
+
+在分割线中显示文本，支持左中右对齐。
+
+<ComponentPreview
+  name="divider-with-text"
+  description="带文本的分割线"
+  className="mb-4"
+/>
+
+### 垂直分割线
+
+垂直方向的分割线，用于左右分隔内容。
+
+<ComponentPreview
+  name="divider-vertical"
+  description="垂直分割线"
+  className="mb-4"
+/>
+
+### 自定义样式
+
+自定义颜色和粗细。
+
+<ComponentPreview
+  name="divider-custom"
+  description="自定义样式"
+  className="mb-4"
+/>
+
+## API
+
+### Divider
+
+分割线组件，支持多种方向、样式和自定义配置。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | 分割线方向 |
+| `variant` | `"solid" \| "dashed"` | `"solid"` | 分割线样式：实线或虚线 |
+| `color` | `string` | `"var(--divider-neutral-basic)"` | 分割线颜色 |
+| `thickness` | `string` | `"1px"` | 分割线粗细 |
+| `children` | `ReactNode` | - | 文本内容 |
+| `textAlign` | `"left" \| "center" \| "right"` | `"center"` | 文本位置（仅在有文本时有效） |
+| `className` | `string` | - | 自定义类名 |
+
+#### Example
+
+```tsx
+import { Divider } from "@/registry/wuhan/composed/divider";
+
+function DividerExamples() {
+  return (
+    <div className="space-y-8">
+      {/* 基础用法 */}
+      <Divider />
+      
+      {/* 虚线 */}
+      <Divider variant="dashed" />
+      
+      {/* 带文本 */}
+      <Divider>分割线文本</Divider>
+      
+      {/* 文本左对齐 */}
+      <Divider textAlign="left">左对齐</Divider>
+      
+      {/* 垂直分割线 */}
+      <div className="flex" style={{ height: "100px" }}>
+        <div>左侧内容</div>
+        <Divider orientation="vertical" />
+        <div>右侧内容</div>
+      </div>
+      
+      {/* 自定义样式 */}
+      <Divider 
+        color="var(--border-brand)" 
+        thickness="2px"
+      >
+        自定义分割线
+      </Divider>
+    </div>
+  );
+}
+```
+
+## 使用场景
+
+### 内容分隔
+使用水平分割线分隔不同的内容区域：
+
+```tsx
+<div className="space-y-4">
+  <section>
+    <h2>第一部分</h2>
+    <p>第一部分的内容...</p>
+  </section>
+  
+  <Divider />
+  
+  <section>
+    <h2>第二部分</h2>
+    <p>第二部分的内容...</p>
+  </section>
+</div>
+```
+
+### 列表分组
+使用带文本的分割线标识列表分组：
+
+```tsx
+<div className="space-y-4">
+  <div>项目 1</div>
+  <div>项目 2</div>
+  
+  <Divider textAlign="left">更多项目</Divider>
+  
+  <div>项目 3</div>
+  <div>项目 4</div>
+</div>
+```
+
+### 垂直布局
+使用垂直分割线分隔左右内容：
+
+```tsx
+<div className="flex items-center" style={{ height: "200px" }}>
+  <div className="flex-1">
+    <h3>左侧面板</h3>
+    <p>左侧内容...</p>
+  </div>
+  
+  <Divider orientation="vertical" />
+  
+  <div className="flex-1">
+    <h3>右侧面板</h3>
+    <p>右侧内容...</p>
+  </div>
+</div>
+```
+
+### 强调重要信息
+使用自定义颜色和粗细强调特定分隔：
+
+```tsx
+<div className="space-y-4">
+  <p>普通内容</p>
+  
+  <Divider 
+    color="var(--border-brand)" 
+    thickness="2px"
+  >
+    重要分隔
+  </Divider>
+  
+  <p>重要内容区域</p>
+</div>
+```
+
+## 设计指南
+
+### 最佳实践
+
+1. **选择合适的方向**：
+   - 水平分割线用于上下内容分隔
+   - 垂直分割线用于左右内容分隔
+
+2. **样式选择**：
+   - 实线用于明确的内容分隔
+   - 虚线用于轻量级的视觉分组
+
+3. **文本使用**：
+   - 文本应简短明确
+   - 使用文本对齐突出重点
+   - 避免过长的文本内容
+
+4. **颜色和粗细**：
+   - 默认样式适用于大多数场景
+   - 使用品牌色强调重要分隔
+   - 粗线用于强调，细线用于轻量级分隔
+
+5. **间距控制**：
+   - 默认间距（上下/左右 11px）适用于大多数场景
+   - 如需调整，使用 className 覆盖
+
+### 可访问性
+
+- 使用语义化的颜色变量
+- 确保分割线颜色与背景有足够对比度
+- 文本内容应具有可读性
+- 垂直分割线确保有足够高度可见
+
+## 常见问题
+
+**Q: 如何调整分割线的间距？**
+
+A: 通过 className 覆盖默认间距：
+
+```tsx
+// 水平分割线自定义上下间距
+<Divider className="my-4" />
+
+// 垂直分割线自定义左右间距
+<Divider orientation="vertical" className="mx-4" />
+```
+
+**Q: 如何在垂直分割线中添加文本？**
+
+A: 目前垂直分割线主要用于视觉分隔，带文本的垂直分割线较少使用。如需实现，可以自定义样式。
+
+**Q: 如何让分割线不占据整个宽度/高度？**
+
+A: 使用容器限制分割线的尺寸：
+
+```tsx
+// 限制水平分割线宽度
+<div className="w-1/2">
+  <Divider />
+</div>
+
+// 限制垂直分割线高度
+<div style={{ height: "50px" }}>
+  <Divider orientation="vertical" />
+</div>
+```
+
+**Q: 如何自定义文本样式？**
+
+A: 文本样式通过 DividerTextPrimitive 控制。如需更多自定义，可以直接使用原语组件。
+
+## 原语组件
+
+Divider 组件基于以下原语组件构建：
+
+- `DividerContainerPrimitive`: 容器组件，处理方向和布局
+- `DividerLinePrimitive`: 线条组件，处理样式、颜色和粗细
+- `DividerTextPrimitive`: 文本组件，处理文本内容显示

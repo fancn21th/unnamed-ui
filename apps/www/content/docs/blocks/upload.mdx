@@ -1,0 +1,83 @@
+---
+title: Upload
+description: 上传
+author: AF
+---
+
+<ComponentPreview name="upload-default" description="上传" className="mb-4" />
+
+上传
+
+## 快速开始
+
+```tsx
+import { Upload } from "@/registry/wuhan/composed/upload";
+
+export function Example() {
+  return <Upload />;
+}
+```
+
+## 安装
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://unnamed-ui.com/r/wuhan/upload"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>复制以下代码到你的项目</Step>
+
+<ComponentSource name="upload" />
+
+<Step>更新导入路径以匹配你的项目设置</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## 代码演示
+
+### 基础用法
+
+<ComponentPreview
+  name="upload-default"
+  description="基础用法"
+  className="mb-4"
+/>
+
+## API
+
+### Upload
+
+上传
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | `"Upload"` | 组件内容 |
+| `className` | `string` | - | 容器自定义类名 |
+
+## 原语组件
+
+Upload 组件基于以下原语组件构建：
+
+- `UploadContainerPrimitive`: 容器组件
+
+如需更灵活的定制，可以直接使用这些原语组件。

@@ -24,6 +24,7 @@ export const SelectTriggerPrimitive = React.forwardRef<
         "flex w-full items-center justify-between",
         "px-[var(--padding-com-md)] py-[5px]",
         "font-size-2",
+        "font-[var(--font-family-cn)]",
         // Hover 状态
         "hover:border-[var(--border-brand)]",
         // 过渡动画

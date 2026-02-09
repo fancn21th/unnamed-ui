@@ -144,6 +144,22 @@
     "description": "Task card component with progress tracking and status indicators"
   },
   {
+    "name": "block-input-01",
+    "description": "输入框"
+  },
+  {
+    "name": "tag-01",
+    "description": "标签"
+  },
+  {
+    "name": "divider-01",
+    "description": "分割线"
+  },
+  {
+    "name": "upload-01",
+    "description": "上传"
+  },
+  {
     "name": "goal-card-01",
     "description": "Goal card component with AI icon, title, description, and circular progress indicator"
   },
@@ -278,6 +294,22 @@
   {
     "name": "task-card",
     "description": "Composed task card with progress tracking and status indicators"
+  },
+  {
+    "name": "block-input",
+    "description": "输入框"
+  },
+  {
+    "name": "tag",
+    "description": "标签"
+  },
+  {
+    "name": "divider",
+    "description": "分割线"
+  },
+  {
+    "name": "upload",
+    "description": "上传"
   },
   {
     "name": "goal-card",

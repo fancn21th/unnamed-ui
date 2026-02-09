@@ -764,7 +764,7 @@
           "font-weight": "600"
         },
         "@keyframes thinking-loading-pulse": {
-          "0%,\r\n    100%": {
+          "0%,\n    100%": {
             "opacity": "0.3",
             "transform": "scale(0.8)"
           },
@@ -1537,7 +1537,7 @@
           "font-weight": "600"
         },
         "@keyframes thinking-loading-pulse": {
-          "0%,\r\n    100%": {
+          "0%,\n    100%": {
             "opacity": "0.3",
             "transform": "scale(0.8)"
           },
@@ -2304,6 +2304,70 @@
       ]
     },
     {
+      "name": "block-input-01",
+      "type": "registry:block",
+      "title": "Input",
+      "description": "输入框",
+      "registryDependencies": [
+        "style"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/block-input/block-input-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/block-input-01.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tag-01",
+      "type": "registry:block",
+      "title": "Tag",
+      "description": "标签",
+      "registryDependencies": [
+        "style"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/tag/tag-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/tag-01.tsx"
+        }
+      ]
+    },
+    {
+      "name": "divider-01",
+      "type": "registry:block",
+      "title": "Divider",
+      "description": "分割线",
+      "registryDependencies": [
+        "style"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/divider/divider-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/divider-01.tsx"
+        }
+      ]
+    },
+    {
+      "name": "upload-01",
+      "type": "registry:block",
+      "title": "Upload",
+      "description": "上传",
+      "registryDependencies": [
+        "style"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/upload/upload-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/upload-01.tsx"
+        }
+      ]
+    },
+    {
       "name": "goal-card-01",
       "type": "registry:block",
       "title": "Goal Card",
@@ -3017,6 +3081,70 @@
           "path": "registry/wuhan/composed/task-card/task-card.tsx",
           "type": "registry:component",
           "target": "components/wuhan/composed/task-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "block-input",
+      "type": "registry:block",
+      "title": "Input",
+      "description": "输入框",
+      "registryDependencies": [
+        "block-input-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/composed/block-input/block-input.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/composed/block-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "type": "registry:block",
+      "title": "Tag",
+      "description": "标签",
+      "registryDependencies": [
+        "tag-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/composed/tag/tag.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/composed/tag.tsx"
+        }
+      ]
+    },
+    {
+      "name": "divider",
+      "type": "registry:block",
+      "title": "Divider",
+      "description": "分割线",
+      "registryDependencies": [
+        "divider-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/composed/divider/divider.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/composed/divider.tsx"
+        }
+      ]
+    },
+    {
+      "name": "upload",
+      "type": "registry:block",
+      "title": "Upload",
+      "description": "上传",
+      "registryDependencies": [
+        "upload-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/composed/upload/upload.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/composed/upload.tsx"
         }
       ]
     },
@@ -6152,6 +6280,250 @@
           "path": "registry/wuhan/examples/task-card/task-card-demo.tsx",
           "type": "registry:example",
           "target": "components/wuhan/examples/task-card-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "block-input-default",
+      "type": "registry:example",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "block-input"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/block-input/block-input-default.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "block-input-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "block-input"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/block-input/block-input-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "block-input-states",
+      "type": "registry:example",
+      "registryDependencies": [
+        "block-input"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/block-input/block-input-states.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "block-input-multiline",
+      "type": "registry:example",
+      "registryDependencies": [
+        "block-input"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/block-input/block-input-multiline.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "block-input-rounded",
+      "type": "registry:example",
+      "registryDependencies": [
+        "block-input"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/block-input/block-input-rounded.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "tag-default",
+      "type": "registry:example",
+      "registryDependencies": [
+        "tag"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/tag/tag-default.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "tag-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "tag"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/tag/tag-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "tag-with-icon",
+      "type": "registry:example",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "tag"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/tag/tag-with-icon.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "tag-closeable",
+      "type": "registry:example",
+      "registryDependencies": [
+        "tag"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/tag/tag-closeable.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "tag-addable",
+      "type": "registry:example",
+      "registryDependencies": [
+        "tag",
+        "block-input"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/tag/tag-addable.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "tag-checkable",
+      "type": "registry:example",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "tag"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/tag/tag-checkable.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "divider-default",
+      "type": "registry:example",
+      "registryDependencies": [
+        "divider"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/divider/divider-default.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "divider-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "divider"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/divider/divider-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "divider-variants",
+      "type": "registry:example",
+      "registryDependencies": [
+        "divider"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/divider/divider-variants.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "divider-with-text",
+      "type": "registry:example",
+      "registryDependencies": [
+        "divider"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/divider/divider-with-text.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "divider-vertical",
+      "type": "registry:example",
+      "registryDependencies": [
+        "divider"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/divider/divider-vertical.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "divider-custom",
+      "type": "registry:example",
+      "registryDependencies": [
+        "divider"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/divider/divider-custom.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "upload-default",
+      "type": "registry:example",
+      "registryDependencies": [
+        "upload"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/upload/upload-default.tsx",
+          "type": "registry:example"
         }
       ]
     },

@@ -1,11 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  CheckCircle2,
-  Circle,
-  Loader2,
-} from "lucide-react";
+import { CheckCircle2, Circle, Loader2 } from "lucide-react";
 import {
   TaskCard,
   type TaskCardItem,
@@ -25,7 +21,9 @@ const getStatusIcon = (status: string) => {
     case "completed":
       return <CheckCircle2 className="size-4 text-[var(--text-success)]" />;
     case "running":
-      return <Loader2 className="size-4 text-[var(--text-brand)] animate-spin" />;
+      return (
+        <Loader2 className="size-4 text-[var(--text-brand)] animate-spin" />
+      );
     case "pending":
     default:
       return <Circle className="size-4 text-[var(--text-tertiary)]" />;
@@ -38,7 +36,9 @@ const getStatusIconForStep = (status: string) => {
     case "completed":
       return <CheckCircle2 className="size-4 text-[var(--text-success)]" />;
     case "running":
-      return <Loader2 className="size-4 text-[var(--text-brand)] animate-spin" />;
+      return (
+        <Loader2 className="size-4 text-[var(--text-brand)] animate-spin" />
+      );
     case "pending":
     default:
       return <Circle className="size-4 text-[var(--text-tertiary)]" />;
@@ -50,11 +50,14 @@ export default function TaskCardDemo() {
   const [isOpen, setIsOpen] = useState(false);
 
   // 获取当前进行中的步骤
-  const currentItem = items.find((item) => item.status === "running")
-    || items.find((item) => item.status === "pending");
+  const currentItem =
+    items.find((item) => item.status === "running") ||
+    items.find((item) => item.status === "pending");
 
   // 当前步骤的图标和文本
-  const currentStepIcon = currentItem ? getStatusIcon(currentItem.status) : null;
+  const currentStepIcon = currentItem
+    ? getStatusIcon(currentItem.status)
+    : null;
   const currentStepText = currentItem?.text || "暂无任务";
 
   return (

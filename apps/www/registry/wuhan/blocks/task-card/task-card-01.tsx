@@ -2,12 +2,7 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import {
-  CheckCircle2,
-  Clock,
-  Loader2,
-  ChevronDown,
-} from "lucide-react";
+import { CheckCircle2, Clock, Loader2, ChevronDown } from "lucide-react";
 import {
   Collapsible,
   CollapsibleContent,
@@ -23,8 +18,8 @@ const BOX_BORDER = "box-border [&>*]:box-border";
  * @public
  */
 type TaskCardSemanticStatus =
-  | "pending"   // 待处理
-  | "running"    // 进行中
+  | "pending" // 待处理
+  | "running" // 进行中
   | "completed"; // 已完成
 
 /**
@@ -186,11 +181,7 @@ export const TaskCardCollapsedHeaderPrimitive = React.forwardRef<
     >
       {/* 左侧：图标 + 步骤文本 */}
       <div className="flex items-center gap-[var(--gap-sm)]">
-        {icon && (
-          <div className="flex items-center justify-center">
-            {icon}
-          </div>
-        )}
+        {icon && <div className="flex items-center justify-center">{icon}</div>}
         {stepText && (
           <span
             className={cn(
@@ -223,7 +214,8 @@ export const TaskCardCollapsedHeaderPrimitive = React.forwardRef<
     </div>
   );
 });
-TaskCardCollapsedHeaderPrimitive.displayName = "TaskCardCollapsedHeaderPrimitive";
+TaskCardCollapsedHeaderPrimitive.displayName =
+  "TaskCardCollapsedHeaderPrimitive";
 
 // ==================== 标题原语 ====================
 
@@ -324,7 +316,12 @@ export const TaskCardStepItemPrimitive = React.forwardRef<
       {...props}
     >
       {/* 图标 */}
-      <div className={cn("flex items-center justify-center", colorMap[resolvedStatus])}>
+      <div
+        className={cn(
+          "flex items-center justify-center",
+          colorMap[resolvedStatus],
+        )}
+      >
         {icon || iconMap[resolvedStatus]}
       </div>
 
@@ -459,10 +456,7 @@ export const TaskCardPrimitive = React.forwardRef<
     };
 
     return (
-      <Collapsible
-        open={isOpen}
-        onOpenChange={handleOpenChange}
-      >
+      <Collapsible open={isOpen} onOpenChange={handleOpenChange}>
         <div
           ref={ref}
           className={cn(
@@ -527,7 +521,7 @@ export const TaskCardPrimitive = React.forwardRef<
 
               {/* 右侧：进度 + 箭头 */}
               <div className="flex items-center gap-[var(--gap-sm)]">
-                {(
+                {
                   <span
                     className={cn(
                       "font-[var(--font-family-cn)]",
@@ -539,7 +533,7 @@ export const TaskCardPrimitive = React.forwardRef<
                   >
                     {currentStep} / {total}
                   </span>
-                )}
+                }
                 <TaskCardCollapseArrowPrimitive open={isOpen} />
               </div>
             </button>

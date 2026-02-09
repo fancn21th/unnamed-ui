@@ -90,7 +90,8 @@ export const TaskCard = React.forwardRef<HTMLDivElement, TaskCardComposedProps>(
     const currentStepIndex = items.findIndex(
       (item) => item.status === "running" || item.status === "pending",
     );
-    const currentStep = currentStepIndex >= 0 ? currentStepIndex + 1 : items.length;
+    const currentStep =
+      currentStepIndex >= 0 ? currentStepIndex + 1 : items.length;
     const totalCount = items.length;
 
     // 构建步骤数据

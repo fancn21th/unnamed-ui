@@ -88,7 +88,13 @@ function extractUtilityClasses(source: string): CssMap {
 }
 
 export function getWuhanStyleCss() {
-  const globalsPath = path.join(process.cwd(), "registry", "wuhan", "style", "globals.css");
+  const globalsPath = path.join(
+    process.cwd(),
+    "registry",
+    "wuhan",
+    "style",
+    "globals.css",
+  );
   const raw = readFileSync(globalsPath, "utf-8");
   const css = extractUtilityClasses(raw);
   const keyframes = extractKeyframesBlocks(raw);

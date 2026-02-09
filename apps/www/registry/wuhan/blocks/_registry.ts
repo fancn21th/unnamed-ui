@@ -455,7 +455,8 @@ export const blocks: Registry["items"] = [
     name: "task-card-01",
     type: "registry:block",
     title: "Task Card",
-    description: "Task card component with progress tracking and status indicators",
+    description:
+      "Task card component with progress tracking and status indicators",
     dependencies: ["lucide-react"],
     registryDependencies: ["style"],
     files: [

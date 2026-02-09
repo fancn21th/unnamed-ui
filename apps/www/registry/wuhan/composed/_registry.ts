@@ -547,7 +547,8 @@ export const composed: Registry["items"] = [
     name: "task-card",
     type: "registry:block",
     title: "Task Card",
-    description: "Composed task card with progress tracking and status indicators",
+    description:
+      "Composed task card with progress tracking and status indicators",
     dependencies: ["lucide-react"],
     registryDependencies: ["task-card-01"],
     files: [

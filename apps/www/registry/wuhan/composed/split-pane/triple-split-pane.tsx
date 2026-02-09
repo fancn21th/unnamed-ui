@@ -3,79 +3,36 @@
 import * as React from "react";
 import { PanelLeft, PanelRight } from "lucide-react";
 import * as ResizablePrimitive from "react-resizable-panels";
-import {
-  SplitPaneItem,
-  SplitHandle,
-} from "@/registry/wuhan/blocks/split-pane/split-pane-01";
+import { SplitPaneItem } from "@/registry/wuhan/blocks/split-pane/split-pane-01";
+
+export interface PanelConfig {
+  /** 面板内容 */
+  children?: React.ReactNode;
+  /** 面板标题 */
+  title?: React.ReactNode;
+  /** 默认宽度（百分比）*/
+  defaultSize?: number;
+  /** 最小宽度（百分比）*/
+  minSize?: number;
+  /** 折叠后的宽度（像素），设为 0 表示完全折叠 */
+  collapsedSize?: number;
+  /** 折叠图标 */
+  collapsibleIcon?: React.ReactNode;
+}
 
 export interface TripleSplitPaneProps {
   /**
-   * 左侧面板
+   * 左侧面板配置
    */
-  leftChildren?: React.ReactNode;
+  left?: PanelConfig;
   /**
-   * 左侧面板的标题
+   * 中间面板配置
    */
-  leftTitle?: React.ReactNode;
+  center?: PanelConfig;
   /**
-   * 左侧面板的默认宽度（百分比）
+   * 右侧面板配置
    */
-  leftDefaultSize?: number;
-  /**
-   * 左侧面板的最小宽度（像素）
-   */
-  leftMinSize?: number;
-  /**
-   * 左侧面板折叠后的宽度（像素）
-   */
-  leftCollapsedSize?: number;
-  /**
-   * 左侧面板的折叠图标
-   */
-  leftCollapsibleIcon?: React.ReactNode;
-
-  /**
-   * 中间面板
-   */
-  centerChildren?: React.ReactNode;
-  /**
-   * 中间面板的标题
-   */
-  centerTitle?: React.ReactNode;
-  /**
-   * 中间面板的默认宽度（百分比）
-   */
-  centerDefaultSize?: number;
-  /**
-   * 中间面板的最小宽度（像素）
-   */
-  centerMinSize?: number;
-
-  /**
-   * 右侧面板
-   */
-  rightChildren?: React.ReactNode;
-  /**
-   * 右侧面板的标题
-   */
-  rightTitle?: React.ReactNode;
-  /**
-   * 右侧面板的默认宽度（百分比）
-   */
-  rightDefaultSize?: number;
-  /**
-   * 右侧面板的最小宽度（像素）
-   */
-  rightMinSize?: number;
-  /**
-   * 右侧面板折叠后的宽度（像素）
-   */
-  rightCollapsedSize?: number;
-  /**
-   * 右侧面板的折叠图标
-   */
-  rightCollapsibleIcon?: React.ReactNode;
-
+  right?: PanelConfig;
   /**
    * 容器的类名
    */
@@ -83,24 +40,35 @@ export interface TripleSplitPaneProps {
 }
 
 export const TripleSplitPane: React.FC<TripleSplitPaneProps> = ({
-  leftChildren,
-  leftTitle,
-  leftDefaultSize = 20,
-  leftMinSize = 15,
-  leftCollapsedSize = 0,
-  leftCollapsibleIcon,
-  centerChildren,
-  centerTitle,
-  centerDefaultSize = 50,
-  centerMinSize = 30,
-  rightChildren,
-  rightTitle,
-  rightDefaultSize = 30,
-  rightMinSize = 15,
-  rightCollapsedSize = 0,
-  rightCollapsibleIcon,
+  left = {},
+  center = {},
+  right = {},
   className,
 }) => {
+  const {
+    children: leftChildren,
+    title: leftTitle,
+    defaultSize: leftDefaultSize = 20,
+    minSize: leftMinSize = 15,
+    collapsedSize: leftCollapsedSize = 0,
+    collapsibleIcon: leftCollapsibleIcon,
+  } = left;
+
+  const {
+    children: centerChildren,
+    title: centerTitle,
+    defaultSize: centerDefaultSize = 50,
+    minSize: centerMinSize = 30,
+  } = center;
+
+  const {
+    children: rightChildren,
+    title: rightTitle,
+    defaultSize: rightDefaultSize = 30,
+    minSize: rightMinSize = 15,
+    collapsedSize: rightCollapsedSize = 0,
+    collapsibleIcon: rightCollapsibleIcon,
+  } = right;
   const [isLeftCollapsed, setIsLeftCollapsed] = React.useState(false);
   const [isRightCollapsed, setIsRightCollapsed] = React.useState(false);
 

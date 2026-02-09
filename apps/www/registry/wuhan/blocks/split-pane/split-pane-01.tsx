@@ -24,7 +24,7 @@ SplitPaneContainerPrimitive.displayName = "SplitPaneContainerPrimitive";
  * ResizablePanel 封装
  */
 const ResizablePanelWithRef = React.forwardRef<
-  any,
+  ResizablePrimitive.PanelImperativeHandle,
   ResizablePrimitive.PanelProps
 >((props, ref) => {
   return (
@@ -60,7 +60,10 @@ export interface SplitPaneItemProps extends ResizablePrimitive.PanelProps {
   children?: React.ReactNode;
 }
 
-const SplitPaneItem = React.forwardRef<any, SplitPaneItemProps>(
+const SplitPaneItem = React.forwardRef<
+  ResizablePrimitive.PanelImperativeHandle,
+  SplitPaneItemProps
+>(
   (
     {
       panelTitle,

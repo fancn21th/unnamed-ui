@@ -265,6 +265,30 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    resizable: {
+      name: "resizable",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/ui/resizable.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/wuhan/ui/resizable.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "hello-world": {
       name: "hello-world",
       description: "A simple hello world component",
@@ -1105,7 +1129,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "split-pane-01",
       description: "分隔面板",
       type: "registry:block",
-      registryDependencies: ["style"],
+      registryDependencies: ["resizable"],
       files: [
         {
           path: "registry/wuhan/blocks/split-pane/split-pane-01.tsx",

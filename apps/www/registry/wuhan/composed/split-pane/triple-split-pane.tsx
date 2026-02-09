@@ -3,7 +3,7 @@
 import * as React from "react";
 import { PanelLeft, PanelRight } from "lucide-react";
 import * as ResizablePrimitive from "react-resizable-panels";
-import { SplitPaneItem } from "@/registry/wuhan/blocks/split-pane/split-pane-01";
+import { SplitPaneItem, SplitHandle } from "@/registry/wuhan/blocks/split-pane/split-pane-01";
 
 export interface PanelConfig {
   /** 面板内容 */
@@ -14,10 +14,12 @@ export interface PanelConfig {
   defaultSize?: number;
   /** 最小宽度（百分比）*/
   minSize?: number;
-  /** 折叠后的宽度（像素），设为 0 表示完全折叠 */
-  collapsedSize?: number;
+  /** 折叠后的宽度，支持：数字（百分比 0-100）、像素字符串（如 "48px"）、其他单位（如 "3rem"）。0 表示完全折叠 */
+  collapsedSize?: number | string;
   /** 折叠图标 */
   collapsibleIcon?: React.ReactNode;
+  /** 紧凑模式下是否显示折叠图标 */
+  showIconWhenCompact?: boolean;
 }
 
 export interface TripleSplitPaneProps {
@@ -52,6 +54,7 @@ export const TripleSplitPane: React.FC<TripleSplitPaneProps> = ({
     minSize: leftMinSize = 15,
     collapsedSize: leftCollapsedSize = 0,
     collapsibleIcon: leftCollapsibleIcon,
+    showIconWhenCompact: leftShowIconWhenCompact = true,
   } = left;
 
   const {
@@ -68,12 +71,25 @@ export const TripleSplitPane: React.FC<TripleSplitPaneProps> = ({
     minSize: rightMinSize = 15,
     collapsedSize: rightCollapsedSize = 0,
     collapsibleIcon: rightCollapsibleIcon,
+    showIconWhenCompact: rightShowIconWhenCompact = true,
   } = right;
   const [isLeftCollapsed, setIsLeftCollapsed] = React.useState(false);
   const [isRightCollapsed, setIsRightCollapsed] = React.useState(false);
 
   const leftPanelRef = ResizablePrimitive.usePanelRef();
   const rightPanelRef = ResizablePrimitive.usePanelRef();
+
+  // 将 collapsedSize 转换为数字用于判断（提取像素值）
+  const getNumericSize = (size: number | string | undefined): number => {
+    if (typeof size === 'string') {
+      const match = size.match(/^([0-9.]+)/);
+      return match ? parseFloat(match[1]) : 0;
+    }
+    return size || 0;
+  };
+
+  const leftCollapsedSizeNum = getNumericSize(leftCollapsedSize);
+  const rightCollapsedSizeNum = getNumericSize(rightCollapsedSize);
 
   const toggleLeftPanel = React.useCallback(() => {
     const panel = leftPanelRef.current;
@@ -83,6 +99,7 @@ export const TripleSplitPane: React.FC<TripleSplitPaneProps> = ({
       panel.resize(leftDefaultSize);
       setIsLeftCollapsed(false);
     } else {
+      // 使用 collapse() 方法折叠到 collapsedSize prop 设置的值
       panel.collapse();
       setIsLeftCollapsed(true);
     }
@@ -96,6 +113,7 @@ export const TripleSplitPane: React.FC<TripleSplitPaneProps> = ({
       panel.resize(rightDefaultSize);
       setIsRightCollapsed(false);
     } else {
+      // 使用 collapse() 方法折叠到 collapsedSize prop 设置的值
       panel.collapse();
       setIsRightCollapsed(true);
     }
@@ -109,7 +127,11 @@ export const TripleSplitPane: React.FC<TripleSplitPaneProps> = ({
         id="left-panel"
         defaultSize={leftDefaultSize}
         minSize={leftMinSize}
-        collapsible={leftCollapsedSize === 0}
+        collapsible={true}
+        disabled={isLeftCollapsed}
+        isCompact={isLeftCollapsed && leftCollapsedSizeNum > 0 && leftCollapsedSizeNum < 50}
+        collapsedSize={leftCollapsedSize}
+        showIconWhenCompact={leftShowIconWhenCompact}
         panelTitle={leftTitle}
         collapsibleIcon={
           leftCollapsibleIcon || <PanelLeft className="h-4 w-4" />
@@ -119,20 +141,34 @@ export const TripleSplitPane: React.FC<TripleSplitPaneProps> = ({
         {leftChildren}
       </SplitPaneItem>
 
-      {/* <SplitHandle withHandle /> */}
+      <SplitHandle withHandle className="bg-transparent"/>
 
       {/* 中间面板 */}
       <SplitPaneItem
         id="center-panel"
         defaultSize={centerDefaultSize}
         minSize={centerMinSize}
-        panelTitle={centerTitle}
+        panelTitle={
+          <div className="flex items-center">
+            {/* 左侧收起时显示展开图标 */}
+            {isLeftCollapsed && (
+              <button
+                type="button"
+                onClick={toggleLeftPanel}
+                className="mr-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+              >
+                {leftCollapsibleIcon || <PanelLeft className="h-4 w-4" />}
+              </button>
+            )}
+            {centerTitle}
+          </div>
+        }
         showCollapsibleIcon={false}
       >
         {centerChildren}
       </SplitPaneItem>
 
-      {/* <SplitHandle withHandle /> */}
+      <SplitHandle withHandle className="bg-transparent"/>
 
       {/* 右侧面板 */}
       <SplitPaneItem
@@ -140,7 +176,11 @@ export const TripleSplitPane: React.FC<TripleSplitPaneProps> = ({
         id="right-panel"
         defaultSize={rightDefaultSize}
         minSize={rightMinSize}
-        collapsible={rightCollapsedSize === 0}
+        collapsible={true}
+        disabled={isRightCollapsed}
+        isCompact={isRightCollapsed && rightCollapsedSizeNum > 0 && rightCollapsedSizeNum < 50}
+        collapsedSize={rightCollapsedSize}
+        showIconWhenCompact={rightShowIconWhenCompact}
         panelTitle={rightTitle}
         collapsibleIcon={
           rightCollapsibleIcon || <PanelRight className="h-4 w-4" />

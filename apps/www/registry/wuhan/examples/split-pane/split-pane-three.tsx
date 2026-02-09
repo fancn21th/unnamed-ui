@@ -5,7 +5,7 @@ import { TripleSplitPane } from "@/registry/wuhan/composed/split-pane/triple-spl
 export default function SplitPaneThree() {
   return (
     <TripleSplitPane
-      className="h-[600px] w-full bg-[var(--bg-neutral-light)] gap-3"
+      className="h-[600px] w-full bg-[var(--bg-neutral-light)] gap-[6px] p-3"
       left={{
         title: "左侧面板",
         defaultSize: 20,
@@ -44,7 +44,9 @@ export default function SplitPaneThree() {
       right={{
         title: "右侧面板",
         defaultSize: 30,
-        collapsedSize: 48,
+        collapsedSize: "48px",
+        minSize: 220,
+        showIconWhenCompact: true,
         children: (
           <div className="space-y-4">
             <p className="text-sm text-[var(--text-secondary)]">

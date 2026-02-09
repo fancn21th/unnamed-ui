@@ -144,6 +144,14 @@
     "description": "Task card component with progress tracking and status indicators"
   },
   {
+    "name": "goal-card-01",
+    "description": "Goal card component with AI icon, title, description, and circular progress indicator"
+  },
+  {
+    "name": "document-card-01",
+    "description": "Document card primitives for displaying research document information and attributes"
+  },
+  {
     "name": "message",
     "description": "Composed AI and user message components"
   },
@@ -272,6 +280,18 @@
     "description": "Composed task card with progress tracking and status indicators"
   },
   {
+    "name": "goal-card",
+    "description": "Composed goal card with AI icon, title, description, and circular progress indicator"
+  },
+  {
+    "name": "report-card",
+    "description": "报告卡片"
+  },
+  {
+    "name": "document-card",
+    "description": "Document card component for displaying research document information and attributes"
+  },
+  {
     "name": "action-dropdown",
     "description": "操作下拉菜单组件"
   },
@@ -314,10 +334,6 @@
   {
     "name": "thinking",
     "description": "深度思考组件"
-  },
-  {
-    "name": "report-card",
-    "description": "报告卡片"
   },
   {
     "name": "step-detail",

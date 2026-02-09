@@ -1,0 +1,7 @@
+{
+  "title": "业务组件库",
+  "description": "使用 Unnamed UI 创建你的 AI 原生应用",
+  "icon": "PanelsTopLeft",
+  "root": true,
+  "pages": ["---Introduction---", "index", "..."]
+}

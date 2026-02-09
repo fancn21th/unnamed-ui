@@ -89,17 +89,18 @@ const SplitPaneItem = React.forwardRef<
   ) => {
     // 只有在紧凑模式且 collapsedSize 为 0 时才移除圆角
     const getNumericSize = (size: number | string | undefined): number => {
-      if (typeof size === 'string') {
+      if (typeof size === "string") {
         const match = size.match(/^([0-9.]+)/);
         return match ? parseFloat(match[1]) : 0;
       }
       return size || 0;
     };
-    const shouldRemoveBorderRadius = isCompact && getNumericSize(collapsedSize) === 0;
-    
+    const shouldRemoveBorderRadius =
+      isCompact && getNumericSize(collapsedSize) === 0;
+
     return (
-      <ResizablePanelWithRef 
-        ref={ref} 
+      <ResizablePanelWithRef
+        ref={ref}
         collapsedSize={collapsedSize}
         {...panelProps}
       >

@@ -3,7 +3,10 @@
 import * as React from "react";
 import { PanelLeft, PanelRight } from "lucide-react";
 import * as ResizablePrimitive from "react-resizable-panels";
-import { SplitPaneItem, SplitHandle } from "@/registry/wuhan/blocks/split-pane/split-pane-01";
+import {
+  SplitPaneItem,
+  SplitHandle,
+} from "@/registry/wuhan/blocks/split-pane/split-pane-01";
 
 export interface PanelConfig {
   /** 面板内容 */
@@ -81,7 +84,7 @@ export const TripleSplitPane: React.FC<TripleSplitPaneProps> = ({
 
   // 将 collapsedSize 转换为数字用于判断（提取像素值）
   const getNumericSize = (size: number | string | undefined): number => {
-    if (typeof size === 'string') {
+    if (typeof size === "string") {
       const match = size.match(/^([0-9.]+)/);
       return match ? parseFloat(match[1]) : 0;
     }
@@ -129,7 +132,11 @@ export const TripleSplitPane: React.FC<TripleSplitPaneProps> = ({
         minSize={leftMinSize}
         collapsible={true}
         disabled={isLeftCollapsed}
-        isCompact={isLeftCollapsed && leftCollapsedSizeNum > 0 && leftCollapsedSizeNum < 50}
+        isCompact={
+          isLeftCollapsed &&
+          leftCollapsedSizeNum > 0 &&
+          leftCollapsedSizeNum < 50
+        }
         collapsedSize={leftCollapsedSize}
         showIconWhenCompact={leftShowIconWhenCompact}
         panelTitle={leftTitle}
@@ -141,7 +148,7 @@ export const TripleSplitPane: React.FC<TripleSplitPaneProps> = ({
         {leftChildren}
       </SplitPaneItem>
 
-      <SplitHandle withHandle className="bg-transparent"/>
+      <SplitHandle withHandle className="bg-transparent" />
 
       {/* 中间面板 */}
       <SplitPaneItem
@@ -168,7 +175,7 @@ export const TripleSplitPane: React.FC<TripleSplitPaneProps> = ({
         {centerChildren}
       </SplitPaneItem>
 
-      <SplitHandle withHandle className="bg-transparent"/>
+      <SplitHandle withHandle className="bg-transparent" />
 
       {/* 右侧面板 */}
       <SplitPaneItem
@@ -178,7 +185,11 @@ export const TripleSplitPane: React.FC<TripleSplitPaneProps> = ({
         minSize={rightMinSize}
         collapsible={true}
         disabled={isRightCollapsed}
-        isCompact={isRightCollapsed && rightCollapsedSizeNum > 0 && rightCollapsedSizeNum < 50}
+        isCompact={
+          isRightCollapsed &&
+          rightCollapsedSizeNum > 0 &&
+          rightCollapsedSizeNum < 50
+        }
         collapsedSize={rightCollapsedSize}
         showIconWhenCompact={rightShowIconWhenCompact}
         panelTitle={rightTitle}

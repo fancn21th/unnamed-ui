@@ -1,60 +1,61 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "./themes.css";
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
   /* ==================== 颜色系统 ==================== */
-  
+
   /* Brand - 主色 */
   --text-brand: #4A56FF;
   --text-brand-hover: #3B46E6;
   --text-brand-active: #2F36CC;
-  
+
   --bg-brand: #4A56FF;
   --bg-brand-hover: #3B46E6;
   --bg-brand-active: #2F36CC;
   --bg-brand-light: #E8EAFF;
   --bg-brand-light-hover: #D8DAFF;
   --bg-brand-light-active: #C8CAFA;
-  
+
   --border-brand: #4A56FF;
-  
+
   /* Secondary - 次要色 */
   --text-secondary: #6B7280;
   --text-secondary-hover: #5B6178;
   --text-secondary-active: #4B5168;
-  
+
   --bg-secondary: #6B7280;
   --bg-secondary-hover: #5B6178;
   --bg-secondary-active: #4B5168;
   --bg-secondary-light: #F3F4F6;
   --bg-secondary-light-hover: #E5E7EB;
   --bg-secondary-light-active: #D1D5DB;
-  
+
   --border-secondary: #6B7280;
-  
+
   /* Danger - 危险色 */
   --text-error: #F04438;
   --text-error-hover: #D32D24;
   --text-error-active: #C1261A;
-  
+
   --bg-error: #F04438;
   --bg-error-hover: #D32D24;
   --bg-error-active: #C1261A;
   --bg-error-light: #FEE2E2;
   --bg-error-light-hover: #FECACA;
   --bg-error-light-active: #FECACA;
-  
+
   --border-error: #F04438;
-  
+
   /* Neutral - 中性色 */
   --text-primary: #1F2937;
   --text-secondary-2nd: #4B5563;
   --text-tertiary: #9CA3AF;
   --text-placeholder: #D1D5DB;
   --text-inverse: #FFFFFF;
-  
+
   --bg-container: #FFFFFF;
   --bg-container-secondary: #F9FAFB;
   --bg-neutral: #F3F4F6;
@@ -62,24 +63,24 @@
   --bg-neutral-light-hover: #F3F4F6;
   --bg-neutral-light-active: #E5E7EB;
   --bg-container-disable: #F3F4F6;
-  
+
   --bg-mask: rgba(0, 0, 0, 0.5);
-  
+
   --text-disable: #9CA3AF;
-  
+
   /* 边框颜色 */
   --border-neutral: #E5E7EB;
   --border-neutral-basic: #E5E7EB;
-  
+
   /* ==================== 间距系统 ==================== */
-  
+
   /* Gap */
   --gap-xs: 4px;
   --gap-sm: 6px;
   --gap-md: 8px;
   --gap-lg: 12px;
   --gap-xl: 16px;
-  
+
   /* Padding - Com */
   --padding-com-xs: 4px;
   --padding-com-sm: 6px;
@@ -87,7 +88,7 @@
   --padding-com-lg: 12px;
   --padding-com-xl: 16px;
   --padding-com-2xl: 24px;
-  
+
   /* Padding - Side */
   --padding-side-xs: 4px;
   --padding-side-sm: 8px;
@@ -95,7 +96,7 @@
   --padding-side-lg: 16px;
   --padding-side-xl: 20px;
   --padding-side-2xl: 24px;
-  
+
   /* Space */
   --space-1: 4px;
   --space-2: 8px;
@@ -104,109 +105,405 @@
   --space-5: 20px;
   --space-6: 24px;
   --space-8: 32px;
-  
+
   /* Margin - Com */
   --margin-com-xs: 4px;
   --margin-com-sm: 6px;
   --margin-com-md: 8px;
   --margin-com-lg: 12px;
   --margin-com-xl: 16px;
-  
+
   /* ==================== 圆角系统 ==================== */
-  
+
   --radius-sm: 6px;
   --radius-md: 8px;
   --radius-lg: 12px;
   --radius-xl: 16px;
   --radius-circle: 9999px;
   --radius-full: 9999px;
-  
+
   /* ==================== 字体系统 ==================== */
-  
+
   --font-family-cn: "PingFang SC", "Microsoft YaHei", sans-serif;
   --font-family-en: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-  
+
   --font-weight-400: 400;
   --font-weight-500: 500;
   --font-weight-600: 600;
-  
+
   --font-size-1: 12px;
   --font-size-2: 14px;
   --font-size-3: 16px;
   --font-size-4: 18px;
   --font-size-5: 20px;
   --font-size-6: 24px;
-  
+
   --line-height-1: 18px;
   --line-height-2: 20px;
   --line-height-3: 24px;
   --line-height-4: 28px;
   --line-height-5: 32px;
-  
+
   /* ==================== 边框宽度 ==================== */
-  
+
   --border-width: 1px;
   --border-width-2: 2px;
-  
+
   /* ==================== 阴影系统 ==================== */
-  
+
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+
+  /* ==================== Thinking loading pulse animation ==================== */
+  @keyframes thinking-loading-pulse {
+    0%,
+    100% {
+      opacity: 0.3;
+      transform: scale(0.8);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .border {
+    border-width: var(--border-width);
+  }
+  .border-x {
+    border-left-width: var(--border-width);
+    border-right-width: var(--border-width);
+  }
+  .border-y {
+    border-top-width: var(--border-width);
+    border-bottom-width: var(--border-width);
+  }
+  .border-t {
+    border-top-width: var(--border-width);
+  }
+  .border-r {
+    border-right-width: var(--border-width);
+  }
+  .border-b {
+    border-bottom-width: var(--border-width);
+  }
+  .border-l {
+    border-left-width: var(--border-width);
+  }
+  .font-size-1 {
+    font-size: var(--font-size-1);
+  }
+  .font-size-2 {
+    font-size: var(--font-size-2);
+  }
+  .font-size-3 {
+    font-size: var(--font-size-3);
+  }
+  .font-size-4 {
+    font-size: var(--font-size-4);
+  }
+  .font-size-5 {
+    font-size: var(--font-size-5);
+  }
+  .font-size-6 {
+    font-size: var(--font-size-6);
+  }
+  .font-semibold {
+    font-weight: 600;
+  }
+  /* 基础圆角 - Medium 主题 (默认) */
+  --radius: 6px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-circle: 999px;
+
+  /* 背景和前景 - 基于 tokens Light.Neutral */
+  --background: var(--neutral-0); /* #ffffff */
+  --foreground: var(--neutral-900); /* #1e1d26 */
+
+  /* 卡片 - 基于 tokens Container.bg-container */
+  --card: var(--neutral-0); /* #ffffff */
+  --card-foreground: var(--neutral-900); /* #1e1d26 */
+
+  /* 弹出层 */
+  --popover: var(--neutral-0); /* #ffffff */
+  --popover-foreground: var(--neutral-900); /* #1e1d26 */
+
+  /* 主色 - 使用品牌色 Light.Brand.brand-600 */
+  --primary: var(--brand-600); /* #4a56ff */
+  --primary-foreground: var(--neutral-0); /* #ffffff */
+
+  /* 次要色 - 基于 tokens Container.bg-neutral-light */
+  --secondary: var(--neutral-100); /* #F6F6FA */
+  --secondary-foreground: var(--neutral-900); /* #1e1d26 */
+
+  /* 静音色 - 基于 tokens Container.bg-neutral-light */
+  --muted: var(--neutral-100); /* #F6F6FA */
+  --muted-foreground: var(--neutral-700); /* #666473 */
+
+  /* 强调色 */
+  --accent: var(--neutral-100); /* #F6F6FA */
+  --accent-foreground: var(--neutral-900); /* #1e1d26 */
+
+  /* 破坏性操作 - 基于 tokens Error.error-600 */
+  --destructive: var(--error-600); /* #ff494f */
+  --destructive-foreground: var(--neutral-0); /* #ffffff */
+
+  /* 边框和输入 - 基于 tokens Border.border-neutral */
+  --border: var(--neutral-300); /* #e1e0e7 */
+  --input: var(--neutral-300); /* #e1e0e7 */
+  --ring: var(--brand-300); /* #d0ddff - Focusring.focusring-brand */
+
+  /* 表面 - 基于 tokens Page.bg-page-netural */
+  --surface: var(--neutral-50); /* #f9f9fb */
+  --surface-foreground: var(--neutral-900); /* #1e1d26 */
+
+  /* 代码块 */
+  --code: #f9f9fb;
+  --code-foreground: #1e1d26;
+  --code-highlight: #f0f0f4;
+  --code-number: #9e9ca6;
+
+  /* 文本选择 */
+  --selection: #1e1d26;
+  --selection-foreground: #ffffff;
+
+  /* Neutral 颜色 - Light 主题 */
+  --neutral-0: #ffffff;
+  --neutral-10: #fcfcfd;
+  --neutral-50: #f9f9fb;
+  --neutral-100: #F6F6FA;
+  --neutral-200: #e8e7ed;
+  --neutral-300: #e1e0e7;
+  --neutral-400: #aaa8b3;
+  --neutral-500: #9e9ca6;
+  --neutral-600: #8e8c99;
+  --neutral-700: #666473;
+  --neutral-800: #403f4d;
+  --neutral-900: #1e1d26;
+  --neutral-1000: #000000;
+
+  /* 品牌色 - Light 主题 */
+  --brand-50: #f7f9ff;
+  --brand-100: #edf2ff;
+  --brand-200: #dfe9ff;
+  --brand-300: #d0ddff;
+  --brand-400: #9ca9ff;
+  --brand-500: #7381ff;
+  --brand-600: #4a56ff;
+  --brand-700: #343ad9;
+  --brand-800: #2222b3;
+  --brand-900: #18148c;
+  --brand-1000: #130d66;
+
+  /* Success 颜色 - Light 主题 */
+  --success-50: #f3fcf6;
+  --success-100: #e2f8ec;
+  --success-200: #cff3df;
+  --success-300: #b9ecd1;
+  --success-400: #4ad49d;
+  --success-500: #26c78c;
+  --success-600: #06ba7e;
+  --success-700: #009468;
+  --success-800: #006e50;
+  --success-900: #004737;
+  --success-1000: #00211b;
+  --success: var(--success-600);
+  --success-foreground: #ffffff;
+
+  /* Warning 颜色 - Light 主题 */
+  --warning-50: #fff6f1;
+  --warning-100: #ffebe0;
+  --warning-200: #ffd8c0;
+  --warning-300: #ffcaac;
+  --warning-400: #ffb987;
+  --warning-500: #ff9c5e;
+  --warning-600: #fb7934;
+  --warning-700: #d45a22;
+  --warning-800: #ad3f13;
+  --warning-900: #872808;
+  --warning-1000: #611905;
+  --warning: var(--warning-600);
+  --warning-foreground: #ffffff;
+
+  /* Error 颜色 - Light 主题 */
+  --error-50: #fff7f6;
+  --error-100: #ffebe9;
+  --error-200: #ffdad6;
+  --error-300: #ffcbc7;
+  --error-400: #ff9f9c;
+  --error-500: #ff7373;
+  --error-600: #ff494f;
+  --error-700: #d9343f;
+  --error-800: #b32230;
+  --error-900: #8c1424;
+  --error-10000: #660d1c;
+  --error: var(--error-600);
+  --error-foreground: #ffffff;
+
+  /* ==================== Text&icon 文本和图标颜色 - Light 主题 ==================== */
+  --text-primary: var(--neutral-800);
+  --text-secondary: var(--neutral-700);
+  --text-tertiary: var(--neutral-500);
+  --text-disable: var(--neutral-400);
+  --text-placeholder: var(--neutral-400);
+  --text-brand: var(--brand-600);
+  --text-brand-hover: var(--brand-500);
+  --text-brand-active: var(--brand-700);
+  --text-title: var(--neutral-900);
+  --text-inverse: #ffffff;
+  --text-success: var(--success-600);
+  --text-success-hover: var(--success-500);
+  --text-success-active: var(--success-700);
+  --text-warning: var(--warning-600);
+  --text-warning-hover: var(--warning-500);
+  --text-warning-active: var(--warning-700);
+  --text-error: var(--error-600);
+  --text-error-hover: var(--error-500);
+  --text-error-active: var(--error-700);
+  /* ==================== Container 容器背景 - Light 主题 ==================== */
+  --bg-container: var(--neutral-0);
+  --bg-neutral-light: var(--neutral-100);
+  --bg-neutral-light-hover: var(--neutral-200);
+  --bg-neutral-light-active: var(--neutral-300);
+  --bg-brand-light: var(--brand-100);
+  --bg-brand-light-hover: var(--brand-200);
+  --bg-brand-light-active: var(--brand-300);
+  --bg-brand: var(--brand-600);
+  --bg-brand-hover: var(--brand-500);
+  --bg-brand-active: var(--brand-700);
+  --bg-container-disable: var(--neutral-200);
+  --bg-success: var(--success-600);
+  --bg-success-light: var(--success-100);
+  --bg-success-light-hover: var(--success-200);
+  --bg-success-light-active: var(--success-300);
+  --bg-success-hover: var(--success-500);
+  --bg-success-active: var(--success-700);
+  --bg-warning: var(--warning-600);
+  --bg-warning-light: var(--warning-100);
+  --bg-warning-light-hover: var(--warning-200);
+  --bg-warning-light-active: var(--warning-300);
+  --bg-warning-hover: var(--warning-500);
+  --bg-warning-active: var(--warning-700);
+  --bg-error: var(--error-600);
+  --bg-error-light: var(--error-100);
+  --bg-error-light-hover: var(--error-200);
+  --bg-error-light-active: var(--error-300);
+  --bg-error-hover: var(--error-500);
+  --bg-error-active: var(--error-700);
+  --bg-neutral: var(--neutral-800);
+  --bg-neutral-hover: var(--neutral-700);
+  --bg-neutral-active: var(--neutral-900);
+  --bg-mask: rgba(0, 0, 0, 0.8);
+
+  /* ==================== Page 页面背景 - Light 主题 ==================== */
+  --bg-page: var(--neutral-0);
+  --bg-page-brand: var(--brand-50);
+  --bg-page-secondary: var(--neutral-50);
+  --bg-container-secondary: var(--neutral-50);
+
+  /* 边框颜色 */
+  --border-brand: var(--brand-600);
+  --border-brand-hover: var(--brand-500);
+  --border-brand-active: var(--brand-700);
+  --border-brand-light: var(--brand-300);
+  --border-brand-light-hover: var(--brand-400);
+  --border-neutral: var(--neutral-300);
+  --border-success: var(--success-600);
+  --border-success-hover: var(--success-500);
+  --border-success-active: var(--success-700);
+  --border-success-light: var(--success-300);
+  --border-success-light-hover: var(--success-400);
+  --border-warning: var(--warning-600);
+  --border-warning-hover: var(--warning-500);
+  --border-warning-active: var(--warning-700);
+  --border-warning-light: var(--warning-300);
+  --border-warning-light-hover: var(--warning-400);
+  --border-error: var(--error-600);
+  --border-error-hover: var(--error-500);
+  --border-error-active: var(--error-700);
+  --border-error-light: var(--error-300);
+  --border-error-light-hover: var(--error-400);
+  --divider-neutral-basic: var(--neutral-200);
+  --divider-neutral-strong: var(--neutral-300);
+
+  /* ==================== Focusring 聚焦环 - Light 主题 ==================== */
+  --focusring-brand: var(--brand-300);
+
+  /* ==================== Shadow 阴影 - Light 主题 ==================== */
+  --shadow-basic: 0 1px 10px 0 #0000000d, 0 4px 5px 0 #00000014, 0 2px 4px -1px #0000001f;
+  --shadow-medium: 0 3px 14px 2px #0000000d, 0 8px 10px 1px #0000000f, 0 5px 5px -3px #0000001a;
+  --shadow-high: 0 6px 30px 5px #0000000d, 0 16px 24px 2px #0000000a, 0 8px 10px -5px #0000001f;
+
+  /* ==================== Focus shadow 聚焦阴影 - Light 主题 ==================== */
+  --shadow-focus: 0 0 0 2px #d0ddff;
+
+  /* ==================== AI 渐变背景 - Light 主题 ==================== */
+  --ai-bg: linear-gradient(90deg, #eff7ff 0%, #f4f4ff 30%, #f8edff 60%, #fff2ff 100%);
+  --ai-light: linear-gradient(90deg, #eff7ff 0%, #f4f4ff 30%, #f8edff 60%, #fff2ff 100%);
+  --ai-light-hover: linear-gradient(90deg, #d5ebff 0%, #dfe0ff 30%, #f2daff 60%, #ffdafe 100%);
+  --ai-light-active: linear-gradient(90deg, #abd5ff 0%, #c1c0ff 30%, #e3b5ff 60%, #feb5ff 100%);
+  --ai-general: linear-gradient(90deg, #2e8cff 0%, #6b61ff 30%, #a647ff 60%, #e945ff 100%);
+  --ai-general-hover: linear-gradient(90deg, #82beff 0%, #a3a0ff 30%, #d191ff 60%, #f98fff 100%);
+  --ai-general-active: linear-gradient(90deg, #2172db 0%, #584ddb 30%, #8636db 60%, #c235db 100%);
 }
 
 .dark {
   /* ==================== 深色模式颜色 ==================== */
-  
+
   /* Brand - 主色 */
   --text-brand: #6B72FF;
   --text-brand-hover: #8289FF;
   --text-brand-active: #4A56FF;
-  
+
   --bg-brand: #6B72FF;
   --bg-brand-hover: #8289FF;
   --bg-brand-active: #4A56FF;
   --bg-brand-light: #1F2352;
   --bg-brand-light-hover: #2A3070;
   --bg-brand-light-active: #353D8F;
-  
+
   --border-brand: #6B72FF;
-  
+
   /* Secondary - 次要色 */
   --text-secondary: #9CA3AF;
   --text-secondary-hover: #ADAFBE;
   --text-secondary-active: #BDBDCD;
-  
+
   --bg-secondary: #4B5563;
   --bg-secondary-hover: #5B6178;
   --bg-secondary-active: #6B7280;
   --bg-secondary-light: #1F2937;
   --bg-secondary-light-hover: #2D3342;
   --bg-secondary-light-active: #3B4252;
-  
+
   --border-secondary: #4B5563;
-  
+
   /* Danger - 危险色 */
   --text-error: #F66B5C;
   --text-error-hover: #F88073;
   --text-error-active: #F04438;
-  
+
   --bg-error: #F66B5C;
   --bg-error-hover: #F88073;
   --bg-error-active: #F04438;
   --bg-error-light: #450A0A;
   --bg-error-light-hover: #5C1313;
   --bg-error-light-active: #741B1B;
-  
+
   --border-error: #F66B5C;
-  
+
   /* Neutral - 中性色 */
   --text-primary: #F9FAFB;
   --text-secondary-2nd: #D1D5DB;
   --text-tertiary: #6B7280;
   --text-placeholder: #4B5563;
   --text-inverse: #1F2937;
-  
+
   --bg-container: #1F2937;
   --bg-container-secondary: #111827;
   --bg-neutral: #374151;
@@ -214,15 +511,576 @@
   --bg-neutral-light-hover: #2D3342;
   --bg-neutral-light-active: #3B4252;
   --bg-container-disable: #1F2937;
-  
+
   --bg-mask: rgba(0, 0, 0, 0.6);
-  
+
   --text-disable: #6B7280;
-  
+
   /* 边框颜色 */
   --border-neutral: #374151;
   --border-neutral-basic: #374151;
+
+  /* 背景和前景 - 基于 tokens Dark.Neutral */
+  --background: var(--neutral-10); /* #141414 */
+  --foreground: var(--neutral-900); /* #b2afba */
+
+  /* 卡片 - 基于 tokens Dark Container.bg-container */
+  --card: var(--neutral-10); /* #141414 */
+  --card-foreground: var(--neutral-900); /* #b2afba */
+
+  /* 弹出层 */
+  --popover: var(--neutral-50); /* #1b1a1d */
+  --popover-foreground: var(--neutral-900); /* #b2afba */
+
+  /* 主色 - 使用品牌色 Dark.Brand.brand-600 */
+  --primary: var(--brand-600); /* #424cdc */
+  --primary-foreground: var(--neutral-0); /* #ffffff */
+
+  /* 次要色 - 基于 tokens Dark Container.bg-neutral-light */
+  --secondary: var(--neutral-100); /* #232326 */
+  --secondary-foreground: var(--neutral-900); /* #b2afba */
+
+  /* 静音色 */
+  --muted: var(--neutral-100); /* #232326 */
+  --muted-foreground: var(--neutral-700); /* #908e97 */
+
+  /* 强调色 */
+  --accent: var(--neutral-100); /* #232326 */
+  --accent-foreground: var(--neutral-900); /* #b2afba */
+
+  /* 破坏性操作 - 基于 tokens Dark Error.error-600 */
+  --destructive: var(--error-600); /* #dc4146 */
+  --destructive-foreground: var(--neutral-0); /* #ffffff */
+
+  /* 边框和输入 - 基于 tokens Dark Border.border-neutral */
+  --border: var(--neutral-300); /* #313136 */
+  --input: var(--neutral-300); /* #313136 */
+  --ring: var(--brand-300); /* #283283 - Focusring.focusring-brand */
+
+  /* 表面 - 基于 tokens Dark Page.bg-page-netural */
+  --surface: var(--neutral-50); /* #1b1a1d */
+  --surface-foreground: var(--neutral-700); /* #908e97 */
+
+  /* 代码块 */
+  --code: #1b1a1d;
+  --code-foreground: #b2afba;
+  --code-highlight: #232326;
+  --code-number: #7c7a85;
+
+  /* 文本选择 */
+  --selection: #b2afba;
+  --selection-foreground: #141414;
+
+  /* Neutral 颜色 - Dark 主题 */
+  --neutral-0: #000000;
+  --neutral-10: #141414;
+  --neutral-50: #1b1a1d;
+  --neutral-100: #232326;
+  --neutral-200: #2a2a2e;
+  --neutral-300: #313136;
+  --neutral-400: #4b4a50;
+  --neutral-500: #63626a;
+  --neutral-600: #7c7a85;
+  --neutral-700: #908e97;
+  --neutral-800: #a3a1ab;
+  --neutral-900: #b2afba;
+  --neutral-1000: #c0bdc8;
+
+  /* 品牌色 - Dark 主题 */
+  --brand-50: #12172a;
+  --brand-100: #192152;
+  --brand-200: #20286f;
+  --brand-300: #283283;
+  --brand-400: #2c327e;
+  --brand-500: #373fad;
+  --brand-600: #424cdc;
+  --brand-700: #6a76e8;
+  --brand-800: #95a2f3;
+  --brand-900: #bfc8f8;
+  --brand-1000: #e9edfa;
+
+  /* Success 颜色 - Dark 主题 */
+  --success-50: #121c16;
+  --success-100: #122d20;
+  --success-200: #0c3c28;
+  --success-300: #114a32;
+  --success-400: #0e5f44;
+  --success-500: #0b8059;
+  --success-600: #08a16e;
+  --success-700: #24b580;
+  --success-800: #47ca96;
+  --success-900: #6fdaac;
+  --success-1000: #9ce9c5;
+  --success: var(--success-600);
+  --success-foreground: #ffffff;
+
+  /* Warning 颜色 - Dark 主题 */
+  --warning-50: #1f1612;
+  --warning-100: #341d12;
+  --warning-200: #481e08;
+  --warning-300: #57270e;
+  --warning-400: #7c4122;
+  --warning-500: #aa5629;
+  --warning-600: #d86a2f;
+  --warning-700: #e88e57;
+  --warning-800: #f3b181;
+  --warning-900: #f8ceab;
+  --warning-10000: #fae7d5;
+  --warning: var(--warning-600);
+  --warning-foreground: #ffffff;
+
+  /* Error 颜色 - Dark 主题 */
+  --error-50: #221211;
+  --error-100: #400d0e;
+  --error-200: #58000a;
+  --error-300: #690310;
+  --error-400: #7e2c2f;
+  --error-500: #ad363a;
+  --error-600: #dc4146;
+  --error-700: #e86a6a;
+  --error-800: #f39895;
+  --error-900: #f8c3bf;
+  --error-1000: #faebe9;
+  --error: var(--error-600);
+  --error-foreground: #ffffff;
+
+  /* ==================== Text&icon 文本和图标颜色 - Dark 主题 ==================== */
+  --text-primary: var(--neutral-800);
+  --text-secondary: var(--neutral-700);
+  --text-tertiary: var(--neutral-600);
+  --text-disable: var(--neutral-400);
+  --text-placeholder: var(--neutral-400);
+  --text-brand: var(--brand-600);
+  --text-brand-hover: var(--brand-700);
+  --text-brand-active: var(--brand-500);
+  --text-title: var(--neutral-900);
+  --text-inverse: #ffffff;
+  --text-success: var(--success-600);
+  --text-success-hover: var(--success-700);
+  --text-success-active: var(--success-500);
+  --text-warning: var(--warning-600);
+  --text-warning-hover: var(--warning-700);
+  --text-warning-active: var(--warning-500);
+  --text-error: var(--error-600);
+  --text-error-hover: var(--error-700);
+  --text-error-active: var(--error-500);
+
+  /* ==================== Container 容器背景 - Dark 主题 ==================== */
+  --bg-container: var(--neutral-10);
+  --bg-neutral-light: var(--neutral-100);
+  --bg-neutral-light-hover: var(--neutral-200);
+  --bg-neutral-light-active: var(--neutral-300);
+  --bg-brand-light: var(--brand-100);
+  --bg-brand-light-hover: var(--brand-200);
+  --bg-brand-light-active: var(--brand-300);
+  --bg-brand: var(--brand-600);
+  --bg-brand-hover: var(--brand-700);
+  --bg-brand-active: var(--brand-500);
+  --bg-container-disable: var(--neutral-200);
+  --bg-success: var(--success-600);
+  --bg-success-light: var(--success-100);
+  --bg-success-light-hover: var(--success-200);
+  --bg-success-light-active: var(--success-300);
+  --bg-success-hover: var(--success-700);
+  --bg-success-active: var(--success-500);
+  --bg-warning: var(--warning-600);
+  --bg-warning-light: var(--warning-100);
+  --bg-warning-light-hover: var(--warning-200);
+  --bg-warning-light-active: var(--warning-300);
+  --bg-warning-hover: var(--warning-700);
+  --bg-warning-active: var(--warning-500);
+  --bg-error: var(--error-600);
+  --bg-error-light: var(--error-100);
+  --bg-error-light-hover: var(--error-200);
+  --bg-error-light-active: var(--error-300);
+  --bg-error-hover: var(--error-700);
+  --bg-error-active: var(--error-500);
+  --bg-neutral: var(--brand-600);
+  --bg-neutral-hover: var(--brand-700);
+  --bg-neutral-active: var(--brand-500);
+  --bg-mask: rgba(0, 0, 0, 0.8);
+
+  /* ==================== Page 页面背景 - Dark 主题 ==================== */
+  --bg-page: var(--neutral-10);
+  --bg-page-brand: var(--brand-50);
+  --bg-page-secondary: var(--neutral-50);
+  --bg-container-secondary: var(--neutral-50);
+
+  /* 边框颜色 */
+  --border-brand: var(--brand-600);
+  --border-brand-hover: var(--brand-700);
+  --border-brand-active: var(--brand-500);
+  --border-brand-light: var(--brand-300);
+  --border-brand-light-hover: var(--brand-400);
+  --border-neutral: var(--neutral-200);
+  --border-success: var(--success-600);
+  --border-success-hover: var(--success-700);
+  --border-success-active: var(--success-500);
+  --border-success-light: var(--success-300);
+  --border-success-light-hover: var(--success-400);
+  --border-warning: var(--warning-600);
+  --border-warning-hover: var(--warning-700);
+  --border-warning-active: var(--warning-500);
+  --border-warning-light: var(--warning-300);
+  --border-warning-light-hover: var(--warning-400);
+  --border-error: var(--error-600);
+  --border-error-hover: var(--error-700);
+  --border-error-active: var(--error-500);
+  --border-error-light: var(--error-300);
+  --border-error-light-hover: var(--error-400);
+  --divider-neutral-basic: var(--neutral-200);
+  --divider-neutral-strong: var(--neutral-300);
+
+  /* ==================== Focusring 聚焦环 - Dark 主题 ==================== */
+  --focusring-brand: var(--brand-300);
+
+  /* ==================== Shadow 阴影 - Dark 主题 ==================== */
+  --shadow-basic: 0 1px 10px 0 #0000000d, 0 4px 5px 0 #00000014, 0 2px 4px -1px #0000001f;
+  --shadow-medium: 0 3px 14px 2px #0000000d, 0 8px 10px 1px #0000000f, 0 5px 5px -3px #0000001a;
+  --shadow-high: 0 6px 30px 5px #0000000d, 0 16px 24px 2px #0000000a, 0 8px 10px -5px #0000001f;
+
+  /* ==================== Focus shadow 聚焦阴影 - Dark 主题 ==================== */
+  --shadow-focus: 0 0 0 2px var(--brand-300);
+
+  /* 边框宽度 - 默认 1px */
+  --border-width: 1px;
 }
 
 @theme inline {
+  /* ==================== Font-family 字体族 ==================== */
+  --font-family-en: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-family-cn: "PingFang SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-family-display: "Source Han Sans SC", "PingFang SC", sans-serif;
+
+  /* 字体 - 向后兼容 */
+  --font-sans: var(--font-family-cn);
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* ==================== Font weight 字重 ==================== */
+  --font-weight-400: 400;
+  --font-weight-600: 600;
+
+  /* ==================== Font size 字号 ==================== */
+  --font-size-1: 12px;
+  --font-size-2: 14px;
+  --font-size-3: 16px;
+  --font-size-4: 20px;
+  --font-size-5: 24px;
+  --font-size-6: 28px;
+  --font-size-7: 36px;
+  --font-size-8: 48px;
+  --font-size-9: 64px;
+
+  /* ==================== Line height 行高 ==================== */
+  --line-height-1: 20px;
+  --line-height-2: 22px;
+  --line-height-3: 24px;
+  --line-height-4: 28px;
+  --line-height-5: 32px;
+  --line-height-6: 36px;
+  --line-height-7: 44px;
+  --line-height-8: 56px;
+  --line-height-9: 72px;
+
+  /* 圆角 - 使用 CSS 变量，可以在主题中覆盖 */
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 10px);
+  --radius-circle: 999px;
+
+  /* ==================== Space 基础间距 ==================== */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 12px;
+  --space-6: 16px;
+  --space-7: 20px;
+  --space-8: 24px;
+  --space-9: 32px;
+  --space-10: 40px;
+  --space-11: 48px;
+  --space-12: 64px;
+
+  /* 间距 - 默认 4px (space-2) */
+  --spacing: var(--space-2);
+
+  /* ==================== Margin 外边距 ==================== */
+  --margin-com-2xs: var(--space-1);
+  --margin-com-xs: var(--space-2);
+  --margin-com-sm: var(--space-3);
+  --margin-com-md: var(--space-4);
+  --margin-com-lg: var(--space-5);
+  --margin-com-xl: var(--space-6);
+  --margin-com-2xl: var(--space-8);
+  --margin-com-3xl: var(--space-9);
+
+  /* ==================== Padding 内边距 ==================== */
+  --padding-com-2xs: var(--space-1);
+  --padding-com-xs: var(--space-2);
+  --padding-com-sm: var(--space-3);
+  --padding-com-md: var(--space-4);
+  --padding-com-lg: var(--space-5);
+  --padding-com-xl: var(--space-6);
+  --padding-com-2xl: var(--space-8);
+  --padding-com-3xl: var(--space-9);
+
+  /* ==================== Gap 间距 ==================== */
+  --gap-2xs: var(--space-1);
+  --gap-xs: var(--space-2);
+  --gap-sm: var(--space-3);
+  --gap-md: var(--space-4);
+  --gap-lg: var(--space-5);
+  --gap-xl: var(--space-6);
+  --gap-2xl: var(--space-8);
+
+  /* ==================== Size 尺寸 ==================== */
+  --size-com-xs: var(--space-7);
+  --size-com-sm: var(--space-8);
+  --size-com-md: var(--space-9);
+  --size-com-lg: var(--space-10);
+
+  /* 边框宽度 - 默认 1px */
+  --border-width: 1px;
+
+  /* 阴影 - 默认基础阴影 */
+  --shadow-basic: 0 1px 10px 0 #0000000d, 0 4px 5px 0 #00000014, 0 2px 4px -1px #0000001f;
+  --shadow-medium: 0 3px 14px 2px #0000000d, 0 8px 10px 1px #0000000f, 0 5px 5px -3px #0000001a;
+  --shadow-high: 0 6px 30px 5px #0000000d, 0 16px 24px 2px #0000000a, 0 8px 10px -5px #0000001f;
+
+  /* 颜色映射到 Tailwind */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+  --color-code: var(--code);
+  --color-code-foreground: var(--code-foreground);
+  --color-code-highlight: var(--code-highlight);
+  --color-code-number: var(--code-number);
+  --color-selection: var(--selection);
+  --color-selection-foreground: var(--selection-foreground);
+
+  /* Neutral 颜色 */
+  --color-neutral-0: var(--neutral-0);
+  --color-neutral-10: var(--neutral-10);
+  --color-neutral-50: var(--neutral-50);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-200: var(--neutral-200);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-400: var(--neutral-400);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-600: var(--neutral-600);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-800: var(--neutral-800);
+  --color-neutral-900: var(--neutral-900);
+  --color-neutral-1000: var(--neutral-1000);
+
+  /* 品牌色 */
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-brand-800: var(--brand-800);
+  --color-brand-900: var(--brand-900);
+  --color-brand-1000: var(--brand-1000);
+
+  /* Success 颜色 */
+  --color-success-50: var(--success-50);
+  --color-success-100: var(--success-100);
+  --color-success-200: var(--success-200);
+  --color-success-300: var(--success-300);
+  --color-success-400: var(--success-400);
+  --color-success-500: var(--success-500);
+  --color-success-600: var(--success-600);
+  --color-success-700: var(--success-700);
+  --color-success-800: var(--success-800);
+  --color-success-900: var(--success-900);
+  --color-success-1000: var(--success-1000);
+  --color-success: var(--success);
+
+  /* Warning 颜色 */
+  --color-warning-50: var(--warning-50);
+  --color-warning-100: var(--warning-100);
+  --color-warning-200: var(--warning-200);
+  --color-warning-300: var(--warning-300);
+  --color-warning-400: var(--warning-400);
+  --color-warning-500: var(--warning-500);
+  --color-warning-600: var(--warning-600);
+  --color-warning-700: var(--warning-700);
+  --color-warning-800: var(--warning-800);
+  --color-warning-900: var(--warning-900);
+  --color-warning-10000: var(--warning-10000);
+  --color-warning: var(--warning);
+
+  /* Error 颜色 */
+  --color-error-50: var(--error-50);
+  --color-error-100: var(--error-100);
+  --color-error-200: var(--error-200);
+  --color-error-300: var(--error-300);
+  --color-error-400: var(--error-400);
+  --color-error-500: var(--error-500);
+  --color-error-600: var(--error-600);
+  --color-error-700: var(--error-700);
+  --color-error-800: var(--error-800);
+  --color-error-900: var(--error-900);
+  --color-error-1000: var(--error-1000);
+  --color-error-10000: var(--error-10000);
+  --color-error: var(--error);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  ::selection {
+    @apply bg-selection text-selection-foreground;
+  }
+
+  html {
+    @apply overscroll-y-none scroll-smooth;
+  }
+
+  body {
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    @apply bg-background text-foreground;
+  }
+
+  /* /themes 页面：只用 CSS 禁止"最外层滚动"，把滚动交给左右列内部容器。
+   * 通过 :has() 检测页面根节点标记，避免影响站点其它页面。
+   */
+  html:has([data-themes-page]),
+  body:has([data-themes-page]) {
+    height: 100dvh;
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
+  /* 关键：让 flex 子级允许缩小，内部 overflow-y-auto 才能生效，不会把外层撑出滚动条 */
+  body:has([data-themes-page]) > * {
+    min-height: 0;
+  }
+
+  /* /compositions 页面：禁用最外层滚动，把滚动交给侧边栏/消息列表内部容器。 */
+  html:has([data-compositions-page]),
+  body:has([data-compositions-page]) {
+    height: 100dvh;
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
+  /* 同上：允许 flex 子级缩小，内部 overflow-y-auto 才能生效 */
+  body:has([data-compositions-page]) > * {
+    min-height: 0;
+  }
+
+  a:active,
+  button:active {
+    @apply opacity-60 md:opacity-100;
+  }
+
+  .border {
+    border-width: var(--border-width);
+  }
+  .border-x {
+    border-left-width: var(--border-width);
+    border-right-width: var(--border-width);
+  }
+  .border-y {
+    border-top-width: var(--border-width);
+    border-bottom-width: var(--border-width);
+  }
+  .border-t {
+    border-top-width: var(--border-width);
+  }
+  .border-r {
+    border-right-width: var(--border-width);
+  }
+  .border-b {
+    border-bottom-width: var(--border-width);
+  }
+  .border-l {
+    border-left-width: var(--border-width);
+  }
+  .font-size-1 {
+    font-size: var(--font-size-1);
+  }
+  .font-size-2 {
+    font-size: var(--font-size-2);
+  }
+  .font-size-3 {
+    font-size: var(--font-size-3);
+  }
+  .font-size-4 {
+    font-size: var(--font-size-4);
+  }
+  .font-size-5 {
+    font-size: var(--font-size-5);
+  }
+  .font-size-6 {
+    font-size: var(--font-size-6);
+  }
+  .font-semibold {
+    font-weight: 600;
+  }
+}
+
+@utility theme-container {
+  @apply font-sans;
+}
+
+/* 让主题变量 `--border-width` 真正影响到组件边框宽度。
+ * 说明：Tailwind 的 `.border` / `.border-*` 默认会写死 1px/2px，
+ * 我们在 utilities layer 里覆盖它们，使其跟随 CSS 变量。
+ */
+
+@utility container-wrapper {
+  @apply mx-auto w-full px-2;
+}
+
+@utility container {
+  @apply mx-auto max-w-[1400px] px-4 lg:px-8;
+}
+
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility step {
+  counter-increment: step;
+  @apply relative;
+
+  &:before {
+    @apply text-muted-foreground right-0 mr-2 hidden size-7 items-center justify-center rounded-full text-center -indent-px font-mono text-sm font-medium md:absolute;
+    content: counter(step);
+  }
 }

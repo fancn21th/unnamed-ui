@@ -38,7 +38,7 @@ function parseCssVars(blockContent: string): CssVarsMap {
 }
 
 export function getWuhanStyleCssVars() {
-  const globalsPath = path.join(process.cwd(), "styles", "globals.css");
+  const globalsPath = path.join(process.cwd(), "registry", "wuhan", "style", "globals.css");
   const raw = readFileSync(globalsPath, "utf-8");
 
   // Tailwind v4 tokens are defined in `@theme inline { ... }` in this repo.

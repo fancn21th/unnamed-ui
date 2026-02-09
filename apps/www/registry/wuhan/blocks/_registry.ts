@@ -484,7 +484,8 @@ export const blocks: Registry["items"] = [
     type: "registry:block",
     title: "SplitPane",
     description: "分隔面板",
-    registryDependencies: ["style"],
+    dependencies: ["lucide-react"],
+    registryDependencies: ["resizable"],
     files: [
       {
         path: "blocks/split-pane/split-pane-01.tsx",

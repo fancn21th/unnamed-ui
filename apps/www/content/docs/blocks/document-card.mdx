@@ -1,0 +1,209 @@
+---
+title: Document Card
+description: A document card component for displaying research document information and attributes
+author: AF
+---
+
+<ComponentPreview name="document-card-demo" description="文档卡片示例" className="mb-4" />
+
+Document Card 组件是一个用于展示研究类文档基本信息和属性的卡片组件。适用于研究报告、学术论文、市场分析等文档展示场景。
+
+## 核心特性
+
+| 特性 | 描述 |
+|------|------|
+| **结构化展示** | 头部信息 + 分割线 + 属性列表的清晰布局 |
+| **灵活属性** | 支持研究主题、研究领域、研究周期等属性 |
+| **自定义图标** | 支持自定义头部图标或使用默认图标 |
+| **交互支持** | 支持点击事件，可选择是否显示 hover 效果 |
+| **列表展示** | 提供 DocumentCardList 组件用于批量展示 |
+| **类型安全** | 完整的 TypeScript 类型定义 |
+
+## 快速开始
+
+### 基本使用
+
+使用简单的 props 快速创建文档卡片。
+
+```tsx
+import { DocumentCard } from "@/registry/wuhan/composed/document-card/document-card";
+
+<DocumentCard
+  title="AI趋势研究"
+  updateTime="18:21"
+  researchTopic="标签"
+  researchField="商业投资"
+  researchPeriod="2015-2025"
+/>
+```
+
+### 自定义图标
+
+通过 `icon` prop 自定义头部图标。
+
+```tsx
+import { DocumentCard } from "@/registry/wuhan/composed/document-card/document-card";
+import { FileSearch } from "lucide-react";
+
+<DocumentCard
+  icon={<FileSearch className="text-[var(--text-primary)]" size={24} />}
+  title="市场分析报告"
+  updateTime="17:30"
+  researchTopic="分析"
+  researchField="消费品"
+  researchPeriod="2020-2024"
+/>
+```
+
+### 点击交互
+
+通过 `onClick` prop 添加点击事件。
+
+```tsx
+<DocumentCard
+  title="行业洞察"
+  updateTime="14:15"
+  researchTopic="洞察报告"
+  researchField="金融服务"
+  researchPeriod="2019-2025"
+  onClick={() => {
+    console.log("卡片被点击");
+    // 跳转到详情页等操作
+  }}
+/>
+```
+
+## 组件变体
+
+### 单个卡片 (DocumentCard)
+
+用于展示单个文档卡片，支持所有属性的灵活配置。
+
+```tsx
+import { DocumentCard } from "@/registry/wuhan/composed/document-card/document-card";
+
+<DocumentCard
+  title="AI趋势研究"
+  updateTime="18:21"
+  researchTopic="标签"
+  researchField="商业投资"
+  researchPeriod="2015-2025"
+  onClick={() => console.log("点击卡片")}
+/>
+```
+
+### 卡片列表 (DocumentCardList)
+
+用于批量展示多个文档卡片，支持统一配置和事件处理。
+
+```tsx
+import { DocumentCardList } from "@/registry/wuhan/composed/document-card/document-card";
+
+const cards = [
+  {
+    id: "1",
+    title: "AI趋势研究",
+    updateTime: "18:21",
+    researchTopic: "标签",
+    researchField: "商业投资",
+    researchPeriod: "2015-2025",
+  },
+  {
+    id: "2",
+    title: "数据分析报告",
+    updateTime: "17:30",
+    researchTopic: "可视化",
+    researchField: "消费品",
+    researchPeriod: "2020-2024",
+  },
+];
+
+<DocumentCardList
+  title="我的文档"
+  cards={cards}
+  onCardClick={(id) => console.log("点击卡片", id)}
+/>
+```
+
+## API 参考
+
+### DocumentCard Props
+
+| Prop | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `title` | `string` | No | - | 卡片标题 |
+| `updateTime` | `string` | No | - | 更新时间（会自动添加"更新时间："前缀） |
+| `researchTopic` | `string` | No | - | 研究主题（带边框显示） |
+| `researchField` | `string` | No | - | 研究领域 |
+| `researchPeriod` | `string` | No | - | 研究周期 |
+| `icon` | `ReactNode` | No | `<DocumentCardDefaultIcon />` | 自定义图标 |
+| `onClick` | `() => void` | No | - | 点击事件回调 |
+| `className` | `string` | No | - | 自定义样式类名 |
+
+### DocumentCardList Props
+
+| Prop | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `title` | `string` | No | `"文档列表"` | 列表标题 |
+| `cards` | `DocumentCardItem[]` | No | `[]` | 卡片数据列表 |
+| `onCardClick` | `(id: string) => void` | No | - | 卡片点击回调 |
+| `className` | `string` | No | - | 自定义样式类名 |
+
+### DocumentCardItem 接口
+
+```typescript
+interface DocumentCardItem {
+  id: string;                    // 唯一标识符
+  title: string;                // 卡片标题
+  updateTime: string;            // 更新时间
+  researchTopic: string;          // 研究主题
+  researchField: string;         // 研究领域
+  researchPeriod: string;        // 研究周期
+  icon?: React.ReactNode;        // 自定义图标（可选）
+  onClick?: () => void;          // 点击事件（可选）
+}
+```
+
+## 设计指南
+
+### 使用场景
+
+- **研究报告**：展示研究标题、更新时间、研究主题、领域和周期
+- **学术论文**：显示论文标题、更新时间、分类标签、研究方向
+- **市场分析**：呈现分析报告标题、更新状态、研究范围和时间跨度
+- **知识库文档**：展示文档标题、最近更新时间、分类和有效期限
+
+### 布局结构
+
+```
+┌─────────────────────────────────────┐
+│  📋         AI趋势研究               │
+│              更新时间：18:21          │
+├─────────────────────────────────────┤
+│                                     │
+│  研究主题：┌──────────┐              │
+│           │   标签   │              │
+│           └──────────┘              │
+│                                     │
+│  研究领域：商业投资                   │
+│                                     │
+│  研究周期：2015-2025                 │
+│                                     │
+└─────────────────────────────────────┘
+```
+
+### 最佳实践
+
+1. **标题简洁**：保持标题简短明确，避免过长文本
+2. **更新时间格式化**：使用清晰的时间格式，如 "18:21" 或 "2024-08-04"
+3. **研究主题使用边框**：研究主题使用带边框的标签容器，突出显示
+4. **合理使用图标**：选择与文档类型相关的图标，增强视觉识别
+5. **批量展示时使用列表**：多个卡片使用 DocumentCardList 统一管理
+
+## 注意事项
+
+- 研究主题会自动添加边框样式，其他属性为普通文本
+- 图标默认使用 24x24 尺寸，自定义图标时建议保持一致
+- 卡片宽度默认撑满容器，可在父级设置固定宽度
+- hover 状态有轻微的阴影加深效果
+

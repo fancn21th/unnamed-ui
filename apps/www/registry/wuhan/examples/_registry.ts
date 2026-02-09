@@ -2330,4 +2330,30 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  // goal-card examples
+  {
+    name: "goal-card-demo",
+    type: "registry:example",
+    registryDependencies: ["goal-card"],
+    files: [
+      {
+        path: "examples/goal-card/goal-card-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/goal-card-demo.tsx",
+      },
+    ],
+  },
+  // document-card examples
+  {
+    name: "document-card-demo",
+    type: "registry:example",
+    registryDependencies: ["document-card"],
+    files: [
+      {
+        path: "examples/document-card/document-card-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/document-card-demo.tsx",
+      },
+    ],
+  },
 ];

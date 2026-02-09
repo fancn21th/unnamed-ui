@@ -509,4 +509,36 @@ export const blocks: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "goal-card-01",
+    type: "registry:block",
+    title: "Goal Card",
+    description:
+      "Goal card component with AI icon, title, description, and circular progress indicator",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["style"],
+    files: [
+      {
+        path: "blocks/goal-card/goal-card-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/goal-card-01.tsx",
+      },
+    ],
+  },
+  {
+    name: "document-card-01",
+    type: "registry:block",
+    title: "Document Card",
+    description:
+      "Document card primitives for displaying research document information and attributes",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["style"],
+    files: [
+      {
+        path: "blocks/document-card/document-card-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/document-card-01.tsx",
+      },
+    ],
+  },
 ];

@@ -601,4 +601,52 @@ export const composed: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "goal-card",
+    type: "registry:block",
+    title: "Goal Card",
+    description:
+      "Composed goal card with AI icon, title, description, and circular progress indicator",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["goal-card-01"],
+    files: [
+      {
+        path: "composed/goal-card/goal-card.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/goal-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "report-card",
+    type: "registry:block",
+    title: "Report Card",
+    description:
+      "Composed report card with icon, title, description, and hover actions",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["report-card-01"],
+    files: [
+      {
+        path: "composed/report-card/report-card.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/report-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "document-card",
+    type: "registry:block",
+    title: "Document Card",
+    description:
+      "Document card component for displaying research document information and attributes",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["document-card-01"],
+    files: [
+      {
+        path: "composed/document-card/document-card.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/document-card.tsx",
+      },
+    ],
+  },
 ];

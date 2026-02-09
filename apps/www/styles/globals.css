@@ -4,6 +4,9 @@
 
 @import "./themes.css";
 
+/* Wuhan 风格变量 - 以此为准 */
+@import "../registry/wuhan/style/globals.css";
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -427,6 +430,7 @@
   --bg-neutral-light: var(--neutral-100);
   --bg-neutral-light-hover: var(--neutral-200);
   --bg-neutral-light-active: var(--neutral-300);
+  --bg-container-placeholder: var(--neutral-200);
   --bg-brand-light: var(--brand-100);
   --bg-brand-light-hover: var(--brand-200);
   --bg-brand-light-active: var(--brand-300);
@@ -660,6 +664,7 @@
   --bg-neutral-light: var(--neutral-100);
   --bg-neutral-light-hover: var(--neutral-200);
   --bg-neutral-light-active: var(--neutral-300);
+  --bg-container-placeholder: var(--neutral-200);
   --bg-brand-light: var(--brand-100);
   --bg-brand-light-hover: var(--brand-200);
   --bg-brand-light-active: var(--brand-300);

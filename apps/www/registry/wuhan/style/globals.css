@@ -5,156 +5,6 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* ==================== 颜色系统 ==================== */
-
-  /* Brand - 主色 */
-  --text-brand: #4A56FF;
-  --text-brand-hover: #3B46E6;
-  --text-brand-active: #2F36CC;
-
-  --bg-brand: #4A56FF;
-  --bg-brand-hover: #3B46E6;
-  --bg-brand-active: #2F36CC;
-  --bg-brand-light: #E8EAFF;
-  --bg-brand-light-hover: #D8DAFF;
-  --bg-brand-light-active: #C8CAFA;
-
-  --border-brand: #4A56FF;
-
-  /* Secondary - 次要色 */
-  --text-secondary: #6B7280;
-  --text-secondary-hover: #5B6178;
-  --text-secondary-active: #4B5168;
-
-  --bg-secondary: #6B7280;
-  --bg-secondary-hover: #5B6178;
-  --bg-secondary-active: #4B5168;
-  --bg-secondary-light: #F3F4F6;
-  --bg-secondary-light-hover: #E5E7EB;
-  --bg-secondary-light-active: #D1D5DB;
-
-  --border-secondary: #6B7280;
-
-  /* Danger - 危险色 */
-  --text-error: #F04438;
-  --text-error-hover: #D32D24;
-  --text-error-active: #C1261A;
-
-  --bg-error: #F04438;
-  --bg-error-hover: #D32D24;
-  --bg-error-active: #C1261A;
-  --bg-error-light: #FEE2E2;
-  --bg-error-light-hover: #FECACA;
-  --bg-error-light-active: #FECACA;
-
-  --border-error: #F04438;
-
-  /* Neutral - 中性色 */
-  --text-primary: #1F2937;
-  --text-secondary-2nd: #4B5563;
-  --text-tertiary: #9CA3AF;
-  --text-placeholder: #D1D5DB;
-  --text-inverse: #FFFFFF;
-
-  --bg-container: #FFFFFF;
-  --bg-container-secondary: #F9FAFB;
-  --bg-neutral: #F3F4F6;
-  --bg-neutral-light: #F9FAFB;
-  --bg-neutral-light-hover: #F3F4F6;
-  --bg-neutral-light-active: #E5E7EB;
-  --bg-container-disable: #F3F4F6;
-
-  --bg-mask: rgba(0, 0, 0, 0.5);
-
-  --text-disable: #9CA3AF;
-
-  /* 边框颜色 */
-  --border-neutral: #E5E7EB;
-  --border-neutral-basic: #E5E7EB;
-
-  /* ==================== 间距系统 ==================== */
-
-  /* Gap */
-  --gap-xs: 4px;
-  --gap-sm: 6px;
-  --gap-md: 8px;
-  --gap-lg: 12px;
-  --gap-xl: 16px;
-
-  /* Padding - Com */
-  --padding-com-xs: 4px;
-  --padding-com-sm: 6px;
-  --padding-com-md: 8px;
-  --padding-com-lg: 12px;
-  --padding-com-xl: 16px;
-  --padding-com-2xl: 24px;
-
-  /* Padding - Side */
-  --padding-side-xs: 4px;
-  --padding-side-sm: 8px;
-  --padding-side-md: 12px;
-  --padding-side-lg: 16px;
-  --padding-side-xl: 20px;
-  --padding-side-2xl: 24px;
-
-  /* Space */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 20px;
-  --space-6: 24px;
-  --space-8: 32px;
-
-  /* Margin - Com */
-  --margin-com-xs: 4px;
-  --margin-com-sm: 6px;
-  --margin-com-md: 8px;
-  --margin-com-lg: 12px;
-  --margin-com-xl: 16px;
-
-  /* ==================== 圆角系统 ==================== */
-
-  --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-  --radius-circle: 9999px;
-  --radius-full: 9999px;
-
-  /* ==================== 字体系统 ==================== */
-
-  --font-family-cn: "PingFang SC", "Microsoft YaHei", sans-serif;
-  --font-family-en: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-
-  --font-weight-400: 400;
-  --font-weight-500: 500;
-  --font-weight-600: 600;
-
-  --font-size-1: 12px;
-  --font-size-2: 14px;
-  --font-size-3: 16px;
-  --font-size-4: 18px;
-  --font-size-5: 20px;
-  --font-size-6: 24px;
-
-  --line-height-1: 18px;
-  --line-height-2: 20px;
-  --line-height-3: 24px;
-  --line-height-4: 28px;
-  --line-height-5: 32px;
-
-  /* ==================== 边框宽度 ==================== */
-
-  --border-width: 1px;
-  --border-width-2: 2px;
-
-  /* ==================== 阴影系统 ==================== */
-
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-
   /* ==================== Thinking loading pulse animation ==================== */
   @keyframes thinking-loading-pulse {
     0%,
@@ -220,58 +70,57 @@
   --radius-xl: 12px;
   --radius-2xl: 16px;
   --radius-circle: 999px;
-
+  
   /* 背景和前景 - 基于 tokens Light.Neutral */
   --background: var(--neutral-0); /* #ffffff */
   --foreground: var(--neutral-900); /* #1e1d26 */
-
   /* 卡片 - 基于 tokens Container.bg-container */
   --card: var(--neutral-0); /* #ffffff */
   --card-foreground: var(--neutral-900); /* #1e1d26 */
-
+  
   /* 弹出层 */
   --popover: var(--neutral-0); /* #ffffff */
   --popover-foreground: var(--neutral-900); /* #1e1d26 */
-
+  
   /* 主色 - 使用品牌色 Light.Brand.brand-600 */
   --primary: var(--brand-600); /* #4a56ff */
   --primary-foreground: var(--neutral-0); /* #ffffff */
-
+  
   /* 次要色 - 基于 tokens Container.bg-neutral-light */
   --secondary: var(--neutral-100); /* #F6F6FA */
   --secondary-foreground: var(--neutral-900); /* #1e1d26 */
-
+  
   /* 静音色 - 基于 tokens Container.bg-neutral-light */
   --muted: var(--neutral-100); /* #F6F6FA */
   --muted-foreground: var(--neutral-700); /* #666473 */
-
+  
   /* 强调色 */
   --accent: var(--neutral-100); /* #F6F6FA */
   --accent-foreground: var(--neutral-900); /* #1e1d26 */
-
+  
   /* 破坏性操作 - 基于 tokens Error.error-600 */
   --destructive: var(--error-600); /* #ff494f */
   --destructive-foreground: var(--neutral-0); /* #ffffff */
-
+  
   /* 边框和输入 - 基于 tokens Border.border-neutral */
   --border: var(--neutral-300); /* #e1e0e7 */
   --input: var(--neutral-300); /* #e1e0e7 */
   --ring: var(--brand-300); /* #d0ddff - Focusring.focusring-brand */
-
+  
   /* 表面 - 基于 tokens Page.bg-page-netural */
   --surface: var(--neutral-50); /* #f9f9fb */
   --surface-foreground: var(--neutral-900); /* #1e1d26 */
-
+  
   /* 代码块 */
   --code: #f9f9fb;
   --code-foreground: #1e1d26;
   --code-highlight: #f0f0f4;
   --code-number: #9e9ca6;
-
+  
   /* 文本选择 */
   --selection: #1e1d26;
   --selection-foreground: #ffffff;
-
+  
   /* Neutral 颜色 - Light 主题 */
   --neutral-0: #ffffff;
   --neutral-10: #fcfcfd;
@@ -286,7 +135,7 @@
   --neutral-800: #403f4d;
   --neutral-900: #1e1d26;
   --neutral-1000: #000000;
-
+  
   /* 品牌色 - Light 主题 */
   --brand-50: #f7f9ff;
   --brand-100: #edf2ff;
@@ -299,7 +148,7 @@
   --brand-800: #2222b3;
   --brand-900: #18148c;
   --brand-1000: #130d66;
-
+  
   /* Success 颜色 - Light 主题 */
   --success-50: #f3fcf6;
   --success-100: #e2f8ec;
@@ -314,7 +163,7 @@
   --success-1000: #00211b;
   --success: var(--success-600);
   --success-foreground: #ffffff;
-
+  
   /* Warning 颜色 - Light 主题 */
   --warning-50: #fff6f1;
   --warning-100: #ffebe0;
@@ -329,7 +178,7 @@
   --warning-1000: #611905;
   --warning: var(--warning-600);
   --warning-foreground: #ffffff;
-
+  
   /* Error 颜色 - Light 主题 */
   --error-50: #fff7f6;
   --error-100: #ffebe9;
@@ -344,7 +193,7 @@
   --error-10000: #660d1c;
   --error: var(--error-600);
   --error-foreground: #ffffff;
-
+  
   /* ==================== Text&icon 文本和图标颜色 - Light 主题 ==================== */
   --text-primary: var(--neutral-800);
   --text-secondary: var(--neutral-700);
@@ -399,13 +248,13 @@
   --bg-neutral-hover: var(--neutral-700);
   --bg-neutral-active: var(--neutral-900);
   --bg-mask: rgba(0, 0, 0, 0.8);
-
+  
   /* ==================== Page 页面背景 - Light 主题 ==================== */
   --bg-page: var(--neutral-0);
   --bg-page-brand: var(--brand-50);
   --bg-page-secondary: var(--neutral-50);
   --bg-container-secondary: var(--neutral-50);
-
+  
   /* 边框颜色 */
   --border-brand: var(--brand-600);
   --border-brand-hover: var(--brand-500);
@@ -430,18 +279,18 @@
   --border-error-light-hover: var(--error-400);
   --divider-neutral-basic: var(--neutral-200);
   --divider-neutral-strong: var(--neutral-300);
-
+  
   /* ==================== Focusring 聚焦环 - Light 主题 ==================== */
   --focusring-brand: var(--brand-300);
-
+  
   /* ==================== Shadow 阴影 - Light 主题 ==================== */
   --shadow-basic: 0 1px 10px 0 #0000000d, 0 4px 5px 0 #00000014, 0 2px 4px -1px #0000001f;
   --shadow-medium: 0 3px 14px 2px #0000000d, 0 8px 10px 1px #0000000f, 0 5px 5px -3px #0000001a;
   --shadow-high: 0 6px 30px 5px #0000000d, 0 16px 24px 2px #0000000a, 0 8px 10px -5px #0000001f;
-
+  
   /* ==================== Focus shadow 聚焦阴影 - Light 主题 ==================== */
   --shadow-focus: 0 0 0 2px #d0ddff;
-
+  
   /* ==================== AI 渐变背景 - Light 主题 ==================== */
   --ai-bg: linear-gradient(90deg, #eff7ff 0%, #f4f4ff 30%, #f8edff 60%, #fff2ff 100%);
   --ai-light: linear-gradient(90deg, #eff7ff 0%, #f4f4ff 30%, #f8edff 60%, #fff2ff 100%);
@@ -453,124 +302,57 @@
 }
 
 .dark {
-  /* ==================== 深色模式颜色 ==================== */
-
-  /* Brand - 主色 */
-  --text-brand: #6B72FF;
-  --text-brand-hover: #8289FF;
-  --text-brand-active: #4A56FF;
-
-  --bg-brand: #6B72FF;
-  --bg-brand-hover: #8289FF;
-  --bg-brand-active: #4A56FF;
-  --bg-brand-light: #1F2352;
-  --bg-brand-light-hover: #2A3070;
-  --bg-brand-light-active: #353D8F;
-
-  --border-brand: #6B72FF;
-
-  /* Secondary - 次要色 */
-  --text-secondary: #9CA3AF;
-  --text-secondary-hover: #ADAFBE;
-  --text-secondary-active: #BDBDCD;
-
-  --bg-secondary: #4B5563;
-  --bg-secondary-hover: #5B6178;
-  --bg-secondary-active: #6B7280;
-  --bg-secondary-light: #1F2937;
-  --bg-secondary-light-hover: #2D3342;
-  --bg-secondary-light-active: #3B4252;
-
-  --border-secondary: #4B5563;
-
-  /* Danger - 危险色 */
-  --text-error: #F66B5C;
-  --text-error-hover: #F88073;
-  --text-error-active: #F04438;
-
-  --bg-error: #F66B5C;
-  --bg-error-hover: #F88073;
-  --bg-error-active: #F04438;
-  --bg-error-light: #450A0A;
-  --bg-error-light-hover: #5C1313;
-  --bg-error-light-active: #741B1B;
-
-  --border-error: #F66B5C;
-
-  /* Neutral - 中性色 */
-  --text-primary: #F9FAFB;
-  --text-secondary-2nd: #D1D5DB;
-  --text-tertiary: #6B7280;
-  --text-placeholder: #4B5563;
-  --text-inverse: #1F2937;
-
-  --bg-container: #1F2937;
-  --bg-container-secondary: #111827;
-  --bg-neutral: #374151;
-  --bg-neutral-light: #1F2937;
-  --bg-neutral-light-hover: #2D3342;
-  --bg-neutral-light-active: #3B4252;
-  --bg-container-disable: #1F2937;
-
-  --bg-mask: rgba(0, 0, 0, 0.6);
-
-  --text-disable: #6B7280;
-
-  /* 边框颜色 */
-  --border-neutral: #374151;
-  --border-neutral-basic: #374151;
-
   /* 背景和前景 - 基于 tokens Dark.Neutral */
   --background: var(--neutral-10); /* #141414 */
   --foreground: var(--neutral-900); /* #b2afba */
-
+  
   /* 卡片 - 基于 tokens Dark Container.bg-container */
   --card: var(--neutral-10); /* #141414 */
   --card-foreground: var(--neutral-900); /* #b2afba */
-
+  
   /* 弹出层 */
   --popover: var(--neutral-50); /* #1b1a1d */
   --popover-foreground: var(--neutral-900); /* #b2afba */
-
+  
   /* 主色 - 使用品牌色 Dark.Brand.brand-600 */
   --primary: var(--brand-600); /* #424cdc */
   --primary-foreground: var(--neutral-0); /* #ffffff */
-
+  
   /* 次要色 - 基于 tokens Dark Container.bg-neutral-light */
   --secondary: var(--neutral-100); /* #232326 */
   --secondary-foreground: var(--neutral-900); /* #b2afba */
-
+  
   /* 静音色 */
   --muted: var(--neutral-100); /* #232326 */
   --muted-foreground: var(--neutral-700); /* #908e97 */
-
+  
   /* 强调色 */
   --accent: var(--neutral-100); /* #232326 */
   --accent-foreground: var(--neutral-900); /* #b2afba */
-
+  
   /* 破坏性操作 - 基于 tokens Dark Error.error-600 */
   --destructive: var(--error-600); /* #dc4146 */
   --destructive-foreground: var(--neutral-0); /* #ffffff */
-
+  
   /* 边框和输入 - 基于 tokens Dark Border.border-neutral */
   --border: var(--neutral-300); /* #313136 */
   --input: var(--neutral-300); /* #313136 */
   --ring: var(--brand-300); /* #283283 - Focusring.focusring-brand */
-
+  
   /* 表面 - 基于 tokens Dark Page.bg-page-netural */
   --surface: var(--neutral-50); /* #1b1a1d */
   --surface-foreground: var(--neutral-700); /* #908e97 */
-
+  
   /* 代码块 */
   --code: #1b1a1d;
   --code-foreground: #b2afba;
   --code-highlight: #232326;
   --code-number: #7c7a85;
-
+  
   /* 文本选择 */
   --selection: #b2afba;
   --selection-foreground: #141414;
-
+  
   /* Neutral 颜色 - Dark 主题 */
   --neutral-0: #000000;
   --neutral-10: #141414;
@@ -585,7 +367,7 @@
   --neutral-800: #a3a1ab;
   --neutral-900: #b2afba;
   --neutral-1000: #c0bdc8;
-
+  
   /* 品牌色 - Dark 主题 */
   --brand-50: #12172a;
   --brand-100: #192152;
@@ -598,7 +380,7 @@
   --brand-800: #95a2f3;
   --brand-900: #bfc8f8;
   --brand-1000: #e9edfa;
-
+  
   /* Success 颜色 - Dark 主题 */
   --success-50: #121c16;
   --success-100: #122d20;
@@ -613,7 +395,7 @@
   --success-1000: #9ce9c5;
   --success: var(--success-600);
   --success-foreground: #ffffff;
-
+  
   /* Warning 颜色 - Dark 主题 */
   --warning-50: #1f1612;
   --warning-100: #341d12;
@@ -628,7 +410,7 @@
   --warning-10000: #fae7d5;
   --warning: var(--warning-600);
   --warning-foreground: #ffffff;
-
+  
   /* Error 颜色 - Dark 主题 */
   --error-50: #221211;
   --error-100: #400d0e;
@@ -643,7 +425,7 @@
   --error-1000: #faebe9;
   --error: var(--error-600);
   --error-foreground: #ffffff;
-
+  
   /* ==================== Text&icon 文本和图标颜色 - Dark 主题 ==================== */
   --text-primary: var(--neutral-800);
   --text-secondary: var(--neutral-700);
@@ -664,7 +446,7 @@
   --text-error: var(--error-600);
   --text-error-hover: var(--error-700);
   --text-error-active: var(--error-500);
-
+  
   /* ==================== Container 容器背景 - Dark 主题 ==================== */
   --bg-container: var(--neutral-10);
   --bg-neutral-light: var(--neutral-100);
@@ -699,13 +481,13 @@
   --bg-neutral-hover: var(--brand-700);
   --bg-neutral-active: var(--brand-500);
   --bg-mask: rgba(0, 0, 0, 0.8);
-
+  
   /* ==================== Page 页面背景 - Dark 主题 ==================== */
   --bg-page: var(--neutral-10);
   --bg-page-brand: var(--brand-50);
   --bg-page-secondary: var(--neutral-50);
   --bg-container-secondary: var(--neutral-50);
-
+  
   /* 边框颜色 */
   --border-brand: var(--brand-600);
   --border-brand-hover: var(--brand-700);
@@ -730,18 +512,18 @@
   --border-error-light-hover: var(--error-400);
   --divider-neutral-basic: var(--neutral-200);
   --divider-neutral-strong: var(--neutral-300);
-
+  
   /* ==================== Focusring 聚焦环 - Dark 主题 ==================== */
   --focusring-brand: var(--brand-300);
-
+  
   /* ==================== Shadow 阴影 - Dark 主题 ==================== */
   --shadow-basic: 0 1px 10px 0 #0000000d, 0 4px 5px 0 #00000014, 0 2px 4px -1px #0000001f;
   --shadow-medium: 0 3px 14px 2px #0000000d, 0 8px 10px 1px #0000000f, 0 5px 5px -3px #0000001a;
   --shadow-high: 0 6px 30px 5px #0000000d, 0 16px 24px 2px #0000000a, 0 8px 10px -5px #0000001f;
-
+  
   /* ==================== Focus shadow 聚焦阴影 - Dark 主题 ==================== */
   --shadow-focus: 0 0 0 2px var(--brand-300);
-
+  
   /* 边框宽度 - 默认 1px */
   --border-width: 1px;
 }

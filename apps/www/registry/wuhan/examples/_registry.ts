@@ -2704,4 +2704,70 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "progress-demo",
+    type: "registry:example",
+    registryDependencies: ["progress"],
+    files: [
+      {
+        path: "examples/progress/progress-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "progress-line",
+    type: "registry:example",
+    registryDependencies: ["progress"],
+    files: [
+      {
+        path: "examples/progress/progress-line.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "progress-circle",
+    type: "registry:example",
+    registryDependencies: ["progress"],
+    files: [
+      {
+        path: "examples/progress/progress-circle.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "progress-steps",
+    type: "registry:example",
+    registryDependencies: ["progress"],
+    files: [
+      {
+        path: "examples/progress/progress-steps.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "progress-format",
+    type: "registry:example",
+    registryDependencies: ["progress"],
+    files: [
+      {
+        path: "examples/progress/progress-format.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "progress-dynamic",
+    type: "registry:example",
+    registryDependencies: ["progress"],
+    files: [
+      {
+        path: "examples/progress/progress-dynamic.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ];

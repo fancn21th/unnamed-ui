@@ -8960,5 +8960,155 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "progress-demo": {
+      name: "progress-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["progress"],
+      files: [
+        {
+          path: "registry/wuhan/examples/progress/progress-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/progress/progress-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "progress-line": {
+      name: "progress-line",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["progress"],
+      files: [
+        {
+          path: "registry/wuhan/examples/progress/progress-line.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/progress/progress-line.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "progress-circle": {
+      name: "progress-circle",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["progress"],
+      files: [
+        {
+          path: "registry/wuhan/examples/progress/progress-circle.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/progress/progress-circle.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "progress-steps": {
+      name: "progress-steps",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["progress"],
+      files: [
+        {
+          path: "registry/wuhan/examples/progress/progress-steps.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/progress/progress-steps.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "progress-format": {
+      name: "progress-format",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["progress"],
+      files: [
+        {
+          path: "registry/wuhan/examples/progress/progress-format.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/progress/progress-format.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "progress-dynamic": {
+      name: "progress-dynamic",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["progress"],
+      files: [
+        {
+          path: "registry/wuhan/examples/progress/progress-dynamic.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/progress/progress-dynamic.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
   },
 };

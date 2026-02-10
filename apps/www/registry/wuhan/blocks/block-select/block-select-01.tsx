@@ -22,7 +22,9 @@ const TRIGGER_BASE_STYLES = [
 
 const TRIGGER_HOVER_STYLES = ["hover:border-[var(--border-brand)]"] as const;
 
-const TRIGGER_MULTI_DISABLED_HOVER = ["hover:border-[var(--border-neutral)]"] as const;
+const TRIGGER_MULTI_DISABLED_HOVER = [
+  "hover:border-[var(--border-neutral)]",
+] as const;
 
 const TRIGGER_FOCUS_STYLES = [
   "focus:outline-none",
@@ -60,10 +62,7 @@ const ITEM_BASE_STYLES = [
 
 const ITEM_HOVER_STYLES = ["hover:bg-[var(--bg-neutral-light)]"] as const;
 
-const ITEM_DISABLED_STYLES = [
-  "opacity-50",
-  "cursor-not-allowed",
-] as const;
+const ITEM_DISABLED_STYLES = ["opacity-50", "cursor-not-allowed"] as const;
 //#endregion
 
 //#region Tag 原语
@@ -247,7 +246,7 @@ export const SelectItemPrimitive = React.forwardRef<
         "font-size-2",
         "text-[var(--text-primary)]",
         // 复用共用样式
-        ...ITEM_BASE_STYLES.filter(s => !s.includes('gap-2')),
+        ...ITEM_BASE_STYLES.filter((s) => !s.includes("gap-2")),
         // Hover 状态
         "data-[highlighted]:bg-[var(--bg-neutral-light)]",
         // Focus 状态
@@ -376,8 +375,9 @@ export const MultiSelectRootPrimitive = PopoverPrimitive.Root;
  * MultiSelect Trigger 原语
  * 多选模式下的触发器，基于 Popover.Trigger
  */
-export interface MultiSelectTriggerPrimitiveProps
-  extends React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Trigger> {
+export interface MultiSelectTriggerPrimitiveProps extends React.ComponentPropsWithoutRef<
+  typeof PopoverPrimitive.Trigger
+> {
   fullRounded?: boolean;
   disabled?: boolean;
 }
@@ -426,8 +426,7 @@ MultiSelectTriggerPrimitive.displayName = "MultiSelectTriggerPrimitive";
  * MultiSelect Trigger Container 原语
  * 多选触发器的容器，用于 asChild 模式
  */
-export interface MultiSelectTriggerContainerPrimitiveProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface MultiSelectTriggerContainerPrimitiveProps extends React.HTMLAttributes<HTMLDivElement> {
   fullRounded?: boolean;
   disabled?: boolean;
 }
@@ -451,7 +450,10 @@ export const MultiSelectTriggerContainerPrimitive = React.forwardRef<
         "data-[state=open]:ring-2",
         "data-[state=open]:ring-[var(--ring)]",
         // Disabled 状态
-        disabled && [...TRIGGER_DISABLED_STYLES, ...TRIGGER_MULTI_DISABLED_HOVER],
+        disabled && [
+          ...TRIGGER_DISABLED_STYLES,
+          ...TRIGGER_MULTI_DISABLED_HOVER,
+        ],
         className,
       )}
       {...props}
@@ -460,7 +462,8 @@ export const MultiSelectTriggerContainerPrimitive = React.forwardRef<
     </div>
   );
 });
-MultiSelectTriggerContainerPrimitive.displayName = "MultiSelectTriggerContainerPrimitive";
+MultiSelectTriggerContainerPrimitive.displayName =
+  "MultiSelectTriggerContainerPrimitive";
 //#endregion
 
 //#region MultiSelectIconContainer 原语
@@ -473,16 +476,13 @@ export const MultiSelectIconContainerPrimitive = React.forwardRef<
   React.HTMLAttributes<HTMLSpanElement>
 >(({ className, children, ...props }, ref) => {
   return (
-    <span
-      ref={ref}
-      className={cn("flex-shrink-0", className)}
-      {...props}
-    >
+    <span ref={ref} className={cn("flex-shrink-0", className)} {...props}>
       {children}
     </span>
   );
 });
-MultiSelectIconContainerPrimitive.displayName = "MultiSelectIconContainerPrimitive";
+MultiSelectIconContainerPrimitive.displayName =
+  "MultiSelectIconContainerPrimitive";
 //#endregion
 
 //#region MultiSelectValueContainer 原语
@@ -507,7 +507,8 @@ export const MultiSelectValueContainerPrimitive = React.forwardRef<
     </div>
   );
 });
-MultiSelectValueContainerPrimitive.displayName = "MultiSelectValueContainerPrimitive";
+MultiSelectValueContainerPrimitive.displayName =
+  "MultiSelectValueContainerPrimitive";
 //#endregion
 
 //#region MultiSelectPlaceholder 原语
@@ -537,8 +538,9 @@ MultiSelectPlaceholderPrimitive.displayName = "MultiSelectPlaceholderPrimitive";
  * MultiSelect Content 原语
  * 多选模式下的下拉内容，基于 Popover.Content
  */
-export interface MultiSelectContentPrimitiveProps
-  extends React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content> {}
+export interface MultiSelectContentPrimitiveProps extends React.ComponentPropsWithoutRef<
+  typeof PopoverPrimitive.Content
+> {}
 
 export const MultiSelectContentPrimitive = React.forwardRef<
   React.ElementRef<typeof PopoverPrimitive.Content>,
@@ -577,8 +579,7 @@ MultiSelectContentPrimitive.displayName = "MultiSelectContentPrimitive";
  * MultiSelect Item 原语
  * 多选模式下的选项
  */
-export interface MultiSelectItemPrimitiveProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface MultiSelectItemPrimitiveProps extends React.HTMLAttributes<HTMLDivElement> {
   disabled?: boolean;
   checked?: boolean;
   onCheckedChange?: (checked: boolean) => void;

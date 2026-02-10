@@ -101,7 +101,10 @@ export interface ProgressCirclePrimitiveProps extends React.HTMLAttributes<HTMLD
 /**
  * 获取状态对应的颜色（线性进度条）
  */
-const getLineStatusColor = (status: ProgressStatus, percent: number): string => {
+const getLineStatusColor = (
+  status: ProgressStatus,
+  percent: number,
+): string => {
   if (percent === 100 || status === "success") {
     return "var(--bg-success)";
   }
@@ -114,7 +117,10 @@ const getLineStatusColor = (status: ProgressStatus, percent: number): string => 
 /**
  * 获取状态对应的颜色（圆形进度条）
  */
-const getCircleStatusColor = (status: ProgressStatus, percent: number): string => {
+const getCircleStatusColor = (
+  status: ProgressStatus,
+  percent: number,
+): string => {
   if (percent === 100 || status === "success") {
     return "var(--border-success)";
   }
@@ -288,7 +294,9 @@ export const ProgressLinePrimitive = React.forwardRef<
     ref,
   ) => {
     const validPercent = Math.min(100, Math.max(0, percent));
-    const color = parseStrokeColor(strokeColor, status, validPercent, "line") || getLineStatusColor(status, validPercent);
+    const color =
+      parseStrokeColor(strokeColor, status, validPercent, "line") ||
+      getLineStatusColor(status, validPercent);
 
     // 判断是否使用步进模式
     const isSteps = steps !== undefined && steps > 0;
@@ -397,7 +405,9 @@ export const ProgressLinePrimitive = React.forwardRef<
             ) : showErrorIcon ? (
               <CircleX className="w-4 h-4 text-[var(--text-error)]" />
             ) : (
-              <span className="text-[var(--text-primary)]">{format(validPercent)}</span>
+              <span className="text-[var(--text-primary)]">
+                {format(validPercent)}
+              </span>
             )}
           </div>
         )}
@@ -432,7 +442,9 @@ export const ProgressCirclePrimitive = React.forwardRef<
     ref,
   ) => {
     const validPercent = Math.min(100, Math.max(0, percent));
-    const color = parseStrokeColor(strokeColor, status, validPercent, "circle") || getCircleStatusColor(status, validPercent);
+    const color =
+      parseStrokeColor(strokeColor, status, validPercent, "circle") ||
+      getCircleStatusColor(status, validPercent);
 
     // 计算实际的 strokeWidth（像素值）
     const actualStrokeWidth = (width * strokeWidth) / 100;
@@ -474,9 +486,15 @@ export const ProgressCirclePrimitive = React.forwardRef<
             style={{ fontSize: showIcon ? undefined : width * 0.16 }}
           >
             {showSuccessIcon ? (
-              <Check className="text-[var(--text-success)]" style={{ width: width * 0.25, height: width * 0.25 }} />
+              <Check
+                className="text-[var(--text-success)]"
+                style={{ width: width * 0.25, height: width * 0.25 }}
+              />
             ) : showErrorIcon ? (
-              <X className="text-[var(--text-error)]" style={{ width: width * 0.25, height: width * 0.25 }} />
+              <X
+                className="text-[var(--text-error)]"
+                style={{ width: width * 0.25, height: width * 0.25 }}
+              />
             ) : (
               format(validPercent)
             )}

@@ -307,6 +307,7 @@
           "bg-neutral-light": "var(--neutral-100)",
           "bg-neutral-light-hover": "var(--neutral-200)",
           "bg-neutral-light-active": "var(--neutral-300)",
+          "bg-container-placeholder": "var(--neutral-200)",
           "bg-brand-light": "var(--brand-100)",
           "bg-brand-light-hover": "var(--brand-200)",
           "bg-brand-light-active": "var(--brand-300)",
@@ -336,6 +337,7 @@
           "bg-neutral-hover": "var(--neutral-700)",
           "bg-neutral-active": "var(--neutral-900)",
           "bg-mask": "rgba(0, 0, 0, 0.8)",
+          "bg-solid-disable": "0.5",
           "bg-page": "var(--neutral-0)",
           "bg-page-brand": "var(--brand-50)",
           "bg-page-secondary": "var(--neutral-50)",
@@ -651,6 +653,7 @@
           "bg-neutral-light": "var(--neutral-100)",
           "bg-neutral-light-hover": "var(--neutral-200)",
           "bg-neutral-light-active": "var(--neutral-300)",
+          "bg-container-placeholder": "var(--neutral-200)",
           "bg-brand-light": "var(--brand-100)",
           "bg-brand-light-hover": "var(--brand-200)",
           "bg-brand-light-active": "var(--brand-300)",
@@ -680,6 +683,7 @@
           "bg-neutral-hover": "var(--neutral-700)",
           "bg-neutral-active": "var(--neutral-900)",
           "bg-mask": "rgba(0, 0, 0, 0.8)",
+          "bg-solid-disable": "0.5",
           "bg-page": "var(--neutral-0)",
           "bg-page-brand": "var(--brand-50)",
           "bg-page-secondary": "var(--neutral-50)",
@@ -1080,6 +1084,7 @@
           "bg-neutral-light": "var(--neutral-100)",
           "bg-neutral-light-hover": "var(--neutral-200)",
           "bg-neutral-light-active": "var(--neutral-300)",
+          "bg-container-placeholder": "var(--neutral-200)",
           "bg-brand-light": "var(--brand-100)",
           "bg-brand-light-hover": "var(--brand-200)",
           "bg-brand-light-active": "var(--brand-300)",
@@ -1109,6 +1114,7 @@
           "bg-neutral-hover": "var(--neutral-700)",
           "bg-neutral-active": "var(--neutral-900)",
           "bg-mask": "rgba(0, 0, 0, 0.8)",
+          "bg-solid-disable": "0.5",
           "bg-page": "var(--neutral-0)",
           "bg-page-brand": "var(--brand-50)",
           "bg-page-secondary": "var(--neutral-50)",
@@ -1424,6 +1430,7 @@
           "bg-neutral-light": "var(--neutral-100)",
           "bg-neutral-light-hover": "var(--neutral-200)",
           "bg-neutral-light-active": "var(--neutral-300)",
+          "bg-container-placeholder": "var(--neutral-200)",
           "bg-brand-light": "var(--brand-100)",
           "bg-brand-light-hover": "var(--brand-200)",
           "bg-brand-light-active": "var(--brand-300)",
@@ -1453,6 +1460,7 @@
           "bg-neutral-hover": "var(--neutral-700)",
           "bg-neutral-active": "var(--neutral-900)",
           "bg-mask": "rgba(0, 0, 0, 0.8)",
+          "bg-solid-disable": "0.5",
           "bg-page": "var(--neutral-0)",
           "bg-page-brand": "var(--brand-50)",
           "bg-page-secondary": "var(--neutral-50)",
@@ -6325,14 +6333,14 @@
       ]
     },
     {
-      "name": "split-pane-three",
+      "name": "triple-split-pane-demo",
       "type": "registry:example",
       "registryDependencies": [
         "triple-split-pane"
       ],
       "files": [
         {
-          "path": "registry/wuhan/examples/split-pane/split-pane-three.tsx",
+          "path": "registry/wuhan/examples/split-pane/triple-split-pane-demo.tsx",
           "type": "registry:example"
         }
       ]

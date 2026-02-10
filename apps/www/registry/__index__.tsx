@@ -8086,21 +8086,21 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "split-pane-three": {
-      name: "split-pane-three",
+    "triple-split-pane-demo": {
+      name: "triple-split-pane-demo",
       description: "",
       type: "registry:example",
       registryDependencies: ["triple-split-pane"],
       files: [
         {
-          path: "registry/wuhan/examples/split-pane/split-pane-three.tsx",
+          path: "registry/wuhan/examples/split-pane/triple-split-pane-demo.tsx",
           type: "registry:example",
           target: "",
         },
       ],
       component: React.lazy(async () => {
         const mod =
-          await import("@/registry/wuhan/examples/split-pane/split-pane-three.tsx");
+          await import("@/registry/wuhan/examples/split-pane/triple-split-pane-demo.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

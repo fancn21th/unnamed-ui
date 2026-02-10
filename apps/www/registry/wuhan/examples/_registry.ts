@@ -2308,12 +2308,12 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "split-pane-three",
+    name: "triple-split-pane-demo",
     type: "registry:example",
     registryDependencies: ["triple-split-pane"],
     files: [
       {
-        path: "examples/split-pane/split-pane-three.tsx",
+        path: "examples/split-pane/triple-split-pane-demo.tsx",
         type: "registry:example",
       },
     ],

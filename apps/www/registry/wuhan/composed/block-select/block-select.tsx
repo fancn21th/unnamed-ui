@@ -112,12 +112,13 @@ export const BlockSelect = React.forwardRef<HTMLDivElement, BlockSelectProps>(
     ref,
   ) => {
     // 多选模式下的状态管理
-    const [internalSelectedValues, setInternalSelectedValues] = React.useState<string[]>(
-      multiple && Array.isArray(defaultValue) ? defaultValue : [],
-    );
+    const [internalSelectedValues, setInternalSelectedValues] = React.useState<
+      string[]
+    >(multiple && Array.isArray(defaultValue) ? defaultValue : []);
 
     // 使用受控模式：如果传入了 value，则使用 value，否则使用内部状态
-    const selectedValues = multiple && Array.isArray(value) ? value : internalSelectedValues;
+    const selectedValues =
+      multiple && Array.isArray(value) ? value : internalSelectedValues;
 
     // 单选模式的当前值
     const currentValue = multiple
@@ -207,8 +208,8 @@ export const BlockSelect = React.forwardRef<HTMLDivElement, BlockSelectProps>(
 
     // 多选模式
     return (
-      <MultiSelectRootPrimitive 
-        open={disabled ? false : open} 
+      <MultiSelectRootPrimitive
+        open={disabled ? false : open}
         onOpenChange={disabled ? undefined : onOpenChange}
       >
         <MultiSelectTriggerPrimitive asChild>
@@ -290,4 +291,3 @@ export {
   SelectTriggerPrimitive as SelectTrigger,
   SelectValuePrimitive as SelectValue,
 };
-

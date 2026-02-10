@@ -21,10 +21,8 @@ export const SelectTriggerPrimitive = React.forwardRef<
         // 尺寸和基础样式
         "h-[var(--size-com-md)] w-[200px] rounded-[var(--radius-md)]",
         "border border-[var(--border-neutral)] bg-[var(--bg-container)]",
-        "flex w-full items-center justify-between",
+        "flex w-full items-center gap-2",
         "px-[var(--padding-com-md)] py-[5px]",
-        "font-size-2",
-        "font-[var(--font-family-cn)]",
         // Hover 状态
         "hover:border-[var(--border-brand)]",
         // 过渡动画
@@ -43,6 +41,7 @@ export const SelectTriggerPrimitive = React.forwardRef<
         "disabled:cursor-not-allowed",
         "disabled:border-[var(--border-neutral)]",
         "disabled:bg-[var(--bg-container-disable)]",
+        "disabled:text-[var(--text-disable)]",
         // Placeholder 样式
         "placeholder:text-[var(--text-placeholder)]",
         "data-[placeholder]:text-[var(--text-placeholder)]",
@@ -149,21 +148,22 @@ export const SelectItemPrimitive = React.forwardRef<
         "relative flex w-full cursor-pointer select-none items-center",
         "rounded-[var(--radius-sm)]",
         "py-[var(--padding-com-sm)] pl-[var(--padding-com-md)] pr-8",
-        "text-sm outline-none",
+        "outline-none",
+        "font-size-2",
+        // "body-md/body-md-font size"
+        "text-[var(--text-primary)",
         // 过渡动画
         "transition-colors duration-200",
         // Hover 状态
-        "hover:bg-[var(--bg-item-hover)]",
-        "hover:text-[var(--text-primary)]",
+        "data-[highlighted]:bg-[var(--bg-neutral-light)]",
         // Focus 状态
-        "focus:bg-[var(--bg-item-hover)]",
-        "focus:text-[var(--text-primary)]",
+        // "focus:bg-[var(--bg-item-hover)]",
         // Selected 状态
-        "data-[state=checked]:bg-[var(--bg-item-active)]",
+        "data-[state=checked]:bg-[var(--bg-brand-light)]",
         "data-[state=checked]:text-[var(--text-brand)]",
         // Disabled 状态
         "data-[disabled]:pointer-events-none",
-        "data-[disabled]:opacity-50",
+        "data-[disabled]:text-[var(--text-disable)]",
         "data-[disabled]:cursor-not-allowed",
         className,
       )}
@@ -229,9 +229,36 @@ SelectSeparatorPrimitive.displayName = "SelectSeparatorPrimitive";
 //#region SelectValue 原语
 /**
  * Select Value 原语
- * 显示选中值
+ * 显示选中值，支持自定义样式
  */
-export const SelectValuePrimitive = Select.Value;
+export const SelectValuePrimitive = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<typeof Select.Value> & {
+    className?: string;
+    placeholderClassName?: string;
+  }
+>(({ className, placeholderClassName, children, ...props }, ref) => {
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "flex-1",
+        "font-[var(--font-family-cn)]",
+        "text-left",
+        "[&>span[data-placeholder]]:text-[var(--text-placeholder)]",
+        placeholderClassName &&
+          `[&>span[data-placeholder]]:${placeholderClassName}`,
+        className,
+      )}
+      style={{
+        fontSize: "var(--font-size-2)",
+      }}
+    >
+      <Select.Value {...props}>{children}</Select.Value>
+    </div>
+  );
+});
+SelectValuePrimitive.displayName = "SelectValuePrimitive";
 //#endregion
 
 //#region SelectGroup 原语

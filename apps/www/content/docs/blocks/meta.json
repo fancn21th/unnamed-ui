@@ -1,0 +1,7 @@
+{
+  "title": "业务组件",
+  "description": "AI 原生应用的基础构建模块",
+  "icon": "PanelsTopLeft",
+  "root": true,
+  "pages": ["---Introduction---", "index", "..."]
+}

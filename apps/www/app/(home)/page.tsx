@@ -30,9 +30,10 @@ export default async function HomePage() {
     }));
 
   const navLinks = [
-    { href: "/docs", label: "Components" },
-    { href: "/themes", label: "Themes" },
-    { href: "/compositions", label: "Variants" },
+    { href: "/docs", label: "文档" },
+    { href: "/docs/blocks", label: "组件" },
+    { href: "/themes", label: "主题" },
+    { href: "/compositions", label: "示例" },
   ];
 
   return (

@@ -484,7 +484,8 @@ export const blocks: Registry["items"] = [
     type: "registry:block",
     title: "SplitPane",
     description: "分隔面板",
-    registryDependencies: ["style"],
+    dependencies: ["lucide-react"],
+    registryDependencies: ["resizable"],
     files: [
       {
         path: "blocks/split-pane/split-pane-01.tsx",
@@ -506,6 +507,62 @@ export const blocks: Registry["items"] = [
         path: "blocks/task-card/task-card-01.tsx",
         type: "registry:component",
         target: "components/wuhan/blocks/task-card-01.tsx",
+      },
+    ],
+  },
+  {
+    name: "block-input-01",
+    type: "registry:block",
+    title: "Input",
+    description: "输入框",
+    registryDependencies: ["style"],
+    files: [
+      {
+        path: "blocks/block-input/block-input-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/block-input-01.tsx",
+      },
+    ],
+  },
+  {
+    name: "tag-01",
+    type: "registry:block",
+    title: "Tag",
+    description: "标签",
+    registryDependencies: ["style"],
+    files: [
+      {
+        path: "blocks/tag/tag-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/tag-01.tsx",
+      },
+    ],
+  },
+  {
+    name: "divider-01",
+    type: "registry:block",
+    title: "Divider",
+    description: "分割线",
+    registryDependencies: ["style"],
+    files: [
+      {
+        path: "blocks/divider/divider-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/divider-01.tsx",
+      },
+    ],
+  },
+  {
+    name: "upload-01",
+    type: "registry:block",
+    title: "Upload",
+    description: "上传",
+    registryDependencies: ["style"],
+    files: [
+      {
+        path: "blocks/upload/upload-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/upload-01.tsx",
       },
     ],
   },

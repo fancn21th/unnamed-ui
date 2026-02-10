@@ -602,6 +602,62 @@ export const composed: Registry["items"] = [
     ],
   },
   {
+    name: "block-input",
+    type: "registry:block",
+    title: "Input",
+    description: "输入框",
+    registryDependencies: ["block-input-01"],
+    files: [
+      {
+        path: "composed/block-input/block-input.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/block-input.tsx",
+      },
+    ],
+  },
+  {
+    name: "tag",
+    type: "registry:block",
+    title: "Tag",
+    description: "标签",
+    registryDependencies: ["tag-01"],
+    files: [
+      {
+        path: "composed/tag/tag.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/tag.tsx",
+      },
+    ],
+  },
+  {
+    name: "divider",
+    type: "registry:block",
+    title: "Divider",
+    description: "分割线",
+    registryDependencies: ["divider-01"],
+    files: [
+      {
+        path: "composed/divider/divider.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/divider.tsx",
+      },
+    ],
+  },
+  {
+    name: "upload",
+    type: "registry:block",
+    title: "Upload",
+    description: "上传",
+    registryDependencies: ["upload-01"],
+    files: [
+      {
+        path: "composed/upload/upload.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/upload.tsx",
+      },
+    ],
+  },
+  {
     name: "goal-card",
     type: "registry:block",
     title: "Goal Card",

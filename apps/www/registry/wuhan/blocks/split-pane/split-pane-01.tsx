@@ -24,7 +24,7 @@ SplitPaneContainerPrimitive.displayName = "SplitPaneContainerPrimitive";
  * ResizablePanel 封装
  */
 const ResizablePanelWithRef = React.forwardRef<
-  any,
+  ResizablePrimitive.PanelImperativeHandle,
   ResizablePrimitive.PanelProps
 >((props, ref) => {
   return (
@@ -58,9 +58,18 @@ export interface SplitPaneItemProps extends ResizablePrimitive.PanelProps {
   containerClassName?: string;
   /** 内容区域的子元素 */
   children?: React.ReactNode;
+  /** 是否为紧凑模式（收起状态），紧凑模式下会移除内边距和圆角，只显示图标 */
+  isCompact?: boolean;
+  /** 紧凑模式下是否显示折叠图标 */
+  showIconWhenCompact?: boolean;
+  /** 折叠后的宽度，用于判断是否完全隐藏（collapsedSize=0时移除圆角和内边距） */
+  collapsedSize?: number | string;
 }
 
-const SplitPaneItem = React.forwardRef<any, SplitPaneItemProps>(
+const SplitPaneItem = React.forwardRef<
+  ResizablePrimitive.PanelImperativeHandle,
+  SplitPaneItemProps
+>(
   (
     {
       panelTitle,
@@ -71,34 +80,54 @@ const SplitPaneItem = React.forwardRef<any, SplitPaneItemProps>(
       bodyClassName,
       children,
       containerClassName,
+      isCompact = false,
+      showIconWhenCompact = true,
+      collapsedSize = 0,
       ...panelProps
     },
     ref,
   ) => {
+    // 只有在紧凑模式且 collapsedSize 为 0 时才移除圆角
+    const getNumericSize = (size: number | string | undefined): number => {
+      if (typeof size === "string") {
+        const match = size.match(/^([0-9.]+)/);
+        return match ? parseFloat(match[1]) : 0;
+      }
+      return size || 0;
+    };
+    const shouldRemoveBorderRadius =
+      isCompact && getNumericSize(collapsedSize) === 0;
+
     return (
-      <ResizablePanelWithRef ref={ref} {...panelProps}>
+      <ResizablePanelWithRef
+        ref={ref}
+        collapsedSize={collapsedSize}
+        {...panelProps}
+      >
         <div
           className={cn(
-            "flex flex-col h-full bg-[var(--bg-container)] rounded-[var(--radius-xl)]",
+            "flex flex-col h-full bg-[var(--bg-container)]",
+            !shouldRemoveBorderRadius && "rounded-[var(--radius-xl)]",
             containerClassName,
           )}
         >
           {/* Header 部分 */}
           <div
             className={cn(
-              "flex items-center justify-between",
-              "px-4 py-3",
-              "border-b border-[var(--border-neutral)]",
+              "flex items-center",
+              "justify-between px-4 py-3 border-b border-[var(--border-neutral)]",
               headerClassName,
             )}
           >
-            {/* 左侧标题 */}
-            <div className="text-sm font-medium text-[var(--text-primary)]">
-              {panelTitle}
-            </div>
+            {/* 紧凑模式只显示图标，正常模式显示标题 */}
+            {!isCompact && (
+              <div className="text-sm font-medium text-[var(--text-primary)]">
+                {panelTitle}
+              </div>
+            )}
 
-            {/* 右侧折叠图标 */}
-            {showCollapsibleIcon && (
+            {/* 折叠图标 */}
+            {showCollapsibleIcon && (!isCompact || showIconWhenCompact) && (
               <button
                 type="button"
                 onClick={onCollapsibleClick}
@@ -110,9 +139,11 @@ const SplitPaneItem = React.forwardRef<any, SplitPaneItemProps>(
           </div>
 
           {/* Body 部分 - 占满剩余空间 */}
-          <div className={cn("flex-1 overflow-auto p-4", bodyClassName)}>
-            {children}
-          </div>
+          {!isCompact && (
+            <div className={cn("flex-1 overflow-auto p-4", bodyClassName)}>
+              {children}
+            </div>
+          )}
         </div>
       </ResizablePanelWithRef>
     );

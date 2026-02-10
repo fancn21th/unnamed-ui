@@ -2330,6 +2330,211 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  // block-input examples
+  {
+    name: "block-input-default",
+    type: "registry:example",
+    registryDependencies: ["block-input"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "examples/block-input/block-input-default.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "block-input-demo",
+    type: "registry:example",
+    registryDependencies: ["block-input"],
+    files: [
+      {
+        path: "examples/block-input/block-input-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "block-input-states",
+    type: "registry:example",
+    registryDependencies: ["block-input"],
+    files: [
+      {
+        path: "examples/block-input/block-input-states.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "block-input-multiline",
+    type: "registry:example",
+    registryDependencies: ["block-input"],
+    files: [
+      {
+        path: "examples/block-input/block-input-multiline.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "block-input-rounded",
+    type: "registry:example",
+    registryDependencies: ["block-input"],
+    files: [
+      {
+        path: "examples/block-input/block-input-rounded.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  // tag examples
+  {
+    name: "tag-default",
+    type: "registry:example",
+    registryDependencies: ["tag"],
+    files: [
+      {
+        path: "examples/tag/tag-default.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "tag-demo",
+    type: "registry:example",
+    registryDependencies: ["tag"],
+    files: [
+      {
+        path: "examples/tag/tag-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "tag-with-icon",
+    type: "registry:example",
+    registryDependencies: ["tag"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "examples/tag/tag-with-icon.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "tag-closeable",
+    type: "registry:example",
+    registryDependencies: ["tag"],
+    files: [
+      {
+        path: "examples/tag/tag-closeable.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "tag-addable",
+    type: "registry:example",
+    registryDependencies: ["tag", "block-input"],
+    files: [
+      {
+        path: "examples/tag/tag-addable.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "tag-checkable",
+    type: "registry:example",
+    registryDependencies: ["tag"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "examples/tag/tag-checkable.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  // divider examples
+  {
+    name: "divider-default",
+    type: "registry:example",
+    registryDependencies: ["divider"],
+    files: [
+      {
+        path: "examples/divider/divider-default.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "divider-demo",
+    type: "registry:example",
+    registryDependencies: ["divider"],
+    files: [
+      {
+        path: "examples/divider/divider-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "divider-variants",
+    type: "registry:example",
+    registryDependencies: ["divider"],
+    files: [
+      {
+        path: "examples/divider/divider-variants.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "divider-with-text",
+    type: "registry:example",
+    registryDependencies: ["divider"],
+    files: [
+      {
+        path: "examples/divider/divider-with-text.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "divider-vertical",
+    type: "registry:example",
+    registryDependencies: ["divider"],
+    files: [
+      {
+        path: "examples/divider/divider-vertical.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "divider-custom",
+    type: "registry:example",
+    registryDependencies: ["divider"],
+    files: [
+      {
+        path: "examples/divider/divider-custom.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  // upload examples
+  {
+    name: "upload-default",
+    type: "registry:example",
+    registryDependencies: ["upload"],
+    files: [
+      {
+        path: "examples/upload/upload-default.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
   // goal-card examples
   {
     name: "goal-card-demo",

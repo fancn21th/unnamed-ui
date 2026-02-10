@@ -4,17 +4,30 @@ description: 分隔面板
 author: AF
 ---
 
-<ComponentPreview name="split-pane-default" description="分隔面板" className="mb-4" />
-
-分隔面板
+分隔面板，支持左右或上下分割，可调整大小，支持折叠功能。
 
 ## 快速开始
 
 ```tsx
-import { SplitPane } from "@/registry/wuhan/composed/split-pane";
+import { TripleSplitPane } from "@/registry/wuhan/composed/triple-split-pane";
 
 export function Example() {
-  return <SplitPane />;
+  return (
+    <TripleSplitPane
+      left={{
+        title: "左侧面板",
+        children: <div>左侧内容</div>,
+      }}
+      center={{
+        title: "中间面板",
+        children: <div>中间内容</div>,
+      }}
+      right={{
+        title: "右侧面板",
+        children: <div>右侧内容</div>,
+      }}
+    />
+  );
 }
 ```
 
@@ -30,7 +43,7 @@ export function Example() {
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add "https://unnamed-ui.com/r/wuhan/split-pane"
+npx shadcn@latest add "http://localhost:3000/r/wuhan/triple-split-pane.json"
 ```
 
 </TabsContent>
@@ -41,7 +54,7 @@ npx shadcn@latest add "https://unnamed-ui.com/r/wuhan/split-pane"
 
 <Step>复制以下代码到你的项目</Step>
 
-<ComponentSource name="split-pane" />
+<ComponentSource name="triple-split-pane" />
 
 <Step>更新导入路径以匹配你的项目设置</Step>
 
@@ -53,17 +66,9 @@ npx shadcn@latest add "https://unnamed-ui.com/r/wuhan/split-pane"
 
 ## 代码演示
 
-### 基础用法
-
-<ComponentPreview
-  name="split-pane-default"
-  description="基础用法"
-  className="mb-4"
-/>
-
 ### 三栏分割面板
 
-使用 SplitPaneItemPrimitive 创建带标题和折叠图标的三栏分割面板。
+使用 TripleSplitPane 创建带标题和折叠图标的三栏分割面板，左右面板支持折叠功能。
 
 <ComponentPreview
   name="split-pane-three"
@@ -73,38 +78,57 @@ npx shadcn@latest add "https://unnamed-ui.com/r/wuhan/split-pane"
 
 ## API
 
-### SplitPane
+### TripleSplitPane
 
-分隔面板
+三栏分隔面板，支持左右面板折叠功能。
 
 #### Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `children` | `ReactNode` | `"SplitPane"` | 组件内容 |
 | `className` | `string` | - | 容器自定义类名 |
+| `left` | `PanelConfig` | - | 左侧面板配置 |
+| `center` | `PanelConfig` | - | 中间面板配置 |
+| `right` | `PanelConfig` | - | 右侧面板配置 |
 
-### SplitPaneItemPrimitive
+### PanelConfig
 
-带标题和折叠图标的面板项原语组件，基于 react-split-pane 的 Pane 组件。
-
-#### Props
-
-继承 react-split-pane 的 `PaneProps`，额外包含：
+面板配置对象
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
+| `children` | `ReactNode` | - | 面板内容 |
 | `title` | `ReactNode` | - | 面板标题 |
+| `defaultSize` | `number` | `20`(左)/`50`(中)/`30`(右) | 默认宽度（百分比）|
+| `minSize` | `number` | `15`(左/右)/`30`(中) | 最小宽度（百分比）|
+| `collapsedSize` | `number` | `0` | 折叠后宽度（像素），设为 0 表示完全折叠 |
+| `collapsibleIcon` | `ReactNode` | `<PanelLeft />`(左)/`<PanelRight />`(右) | 折叠图标 |
+
+### SplitPaneItem
+
+带标题和折叠图标的面板项原语组件，基于 react-resizable-panels 构建。
+
+#### Props
+
+继承 react-resizable-panels 的 `PanelProps`，额外包含：
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `panelTitle` | `ReactNode` | - | 面板标题 |
 | `collapsibleIcon` | `ReactNode` | `<PanelLeft />` | 折叠图标 |
+| `showCollapsibleIcon` | `boolean` | `true` | 是否显示折叠图标 |
+| `onCollapsibleClick` | `() => void` | - | 折叠图标点击事件 |
 | `headerClassName` | `string` | - | header 的自定义类名 |
 | `bodyClassName` | `string` | - | body 的自定义类名 |
+| `containerClassName` | `string` | - | 容器的自定义类名 |
 | `children` | `ReactNode` | - | 内容区域的子元素 |
 
 ## 原语组件
 
-SplitPane 组件基于以下原语组件构建：
+TripleSplitPane 组件基于以下原语组件构建：
 
-- `SplitPaneContainerPrimitive`: 容器组件
-- `SplitPaneItemPrimitive`: 面板项组件，包含标题和内容区域
+- `SplitPaneItem`: 面板项组件，包含标题、折叠按钮和内容区域
+- `SplitHandle`: 分隔手柄组件
+- `SplitPanelGroup`: 面板组容器
 
-如需更灵活的定制，可以直接使用这些原语组件。
+如需更灵活的定制，可以直接使用 `split-pane-01` 中的这些原语组件。

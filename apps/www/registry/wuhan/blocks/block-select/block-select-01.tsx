@@ -22,6 +22,8 @@ const TRIGGER_BASE_STYLES = [
 
 const TRIGGER_HOVER_STYLES = ["hover:border-[var(--border-brand)]"] as const;
 
+const TRIGGER_MULTI_DISABLED_HOVER = ["hover:border-[var(--border-neutral)]"] as const;
+
 const TRIGGER_FOCUS_STYLES = [
   "focus:outline-none",
   "focus-visible:border-[var(--border-brand)]",
@@ -449,7 +451,7 @@ export const MultiSelectTriggerContainerPrimitive = React.forwardRef<
         "data-[state=open]:ring-2",
         "data-[state=open]:ring-[var(--ring)]",
         // Disabled 状态
-        disabled && TRIGGER_DISABLED_STYLES,
+        disabled && [...TRIGGER_DISABLED_STYLES, ...TRIGGER_MULTI_DISABLED_HOVER],
         className,
       )}
       {...props}

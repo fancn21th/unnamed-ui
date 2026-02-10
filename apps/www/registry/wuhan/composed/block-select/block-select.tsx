@@ -112,9 +112,12 @@ export const BlockSelect = React.forwardRef<HTMLDivElement, BlockSelectProps>(
     ref,
   ) => {
     // 多选模式下的状态管理
-    const [selectedValues, setSelectedValues] = React.useState<string[]>(
+    const [internalSelectedValues, setInternalSelectedValues] = React.useState<string[]>(
       multiple && Array.isArray(defaultValue) ? defaultValue : [],
     );
+
+    // 使用受控模式：如果传入了 value，则使用 value，否则使用内部状态
+    const selectedValues = multiple && Array.isArray(value) ? value : internalSelectedValues;
 
     // 单选模式的当前值
     const currentValue = multiple
@@ -127,14 +130,14 @@ export const BlockSelect = React.forwardRef<HTMLDivElement, BlockSelectProps>(
         ? selectedValues.filter((v) => v !== optionValue)
         : [...selectedValues, optionValue];
 
-      setSelectedValues(newValues);
+      setInternalSelectedValues(newValues);
       onValueChange?.(newValues);
     };
 
     // 处理移除 tag
     const handleRemoveTag = (valueToRemove: string) => {
       const newValues = selectedValues.filter((v) => v !== valueToRemove);
-      setSelectedValues(newValues);
+      setInternalSelectedValues(newValues);
       onValueChange?.(newValues);
     };
 
@@ -204,7 +207,10 @@ export const BlockSelect = React.forwardRef<HTMLDivElement, BlockSelectProps>(
 
     // 多选模式
     return (
-      <MultiSelectRootPrimitive open={open} onOpenChange={onOpenChange}>
+      <MultiSelectRootPrimitive 
+        open={disabled ? false : open} 
+        onOpenChange={disabled ? undefined : onOpenChange}
+      >
         <MultiSelectTriggerPrimitive asChild>
           <MultiSelectTriggerContainerPrimitive
             ref={ref}
@@ -225,7 +231,7 @@ export const BlockSelect = React.forwardRef<HTMLDivElement, BlockSelectProps>(
                     key={selectedValues[index]}
                     variant="filled"
                     theme="neutral"
-                    closeable
+                    closeable={!disabled}
                     onClose={() => handleRemoveTag(selectedValues[index])}
                   >
                     {label}

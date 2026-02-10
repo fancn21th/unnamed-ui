@@ -11,6 +11,8 @@ export default function BlockSelectMultiple() {
   const [valuesDisabled, setValuesDisabled] = useState<string[]>([
     "react",
     "vue",
+    "angular",
+    "svelte",
   ]);
 
   return (

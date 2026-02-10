@@ -336,6 +336,7 @@
           "bg-neutral-hover": "var(--neutral-700)",
           "bg-neutral-active": "var(--neutral-900)",
           "bg-mask": "rgba(0, 0, 0, 0.8)",
+          "bg-mask-soft": "rgba(0, 0, 0, 0.05)",
           "bg-page": "var(--neutral-0)",
           "bg-page-brand": "var(--brand-50)",
           "bg-page-secondary": "var(--neutral-50)",
@@ -680,6 +681,7 @@
           "bg-neutral-hover": "var(--neutral-700)",
           "bg-neutral-active": "var(--neutral-900)",
           "bg-mask": "rgba(0, 0, 0, 0.8)",
+          "bg-mask-soft": "rgba(0, 0, 0, 0.05)",
           "bg-page": "var(--neutral-0)",
           "bg-page-brand": "var(--brand-50)",
           "bg-page-secondary": "var(--neutral-50)",
@@ -1109,6 +1111,7 @@
           "bg-neutral-hover": "var(--neutral-700)",
           "bg-neutral-active": "var(--neutral-900)",
           "bg-mask": "rgba(0, 0, 0, 0.8)",
+          "bg-mask-soft": "rgba(0, 0, 0, 0.05)",
           "bg-page": "var(--neutral-0)",
           "bg-page-brand": "var(--brand-50)",
           "bg-page-secondary": "var(--neutral-50)",
@@ -1453,6 +1456,7 @@
           "bg-neutral-hover": "var(--neutral-700)",
           "bg-neutral-active": "var(--neutral-900)",
           "bg-mask": "rgba(0, 0, 0, 0.8)",
+          "bg-mask-soft": "rgba(0, 0, 0, 0.05)",
           "bg-page": "var(--neutral-0)",
           "bg-page-brand": "var(--brand-50)",
           "bg-page-secondary": "var(--neutral-50)",
@@ -2307,6 +2311,25 @@
       ]
     },
     {
+      "name": "agent-card-01",
+      "type": "registry:block",
+      "title": "Agent Card",
+      "description": "Agent card component with AI icon, title, description, and status indicator",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "style"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/agent-card/agent-card-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/agent-card-01.tsx"
+        }
+      ]
+    },
+    {
       "name": "document-card-01",
       "type": "registry:block",
       "title": "Document Card",
@@ -2322,6 +2345,26 @@
           "path": "registry/wuhan/blocks/document-card/document-card-01.tsx",
           "type": "registry:component",
           "target": "components/wuhan/blocks/document-card-01.tsx"
+        }
+      ]
+    },
+    {
+      "name": "file-card-01",
+      "type": "registry:block",
+      "title": "File Card",
+      "description": "File card component for displaying file information with checkbox, icon, title, date, and action button",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "style",
+        "checkbox-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/file-card/file-card-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/file-card-01.tsx"
         }
       ]
     },
@@ -3024,6 +3067,25 @@
       ]
     },
     {
+      "name": "agent-card",
+      "type": "registry:block",
+      "title": "Agent Card",
+      "description": "Composed agent card with AI icon, title, description, and status indicator",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "agent-card-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/composed/agent-card/agent-card.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/composed/agent-card.tsx"
+        }
+      ]
+    },
+    {
       "name": "report-card",
       "type": "registry:block",
       "title": "Report Card",
@@ -3058,6 +3120,26 @@
           "path": "registry/wuhan/composed/document-card/document-card.tsx",
           "type": "registry:component",
           "target": "components/wuhan/composed/document-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "file-card",
+      "type": "registry:block",
+      "title": "File Card",
+      "description": "File card component with checkbox, icon, title, date, and action button",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "file-card-01",
+        "checkbox-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/composed/file-card/file-card.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/composed/file-card.tsx"
         }
       ]
     },
@@ -6154,6 +6236,20 @@
       ]
     },
     {
+      "name": "agent-card-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "agent-card"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/agent-card/agent-card-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/agent-card-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "document-card-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -6164,6 +6260,20 @@
           "path": "registry/wuhan/examples/document-card/document-card-demo.tsx",
           "type": "registry:example",
           "target": "components/wuhan/examples/document-card-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "file-card-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "file-card"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/file-card/file-card-demo.tsx",
+          "type": "registry:example",
+          "target": "components/wuhan/examples/file-card-demo.tsx"
         }
       ]
     }

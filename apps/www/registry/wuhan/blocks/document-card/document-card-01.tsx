@@ -132,7 +132,7 @@ export const DocumentCardHeaderPrimitive = React.forwardRef<
       {...props}
     >
       {/* 第一行：图标 + 标题 */}
-      <div className="flex items-center gap-[var(--gap-sm)] min-w-0 overflow-hidden">
+      <div className="flex items-center gap-[var(--gap-md)] min-w-0 overflow-hidden">
         {/* 图标 */}
         {icon && (
           <span className="text-[var(--text-title)] flex-shrink-0">

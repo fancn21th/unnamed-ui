@@ -148,8 +148,16 @@
     "description": "Goal card component with AI icon, title, description, and circular progress indicator"
   },
   {
+    "name": "agent-card-01",
+    "description": "Agent card component with AI icon, title, description, and status indicator"
+  },
+  {
     "name": "document-card-01",
     "description": "Document card primitives for displaying research document information and attributes"
+  },
+  {
+    "name": "file-card-01",
+    "description": "File card component for displaying file information with checkbox, icon, title, date, and action button"
   },
   {
     "name": "message",
@@ -284,12 +292,20 @@
     "description": "Composed goal card with AI icon, title, description, and circular progress indicator"
   },
   {
+    "name": "agent-card",
+    "description": "Composed agent card with AI icon, title, description, and status indicator"
+  },
+  {
     "name": "report-card",
     "description": "报告卡片"
   },
   {
     "name": "document-card",
     "description": "Document card component for displaying research document information and attributes"
+  },
+  {
+    "name": "file-card",
+    "description": "File card component with checkbox, icon, title, date, and action button"
   },
   {
     "name": "action-dropdown",

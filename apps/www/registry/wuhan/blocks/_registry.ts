@@ -526,6 +526,22 @@ export const blocks: Registry["items"] = [
     ],
   },
   {
+    name: "agent-card-01",
+    type: "registry:block",
+    title: "Agent Card",
+    description:
+      "Agent card component with AI icon, title, description, and status indicator",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["style"],
+    files: [
+      {
+        path: "blocks/agent-card/agent-card-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/agent-card-01.tsx",
+      },
+    ],
+  },
+  {
     name: "document-card-01",
     type: "registry:block",
     title: "Document Card",
@@ -538,6 +554,22 @@ export const blocks: Registry["items"] = [
         path: "blocks/document-card/document-card-01.tsx",
         type: "registry:component",
         target: "components/wuhan/blocks/document-card-01.tsx",
+      },
+    ],
+  },
+  {
+    name: "file-card-01",
+    type: "registry:block",
+    title: "File Card",
+    description:
+      "File card component for displaying file information with checkbox, icon, title, date, and action button",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["style", "checkbox-01"],
+    files: [
+      {
+        path: "blocks/file-card/file-card-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/file-card-01.tsx",
       },
     ],
   },

@@ -2343,6 +2343,18 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "agent-card-demo",
+    type: "registry:example",
+    registryDependencies: ["agent-card"],
+    files: [
+      {
+        path: "examples/agent-card/agent-card-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/agent-card-demo.tsx",
+      },
+    ],
+  },
   // document-card examples
   {
     name: "document-card-demo",
@@ -2353,6 +2365,19 @@ export const examples: Registry["items"] = [
         path: "examples/document-card/document-card-demo.tsx",
         type: "registry:example",
         target: "components/wuhan/examples/document-card-demo.tsx",
+      },
+    ],
+  },
+  // file-card examples
+  {
+    name: "file-card-demo",
+    type: "registry:example",
+    registryDependencies: ["file-card"],
+    files: [
+      {
+        path: "examples/file-card/file-card-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/file-card-demo.tsx",
       },
     ],
   },

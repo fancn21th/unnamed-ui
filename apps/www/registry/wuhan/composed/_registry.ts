@@ -618,6 +618,22 @@ export const composed: Registry["items"] = [
     ],
   },
   {
+    name: "agent-card",
+    type: "registry:block",
+    title: "Agent Card",
+    description:
+      "Composed agent card with AI icon, title, description, and status indicator",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["agent-card-01"],
+    files: [
+      {
+        path: "composed/agent-card/agent-card.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/agent-card.tsx",
+      },
+    ],
+  },
+  {
     name: "report-card",
     type: "registry:block",
     title: "Report Card",
@@ -646,6 +662,22 @@ export const composed: Registry["items"] = [
         path: "composed/document-card/document-card.tsx",
         type: "registry:component",
         target: "components/wuhan/composed/document-card.tsx",
+      },
+    ],
+  },
+  {
+    name: "file-card",
+    type: "registry:block",
+    title: "File Card",
+    description:
+      "File card component with checkbox, icon, title, date, and action button",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["file-card-01", "checkbox-01"],
+    files: [
+      {
+        path: "composed/file-card/file-card.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/file-card.tsx",
       },
     ],
   },

@@ -2535,6 +2535,61 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "upload-demo",
+    type: "registry:example",
+    registryDependencies: ["upload"],
+    files: [
+      {
+        path: "examples/upload/upload-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "upload-custom-request",
+    type: "registry:example",
+    registryDependencies: ["upload"],
+    files: [
+      {
+        path: "examples/upload/upload-custom-request.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "upload-restrictions",
+    type: "registry:example",
+    registryDependencies: ["upload"],
+    files: [
+      {
+        path: "examples/upload/upload-restrictions.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "upload-controlled",
+    type: "registry:example",
+    registryDependencies: ["upload"],
+    files: [
+      {
+        path: "examples/upload/upload-controlled.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "upload-disabled",
+    type: "registry:example",
+    registryDependencies: ["upload"],
+    files: [
+      {
+        path: "examples/upload/upload-disabled.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
   // goal-card examples
   {
     name: "goal-card-demo",

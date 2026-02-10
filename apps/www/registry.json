@@ -3137,8 +3137,12 @@
       "type": "registry:block",
       "title": "Upload",
       "description": "上传",
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
-        "upload-01"
+        "upload-01",
+        "block-button"
       ],
       "files": [
         {
@@ -6523,6 +6527,71 @@
       "files": [
         {
           "path": "registry/wuhan/examples/upload/upload-default.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "upload-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "upload"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/upload/upload-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "upload-custom-request",
+      "type": "registry:example",
+      "registryDependencies": [
+        "upload"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/upload/upload-custom-request.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "upload-restrictions",
+      "type": "registry:example",
+      "registryDependencies": [
+        "upload"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/upload/upload-restrictions.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "upload-controlled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "upload"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/upload/upload-controlled.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "upload-disabled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "upload"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/upload/upload-disabled.tsx",
           "type": "registry:example"
         }
       ]

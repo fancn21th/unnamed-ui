@@ -648,7 +648,8 @@ export const composed: Registry["items"] = [
     type: "registry:block",
     title: "Upload",
     description: "上传",
-    registryDependencies: ["upload-01"],
+    dependencies: ["lucide-react"],
+    registryDependencies: ["upload-01", "block-button"],
     files: [
       {
         path: "composed/upload/upload.tsx",

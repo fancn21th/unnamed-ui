@@ -2353,7 +2353,7 @@ export const Index: Record<string, Record<string, any>> = {
       name: "upload",
       description: "上传",
       type: "registry:block",
-      registryDependencies: ["upload-01"],
+      registryDependencies: ["upload-01", "block-button"],
       files: [
         {
           path: "registry/wuhan/composed/upload/upload.tsx",
@@ -8476,6 +8476,131 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/examples/upload/upload-default.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "upload-demo": {
+      name: "upload-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["upload"],
+      files: [
+        {
+          path: "registry/wuhan/examples/upload/upload-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/upload/upload-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "upload-custom-request": {
+      name: "upload-custom-request",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["upload"],
+      files: [
+        {
+          path: "registry/wuhan/examples/upload/upload-custom-request.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/upload/upload-custom-request.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "upload-restrictions": {
+      name: "upload-restrictions",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["upload"],
+      files: [
+        {
+          path: "registry/wuhan/examples/upload/upload-restrictions.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/upload/upload-restrictions.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "upload-controlled": {
+      name: "upload-controlled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["upload"],
+      files: [
+        {
+          path: "registry/wuhan/examples/upload/upload-controlled.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/upload/upload-controlled.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "upload-disabled": {
+      name: "upload-disabled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["upload"],
+      files: [
+        {
+          path: "registry/wuhan/examples/upload/upload-disabled.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/upload/upload-disabled.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

@@ -14,7 +14,12 @@ import {
   SelectValuePrimitive,
   SelectGroupPrimitive,
   TagPrimitive,
+  MultiSelectRootPrimitive,
   MultiSelectTriggerPrimitive,
+  MultiSelectTriggerContainerPrimitive,
+  MultiSelectIconContainerPrimitive,
+  MultiSelectValueContainerPrimitive,
+  MultiSelectPlaceholderPrimitive,
   MultiSelectContentPrimitive,
   MultiSelectItemPrimitive,
 } from "@/registry/wuhan/blocks/block-select/block-select-01";
@@ -199,44 +204,45 @@ export const BlockSelect = React.forwardRef<HTMLDivElement, BlockSelectProps>(
 
     // 多选模式
     return (
-      <div className="relative" ref={ref}>
-        <MultiSelectTriggerPrimitive
-          fullRounded={fullRounded}
-          disabled={disabled}
-          open={open}
-          onOpenChange={onOpenChange}
-          className={triggerClassName}
-        >
-          {iconPosition === "prefix" && (
-            <span className="flex-shrink-0">{renderIcon()}</span>
-          )}
-
-          <div className="flex-1 flex flex-wrap gap-1 items-center overflow-hidden">
-            {selectedValues.length > 0 ? (
-              getSelectedLabels().map((label, index) => (
-                <TagPrimitive
-                  key={selectedValues[index]}
-                  label={label!}
-                  onRemove={() => handleRemoveTag(selectedValues[index])}
-                />
-              ))
-            ) : (
-              <span className="text-[var(--text-placeholder)]">
-                {placeholder}
-              </span>
+      <MultiSelectRootPrimitive open={open} onOpenChange={onOpenChange}>
+        <MultiSelectTriggerPrimitive asChild>
+          <MultiSelectTriggerContainerPrimitive
+            ref={ref}
+            fullRounded={fullRounded}
+            disabled={disabled}
+            className={triggerClassName}
+          >
+            {iconPosition === "prefix" && (
+              <MultiSelectIconContainerPrimitive>
+                {renderIcon()}
+              </MultiSelectIconContainerPrimitive>
             )}
-          </div>
 
-          {iconPosition === "suffix" && (
-            <span className="flex-shrink-0">{renderIcon()}</span>
-          )}
+            <MultiSelectValueContainerPrimitive>
+              {selectedValues.length > 0 ? (
+                getSelectedLabels().map((label, index) => (
+                  <TagPrimitive
+                    key={selectedValues[index]}
+                    label={label!}
+                    onRemove={() => handleRemoveTag(selectedValues[index])}
+                  />
+                ))
+              ) : (
+                <MultiSelectPlaceholderPrimitive>
+                  {placeholder}
+                </MultiSelectPlaceholderPrimitive>
+              )}
+            </MultiSelectValueContainerPrimitive>
+
+            {iconPosition === "suffix" && (
+              <MultiSelectIconContainerPrimitive>
+                {renderIcon()}
+              </MultiSelectIconContainerPrimitive>
+            )}
+          </MultiSelectTriggerContainerPrimitive>
         </MultiSelectTriggerPrimitive>
 
-        <MultiSelectContentPrimitive
-          open={open}
-          onOpenChange={onOpenChange}
-          className={contentClassName}
-        >
+        <MultiSelectContentPrimitive className={contentClassName}>
           {options.map((option) => (
             <MultiSelectItemPrimitive
               key={option.value}
@@ -257,7 +263,7 @@ export const BlockSelect = React.forwardRef<HTMLDivElement, BlockSelectProps>(
             </MultiSelectItemPrimitive>
           ))}
         </MultiSelectContentPrimitive>
-      </div>
+      </MultiSelectRootPrimitive>
     );
   },
 );

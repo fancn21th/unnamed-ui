@@ -4,6 +4,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Select } from "radix-ui";
 import { Check, ChevronDown, ChevronUp, X } from "lucide-react";
+import * as PopoverPrimitive from "@radix-ui/react-popover";
 
 //#region 共用样式常量
 /**
@@ -360,110 +361,210 @@ SelectValuePrimitive.displayName = "SelectValuePrimitive";
 export const SelectGroupPrimitive = Select.Group;
 //#endregion
 
+//#region MultiSelectRoot 原语
+/**
+ * MultiSelect Root 原语
+ * 多选模式的根组件，基于 Popover.Root
+ */
+export const MultiSelectRootPrimitive = PopoverPrimitive.Root;
+//#endregion
+
 //#region MultiSelectTrigger 原语
 /**
  * MultiSelect Trigger 原语
- * 多选模式下的触发器
+ * 多选模式下的触发器，基于 Popover.Trigger
  */
 export interface MultiSelectTriggerPrimitiveProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+  extends React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Trigger> {
   fullRounded?: boolean;
   disabled?: boolean;
-  open?: boolean;
-  onOpenChange?: (open: boolean) => void;
 }
 
 export const MultiSelectTriggerPrimitive = React.forwardRef<
-  HTMLDivElement,
+  React.ElementRef<typeof PopoverPrimitive.Trigger>,
   MultiSelectTriggerPrimitiveProps
->(
-  (
-    { className, children, fullRounded, disabled, open, onOpenChange, ...props },
-    ref,
-  ) => {
+>(({ className, children, fullRounded, disabled, asChild, ...props }, ref) => {
+  if (asChild) {
     return (
-      <div
-        ref={ref}
-        className={cn(
-          // 基础样式（复用常量）
-          ...TRIGGER_BASE_STYLES,
-          "min-w-[200px]",
-          fullRounded ? "rounded-full" : "rounded-[var(--radius-md)]",
-          // 交互状态（复用常量）
-          ...TRIGGER_HOVER_STYLES,
-          open && TRIGGER_OPEN_STYLES,
-          disabled && TRIGGER_DISABLED_STYLES,
-          className,
-        )}
-        onClick={() => !disabled && onOpenChange?.(!open)}
-        {...props}
-      >
+      <PopoverPrimitive.Trigger ref={ref} asChild {...props}>
         {children}
-      </div>
+      </PopoverPrimitive.Trigger>
     );
-  },
-);
+  }
+
+  return (
+    <PopoverPrimitive.Trigger
+      ref={ref}
+      type="button"
+      disabled={disabled}
+      className={cn(
+        // 基础样式（复用常量）
+        ...TRIGGER_BASE_STYLES,
+        "min-w-[200px]",
+        fullRounded ? "rounded-full" : "rounded-[var(--radius-md)]",
+        // 交互状态（复用常量）
+        ...TRIGGER_HOVER_STYLES,
+        "data-[state=open]:border-[var(--border-brand)]",
+        "data-[state=open]:ring-2",
+        "data-[state=open]:ring-[var(--ring)]",
+        disabled && TRIGGER_DISABLED_STYLES,
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </PopoverPrimitive.Trigger>
+  );
+});
 MultiSelectTriggerPrimitive.displayName = "MultiSelectTriggerPrimitive";
 //#endregion
 
-//#region MultiSelectContent 原语
+//#region MultiSelectTriggerContainer 原语
 /**
- * MultiSelect Content 原语
- * 多选模式下的下拉内容
+ * MultiSelect Trigger Container 原语
+ * 多选触发器的容器，用于 asChild 模式
  */
-export interface MultiSelectContentPrimitiveProps
+export interface MultiSelectTriggerContainerPrimitiveProps
   extends React.HTMLAttributes<HTMLDivElement> {
-  open?: boolean;
-  onOpenChange?: (open: boolean) => void;
+  fullRounded?: boolean;
+  disabled?: boolean;
 }
 
-export const MultiSelectContentPrimitive = React.forwardRef<
+export const MultiSelectTriggerContainerPrimitive = React.forwardRef<
   HTMLDivElement,
-  MultiSelectContentPrimitiveProps
->(({ className, children, open, onOpenChange, ...props }, ref) => {
-  const contentRef = React.useRef<HTMLDivElement>(null);
-
-  // 点击外部关闭
-  React.useEffect(() => {
-    if (!open) return;
-
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        contentRef.current &&
-        !contentRef.current.contains(event.target as Node)
-      ) {
-        onOpenChange?.(false);
-      }
-    };
-
-    // 延迟添加监听器，避免立即触发
-    const timer = setTimeout(() => {
-      document.addEventListener("mousedown", handleClickOutside);
-    }, 0);
-
-    return () => {
-      clearTimeout(timer);
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [open, onOpenChange]);
-
-  if (!open) return null;
-
+  MultiSelectTriggerContainerPrimitiveProps
+>(({ className, children, fullRounded, disabled, ...props }, ref) => {
   return (
     <div
-      ref={contentRef}
+      ref={ref}
       className={cn(
-        "absolute z-[9999] mt-1 w-full p-1",
-        // 复用共用样式
-        ...CONTENT_BASE_STYLES,
-        // 动画
-        "animate-in fade-in-0 zoom-in-95 slide-in-from-top-2",
+        // 复用单选触发器的基础样式
+        ...TRIGGER_BASE_STYLES,
+        "min-w-[200px]",
+        fullRounded ? "rounded-full" : "rounded-[var(--radius-md)]",
+        // 复用交互状态样式
+        ...TRIGGER_HOVER_STYLES,
+        // Open 状态
+        "data-[state=open]:border-[var(--border-brand)]",
+        "data-[state=open]:ring-2",
+        "data-[state=open]:ring-[var(--ring)]",
+        // Disabled 状态
+        disabled && TRIGGER_DISABLED_STYLES,
         className,
       )}
       {...props}
     >
       {children}
     </div>
+  );
+});
+MultiSelectTriggerContainerPrimitive.displayName = "MultiSelectTriggerContainerPrimitive";
+//#endregion
+
+//#region MultiSelectIconContainer 原语
+/**
+ * MultiSelect Icon Container 原语
+ * 用于包裹 icon 的容器
+ */
+export const MultiSelectIconContainerPrimitive = React.forwardRef<
+  HTMLSpanElement,
+  React.HTMLAttributes<HTMLSpanElement>
+>(({ className, children, ...props }, ref) => {
+  return (
+    <span
+      ref={ref}
+      className={cn("flex-shrink-0", className)}
+      {...props}
+    >
+      {children}
+    </span>
+  );
+});
+MultiSelectIconContainerPrimitive.displayName = "MultiSelectIconContainerPrimitive";
+//#endregion
+
+//#region MultiSelectValueContainer 原语
+/**
+ * MultiSelect Value Container 原语
+ * 用于显示选中值或 placeholder 的容器
+ */
+export const MultiSelectValueContainerPrimitive = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, children, ...props }, ref) => {
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "flex-1 flex flex-wrap gap-1 items-center overflow-hidden",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+});
+MultiSelectValueContainerPrimitive.displayName = "MultiSelectValueContainerPrimitive";
+//#endregion
+
+//#region MultiSelectPlaceholder 原语
+/**
+ * MultiSelect Placeholder 原语
+ * 占位符显示
+ */
+export const MultiSelectPlaceholderPrimitive = React.forwardRef<
+  HTMLSpanElement,
+  React.HTMLAttributes<HTMLSpanElement>
+>(({ className, children, ...props }, ref) => {
+  return (
+    <span
+      ref={ref}
+      className={cn("text-[var(--text-placeholder)]", className)}
+      {...props}
+    >
+      {children}
+    </span>
+  );
+});
+MultiSelectPlaceholderPrimitive.displayName = "MultiSelectPlaceholderPrimitive";
+//#endregion
+
+//#region MultiSelectContent 原语
+/**
+ * MultiSelect Content 原语
+ * 多选模式下的下拉内容，基于 Popover.Content
+ */
+export interface MultiSelectContentPrimitiveProps
+  extends React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content> {}
+
+export const MultiSelectContentPrimitive = React.forwardRef<
+  React.ElementRef<typeof PopoverPrimitive.Content>,
+  MultiSelectContentPrimitiveProps
+>(({ className, align = "start", sideOffset = 4, ...props }, ref) => {
+  return (
+    <PopoverPrimitive.Portal>
+      <PopoverPrimitive.Content
+        ref={ref}
+        align={align}
+        sideOffset={sideOffset}
+        className={cn(
+          "z-[9999] w-[var(--radix-popover-trigger-width)] p-1",
+          // 复用共用样式
+          ...CONTENT_BASE_STYLES,
+          // 动画
+          "data-[state=open]:animate-in data-[state=closed]:animate-out",
+          "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+          "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
+          "data-[side=bottom]:slide-in-from-top-2",
+          "data-[side=left]:slide-in-from-right-2",
+          "data-[side=right]:slide-in-from-left-2",
+          "data-[side=top]:slide-in-from-bottom-2",
+          className,
+        )}
+        {...props}
+      />
+    </PopoverPrimitive.Portal>
   );
 });
 MultiSelectContentPrimitive.displayName = "MultiSelectContentPrimitive";

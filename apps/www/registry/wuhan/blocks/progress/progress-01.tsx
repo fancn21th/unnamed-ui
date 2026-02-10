@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { Check, X, CircleCheck, CircleX } from "lucide-react";
 
 // ==================== 类型定义 ====================
 
@@ -98,7 +99,33 @@ export interface ProgressCirclePrimitiveProps extends React.HTMLAttributes<HTMLD
 // ==================== 工具函数 ====================
 
 /**
- * 获取状态对应的颜色
+ * 获取状态对应的颜色（线性进度条）
+ */
+const getLineStatusColor = (status: ProgressStatus, percent: number): string => {
+  if (percent === 100 || status === "success") {
+    return "var(--bg-success)";
+  }
+  if (status === "exception") {
+    return "var(--bg-error)";
+  }
+  return "var(--bg-brand)";
+};
+
+/**
+ * 获取状态对应的颜色（圆形进度条）
+ */
+const getCircleStatusColor = (status: ProgressStatus, percent: number): string => {
+  if (percent === 100 || status === "success") {
+    return "var(--border-success)";
+  }
+  if (status === "exception") {
+    return "var(--border-error)";
+  }
+  return "var(--text-brand)";
+};
+
+/**
+ * 获取状态对应的颜色（旧版，保留兼容）
  */
 const getStatusColor = (status: ProgressStatus): string => {
   switch (status) {
@@ -135,7 +162,7 @@ const parseStrokeColor = (
   type: "line" | "circle" = "line",
 ): string | undefined => {
   if (!strokeColor) {
-    return getStatusColor(status);
+    return undefined; // 返回 undefined，由调用方决定默认颜色
   }
 
   if (typeof strokeColor === "string") {
@@ -144,7 +171,7 @@ const parseStrokeColor = (
 
   if (Array.isArray(strokeColor)) {
     // 线性进度条的数组颜色（多步进度条）
-    return strokeColor[0] || getStatusColor(status);
+    return strokeColor[0] || undefined;
   }
 
   if ("from" in strokeColor && "to" in strokeColor) {
@@ -157,7 +184,7 @@ const parseStrokeColor = (
     const sortedKeys = Object.keys(strokeColor).sort(
       (a, b) => parseFloat(a) - parseFloat(b),
     );
-    if (sortedKeys.length === 0) return getStatusColor(status);
+    if (sortedKeys.length === 0) return undefined;
 
     // 找到当前进度对应的颜色
     for (let i = 0; i < sortedKeys.length; i++) {
@@ -170,7 +197,7 @@ const parseStrokeColor = (
     return strokeColor[sortedKeys[sortedKeys.length - 1]];
   }
 
-  return getStatusColor(status);
+  return undefined;
 };
 
 /**
@@ -261,7 +288,7 @@ export const ProgressLinePrimitive = React.forwardRef<
     ref,
   ) => {
     const validPercent = Math.min(100, Math.max(0, percent));
-    const color = parseStrokeColor(strokeColor, status, validPercent, "line");
+    const color = parseStrokeColor(strokeColor, status, validPercent, "line") || getLineStatusColor(status, validPercent);
 
     // 判断是否使用步进模式
     const isSteps = steps !== undefined && steps > 0;
@@ -274,6 +301,11 @@ export const ProgressLinePrimitive = React.forwardRef<
         : percentPosition.align === "center"
           ? "justify-center"
           : "justify-end";
+
+    // 判断是否显示图标
+    const showSuccessIcon = validPercent === 100 || status === "success";
+    const showErrorIcon = status === "exception";
+    const showIcon = showSuccessIcon || showErrorIcon;
 
     return (
       <div
@@ -334,7 +366,7 @@ export const ProgressLinePrimitive = React.forwardRef<
           )}
 
           {/* 内部百分比文字 */}
-          {showInfo && isInner && (
+          {showInfo && isInner && !showIcon && (
             <div
               className={cn(
                 "absolute inset-0 flex items-center px-2",
@@ -350,7 +382,7 @@ export const ProgressLinePrimitive = React.forwardRef<
           )}
         </div>
 
-        {/* 外部百分比文字 */}
+        {/* 外部百分比文字或图标 */}
         {showInfo && !isInner && (
           <div
             className={cn(
@@ -358,10 +390,15 @@ export const ProgressLinePrimitive = React.forwardRef<
               "font-[var(--font-family-en)]",
               "font-[var(--font-weight-400)]",
               "font-size-1",
-              "text-[var(--text-secondary)]",
             )}
           >
-            {format(validPercent)}
+            {showSuccessIcon ? (
+              <CircleCheck className="w-4 h-4 text-[var(--text-success)]" />
+            ) : showErrorIcon ? (
+              <CircleX className="w-4 h-4 text-[var(--text-error)]" />
+            ) : (
+              <span className="text-[var(--text-primary)]">{format(validPercent)}</span>
+            )}
           </div>
         )}
       </div>
@@ -395,10 +432,15 @@ export const ProgressCirclePrimitive = React.forwardRef<
     ref,
   ) => {
     const validPercent = Math.min(100, Math.max(0, percent));
-    const color = parseStrokeColor(strokeColor, status, validPercent, "circle");
+    const color = parseStrokeColor(strokeColor, status, validPercent, "circle") || getCircleStatusColor(status, validPercent);
 
     // 计算实际的 strokeWidth（像素值）
     const actualStrokeWidth = (width * strokeWidth) / 100;
+
+    // 判断是否显示图标
+    const showSuccessIcon = validPercent === 100 || status === "success";
+    const showErrorIcon = status === "exception";
+    const showIcon = showSuccessIcon || showErrorIcon;
 
     return (
       <div
@@ -415,11 +457,11 @@ export const ProgressCirclePrimitive = React.forwardRef<
           percent={validPercent}
           width={width}
           strokeWidth={actualStrokeWidth}
-          strokeColor={color || getStatusColor(status)}
+          strokeColor={color || getCircleStatusColor(status, validPercent)}
           trailColor={trailColor}
         />
 
-        {/* 百分比文字 */}
+        {/* 百分比文字或图标 */}
         {showInfo && (
           <div
             className={cn(
@@ -429,9 +471,15 @@ export const ProgressCirclePrimitive = React.forwardRef<
               "font-[var(--font-weight-400)]",
               "text-[var(--text-primary)]",
             )}
-            style={{ fontSize: width * 0.16 }}
+            style={{ fontSize: showIcon ? undefined : width * 0.16 }}
           >
-            {format(validPercent)}
+            {showSuccessIcon ? (
+              <Check className="text-[var(--text-success)]" style={{ width: width * 0.25, height: width * 0.25 }} />
+            ) : showErrorIcon ? (
+              <X className="text-[var(--text-error)]" style={{ width: width * 0.25, height: width * 0.25 }} />
+            ) : (
+              format(validPercent)
+            )}
           </div>
         )}
       </div>

@@ -168,6 +168,10 @@
     "description": "Document card primitives for displaying research document information and attributes"
   },
   {
+    "name": "avatar-01",
+    "description": "头像"
+  },
+  {
     "name": "message",
     "description": "Composed AI and user message components"
   },
@@ -322,6 +326,10 @@
   {
     "name": "document-card",
     "description": "Document card component for displaying research document information and attributes"
+  },
+  {
+    "name": "avatar",
+    "description": "头像"
   },
   {
     "name": "action-dropdown",

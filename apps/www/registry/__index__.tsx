@@ -1327,6 +1327,31 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "avatar-01": {
+      name: "avatar-01",
+      description: "头像",
+      type: "registry:block",
+      registryDependencies: ["style"],
+      files: [
+        {
+          path: "registry/wuhan/blocks/avatar/avatar-01.tsx",
+          type: "registry:component",
+          target: "components/wuhan/blocks/avatar-01.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/blocks/avatar/avatar-01.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     message: {
       name: "message",
       description: "Composed AI and user message components",
@@ -2441,6 +2466,30 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/composed/document-card/document-card.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    avatar: {
+      name: "avatar",
+      description: "头像",
+      type: "registry:block",
+      registryDependencies: ["avatar-01"],
+      files: [
+        {
+          path: "registry/wuhan/composed/avatar/avatar.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/avatar.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/wuhan/composed/avatar/avatar.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>
@@ -8651,6 +8700,31 @@ export const Index: Record<string, Record<string, any>> = {
       component: React.lazy(async () => {
         const mod =
           await import("@/registry/wuhan/examples/document-card/document-card-demo.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "avatar-default": {
+      name: "avatar-default",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["avatar"],
+      files: [
+        {
+          path: "registry/wuhan/examples/avatar/avatar-default.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/avatar/avatar-default.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

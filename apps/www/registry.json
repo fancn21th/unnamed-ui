@@ -2406,6 +2406,22 @@
       ]
     },
     {
+      "name": "avatar-01",
+      "type": "registry:block",
+      "title": "Avatar",
+      "description": "头像",
+      "registryDependencies": [
+        "style"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/avatar/avatar-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/avatar-01.tsx"
+        }
+      ]
+    },
+    {
       "name": "message",
       "type": "registry:block",
       "title": "Message",
@@ -3206,6 +3222,22 @@
           "path": "registry/wuhan/composed/document-card/document-card.tsx",
           "type": "registry:component",
           "target": "components/wuhan/composed/document-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:block",
+      "title": "Avatar",
+      "description": "头像",
+      "registryDependencies": [
+        "avatar-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/composed/avatar/avatar.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/composed/avatar.tsx"
         }
       ]
     },
@@ -6621,6 +6653,19 @@
           "path": "registry/wuhan/examples/document-card/document-card-demo.tsx",
           "type": "registry:example",
           "target": "components/wuhan/examples/document-card-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-default",
+      "type": "registry:example",
+      "registryDependencies": [
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/avatar/avatar-default.tsx",
+          "type": "registry:example"
         }
       ]
     }

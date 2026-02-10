@@ -706,4 +706,18 @@ export const composed: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "avatar",
+    type: "registry:block",
+    title: "Avatar",
+    description: "头像",
+    registryDependencies: ["avatar-01"],
+    files: [
+      {
+        path: "composed/avatar/avatar.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/avatar.tsx",
+      },
+    ],
+  },
 ];

@@ -2352,12 +2352,12 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "split-pane-three",
+    name: "triple-split-pane-demo",
     type: "registry:example",
     registryDependencies: ["triple-split-pane"],
     files: [
       {
-        path: "examples/split-pane/split-pane-three.tsx",
+        path: "examples/split-pane/triple-split-pane-demo.tsx",
         type: "registry:example",
       },
     ],
@@ -2579,6 +2579,61 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "upload-demo",
+    type: "registry:example",
+    registryDependencies: ["upload"],
+    files: [
+      {
+        path: "examples/upload/upload-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "upload-custom-request",
+    type: "registry:example",
+    registryDependencies: ["upload"],
+    files: [
+      {
+        path: "examples/upload/upload-custom-request.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "upload-restrictions",
+    type: "registry:example",
+    registryDependencies: ["upload"],
+    files: [
+      {
+        path: "examples/upload/upload-restrictions.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "upload-controlled",
+    type: "registry:example",
+    registryDependencies: ["upload"],
+    files: [
+      {
+        path: "examples/upload/upload-controlled.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "upload-disabled",
+    type: "registry:example",
+    registryDependencies: ["upload"],
+    files: [
+      {
+        path: "examples/upload/upload-disabled.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
   // goal-card examples
   {
     name: "goal-card-demo",
@@ -2644,6 +2699,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "avatar-default",
+    type: "registry:example",
+    registryDependencies: ["avatar"],
+    files: [
+      {
+        path: "examples/avatar/avatar-default.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "page-header-demo",
     type: "registry:example",
     title: "Page Header Demo",
@@ -2655,6 +2721,149 @@ export const examples: Registry["items"] = [
         path: "examples/page-header/page-header-demo.tsx",
         type: "registry:example",
         target: "components/wuhan/examples/page-header-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "avatar-demo",
+    type: "registry:example",
+    registryDependencies: ["avatar"],
+    files: [
+      {
+        path: "examples/avatar/avatar-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "avatar-text",
+    type: "registry:example",
+    registryDependencies: ["avatar"],
+    files: [
+      {
+        path: "examples/avatar/avatar-text.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "avatar-icon",
+    type: "registry:example",
+    registryDependencies: ["avatar"],
+    files: [
+      {
+        path: "examples/avatar/avatar-icon.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "avatar-sizes",
+    type: "registry:example",
+    registryDependencies: ["avatar"],
+    files: [
+      {
+        path: "examples/avatar/avatar-sizes.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "avatar-group-demo",
+    type: "registry:example",
+    registryDependencies: ["avatar"],
+    files: [
+      {
+        path: "examples/avatar/avatar-group-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "avatar-header-demo",
+    type: "registry:example",
+    registryDependencies: ["avatar"],
+    files: [
+      {
+        path: "examples/avatar/avatar-header-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "progress-default",
+    type: "registry:example",
+    registryDependencies: ["progress"],
+    files: [
+      {
+        path: "examples/progress/progress-default.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "progress-demo",
+    type: "registry:example",
+    registryDependencies: ["progress"],
+    files: [
+      {
+        path: "examples/progress/progress-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "progress-line",
+    type: "registry:example",
+    registryDependencies: ["progress"],
+    files: [
+      {
+        path: "examples/progress/progress-line.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "progress-circle",
+    type: "registry:example",
+    registryDependencies: ["progress"],
+    files: [
+      {
+        path: "examples/progress/progress-circle.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "progress-steps",
+    type: "registry:example",
+    registryDependencies: ["progress"],
+    files: [
+      {
+        path: "examples/progress/progress-steps.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "progress-format",
+    type: "registry:example",
+    registryDependencies: ["progress"],
+    files: [
+      {
+        path: "examples/progress/progress-format.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "progress-dynamic",
+    type: "registry:example",
+    registryDependencies: ["progress"],
+    files: [
+      {
+        path: "examples/progress/progress-dynamic.tsx",
+        type: "registry:example",
       },
     ],
   },

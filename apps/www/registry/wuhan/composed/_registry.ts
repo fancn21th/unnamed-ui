@@ -668,7 +668,8 @@ export const composed: Registry["items"] = [
     type: "registry:block",
     title: "Upload",
     description: "上传",
-    registryDependencies: ["upload-01"],
+    dependencies: ["lucide-react"],
+    registryDependencies: ["upload-01", "block-button"],
     files: [
       {
         path: "composed/upload/upload.tsx",
@@ -758,6 +759,20 @@ export const composed: Registry["items"] = [
     ],
   },
   {
+    name: "avatar",
+    type: "registry:block",
+    title: "Avatar",
+    description: "头像",
+    registryDependencies: ["avatar-01"],
+    files: [
+      {
+        path: "composed/avatar/avatar.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/avatar.tsx",
+      },
+    ],
+  },
+  {
     name: "icon-button",
     type: "registry:block",
     title: "Icon Button",
@@ -802,6 +817,20 @@ export const composed: Registry["items"] = [
         path: "composed/page-header/page-header.tsx",
         type: "registry:component",
         target: "components/wuhan/composed/page-header.tsx",
+      },
+    ],
+  },
+  {
+    name: "progress",
+    type: "registry:block",
+    title: "Progress",
+    description: "进度条",
+    registryDependencies: ["progress-01"],
+    files: [
+      {
+        path: "composed/progress/progress.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/progress.tsx",
       },
     ],
   },

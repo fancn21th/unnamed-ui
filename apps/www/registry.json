@@ -307,6 +307,7 @@
           "bg-neutral-light": "var(--neutral-100)",
           "bg-neutral-light-hover": "var(--neutral-200)",
           "bg-neutral-light-active": "var(--neutral-300)",
+          "bg-container-placeholder": "var(--neutral-200)",
           "bg-brand-light": "var(--brand-100)",
           "bg-brand-light-hover": "var(--brand-200)",
           "bg-brand-light-active": "var(--brand-300)",
@@ -337,6 +338,7 @@
           "bg-neutral-active": "var(--neutral-900)",
           "bg-mask": "rgba(0, 0, 0, 0.8)",
           "bg-mask-soft": "rgba(0, 0, 0, 0.05)",
+          "bg-solid-disable": "0.5",
           "bg-page": "var(--neutral-0)",
           "bg-page-brand": "var(--brand-50)",
           "bg-page-secondary": "var(--neutral-50)",
@@ -652,6 +654,7 @@
           "bg-neutral-light": "var(--neutral-100)",
           "bg-neutral-light-hover": "var(--neutral-200)",
           "bg-neutral-light-active": "var(--neutral-300)",
+          "bg-container-placeholder": "var(--neutral-200)",
           "bg-brand-light": "var(--brand-100)",
           "bg-brand-light-hover": "var(--brand-200)",
           "bg-brand-light-active": "var(--brand-300)",
@@ -682,6 +685,7 @@
           "bg-neutral-active": "var(--neutral-900)",
           "bg-mask": "rgba(0, 0, 0, 0.8)",
           "bg-mask-soft": "rgba(0, 0, 0, 0.05)",
+          "bg-solid-disable": "0.5",
           "bg-page": "var(--neutral-0)",
           "bg-page-brand": "var(--brand-50)",
           "bg-page-secondary": "var(--neutral-50)",
@@ -1082,6 +1086,7 @@
           "bg-neutral-light": "var(--neutral-100)",
           "bg-neutral-light-hover": "var(--neutral-200)",
           "bg-neutral-light-active": "var(--neutral-300)",
+          "bg-container-placeholder": "var(--neutral-200)",
           "bg-brand-light": "var(--brand-100)",
           "bg-brand-light-hover": "var(--brand-200)",
           "bg-brand-light-active": "var(--brand-300)",
@@ -1112,6 +1117,7 @@
           "bg-neutral-active": "var(--neutral-900)",
           "bg-mask": "rgba(0, 0, 0, 0.8)",
           "bg-mask-soft": "rgba(0, 0, 0, 0.05)",
+          "bg-solid-disable": "0.5",
           "bg-page": "var(--neutral-0)",
           "bg-page-brand": "var(--brand-50)",
           "bg-page-secondary": "var(--neutral-50)",
@@ -1427,6 +1433,7 @@
           "bg-neutral-light": "var(--neutral-100)",
           "bg-neutral-light-hover": "var(--neutral-200)",
           "bg-neutral-light-active": "var(--neutral-300)",
+          "bg-container-placeholder": "var(--neutral-200)",
           "bg-brand-light": "var(--brand-100)",
           "bg-brand-light-hover": "var(--brand-200)",
           "bg-brand-light-active": "var(--brand-300)",
@@ -1457,6 +1464,7 @@
           "bg-neutral-active": "var(--neutral-900)",
           "bg-mask": "rgba(0, 0, 0, 0.8)",
           "bg-mask-soft": "rgba(0, 0, 0, 0.05)",
+          "bg-solid-disable": "0.5",
           "bg-page": "var(--neutral-0)",
           "bg-page-brand": "var(--brand-50)",
           "bg-page-secondary": "var(--neutral-50)",
@@ -2490,6 +2498,22 @@
       ]
     },
     {
+      "name": "avatar-01",
+      "type": "registry:block",
+      "title": "Avatar",
+      "description": "头像",
+      "registryDependencies": [
+        "style"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/avatar/avatar-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/avatar-01.tsx"
+        }
+      ]
+    },
+    {
       "name": "accordion-01",
       "type": "registry:block",
       "title": "Accordion",
@@ -2526,6 +2550,22 @@
           "path": "registry/wuhan/blocks/page-header/page-header-01.tsx",
           "type": "registry:component",
           "target": "components/wuhan/blocks/page-header-01.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progress-01",
+      "type": "registry:block",
+      "title": "Progress",
+      "description": "进度条",
+      "registryDependencies": [
+        "style"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/blocks/progress/progress-01.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/blocks/progress-01.tsx"
         }
       ]
     },
@@ -3282,8 +3322,12 @@
       "type": "registry:block",
       "title": "Upload",
       "description": "上传",
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
-        "upload-01"
+        "upload-01",
+        "block-button"
       ],
       "files": [
         {
@@ -3390,6 +3434,22 @@
       ]
     },
     {
+      "name": "avatar",
+      "type": "registry:block",
+      "title": "Avatar",
+      "description": "头像",
+      "registryDependencies": [
+        "avatar-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/composed/avatar/avatar.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/composed/avatar.tsx"
+        }
+      ]
+    },
+    {
       "name": "icon-button",
       "type": "registry:block",
       "title": "Icon Button",
@@ -3444,6 +3504,22 @@
           "path": "registry/wuhan/composed/page-header/page-header.tsx",
           "type": "registry:component",
           "target": "components/wuhan/composed/page-header.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:block",
+      "title": "Progress",
+      "description": "进度条",
+      "registryDependencies": [
+        "progress-01"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/composed/progress/progress.tsx",
+          "type": "registry:component",
+          "target": "components/wuhan/composed/progress.tsx"
         }
       ]
     },
@@ -6548,14 +6624,14 @@
       ]
     },
     {
-      "name": "split-pane-three",
+      "name": "triple-split-pane-demo",
       "type": "registry:example",
       "registryDependencies": [
         "triple-split-pane"
       ],
       "files": [
         {
-          "path": "registry/wuhan/examples/split-pane/split-pane-three.tsx",
+          "path": "registry/wuhan/examples/split-pane/triple-split-pane-demo.tsx",
           "type": "registry:example"
         }
       ]
@@ -6819,6 +6895,71 @@
       ]
     },
     {
+      "name": "upload-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "upload"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/upload/upload-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "upload-custom-request",
+      "type": "registry:example",
+      "registryDependencies": [
+        "upload"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/upload/upload-custom-request.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "upload-restrictions",
+      "type": "registry:example",
+      "registryDependencies": [
+        "upload"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/upload/upload-restrictions.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "upload-controlled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "upload"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/upload/upload-controlled.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "upload-disabled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "upload"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/upload/upload-disabled.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "goal-card-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -6889,6 +7030,19 @@
       ]
     },
     {
+      "name": "avatar-default",
+      "type": "registry:example",
+      "registryDependencies": [
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/avatar/avatar-default.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "page-header-demo",
       "type": "registry:example",
       "title": "Page Header Demo",
@@ -6904,6 +7058,175 @@
           "path": "registry/wuhan/examples/page-header/page-header-demo.tsx",
           "type": "registry:example",
           "target": "components/wuhan/examples/page-header-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/avatar/avatar-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "avatar-text",
+      "type": "registry:example",
+      "registryDependencies": [
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/avatar/avatar-text.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "avatar-icon",
+      "type": "registry:example",
+      "registryDependencies": [
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/avatar/avatar-icon.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "avatar-sizes",
+      "type": "registry:example",
+      "registryDependencies": [
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/avatar/avatar-sizes.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "avatar-group-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/avatar/avatar-group-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "avatar-header-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/avatar/avatar-header-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "progress-default",
+      "type": "registry:example",
+      "registryDependencies": [
+        "progress"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/progress/progress-default.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "progress-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "progress"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/progress/progress-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "progress-line",
+      "type": "registry:example",
+      "registryDependencies": [
+        "progress"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/progress/progress-line.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "progress-circle",
+      "type": "registry:example",
+      "registryDependencies": [
+        "progress"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/progress/progress-circle.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "progress-steps",
+      "type": "registry:example",
+      "registryDependencies": [
+        "progress"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/progress/progress-steps.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "progress-format",
+      "type": "registry:example",
+      "registryDependencies": [
+        "progress"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/progress/progress-format.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "progress-dynamic",
+      "type": "registry:example",
+      "registryDependencies": [
+        "progress"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/progress/progress-dynamic.tsx",
+          "type": "registry:example"
         }
       ]
     }

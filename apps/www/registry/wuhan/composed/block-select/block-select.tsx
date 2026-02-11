@@ -3,7 +3,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Select } from "radix-ui";
-import { ChevronDown, X } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import {
   SelectTriggerPrimitive,
   SelectIconPrimitive,
@@ -13,50 +13,17 @@ import {
   SelectSeparatorPrimitive,
   SelectValuePrimitive,
   SelectGroupPrimitive,
+  MultiSelectRootPrimitive,
+  MultiSelectTriggerPrimitive,
+  MultiSelectTriggerContainerPrimitive,
+  MultiSelectIconContainerPrimitive,
+  MultiSelectValueContainerPrimitive,
+  MultiSelectPlaceholderPrimitive,
+  MultiSelectContentPrimitive,
+  MultiSelectItemPrimitive,
 } from "@/registry/wuhan/blocks/block-select/block-select-01";
 import { Checkbox } from "@/registry/wuhan/composed/checkbox/checkbox";
-
-//#region Tag Component
-/**
- * 简单的 Tag 组件
- * 用于在多选模式下展示选中项
- */
-interface TagProps {
-  label: string;
-  onRemove?: () => void;
-  className?: string;
-}
-
-const Tag: React.FC<TagProps> = ({ label, onRemove, className }) => {
-  return (
-    <span
-      className={cn(
-        "inline-flex items-center gap-1",
-        "px-2 py-0.5",
-        "rounded-[var(--radius-sm)]",
-        "bg-[var(--bg-brand-subtle)]",
-        "text-[var(--text-brand)]",
-        "text-xs font-medium",
-        className,
-      )}
-    >
-      <span>{label}</span>
-      {onRemove && (
-        <button
-          type="button"
-          onClick={(e) => {
-            e.stopPropagation();
-            onRemove();
-          }}
-          className="hover:bg-[var(--bg-brand-subtle-hover)] rounded-sm p-0.5"
-        >
-          <X className="h-3 w-3" />
-        </button>
-      )}
-    </span>
-  );
-};
-//#endregion
+import { Tag } from "@/registry/wuhan/composed/tag/tag";
 
 //#region BlockSelect Types
 /**
@@ -145,9 +112,13 @@ export const BlockSelect = React.forwardRef<HTMLDivElement, BlockSelectProps>(
     ref,
   ) => {
     // 多选模式下的状态管理
-    const [selectedValues, setSelectedValues] = React.useState<string[]>(
-      multiple && Array.isArray(defaultValue) ? defaultValue : [],
-    );
+    const [internalSelectedValues, setInternalSelectedValues] = React.useState<
+      string[]
+    >(multiple && Array.isArray(defaultValue) ? defaultValue : []);
+
+    // 使用受控模式：如果传入了 value，则使用 value，否则使用内部状态
+    const selectedValues =
+      multiple && Array.isArray(value) ? value : internalSelectedValues;
 
     // 单选模式的当前值
     const currentValue = multiple
@@ -160,14 +131,14 @@ export const BlockSelect = React.forwardRef<HTMLDivElement, BlockSelectProps>(
         ? selectedValues.filter((v) => v !== optionValue)
         : [...selectedValues, optionValue];
 
-      setSelectedValues(newValues);
+      setInternalSelectedValues(newValues);
       onValueChange?.(newValues);
     };
 
     // 处理移除 tag
     const handleRemoveTag = (valueToRemove: string) => {
       const newValues = selectedValues.filter((v) => v !== valueToRemove);
-      setSelectedValues(newValues);
+      setInternalSelectedValues(newValues);
       onValueChange?.(newValues);
     };
 
@@ -237,87 +208,73 @@ export const BlockSelect = React.forwardRef<HTMLDivElement, BlockSelectProps>(
 
     // 多选模式
     return (
-      <div className="relative">
-        <div
-          className={cn(
-            "h-[var(--size-com-md)] min-w-[200px]",
-            fullRounded ? "rounded-full" : "rounded-[var(--radius-md)]",
-            "border border-[var(--border-neutral)] bg-[var(--bg-container)]",
-            "flex items-center gap-2",
-            "px-[var(--padding-com-md)] py-[5px]",
-            "cursor-pointer",
-            "hover:border-[var(--border-brand)]",
-            "transition-all duration-300",
-            disabled &&
-              "cursor-not-allowed opacity-50 bg-[var(--bg-container-disable)]",
-            triggerClassName,
-          )}
-          onClick={() => !disabled && onOpenChange?.(!open)}
-        >
-          {iconPosition === "prefix" && (
-            <span className="flex-shrink-0">{renderIcon()}</span>
-          )}
-
-          <div className="flex-1 flex flex-wrap gap-1 items-center overflow-hidden">
-            {selectedValues.length > 0 ? (
-              getSelectedLabels().map((label, index) => (
-                <Tag
-                  key={selectedValues[index]}
-                  label={label!}
-                  onRemove={() => handleRemoveTag(selectedValues[index])}
-                />
-              ))
-            ) : (
-              <span className="text-[var(--text-placeholder)]">
-                {placeholder}
-              </span>
-            )}
-          </div>
-
-          {iconPosition === "suffix" && (
-            <span className="flex-shrink-0">{renderIcon()}</span>
-          )}
-        </div>
-
-        {/* 多选下拉菜单 */}
-        {open && (
-          <div
-            className={cn(
-              "absolute z-50 mt-1 w-full",
-              "rounded-[var(--radius-md)]",
-              "border border-[var(--border-neutral)]",
-              "bg-[var(--bg-container)]",
-              "shadow-md p-1",
-              contentClassName,
-            )}
+      <MultiSelectRootPrimitive
+        open={disabled ? false : open}
+        onOpenChange={disabled ? undefined : onOpenChange}
+      >
+        <MultiSelectTriggerPrimitive asChild>
+          <MultiSelectTriggerContainerPrimitive
+            ref={ref}
+            fullRounded={fullRounded}
+            disabled={disabled}
+            className={triggerClassName}
           >
-            {options.map((option) => (
-              <div
-                key={option.value}
-                className={cn(
-                  "flex items-center gap-2 px-2 py-1.5",
-                  "rounded-[var(--radius-sm)]",
-                  "cursor-pointer",
-                  "hover:bg-[var(--bg-item-hover)]",
-                  option.disabled && "opacity-50 cursor-not-allowed",
-                )}
-                onClick={() =>
+            {iconPosition === "prefix" && (
+              <MultiSelectIconContainerPrimitive>
+                {renderIcon()}
+              </MultiSelectIconContainerPrimitive>
+            )}
+
+            <MultiSelectValueContainerPrimitive>
+              {selectedValues.length > 0 ? (
+                getSelectedLabels().map((label, index) => (
+                  <Tag
+                    key={selectedValues[index]}
+                    variant="filled"
+                    theme="neutral"
+                    closeable={!disabled}
+                    onClose={() => handleRemoveTag(selectedValues[index])}
+                  >
+                    {label}
+                  </Tag>
+                ))
+              ) : (
+                <MultiSelectPlaceholderPrimitive>
+                  {placeholder}
+                </MultiSelectPlaceholderPrimitive>
+              )}
+            </MultiSelectValueContainerPrimitive>
+
+            {iconPosition === "suffix" && (
+              <MultiSelectIconContainerPrimitive>
+                {renderIcon()}
+              </MultiSelectIconContainerPrimitive>
+            )}
+          </MultiSelectTriggerContainerPrimitive>
+        </MultiSelectTriggerPrimitive>
+
+        <MultiSelectContentPrimitive className={contentClassName}>
+          {options.map((option) => (
+            <MultiSelectItemPrimitive
+              key={option.value}
+              disabled={option.disabled}
+              checked={selectedValues.includes(option.value)}
+              onCheckedChange={() =>
+                !option.disabled && handleMultipleValueChange(option.value)
+              }
+            >
+              <Checkbox
+                checked={selectedValues.includes(option.value)}
+                disabled={option.disabled}
+                onChange={() =>
                   !option.disabled && handleMultipleValueChange(option.value)
                 }
-              >
-                <Checkbox
-                  checked={selectedValues.includes(option.value)}
-                  disabled={option.disabled}
-                  onChange={() =>
-                    !option.disabled && handleMultipleValueChange(option.value)
-                  }
-                />
-                <span className="text-sm">{option.label}</span>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
+              />
+              <span className="text-sm">{option.label}</span>
+            </MultiSelectItemPrimitive>
+          ))}
+        </MultiSelectContentPrimitive>
+      </MultiSelectRootPrimitive>
     );
   },
 );

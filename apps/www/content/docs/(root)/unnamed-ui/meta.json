@@ -1,0 +1,5 @@
+{
+  "title": "Unnamed UI",
+  "description": "使用 Unnamed UI 创建你的 AI 原生应用",
+  "pages": ["index", "howto", "advanced", "migration"]
+}

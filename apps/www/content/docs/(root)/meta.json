@@ -1,14 +1,15 @@
 {
-  "title": "新手指南",
+  "title": "用户文档",
   "description": "使用 Unnamed UI 创建你的 AI 原生应用",
   "icon": "Building",
   "root": true,
   "pages": [
     "---Introduction---",
     "index",
+    "starter",
+    "unnamed-ui",
     "shadcn",
     "agent-app",
-    "unnamed-ui",
     "plan"
   ]
 }

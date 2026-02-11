@@ -2,7 +2,13 @@ import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { MDXComponents } from "mdx/types";
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
-import { CodeTabs, TabsList, TabsTrigger, TabsContent } from "@/components/code-tabs";
+import {
+  CodeTabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "@/components/code-tabs";
+import { Mermaid } from "@/components/mdx/mermaid";
 import { Steps, Step } from "@/components/steps";
 import { MDXPre } from "@/components/mdx-pre";
 import { MDXCode } from "@/components/mdx-code";
@@ -21,5 +27,6 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     Step,
     pre: MDXPre,
     code: MDXCode,
+    Mermaid,
   };
 }

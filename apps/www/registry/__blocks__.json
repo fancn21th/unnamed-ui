@@ -184,12 +184,20 @@
     "description": "Icon button primitive with solid/outline/ghost variants, multiple colors, and sizes"
   },
   {
+    "name": "avatar-01",
+    "description": "头像"
+  },
+  {
     "name": "accordion-01",
     "description": "Accordion primitives with Root, Item, Trigger, and Content components"
   },
   {
     "name": "page-header-01",
     "description": "Page header component with logo, title, button group and user avatar"
+  },
+  {
+    "name": "progress-01",
+    "description": "进度条"
   },
   {
     "name": "message",
@@ -360,6 +368,10 @@
     "description": "File card component with checkbox, icon, title, date, and action button"
   },
   {
+    "name": "avatar",
+    "description": "头像"
+  },
+  {
     "name": "icon-button",
     "description": "Composed icon button with tooltip support, multiple variants, colors, and sizes"
   },
@@ -370,6 +382,10 @@
   {
     "name": "page-header",
     "description": "Composed page header with logo, title, button group and user avatar"
+  },
+  {
+    "name": "progress",
+    "description": "进度条"
   },
   {
     "name": "action-dropdown",

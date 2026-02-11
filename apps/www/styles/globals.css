@@ -460,6 +460,7 @@
   --bg-neutral-hover: var(--neutral-700);
   --bg-neutral-active: var(--neutral-900);
   --bg-mask: rgba(0, 0, 0, 0.8);
+  --bg-solid-disable: 0.5;
   
   /* ==================== Page 页面背景 - Light 主题 ==================== */
   --bg-page: var(--neutral-0);
@@ -694,6 +695,7 @@
   --bg-neutral-hover: var(--brand-700);
   --bg-neutral-active: var(--brand-500);
   --bg-mask: rgba(0, 0, 0, 0.8);
+  --bg-solid-disable: 0.5;
   
   /* ==================== Page 页面背景 - Dark 主题 ==================== */
   --bg-page: var(--neutral-10);

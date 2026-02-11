@@ -1,22 +1,40 @@
 ---
 title: Upload
-description: 上传
-author: AF
+description: Upload component for file selection and upload with comprehensive features
+author: Copilot
 ---
 
-<ComponentPreview name="upload-default" description="上传" className="mb-4" />
+<ComponentPreview name="upload-demo" description="Upload component with single and multiple file support" className="mb-4" />
 
-上传
+Upload 组件用于文件选择和上传，支持单文件/多文件上传、文件类型限制、文件大小限制等功能,适用于头像上传、文档上传、图片上传等场景。
+
+## 概述
+
+- **单文件/多文件上传**：支持单文件和多文件上传模式
+- **文件限制**：支持文件类型限制（accept）和文件大小限制（maxSize）
+- **自定义上传**：支持自定义上传请求逻辑
+- **状态管理**：完整的上传状态管理（idle、uploading、success、error）
+- **受控/非受控**：支持受控和非受控两种使用模式
+- **类型安全**：完整的 TypeScript 类型定义
 
 ## 快速开始
 
 ```tsx
-import { Upload } from "@/registry/wuhan/composed/upload";
+import { Upload } from "@/registry/wuhan/composed/upload/upload";
 
 export function Example() {
-  return <Upload />;
+  return <Upload buttonText="上传文件" />;
 }
 ```
+
+## 特性
+
+- **灵活的上传模式**：支持单文件和多文件上传
+- **文件验证**：内置文件类型和大小验证
+- **实时状态反馈**：显示上传进度和状态（上传中、成功、失败）
+- **自定义请求**：完全自定义的上传请求逻辑
+- **文件列表管理**：支持文件列表的增删改查
+- **无缝集成**：使用 block-button 组件，保持界面一致性
 
 ## 安装
 
@@ -55,9 +73,61 @@ npx shadcn@latest add "https://unnamed-ui.com/r/wuhan/upload"
 
 ### 基础用法
 
+最基础的上传组件使用。
+
 <ComponentPreview
   name="upload-default"
-  description="基础用法"
+  description="基础上传"
+  className="mb-4"
+/>
+
+### 单文件/多文件上传
+
+演示单文件和多文件上传的区别。
+
+<ComponentPreview
+  name="upload-demo"
+  description="单文件和多文件上传"
+  className="mb-4"
+/>
+
+### 自定义上传请求
+
+使用 customRequest 实现自定义上传逻辑。
+
+<ComponentPreview
+  name="upload-custom-request"
+  description="自定义上传请求"
+  className="mb-4"
+/>
+
+### 文件限制
+
+演示文件类型和大小限制。
+
+<ComponentPreview
+  name="upload-restrictions"
+  description="文件限制"
+  className="mb-4"
+/>
+
+### 受控模式
+
+使用受控模式管理文件列表。
+
+<ComponentPreview
+  name="upload-controlled"
+  description="受控模式"
+  className="mb-4"
+/>
+
+### 禁用状态
+
+禁用上传功能。
+
+<ComponentPreview
+  name="upload-disabled"
+  description="禁用状态"
   className="mb-4"
 />
 
@@ -65,19 +135,217 @@ npx shadcn@latest add "https://unnamed-ui.com/r/wuhan/upload"
 
 ### Upload
 
-上传
+上传组件的主要 API。
 
-#### Props
+| 属性 | 类型 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `fileList` | `UploadFile[]` | - | 文件列表（受控模式） |
+| `defaultFileList` | `UploadFile[]` | `[]` | 默认文件列表（非受控模式） |
+| `multiple` | `boolean` | `false` | 是否支持多文件上传 |
+| `accept` | `string` | - | 接受的文件类型，例如："image/*" 或 ".jpg,.png" |
+| `maxSize` | `number` | - | 文件大小限制（字节），例如：5 * 1024 * 1024 (5MB) |
+| `maxCount` | `number` | - | 最大文件数量 |
+| `disabled` | `boolean` | `false` | 是否禁用 |
+| `buttonText` | `string` | `"上传文件"` | 上传按钮文本 |
+| `onSelect` | `(files: File[]) => void` | - | 文件选择时的回调 |
+| `onChange` | `(fileList: UploadFile[]) => void` | - | 文件列表变化时的回调 |
+| `onRemove` | `(file: UploadFile) => void` | - | 删除文件时的回调 |
+| `customRequest` | `(file: File) => Promise<any>` | - | 自定义上传请求 |
+| `className` | `string` | - | 自定义类名 |
+| `itemRender` | `(file: UploadFile, defaultRender: ReactNode) => ReactNode` | - | 自定义文件列表项渲染 |
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `children` | `ReactNode` | `"Upload"` | 组件内容 |
-| `className` | `string` | - | 容器自定义类名 |
+### UploadFile
+
+文件对象类型定义。
+
+```tsx
+interface UploadFile {
+  uid: string;           // 文件唯一标识
+  file: File;            // 原生文件对象
+  name: string;          // 文件名
+  size: number;          // 文件大小（字节）
+  type: string;          // 文件类型
+  status: UploadStatus;  // 上传状态
+  progress?: number;     // 上传进度（0-100）
+  error?: string;        // 错误信息
+  response?: any;        // 响应数据
+}
+```
+
+### UploadStatus
+
+上传状态类型。
+
+```tsx
+type UploadStatus = "idle" | "uploading" | "success" | "error";
+```
+
+## 使用场景
+
+### 1. 图片上传
+
+```tsx
+<Upload
+  accept="image/*"
+  maxSize={5 * 1024 * 1024}
+  buttonText="上传图片"
+/>
+```
+
+### 2. 文档上传
+
+```tsx
+<Upload
+  accept=".pdf,.doc,.docx"
+  multiple
+  maxCount={5}
+  buttonText="上传文档"
+/>
+```
+
+### 3. 头像上传
+
+```tsx
+<Upload
+  accept="image/jpeg,image/png"
+  maxSize={2 * 1024 * 1024}
+  buttonText="上传头像"
+  customRequest={async (file) => {
+    const formData = new FormData();
+    formData.append('avatar', file);
+    const response = await fetch('/api/upload-avatar', {
+      method: 'POST',
+      body: formData,
+    });
+    return response.json();
+  }}
+/>
+```
+
+### 4. 批量文件上传
+
+```tsx
+<Upload
+  multiple
+  maxCount={10}
+  buttonText="批量上传"
+  customRequest={uploadToServer}
+  onChange={(fileList) => {
+    console.log('当前文件列表:', fileList);
+  }}
+/>
+```
+
+## 设计指南
+
+### 文件状态指示
+
+- **空闲（idle）**：文件已选择但未开始上传，显示普通文件图标
+- **上传中（uploading）**：文件正在上传，显示加载动画图标
+- **成功（success）**：文件上传成功，显示普通文件图标
+- **失败（error）**：文件上传失败，显示红色文件图标和错误信息
+
+### 文件信息显示
+
+每个文件项显示以下信息：
+- 文件状态图标（左侧）
+- 文件名（中间，支持截断）
+- 文件大小（文件名右侧）
+- 删除按钮（最右侧）
+
+### 错误处理
+
+- **文件大小超限**：立即显示错误状态，不触发上传
+- **上传失败**：显示错误状态和错误信息
+- **类型不匹配**：浏览器原生限制，无法选择
+
+## 可访问性
+
+- 使用 `aria-label` 为删除按钮提供无障碍标签
+- 按钮支持键盘操作
+- 文件选择支持原生文件选择器
+- 状态变化有明确的视觉反馈
+
+## 常见问题
+
+### 如何实现自定义上传请求？
+
+使用 `customRequest` 属性传入自定义上传函数：
+
+```tsx
+const handleUpload = async (file: File) => {
+  const formData = new FormData();
+  formData.append('file', file);
+  
+  const response = await fetch('/api/upload', {
+    method: 'POST',
+    body: formData,
+  });
+  
+  if (!response.ok) {
+    throw new Error('上传失败');
+  }
+  
+  return response.json();
+};
+
+<Upload customRequest={handleUpload} />
+```
+
+### 如何限制文件类型？
+
+使用 `accept` 属性指定允许的文件类型：
+
+```tsx
+// 只允许图片
+<Upload accept="image/*" />
+
+// 只允许特定格式
+<Upload accept=".pdf,.doc,.docx" />
+
+// 允许特定 MIME 类型
+<Upload accept="image/jpeg,image/png" />
+```
+
+### 如何监听文件列表变化？
+
+使用 `onChange` 回调监听文件列表变化：
+
+```tsx
+<Upload
+  onChange={(fileList) => {
+    console.log('当前文件列表:', fileList);
+    // 可以在这里处理文件列表变化
+  }}
+/>
+```
+
+### 如何使用受控模式？
+
+传入 `fileList` 和 `onChange` 实现受控模式：
+
+```tsx
+const [fileList, setFileList] = useState<UploadFile[]>([]);
+
+<Upload
+  fileList={fileList}
+  onChange={setFileList}
+/>
+```
 
 ## 原语组件
 
 Upload 组件基于以下原语组件构建：
 
-- `UploadContainerPrimitive`: 容器组件
+- `UploadContainerPrimitive`: 上传容器
+- `UploadTriggerPrimitive`: 上传触发器
+- `UploadInputPrimitive`: 文件输入框
+- `UploadFileListPrimitive`: 文件列表容器
+- `UploadFileItemPrimitive`: 文件列表项
+- `UploadFileIconPrimitive`: 文件图标容器
+- `UploadFileNamePrimitive`: 文件名
+- `UploadFileSizePrimitive`: 文件大小
+- `UploadFileRemovePrimitive`: 删除按钮
+- `UploadFileErrorPrimitive`: 错误信息
 
-如需更灵活的定制，可以直接使用这些原语组件。
+这些原语组件可以单独使用来构建自定义的上传界面。

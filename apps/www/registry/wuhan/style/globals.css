@@ -219,6 +219,7 @@
   --bg-neutral-light: var(--neutral-100);
   --bg-neutral-light-hover: var(--neutral-200);
   --bg-neutral-light-active: var(--neutral-300);
+  --bg-container-placeholder: var(--neutral-200);
   --bg-brand-light: var(--brand-100);
   --bg-brand-light-hover: var(--brand-200);
   --bg-brand-light-active: var(--brand-300);
@@ -249,6 +250,8 @@
   --bg-neutral-active: var(--neutral-900);
   --bg-mask: rgba(0, 0, 0, 0.8);
   --bg-mask-soft: rgba(0, 0, 0, 0.05); 
+  --bg-solid-disable: 0.5;
+  
   /* ==================== Page 页面背景 - Light 主题 ==================== */
   --bg-page: var(--neutral-0);
   --bg-page-brand: var(--brand-50);
@@ -452,6 +455,7 @@
   --bg-neutral-light: var(--neutral-100);
   --bg-neutral-light-hover: var(--neutral-200);
   --bg-neutral-light-active: var(--neutral-300);
+  --bg-container-placeholder: var(--neutral-200);
   --bg-brand-light: var(--brand-100);
   --bg-brand-light-hover: var(--brand-200);
   --bg-brand-light-active: var(--brand-300);
@@ -481,6 +485,7 @@
   --bg-neutral-hover: var(--brand-700);
   --bg-neutral-active: var(--brand-500);
   --bg-mask: rgba(0, 0, 0, 0.8);
+  --bg-solid-disable: 0.5;
   
   /* ==================== Page 页面背景 - Dark 主题 ==================== */
   --bg-page: var(--neutral-10);

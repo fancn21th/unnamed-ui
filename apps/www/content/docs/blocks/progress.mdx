@@ -1,0 +1,333 @@
+---
+title: Progress
+description: 进度条组件，用于展示操作进度，支持线性和圆形两种样式
+author: AF
+---
+
+<ComponentPreview name="progress-demo" description="Progress 进度条组件演示" className="mb-4" />
+
+Progress 进度条组件用于展示操作的当前进度，支持线性和圆形两种样式，适用于文件上传、任务处理、数据加载等场景。
+
+## 概述
+
+- **多种类型**：支持线性（line）和圆形（circle）两种进度条类型
+- **状态展示**：支持正常、成功、异常三种状态
+- **自定义样式**：支持自定义颜色、渐变色、线宽等
+- **步进模式**：线性进度条支持步进显示
+- **灵活配置**：支持自定义文字格式、位置等
+- **类型安全**：完整的 TypeScript 类型定义
+
+## 快速开始
+
+```tsx
+import { Progress } from "@/registry/wuhan/composed/progress/progress";
+
+export function Example() {
+  return (
+    <div className="space-y-4">
+      {/* 线性进度条 */}
+      <Progress percent={50} />
+      
+      {/* 圆形进度条 */}
+      <Progress type="circle" percent={75} />
+    </div>
+  );
+}
+```
+
+## 特性
+
+- **线性进度条**：适合展示水平进度，支持步进、渐变等高级特性
+- **圆形进度条**：适合展示百分比进度，节省空间
+- **状态管理**：自动根据状态显示不同颜色
+- **自定义格式**：支持自定义进度文字的格式和内容
+- **响应式**：自适应容器宽度
+
+## 安装
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://unnamed-ui.com/r/wuhan/progress"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>复制以下代码到你的项目</Step>
+
+<ComponentSource name="progress" />
+
+<Step>更新导入路径以匹配你的项目设置</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## 代码演示
+
+### 基础用法
+
+最基础的线性进度条。
+
+<ComponentPreview
+  name="progress-default"
+  description="基础用法"
+  className="mb-4"
+/>
+
+### 综合演示
+
+展示线性和圆形进度条的不同状态。
+
+<ComponentPreview
+  name="progress-demo"
+  description="综合演示"
+  className="mb-4"
+/>
+
+### 线性进度条
+
+线性进度条的各种配置。
+
+<ComponentPreview
+  name="progress-line"
+  description="线性进度条"
+  className="mb-4"
+/>
+
+### 圆形进度条
+
+圆形进度条的各种配置。
+
+<ComponentPreview
+  name="progress-circle"
+  description="圆形进度条"
+  className="mb-4"
+/>
+
+### 步进进度条
+
+线性进度条的步进模式。
+
+<ComponentPreview
+  name="progress-steps"
+  description="步进进度条"
+  className="mb-4"
+/>
+
+### 自定义格式
+
+自定义进度文字的格式。
+
+<ComponentPreview
+  name="progress-format"
+  description="自定义格式"
+  className="mb-4"
+/>
+
+### 动态进度
+
+动态改变进度的示例。
+
+<ComponentPreview
+  name="progress-dynamic"
+  description="动态进度"
+  className="mb-4"
+/>
+
+## API
+
+### Progress
+
+进度条组件，通过 `type` 属性区分线性和圆形两种类型。
+
+#### 通用属性
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| `type` | 进度条类型 | `"line" \| "circle"` | `"line"` |
+| `percent` | 进度百分比 (0-100) | `number` | `0` |
+| `status` | 状态 | `"normal" \| "success" \| "exception"` | `"normal"` |
+| `showInfo` | 是否显示进度文字 | `boolean` | `true` |
+| `format` | 自定义文字格式 | `(percent?: number) => ReactNode` | `(percent) => percent + "%"` |
+| `className` | 自定义类名 | `string` | - |
+
+### `type="line"`
+
+线性进度条特有属性。
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| `strokeColor` | 进度条的色彩，传入 object 时为渐变。当有 `steps` 时支持传入一个数组 | `string \| string[] \| { from: string; to: string; direction?: string }` | - |
+| `trailColor` | 轨道颜色 | `string` | `"var(--bg-container-placeholder)"` |
+| `strokeWidth` | 进度条线的宽度，单位 px | `number` | `8` |
+| `steps` | 进度条总共步数 | `number` | - |
+| `percentPosition` | 进度数值位置，`align` 表示数值的水平位置，`type` 表示数值在进度条内部还是外部 | `{ align: "start" \| "center" \| "end"; type: "inner" \| "outer" }` | `{ align: "end", type: "outer" }` |
+
+### `type="circle"`
+
+圆形进度条特有属性。
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| `strokeColor` | 圆形进度条线的色彩，传入 object 时为渐变 | `string \| { [key: string]: string }` | - |
+| `trailColor` | 轨道颜色 | `string` | `"var(--bg-neutral-light)"` |
+| `strokeWidth` | 圆形进度条线的宽度，单位是进度条画布宽度的百分比 | `number` | `6` |
+| `width` | 圆形进度条的画布宽度，单位 px | `number` | `120` |
+
+### ProgressStatus
+
+状态类型定义。
+
+```tsx
+type ProgressStatus = "normal" | "success" | "exception";
+```
+
+### 状态对应颜色
+
+| Status | Color |
+|--------|-------|
+| `normal` | `var(--text-brand)` |
+| `success` | `var(--text-success)` |
+| `exception` | `var(--text-error)` |
+
+## 使用场景
+
+### 1. 文件上传
+
+```tsx
+<Progress 
+  percent={uploadProgress} 
+  format={(percent) => `已上传 ${percent}%`}
+/>
+```
+
+### 2. 任务处理
+
+```tsx
+<Progress 
+  type="circle" 
+  percent={taskProgress}
+  status={taskProgress === 100 ? "success" : "normal"}
+/>
+```
+
+### 3. 数据加载
+
+```tsx
+<Progress 
+  percent={loadProgress}
+  strokeColor={{ from: "#108ee9", to: "#87d068" }}
+/>
+```
+
+### 4. 步骤进度
+
+```tsx
+<Progress 
+  percent={currentStep / totalSteps * 100}
+  steps={totalSteps}
+/>
+```
+
+## 最佳实践
+
+1. **类型选择**：
+   - 使用线性进度条展示长时间任务或多步骤流程
+   - 使用圆形进度条展示百分比或节省空间的场景
+
+2. **状态管理**：
+   - 在 100% 时使用 `success` 状态
+   - 在出错时使用 `exception` 状态
+   - 进行中使用 `normal` 状态
+
+3. **颜色使用**：
+   - 保持与设计系统的颜色一致性
+   - 渐变色适合展示连续变化的进度
+   - 多色步进适合展示不同阶段
+
+4. **文字格式**：
+   - 默认显示百分比
+   - 根据场景自定义格式（如：已完成 50/100）
+   - 重要信息可以完全自定义内容
+
+## 注意事项
+
+- `percent` 值会自动限制在 0-100 范围内
+- 圆形进度条的 `strokeWidth` 是相对于 `width` 的百分比
+- 线性进度条的 `strokeWidth` 是绝对像素值
+- 步进模式下，每个步骤的激活状态基于当前进度
+- 渐变色在步进模式下仅对线性进度条有效
+
+## 原语组件
+
+Progress 组件基于以下原语组件构建：
+
+- `ProgressLinePrimitive` - 线性进度条原语
+- `ProgressCirclePrimitive` - 圆形进度条原语
+
+原语组件提供了基础的样式和结构，可以在需要更灵活的定制时直接使用。
+
+## 扩展示例
+
+### 带标签的进度条
+
+```tsx
+<div className="space-y-2">
+  <div className="flex justify-between">
+    <span className="text-sm text-[var(--text-secondary)]">上传进度</span>
+    <span className="text-sm text-[var(--text-primary)]">75%</span>
+  </div>
+  <Progress percent={75} showInfo={false} />
+</div>
+```
+
+### 多色步进进度条
+
+```tsx
+<Progress 
+  percent={60} 
+  steps={5}
+  strokeColor={[
+    "#1890ff",
+    "#52c41a",
+    "#faad14",
+    "#f5222d",
+    "#722ed1"
+  ]}
+/>
+```
+
+### 仪表盘风格
+
+```tsx
+<Progress 
+  type="circle"
+  percent={75}
+  width={200}
+  strokeWidth={8}
+  strokeColor={{
+    "0%": "#108ee9",
+    "100%": "#87d068",
+  }}
+  format={(percent) => (
+    <div className="text-center">
+      <div className="text-2xl font-bold">{percent}%</div>
+      <div className="text-sm text-[var(--text-secondary)]">完成度</div>
+    </div>
+  )}
+/>
+```

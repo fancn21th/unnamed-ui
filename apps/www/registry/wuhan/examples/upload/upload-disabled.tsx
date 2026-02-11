@@ -2,10 +2,10 @@
 
 import { Upload } from "@/registry/wuhan/composed/upload/upload";
 
-export default function UploadDefault() {
+export default function UploadDisabled() {
   return (
     <div className="w-full max-w-md">
-      <Upload />
+      <Upload disabled buttonText="上传已禁用" />
     </div>
   );
 }

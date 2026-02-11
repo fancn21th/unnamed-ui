@@ -110,6 +110,9 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     // 组合类名
     const combinedClassName = block ? cn(className, "w-full") : className;
 
+    // 判断是否有文字内容
+    const hasChildren = children != null && children !== "";
+
     return (
       <Comp
         ref={ref}
@@ -125,7 +128,12 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {/* 内容容器 - 确保图标和文字居中对齐 */}
-        <div className="flex items-center gap-[var(--gap-md)]">
+        <div
+          className={cn(
+            "flex items-center",
+            hasChildren && "gap-[var(--gap-md)]",
+          )}
+        >
           {/* 左侧图标 */}
           {renderIcon(icon, Boolean(loading))}
 

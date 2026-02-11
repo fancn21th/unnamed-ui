@@ -770,7 +770,7 @@
           "font-weight": "600"
         },
         "@keyframes thinking-loading-pulse": {
-          "0%,\r\n    100%": {
+          "0%,\n    100%": {
             "opacity": "0.3",
             "transform": "scale(0.8)"
           },
@@ -1549,7 +1549,7 @@
           "font-weight": "600"
         },
         "@keyframes thinking-loading-pulse": {
-          "0%,\r\n    100%": {
+          "0%,\n    100%": {
             "opacity": "0.3",
             "transform": "scale(0.8)"
           },

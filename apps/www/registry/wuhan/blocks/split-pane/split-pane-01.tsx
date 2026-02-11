@@ -66,6 +66,7 @@ export const SplitPaneItemPrimitive = React.forwardRef<
     },
     ref,
   ) => {
+    if(!parseFloat(width as string)) return null;
     return (
       <div
         ref={ref}
@@ -79,12 +80,13 @@ export const SplitPaneItemPrimitive = React.forwardRef<
         <div
           className={cn(
             "flex flex-col h-full bg-[var(--bg-container)]",
-            !isCompact && "rounded-[var(--radius-xl)]",
+            "rounded-[var(--radius-xl)]",
           )}
         >
           {/* Header 部分 */}
           <div
             className={cn(
+              "h-[44px]",
               "flex items-center",
               "justify-between px-4 py-3 border-b border-[var(--border-neutral)]",
               headerClassName,

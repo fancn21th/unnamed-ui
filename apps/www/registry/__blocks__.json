@@ -112,8 +112,8 @@
     "description": "Sources sidebar component"
   },
   {
-    "name": "button-01",
-    "description": "Button primitive with solid/text/outline/link variants, multiple colors, and sizes"
+    "name": "block-button-01",
+    "description": "Block button with icon support, block mode, and convenient props"
   },
   {
     "name": "confirm-panel-01",

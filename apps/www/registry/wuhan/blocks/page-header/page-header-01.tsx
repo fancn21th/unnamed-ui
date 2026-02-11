@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import {
   ButtonPrimitive,
   type ButtonPrimitiveProps,
-} from "@/registry/wuhan/blocks/button/button-01";
+} from "@/registry/wuhan/blocks/block-button/block-button-01";
 import {
   AvatarHeaderPrimitive,
   DefaultAvatarIcon,
@@ -31,10 +31,7 @@ const PageHeaderPrimitive = React.forwardRef<
         "flex items-center",
         "justify-between",
         "w-full",
-        "h-[var(--header-height,64px)]",
         "px-[var(--padding-com-xl)]",
-        "bg-[var(--bg-container)]",
-        "border-b border-[var(--border-neutral)]",
         className,
       )}
       {...props}

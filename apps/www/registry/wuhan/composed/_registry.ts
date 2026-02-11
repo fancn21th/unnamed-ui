@@ -525,7 +525,7 @@ export const composed: Registry["items"] = [
     description:
       "Composed button with icon support, block mode, and convenient props",
     dependencies: ["lucide-react", "@radix-ui/react-slot"],
-    registryDependencies: ["button-01"],
+    registryDependencies: ["block-button-01"],
     files: [
       {
         path: "composed/block-button/block-button.tsx",

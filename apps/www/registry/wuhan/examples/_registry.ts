@@ -2067,6 +2067,107 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "button-variants",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/block-button/button-variants.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-colors",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/block-button/button-colors.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-sizes",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/block-button/button-sizes.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-with-icon",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "examples/block-button/button-with-icon.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-icon-only",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "examples/block-button/button-icon-only.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-loading",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/block-button/button-loading.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-progress",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/block-button/button-progress.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-disabled",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/block-button/button-disabled.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-block",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/block-button/button-block.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
   // icon-button examples
   {
     name: "icon-button-demo",

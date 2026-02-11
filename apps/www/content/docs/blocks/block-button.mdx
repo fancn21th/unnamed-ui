@@ -79,92 +79,89 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/block-button.json
 
 按钮支持四种类型：实心（solid）、文字（text）、边框（outline）和链接（link）。
 
-```tsx
-<Button variant="solid" color="primary">实心按钮</Button>
-<Button variant="text" color="primary">文字按钮</Button>
-<Button variant="outline" color="primary">边框按钮</Button>
-<Button variant="link" color="primary">链接按钮</Button>
-```
+<ComponentPreview
+  name="button-variants"
+  description="按钮类型"
+  className="mb-4"
+/>
 
 ### 按钮颜色
 
 按钮支持三种颜色：主色（primary）、次要色（secondary）和危险色（danger）。
 
-```tsx
-<Button variant="solid" color="primary">主色</Button>
-<Button variant="solid" color="secondary">次要色</Button>
-<Button variant="solid" color="danger">危险</Button>
-```
+<ComponentPreview
+  name="button-colors"
+  description="按钮颜色"
+  className="mb-4"
+/>
 
 ### 按钮尺寸
 
 按钮支持三种尺寸：小（sm）、中（md）、大（lg）。
 
-```tsx
-<Button size="sm" color="primary">小按钮</Button>
-<Button size="md" color="primary">中按钮</Button>
-<Button size="lg" color="primary">大按钮</Button>
-```
+<ComponentPreview
+  name="button-sizes"
+  description="按钮尺寸"
+  className="mb-4"
+/>
 
 ### 带图标按钮
 
 支持在按钮前后添加图标。
 
+<ComponentPreview
+  name="button-with-icon"
+  description="带图标按钮"
+  className="mb-4"
+/>
 
-```tsx
-<Button variant="solid" color="primary" icon={Send}>发送</Button>
-<Button variant="outline" color="primary" icon={Download}>下载</Button>
-<Button variant="text" color="primary" iconRight={ArrowRight}>下一步</Button>
-```
+### 纯图标按钮
+
+当 `children` 为空时，只传图标，自动移除间距，适合纯图标按钮场景。
+
+<ComponentPreview
+  name="button-icon-only"
+  description="纯图标按钮"
+  className="mb-4"
+/>
 
 ### 加载状态
 
 通过 `loading` 属性显示加载状态。
 
-```tsx
-const [loading, setLoading] = useState(false);
-
-<Button
-  variant="solid"
-  color="primary"
-  loading={loading}
-  onClick={() => setLoading(true)}
->
-  {loading ? "加载中..." : "点击加载"}
-</Button>
-```
+<ComponentPreview
+  name="button-loading"
+  description="加载状态"
+  className="mb-4"
+/>
 
 ### 进度状态
 
 通过 `progress` 和 `progressValue` 显示进度状态，适用于上传、下载等场景。
 
-```tsx
-<Button
-  variant="outline"
-  color="primary"
-  progress={progress < 100}
-  progressValue={progress}
->
-  {progress === 0 ? "开始上传" : progress < 100 ? `上传中 ${progress}%` : "完成"}
-</Button>
-```
+<ComponentPreview
+  name="button-progress"
+  description="进度状态"
+  className="mb-4"
+/>
 
 ### 禁用状态
 
-```tsx
-<Button variant="solid" color="primary" disabled>禁用实心</Button>
-<Button variant="outline" color="primary" disabled>禁用边框</Button>
-<Button variant="text" color="primary" disabled>禁用文字</Button>
-```
+<ComponentPreview
+  name="button-disabled"
+  description="禁用状态"
+  className="mb-4"
+/>
 
 ### 全宽按钮
 
 通过 `block` 属性使按钮占满父容器宽度。
 
-
-```tsx
-<Button variant="solid" color="primary" block>全宽按钮</Button>
-```
+<ComponentPreview
+  name="button-block"
+  description="全宽按钮"
+  className="mb-4"
+/>
 
 ## API
 

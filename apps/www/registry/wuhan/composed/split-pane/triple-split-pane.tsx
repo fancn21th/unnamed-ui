@@ -115,18 +115,37 @@ export const TripleSplitPane = React.forwardRef<
     rightDefaultCollapsed,
   );
 
-  const containerRef = React.useRef<HTMLDivElement>(null);
+  // 保存计算后的约束宽度
+  const [constrainedWidths, setConstrainedWidths] = React.useState({
+    leftWidth: isLeftCollapsed ? leftCollapsedWidth : leftWidth,
+    rightWidth: isRightCollapsed ? rightCollapsedWidth : rightWidth,
+  });
+
+  const internalRef = React.useRef<HTMLDivElement>(null);
+
+  // 合并外部 ref 和内部 ref
+  const mergedRef = React.useCallback(
+    (node: HTMLDivElement | null) => {
+      internalRef.current = node;
+      if (typeof ref === "function") {
+        ref(node);
+      } else if (ref) {
+        ref.current = node;
+      }
+    },
+    [ref],
+  );
 
   // 计算并约束宽度
-  const getConstrainedWidths = () => {
-    if (!containerRef.current) {
+  const calculateConstrainedWidths = React.useCallback(() => {
+    if (!internalRef.current) {
       return {
         leftWidth: isLeftCollapsed ? leftCollapsedWidth : leftWidth,
         rightWidth: isRightCollapsed ? rightCollapsedWidth : rightWidth,
       };
     }
 
-    const containerWidth = containerRef.current.offsetWidth;
+    const containerWidth = internalRef.current.offsetWidth;
 
     // 解析所有宽度为像素值
     const leftExpandedPx = parseWidth(leftWidth, containerWidth);
@@ -173,10 +192,37 @@ export const TripleSplitPane = React.forwardRef<
       leftWidth: `${currentLeftPx}px`,
       rightWidth: `${currentRightPx}px`,
     };
-  };
+  }, [
+    isLeftCollapsed,
+    isRightCollapsed,
+    leftWidth,
+    leftCollapsedWidth,
+    leftMinWidth,
+    rightWidth,
+    rightCollapsedWidth,
+    rightMinWidth,
+    centerMinWidth,
+  ]);
+
+  // 在布局效果中计算约束宽度
+  React.useLayoutEffect(() => {
+    const widths = calculateConstrainedWidths();
+    setConstrainedWidths(widths);
+  }, [calculateConstrainedWidths]);
+
+  // 监听窗口大小变化
+  React.useEffect(() => {
+    const handleResize = () => {
+      const widths = calculateConstrainedWidths();
+      setConstrainedWidths(widths);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [calculateConstrainedWidths]);
 
   const { leftWidth: constrainedLeftWidth, rightWidth: constrainedRightWidth } =
-    getConstrainedWidths();
+    constrainedWidths;
 
   const toggleLeftPanel = () => {
     setIsLeftCollapsed(!isLeftCollapsed);
@@ -194,7 +240,7 @@ export const TripleSplitPane = React.forwardRef<
 
   return (
     <SplitPaneContainerPrimitive
-      ref={containerRef}
+      ref={mergedRef}
       className={`gap-3 ${className}`}
     >
       {/* 左侧面板 */}
@@ -225,7 +271,7 @@ export const TripleSplitPane = React.forwardRef<
                 <button
                   type="button"
                   onClick={toggleLeftPanel}
-                  className="mr-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+                  className="mr-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
                 >
                   {leftCollapsibleIcon || <PanelLeft className="h-4 w-4" />}
                 </button>

@@ -76,6 +76,16 @@ npx shadcn@latest add "http://localhost:3000/r/wuhan/triple-split-pane.json"
   className="mb-4"
 />
 
+### 左侧展开按钮 Popover
+
+当左侧面板收起时，中间面板会显示展开按钮。可以为这个展开按钮添加 Popover，在鼠标悬浮时显示快捷导航或其他内容。
+
+<ComponentPreview
+  name="split-pane-popover"
+  description="左侧展开按钮 Popover"
+  className="mb-4"
+/>
+
 ## API
 
 ### TripleSplitPane
@@ -90,6 +100,7 @@ npx shadcn@latest add "http://localhost:3000/r/wuhan/triple-split-pane.json"
 | `left` | `PanelConfig` | - | 左侧面板配置 |
 | `center` | `PanelConfig` | - | 中间面板配置 |
 | `right` | `PanelConfig` | - | 右侧面板配置 |
+| `leftPopover` | `PopoverConfig` | - | 左侧展开按钮的 Popover 配置 |
 
 ### PanelConfig
 
@@ -99,36 +110,32 @@ npx shadcn@latest add "http://localhost:3000/r/wuhan/triple-split-pane.json"
 |------|------|---------|-------------|
 | `children` | `ReactNode` | - | 面板内容 |
 | `title` | `ReactNode` | - | 面板标题 |
-| `defaultSize` | `number` | `20`(左)/`50`(中)/`30`(右) | 默认宽度（百分比）|
-| `minSize` | `number` | `15`(左/右)/`30`(中) | 最小宽度（百分比）|
-| `collapsedSize` | `number` | `0` | 折叠后宽度（像素），设为 0 表示完全折叠 |
+| `width` | `string` | `"300px"`(左/右)/`undefined`(中) | 展开时的宽度（像素或百分比字符串） |
+| `minWidth` | `string` | `"200px"`(左/右)/`"400px"`(中) | 最小宽度（像素或百分比字符串） |
+| `collapsedWidth` | `string` | `"0px"` | 折叠后的宽度（像素或百分比字符串），设为 "0px" 表示完全折叠 |
 | `collapsibleIcon` | `ReactNode` | `<PanelLeft />`(左)/`<PanelRight />`(右) | 折叠图标 |
+| `showIconWhenCompact` | `boolean` | `true` | 紧凑模式下是否显示折叠图标 |
+| `defaultCollapsed` | `boolean` | `false` | 初始是否折叠 |
 
-### SplitPaneItem
+### PopoverConfig
 
-带标题和折叠图标的面板项原语组件，基于 react-resizable-panels 构建。
-
-#### Props
-
-继承 react-resizable-panels 的 `PanelProps`，额外包含：
+Popover 配置对象（用于左侧展开按钮）
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `panelTitle` | `ReactNode` | - | 面板标题 |
-| `collapsibleIcon` | `ReactNode` | `<PanelLeft />` | 折叠图标 |
-| `showCollapsibleIcon` | `boolean` | `true` | 是否显示折叠图标 |
-| `onCollapsibleClick` | `() => void` | - | 折叠图标点击事件 |
-| `headerClassName` | `string` | - | header 的自定义类名 |
-| `bodyClassName` | `string` | - | body 的自定义类名 |
-| `containerClassName` | `string` | - | 容器的自定义类名 |
-| `children` | `ReactNode` | - | 内容区域的子元素 |
+| `enabled` | `boolean` | `false` | 是否启用 Popover |
+| `content` | `ReactNode` | - | Popover 内容 |
+| `width` | `string` | `"240px"` | Popover 宽度 |
+| `height` | `string` | `"300px"` | Popover 高度 |
+| `className` | `string` | - | Popover 自定义类名 |
+| `alwaysOpen` | `boolean` | `false` | 开发者模式：是否始终显示 Popover（用于调试样式） |
 
 ## 原语组件
 
 TripleSplitPane 组件基于以下原语组件构建：
 
-- `SplitPaneItem`: 面板项组件，包含标题、折叠按钮和内容区域
-- `SplitHandle`: 分隔手柄组件
-- `SplitPanelGroup`: 面板组容器
+- `SplitPaneContainerPrimitive`: 分隔面板容器
+- `SplitPaneItemPrimitive`: 面板项组件，包含标题、折叠按钮和内容区域
+- `SplitPaneSeparatorPrimitive`: 分隔符组件
 
 如需更灵活的定制，可以直接使用 `split-pane-01` 中的这些原语组件。

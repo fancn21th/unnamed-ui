@@ -4,18 +4,18 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import {
   FileCardPrimitive,
-  FileCardContainerPrimitive,
-  FileCardFileIconPrimitive,
-  FileCardStatusIconPrimitive,
-  FileCardInfoPrimitive,
-  FileCardActionPrimitive,
-  FileCardActionPopoverPrimitive,
+  // FileCardContainerPrimitive,
+  // FileCardFileIconPrimitive,
+  // FileCardStatusIconPrimitive,
+  // FileCardInfoPrimitive,
+  // FileCardActionPrimitive,
+  // FileCardActionPopoverPrimitive,
   FileCardErrorIcon,
-  FileCardActionMenuItemProps,
-  isValidIcon,
+  type FileCardActionMenuItemProps,
+  // isValidIcon,
   type FileCardStatus,
 } from "@/registry/wuhan/blocks/file-card/file-card-01";
-import { MoreHorizontal } from "lucide-react";
+// import { MoreHorizontal } from "lucide-react";
 
 // ==================== 类型定义 ====================
 
@@ -226,21 +226,21 @@ export function getStatusIcon(status: FileCardStatus): React.ReactNode {
  * 比较函数：判断 FileCardComposedProps 是否变化
  * @internal
  */
-const FileCardCompare = (
-  prevProps: FileCardComposedProps,
-  nextProps: FileCardComposedProps,
-): boolean => {
-  return (
-    prevProps.id === nextProps.id &&
-    prevProps.selected === nextProps.selected &&
-    prevProps.disabled === nextProps.disabled &&
-    prevProps.title === nextProps.title &&
-    prevProps.date === nextProps.date &&
-    prevProps.status === nextProps.status &&
-    prevProps.fileIcon === nextProps.fileIcon &&
-    prevProps.className === nextProps.className
-  );
-};
+// const FileCardCompare = (
+//   prevProps: FileCardComposedProps,
+//   nextProps: FileCardComposedProps,
+// ): boolean => {
+//   return (
+//     prevProps.id === nextProps.id &&
+//     prevProps.selected === nextProps.selected &&
+//     prevProps.disabled === nextProps.disabled &&
+//     prevProps.title === nextProps.title &&
+//     prevProps.date === nextProps.date &&
+//     prevProps.status === nextProps.status &&
+//     prevProps.fileIcon === nextProps.fileIcon &&
+//     prevProps.className === nextProps.className
+//   );
+// };
 
 export const FileCard = React.memo(
   React.forwardRef<HTMLDivElement, FileCardComposedProps>((props, ref) => {
@@ -323,69 +323,69 @@ interface FileCardListComponentProps extends FileCardListProps {
  * 比较函数：判断 FileCardListComponentProps 是否变化
  * @internal
  */
-const FileCardListCompare = (
-  prevProps: FileCardListComponentProps,
-  nextProps: FileCardListComponentProps,
-): boolean => {
-  // 比较基本属性
-  if (
-    prevProps.title !== nextProps.title ||
-    prevProps.disabled !== nextProps.disabled ||
-    prevProps.multiSelect !== nextProps.multiSelect ||
-    prevProps.className !== nextProps.className
-  ) {
-    return false;
-  }
+// const FileCardListCompare = (
+//   prevProps: FileCardListComponentProps,
+//   nextProps: FileCardListComponentProps,
+// ): boolean => {
+//   // 比较基本属性
+//   if (
+//     prevProps.title !== nextProps.title ||
+//     prevProps.disabled !== nextProps.disabled ||
+//     prevProps.multiSelect !== nextProps.multiSelect ||
+//     prevProps.className !== nextProps.className
+//   ) {
+//     return false;
+//   }
 
-  // 比较 files 数组
-  const prevFiles = prevProps.files || [];
-  const nextFiles = nextProps.files || [];
+//   // 比较 files 数组
+//   const prevFiles = prevProps.files || [];
+//   const nextFiles = nextProps.files || [];
 
-  if (prevFiles.length !== nextFiles.length) {
-    return false;
-  }
+//   if (prevFiles.length !== nextFiles.length) {
+//     return false;
+//   }
 
-  for (let i = 0; i < prevFiles.length; i++) {
-    const prevFile = prevFiles[i];
-    const nextFile = nextFiles[i];
+//   for (let i = 0; i < prevFiles.length; i++) {
+//     const prevFile = prevFiles[i];
+//     const nextFile = nextFiles[i];
 
-    if (
-      prevFile.id !== nextFile.id ||
-      prevFile.title !== nextFile.title ||
-      prevFile.date !== nextFile.date ||
-      prevFile.status !== nextFile.status ||
-      prevFile.disabled !== nextFile.disabled
-    ) {
-      return false;
-    }
-  }
+//     if (
+//       prevFile.id !== nextFile.id ||
+//       prevFile.title !== nextFile.title ||
+//       prevFile.date !== nextFile.date ||
+//       prevFile.status !== nextFile.status ||
+//       prevFile.disabled !== nextFile.disabled
+//     ) {
+//       return false;
+//     }
+//   }
 
-  // 比较 selectedIds（简化比较）
-  const prevSelected = prevProps.selectedIds;
-  const nextSelected = nextProps.selectedIds;
+//   // 比较 selectedIds（简化比较）
+//   const prevSelected = prevProps.selectedIds;
+//   const nextSelected = nextProps.selectedIds;
 
-  if (prevSelected === nextSelected) {
-    return true;
-  }
+//   if (prevSelected === nextSelected) {
+//     return true;
+//   }
 
-  if (
-    prevSelected instanceof Set &&
-    nextSelected instanceof Set &&
-    prevSelected.size === nextSelected.size
-  ) {
-    return true;
-  }
+//   if (
+//     prevSelected instanceof Set &&
+//     nextSelected instanceof Set &&
+//     prevSelected.size === nextSelected.size
+//   ) {
+//     return true;
+//   }
 
-  if (
-    Array.isArray(prevSelected) &&
-    Array.isArray(nextSelected) &&
-    prevSelected.length === nextSelected.length
-  ) {
-    return true;
-  }
+//   if (
+//     Array.isArray(prevSelected) &&
+//     Array.isArray(nextSelected) &&
+//     prevSelected.length === nextSelected.length
+//   ) {
+//     return true;
+//   }
 
-  return false;
-};
+//   return false;
+// };
 
 export const FileCardList = React.memo(
   React.forwardRef<HTMLDivElement, FileCardListComponentProps>((props, ref) => {

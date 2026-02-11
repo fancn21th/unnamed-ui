@@ -8503,6 +8503,31 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "split-pane-popover": {
+      name: "split-pane-popover",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["triple-split-pane"],
+      files: [
+        {
+          path: "registry/wuhan/examples/split-pane/split-pane-popover.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/split-pane/split-pane-popover.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "task-card-demo": {
       name: "task-card-demo",
       description: "",

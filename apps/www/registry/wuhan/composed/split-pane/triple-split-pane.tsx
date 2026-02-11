@@ -2,10 +2,10 @@
 
 import * as React from "react";
 import { PanelLeft, PanelRight } from "lucide-react";
-import * as ResizablePrimitive from "react-resizable-panels";
 import {
-  SplitPaneItem,
-  SplitHandle,
+  SplitPaneContainerPrimitive,
+  SplitPaneItemPrimitive,
+  SplitPaneSeparatorPrimitive,
 } from "@/registry/wuhan/blocks/split-pane/split-pane-01";
 
 export interface PanelConfig {
@@ -13,16 +13,18 @@ export interface PanelConfig {
   children?: React.ReactNode;
   /** 面板标题 */
   title?: React.ReactNode;
-  /** 默认宽度（百分比）*/
-  defaultSize?: number;
-  /** 最小宽度（百分比）*/
-  minSize?: number;
-  /** 折叠后的宽度，支持：数字（百分比 0-100）、像素字符串（如 "48px"）、其他单位（如 "3rem"）。0 表示完全折叠 */
-  collapsedSize?: number | string;
+  /** 展开时的宽度（像素或百分比字符串，如 "300px" 或 "20%" ）*/
+  width?: string;
+  /** 最小宽度（像素或百分比字符串）*/
+  minWidth?: string;
+  /** 折叠后的宽度（像素或百分比字符串，如 "48px" ），0 表示完全折叠 */
+  collapsedWidth?: string;
   /** 折叠图标 */
   collapsibleIcon?: React.ReactNode;
   /** 紧凑模式下是否显示折叠图标 */
   showIconWhenCompact?: boolean;
+  /** 初始是否折叠 */
+  defaultCollapsed?: boolean;
 }
 
 export interface TripleSplitPaneProps {
@@ -44,100 +46,158 @@ export interface TripleSplitPaneProps {
   className?: string;
 }
 
-export const TripleSplitPane: React.FC<TripleSplitPaneProps> = ({
-  left = {},
-  center = {},
-  right = {},
-  className,
-}) => {
+/**
+ * 将宽度字符串转换为像素数值（用于计算）
+ * 支持 px、%、rem 等单位，百分比基于容器宽度 containerWidth
+ */
+const parseWidth = (
+  width: string | undefined,
+  containerWidth: number,
+): number => {
+  if (!width) return 0;
+
+  // 匹配数字和单位
+  const match = width.match(/^([\d.]+)(px|%|rem|em)?$/);
+  if (!match) return 0;
+
+  const value = parseFloat(match[1]);
+  const unit = match[2] || "px";
+
+  switch (unit) {
+    case "px":
+      return value;
+    case "%":
+      return (value / 100) * containerWidth;
+    case "rem":
+      return value * 16; // 假设 1rem = 16px
+    case "em":
+      return value * 16;
+    default:
+      return value;
+  }
+};
+
+export const TripleSplitPane = React.forwardRef<
+  HTMLDivElement,
+  TripleSplitPaneProps
+>(({ left = {}, center = {}, right = {}, className }, ref) => {
   const {
     children: leftChildren,
     title: leftTitle,
-    defaultSize: leftDefaultSize = 20,
-    minSize: leftMinSize = 15,
-    collapsedSize: leftCollapsedSize = 0,
+    width: leftWidth = "300px",
+    minWidth: leftMinWidth = "200px",
+    collapsedWidth: leftCollapsedWidth = "0px",
     collapsibleIcon: leftCollapsibleIcon,
     showIconWhenCompact: leftShowIconWhenCompact = true,
+    defaultCollapsed: leftDefaultCollapsed = false,
   } = left;
 
   const {
     children: centerChildren,
     title: centerTitle,
-    defaultSize: centerDefaultSize = 50,
-    minSize: centerMinSize = 30,
+    minWidth: centerMinWidth = "400px",
   } = center;
 
   const {
     children: rightChildren,
     title: rightTitle,
-    defaultSize: rightDefaultSize = 30,
-    minSize: rightMinSize = 15,
-    collapsedSize: rightCollapsedSize = 0,
+    width: rightWidth = "300px",
+    minWidth: rightMinWidth = "200px",
+    collapsedWidth: rightCollapsedWidth = "0px",
     collapsibleIcon: rightCollapsibleIcon,
     showIconWhenCompact: rightShowIconWhenCompact = true,
+    defaultCollapsed: rightDefaultCollapsed = false,
   } = right;
-  const [isLeftCollapsed, setIsLeftCollapsed] = React.useState(false);
-  const [isRightCollapsed, setIsRightCollapsed] = React.useState(false);
 
-  const leftPanelRef = ResizablePrimitive.usePanelRef();
-  const rightPanelRef = ResizablePrimitive.usePanelRef();
+  const [isLeftCollapsed, setIsLeftCollapsed] =
+    React.useState(leftDefaultCollapsed);
+  const [isRightCollapsed, setIsRightCollapsed] = React.useState(
+    rightDefaultCollapsed,
+  );
 
-  // 将 collapsedSize 转换为数字用于判断（提取像素值）
-  const getNumericSize = (size: number | string | undefined): number => {
-    if (typeof size === "string") {
-      const match = size.match(/^([0-9.]+)/);
-      return match ? parseFloat(match[1]) : 0;
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
+  // 计算并约束宽度
+  const getConstrainedWidths = () => {
+    if (!containerRef.current) {
+      return {
+        leftWidth: isLeftCollapsed ? leftCollapsedWidth : leftWidth,
+        rightWidth: isRightCollapsed ? rightCollapsedWidth : rightWidth,
+      };
     }
-    return size || 0;
+
+    const containerWidth = containerRef.current.offsetWidth;
+
+    // 解析所有宽度为像素值
+    const leftExpandedPx = parseWidth(leftWidth, containerWidth);
+    const leftCollapsedPx = parseWidth(leftCollapsedWidth, containerWidth);
+    const leftMinPx = parseWidth(leftMinWidth, containerWidth);
+
+    const rightExpandedPx = parseWidth(rightWidth, containerWidth);
+    const rightCollapsedPx = parseWidth(rightCollapsedWidth, containerWidth);
+    const rightMinPx = parseWidth(rightMinWidth, containerWidth);
+
+    const centerMinPx = parseWidth(centerMinWidth, containerWidth);
+
+    // 当前左右面板实际宽度
+    let currentLeftPx = isLeftCollapsed ? leftCollapsedPx : leftExpandedPx;
+    let currentRightPx = isRightCollapsed ? rightCollapsedPx : rightExpandedPx;
+
+    // 计算剩余空间
+    const remainingSpace = containerWidth - currentLeftPx - currentRightPx;
+
+    // 约束条件：左宽度 + 右宽度 + 中间最小宽度 <= 容器宽度
+    if (remainingSpace < centerMinPx) {
+      // 空间不足，需要调整左右面板宽度
+      const totalRequired = currentLeftPx + currentRightPx + centerMinPx;
+      const excessWidth = totalRequired - containerWidth;
+
+      // 按比例缩小左右面板（保证不小于各自的最小宽度或折叠宽度）
+      const leftRatio = currentLeftPx / (currentLeftPx + currentRightPx);
+      const rightRatio = currentRightPx / (currentLeftPx + currentRightPx);
+
+      const leftReduction = excessWidth * leftRatio;
+      const rightReduction = excessWidth * rightRatio;
+
+      currentLeftPx = Math.max(
+        isLeftCollapsed ? leftCollapsedPx : leftMinPx,
+        currentLeftPx - leftReduction,
+      );
+      currentRightPx = Math.max(
+        isRightCollapsed ? rightCollapsedPx : rightMinPx,
+        currentRightPx - rightReduction,
+      );
+    }
+
+    return {
+      leftWidth: `${currentLeftPx}px`,
+      rightWidth: `${currentRightPx}px`,
+    };
   };
 
-  const leftCollapsedSizeNum = getNumericSize(leftCollapsedSize);
-  const rightCollapsedSizeNum = getNumericSize(rightCollapsedSize);
+  const { leftWidth: constrainedLeftWidth, rightWidth: constrainedRightWidth } =
+    getConstrainedWidths();
 
-  const toggleLeftPanel = React.useCallback(() => {
-    const panel = leftPanelRef.current;
-    if (!panel) return;
+  const toggleLeftPanel = () => {
+    setIsLeftCollapsed(!isLeftCollapsed);
+  };
 
-    if (isLeftCollapsed) {
-      panel.resize(leftDefaultSize);
-      setIsLeftCollapsed(false);
-    } else {
-      // 使用 collapse() 方法折叠到 collapsedSize prop 设置的值
-      panel.collapse();
-      setIsLeftCollapsed(true);
-    }
-  }, [isLeftCollapsed, leftDefaultSize, leftPanelRef]);
+  const toggleRightPanel = () => {
+    setIsRightCollapsed(!isRightCollapsed);
+  };
 
-  const toggleRightPanel = React.useCallback(() => {
-    const panel = rightPanelRef.current;
-    if (!panel) return;
-
-    if (isRightCollapsed) {
-      panel.resize(rightDefaultSize);
-      setIsRightCollapsed(false);
-    } else {
-      // 使用 collapse() 方法折叠到 collapsedSize prop 设置的值
-      panel.collapse();
-      setIsRightCollapsed(true);
-    }
-  }, [isRightCollapsed, rightDefaultSize, rightPanelRef]);
+  // 判断是否为紧凑模式
+  const isLeftCompact =
+    isLeftCollapsed && parseWidth(leftCollapsedWidth, 0) > 0;
+  const isRightCompact =
+    isRightCollapsed && parseWidth(rightCollapsedWidth, 0) > 0;
 
   return (
-    <ResizablePrimitive.Group orientation="horizontal" className={className}>
+    <SplitPaneContainerPrimitive ref={containerRef} className={`gap-3 ${className}`}>
       {/* 左侧面板 */}
-      <SplitPaneItem
-        ref={leftPanelRef}
-        id="left-panel"
-        defaultSize={leftDefaultSize}
-        minSize={leftMinSize}
-        collapsible={true}
-        disabled={isLeftCollapsed}
-        isCompact={
-          isLeftCollapsed &&
-          leftCollapsedSizeNum > 0 &&
-          leftCollapsedSizeNum < 50
-        }
-        collapsedSize={leftCollapsedSize}
+      <SplitPaneItemPrimitive
+        width={constrainedLeftWidth}
+        isCompact={isLeftCompact}
         showIconWhenCompact={leftShowIconWhenCompact}
         panelTitle={leftTitle}
         collapsibleIcon={
@@ -146,51 +206,44 @@ export const TripleSplitPane: React.FC<TripleSplitPaneProps> = ({
         onCollapsibleClick={toggleLeftPanel}
       >
         {leftChildren}
-      </SplitPaneItem>
+      </SplitPaneItemPrimitive>
 
-      <SplitHandle withHandle className="bg-transparent" />
+      {/* 分隔符 */}
+      {/* <SplitPaneSeparatorPrimitive /> */}
 
       {/* 中间面板 */}
-      <SplitPaneItem
-        id="center-panel"
-        defaultSize={centerDefaultSize}
-        minSize={centerMinSize}
-        panelTitle={
-          <div className="flex items-center">
-            {/* 左侧收起时显示展开图标 */}
-            {isLeftCollapsed && (
-              <button
-                type="button"
-                onClick={toggleLeftPanel}
-                className="mr-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-              >
-                {leftCollapsibleIcon || <PanelLeft className="h-4 w-4" />}
-              </button>
-            )}
-            {centerTitle}
-          </div>
-        }
-        showCollapsibleIcon={false}
-      >
-        {centerChildren}
-      </SplitPaneItem>
+      <div className="flex-1 min-w-0 h-full">
+        <SplitPaneItemPrimitive
+          width="100%"
+          panelTitle={
+            <div className="flex items-center">
+              {/* 左侧收起时显示展开图标 */}
+              {isLeftCollapsed && (
+                <button
+                  type="button"
+                  onClick={toggleLeftPanel}
+                  className="mr-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+                >
+                  {leftCollapsibleIcon || <PanelLeft className="h-4 w-4" />}
+                </button>
+              )}
+              {centerTitle}
+            </div>
+          }
+          showCollapsibleIcon={false}
+          style={{ minWidth: centerMinWidth }}
+        >
+          {centerChildren}
+        </SplitPaneItemPrimitive>
+      </div>
 
-      <SplitHandle withHandle className="bg-transparent" />
+      {/* 分隔符 */}
+      {/* <SplitPaneSeparatorPrimitive /> */}
 
       {/* 右侧面板 */}
-      <SplitPaneItem
-        ref={rightPanelRef}
-        id="right-panel"
-        defaultSize={rightDefaultSize}
-        minSize={rightMinSize}
-        collapsible={true}
-        disabled={isRightCollapsed}
-        isCompact={
-          isRightCollapsed &&
-          rightCollapsedSizeNum > 0 &&
-          rightCollapsedSizeNum < 50
-        }
-        collapsedSize={rightCollapsedSize}
+      <SplitPaneItemPrimitive
+        width={constrainedRightWidth}
+        isCompact={isRightCompact}
         showIconWhenCompact={rightShowIconWhenCompact}
         panelTitle={rightTitle}
         collapsibleIcon={
@@ -199,9 +252,9 @@ export const TripleSplitPane: React.FC<TripleSplitPaneProps> = ({
         onCollapsibleClick={toggleRightPanel}
       >
         {rightChildren}
-      </SplitPaneItem>
-    </ResizablePrimitive.Group>
+      </SplitPaneItemPrimitive>
+    </SplitPaneContainerPrimitive>
   );
-};
+});
 
 TripleSplitPane.displayName = "TripleSplitPane";

@@ -2,46 +2,26 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import {
-  ResizablePanelGroup,
-  ResizableHandle,
-} from "@/registry/wuhan/ui/resizable";
-import * as ResizablePrimitive from "react-resizable-panels";
 import { PanelLeft } from "lucide-react";
 
-const SplitPanelGroup = ResizablePanelGroup;
-const SplitHandle = ResizableHandle;
-
+/**
+ * SplitPane 容器原语组件
+ */
 export const SplitPaneContainerPrimitive = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
-  return <div ref={ref} className={cn("", className)} {...props} />;
-});
-SplitPaneContainerPrimitive.displayName = "SplitPaneContainerPrimitive";
-
-/**
- * ResizablePanel 封装
- */
-const ResizablePanelWithRef = React.forwardRef<
-  ResizablePrimitive.PanelImperativeHandle,
-  ResizablePrimitive.PanelProps
->((props, ref) => {
   return (
-    <ResizablePrimitive.Panel
-      panelRef={ref}
-      data-slot="resizable-panel"
-      {...props}
-    />
+    <div ref={ref} className={cn("flex h-full w-full", className)} {...props} />
   );
 });
-ResizablePanelWithRef.displayName = "ResizablePanelWithRef";
+SplitPaneContainerPrimitive.displayName = "SplitPaneContainerPrimitive";
 
 /**
  * SplitPaneItem 原语组件
  * 提供标题和折叠图标的面板内容
  */
-export interface SplitPaneItemProps extends ResizablePrimitive.PanelProps {
+export interface SplitPaneItemPrimitiveProps extends React.HTMLAttributes<HTMLDivElement> {
   /** 面板标题 */
   panelTitle?: React.ReactNode;
   /** 折叠图标，默认使用 PanelLeft */
@@ -56,19 +36,17 @@ export interface SplitPaneItemProps extends ResizablePrimitive.PanelProps {
   bodyClassName?: string;
   /** 容器的自定义类名 */
   containerClassName?: string;
-  /** 内容区域的子元素 */
-  children?: React.ReactNode;
   /** 是否为紧凑模式（收起状态），紧凑模式下会移除内边距和圆角，只显示图标 */
   isCompact?: boolean;
   /** 紧凑模式下是否显示折叠图标 */
   showIconWhenCompact?: boolean;
-  /** 折叠后的宽度，用于判断是否完全隐藏（collapsedSize=0时移除圆角和内边距） */
-  collapsedSize?: number | string;
+  /** 面板宽度 */
+  width?: string | number;
 }
 
-const SplitPaneItem = React.forwardRef<
-  ResizablePrimitive.PanelImperativeHandle,
-  SplitPaneItemProps
+export const SplitPaneItemPrimitive = React.forwardRef<
+  HTMLDivElement,
+  SplitPaneItemPrimitiveProps
 >(
   (
     {
@@ -82,33 +60,26 @@ const SplitPaneItem = React.forwardRef<
       containerClassName,
       isCompact = false,
       showIconWhenCompact = true,
-      collapsedSize = 0,
-      ...panelProps
+      width,
+      style,
+      ...props
     },
     ref,
   ) => {
-    // 只有在紧凑模式且 collapsedSize 为 0 时才移除圆角
-    const getNumericSize = (size: number | string | undefined): number => {
-      if (typeof size === "string") {
-        const match = size.match(/^([0-9.]+)/);
-        return match ? parseFloat(match[1]) : 0;
-      }
-      return size || 0;
-    };
-    const shouldRemoveBorderRadius =
-      isCompact && getNumericSize(collapsedSize) === 0;
-
     return (
-      <ResizablePanelWithRef
+      <div
         ref={ref}
-        collapsedSize={collapsedSize}
-        {...panelProps}
+        className={cn("flex-shrink-0 h-full", containerClassName)}
+        style={{
+          width,
+          ...style,
+        }}
+        {...props}
       >
         <div
           className={cn(
             "flex flex-col h-full bg-[var(--bg-container)]",
-            !shouldRemoveBorderRadius && "rounded-[var(--radius-xl)]",
-            containerClassName,
+            !isCompact && "rounded-[var(--radius-xl)]",
           )}
         >
           {/* Header 部分 */}
@@ -145,10 +116,25 @@ const SplitPaneItem = React.forwardRef<
             </div>
           )}
         </div>
-      </ResizablePanelWithRef>
+      </div>
     );
   },
 );
-SplitPaneItem.displayName = "SplitPaneItem";
+SplitPaneItemPrimitive.displayName = "SplitPaneItemPrimitive";
 
-export { SplitPanelGroup, SplitHandle, SplitPaneItem };
+/**
+ * SplitPane 分隔符原语组件
+ */
+export const SplitPaneSeparatorPrimitive = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
+  return (
+    <div
+      ref={ref}
+      className={cn("flex-shrink-0 w-[6px]", className)}
+      {...props}
+    />
+  );
+});
+SplitPaneSeparatorPrimitive.displayName = "SplitPaneSeparatorPrimitive";

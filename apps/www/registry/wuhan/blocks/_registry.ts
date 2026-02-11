@@ -598,4 +598,32 @@ export const blocks: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "avatar-01",
+    type: "registry:block",
+    title: "Avatar",
+    description: "头像",
+    registryDependencies: ["style"],
+    files: [
+      {
+        path: "blocks/avatar/avatar-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/avatar-01.tsx",
+      },
+    ],
+  },
+  {
+    name: "progress-01",
+    type: "registry:block",
+    title: "Progress",
+    description: "进度条",
+    registryDependencies: ["style"],
+    files: [
+      {
+        path: "blocks/progress/progress-01.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/progress-01.tsx",
+      },
+    ],
+  },
 ];

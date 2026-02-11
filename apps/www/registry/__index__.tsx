@@ -976,22 +976,22 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "button-01": {
-      name: "button-01",
+    "block-button-01": {
+      name: "block-button-01",
       description:
-        "Button primitive with solid/text/outline/link variants, multiple colors, and sizes",
+        "Block button with icon support, block mode, and convenient props",
       type: "registry:block",
       registryDependencies: ["style"],
       files: [
         {
-          path: "registry/wuhan/blocks/button/button-01.tsx",
+          path: "registry/wuhan/blocks/block-button/block-button-01.tsx",
           type: "registry:component",
-          target: "components/wuhan/blocks/button-01.tsx",
+          target: "components/wuhan/blocks/block-button-01.tsx",
         },
       ],
       component: React.lazy(async () => {
         const mod =
-          await import("@/registry/wuhan/blocks/button/button-01.tsx");
+          await import("@/registry/wuhan/blocks/block-button/block-button-01.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>
@@ -1487,7 +1487,7 @@ export const Index: Record<string, Record<string, any>> = {
       description:
         "Page header component with logo, title, button group and user avatar",
       type: "registry:block",
-      registryDependencies: ["style", "button-01", "avatar-header-01"],
+      registryDependencies: ["style", "block-button-01", "avatar-header-01"],
       files: [
         {
           path: "registry/wuhan/blocks/page-header/page-header-01.tsx",
@@ -2339,7 +2339,7 @@ export const Index: Record<string, Record<string, any>> = {
       description:
         "Composed button with icon support, block mode, and convenient props",
       type: "registry:block",
-      registryDependencies: ["button-01"],
+      registryDependencies: ["block-button-01"],
       files: [
         {
           path: "registry/wuhan/composed/block-button/block-button.tsx",
@@ -4550,14 +4550,14 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button"],
       files: [
         {
-          path: "registry/wuhan/examples/button/button-demo.tsx",
+          path: "registry/wuhan/examples/block-button/button-demo.tsx",
           type: "registry:example",
           target: "components/wuhan/examples/button-demo.tsx",
         },
       ],
       component: React.lazy(async () => {
         const mod =
-          await import("@/registry/wuhan/examples/button/button-demo.tsx");
+          await import("@/registry/wuhan/examples/block-button/button-demo.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>
@@ -6776,14 +6776,14 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["button"],
       files: [
         {
-          path: "registry/wuhan/examples/button/button-demo.tsx",
+          path: "registry/wuhan/examples/block-button/button-demo.tsx",
           type: "registry:example",
           target: "components/wuhan/examples/button-demo.tsx",
         },
       ],
       component: React.lazy(async () => {
         const mod =
-          await import("@/registry/wuhan/examples/button/button-demo.tsx");
+          await import("@/registry/wuhan/examples/block-button/button-demo.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

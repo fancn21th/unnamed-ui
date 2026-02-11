@@ -7,7 +7,6 @@ import {
   PageHeaderLogoPrimitive,
   PageHeaderTitlePrimitive,
   PageHeaderRightPrimitive,
-  PageHeaderButton,
   PageHeaderUserPrimitive,
 } from "@/registry/wuhan/blocks/page-header/page-header-01";
 import { cn } from "@/lib/utils";

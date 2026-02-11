@@ -396,18 +396,18 @@ export const blocks: Registry["items"] = [
     ],
   },
   {
-    name: "button-01",
+    name: "block-button-01",
     type: "registry:block",
-    title: "Button Primitive",
+    title: "Block Button",
     description:
-      "Button primitive with solid/text/outline/link variants, multiple colors, and sizes",
+      "Block button with icon support, block mode, and convenient props",
     dependencies: ["lucide-react"],
     registryDependencies: ["style"],
     files: [
       {
-        path: "blocks/button/button-01.tsx",
+        path: "blocks/block-button/block-button-01.tsx",
         type: "registry:component",
-        target: "components/wuhan/blocks/button-01.tsx",
+        target: "components/wuhan/blocks/block-button-01.tsx",
       },
     ],
   },
@@ -699,7 +699,7 @@ export const blocks: Registry["items"] = [
     description:
       "Page header component with logo, title, button group and user avatar",
     dependencies: ["lucide-react"],
-    registryDependencies: ["style", "button-01", "avatar-header-01"],
+    registryDependencies: ["style", "block-button-01", "avatar-header-01"],
     files: [
       {
         path: "blocks/page-header/page-header-01.tsx",

@@ -120,9 +120,22 @@ export function detectCssEntry(cwd: string) {
   return "src/index.css";
 }
 
-export function ensureCssImports(cwd: string, cssPath: string, force?: boolean) {
+export function ensureCssImports(
+  cwd: string,
+  cssPath: string,
+  force?: boolean,
+  customCssContent?: string
+) {
   const abs = path.join(cwd, cssPath);
   mkdirSync(path.dirname(abs), { recursive: true });
+
+  // 如果提供了自定义 CSS 内容，直接写入
+  if (customCssContent) {
+    writeFileSync(abs, customCssContent, "utf-8");
+    return;
+  }
+
+  // 默认行为：确保导入 tailwindcss 和 tw-animate-css
   const needsTailwind = `@import "tailwindcss";`;
   const needsAnimate = `@import "tw-animate-css";`;
   let raw = existsSync(abs) ? readFileSync(abs, "utf-8") : "";

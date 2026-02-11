@@ -269,6 +269,54 @@ const secondaryColors = {
       "cursor-not-allowed",
     ),
   },
+  light: {
+    default: cn(
+      "bg-[var(--bg-secondary-light)]",
+      "text-[var(--text-secondary)]",
+      "border",
+      "border-[var(--border-secondary-light)]",
+      // hover 状态
+      "hover:bg-[var(--bg-secondary-light-hover)]",
+      "hover:border-[var(--border-secondary-light-hover)]",
+      // active/pressed 状态
+      "active:bg-[var(--bg-secondary-light-active)]",
+      "active:border-[var(--border-secondary-light-active)]",
+    ),
+    disabled: cn(
+      "bg-[var(--bg-secondary-light)]",
+      "opacity-50",
+      "text-[var(--text-secondary)]",
+      "cursor-not-allowed",
+    ),
+    loading: cn(
+      "bg-[var(--bg-secondary-light)]",
+      "opacity-50",
+      "text-[var(--text-secondary)]",
+      "cursor-not-allowed",
+    ),
+  },
+  lightBorderless: {
+    default: cn(
+      "bg-[var(--bg-secondary-light)]",
+      "text-[var(--text-secondary)]",
+      // hover 状态
+      "hover:bg-[var(--bg-secondary-light-hover)]",
+      // active/pressed 状态
+      "active:bg-[var(--bg-secondary-light-active)]",
+    ),
+    disabled: cn(
+      "bg-[var(--bg-secondary-light)]",
+      "opacity-50",
+      "text-[var(--text-secondary)]",
+      "cursor-not-allowed",
+    ),
+    loading: cn(
+      "bg-[var(--bg-secondary-light)]",
+      "opacity-50",
+      "text-[var(--text-secondary)]",
+      "cursor-not-allowed",
+    ),
+  },
 };
 
 // Danger colors - 危险色
@@ -338,6 +386,54 @@ const dangerColors = {
     loading: cn(
       "bg-transparent",
       "text-[var(--text-disable)]",
+      "cursor-not-allowed",
+    ),
+  },
+  light: {
+    default: cn(
+      "bg-[var(--bg-error-light)]",
+      "text-[var(--text-error)]",
+      "border",
+      "border-[var(--border-error-light)]",
+      // hover 状态
+      "hover:bg-[var(--bg-error-light-hover)]",
+      "hover:border-[var(--border-error-light-hover)]",
+      // active/pressed 状态
+      "active:bg-[var(--bg-error-light-active)]",
+      "active:border-[var(--border-error-light-active)]",
+    ),
+    disabled: cn(
+      "bg-[var(--bg-error-light)]",
+      "opacity-50",
+      "text-[var(--text-error)]",
+      "cursor-not-allowed",
+    ),
+    loading: cn(
+      "bg-[var(--bg-error-light)]",
+      "opacity-50",
+      "text-[var(--text-error)]",
+      "cursor-not-allowed",
+    ),
+  },
+  lightBorderless: {
+    default: cn(
+      "bg-[var(--bg-error-light)]",
+      "text-[var(--text-error)]",
+      // hover 状态
+      "hover:bg-[var(--bg-error-light-hover)]",
+      // active/pressed 状态
+      "active:bg-[var(--bg-error-light-active)]",
+    ),
+    disabled: cn(
+      "bg-[var(--bg-error-light)]",
+      "opacity-50",
+      "text-[var(--text-error)]",
+      "cursor-not-allowed",
+    ),
+    loading: cn(
+      "bg-[var(--bg-error-light)]",
+      "opacity-50",
+      "text-[var(--text-error)]",
       "cursor-not-allowed",
     ),
   },
@@ -474,5 +570,3 @@ export const IconButtonPrimitive = React.forwardRef<
 IconButtonPrimitive.displayName = "IconButtonPrimitive";
 
 // ==================== 类型导出 ====================
-
-export type { IconButtonPrimitiveProps };

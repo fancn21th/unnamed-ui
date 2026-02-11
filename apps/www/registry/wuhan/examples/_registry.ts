@@ -981,7 +981,7 @@ export const examples: Registry["items"] = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "examples/button/button-demo.tsx",
+        path: "examples/block-button/button-demo.tsx",
         type: "registry:example",
         target: "components/wuhan/examples/button-demo.tsx",
       },
@@ -2061,7 +2061,7 @@ export const examples: Registry["items"] = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "examples/button/button-demo.tsx",
+        path: "examples/block-button/button-demo.tsx",
         type: "registry:example",
         target: "components/wuhan/examples/button-demo.tsx",
       },

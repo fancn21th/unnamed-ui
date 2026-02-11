@@ -2185,10 +2185,10 @@
       ]
     },
     {
-      "name": "button-01",
+      "name": "block-button-01",
       "type": "registry:block",
-      "title": "Button Primitive",
-      "description": "Button primitive with solid/text/outline/link variants, multiple colors, and sizes",
+      "title": "Block Button",
+      "description": "Block button with icon support, block mode, and convenient props",
       "dependencies": [
         "lucide-react"
       ],
@@ -2197,9 +2197,9 @@
       ],
       "files": [
         {
-          "path": "registry/wuhan/blocks/button/button-01.tsx",
+          "path": "registry/wuhan/blocks/block-button/block-button-01.tsx",
           "type": "registry:component",
-          "target": "components/wuhan/blocks/button-01.tsx"
+          "target": "components/wuhan/blocks/block-button-01.tsx"
         }
       ]
     },
@@ -2542,7 +2542,7 @@
       ],
       "registryDependencies": [
         "style",
-        "button-01",
+        "block-button-01",
         "avatar-header-01"
       ],
       "files": [
@@ -3160,7 +3160,7 @@
         "@radix-ui/react-slot"
       ],
       "registryDependencies": [
-        "button-01"
+        "block-button-01"
       ],
       "files": [
         {
@@ -4453,7 +4453,7 @@
       ],
       "files": [
         {
-          "path": "registry/wuhan/examples/button/button-demo.tsx",
+          "path": "registry/wuhan/examples/block-button/button-demo.tsx",
           "type": "registry:example",
           "target": "components/wuhan/examples/button-demo.tsx"
         }
@@ -5710,7 +5710,7 @@
       ],
       "files": [
         {
-          "path": "registry/wuhan/examples/button/button-demo.tsx",
+          "path": "registry/wuhan/examples/block-button/button-demo.tsx",
           "type": "registry:example",
           "target": "components/wuhan/examples/button-demo.tsx"
         }

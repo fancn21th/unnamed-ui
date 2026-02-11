@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import {
   ButtonPrimitive,
   type ButtonPrimitiveProps,
-} from "@/registry/wuhan/blocks/button/button-01";
+} from "@/registry/wuhan/blocks/block-button/block-button-01";
 
 export type { ButtonPrimitiveProps };
 

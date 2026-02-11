@@ -6,6 +6,7 @@
   "pages": [
     "---Introduction---",
     "index",
+    "starter",
     "unnamed-ui",
     "shadcn",
     "agent-app",

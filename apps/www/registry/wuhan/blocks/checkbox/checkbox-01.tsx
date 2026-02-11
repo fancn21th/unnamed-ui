@@ -80,7 +80,12 @@ const CheckboxLabelPrimitive = React.forwardRef<
     <label
       ref={ref}
       className={cn(
-        "text-sm font-medium leading-none",
+        "font-[var(--font-family-cn)]",
+        "font-[var(--font-weight-400)]",
+        "font-size-2",
+        "leading-[var(--line-height-2)]",
+        "text-[var(--text-primary)]",
+        "truncate",
         "peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
         className,
       )}

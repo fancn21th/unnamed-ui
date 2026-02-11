@@ -458,6 +458,7 @@ export const blocks: Registry["items"] = [
     type: "registry:block",
     title: "Checkbox",
     description: "多选框",
+    dependencies: ["radix-ui"],
     registryDependencies: ["style"],
     files: [
       {

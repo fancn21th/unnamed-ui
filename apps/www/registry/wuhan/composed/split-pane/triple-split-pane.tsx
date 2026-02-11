@@ -45,6 +45,15 @@ export interface PanelConfig {
   showIconWhenCompact?: boolean;
   /** 初始是否折叠 */
   defaultCollapsed?: boolean;
+  /** 自定义样式类名 */
+  classNames?: {
+    /** 容器类名 */
+    container?: string;
+    /** 头部类名 */
+    header?: string;
+    /** 内容区域类名 */
+    body?: string;
+  };
 }
 
 export interface TripleSplitPaneProps {
@@ -114,12 +123,14 @@ export const TripleSplitPane = React.forwardRef<
     collapsibleIcon: leftCollapsibleIcon,
     showIconWhenCompact: leftShowIconWhenCompact = true,
     defaultCollapsed: leftDefaultCollapsed = false,
+    classNames: leftClassNames,
   } = left;
 
   const {
     children: centerChildren,
     title: centerTitle,
     minWidth: centerMinWidth = "400px",
+    classNames: centerClassNames,
   } = center;
 
   const {
@@ -140,6 +151,7 @@ export const TripleSplitPane = React.forwardRef<
     collapsibleIcon: rightCollapsibleIcon,
     showIconWhenCompact: rightShowIconWhenCompact = true,
     defaultCollapsed: rightDefaultCollapsed = false,
+    classNames: rightClassNames,
   } = right;
 
   const [isLeftCollapsed, setIsLeftCollapsed] =
@@ -343,6 +355,9 @@ export const TripleSplitPane = React.forwardRef<
           leftCollapsibleIcon || <PanelLeft className="h-4 w-4" />
         }
         onCollapsibleClick={toggleLeftPanel}
+        containerClassName={leftClassNames?.container}
+        headerClassName={leftClassNames?.header}
+        bodyClassName={leftClassNames?.body}
       >
         {leftChildren}
       </SplitPaneItemPrimitive>
@@ -362,6 +377,9 @@ export const TripleSplitPane = React.forwardRef<
           }
           showCollapsibleIcon={false}
           style={{ minWidth: centerMinWidth }}
+          containerClassName={centerClassNames?.container}
+          headerClassName={centerClassNames?.header}
+          bodyClassName={centerClassNames?.body}
         >
           {centerChildren}
         </SplitPaneItemPrimitive>
@@ -380,6 +398,9 @@ export const TripleSplitPane = React.forwardRef<
           rightCollapsibleIcon || <PanelRight className="h-4 w-4" />
         }
         onCollapsibleClick={toggleRightPanel}
+        containerClassName={rightClassNames?.container}
+        headerClassName={rightClassNames?.header}
+        bodyClassName={rightClassNames?.body}
       >
         {rightChildren}
       </SplitPaneItemPrimitive>

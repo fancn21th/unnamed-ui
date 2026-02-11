@@ -2374,6 +2374,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "split-pane-classnames",
+    type: "registry:example",
+    registryDependencies: ["triple-split-pane"],
+    files: [
+      {
+        path: "examples/split-pane/split-pane-classnames.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "task-card-demo",
     type: "registry:example",
     registryDependencies: ["task-card"],

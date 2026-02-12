@@ -1,0 +1,525 @@
+---
+title: Icon Button
+description: Icon button component with tooltip support, multiple variants, colors, and sizes
+author: AF
+---
+
+<ComponentPreview
+  name="icon-button-demo"
+  description="Icon button component demos"
+  className="mb-4"
+/>
+
+Icon Button 组件是带有可选 Tooltip 功能的图标按钮，适用于工具栏、卡片操作等场景。
+
+## 概述
+
+- **四种变体**：solid（实心）、light（浅色）、outline（边框）、ghost（幽灵）
+- **三种颜色**：primary（主色）、secondary（次要色）、danger（危险色）
+- **四种尺寸**：sm（小，24px）、md（中，32px）、lg（大，36px）、xl（超大，40px）
+- **内置 Tooltip**：通过 `tooltip` 属性快速添加提示信息
+- **灵活定位**：Tooltip 支持四个方向的定位
+- **完整状态**：支持 default、hover、pressed、disabled、loading 状态
+- **CSS Token**：使用 CSS 变量实现主题化
+
+## 快速开始
+
+```tsx
+import { IconButton } from "@/registry/wuhan/composed/icon-button/icon-button";
+import { Plus, Settings } from "lucide-react";
+
+export function Example() {
+  return (
+    <div className="flex gap-2">
+      {/* 带 Tooltip 的图标按钮 */}
+      <IconButton tooltip="添加内容">
+        <Plus className="size-4" />
+      </IconButton>
+
+      {/* 不带 Tooltip */}
+      <IconButton variant="outline" color="secondary">
+        <Settings className="size-4" />
+      </IconButton>
+    </div>
+  );
+}
+```
+
+## 特性
+
+- **图标优先**：专为图标设计的紧凑按钮
+- **Tooltip 集成**：内置 Tooltip 支持，无需额外封装
+- **多种变体**：满足不同视觉权重需求
+- **完整状态**：覆盖所有交互状态
+- **主题化**：基于 CSS 变量，易于定制
+- **可访问性**：支持键盘导航和屏幕阅读器
+
+## 安装
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/icon-button.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>复制以下代码到你的项目</Step>
+
+<ComponentSource name="icon-button" />
+
+<Step>更新导入路径以匹配你的项目设置</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## 代码演示
+
+### 基础用法
+
+不带 Tooltip 的图标按钮，适用于不需要提示信息的场景。
+
+```tsx
+<IconButton variant="solid" color="primary">
+  <Plus className="size-4" />
+</IconButton>
+<IconButton variant="light" color="primary">
+  <Settings className="size-4" />
+</IconButton>
+<IconButton variant="outline" color="secondary">
+  <Download className="size-4" />
+</IconButton>
+<IconButton variant="ghost" color="primary">
+  <MoreHorizontal className="size-4" />
+</IconButton>
+```
+
+### 带 Tooltip 的图标按钮
+
+通过 `tooltip` 属性添加提示信息，悬停时显示。
+
+```tsx
+<IconButton tooltip="添加新内容" variant="solid" color="primary">
+  <Plus className="size-4" />
+</IconButton>
+<IconButton tooltip="删除" variant="outline" color="danger">
+  <Trash2 className="size-4" />
+</IconButton>
+<IconButton tooltip="编辑" variant="ghost" color="primary">
+  <Edit2 className="size-4" />
+</IconButton>
+```
+
+### 按钮变体
+
+四种变体样式：solid（实心）、light（浅色）、outline（边框）、ghost（幽灵）。
+
+```tsx
+{
+  /* Solid 实心 */
+}
+<IconButton variant="solid" color="primary">
+  <Plus className="size-4" />
+</IconButton>;
+
+{
+  /* Light 浅色 */
+}
+<IconButton variant="light" color="primary">
+  <Settings className="size-4" />
+</IconButton>;
+
+{
+  /* Light 浅色（无边框） */
+}
+<IconButton variant="light" color="primary" borderless>
+  <Download className="size-4" />
+</IconButton>;
+
+{
+  /* Outline 边框 */
+}
+<IconButton variant="outline" color="primary">
+  <MoreHorizontal className="size-4" />
+</IconButton>;
+
+{
+  /* Ghost 幽灵 */
+}
+<IconButton variant="ghost" color="primary">
+  <Trash2 className="size-4" />
+</IconButton>;
+```
+
+### 按钮颜色
+
+三种颜色：primary（主色）、secondary（次要色）、danger（危险色）。
+
+```tsx
+{
+  /* Primary 主色 */
+}
+<IconButton variant="solid" color="primary">
+  <Plus className="size-4" />
+</IconButton>;
+
+{
+  /* Secondary 次要色 */
+}
+<IconButton variant="solid" color="secondary">
+  <Settings className="size-4" />
+</IconButton>;
+
+{
+  /* Danger 危险色 */
+}
+<IconButton variant="solid" color="danger">
+  <Trash2 className="size-4" />
+</IconButton>;
+```
+
+### 按钮尺寸
+
+四种尺寸：sm（24px）、md（32px）、lg（36px）、xl（40px）。
+
+```tsx
+<IconButton size="sm" variant="solid" color="primary">
+  <Plus className="size-3.5" />
+</IconButton>
+<IconButton size="md" variant="solid" color="primary">
+  <Plus className="size-4" />
+</IconButton>
+<IconButton size="lg" variant="solid" color="primary">
+  <Plus className="size-4.5" />
+</IconButton>
+<IconButton size="xl" variant="solid" color="primary">
+  <Plus className="size-5" />
+</IconButton>
+```
+
+### Light 变体
+
+Light 变体具有浅色背景和边框，支持有边框和无边框两种模式。
+
+```tsx
+{
+  /* Light 有边框 */
+}
+<IconButton variant="light" color="primary">
+  <Settings className="size-4" />
+</IconButton>;
+
+{
+  /* Light 无边框 */
+}
+<IconButton variant="light" color="primary" borderless>
+  <Download className="size-4" />
+</IconButton>;
+```
+
+### Tooltip 位置
+
+通过 `tooltipSide` 属性控制 Tooltip 的显示位置。
+
+```tsx
+<IconButton tooltip="上边" tooltipSide="top" variant="outline" color="secondary">
+  <ChevronUp className="size-4" />
+</IconButton>
+<IconButton tooltip="下边" tooltipSide="bottom" variant="outline" color="secondary">
+  <ChevronDown className="size-4" />
+</IconButton>
+<IconButton tooltip="左边" tooltipSide="left" variant="outline" color="secondary">
+  <ChevronLeft className="size-4" />
+</IconButton>
+<IconButton tooltip="右边" tooltipSide="right" variant="outline" color="secondary">
+  <ChevronRight className="size-4" />
+</IconButton>
+```
+
+### 加载状态
+
+通过 `loading` 属性显示加载状态。
+
+```tsx
+const [loading, setLoading] = useState(false);
+
+<IconButton tooltip="下载中" loading={loading} onClick={() => setLoading(true)}>
+  <Download className="size-4" />
+</IconButton>;
+```
+
+### 禁用状态
+
+通过 `disabled` 属性禁用按钮。
+
+```tsx
+<IconButton tooltip="禁用" disabled variant="solid" color="primary">
+  <Plus className="size-4" />
+</IconButton>
+<IconButton tooltip="禁用" disabled variant="light" color="primary">
+  <Settings className="size-4" />
+</IconButton>
+<IconButton tooltip="禁用" disabled variant="outline" color="secondary">
+  <Download className="size-4" />
+</IconButton>
+```
+
+### 工具栏场景
+
+图标按钮常用于工具栏场景。
+
+```tsx
+<div className="flex items-center gap-1 p-2 bg-surface rounded-md border">
+  <IconButton tooltip="添加文件夹" variant="ghost" color="secondary" size="sm">
+    <FolderPlus className="size-4" />
+  </IconButton>
+  <IconButton tooltip="添加文件" variant="ghost" color="secondary" size="sm">
+    <FilePlus className="size-4" />
+  </IconButton>
+  <IconButton tooltip="编辑" variant="ghost" color="secondary" size="sm">
+    <Edit2 className="size-4" />
+  </IconButton>
+  <IconButton tooltip="删除" variant="ghost" color="danger" size="sm">
+    <Trash2 className="size-4" />
+  </IconButton>
+</div>
+```
+
+### 卡片操作按钮
+
+用于卡片或列表项的操作按钮。
+
+```tsx
+<div className="flex items-center gap-2 p-4 bg-surface rounded-md border">
+  <span className="text-sm text-secondary flex-1">项目名称</span>
+  <IconButton tooltip="编辑" variant="ghost" color="secondary" size="sm">
+    <Edit2 className="size-4" />
+  </IconButton>
+  <IconButton tooltip="更多" variant="ghost" color="secondary" size="sm">
+    <MoreVertical className="size-4" />
+  </IconButton>
+  <IconButton tooltip="关闭" variant="ghost" color="secondary" size="sm">
+    <X className="size-4" />
+  </IconButton>
+</div>
+```
+
+## API
+
+### IconButton Props
+
+|| 参数 | 说明 | 类型 | 默认值 |
+||------|------|------|--------|
+|| variant | 按钮变体 | `'solid' \| 'light' \| 'outline' \| 'ghost'` | `'solid'` |
+|| color | 按钮颜色 | `'primary' \| 'secondary' \| 'danger'` | `'primary'` |
+|| size | 按钮尺寸 | `'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+|| loading | 是否加载中 | `boolean` | `false` |
+|| disabled | 是否禁用 | `boolean` | `false` |
+|| borderless | 是否无边框（仅 light 变体有效） | `boolean` | `false` |
+|| tooltip | 提示内容 | `React.ReactNode` | - |
+|| tooltipSide | Tooltip 位置 | `'top' \| 'right' \| 'bottom' \| 'left'` | `'top'` |
+|| tooltipSideOffset | Tooltip 距离 | `number` | `4` |
+|| tooltipAlign | Tooltip 对齐 | `'start' \| 'center' \| 'end'` | `'center'` |
+|| tooltipDelayDuration | Tooltip 延迟 | `number` | `0` |
+|| tooltipContentClassName | Tooltip 自定义类名 | `string` | - |
+|| children | 按钮内容（图标） | `React.ReactNode` | - |
+|| onClick | 点击事件 | `() => void` | - |
+
+## 设计规范
+
+### 尺寸规范
+
+|| 尺寸 | 按钮尺寸 | 图标尺寸 |
+||------|----------|----------|
+|| sm | 24px (size-6) | 14px (size-3.5) |
+|| md | 32px (size-8) | 16px (size-4) |
+|| lg | 36px (size-9) | 18px (size-4.5) |
+|| xl | 40px (size-10) | 20px (size-5) |
+
+### 基础样式
+
+|| 属性 | 值 |
+||------|-----|
+|| 圆角 | 8px (radius-md) |
+|| 边框 | transparent（实心/幽灵），品牌色（边框/浅色） |
+|| 聚焦环 | ring-brand，offset 2px |
+
+### 颜色规范
+
+#### Primary 主色
+
+|| 状态 | Solid | Light | Light (borderless) | Outline | Ghost |
+||------|-------|-------|-------------------|---------|-------|
+|| default | bg-brand, text-inverse | bg-brand-light, border-brand-light, text-brand | bg-brand-light, text-brand | bg-container, border-brand, text-brand | bg-transparent, text-brand |
+|| hover | bg-brand-hover, text-inverse | bg-brand-light-hover, border-brand-light-hover | bg-brand-light-hover | border-brand-hover, text-brand-hover | bg-brand-light |
+|| pressed | bg-brand-active, text-inverse | bg-brand-light-active, border-brand-light-active | bg-brand-light-active | border-brand-active, text-brand-active | bg-brand-light-active |
+|| disabled | opacity-50 | opacity-50 | opacity-50 | bg-container-disable, text-disable | bg-transparent, text-disable |
+|| loading | opacity-50 | opacity-50 | opacity-50 | bg-container-disable, text-disable | bg-transparent, text-disable |
+
+#### Secondary 次要色
+
+|| 状态 | Solid | Outline | Ghost |
+||------|-------|---------|-------|
+|| default | bg-secondary, text-inverse | bg-container, border-neutral, text-secondary | bg-transparent, text-secondary |
+|| hover | bg-secondary-hover, text-inverse | bg-neutral-light, text-secondary-hover | bg-neutral-light |
+|| pressed | bg-secondary-active, text-inverse | bg-neutral-light-hover, text-secondary-active | bg-neutral-light-hover |
+|| disabled | opacity-50 | bg-container-disable, text-disable | bg-transparent, text-disable |
+|| loading | opacity-50 | bg-container-disable, text-disable | bg-transparent, text-disable |
+
+#### Danger 危险色
+
+|| 状态 | Solid | Outline | Ghost |
+||------|-------|---------|-------|
+|| default | bg-error, text-inverse | bg-container, border-error, text-error | bg-transparent, text-error |
+|| hover | bg-error-hover, text-inverse | border-error-hover, text-error-hover | bg-error-light |
+|| pressed | bg-error-active, text-inverse | border-error-active, text-error-active | bg-error-light-active |
+|| disabled | opacity-50 | bg-container-disable, text-disable | bg-transparent, text-disable |
+|| loading | opacity-50 | bg-container-disable, text-disable | bg-transparent, text-disable |
+
+## 使用场景
+
+- **工具栏按钮**：工具栏中的操作按钮，如添加、编辑、删除
+- **卡片操作**：卡片或列表项的快速操作按钮
+- **表单辅助**：表单中的辅助功能按钮
+- **状态切换**：开关模式的图标按钮
+- **导航辅助**：面包屑、标签页等导航元素
+
+## 最佳实践
+
+1. **图标选择**：使用清晰的图标，确保含义直观
+2. **Tooltip 内容**：保持简洁，不超过一句话
+3. **颜色使用**：危险操作使用 danger 颜色
+4. **尺寸一致**：同一工具栏保持相同尺寸
+5. **状态反馈**：加载状态时禁止重复点击
+6. **可访问性**：确保图标按钮可通过键盘访问
+
+## 注意事项
+
+1. **CSS 变量**：组件使用 CSS 变量实现主题化，需要在全局样式中定义对应的变量
+2. **加载状态**：加载状态时会禁用按钮并显示加载图标
+3. **Tooltip 依赖**：使用 Tooltip 功能需要安装 `@radix-ui/react-tooltip`
+4. **图标尺寸**：图标尺寸会根据按钮大小自动调整，无需手动设置
+5. **禁用状态**：禁用状态会覆盖加载状态
+6. **Light 变体**：borderless 属性仅对 light 变体有效
+
+## 原语组件
+
+IconButton 基于 `IconButtonPrimitive` 原语组件构建，该组件提供了更底层的控制。
+
+原语组件提供了：
+
+- `IconButtonPrimitive` - 基础图标按钮样式
+
+可以在 [registry/wuhan/blocks/icon-button/icon-button-01.tsx](../../registry/wuhan/blocks/icon-button/icon-button-01.tsx) 中找到原语组件。
+
+## 与 Tooltip 组件的关系
+
+IconButton 组件内置了 Tooltip 功能，这是通过组合 `IconButtonPrimitive` 和 `Tooltip` 组件实现的。
+
+如果你需要更复杂的 Tooltip 行为，可以直接使用 `Tooltip` 组件：
+
+```tsx
+import { Tooltip } from "@/registry/wuhan/composed/tooltip";
+import { IconButtonPrimitive } from "@/registry/wuhan/blocks/icon-button/icon-button-01";
+
+<Tooltip content="自定义提示">
+  <IconButtonPrimitive variant="light" color="primary">
+    <Plus className="size-4" />
+  </IconButtonPrimitive>
+</Tooltip>;
+```
+
+## 扩展示例
+
+### 复制按钮
+
+```tsx
+import { useState } from "react";
+import { IconButton } from "@/registry/wuhan/composed/icon-button/icon-button";
+import { Copy, Check } from "lucide-react";
+
+function CopyButton({ text }: { text: string }) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <IconButton
+      tooltip={copied ? "已复制" : "复制"}
+      onClick={handleCopy}
+      variant="ghost"
+      color="secondary"
+    >
+      {copied ? (
+        <Check className="size-4 text-success" />
+      ) : (
+        <Copy className="size-4" />
+      )}
+    </IconButton>
+  );
+}
+```
+
+### 图标切换
+
+```tsx
+import { useState } from "react";
+import { IconButton } from "@/registry/wuhan/composed/icon-button/icon-button";
+import { Star, StarOff } from "lucide-react";
+
+function FavoriteButton() {
+  const [favorite, setFavorite] = useState(false);
+
+  return (
+    <IconButton
+      tooltip={favorite ? "取消收藏" : "收藏"}
+      onClick={() => setFavorite(!favorite)}
+      variant={favorite ? "solid" : "light"}
+      color="primary"
+    >
+      {favorite ? (
+        <Star className="size-4 fill-current" />
+      ) : (
+        <Star className="size-4" />
+      )}
+    </IconButton>
+  );
+}
+```
+
+### Light 变体工具栏
+
+```tsx
+<div className="flex items-center gap-2 p-3 bg-surface rounded-lg border">
+  <IconButton tooltip="刷新" variant="light" color="primary" size="sm">
+    <RefreshCw className="size-4" />
+  </IconButton>
+  <IconButton tooltip="设置" variant="light" color="primary" size="sm">
+    <Settings className="size-4" />
+  </IconButton>
+  <IconButton tooltip="下载" variant="light" color="primary" borderless size="sm">
+    <Download className="size-4" />
+  </IconButton>
+  <IconButton tooltip="上传" variant="light" color="primary" borderless size="sm">
+    <Upload className="size-4" />
+  </IconButton>
+</div>
+```

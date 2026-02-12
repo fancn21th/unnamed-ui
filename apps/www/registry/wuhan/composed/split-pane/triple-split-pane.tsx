@@ -5,8 +5,28 @@ import { PanelLeft, PanelRight } from "lucide-react";
 import {
   SplitPaneContainerPrimitive,
   SplitPaneItemPrimitive,
-  SplitPaneSeparatorPrimitive,
+  // SplitPaneSeparatorPrimitive,
 } from "@/registry/wuhan/blocks/split-pane/split-pane-01";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/registry/wuhan/ui/popover";
+
+export interface PopoverConfig {
+  /** 是否启用 Popover */
+  enabled?: boolean;
+  /** Popover 内容 */
+  content?: React.ReactNode;
+  /** Popover 宽度 */
+  width?: string;
+  /** Popover 高度 */
+  height?: string;
+  /** Popover 类名 */
+  className?: string;
+  /** 开发模式：是否始终显示 Popover（用于调试样式） */
+  alwaysOpen?: boolean;
+}
 
 export interface PanelConfig {
   /** 面板内容 */
@@ -25,6 +45,15 @@ export interface PanelConfig {
   showIconWhenCompact?: boolean;
   /** 初始是否折叠 */
   defaultCollapsed?: boolean;
+  /** 自定义样式类名 */
+  classNames?: {
+    /** 容器类名 */
+    container?: string;
+    /** 头部类名 */
+    header?: string;
+    /** 内容区域类名 */
+    body?: string;
+  };
 }
 
 export interface TripleSplitPaneProps {
@@ -40,6 +69,10 @@ export interface TripleSplitPaneProps {
    * 右侧面板配置
    */
   right?: PanelConfig;
+  /**
+   * 左侧展开按钮的 Popover 配置（当左侧面板收起时在中间面板显示的展开按钮）
+   */
+  leftPopover?: PopoverConfig;
   /**
    * 容器的类名
    */
@@ -80,7 +113,7 @@ const parseWidth = (
 export const TripleSplitPane = React.forwardRef<
   HTMLDivElement,
   TripleSplitPaneProps
->(({ left = {}, center = {}, right = {}, className }, ref) => {
+>(({ left = {}, center = {}, right = {}, leftPopover, className }, ref) => {
   const {
     children: leftChildren,
     title: leftTitle,
@@ -90,13 +123,24 @@ export const TripleSplitPane = React.forwardRef<
     collapsibleIcon: leftCollapsibleIcon,
     showIconWhenCompact: leftShowIconWhenCompact = true,
     defaultCollapsed: leftDefaultCollapsed = false,
+    classNames: leftClassNames,
   } = left;
 
   const {
     children: centerChildren,
     title: centerTitle,
     minWidth: centerMinWidth = "400px",
+    classNames: centerClassNames,
   } = center;
+
+  const {
+    enabled: leftPopoverEnabled = false,
+    content: leftPopoverContent,
+    width: leftPopoverWidth = "240px",
+    height: leftPopoverHeight = "300px",
+    className: leftPopoverClassName,
+    alwaysOpen: leftPopoverAlwaysOpen = false,
+  } = leftPopover || {};
 
   const {
     children: rightChildren,
@@ -107,6 +151,7 @@ export const TripleSplitPane = React.forwardRef<
     collapsibleIcon: rightCollapsibleIcon,
     showIconWhenCompact: rightShowIconWhenCompact = true,
     defaultCollapsed: rightDefaultCollapsed = false,
+    classNames: rightClassNames,
   } = right;
 
   const [isLeftCollapsed, setIsLeftCollapsed] =
@@ -114,19 +159,39 @@ export const TripleSplitPane = React.forwardRef<
   const [isRightCollapsed, setIsRightCollapsed] = React.useState(
     rightDefaultCollapsed,
   );
+  const [isLeftPopoverOpen, setIsLeftPopoverOpen] = React.useState(false);
 
-  const containerRef = React.useRef<HTMLDivElement>(null);
+  // 保存计算后的约束宽度
+  const [constrainedWidths, setConstrainedWidths] = React.useState({
+    leftWidth: isLeftCollapsed ? leftCollapsedWidth : leftWidth,
+    rightWidth: isRightCollapsed ? rightCollapsedWidth : rightWidth,
+  });
+
+  const internalRef = React.useRef<HTMLDivElement>(null);
+
+  // 合并外部 ref 和内部 ref
+  const mergedRef = React.useCallback(
+    (node: HTMLDivElement | null) => {
+      internalRef.current = node;
+      if (typeof ref === "function") {
+        ref(node);
+      } else if (ref) {
+        ref.current = node;
+      }
+    },
+    [ref],
+  );
 
   // 计算并约束宽度
-  const getConstrainedWidths = () => {
-    if (!containerRef.current) {
+  const calculateConstrainedWidths = React.useCallback(() => {
+    if (!internalRef.current) {
       return {
         leftWidth: isLeftCollapsed ? leftCollapsedWidth : leftWidth,
         rightWidth: isRightCollapsed ? rightCollapsedWidth : rightWidth,
       };
     }
 
-    const containerWidth = containerRef.current.offsetWidth;
+    const containerWidth = internalRef.current.offsetWidth;
 
     // 解析所有宽度为像素值
     const leftExpandedPx = parseWidth(leftWidth, containerWidth);
@@ -173,10 +238,37 @@ export const TripleSplitPane = React.forwardRef<
       leftWidth: `${currentLeftPx}px`,
       rightWidth: `${currentRightPx}px`,
     };
-  };
+  }, [
+    isLeftCollapsed,
+    isRightCollapsed,
+    leftWidth,
+    leftCollapsedWidth,
+    leftMinWidth,
+    rightWidth,
+    rightCollapsedWidth,
+    rightMinWidth,
+    centerMinWidth,
+  ]);
+
+  // 在布局效果中计算约束宽度
+  React.useLayoutEffect(() => {
+    const widths = calculateConstrainedWidths();
+    setConstrainedWidths(widths);
+  }, [calculateConstrainedWidths]);
+
+  // 监听窗口大小变化
+  React.useEffect(() => {
+    const handleResize = () => {
+      const widths = calculateConstrainedWidths();
+      setConstrainedWidths(widths);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [calculateConstrainedWidths]);
 
   const { leftWidth: constrainedLeftWidth, rightWidth: constrainedRightWidth } =
-    getConstrainedWidths();
+    constrainedWidths;
 
   const toggleLeftPanel = () => {
     setIsLeftCollapsed(!isLeftCollapsed);
@@ -192,8 +284,67 @@ export const TripleSplitPane = React.forwardRef<
   const isRightCompact =
     isRightCollapsed && parseWidth(rightCollapsedWidth, 0) > 0;
 
+  // 渲染左侧展开按钮
+  const renderLeftExpandButton = () => {
+    const button = (
+      <button
+        type="button"
+        onClick={toggleLeftPanel}
+        onMouseEnter={() =>
+          !leftPopoverAlwaysOpen &&
+          leftPopoverEnabled &&
+          setIsLeftPopoverOpen(true)
+        }
+        onMouseLeave={() =>
+          !leftPopoverAlwaysOpen &&
+          leftPopoverEnabled &&
+          setIsLeftPopoverOpen(false)
+        }
+        className="mr-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
+      >
+        {leftCollapsibleIcon || <PanelLeft className="h-4 w-4" />}
+      </button>
+    );
+
+    if (leftPopoverEnabled && leftPopoverContent) {
+      return (
+        <Popover
+          open={leftPopoverAlwaysOpen || isLeftPopoverOpen}
+          onOpenChange={
+            leftPopoverAlwaysOpen ? undefined : setIsLeftPopoverOpen
+          }
+        >
+          <PopoverTrigger asChild>{button}</PopoverTrigger>
+          <PopoverContent
+            className={leftPopoverClassName}
+            style={{
+              width: leftPopoverWidth,
+              height: leftPopoverHeight,
+              padding: 0,
+            }}
+            side="bottom"
+            align="start"
+            onMouseEnter={() =>
+              !leftPopoverAlwaysOpen && setIsLeftPopoverOpen(true)
+            }
+            onMouseLeave={() =>
+              !leftPopoverAlwaysOpen && setIsLeftPopoverOpen(false)
+            }
+          >
+            {leftPopoverContent}
+          </PopoverContent>
+        </Popover>
+      );
+    }
+
+    return button;
+  };
+
   return (
-    <SplitPaneContainerPrimitive ref={containerRef} className={`gap-3 ${className}`}>
+    <SplitPaneContainerPrimitive
+      ref={mergedRef}
+      className={`gap-3 ${className}`}
+    >
       {/* 左侧面板 */}
       <SplitPaneItemPrimitive
         width={constrainedLeftWidth}
@@ -204,6 +355,9 @@ export const TripleSplitPane = React.forwardRef<
           leftCollapsibleIcon || <PanelLeft className="h-4 w-4" />
         }
         onCollapsibleClick={toggleLeftPanel}
+        containerClassName={leftClassNames?.container}
+        headerClassName={leftClassNames?.header}
+        bodyClassName={leftClassNames?.body}
       >
         {leftChildren}
       </SplitPaneItemPrimitive>
@@ -217,21 +371,15 @@ export const TripleSplitPane = React.forwardRef<
           width="100%"
           panelTitle={
             <div className="flex items-center">
-              {/* 左侧收起时显示展开图标 */}
-              {isLeftCollapsed && (
-                <button
-                  type="button"
-                  onClick={toggleLeftPanel}
-                  className="mr-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                >
-                  {leftCollapsibleIcon || <PanelLeft className="h-4 w-4" />}
-                </button>
-              )}
+              {isLeftCollapsed && renderLeftExpandButton()}
               {centerTitle}
             </div>
           }
           showCollapsibleIcon={false}
           style={{ minWidth: centerMinWidth }}
+          containerClassName={centerClassNames?.container}
+          headerClassName={centerClassNames?.header}
+          bodyClassName={centerClassNames?.body}
         >
           {centerChildren}
         </SplitPaneItemPrimitive>
@@ -250,6 +398,9 @@ export const TripleSplitPane = React.forwardRef<
           rightCollapsibleIcon || <PanelRight className="h-4 w-4" />
         }
         onCollapsibleClick={toggleRightPanel}
+        containerClassName={rightClassNames?.container}
+        headerClassName={rightClassNames?.header}
+        bodyClassName={rightClassNames?.body}
       >
         {rightChildren}
       </SplitPaneItemPrimitive>

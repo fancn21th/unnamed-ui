@@ -1,0 +1,385 @@
+---
+title: File Card
+description: File card component with checkbox, icon, title, date, and action button
+author: AF
+---
+
+<ComponentPreview name="file-card-demo" className="mb-4" />
+
+File Card 组件用于展示文件信息，支持图标、标题、日期，适用于文件管理、附件展示、下载列表等场景。
+
+## 概述
+
+- **简洁设计**：包含 checkbox、文件图标、标题、日期和操作按钮
+- **多种状态**：支持上传中、下载中、完成、错误等状态
+- **选中功能**：支持选中/取消选中，配合 checkbox 使用
+- **hover 效果**：hover 时显示操作按钮
+- **自定义图标**：支持自定义文件和状态图标
+- **类型安全**：完整的 TypeScript 类型定义
+- **轻量级**：基于原语组件构建，无额外依赖
+
+## 快速开始
+
+```tsx
+import { FileCard } from "@/registry/wuhan/composed/file-card/file-card";
+
+<FileCard
+  id="file-1"
+  title="项目需求文档.pdf"
+  date="2024-01-15 10:30"
+/>
+```
+
+## 特性
+
+- **简洁直观**：去除复杂状态，只保留核心信息
+- **状态管理**：支持上传/下载/完成/错误等状态
+- **选中功能**：支持多选，配合 FileCardList 使用更便捷
+- **自定义图标**：支持自定义文件和状态图标
+- **hover 交互**：hover 时显示操作按钮
+- **可访问性**：支持 aria 属性，键盘导航友好
+
+## 安装
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/file-card.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>安装依赖</Step>
+
+```bash
+npm install lucide-react
+```
+
+<Step>复制以下代码到你的项目</Step>
+
+<ComponentSource name="file-card" />
+
+<Step>更新导入路径以匹配你的项目设置</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## 代码演示
+
+### 基础
+
+<ComponentPreview
+  name="file-card-demo"
+  description="基础文件卡片"
+  className="mb-4"
+/>
+
+### 不同状态
+
+<ComponentPreview
+  name="file-card-demo"
+  description="四种状态的文件卡片"
+  className="mb-4"
+/>
+
+### 选中状态
+
+<ComponentPreview
+  name="file-card-demo"
+  description="支持选中状态的文件卡片"
+  className="mb-4"
+/>
+
+## API
+
+### FileCard
+
+文件卡片主组件，提供完整的文件卡片功能。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `id` | `string` | - | **必填**。唯一标识符 |
+| `title` | `React.ReactNode` | - | 文件标题 |
+| `date` | `React.ReactNode` | - | 文件日期 |
+| `fileIcon` | `React.ReactNode` | - | 文件图标 |
+| `status` | `FileCardStatus` | `"default"` | 状态 |
+| `selected` | `boolean` | `false` | 选中状态 |
+| `onSelectChange` | `(selected: boolean) => void` | - | 选中状态变化回调 |
+| `onActionClick` | `() => void` | - | 操作按钮点击回调 |
+| `className` | `string` | - | 自定义类名 |
+
+#### Example
+
+```tsx
+import { FileCard } from "@/registry/wuhan/composed/file-card/file-card";
+
+function FileExample() {
+  return (
+    <FileCard
+      id="file-1"
+      title="项目需求文档.pdf"
+      date="2024-01-15 10:30"
+    />
+  );
+}
+```
+
+### FileCardList
+
+文件卡片列表组件，展示多个文件卡片，支持选中状态管理。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `string` | `"文件列表"` | 列表标题 |
+| `files` | `FileItem[]` | `[]` | 文件列表数据 |
+| `selectedIds` | `Set<string> \| string[]` | `[]` | 选中的文件 ID |
+| `onSelectionChange` | `(selectedIds: Set<string>) => void` | - | 选中状态变化回调 |
+| `onSelectAll` | `(select: boolean) => void` | - | 全选/取消全选回调 |
+| `onActionClick` | `(id: string) => void` | - | 操作按钮点击回调 |
+| `multiSelect` | `boolean` | `true` | 是否支持多选 |
+| `className` | `string` | - | 自定义类名 |
+
+#### Example
+
+```tsx
+import { FileCardList, type FileItem } from "@/registry/wuhan/composed/file-card/file-card";
+
+function FileListExample() {
+  const files: FileItem[] = [
+    { id: "1", title: "项目需求文档.pdf", date: "2024-01-15" },
+    { id: "2", title: "设计稿.png", date: "2024-01-14" },
+    { id: "3", title: "数据统计表.xlsx", date: "2024-01-13" },
+  ];
+
+  return <FileCardList title="我的文件" files={files} />;
+}
+```
+
+### FileItem
+
+文件项类型定义。
+
+```tsx
+interface FileItem {
+  /** 唯一标识符 */
+  id: string;
+  /** 文件标题 */
+  title: string;
+  /** 文件日期 */
+  date?: string;
+  /** 文件图标 */
+  fileIcon?: React.ReactNode;
+  /** 状态图标 */
+  statusIcon?: React.ReactNode;
+}
+```
+
+### FileCardStatus
+
+文件卡片状态类型。
+
+```tsx
+type FileCardStatus = "default" | "uploading" | "downloading" | "completed" | "error";
+```
+
+### FileCardPrimitive
+
+自包含的文件卡片原语组件，提供更灵活的定制能力。
+
+```tsx
+import { FileCardPrimitive } from "@/registry/wuhan/blocks/file-card/file-card-01";
+
+<FileCardPrimitive
+  id="file-1"
+  title="项目文档.pdf"
+  date="2024-01-15"
+  selected={false}
+  onSelectChange={(checked) => console.log(checked)}
+  onActionClick={() => console.log("Action")}
+/>
+```
+
+#### FileCardPrimitive Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `id` | `string` | - | **必填**。唯一标识符 |
+| `title` | `React.ReactNode` | - | 文件标题 |
+| `date` | `React.ReactNode` | - | 文件日期 |
+| `fileIcon` | `React.ReactNode` | - | 文件图标 |
+| `statusIcon` | `React.ReactNode` | - | 状态图标 |
+| `selected` | `boolean` | `false` | 选中状态 |
+| `onSelectChange` | `(selected: boolean) => void` | - | 选中状态变化回调 |
+| `onActionClick` | `() => void` | - | 操作按钮点击回调 |
+| `className` | `string` | - | 容器自定义类名 |
+
+## 使用场景
+
+- **文件管理**：展示和管理文件列表
+- **附件展示**：展示消息或表单中的附件
+- **下载列表**：展示正在下载或已下载的文件
+- **上传列表**：展示正在上传的文件
+- **云盘文件**：展示云盘中的文件列表
+
+## 最佳实践
+
+1. **简洁设计**：去除复杂状态，只保留核心信息
+2. **状态图标**：使用状态图标明确文件当前状态
+3. **多选功能**：配合 FileCardList 使用，支持全选/取消全选
+4. **自定义图标**：根据文件类型使用不同的图标
+
+## 原语组件
+
+FileCard 基于以下原语组件构建：
+
+- `FileCardContainerPrimitive` - 容器（hover/selected 状态背景）
+- `FileCardFileIconPrimitive` - 文件图标容器
+- `FileCardStatusIconPrimitive` - 状态图标容器
+- `FileCardInfoPrimitive` - 文件信息（标题 + 日期）
+- `FileCardActionPrimitive` - 操作按钮（hover 时显示）
+- `FileCardPrimitive` - 完整组件（自包含）
+
+如需更灵活的定制，可以直接使用这些原语组件。
+
+## 状态图标
+
+组件内置了四种状态图标：
+
+- `FileCardUploadingIcon` - 上传中
+- `FileCardDownloadingIcon` - 下载中
+- `FileCardCompletedIcon` - 已完成
+- `FileCardErrorIcon` - 错误
+
+也可以使用 `getStatusIcon` 函数根据状态获取对应图标：
+
+```tsx
+import { getStatusIcon, type FileCardStatus } from "@/registry/wuhan/composed/file-card/file-card";
+
+const status: FileCardStatus = "uploading";
+const icon = getStatusIcon(status);
+```
+
+## 样式定制
+
+组件使用 Tailwind CSS 和 CSS 变量，可以通过以下方式定制：
+
+```tsx
+// 使用原语组件自定义样式
+import {
+  FileCardPrimitive,
+  FileCardContainerPrimitive,
+  FileCardFileIconPrimitive,
+  FileCardInfoPrimitive,
+} from "@/registry/wuhan/blocks/file-card/file-card-01";
+
+<FileCardContainerPrimitive className="bg-blue-50 hover:bg-blue-100">
+  <FileCardFileIconPrimitive icon={<FileIcon className="text-blue-500" />} />
+  <FileCardInfoPrimitive title="自定义文件" date="2024-01-15" />
+</FileCardContainerPrimitive>
+```
+
+## 扩展示例
+
+### 不同文件类型
+
+```tsx
+import { FileCard } from "@/registry/wuhan/composed/file-card/file-card";
+import { FileText, FileImage, FileSpreadsheet, FileVideo } from "lucide-react";
+
+function FileTypeExample() {
+  return (
+    <>
+      <FileCard
+        id="doc"
+        title="文档.pdf"
+        date="2024-01-15"
+        fileIcon={<FileText className="text-blue-500" />}
+      />
+      <FileCard
+        id="image"
+        title="图片.png"
+        date="2024-01-14"
+        fileIcon={<FileImage className="text-green-500" />}
+      />
+      <FileCard
+        id="spreadsheet"
+        title="表格.xlsx"
+        date="2024-01-13"
+        fileIcon={<FileSpreadsheet className="text-orange-500" />}
+      />
+      <FileCard
+        id="video"
+        title="视频.mp4"
+        date="2024-01-12"
+        fileIcon={<FileVideo className="text-purple-500" />}
+      />
+    </>
+  );
+}
+```
+
+### 带状态的文件列表
+
+```tsx
+import { FileCard, type FileItem } from "@/registry/wuhan/composed/file-card/file-card";
+
+function StatusExample() {
+  const files: FileItem[] = [
+    { id: "1", title: "正在上传.pdf", status: "uploading" },
+    { id: "2", title: "正在下载.docx", status: "downloading" },
+    { id: "3", title: "已完成.txt", status: "completed" },
+    { id: "4", title: "失败.jpg", status: "error" },
+  ];
+
+  return <FileCardList title="下载队列" files={files} />;
+}
+```
+
+### 选中状态管理
+
+```tsx
+import { FileCardList, type FileItem } from "@/registry/wuhan/composed/file-card/file-card";
+import { useState } from "react";
+
+function SelectionExample() {
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+  const [allFiles] = useState<FileItem[]>([
+    { id: "1", title: "文档1.pdf" },
+    { id: "2", title: "文档2.pdf" },
+    { id: "3", title: "文档3.pdf" },
+  ]);
+
+  const handleSelectionChange = (ids: Set<string>) => {
+    setSelectedIds(ids);
+    console.log("Selected:", Array.from(ids));
+  };
+
+  return (
+    <FileCardList
+      title="我的文件"
+      files={allFiles}
+      selectedIds={selectedIds}
+      onSelectionChange={handleSelectionChange}
+    />
+  );
+}
+```
+

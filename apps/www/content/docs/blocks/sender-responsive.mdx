@@ -1,0 +1,232 @@
+---
+title: Sender Responsive
+author: AF
+---
+
+# Sender Responsive
+
+响应式 Sender 组件：输入框和按钮默认单行布局，当内容溢出时自动切换为多行布局。
+
+<ComponentPreview
+  name="sender-responsive"
+  description="响应式 Sender：单行→多行自动切换"
+  className="mb-4"
+/>
+
+## 核心特性
+
+- **自动溢出检测**：使用 `ResizeObserver` 监听内容宽度变化
+- **平滑过渡动画**：CSS 实现流畅布局切换
+- **灵活控制**：`forceSingleLine` 强制单行，`onOverflowChange` 监听状态
+
+## 安装
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/responsive-sender.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy the following code into your project.</Step>
+
+<ComponentSource name="responsive-sender" title="registry/wuhan/composed/sender/responsive-sender.tsx" />
+<ComponentSource name="sender-responsive-01" title="registry/wuhan/blocks/sender/sender-responsive-01.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## 布局行为
+
+```
+单行模式 (默认)
+═══════════════════════════════════════════════════
+│ [Textarea:flex-1]  [附件]  [发送按钮]           │
+│          ↑ 自适应宽度                      ↑ 最右边 │
+═══════════════════════════════════════════════════
+
+多行模式 (溢出时)
+═══════════════════════════════════════════════════
+│ [Textarea:w-full]                                 │
+│ ─────────────────────────────────────────────    │
+│                        [附件]  [发送按钮]         │  ← 右对齐
+═══════════════════════════════════════════════════
+```
+
+## Usage
+
+### 基础用法
+
+```tsx
+import { useState } from "react";
+import { ResponsiveSender } from "@/registry/wuhan/composed/sender/responsive-sender";
+
+export function Example() {
+  const [value, setValue] = useState("");
+  const [isOverflow, setIsOverflow] = useState(false);
+
+  return (
+    <ResponsiveSender
+      value={value}
+      onChange={setValue}
+      onSend={() => console.log("send", value)}
+      placeholder="输入你的需求..."
+      onOverflowChange={setIsOverflow}
+    />
+  );
+}
+```
+
+### 响应式原语（Blocks 层）
+
+<ComponentPreview
+  name="sender-responsive-default"
+  description="Blocks 层响应式原语基础用法"
+  className="mb-4"
+/>
+
+```tsx
+import {
+  SenderResponsiveContainer,
+  SenderResponsiveTextarea,
+  SenderResponsiveInputRow,
+  SenderResponsiveButtonGroup,
+  SenderResponsiveAttachmentButton,
+  SenderResponsiveSendButton,
+} from "@/registry/wuhan/blocks/sender/sender-responsive-01";
+
+export function Example() {
+  const [value, setValue] = useState("");
+  const [isOverflow, setIsOverflow] = useState(false);
+
+  return (
+    <SenderResponsiveContainer
+      onOverflowChange={setIsOverflow}
+    >
+      <SenderResponsiveInputRow isOverflow={isOverflow}>
+        <SenderResponsiveTextarea
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          isOverflow={isOverflow}
+        />
+        <SenderResponsiveButtonGroup isOverflow={isOverflow}>
+          <SenderResponsiveAttachmentButton type="button">
+            <Paperclip className="size-4" />
+          </SenderResponsiveAttachmentButton>
+          <SenderResponsiveSendButton
+            type="submit"
+            disabled={!value.trim()}
+          />
+        </SenderResponsiveButtonGroup>
+      </SenderResponsiveInputRow>
+    </SenderResponsiveContainer>
+  );
+}
+```
+
+## API
+
+### ResponsiveSender (Composed)
+
+#### 布局控制
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `forceSingleLine` | `boolean` | `false` | 强制使用单行布局，禁用响应式切换 |
+| `onOverflowChange` | `(isOverflow) => void` | - | 溢出状态变化回调 |
+| `maxWidth` | `string` | `"100%"` | 容器最大宽度 |
+
+#### 输入
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `value` | `string` | - | 受控输入值 |
+| `onChange` | `(value) => void` | - | 输入变化回调 |
+| `placeholder` | `string` | - | 占位符文字 |
+| `inputDisabled` | `boolean` | `false` | 禁用输入框 |
+| `submitOnEnter` | `boolean` | `false` | 按 Enter 发送 |
+
+#### 附件
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `attachments` | `T[]` | `[]` | 附件数组 |
+| `attachmentAdapter` | `(item) => AttachmentItem` | - | 数据适配器 |
+| `onAttachmentRemove` | `(id) => void` | - | 删除回调 |
+| `maxAttachments` | `number` | - | 最大附件数 |
+
+#### 发送
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `onSend` | `() => void` | - | 发送回调 |
+| `sendDisabled` | `boolean` | - | 禁用发送 |
+| `generating` | `boolean` | `false` | 生成中状态 |
+| `getCanSend` | `(ctx) => boolean` | - | 自定义发送规则 |
+
+### Blocks 层组件
+
+#### SenderResponsiveContainer
+
+响应式容器，负责检测溢出状态。
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `maxWidth` | `string` | `"100%"` | 最大宽度阈值 |
+| `forceSingleLine` | `boolean` | `false` | 强制单行模式 |
+| `onOverflowChange` | `(isOverflow) => void` | - | 溢出状态回调 |
+
+#### SenderResponsiveInputRow
+
+响应式输入行，始终保持 `flex-row` 布局。
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `isOverflow` | `boolean` | - | 当前是否处于溢出状态 |
+
+#### SenderResponsiveTextarea
+
+响应式文本域，根据溢出状态调整宽度。
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `isOverflow` | `boolean` | - | 当前是否处于溢出状态 |
+
+#### SenderResponsiveButtonGroup
+
+响应式按钮组，根据溢出状态切换对齐方式。
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `isOverflow` | `boolean` | - | 当前是否处于溢出状态 |
+
+#### SenderResponsiveAttachmentButton
+
+响应式附件按钮。
+
+#### SenderResponsiveSendButton
+
+响应式发送按钮。
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `generating` | `boolean` | `false` | 生成中状态 |
+| `generatingContent` | `ReactNode` | - | 自定义加载内容 |
+

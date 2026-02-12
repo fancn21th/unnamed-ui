@@ -1,0 +1,194 @@
+---
+title: Accordion
+description: 手风琴组件，用于折叠/展开内容
+author: AF
+---
+
+<ComponentPreview name="accordion-demo" className="mb-4" />
+
+手风琴组件是一种常用的 UI 模式，可以帮助用户快速导航和浏览长内容。支持单选和多选两种模式。
+
+## 概述
+
+- **两种模式**：single（单选）和 multiple（多选）
+- **折叠支持**：单选模式下可配置是否允许折叠
+- **受控模式**：支持完全由代码控制展开状态
+- **无障碍**：遵循 WAI-ARIA 标准，支持键盘导航
+- **动画效果**：平滑的展开/收起动画
+
+## 快速开始
+
+```tsx
+import { Accordion, AccordionItem } from "@/registry/wuhan/composed/block-accordion/block-accordion";
+
+export function Example() {
+  return (
+    <Accordion type="single">
+      <AccordionItem
+        value="item-1"
+        trigger="第一章：概述"
+        content="这里是第一章的内容。"
+      />
+      <AccordionItem
+        value="item-2"
+        trigger="第二章：详情"
+        content="这里是第二章的内容。"
+      />
+    </Accordion>
+  );
+}
+```
+
+## 特性
+
+- **单选模式**：一次只能展开一个项目
+- **多选模式**：可以同时展开多个项目
+- **受控模式**：支持完全由代码控制展开状态
+- **无障碍**：遵循 WAI-ARIA 标准，支持键盘导航
+
+## 安装
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/block-accordion.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>复制以下代码到你的项目</Step>
+
+<ComponentSource name="block-accordion" />
+
+<Step>更新导入路径以匹配你的项目设置</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## 代码演示
+
+### 单选模式
+
+单选模式下，一次只能展开一个项目：
+
+```tsx
+<Accordion type="single" collapsible>
+  <AccordionItem
+    value="item-1"
+    trigger="项目一"
+    content="内容一"
+  />
+  <AccordionItem
+    value="item-2"
+    trigger="项目二"
+    content="内容二"
+  />
+</Accordion>
+```
+
+### 多选模式
+
+多选模式下，可以同时展开多个项目：
+
+```tsx
+<Accordion type="multiple">
+  <AccordionItem
+    value="feature-1"
+    trigger="特性一"
+    content="特性一的内容"
+  />
+  <AccordionItem
+    value="feature-2"
+    trigger="特性二"
+    content="特性二的内容"
+  />
+</Accordion>
+```
+
+### 受控模式
+
+通过 `value` 和 `onValueChange` 属性实现完全受控：
+
+```tsx
+const [value, setValue] = useState("");
+
+<Accordion
+  type="single"
+  value={value}
+  onValueChange={(val) => setValue(val as string)}
+>
+  <AccordionItem
+    value="item-1"
+    trigger="项目一"
+    content="内容一"
+  />
+</Accordion>
+```
+
+### 默认展开
+
+通过 `defaultValue` 设置默认展开的项目：
+
+```tsx
+<Accordion type="single" defaultValue="item-1">
+  <AccordionItem
+    value="item-1"
+    trigger="默认展开的项目"
+    content="默认展开的内容"
+  />
+  <AccordionItem
+    value="item-2"
+    trigger="其他项目"
+    content="其他内容"
+  />
+</Accordion>
+```
+
+## API
+
+### Accordion Props
+
+| 参数 | 说明 | 类型 | 默认值 |
+|------|------|------|--------|
+| type | 手风琴类型 | `'single' \| 'multiple'` | `'single'` |
+| collapsible | 是否允许折叠（仅单选模式有效） | `boolean` | `true` |
+| defaultValue | 默认展开的项目值 | `string` | - |
+| value | 当前展开的项目值（受控模式） | `string` | - |
+| onValueChange | 值变化回调 | `(value: string) => void` | - |
+
+### AccordionItem Props
+
+| 参数 | 说明 | 类型 | 默认值 |
+|------|------|------|--------|
+| value | 项目的唯一标识 | `string` | - |
+| trigger | 触发器内容（标题） | `ReactNode` | - |
+| content | 展开的内容 | `ReactNode` | - |
+
+## 设计规范
+
+### 尺寸规范
+
+| 尺寸 | 高度 | 内边距 | 字号 |
+|------|------|--------|------|
+| 默认 | auto | 12px | 14px |
+
+### 交互规范
+
+- **单选模式**：用于需要互斥展开的场景，如 FAQ、分类列表
+- **多选模式**：用于需要对比多个展开项的场景，如特性对比
+- **键盘支持**：使用方向键和 Enter 键可以展开/收起项目
+- **标题命名**：trigger 应该是简洁的标题，避免过长的文本

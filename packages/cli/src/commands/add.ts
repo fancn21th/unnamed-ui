@@ -1,7 +1,7 @@
 import { Command } from "commander";
 import chalk from "chalk";
 import spawn from "cross-spawn";
-import { existsSync } from "fs";
+import { existsSync, readFileSync } from "fs";
 import path from "path";
 
 import {
@@ -18,6 +18,17 @@ import {
   type PackageJson,
   readJson,
 } from "../utils/project-setup";
+
+// 武汉风格 globals.css 的路径 - 优先使用环境变量，否则从当前工作目录计算
+function getWuhanGlobalsCssPath() {
+  // 如果有 UNNAMED_UI_ROOT 环境变量，使用它
+  if (process.env.UNNAMED_UI_ROOT) {
+    return path.join(process.env.UNNAMED_UI_ROOT, "apps/www/registry/wuhan/style/globals.css");
+  }
+  // 否则从 packages/cli 目录计算
+  const cliRoot = path.resolve(__dirname, "../..");
+  return path.join(cliRoot, "../../apps/www/registry/wuhan/style/globals.css");
+}
 
 function runShadcnAdd(cwd: string, target: string) {
   const result = spawn.sync("npx", ["shadcn@latest", "add", target], {
@@ -52,8 +63,20 @@ export const addCommand = new Command()
 
     console.log(chalk.cyan("🔧 Checking project prerequisites..."));
     ensureTailwindConfig(cwd, framework, useSrc);
-    ensurePostcssConfig(cwd);
-    ensureCssImports(cwd, cssPath);
+
+    // 只有 Vite 项目需要 PostCSS 配置
+    if (framework === "vite") {
+      ensurePostcssConfig(cwd);
+    }
+
+    // 读取武汉风格的 globals.css 内容
+    const wuhanCssPath = getWuhanGlobalsCssPath();
+    let wuhanCssContent: string | undefined;
+    if (existsSync(wuhanCssPath)) {
+      wuhanCssContent = readFileSync(wuhanCssPath, "utf-8");
+    }
+
+    ensureCssImports(cwd, cssPath, undefined, wuhanCssContent);
     ensureAliasConfig(cwd, useSrc);
     ensureComponentsJson(cwd, cssPath, framework === "next");
     ensureLegacyPeerDepsNpmrc(cwd);

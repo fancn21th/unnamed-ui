@@ -25,6 +25,10 @@ export interface ReportCardItem {
   description?: string;
   /** 自定义图标 */
   icon?: React.ReactNode;
+  /** 是否选中 */
+  selected?: boolean;
+  /** 是否禁用 */
+  disabled?: boolean;
 }
 
 /**
@@ -32,6 +36,8 @@ export interface ReportCardItem {
  * @public
  */
 export interface ReportCardProps {
+  /** 唯一标识（用于列表中的识别和事件回调） */
+  id?: string;
   /** 标题 */
   title?: string;
   /** 描述文本 */
@@ -40,6 +46,12 @@ export interface ReportCardProps {
   icon?: React.ReactNode;
   /** 宽度 */
   width?: string;
+  /** 选中状态 */
+  selected?: boolean;
+  /** 是否禁用 */
+  disabled?: boolean;
+  /** 选中状态变化回调 */
+  onSelectChange?: (selected: boolean, id?: string) => void;
   /** 编辑回调 */
   onEdit?: () => void;
   /** 删除回调 */
@@ -63,6 +75,8 @@ export interface ReportCardListProps {
   title?: string;
   /** 卡片列表数据 */
   cards?: ReportCardItem[];
+  /** 选中状态变化回调 */
+  onSelectChange?: (selected: boolean, id: string) => void;
   /** 编辑回调 */
   onEdit?: (id: string) => void;
   /** 删除回调 */
@@ -198,10 +212,14 @@ const CardActionsMenu = ({
 export const ReportCard = React.forwardRef<HTMLDivElement, ReportCardProps>(
   (props, ref) => {
     const {
+      id,
       title,
       description,
       icon,
       width = "280px",
+      selected = false,
+      disabled = false,
+      onSelectChange,
       onEdit,
       onDelete,
       onDuplicate,
@@ -234,6 +252,15 @@ export const ReportCard = React.forwardRef<HTMLDivElement, ReportCardProps>(
       return () => clearCloseTimer();
     }, []);
 
+    // 处理 checkbox 变化
+    const handleSelectChange = React.useCallback(
+      (checked: boolean) => {
+        if (disabled) return;
+        onSelectChange?.(checked === true, id);
+      },
+      [disabled, id, onSelectChange],
+    );
+
     // 判断是否显示默认操作按钮
     const showDefaultAction =
       showAction && !action && (onEdit || onDelete || onDuplicate);
@@ -241,6 +268,8 @@ export const ReportCard = React.forwardRef<HTMLDivElement, ReportCardProps>(
     return (
       <ReportCardContainerPrimitive
         ref={ref}
+        selected={selected}
+        disabled={disabled}
         className={className}
         style={{ width }}
         onMouseEnter={() => {
@@ -252,11 +281,15 @@ export const ReportCard = React.forwardRef<HTMLDivElement, ReportCardProps>(
           scheduleClose();
         }}
       >
-        {/* 左侧：图标 + 标题 + 描述 */}
+        {/* 左侧：复选框 + 图标 + 标题 + 描述 */}
         <ReportCardHeaderPrimitive
           icon={icon ?? <ReportCardDefaultIcon />}
           title={title}
           description={description}
+          showCheckbox={true}
+          selected={selected}
+          disabled={disabled}
+          onSelectChange={handleSelectChange}
         />
 
         {/* 右侧：自定义操作区域 或 默认操作按钮 */}
@@ -337,6 +370,7 @@ export const ReportCardList = React.forwardRef<
   const {
     title = "报告列表",
     cards = [],
+    onSelectChange,
     onEdit,
     onDelete,
     onDuplicate,
@@ -344,6 +378,14 @@ export const ReportCardList = React.forwardRef<
     showCardAction,
     className,
   } = props;
+
+  // 处理选中变化
+  const handleSelectChange = React.useCallback(
+    (selected: boolean, id?: string) => {
+      onSelectChange?.(selected, id ?? "");
+    },
+    [onSelectChange],
+  );
 
   return (
     <div ref={ref} className={className}>
@@ -365,11 +407,15 @@ export const ReportCardList = React.forwardRef<
         {cards.map((card) => (
           <ReportCard
             key={card.id}
+            id={card.id}
             title={card.title}
             description={card.description}
             icon={card.icon}
+            selected={card.selected}
+            disabled={card.disabled}
             action={cardAction?.(card)}
             showAction={showCardAction}
+            onSelectChange={handleSelectChange}
             onEdit={onEdit ? () => onEdit(card.id) : undefined}
             onDelete={onDelete ? () => onDelete(card.id) : undefined}
             onDuplicate={onDuplicate ? () => onDuplicate(card.id) : undefined}

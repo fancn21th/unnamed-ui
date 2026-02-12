@@ -30,6 +30,26 @@ export const composed: Registry["items"] = [
     ],
   },
   {
+    name: "responsive-sender",
+    type: "registry:block",
+    title: "Responsive Sender",
+    description:
+      "Composed responsive sender with automatic single/multi-line layout switching",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "sender-responsive-01",
+      "attachment-list",
+      "quote-content",
+    ],
+    files: [
+      {
+        path: "composed/sender/responsive-sender.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/responsive-sender.tsx",
+      },
+    ],
+  },
+  {
     name: "task-list",
     type: "registry:block",
     title: "Task List",
@@ -505,7 +525,7 @@ export const composed: Registry["items"] = [
     description:
       "Composed button with icon support, block mode, and convenient props",
     dependencies: ["lucide-react", "@radix-ui/react-slot"],
-    registryDependencies: ["button-01"],
+    registryDependencies: ["block-button-01"],
     files: [
       {
         path: "composed/block-button/block-button.tsx",
@@ -576,7 +596,7 @@ export const composed: Registry["items"] = [
     type: "registry:block",
     title: "TripleSplitPane",
     description: "三分隔面板",
-    registryDependencies: ["split-pane-01"],
+    registryDependencies: ["split-pane-01", "popover"],
     files: [
       {
         path: "composed/split-pane/triple-split-pane.tsx",
@@ -675,6 +695,22 @@ export const composed: Registry["items"] = [
     ],
   },
   {
+    name: "agent-card",
+    type: "registry:block",
+    title: "Agent Card",
+    description:
+      "Composed agent card with AI icon, title, description, and status indicator",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["agent-card-01"],
+    files: [
+      {
+        path: "composed/agent-card/agent-card.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/agent-card.tsx",
+      },
+    ],
+  },
+  {
     name: "report-card",
     type: "registry:block",
     title: "Report Card",
@@ -707,6 +743,22 @@ export const composed: Registry["items"] = [
     ],
   },
   {
+    name: "file-card",
+    type: "registry:block",
+    title: "File Card",
+    description:
+      "File card component with checkbox, icon, title, date, and action button",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["file-card-01", "checkbox-01"],
+    files: [
+      {
+        path: "composed/file-card/file-card.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/file-card.tsx",
+      },
+    ],
+  },
+  {
     name: "avatar",
     type: "registry:block",
     title: "Avatar",
@@ -717,6 +769,54 @@ export const composed: Registry["items"] = [
         path: "composed/avatar/avatar.tsx",
         type: "registry:component",
         target: "components/wuhan/composed/avatar.tsx",
+      },
+    ],
+  },
+  {
+    name: "icon-button",
+    type: "registry:block",
+    title: "Icon Button",
+    description:
+      "Composed icon button with tooltip support, multiple variants, colors, and sizes",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["icon-button-01", "tooltip"],
+    files: [
+      {
+        path: "composed/icon-button/icon-button.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/icon-button.tsx",
+      },
+    ],
+  },
+  {
+    name: "block-accordion",
+    type: "registry:block",
+    title: "Accordion",
+    description:
+      "Composed accordion with simplified API, supporting single and multiple selection modes",
+    dependencies: ["@radix-ui/react-accordion"],
+    registryDependencies: ["accordion-01"],
+    files: [
+      {
+        path: "composed/block-accordion/block-accordion.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/block-accordion.tsx",
+      },
+    ],
+  },
+  {
+    name: "page-header",
+    type: "registry:block",
+    title: "Page Header",
+    description:
+      "Composed page header with logo, title, button group and user avatar",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["page-header-01"],
+    files: [
+      {
+        path: "composed/page-header/page-header.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/page-header.tsx",
       },
     ],
   },

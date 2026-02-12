@@ -9,7 +9,7 @@ author: AF
   className="mb-4"
 />
 
-Sender 是一个面向“对话输入”场景的组合组件，默认提供完整 UI（输入、附件、模式与发送按钮），同时允许通过适配器与插槽扩展业务逻辑。
+Sender 是一个面向"对话输入"场景的组合组件，默认提供完整 UI（输入、附件、模式与发送按钮），同时允许通过适配器与插槽扩展业务逻辑。
 
 ## 安装
 
@@ -183,7 +183,7 @@ const modes = [
 
 ## API (Composed)
 
-为便于快速理解，下面按“输入/附件/模式/发送/布局”分组，每项都解释**它解决什么问题**以及**常见用法**。
+为便于快速理解，下面按"输入/附件/模式/发送/布局"分组，每项都解释**它解决什么问题**以及**常见用法**。
 
 ### 输入
 
@@ -192,7 +192,7 @@ const modes = [
 | `value` | `string` | - | 受控输入值。**你写什么它就显示什么**，必须和 `onChange` 一起使用。 |
 | `onChange` | `(value) => void` | - | 输入变化回调。**用户打字时更新你的状态**。 |
 | `placeholder` | `string` | - | 空输入时的提示文字。 |
-| `inputDisabled` | `boolean` | `false` | 禁用输入框，常用于“生成中/无权限”场景。 |
+| `inputDisabled` | `boolean` | `false` | 禁用输入框，常用于"生成中/无权限"场景。 |
 | `submitOnEnter` | `boolean` | `false` | 是否按 Enter 发送（自动处理输入法组合态与 Shift+Enter）。 |
 | `renderInput` | `(ctx) => ReactNode` | - | 覆盖输入区域 UI。用于**替换为富文本/Markdown/自定义输入组件**。 |
 
@@ -207,14 +207,14 @@ const modes = [
 | `maxAttachments` | `number` | - | 最大附件数量，超过会触发 `onAttachLimitExceed`。 |
 | `accept` | `string` | - | 允许类型（用于你自己的上传控件或提示）。 |
 | `sizeLimit` | `number` | - | 单个附件的大小上限（用于你自己的校验）。 |
-| `onAttachRequest` | `(ctx) => void` | - | 点击“添加附件”时触发。通常在这里打开文件选择器。 |
+| `onAttachRequest` | `(ctx) => void` | - | 点击"添加附件"时触发。通常在这里打开文件选择器。 |
 | `onAttachLimitExceed` | `(ctx) => void` | - | 超过 `maxAttachments` 时触发，适合展示提示。 |
 
 ### 模式
 
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
-| `modes` | `T[]` | `[]` | 模式数据数组，结构不限（例如“深度思考/联网搜索”）。 |
+| `modes` | `T[]` | `[]` | 模式数据数组，结构不限（例如"深度思考/联网搜索"）。 |
 | `modeAdapter` | `(mode) => {id,label,icon}` | - | 把模式数据映射到 UI 所需字段。 |
 | `modeSelection` | `"multiple" \| "single" \| "exclusive"` | `"multiple"` | 模式选择策略：多选/单选/互斥。 |
 | `selectedModes` | `string[]` | `[]` | 当前选中的模式 id 列表。 |
@@ -224,11 +224,11 @@ const modes = [
 
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
-| `onSend` | `() => void` | - | 真正“发送”动作。只有当 `getCanSend` 通过时才会触发。 |
+| `onSend` | `() => void` | - | 真正"发送"动作。只有当 `getCanSend` 通过时才会触发。 |
 | `sendDisabled` | `boolean` | - | 只控制按钮禁用视觉状态，不改变校验逻辑。 |
 | `generating` | `boolean` | `false` | 发送中/生成中状态（按钮会显示 loading）。 |
-| `getCanSend` | `(ctx) => boolean` | - | 自定义发送规则（比如“有附件即可发送”）。 |
-| `onSubmit` | `(ctx) => void` | - | 点击发送或回车触发，能拿到 `reason`。用于提示“为什么不能发”。 |
+| `getCanSend` | `(ctx) => boolean` | - | 自定义发送规则（比如"有附件即可发送"）。 |
+| `onSubmit` | `(ctx) => void` | - | 点击发送或回车触发，能拿到 `reason`。用于提示"为什么不能发"。 |
 | `getSendDisabledReason` | `(ctx) => reason` | - | 自定义 `reason` 文案来源。 |
 
 ### 布局与插槽
@@ -274,3 +274,4 @@ const modes = [
 
 - `renderActionsLeft/Right` 会完全替换默认区域，需要自行加入附件/模式/发送按钮。
 - `sendDisabled` 只控制按钮禁用，实际提交还受 `getCanSend` 影响。
+

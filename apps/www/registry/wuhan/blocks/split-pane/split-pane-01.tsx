@@ -66,6 +66,7 @@ export const SplitPaneItemPrimitive = React.forwardRef<
     },
     ref,
   ) => {
+    if (!parseFloat(width as string)) return null;
     return (
       <div
         ref={ref}
@@ -79,12 +80,13 @@ export const SplitPaneItemPrimitive = React.forwardRef<
         <div
           className={cn(
             "flex flex-col h-full bg-[var(--bg-container)]",
-            !isCompact && "rounded-[var(--radius-xl)]",
+            "rounded-[var(--radius-xl)]",
           )}
         >
           {/* Header 部分 */}
           <div
             className={cn(
+              "h-[48px]",
               "flex items-center",
               "justify-between px-4 py-3 border-b border-[var(--border-neutral)]",
               headerClassName,
@@ -92,7 +94,15 @@ export const SplitPaneItemPrimitive = React.forwardRef<
           >
             {/* 紧凑模式只显示图标，正常模式显示标题 */}
             {!isCompact && (
-              <div className="text-sm font-medium text-[var(--text-primary)]">
+              <div
+                className={cn(
+                  "font-[var(--font-family-cn)]",
+                  "font-semibold",
+                  "font-size-3",
+                  "leading-[var(--line-height-3)]",
+                  "text-[var(--text-title)]",
+                )}
+              >
                 {panelTitle}
               </div>
             )}
@@ -102,7 +112,7 @@ export const SplitPaneItemPrimitive = React.forwardRef<
               <button
                 type="button"
                 onClick={onCollapsibleClick}
-                className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+                className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
               >
                 {collapsibleIcon || <PanelLeft className="h-4 w-4" />}
               </button>

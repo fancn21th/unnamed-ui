@@ -8,6 +8,8 @@ import {
 import { FileText, MoreVertical, Star, CheckCircle } from "lucide-react";
 
 export default function ReportCardExample() {
+  const [selectedIds, setSelectedIds] = React.useState<string[]>([]);
+
   const cards = [
     {
       id: "1",
@@ -27,8 +29,36 @@ export default function ReportCardExample() {
     },
   ];
 
+  const handleSelectChange = (selected: boolean, id: string) => {
+    setSelectedIds((prev) =>
+      selected ? [...prev, id] : prev.filter((itemId) => itemId !== id),
+    );
+  };
+
   return (
     <div className="flex flex-col gap-6">
+      {/* 选中状态示例 */}
+      <div className="flex flex-col gap-4">
+        <h3 className="font-medium text-[var(--text-primary)]">选中状态</h3>
+
+        {/* 单个卡片选中示例 */}
+        <ReportCard
+          id="card-1"
+          title="候选人评估报告"
+          description="点击checkbox切换选中状态"
+          selected={selectedIds.includes("card-1")}
+          onSelectChange={(selected, id) => handleSelectChange(selected, id!)}
+        />
+
+        {/* 禁用状态示例 */}
+        <ReportCard
+          id="card-disabled"
+          title="禁用的卡片"
+          description="无法进行选中操作"
+          disabled={true}
+        />
+      </div>
+
       {/* 单个卡片示例 */}
       <div className="flex flex-col gap-4">
         <h3 className="font-medium text-[var(--text-primary)]">单个卡片</h3>
@@ -92,12 +122,16 @@ export default function ReportCardExample() {
       <div className="flex flex-col gap-4">
         <h3 className="font-medium text-[var(--text-primary)]">卡片列表</h3>
 
+        {/* 卡片列表 - 带选中功能 */}
         <ReportCardList
-          title="我的报告"
-          cards={cards}
+          title="我的报告（可选中）"
+          cards={cards.map((card) => ({
+            ...card,
+            selected: selectedIds.includes(card.id),
+          }))}
+          onSelectChange={(selected, id) => handleSelectChange(selected, id)}
           onEdit={(id) => console.log("编辑", id)}
           onDelete={(id) => console.log("删除", id)}
-          onDuplicate={(id) => console.log("复制", id)}
         />
 
         {/* 卡片列表 - 自定义每个卡片的操作 */}
@@ -115,6 +149,15 @@ export default function ReportCardExample() {
           showCardAction={false}
         />
       </div>
+
+      {/* 选中的卡片 ID */}
+      {selectedIds.length > 0 && (
+        <div className="p-4 rounded-lg bg-[var(--bg-neutral-light)]">
+          <p className="text-sm text-[var(--text-secondary)]">
+            选中的卡片 ID: {selectedIds.join(", ")}
+          </p>
+        </div>
+      )}
     </div>
   );
 }

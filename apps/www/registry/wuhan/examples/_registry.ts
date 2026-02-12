@@ -931,6 +931,36 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  // responsive sender examples
+  {
+    name: "sender-responsive",
+    type: "registry:example",
+    title: "Sender Responsive",
+    description:
+      "Responsive sender with automatic single/multi-line layout switching",
+    registryDependencies: ["responsive-sender"],
+    files: [
+      {
+        path: "examples/sender/sender-responsive.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/sender-responsive.tsx",
+      },
+    ],
+  },
+  {
+    name: "sender-responsive-default",
+    type: "registry:example",
+    title: "Sender Responsive Default",
+    description: "Basic usage of responsive sender primitives",
+    registryDependencies: ["sender-responsive-01"],
+    files: [
+      {
+        path: "examples/sender/sender-responsive-default.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/sender-responsive-default.tsx",
+      },
+    ],
+  },
   // textarea example
   {
     name: "textarea-demo",
@@ -951,7 +981,7 @@ export const examples: Registry["items"] = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "examples/button/button-demo.tsx",
+        path: "examples/block-button/button-demo.tsx",
         type: "registry:example",
         target: "components/wuhan/examples/button-demo.tsx",
       },
@@ -2031,9 +2061,124 @@ export const examples: Registry["items"] = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "examples/button/button-demo.tsx",
+        path: "examples/block-button/button-demo.tsx",
         type: "registry:example",
         target: "components/wuhan/examples/button-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "button-variants",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/block-button/button-variants.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-colors",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/block-button/button-colors.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-sizes",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/block-button/button-sizes.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-with-icon",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "examples/block-button/button-with-icon.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-icon-only",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "examples/block-button/button-icon-only.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-loading",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/block-button/button-loading.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-progress",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/block-button/button-progress.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-disabled",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/block-button/button-disabled.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-block",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/block-button/button-block.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  // icon-button examples
+  {
+    name: "icon-button-demo",
+    type: "registry:example",
+    registryDependencies: ["icon-button"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "examples/icon-button/icon-button-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/icon-button-demo.tsx",
       },
     ],
   },
@@ -2314,6 +2459,28 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/split-pane/triple-split-pane-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "split-pane-popover",
+    type: "registry:example",
+    registryDependencies: ["triple-split-pane"],
+    files: [
+      {
+        path: "examples/split-pane/split-pane-popover.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "split-pane-classnames",
+    type: "registry:example",
+    registryDependencies: ["triple-split-pane"],
+    files: [
+      {
+        path: "examples/split-pane/split-pane-classnames.tsx",
         type: "registry:example",
       },
     ],
@@ -2603,6 +2770,18 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "agent-card-demo",
+    type: "registry:example",
+    registryDependencies: ["agent-card"],
+    files: [
+      {
+        path: "examples/agent-card/agent-card-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/agent-card-demo.tsx",
+      },
+    ],
+  },
   // document-card examples
   {
     name: "document-card-demo",
@@ -2616,6 +2795,32 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  // file-card examples
+  {
+    name: "file-card-demo",
+    type: "registry:example",
+    registryDependencies: ["file-card"],
+    files: [
+      {
+        path: "examples/file-card/file-card-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/file-card-demo.tsx",
+      },
+    ],
+  },
+  // accordion examples
+  {
+    name: "accordion-demo",
+    type: "registry:example",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "examples/accordion/accordion-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/accordion-demo.tsx",
+      },
+    ],
+  },
   {
     name: "avatar-default",
     type: "registry:example",
@@ -2624,6 +2829,21 @@ export const examples: Registry["items"] = [
       {
         path: "examples/avatar/avatar-default.tsx",
         type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "page-header-demo",
+    type: "registry:example",
+    title: "Page Header Demo",
+    description: "Page header component demo with various configurations",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["page-header"],
+    files: [
+      {
+        path: "examples/page-header/page-header-demo.tsx",
+        type: "registry:example",
+        target: "components/wuhan/examples/page-header-demo.tsx",
       },
     ],
   },

@@ -36,6 +36,10 @@
     "description": "Sender primitives (input, actions, buttons)"
   },
   {
+    "name": "sender-responsive-01",
+    "description": "Responsive sender primitives with automatic layout switching (single/multi-line)"
+  },
+  {
     "name": "attachment-list-01",
     "description": "Attachment list component"
   },
@@ -108,8 +112,8 @@
     "description": "Sources sidebar component"
   },
   {
-    "name": "button-01",
-    "description": "Button primitive with solid/text/outline/link variants, multiple colors, and sizes"
+    "name": "block-button-01",
+    "description": "Block button with icon support, block mode, and convenient props"
   },
   {
     "name": "confirm-panel-01",
@@ -164,12 +168,32 @@
     "description": "Goal card component with AI icon, title, description, and circular progress indicator"
   },
   {
+    "name": "agent-card-01",
+    "description": "Agent card component with AI icon, title, description, and status indicator"
+  },
+  {
     "name": "document-card-01",
     "description": "Document card primitives for displaying research document information and attributes"
   },
   {
+    "name": "file-card-01",
+    "description": "File card component for displaying file information with checkbox, icon, title, date, and action button"
+  },
+  {
+    "name": "icon-button-01",
+    "description": "Icon button primitive with solid/outline/ghost variants, multiple colors, and sizes"
+  },
+  {
     "name": "avatar-01",
     "description": "头像"
+  },
+  {
+    "name": "accordion-01",
+    "description": "Accordion primitives with Root, Item, Trigger, and Content components"
+  },
+  {
+    "name": "page-header-01",
+    "description": "Page header component with logo, title, button group and user avatar"
   },
   {
     "name": "progress-01",
@@ -182,6 +206,10 @@
   {
     "name": "sender",
     "description": "Composed sender with attachments and modes"
+  },
+  {
+    "name": "responsive-sender",
+    "description": "Composed responsive sender with automatic single/multi-line layout switching"
   },
   {
     "name": "task-list",
@@ -324,6 +352,10 @@
     "description": "Composed goal card with AI icon, title, description, and circular progress indicator"
   },
   {
+    "name": "agent-card",
+    "description": "Composed agent card with AI icon, title, description, and status indicator"
+  },
+  {
     "name": "report-card",
     "description": "报告卡片"
   },
@@ -332,8 +364,24 @@
     "description": "Document card component for displaying research document information and attributes"
   },
   {
+    "name": "file-card",
+    "description": "File card component with checkbox, icon, title, date, and action button"
+  },
+  {
     "name": "avatar",
     "description": "头像"
+  },
+  {
+    "name": "icon-button",
+    "description": "Composed icon button with tooltip support, multiple variants, colors, and sizes"
+  },
+  {
+    "name": "block-accordion",
+    "description": "Composed accordion with simplified API, supporting single and multiple selection modes"
+  },
+  {
+    "name": "page-header",
+    "description": "Composed page header with logo, title, button group and user avatar"
   },
   {
     "name": "progress",

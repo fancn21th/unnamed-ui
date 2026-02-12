@@ -1,0 +1,347 @@
+---
+title: Page Header
+description: Page header component with logo, title, button group and user avatar
+author: AF
+---
+
+<ComponentPreview name="page-header-demo" description="Page header with logo, buttons and user avatar" className="mb-4" />
+
+Page Header 组件用于展示页面顶部的导航栏，包含 Logo、标题、按钮群和用户头像，适用于管理系统、仪表盘、应用页面等场景。
+
+## 概述
+
+- **灵活布局**：左右分区，左侧 Logo+标题，右侧按钮群+头像
+- **多种按钮**：支持文字按钮和图标按钮
+- **用户信息**：支持图片头像、图标头像
+- **高度可定制**：支持自定义 Logo、按钮、用户区域
+- **类型安全**：完整的 TypeScript 类型定义
+- **响应式**：自适应不同屏幕尺寸
+
+## 快速开始
+
+```tsx
+import { PageHeader } from "@/registry/wuhan/composed/page-header/page-header";
+import { Settings, Bell } from "lucide-react";
+
+export function Example() {
+  return (
+    <PageHeader
+      logo={
+        <div className="flex items-center justify-center w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg">
+          <span className="text-white font-bold text-lg">AI</span>
+        </div>
+      }
+      title="智能助手"
+      iconButtons={[
+        { icon: Bell, tooltip: "通知", onClick: () => {} },
+        { icon: Settings, tooltip: "设置", onClick: () => {} },
+      ]}
+      buttons={[
+        { label: "新建对话", onClick: () => {} },
+      ]}
+      user={{ name: "张三", avatarSrc: "/avatar.jpg" }}
+    />
+  );
+}
+```
+
+## 特性
+
+- **Logo 区域**：支持自定义 ReactNode（图标、图片等）
+- **标题显示**：支持自定义 ReactNode
+- **按钮组**：支持多种按钮变体（solid/text/outline/link）
+- **图标按钮**：支持在按钮群中插入图标按钮
+- **用户头像**：支持图片和图标，支持点击事件
+- **自定义右侧**：支持完全自定义右侧区域内容
+
+## 安装
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add http://localhost:3000/r/wuhan/page-header.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>复制以下代码到你的项目</Step>
+
+<ComponentSource name="page-header" />
+
+<Step>更新导入路径以匹配你的项目设置</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## 代码演示
+
+### 基础用法
+
+基础页面头部，包含 Logo、标题、按钮和用户信息。
+
+<ComponentPreview
+  name="page-header-demo"
+  description="Basic page header usage"
+  className="mb-4"
+/>
+
+### 按钮变体
+
+支持多种按钮变体：solid（实心）、outline（边框）、text（文字）。
+
+```tsx
+<PageHeader
+  logo={<Logo />}
+  title="项目管理"
+  buttons={[
+    { label: "草稿", variant: "text", onClick: () => {} },
+    { label: "发布", variant: "outline", onClick: () => {} },
+    { label: "保存", variant: "solid", onClick: () => {} },
+  ]}
+  user={{ name: "用户名" }}
+/>
+```
+
+### 图标按钮
+
+支持在按钮群和用户头像之间插入图标按钮。
+
+```tsx
+<PageHeader
+  logo={<Logo />}
+  title="工作台"
+  iconButtons={[
+    { icon: Search, tooltip: "搜索", onClick: () => {} },
+    { icon: Bell, tooltip: "通知", onClick: () => {} },
+    { icon: Settings, tooltip: "设置", onClick: () => {} },
+  ]}
+  buttons={[
+    { label: "创建任务", variant: "solid", onClick: () => {} },
+  ]}
+  user={{ name: "用户名" }}
+/>
+```
+
+### 简洁样式
+
+仅显示用户信息的简洁样式。
+
+```tsx
+<PageHeader
+  logo={<Logo />}
+  title="个人中心"
+  user={{ name: "王五", avatarSrc: "/avatar.jpg" }}
+/>
+```
+
+## API
+
+### PageHeader
+
+主页面头部组件。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `logo` | `React.ReactNode` | - | Logo 区域内容 |
+| `title` | `string` | - | 页面标题 |
+| `left` | `React.ReactNode` | - | 左侧自定义内容（与 title 二选一） |
+| `buttons` | `PageHeaderButtonItem[]` | `[]` | 右侧按钮列表 |
+| `iconButtons` | `PageHeaderIconButtonItem[]` | `[]` | 图标按钮列表 |
+| `user` | `PageHeaderUserInfo` | - | 用户信息 |
+| `right` | `React.ReactNode` | - | 右侧自定义内容 |
+| `className` | `string` | - | 自定义样式类名 |
+
+#### PageHeaderButtonItem
+
+```tsx
+interface PageHeaderButtonItem {
+  label: string;                    // 按钮文字
+  onClick?: () => void;              // 点击事件
+  disabled?: boolean;                // 是否禁用
+  variant?: "solid" | "text" | "outline" | "link";  // 按钮变体
+  color?: "primary" | "secondary" | "danger";        // 按钮颜色
+}
+```
+
+#### PageHeaderIconButtonItem
+
+```tsx
+interface PageHeaderIconButtonItem {
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;  // 图标组件
+  onClick?: () => void;              // 点击事件
+  tooltip?: string;                 // 图标提示文字
+}
+```
+
+#### PageHeaderUserInfo
+
+```tsx
+interface PageHeaderUserInfo {
+  name: string;                      // 用户名称
+  avatarSrc?: string | React.ReactNode;  // 用户头像
+  onAvatarClick?: () => void;        // 头像点击事件
+}
+```
+
+### Block 原语组件
+
+#### PageHeaderBlock
+
+完整页面头部 Block 组件。
+
+```tsx
+interface PageHeaderBlockProps {
+  logo?: React.ReactNode;            // Logo 区域
+  title?: React.ReactNode;           // 标题
+  buttons?: React.ReactNode;        // 按钮组
+  user?: React.ReactNode;           // 用户区域
+}
+```
+
+#### 原语组件列表
+
+| 组件 | 用途 |
+|------|------|
+| `PageHeaderPrimitive` | 页面头部容器 |
+| `PageHeaderLeftPrimitive` | 左侧区域 |
+| `PageHeaderLogoPrimitive` | Logo 容器 |
+| `PageHeaderTitlePrimitive` | 标题样式 |
+| `PageHeaderRightPrimitive` | 右侧区域 |
+| `PageHeaderButtonGroupPrimitive` | 按钮群容器 |
+| `PageHeaderButton` | 按钮组件 |
+| `PageHeaderAvatarPrimitive` | 头像组件 |
+| `PageHeaderUserPrimitive` | 用户信息组件 |
+
+## 使用场景
+
+- **管理系统**：顶部导航栏，显示应用名称、功能按钮和用户信息
+- **仪表盘**：页面头部，包含页面标题、操作按钮和用户头像
+- **应用页面**：应用顶部导航，支持 Logo 自定义和功能按钮
+- **文档站点**：页面顶部导航栏
+
+## 最佳实践
+
+1. **Logo 设计**：使用简洁的图标或文字作为 Logo
+2. **按钮分组**：相关功能的按钮放在一起
+3. **重要操作**：使用 solid 变体突出显示主要操作
+4. **用户信息**：提供清晰的用户识别标识
+5. **一致性**：在同一应用中保持头部样式一致
+6. **响应式**：在小屏幕上考虑简化头部显示
+
+## 注意事项
+
+- `title` 和 `left` 同时存在时，优先使用 `title`
+- `right` 存在时，会忽略 `buttons`、`iconButtons` 和 `user`
+- 按钮变体默认为 `outline`，颜色默认为 `primary`
+- 用户头像支持图片 URL 和 ReactNode
+
+## 原语组件
+
+Page Header 基于以下原语组件构建：
+
+- `PageHeaderPrimitive` - 页面头部容器
+- `PageHeaderLeftPrimitive` - 左侧区域
+- `PageHeaderLogoPrimitive` - Logo 容器
+- `PageHeaderTitlePrimitive` - 标题样式
+- `PageHeaderRightPrimitive` - 右侧区域
+- `PageHeaderButtonGroupPrimitive` - 按钮群容器
+- `PageHeaderButton` - 按钮组件
+- `PageHeaderAvatarPrimitive` - 头像组件
+- `PageHeaderUserPrimitive` - 用户信息组件
+
+这些原语可以在 [registry/wuhan/blocks/page-header/page-header-01.tsx](../../registry/wuhan/blocks/page-header/page-header-01.tsx) 中找到。
+
+## 样式定制
+
+组件使用 Tailwind CSS 和 CSS 变量，可以通过以下方式定制：
+
+```tsx
+// 自定义头部高度
+<PageHeader className="h-16" />
+
+// 自定义 Logo 大小
+<PageHeaderLogoPrimitive style={{ width: 48, height: 48 }} />
+
+// 自定义按钮样式
+<PageHeaderButton className="min-w-[100px]" />
+
+// 自定义用户区域
+<PageHeaderUserPrimitive className="px-4 bg-gray-50 rounded-lg" />
+```
+
+## 扩展示例
+
+### 多个图标按钮
+
+```tsx
+<PageHeader
+  logo={<Logo />}
+  title="管理系统"
+  iconButtons={[
+    { icon: Search, tooltip: "搜索" },
+    { icon: Bell, tooltip: "消息" },
+    { icon: Settings, tooltip: "设置" },
+  ]}
+  buttons={[
+    { label: "发布文章", variant: "solid", onClick: () => {} },
+  ]}
+  user={{ name: "管理员" }}
+/>
+```
+
+### 带分割线的按钮组
+
+```tsx
+<PageHeader
+  logo={<Logo />}
+  title="项目管理"
+  buttons={[
+    { label: "编辑", variant: "text", onClick: () => {} },
+    { label: "分享", variant: "outline", onClick: () => {} },
+    { label: "删除", variant: "outline", color: "danger", onClick: () => {} },
+  ]}
+  user={{ name: "项目经理" }}
+/>
+```
+
+### 自定义 Logo 和头像
+
+```tsx
+<PageHeader
+  logo={
+    <img
+      src="/logo.svg"
+      alt="公司 Logo"
+      className="w-8 h-8 rounded-lg"
+    />
+  }
+  title="企业管理系统"
+  user={{
+    name: "张三",
+    avatarSrc: (
+      <img
+        src="/avatar.jpg"
+        alt="用户头像"
+        className="w-full h-full object-cover rounded-full"
+      />
+    ),
+  }}
+/>
+```
+

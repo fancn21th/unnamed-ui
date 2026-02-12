@@ -9526,6 +9526,181 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "accordion-single": {
+      name: "accordion-single",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["accordion"],
+      files: [
+        {
+          path: "registry/wuhan/examples/accordion/accordion-single.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/accordion/accordion-single.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "accordion-multiple": {
+      name: "accordion-multiple",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["accordion"],
+      files: [
+        {
+          path: "registry/wuhan/examples/accordion/accordion-multiple.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/accordion/accordion-multiple.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "accordion-default-single": {
+      name: "accordion-default-single",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["accordion"],
+      files: [
+        {
+          path: "registry/wuhan/examples/accordion/accordion-default-single.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/accordion/accordion-default-single.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "accordion-default-multiple": {
+      name: "accordion-default-multiple",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["accordion"],
+      files: [
+        {
+          path: "registry/wuhan/examples/accordion/accordion-default-multiple.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/accordion/accordion-default-multiple.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "accordion-expand-all": {
+      name: "accordion-expand-all",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["accordion"],
+      files: [
+        {
+          path: "registry/wuhan/examples/accordion/accordion-expand-all.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/accordion/accordion-expand-all.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "accordion-controlled": {
+      name: "accordion-controlled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["accordion"],
+      files: [
+        {
+          path: "registry/wuhan/examples/accordion/accordion-controlled.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/accordion/accordion-controlled.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "accordion-gap": {
+      name: "accordion-gap",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["accordion"],
+      files: [
+        {
+          path: "registry/wuhan/examples/accordion/accordion-gap.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod =
+          await import("@/registry/wuhan/examples/accordion/accordion-gap.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "avatar-default": {
       name: "avatar-default",
       description: "",

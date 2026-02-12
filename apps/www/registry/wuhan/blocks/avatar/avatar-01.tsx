@@ -80,7 +80,18 @@ export const AvatarTextPrimitive = React.forwardRef<
   HTMLSpanElement,
   AvatarTextPrimitiveProps
 >(({ className, ...props }, ref) => {
-  return <span ref={ref} className={cn("font-medium", className)} {...props} />;
+  return (
+    <span
+      ref={ref}
+      className={cn(
+        "font-normal",
+        "font-[var(--font-family-cn)]",
+        "leading-[var(--line-height-2)]",
+        className,
+      )}
+      {...props}
+    />
+  );
 });
 AvatarTextPrimitive.displayName = "AvatarTextPrimitive";
 

@@ -12,7 +12,10 @@ author: AF
 
 - **两种模式**：single（单选）和 multiple（多选）
 - **折叠支持**：单选模式下可配置是否允许折叠
+- **默认展开**：支持默认展开单个或多个项目
+- **展开全部**：多选模式下支持一键展开所有项
 - **受控模式**：支持完全由代码控制展开状态
+- **间距控制**：支持自定义项目间距
 - **无障碍**：遵循 WAI-ARIA 标准，支持键盘导航
 - **动画效果**：平滑的展开/收起动画
 
@@ -23,16 +26,24 @@ import { Accordion, AccordionItem } from "@/registry/wuhan/composed/block-accord
 
 export function Example() {
   return (
-    <Accordion type="single">
+    <Accordion type="single" collapsible>
       <AccordionItem
         value="item-1"
         trigger="第一章：概述"
-        content="这里是第一章的内容。"
+        content={
+          <div className="p-4 text-sm text-[var(--text-secondary)]">
+            这里是第一章的内容。
+          </div>
+        }
       />
       <AccordionItem
         value="item-2"
         trigger="第二章：详情"
-        content="这里是第二章的内容。"
+        content={
+          <div className="p-4 text-sm text-[var(--text-secondary)]">
+            这里是第二章的内容。
+          </div>
+        }
       />
     </Accordion>
   );
@@ -41,9 +52,12 @@ export function Example() {
 
 ## 特性
 
-- **单选模式**：一次只能展开一个项目
-- **多选模式**：可以同时展开多个项目
+- **单选模式**：一次只能展开一个项目，适合互斥展开的场景
+- **多选模式**：可以同时展开多个项目，适合对比查看的场景
+- **默认展开**：支持默认展开单个或多个项目
+- **展开全部**：多选模式下可一键展开所有项目
 - **受控模式**：支持完全由代码控制展开状态
+- **间距控制**：可自定义项目间距
 - **无障碍**：遵循 WAI-ARIA 标准，支持键盘导航
 
 ## 安装
@@ -83,92 +97,76 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/block-accordion.json
 
 ### 单选模式
 
-单选模式下，一次只能展开一个项目：
+<ComponentPreview name="accordion-single" />
 
-```tsx
-<Accordion type="single" collapsible>
-  <AccordionItem
-    value="item-1"
-    trigger="项目一"
-    content="内容一"
-  />
-  <AccordionItem
-    value="item-2"
-    trigger="项目二"
-    content="内容二"
-  />
-</Accordion>
-```
+单选模式下，一次只能展开一个项目。设置 `collapsible` 为 `true` 可以允许收起所有项目。
 
 ### 多选模式
 
-多选模式下，可以同时展开多个项目：
+<ComponentPreview name="accordion-multiple" />
 
-```tsx
-<Accordion type="multiple">
-  <AccordionItem
-    value="feature-1"
-    trigger="特性一"
-    content="特性一的内容"
-  />
-  <AccordionItem
-    value="feature-2"
-    trigger="特性二"
-    content="特性二的内容"
-  />
-</Accordion>
-```
+多选模式下，可以同时展开多个项目。
+
+### 默认展开（单选）
+
+<ComponentPreview name="accordion-default-single" />
+
+单选模式下，通过 `defaultValue` 设置默认展开的项目（字符串）。
+
+### 默认展开（多选）
+
+<ComponentPreview name="accordion-default-multiple" />
+
+多选模式下，`defaultValue` 可以是字符串（展开单个）或字符串数组（展开多个）。
+
+### 展开全部
+
+<ComponentPreview name="accordion-expand-all" />
+
+多选模式下，设置 `expandAll` 为 `true` 可以默认展开所有项目。
 
 ### 受控模式
 
-通过 `value` 和 `onValueChange` 属性实现完全受控：
+<ComponentPreview name="accordion-controlled" />
 
-```tsx
-const [value, setValue] = useState("");
+通过 `value` 和 `onValueChange` 属性实现完全受控，可以通过代码控制展开状态。
 
-<Accordion
-  type="single"
-  value={value}
-  onValueChange={(val) => setValue(val as string)}
->
-  <AccordionItem
-    value="item-1"
-    trigger="项目一"
-    content="内容一"
-  />
-</Accordion>
-```
+### 间距控制
 
-### 默认展开
+<ComponentPreview name="accordion-gap" />
 
-通过 `defaultValue` 设置默认展开的项目：
-
-```tsx
-<Accordion type="single" defaultValue="item-1">
-  <AccordionItem
-    value="item-1"
-    trigger="默认展开的项目"
-    content="默认展开的内容"
-  />
-  <AccordionItem
-    value="item-2"
-    trigger="其他项目"
-    content="其他内容"
-  />
-</Accordion>
-```
+通过 `gap` 属性控制 AccordionItem 之间的间距，支持所有 Tailwind gap 类名。
 
 ## API
 
 ### Accordion Props
 
+**通用属性**
+
 | 参数 | 说明 | 类型 | 默认值 |
 |------|------|------|--------|
 | type | 手风琴类型 | `'single' \| 'multiple'` | `'single'` |
-| collapsible | 是否允许折叠（仅单选模式有效） | `boolean` | `true` |
-| defaultValue | 默认展开的项目值 | `string` | - |
-| value | 当前展开的项目值（受控模式） | `string` | - |
+| gap | AccordionItem 之间的间距（支持 Tailwind gap 类名） | `string` | - |
+| className | 自定义类名 | `string` | - |
+| children | 子元素 | `ReactNode` | - |
+
+**单选模式属性 (type="single")**
+
+| 参数 | 说明 | 类型 | 默认值 |
+|------|------|------|--------|
+| collapsible | 是否允许折叠所有项 | `boolean` | `true` |
+| defaultValue | 默认展开的值（支持 `string` 或 `string[]`，数组时取第一项） | `string \| string[]` | - |
+| value | 当前展开的值（受控模式） | `string` | - |
 | onValueChange | 值变化回调 | `(value: string) => void` | - |
+
+**多选模式属性 (type="multiple")**
+
+| 参数 | 说明 | 类型 | 默认值 |
+|------|------|------|--------|
+| expandAll | 是否默认展开所有项 | `boolean` | `false` |
+| defaultValue | 默认展开的值（支持 `string` 或 `string[]`，字符串时自动转为数组） | `string \| string[]` | - |
+| value | 当前展开的值（受控模式） | `string[]` | - |
+| onValueChange | 值变化回调 | `(value: string[]) => void` | - |
 
 ### AccordionItem Props
 
@@ -184,11 +182,29 @@ const [value, setValue] = useState("");
 
 | 尺寸 | 高度 | 内边距 | 字号 |
 |------|------|--------|------|
-| 默认 | auto | 12px | 14px |
+| 默认 | auto | 16px | 14px |
 
 ### 交互规范
 
 - **单选模式**：用于需要互斥展开的场景，如 FAQ、分类列表
 - **多选模式**：用于需要对比多个展开项的场景，如特性对比
+- **展开全部**：用于需要快速查看所有内容的场景
+- **内容样式**：建议为内容添加内边距（如 `p-4`）和次要文本颜色
 - **键盘支持**：使用方向键和 Enter 键可以展开/收起项目
 - **标题命名**：trigger 应该是简洁的标题，避免过长的文本
+
+### 最佳实践
+
+**内容容器样式**：为了更好的视觉效果，建议为 content 添加样式：
+
+```tsx
+<AccordionItem
+  value="item-1"
+  trigger="标题"
+  content={
+    <div className="p-4 text-sm text-[var(--text-secondary)]">
+      内容文本
+    </div>
+  }
+/>
+```

@@ -17,14 +17,10 @@ export default function AccordionDemo() {
       {/* 单选模式（默认） */}
       <div className="">
         <h3 className="text-xl mb-3">单选模式（一次只能展开一个）</h3>
-        <Accordion type="single" collapsible>
+        <Accordion type="single" collapsible gap="gap-4">
           <AccordionItem
             value="item-1"
-            trigger={
-              <div className="text-sm font-medium text-[var(--text-secondary)]">
-                工作目标：5
-              </div>
-            }
+            trigger="工作目标：5"
             content={
               <div className="text-sm text-[var(--text-secondary)]">
                 工作内容
@@ -33,11 +29,7 @@ export default function AccordionDemo() {
           />
           <AccordionItem
             value="item-2"
-            trigger={
-              <div className="text-sm font-medium text-[var(--text-secondary)]">
-                工作目标：5
-              </div>
-            }
+            trigger="工作目标：5"
             content={
               <div className="text-sm text-[var(--text-secondary)]">
                 工作内容
@@ -46,11 +38,7 @@ export default function AccordionDemo() {
           />
           <AccordionItem
             value="item-3"
-            trigger={
-              <div className="text-sm font-medium text-[var(--text-secondary)]">
-                工作目标：5
-              </div>
-            }
+            trigger="工作目标：5"
             content={
               <div className="text-sm text-[var(--text-secondary)]">
                 工作内容
@@ -63,14 +51,10 @@ export default function AccordionDemo() {
       {/* 多选模式 */}
       <div>
         <h3 className="text-xl mb-3">多选模式（可以同时展开多个）</h3>
-        <Accordion type="multiple">
+        <Accordion type="multiple" gap="gap-3">
           <AccordionItem
             value="feature-1"
-            trigger={
-              <div className="text-sm font-medium text-[var(--text-secondary)]">
-                工作目标：5
-              </div>
-            }
+            trigger="工作目标：5"
             content={
               <div className="text-sm text-[var(--text-secondary)]">
                 工作内容
@@ -79,11 +63,7 @@ export default function AccordionDemo() {
           />
           <AccordionItem
             value="feature-2"
-            trigger={
-              <div className="text-sm font-medium text-[var(--text-secondary)]">
-                工作目标：5
-              </div>
-            }
+            trigger="工作目标：5"
             content={
               <div className="text-sm text-[var(--text-secondary)]">
                 工作内容
@@ -92,11 +72,7 @@ export default function AccordionDemo() {
           />
           <AccordionItem
             value="feature-3"
-            trigger={
-              <div className="text-sm font-medium text-[var(--text-secondary)]">
-                工作目标：5
-              </div>
-            }
+            trigger="工作目标：5"
             content={
               <div className="text-sm text-[var(--text-secondary)]">
                 工作内容
@@ -115,36 +91,25 @@ export default function AccordionDemo() {
           type="single"
           value={singleValue}
           onValueChange={(value) => setSingleValue(value as string)}
+          gap="gap-2"
         >
           <AccordionItem
             value="controlled-1"
-            trigger={
-              <div className="text-sm font-medium text-[var(--text-secondary)]">
-                受控项目一
-              </div>
-            }
+            trigger="受控项目一"
             content={
               <div className="p-4">这是受控模式下的第一个项目内容。</div>
             }
           />
           <AccordionItem
             value="controlled-2"
-            trigger={
-              <div className="text-sm font-medium text-[var(--text-secondary)]">
-                受控项目二
-              </div>
-            }
+            trigger="受控项目二"
             content={
               <div className="p-4">这是受控模式下的第二个项目内容。</div>
             }
           />
           <AccordionItem
             value="controlled-3"
-            trigger={
-              <div className="text-sm font-medium text-[var(--text-secondary)]">
-                受控项目三
-              </div>
-            }
+            trigger="受控项目三"
             content={
               <div className="p-4">这是受控模式下的第三个项目内容。</div>
             }

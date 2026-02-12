@@ -2822,6 +2822,83 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "accordion-single",
+    type: "registry:example",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "examples/accordion/accordion-single.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "accordion-multiple",
+    type: "registry:example",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "examples/accordion/accordion-multiple.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "accordion-default-single",
+    type: "registry:example",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "examples/accordion/accordion-default-single.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "accordion-default-multiple",
+    type: "registry:example",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "examples/accordion/accordion-default-multiple.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "accordion-expand-all",
+    type: "registry:example",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "examples/accordion/accordion-expand-all.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "accordion-controlled",
+    type: "registry:example",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "examples/accordion/accordion-controlled.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "accordion-gap",
+    type: "registry:example",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "examples/accordion/accordion-gap.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "avatar-default",
     type: "registry:example",
     registryDependencies: ["avatar"],

@@ -470,17 +470,17 @@ export const ui: Registry["items"] = [
   //     },
   //   ],
   // },
-  // {
-  //   name: "popover",
-  //   type: "registry:ui",
-  //   dependencies: ["@radix-ui/react-popover"],
-  //   files: [
-  //     {
-  //       path: "ui/popover.tsx",
-  //       type: "registry:ui",
-  //     },
-  //   ],
-  // },
+  {
+    name: "popover",
+    type: "registry:ui",
+    dependencies: ["@radix-ui/react-popover"],
+    files: [
+      {
+        path: "ui/popover.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
   // {
   //   name: "progress",
   //   type: "registry:ui",

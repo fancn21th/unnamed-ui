@@ -2,3 +2,169 @@
 title: 新手指南
 description: Unnamed UI 新手指南
 ---
+
+欢迎使用 **Unnamed UI**。本指南旨在帮助您快速搭建开发环境，并通过“搭建题目 (Proposal)”这一典型研发场景，熟悉核心组件的使用。
+
+## 目录
+
+1. [环境准备与安装](#1-环境准备与安装)
+2. [实战演练：搭建 Proposal 页面](#2-实战演练搭建-proposal-页面)
+3. [核心功能：对话与流式输出](#3-核心功能对话与流式输出)
+
+---
+
+## 1. 环境准备与安装
+
+在开始之前，请确保您的开发环境满足基础要求（参考现代前端标准）：
+
+- **Node.js**: 18 或更高版本
+- **React**: 19 (推荐) 或 18
+- **Next.js / Vite**: 支持 App Router 或标准 Vite 配置
+
+### 1.1 初始化项目
+
+如果您是新项目，推荐使用 Vite 快速初始化（参考 Ant Design X 流程）：
+
+```bash
+npm create vite unnamed-demo --template react
+cd unnamed-demo
+npm install
+```
+
+### 1.2 安装 Unnamed UI
+
+假设我们的包名为 `unnamed-ui`（请根据实际发包名称调整）：
+
+```bash
+npm install unnamed-ui --save
+# 如果依赖 tailwind 或 icons，请一并安装
+```
+
+### 1.3 验证安装
+
+在 `src/App.tsx` 中引入一个基础组件进行验证（参考组件列表）：
+
+```tsx
+import { Welcome, Icon Button } from 'unnamed-ui';
+
+export default function App() {
+  return (
+    <div className="p-4">
+      <Welcome title="Hello Unnamed UI" />
+    </div>
+  );
+}
+```
+
+---
+
+## 2. 实战演练：搭建 Proposal 页面
+
+本节将按照**“如何搭建题目”**的研发步骤，逐步讲解如何使用 Unnamed UI 完成开发。
+
+### 步骤 1: Proposal 准备与 UWS 布局
+
+**目标**：查看设计稿，完成统一工作台（UWS）的基础框架搭建。
+
+- **布局组件**：使用 `SplitPane` 或 `Sidebar` 进行左右分栏布局。
+- **顶部导航**：使用 `Page Header` 展示题目信息。
+
+```tsx
+import { PageHeader, SplitPane, Sidebar, SourcesSidebar } from "unnamed-ui";
+
+export default function ProposalPage() {
+  return (
+    <div className="h-screen flex flex-col">
+      {/* 顶部导航 */}
+      <PageHeader title="Proposal: 新手引导设计" />
+
+      {/* 主体布局：左侧对话，右侧素材/UWS */}
+      <SplitPane>
+        <div className="chat-container">{/* 对话区域 */}</div>
+        <Sidebar>
+          {/* UWS 组件区域 */}
+          <SourcesSidebar />
+        </Sidebar>
+      </SplitPane>
+    </div>
+  );
+}
+```
+
+---
+
+## 3. 核心功能：对话与流式输出
+
+**目标**：实现消息问答交互，支持 AI 消息的**流式输出**。
+
+在对话区域中，我们将集成多种类型的 AI 响应能力。
+
+### 3.1 基础布局与输入
+
+使用 `Sender` 或 `Sender Responsive` 作为用户输入组件，`Message` 作为消息气泡容器。
+
+### 3.2 消息问答类型实现
+
+所有 AI 消息组件需支持 `streaming` 状态。以下是各类型问答的推荐组件方案：
+
+#### A. 基本文本消息 (Basic Text)
+
+使用基础的 `Message` 组件渲染 Markdown 内容。
+
+```tsx
+<Message
+  role="assistant"
+  content={streamingContent}
+  status={isStreaming ? "typing" : "done"}
+/>
+```
+
+#### B. 工具调用问答 (Tool Calling)
+
+当 AI 需要调用外部工具时，使用 `Agent Card` 或 `Execution Result` 展示调用过程和结果。
+
+- **组件推荐**: `Agent Card`, `Execution Result`
+- **场景**: 展示 "Searching database..." 或 "Calculator used"。
+
+#### C. 深度思考问答 (Deep Thinking)
+
+针对推理模型（如 o1/r1），使用 `Deep Thinking` 组件 包裹思考内容，支持折叠与展开。
+
+```tsx
+<Deep Thinking state={isThinking ? 'thinking' : 'completed'}>
+  {thoughtProcessContent}
+</Deep Thinking>
+<Message content={finalAnswer} />
+```
+
+#### D. 思维链问答 (Chain of Thought)
+
+如果需要展示详细的步骤拆解，使用 `Thinking Process` 和 `Thinking Step Item`。
+
+- **组件推荐**: `Thinking Process`, `Thinking Step Item`
+- **功能**: 将复杂的流式输出拆解为 Checkpoints（检查点），让用户感知 AI 的每一步逻辑。
+
+#### E. HITL 问答 (Human in the Loop)
+
+当 AI 需要用户确认才能继续时，插入交互卡片。
+
+- **组件推荐**: `Confirm Panel`, `Quick Action`, `Select Card`
+- **场景**: "检测到多个冲突文件，请选择保留哪一个？"
+
+---
+
+## 4. UWS 组件 (UWS Components)
+
+在右侧或辅助区域，利用业务组件增强 Proposal 的信息密度。
+
+- **折叠内容**: 使用 `Accordion` 收纳长文档。
+- **任务管理**: 使用 `Task Card` 或 `Task List` 展示关联任务。
+- **引用来源**: 使用 `Custom Sources` 或 `File Card` 展示 AI 回答的参考资料。
+- **反馈机制**: 在消息底部添加 `Feedback` 组件收集用户评价。
+
+---
+
+### 研发小贴士
+
+- **边搭建边更新**: 建议在开发 `Proposal` 页面时，随时将复用的模式（Pattern）更新回本文档或 Storybook。
+- **流式兼容**: 确保 `unnamed-ui` 的所有 Chat 类组件都能优雅处理 `undefined` 或部分数据块（Chunk），以防止流式传输时的页面抖动。

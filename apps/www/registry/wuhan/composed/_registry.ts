@@ -611,7 +611,7 @@ export const composed: Registry["items"] = [
     type: "registry:block",
     title: "TripleSplitPane",
     description: "三分隔面板",
-    registryDependencies: ["split-pane-01"],
+    registryDependencies: ["split-pane-01", "popover"],
     files: [
       {
         path: "composed/split-pane/triple-split-pane.tsx",

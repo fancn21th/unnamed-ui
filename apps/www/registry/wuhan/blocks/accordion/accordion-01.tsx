@@ -3,14 +3,9 @@
 import * as React from "react";
 import * as RadixAccordion from "@radix-ui/react-accordion";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 // ==================== 类型定义 ====================
-
-/**
- * Accordion 语义状态
- * @public
- */
-type AccordionSemanticStatus = "open" | "closed";
 
 /**
  * Accordion Item 原语属性
@@ -43,25 +38,47 @@ interface AccordionContentPrimitiveProps extends React.ComponentPropsWithoutRef<
 }
 
 /**
- * Accordion Block Root 原语属性
+ * Accordion Single Root 原语属性
  * @public
  */
-interface AccordionBlockRootPrimitiveProps {
-  /** 子元素 */
-  children?: React.ReactNode;
-  /** 手风琴类型 */
-  type?: "single" | "multiple";
-  /** 是否允许折叠 */
+interface AccordionSingleRootPrimitiveProps extends Omit<
+  React.ComponentPropsWithoutRef<typeof RadixAccordion.Root>,
+  "type"
+> {
+  type: "single";
   collapsible?: boolean;
-  /** 默认展开的值 */
   defaultValue?: string;
-  /** 当前展开的值 */
-  value?: string | string[];
-  /** 值变化回调 */
-  onValueChange?: (value: string | string[]) => void;
-  /** 自定义类名 */
+  value?: string;
+  onValueChange?: (value: string) => void;
+  gap?: string;
   className?: string;
+  children?: React.ReactNode;
 }
+
+/**
+ * Accordion Multiple Root 原语属性
+ * @public
+ */
+interface AccordionMultipleRootPrimitiveProps extends Omit<
+  React.ComponentPropsWithoutRef<typeof RadixAccordion.Root>,
+  "type"
+> {
+  type: "multiple";
+  defaultValue?: string[];
+  value?: string[];
+  onValueChange?: (value: string[]) => void;
+  gap?: string;
+  className?: string;
+  children?: React.ReactNode;
+}
+
+/**
+ * Accordion Root 原语属性（联合类型）
+ * @public
+ */
+type AccordionRootPrimitiveProps =
+  | AccordionSingleRootPrimitiveProps
+  | AccordionMultipleRootPrimitiveProps;
 
 // ==================== 原语组件 ====================
 
@@ -72,7 +89,7 @@ interface AccordionBlockRootPrimitiveProps {
 export const AccordionItemPrimitive = React.forwardRef<
   HTMLDivElement,
   AccordionItemPrimitiveProps
->(({ className, value, ...props }, ref) => {
+>(({ value, ...props }, ref) => {
   return (
     <RadixAccordion.Item
       ref={ref}
@@ -93,18 +110,30 @@ export const AccordionTriggerPrimitive = React.forwardRef<
   AccordionTriggerPrimitiveProps
 >(({ className, children, ...props }, ref) => {
   return (
-    <RadixAccordion.Header data-accordion-header="" className="flex">
+    <RadixAccordion.Header
+      data-accordion-header=""
+      className={cn(
+        "flex mx-0 mt-0 not-prose",
+        "data-[state=open]:mb-2 data-[state=closed]:mb-0",
+        className,
+      )}
+    >
       <RadixAccordion.Trigger
         ref={ref}
         data-accordion-trigger=""
-        className={[
+        className={cn(
+          "font-[var(--font-family-cn)]",
+          "font-[var(--font-weight-400)]",
+          "leading-[var(--line-height-2)]",
+          "text-[var(--text-secondary)]",
+          "font-size-2",
           "group flex flex-1 items-center justify-between gap-2",
           "text-left transition-all outline-none",
           "hover:bg-[var(--bg-hover)]",
           "focus-visible:ring-2 focus-visible:ring-[var(--ring)]",
           "[&[data-state='open']>svg.chevron-down]:hidden",
           "[&[data-state='closed']>svg.chevron-up]:hidden",
-        ].join(" ")}
+        )}
         {...props}
       >
         {children}
@@ -123,7 +152,7 @@ AccordionTriggerPrimitive.displayName = "AccordionTriggerPrimitive";
 export const AccordionContentPrimitive = React.forwardRef<
   HTMLDivElement,
   AccordionContentPrimitiveProps
->(({ className, children, ...props }, ref) => {
+>(({ children, ...props }, ref) => {
   return (
     <RadixAccordion.Content ref={ref} data-accordion-content="" {...props}>
       {children}
@@ -133,114 +162,62 @@ export const AccordionContentPrimitive = React.forwardRef<
 AccordionContentPrimitive.displayName = "AccordionContentPrimitive";
 
 /**
- * Accordion Block Root 原语
+ * Accordion Root 原语（单选模式）
  * @public
  */
-export const AccordionBlockPrimitive = React.forwardRef<
+export const AccordionSingleRootPrimitive = React.forwardRef<
   HTMLDivElement,
-  AccordionBlockRootPrimitiveProps
+  AccordionSingleRootPrimitiveProps
 >(
   (
-    { className, children, type = "single", collapsible = true, ...props },
+    { className, children, gap, collapsible = true, type: _type, ...props },
     ref,
   ) => {
     return (
       <RadixAccordion.Root
         ref={ref}
         data-accordion=""
-        type={type}
+        className={cn("flex flex-col", gap, className)}
+        type="single"
         collapsible={collapsible}
-        {...(props as any)}
+        {...props}
       >
         {children}
       </RadixAccordion.Root>
     );
   },
 );
-AccordionBlockPrimitive.displayName = "AccordionBlockPrimitive";
-
-// ==================== 组合组件 ====================
+AccordionSingleRootPrimitive.displayName = "AccordionSingleRootPrimitive";
 
 /**
- * Accordion Block 完整组件
+ * Accordion Root 原语（多选模式）
  * @public
  */
-export const AccordionBlock = React.forwardRef<
+export const AccordionMultipleRootPrimitive = React.forwardRef<
   HTMLDivElement,
-  AccordionBlockRootPrimitiveProps
->(
-  (
-    { className, children, type = "single", collapsible = true, ...props },
-    ref,
-  ) => {
-    return (
-      <AccordionBlockPrimitive
-        ref={ref}
-        type={type}
-        collapsible={collapsible}
-        {...props}
-      >
-        {children}
-      </AccordionBlockPrimitive>
-    );
-  },
-);
-AccordionBlock.displayName = "AccordionBlock";
-
-/**
- * Accordion Block Item 组件
- * @public
- */
-export const AccordionBlockItem = React.forwardRef<
-  HTMLDivElement,
-  AccordionItemPrimitiveProps
->(({ className, value, children, ...props }, ref) => {
+  AccordionMultipleRootPrimitiveProps
+>(({ className, children, gap, type: _type, ...props }, ref) => {
   return (
-    <AccordionItemPrimitive ref={ref} value={value} {...props}>
+    <RadixAccordion.Root
+      ref={ref}
+      data-accordion=""
+      className={cn("flex flex-col", gap, className)}
+      type="multiple"
+      {...props}
+    >
       {children}
-    </AccordionItemPrimitive>
+    </RadixAccordion.Root>
   );
 });
-AccordionBlockItem.displayName = "AccordionBlockItem";
-
-/**
- * Accordion Block Trigger 组件
- * @public
- */
-export const AccordionBlockTrigger = React.forwardRef<
-  HTMLButtonElement,
-  AccordionTriggerPrimitiveProps
->(({ className, children, ...props }, ref) => {
-  return (
-    <AccordionTriggerPrimitive ref={ref} {...props}>
-      {children}
-    </AccordionTriggerPrimitive>
-  );
-});
-AccordionBlockTrigger.displayName = "AccordionBlockTrigger";
-
-/**
- * Accordion Block Content 组件
- * @public
- */
-export const AccordionBlockContent = React.forwardRef<
-  HTMLDivElement,
-  AccordionContentPrimitiveProps
->(({ className, children, ...props }, ref) => {
-  return (
-    <AccordionContentPrimitive ref={ref} {...props}>
-      {children}
-    </AccordionContentPrimitive>
-  );
-});
-AccordionBlockContent.displayName = "AccordionBlockContent";
+AccordionMultipleRootPrimitive.displayName = "AccordionMultipleRootPrimitive";
 
 // ==================== 类型导出 ====================
 
 export type {
-  AccordionSemanticStatus,
   AccordionItemPrimitiveProps,
   AccordionTriggerPrimitiveProps,
   AccordionContentPrimitiveProps,
-  AccordionBlockRootPrimitiveProps,
+  AccordionSingleRootPrimitiveProps,
+  AccordionMultipleRootPrimitiveProps,
+  AccordionRootPrimitiveProps,
 };

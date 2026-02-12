@@ -2082,6 +2082,107 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "button-variants",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/block-button/button-variants.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-colors",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/block-button/button-colors.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-sizes",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/block-button/button-sizes.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-with-icon",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "examples/block-button/button-with-icon.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-icon-only",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "examples/block-button/button-icon-only.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-loading",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/block-button/button-loading.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-progress",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/block-button/button-progress.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-disabled",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/block-button/button-disabled.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-block",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/block-button/button-block.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
   // icon-button examples
   {
     name: "icon-button-demo",
@@ -2130,6 +2231,98 @@ export const examples: Registry["items"] = [
         path: "examples/report-card/report-card-example.tsx",
         type: "registry:example",
         target: "components/wuhan/examples/report-card-example.tsx",
+      },
+    ],
+  },
+  {
+    name: "report-card-basic",
+    type: "registry:example",
+    registryDependencies: ["report-card"],
+    files: [
+      {
+        path: "examples/report-card/report-card-basic.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "report-card-simple",
+    type: "registry:example",
+    registryDependencies: ["report-card"],
+    files: [
+      {
+        path: "examples/report-card/report-card-simple.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "report-card-custom-action",
+    type: "registry:example",
+    registryDependencies: ["report-card"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "examples/report-card/report-card-custom-action.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "report-card-hidden-action",
+    type: "registry:example",
+    registryDependencies: ["report-card"],
+    files: [
+      {
+        path: "examples/report-card/report-card-hidden-action.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "report-card-list",
+    type: "registry:example",
+    registryDependencies: ["report-card"],
+    files: [
+      {
+        path: "examples/report-card/report-card-list.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "report-card-list-custom",
+    type: "registry:example",
+    registryDependencies: ["report-card"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "examples/report-card/report-card-list-custom.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "report-card-status",
+    type: "registry:example",
+    registryDependencies: ["report-card"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "examples/report-card/report-card-status.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "report-card-selection",
+    type: "registry:example",
+    registryDependencies: ["report-card"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "examples/report-card/report-card-selection.tsx",
+        type: "registry:example",
       },
     ],
   },
@@ -2373,6 +2566,28 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/split-pane/triple-split-pane-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "split-pane-popover",
+    type: "registry:example",
+    registryDependencies: ["triple-split-pane"],
+    files: [
+      {
+        path: "examples/split-pane/split-pane-popover.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "split-pane-classnames",
+    type: "registry:example",
+    registryDependencies: ["triple-split-pane"],
+    files: [
+      {
+        path: "examples/split-pane/split-pane-classnames.tsx",
         type: "registry:example",
       },
     ],
@@ -2674,6 +2889,62 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "agent-card-basic",
+    type: "registry:example",
+    registryDependencies: ["agent-card"],
+    files: [
+      {
+        path: "examples/agent-card/agent-card-basic.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "agent-card-sizes",
+    type: "registry:example",
+    registryDependencies: ["agent-card"],
+    files: [
+      {
+        path: "examples/agent-card/agent-card-sizes.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "agent-card-custom-style",
+    type: "registry:example",
+    registryDependencies: ["agent-card"],
+    files: [
+      {
+        path: "examples/agent-card/agent-card-custom-style.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "agent-card-custom-icon",
+    type: "registry:example",
+    registryDependencies: ["agent-card"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "examples/agent-card/agent-card-custom-icon.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "agent-card-list",
+    type: "registry:example",
+    registryDependencies: ["agent-card"],
+    files: [
+      {
+        path: "examples/agent-card/agent-card-list.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
   // document-card examples
   {
     name: "document-card-demo",
@@ -2710,6 +2981,83 @@ export const examples: Registry["items"] = [
         path: "examples/accordion/accordion-demo.tsx",
         type: "registry:example",
         target: "components/wuhan/examples/accordion-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "accordion-single",
+    type: "registry:example",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "examples/accordion/accordion-single.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "accordion-multiple",
+    type: "registry:example",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "examples/accordion/accordion-multiple.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "accordion-default-single",
+    type: "registry:example",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "examples/accordion/accordion-default-single.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "accordion-default-multiple",
+    type: "registry:example",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "examples/accordion/accordion-default-multiple.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "accordion-expand-all",
+    type: "registry:example",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "examples/accordion/accordion-expand-all.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "accordion-controlled",
+    type: "registry:example",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "examples/accordion/accordion-controlled.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "accordion-gap",
+    type: "registry:example",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "examples/accordion/accordion-gap.tsx",
+        type: "registry:example",
       },
     ],
   },

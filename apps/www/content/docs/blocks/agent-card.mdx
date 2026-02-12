@@ -81,19 +81,33 @@ npm install lucide-react
 
 ### 基础
 
-<ComponentPreview
-  name="agent-card-demo"
-  description="基础 Agent 卡片"
-  className="mb-4"
-/>
+<ComponentPreview name="agent-card-basic" />
+
+基础 Agent 卡片展示。
 
 ### 不同尺寸
 
-<ComponentPreview
-  name="agent-card-demo"
-  description="三种尺寸的 Agent 卡片"
-  className="mb-4"
-/>
+<ComponentPreview name="agent-card-sizes" />
+
+支持 `sm`、`md`、`lg` 三种尺寸。
+
+### 样式定制
+
+<ComponentPreview name="agent-card-custom-style" />
+
+通过 `className` 自定义样式，可以修改背景色、hover 效果等。
+
+### 自定义图标
+
+<ComponentPreview name="agent-card-custom-icon" />
+
+使用自定义图标替代默认的 AI 图标。
+
+### Agent 列表
+
+<ComponentPreview name="agent-card-list" />
+
+使用 `AgentCardList` 组件展示多个 Agent 卡片。
 
 ## API
 
@@ -103,29 +117,13 @@ Agent 卡片主组件，提供完整的 Agent 卡片功能。
 
 #### Props
 
-|| Prop | Type | Default | Description |
-||------|------|---------|-------------|
-|| `title` | `React.ReactNode` | `"Agent"` | 标题 |
-|| `description` | `React.ReactNode` | - | 描述文本 |
-|| `icon` | `React.ReactNode` | `AgentCardAiIcon` | 左侧图标 |
-|| `size` | `"sm" \| "md" \| "lg"` | `"md"` | 尺寸 |
-|| `className` | `string` | - | 自定义类名 |
-
-#### Example
-
-```tsx
-import { AgentCard } from "@/registry/wuhan/composed/agent-card/agent-card";
-
-function AgentExample() {
-  return (
-    <AgentCard
-      title="智能写作助手"
-      description="正在分析文档结构"
-      size="md"
-    />
-  );
-}
-```
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `React.ReactNode` | `"Agent"` | 标题 |
+| `description` | `React.ReactNode` | - | 描述文本 |
+| `icon` | `React.ReactNode` | `AgentCardAiIcon` | 左侧图标 |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | 尺寸 |
+| `className` | `string` | - | 自定义类名 |
 
 ### AgentCardList
 
@@ -133,28 +131,12 @@ Agent 卡片列表组件，展示多个 Agent 卡片。
 
 #### Props
 
-|| Prop | Type | Default | Description |
-||------|------|---------|-------------|
-|| `title` | `string` | `"Agent 列表"` | 列表标题 |
-|| `agents` | `AgentItem[]` | `[]` | Agent 列表数据 |
-|| `size` | `"sm" \| "md" \| "lg"` | `"md"` | 尺寸 |
-|| `className` | `string` | - | 自定义类名 |
-
-#### Example
-
-```tsx
-import { AgentCardList, type AgentItem } from "@/registry/wuhan/composed/agent-card/agent-card";
-
-function AgentListExample() {
-  const agents: AgentItem[] = [
-    { id: "1", title: "智能写作助手", description: "正在分析文档结构" },
-    { id: "2", title: "数据分析师", description: "正在处理数据报表" },
-    { id: "3", title: "翻译官", description: "多语言翻译" },
-  ];
-
-  return <AgentCardList title="我的 Agent" agents={agents} />;
-}
-```
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `string` | `"Agent 列表"` | 列表标题 |
+| `agents` | `AgentItem[]` | `[]` | Agent 列表数据 |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | 尺寸 |
+| `className` | `string` | - | 自定义类名 |
 
 ### AgentItem
 
@@ -189,13 +171,13 @@ import { AgentCardPrimitive } from "@/registry/wuhan/blocks/agent-card/agent-car
 
 #### AgentCardPrimitive Props
 
-|| Prop | Type | Default | Description |
-||------|------|---------|-------------|
-|| `title` | `React.ReactNode` | - | 标题 |
-|| `description` | `React.ReactNode` | - | 描述文本 |
-|| `icon` | `React.ReactNode` | - | 左侧图标 |
-|| `size` | `"sm" \| "md" \| "lg"` | `"md"` | 尺寸 |
-|| `className` | `string` | - | 容器自定义类名 |
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `React.ReactNode` | - | 标题 |
+| `description` | `React.ReactNode` | - | 描述文本 |
+| `icon` | `React.ReactNode` | - | 左侧图标 |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | 尺寸 |
+| `className` | `string` | - | 容器自定义类名 |
 
 ## 使用场景
 
@@ -221,120 +203,3 @@ AgentCard 基于以下原语组件构建：
 - `AgentCardAiIcon` - 默认 AI 图标
 
 如需更灵活的定制，可以直接使用这些原语组件。
-
-## 样式定制
-
-组件使用 Tailwind CSS 和 CSS 变量，可以通过以下方式定制：
-
-```tsx
-// 使用原语组件自定义样式
-import {
-  AgentCardPrimitive,
-  AgentCardContainerPrimitive,
-  AgentCardHeaderPrimitive,
-} from "@/registry/wuhan/blocks/agent-card/agent-card-01";
-
-<AgentCardPrimitive
-  title="自定义标题"
-  description="自定义描述"
-  className="bg-blue-50 hover:bg-blue-100"
-/>
-```
-
-## 扩展示例
-
-### 自定义图标
-
-```tsx
-import { AgentCard } from "@/registry/wuhan/composed/agent-card/agent-card";
-import { Bot, Cpu, Sparkles } from "lucide-react";
-
-function CustomIconExample() {
-  return (
-    <>
-      <AgentCard
-        title="写作助手"
-        description="智能写作辅助"
-        icon={<Bot className="size-5 text-[var(--text-brand)]" />}
-      />
-      <AgentCard
-        title="计算引擎"
-        description="高性能计算"
-        icon={<Cpu className="size-5 text-[var(--text-brand)]" />}
-      />
-      <AgentCard
-        title="翻译官"
-        description="多语言翻译"
-        icon={<Sparkles className="size-5 text-[var(--text-brand)]" />}
-      />
-    </>
-  );
-}
-```
-
-### Agent 列表
-
-```tsx
-import { AgentCardList } from "@/registry/wuhan/composed/agent-card/agent-card";
-
-function AgentListExample() {
-  const agents = [
-    {
-      id: "1",
-      title: "智能写作助手",
-      description: "正在分析文档结构",
-    },
-    {
-      id: "2",
-      title: "数据分析师",
-      description: "正在处理数据报表",
-    },
-    {
-      id: "3",
-      title: "翻译官",
-      description: "多语言翻译",
-    },
-    {
-      id: "4",
-      title: "代码审查员",
-      description: "正在审查代码",
-    },
-  ];
-
-  return (
-    <AgentCardList
-      title="我的 Agent"
-      agents={agents}
-      size="md"
-    />
-  );
-}
-```
-
-### 不同尺寸对比
-
-```tsx
-import { AgentCard } from "@/registry/wuhan/composed/agent-card/agent-card";
-
-function SizeExample() {
-  return (
-    <div className="space-y-4">
-      <AgentCard
-        title="小型 Agent"
-        description="sm 尺寸"
-        size="sm"
-      />
-      <AgentCard
-        title="中型 Agent"
-        description="md 尺寸（默认）"
-        size="md"
-      />
-      <AgentCard
-        title="大型 Agent"
-        description="lg 尺寸"
-        size="lg"
-      />
-    </div>
-  );
-}
-```

@@ -462,14 +462,7 @@ const ThinkingStepItemHeaderPrimitive = React.forwardRef<
   ThinkingStepItemHeaderPrimitiveProps
 >(
   (
-    {
-      children,
-      trailing,
-      collapsible = false,
-      className,
-      disabled,
-      ...props
-    },
+    { children, trailing, collapsible = false, className, disabled, ...props },
     ref,
   ) => {
     if (!collapsible) {

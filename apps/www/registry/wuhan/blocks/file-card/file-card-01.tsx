@@ -240,17 +240,17 @@ export interface FileCardPrimitiveProps {
  * 比较函数：判断 props 是否变化
  * @internal
  */
-const FileCardContainerPrimitiveCompare = (
-  prevProps: FileCardContainerPrimitiveProps,
-  nextProps: FileCardContainerPrimitiveProps,
-): boolean => {
-  return (
-    prevProps.selected === nextProps.selected &&
-    prevProps.disabled === nextProps.disabled &&
-    prevProps.className === nextProps.className &&
-    prevProps.children === nextProps.children
-  );
-};
+// const FileCardContainerPrimitiveCompare = (
+//   prevProps: FileCardContainerPrimitiveProps,
+//   nextProps: FileCardContainerPrimitiveProps,
+// ): boolean => {
+//   return (
+//     prevProps.selected === nextProps.selected &&
+//     prevProps.disabled === nextProps.disabled &&
+//     prevProps.className === nextProps.className &&
+//     prevProps.children === nextProps.children
+//   );
+// };
 
 export const FileCardContainerPrimitive = React.memo(
   React.forwardRef<HTMLDivElement, FileCardContainerPrimitiveProps>(
@@ -334,15 +334,15 @@ FileCardContainerPrimitive.displayName = "FileCardContainerPrimitive";
  * 比较函数：判断 props 是否变化
  * @internal
  */
-const FileCardFileIconPrimitiveCompare = (
-  prevProps: FileCardFileIconPrimitiveProps,
-  nextProps: FileCardFileIconPrimitiveProps,
-): boolean => {
-  return (
-    prevProps.icon === nextProps.icon &&
-    prevProps.className === nextProps.className
-  );
-};
+// const FileCardFileIconPrimitiveCompare = (
+//   prevProps: FileCardFileIconPrimitiveProps,
+//   nextProps: FileCardFileIconPrimitiveProps,
+// ): boolean => {
+//   return (
+//     prevProps.icon === nextProps.icon &&
+//     prevProps.className === nextProps.className
+//   );
+// };
 
 export const FileCardFileIconPrimitive = React.memo(
   React.forwardRef<HTMLDivElement, FileCardFileIconPrimitiveProps>(
@@ -396,15 +396,15 @@ FileCardFileIconPrimitive.displayName = "FileCardFileIconPrimitive";
  * 比较函数：判断 props 是否变化
  * @internal
  */
-const FileCardStatusIconPrimitiveCompare = (
-  prevProps: FileCardStatusIconPrimitiveProps,
-  nextProps: FileCardStatusIconPrimitiveProps,
-): boolean => {
-  return (
-    prevProps.icon === nextProps.icon &&
-    prevProps.className === nextProps.className
-  );
-};
+// const FileCardStatusIconPrimitiveCompare = (
+//   prevProps: FileCardStatusIconPrimitiveProps,
+//   nextProps: FileCardStatusIconPrimitiveProps,
+// ): boolean => {
+//   return (
+//     prevProps.icon === nextProps.icon &&
+//     prevProps.className === nextProps.className
+//   );
+// };
 
 export const FileCardStatusIconPrimitive = React.memo(
   React.forwardRef<HTMLDivElement, FileCardStatusIconPrimitiveProps>(
@@ -460,16 +460,16 @@ FileCardStatusIconPrimitive.displayName = "FileCardStatusIconPrimitive";
  * 比较函数：判断 props 是否变化
  * @internal
  */
-const FileCardInfoPrimitiveCompare = (
-  prevProps: FileCardInfoPrimitiveProps,
-  nextProps: FileCardInfoPrimitiveProps,
-): boolean => {
-  return (
-    prevProps.title === nextProps.title &&
-    prevProps.date === nextProps.date &&
-    prevProps.className === nextProps.className
-  );
-};
+// const FileCardInfoPrimitiveCompare = (
+//   prevProps: FileCardInfoPrimitiveProps,
+//   nextProps: FileCardInfoPrimitiveProps,
+// ): boolean => {
+//   return (
+//     prevProps.title === nextProps.title &&
+//     prevProps.date === nextProps.date &&
+//     prevProps.className === nextProps.className
+//   );
+// };
 
 export const FileCardInfoPrimitive = React.memo(
   React.forwardRef<HTMLDivElement, FileCardInfoPrimitiveProps>(
@@ -554,17 +554,17 @@ FileCardInfoPrimitive.displayName = "FileCardInfoPrimitive";
  * 比较函数：判断 props 是否变化
  * @internal
  */
-const FileCardActionPrimitiveCompare = (
-  prevProps: FileCardActionPrimitiveProps,
-  nextProps: FileCardActionPrimitiveProps,
-): boolean => {
-  return (
-    prevProps.icon === nextProps.icon &&
-    prevProps.disabled === nextProps.disabled &&
-    prevProps.className === nextProps.className &&
-    prevProps["aria-label"] === nextProps["aria-label"]
-  );
-};
+// const FileCardActionPrimitiveCompare = (
+//   prevProps: FileCardActionPrimitiveProps,
+//   nextProps: FileCardActionPrimitiveProps,
+// ): boolean => {
+//   return (
+//     prevProps.icon === nextProps.icon &&
+//     prevProps.disabled === nextProps.disabled &&
+//     prevProps.className === nextProps.className &&
+//     prevProps["aria-label"] === nextProps["aria-label"]
+//   );
+// };
 
 export const FileCardActionPrimitive = React.memo(
   React.forwardRef<HTMLDivElement, FileCardActionPrimitiveProps>(
@@ -673,40 +673,40 @@ FileCardActionPrimitive.displayName = "FileCardActionPrimitive";
  * 比较函数：判断 props 是否变化
  * @internal
  */
-const FileCardActionPopoverPrimitiveCompare = (
-  prevProps: FileCardActionPopoverPrimitiveProps,
-  nextProps: FileCardActionPopoverPrimitiveProps,
-): boolean => {
-  // 比较 items 数组
-  const prevItems = prevProps.items || [];
-  const nextItems = nextProps.items || [];
+// const FileCardActionPopoverPrimitiveCompare = (
+//   prevProps: FileCardActionPopoverPrimitiveProps,
+//   nextProps: FileCardActionPopoverPrimitiveProps,
+// ): boolean => {
+//   // 比较 items 数组
+//   const prevItems = prevProps.items || [];
+//   const nextItems = nextProps.items || [];
 
-  if (prevItems.length !== nextItems.length) {
-    return false;
-  }
+//   if (prevItems.length !== nextItems.length) {
+//     return false;
+//   }
 
-  for (let i = 0; i < prevItems.length; i++) {
-    const prevItem = prevItems[i];
-    const nextItem = nextItems[i];
+//   for (let i = 0; i < prevItems.length; i++) {
+//     const prevItem = prevItems[i];
+//     const nextItem = nextItems[i];
 
-    if (
-      prevItem.key !== nextItem.key ||
-      prevItem.label !== nextItem.label ||
-      prevItem.disabled !== nextItem.disabled ||
-      prevItem.danger !== nextItem.danger ||
-      prevItem.className !== nextItem.className
-    ) {
-      return false;
-    }
-  }
+//     if (
+//       prevItem.key !== nextItem.key ||
+//       prevItem.label !== nextItem.label ||
+//       prevItem.disabled !== nextItem.disabled ||
+//       prevItem.danger !== nextItem.danger ||
+//       prevItem.className !== nextItem.className
+//     ) {
+//       return false;
+//     }
+//   }
 
-  return (
-    prevProps.open === nextProps.open &&
-    prevProps.disabled === nextProps.disabled &&
-    prevProps.className === nextProps.className &&
-    prevProps.triggerIcon === nextProps.triggerIcon
-  );
-};
+//   return (
+//     prevProps.open === nextProps.open &&
+//     prevProps.disabled === nextProps.disabled &&
+//     prevProps.className === nextProps.className &&
+//     prevProps.triggerIcon === nextProps.triggerIcon
+//   );
+// };
 
 export const FileCardActionPopoverPrimitive = React.memo(
   React.forwardRef<HTMLDivElement, FileCardActionPopoverPrimitiveProps>(
@@ -922,49 +922,49 @@ FileCardActionPopoverPrimitive.displayName = "FileCardActionPopoverPrimitive";
  * 比较函数：判断 FileCardPrimitiveProps 是否变化
  * @internal
  */
-const FileCardPrimitiveCompare = (
-  prevProps: FileCardPrimitiveProps,
-  nextProps: FileCardPrimitiveProps,
-): boolean => {
-  // 比较基本属性
-  if (
-    prevProps.id !== nextProps.id ||
-    prevProps.selected !== nextProps.selected ||
-    prevProps.disabled !== nextProps.disabled ||
-    prevProps.className !== nextProps.className ||
-    prevProps.title !== nextProps.title ||
-    prevProps.date !== nextProps.date ||
-    prevProps.status !== nextProps.status ||
-    prevProps.fileIcon !== nextProps.fileIcon
-  ) {
-    return false;
-  }
+// const FileCardPrimitiveCompare = (
+//   prevProps: FileCardPrimitiveProps,
+//   nextProps: FileCardPrimitiveProps,
+// ): boolean => {
+//   // 比较基本属性
+//   if (
+//     prevProps.id !== nextProps.id ||
+//     prevProps.selected !== nextProps.selected ||
+//     prevProps.disabled !== nextProps.disabled ||
+//     prevProps.className !== nextProps.className ||
+//     prevProps.title !== nextProps.title ||
+//     prevProps.date !== nextProps.date ||
+//     prevProps.status !== nextProps.status ||
+//     prevProps.fileIcon !== nextProps.fileIcon
+//   ) {
+//     return false;
+//   }
 
-  // 比较 actionMenuItems 数组
-  const prevItems = prevProps.actionMenuItems || [];
-  const nextItems = nextProps.actionMenuItems || [];
+//   // 比较 actionMenuItems 数组
+//   const prevItems = prevProps.actionMenuItems || [];
+//   const nextItems = nextProps.actionMenuItems || [];
 
-  if (prevItems.length !== nextItems.length) {
-    return false;
-  }
+//   if (prevItems.length !== nextItems.length) {
+//     return false;
+//   }
 
-  for (let i = 0; i < prevItems.length; i++) {
-    const prevItem = prevItems[i];
-    const nextItem = nextItems[i];
+//   for (let i = 0; i < prevItems.length; i++) {
+//     const prevItem = prevItems[i];
+//     const nextItem = nextItems[i];
 
-    if (
-      prevItem.key !== nextItem.key ||
-      prevItem.label !== nextItem.label ||
-      prevItem.disabled !== nextItem.disabled ||
-      prevItem.danger !== nextItem.danger ||
-      prevItem.className !== nextItem.className
-    ) {
-      return false;
-    }
-  }
+//     if (
+//       prevItem.key !== nextItem.key ||
+//       prevItem.label !== nextItem.label ||
+//       prevItem.disabled !== nextItem.disabled ||
+//       prevItem.danger !== nextItem.danger ||
+//       prevItem.className !== nextItem.className
+//     ) {
+//       return false;
+//     }
+//   }
 
-  return true;
-};
+//   return true;
+// };
 
 export const FileCardPrimitive = React.memo(
   React.forwardRef<HTMLDivElement, FileCardPrimitiveProps>(

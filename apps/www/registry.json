@@ -1682,6 +1682,19 @@
       ]
     },
     {
+      "name": "popover",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-popover"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "resizable",
       "type": "registry:ui",
       "dependencies": [
@@ -2241,7 +2254,8 @@
       "title": "Report Card",
       "description": "Report card primitives for displaying data and metrics",
       "registryDependencies": [
-        "style"
+        "style",
+        "checkbox-01"
       ],
       "files": [
         {
@@ -2256,6 +2270,9 @@
       "type": "registry:block",
       "title": "Checkbox",
       "description": "多选框",
+      "dependencies": [
+        "radix-ui"
+      ],
       "registryDependencies": [
         "style"
       ],
@@ -3258,7 +3275,8 @@
       "title": "TripleSplitPane",
       "description": "三分隔面板",
       "registryDependencies": [
-        "split-pane-01"
+        "split-pane-01",
+        "popover"
       ],
       "files": [
         {
@@ -3686,9 +3704,9 @@
       ]
     },
     {
-      "name": "report-card-1",
+      "name": "report-card-recruitment",
       "type": "registry:block",
-      "title": "Report Card 1",
+      "title": "Report Card",
       "description": "报告卡片",
       "files": [
         {
@@ -5754,6 +5772,129 @@
       ]
     },
     {
+      "name": "button-variants",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/block-button/button-variants.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-colors",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/block-button/button-colors.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-sizes",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/block-button/button-sizes.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-with-icon",
+      "type": "registry:example",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/block-button/button-with-icon.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-icon-only",
+      "type": "registry:example",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/block-button/button-icon-only.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-loading",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/block-button/button-loading.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-progress",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/block-button/button-progress.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-disabled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/block-button/button-disabled.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-block",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/block-button/button-block.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "icon-button-demo",
       "type": "registry:example",
       "dependencies": [
@@ -5810,6 +5951,122 @@
           "path": "registry/wuhan/examples/report-card/report-card-example.tsx",
           "type": "registry:example",
           "target": "components/wuhan/examples/report-card-example.tsx"
+        }
+      ]
+    },
+    {
+      "name": "report-card-basic",
+      "type": "registry:example",
+      "registryDependencies": [
+        "report-card"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/report-card/report-card-basic.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "report-card-simple",
+      "type": "registry:example",
+      "registryDependencies": [
+        "report-card"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/report-card/report-card-simple.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "report-card-custom-action",
+      "type": "registry:example",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "report-card"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/report-card/report-card-custom-action.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "report-card-hidden-action",
+      "type": "registry:example",
+      "registryDependencies": [
+        "report-card"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/report-card/report-card-hidden-action.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "report-card-list",
+      "type": "registry:example",
+      "registryDependencies": [
+        "report-card"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/report-card/report-card-list.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "report-card-list-custom",
+      "type": "registry:example",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "report-card"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/report-card/report-card-list-custom.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "report-card-status",
+      "type": "registry:example",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "report-card"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/report-card/report-card-status.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "report-card-selection",
+      "type": "registry:example",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "report-card"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/report-card/report-card-selection.tsx",
+          "type": "registry:example"
         }
       ]
     },
@@ -6674,6 +6931,32 @@
       ]
     },
     {
+      "name": "split-pane-popover",
+      "type": "registry:example",
+      "registryDependencies": [
+        "triple-split-pane"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/split-pane/split-pane-popover.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "split-pane-classnames",
+      "type": "registry:example",
+      "registryDependencies": [
+        "triple-split-pane"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/split-pane/split-pane-classnames.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "task-card-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -7025,6 +7308,74 @@
       ]
     },
     {
+      "name": "agent-card-basic",
+      "type": "registry:example",
+      "registryDependencies": [
+        "agent-card"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/agent-card/agent-card-basic.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "agent-card-sizes",
+      "type": "registry:example",
+      "registryDependencies": [
+        "agent-card"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/agent-card/agent-card-sizes.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "agent-card-custom-style",
+      "type": "registry:example",
+      "registryDependencies": [
+        "agent-card"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/agent-card/agent-card-custom-style.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "agent-card-custom-icon",
+      "type": "registry:example",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "agent-card"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/agent-card/agent-card-custom-icon.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "agent-card-list",
+      "type": "registry:example",
+      "registryDependencies": [
+        "agent-card"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/agent-card/agent-card-list.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "document-card-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -7063,6 +7414,97 @@
           "path": "registry/wuhan/examples/accordion/accordion-demo.tsx",
           "type": "registry:example",
           "target": "components/wuhan/examples/accordion-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "accordion-single",
+      "type": "registry:example",
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/accordion/accordion-single.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "accordion-multiple",
+      "type": "registry:example",
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/accordion/accordion-multiple.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "accordion-default-single",
+      "type": "registry:example",
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/accordion/accordion-default-single.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "accordion-default-multiple",
+      "type": "registry:example",
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/accordion/accordion-default-multiple.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "accordion-expand-all",
+      "type": "registry:example",
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/accordion/accordion-expand-all.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "accordion-controlled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/accordion/accordion-controlled.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "accordion-gap",
+      "type": "registry:example",
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/examples/accordion/accordion-gap.tsx",
+          "type": "registry:example"
         }
       ]
     },

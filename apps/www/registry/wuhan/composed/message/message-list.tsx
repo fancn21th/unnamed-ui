@@ -114,9 +114,7 @@ export interface MessageListProps {
  * 默认的内容渲染器
  * @internal
  */
-function defaultContentRenderer(
-  content: React.ReactNode,
-): React.ReactNode {
+function defaultContentRenderer(content: React.ReactNode): React.ReactNode {
   return content;
 }
 
@@ -127,7 +125,6 @@ function defaultContentRenderer(
 function getDefaultName(role: MessageRole): string {
   return role === "user" ? "User" : "AI";
 }
-
 
 /**
  * 消息列表组件
@@ -179,7 +176,10 @@ export const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
     }, [messages, autoScroll]);
 
     // 渲染头像
-    const renderAvatar = (avatar: MessageAvatar | undefined, role: MessageRole): React.ReactNode => {
+    const renderAvatar = (
+      avatar: MessageAvatar | undefined,
+      role: MessageRole,
+    ): React.ReactNode => {
       if (!avatar) return null;
 
       return (
@@ -189,7 +189,6 @@ export const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
           size={avatar.size}
           name={avatar.name ?? getDefaultName(role)}
           time={avatar.time}
-
         />
       );
     };
@@ -217,8 +216,9 @@ export const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
           <div
             key={message.id}
             className={cn(
-              align === "right" && "flex flex-col gap-[var(--gap-lg)] items-end",
-              "group/message"
+              align === "right" &&
+                "flex flex-col gap-[var(--gap-lg)] items-end",
+              "group/message",
             )}
           >
             {avatarNode}
@@ -256,7 +256,8 @@ export const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
               <div
                 className={cn(
                   "flex justify-start min-h-[32px]",
-                  !isLastAIMessage && "opacity-0 group-hover/message:opacity-100 transition-opacity"
+                  !isLastAIMessage &&
+                    "opacity-0 group-hover/message:opacity-100 transition-opacity",
                 )}
               >
                 {message.feedback}
@@ -273,13 +274,14 @@ export const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
       index: number,
     ): React.ReactNode => {
       // 判断是否是最后一条 AI 消息
-      const isLastAIMessage = message.role === "ai" && (
-        index === messages.length - 1
-      );
+      const isLastAIMessage =
+        message.role === "ai" && index === messages.length - 1;
 
       if (renderMessage) {
         // 使用自定义渲染器
-        return renderMessage(message, () => renderDefaultMessage(message, isLastAIMessage));
+        return renderMessage(message, () =>
+          renderDefaultMessage(message, isLastAIMessage),
+        );
       }
       // 使用默认渲染
       return renderDefaultMessage(message, isLastAIMessage);

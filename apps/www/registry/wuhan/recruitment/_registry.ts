@@ -146,9 +146,9 @@ export const recruitmentBlocks: Registry["items"] = [
     ],
   },
   {
-    name: "report-card-1",
+    name: "report-card-recruitment",
     type: "registry:block",
-    title: "Report Card 1",
+    title: "Report Card",
     description: "报告卡片",
     files: [
       {

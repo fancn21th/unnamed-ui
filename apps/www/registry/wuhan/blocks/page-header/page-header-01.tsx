@@ -97,7 +97,7 @@ const PageHeaderTitlePrimitive = React.forwardRef<
       className={cn(
         "font-[var(--font-family-cn)]",
         "font-[var(--font-weight-600)]",
-        "text-[var(--font-size-4)]",
+        "font-size-4",
         "leading-[var(--line-height-4)]",
         "text-[var(--text-title)]",
         "tracking-[0px]",

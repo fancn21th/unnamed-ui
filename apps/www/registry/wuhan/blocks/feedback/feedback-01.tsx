@@ -142,7 +142,7 @@ const FeedbackHeaderPrimitive = React.forwardRef<
           "font-[var(--font-family-cn)]",
           "font-[var(--font-weight-600)]",
           "font-semibold",
-          "text-[var(--font-size-3)]",
+          "font-size-3",
           "leading-[var(--line-height-3)]",
           "tracking-[0px]",
           "text-[var(--text-title)]",

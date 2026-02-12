@@ -134,10 +134,6 @@ interface ThinkingStepItemHeaderPrimitiveProps extends React.HTMLAttributes<HTML
    * 按钮禁用状态（仅在可折叠时生效）
    */
   disabled?: boolean;
-  /**
-   * 按钮类型（仅在可折叠时生效）
-   */
-  type?: "button" | "submit" | "reset";
 }
 
 /**
@@ -471,7 +467,6 @@ const ThinkingStepItemHeaderPrimitive = React.forwardRef<
       trailing,
       collapsible = false,
       className,
-      type: _type,
       disabled,
       ...props
     },
@@ -836,7 +831,7 @@ const ThinkingStepItemToolCallPrimitive = React.forwardRef<
       ref={ref}
       className={cn(
         BOX_BORDER,
-        "inline-flex items-center",
+        "inline-flex items-start",
         "gap-[var(--gap-xs)]",
         "rounded-[var(--radius-sm)]",
         "pt-[var(--padding-com-2xs)]",
@@ -844,20 +839,21 @@ const ThinkingStepItemToolCallPrimitive = React.forwardRef<
         "pb-[var(--padding-com-2xs)]",
         "pl-[var(--padding-com-sm)]",
         "bg-[var(--bg-neutral-light)]",
+        "w-fit",
         className,
       )}
       {...props}
     >
       {/* Icon 区域 */}
       {icon && (
-        <div className="flex-shrink-0">
+        <div className="flex-shrink-0 h-6 flex items-center justify-center">
           <ThinkingStepItemToolCallIconPrimitive>
             {icon}
           </ThinkingStepItemToolCallIconPrimitive>
         </div>
       )}
       {/* Content 区域 - 如果同时有 title 和 content，用冒号连接 */}
-      <div className="flex items-center gap-[var(--gap-xs)]">
+      <div className="">
         {title && (
           <ThinkingStepItemToolCallTitlePrimitive>
             {title}
@@ -919,6 +915,7 @@ const ThinkingStepItemToolCallTitlePrimitive = React.forwardRef<
         "leading-[var(--line-height-1)]",
         "font-normal",
         "text-[var(--text-secondary)]",
+        "mr-[var(--gap-xs)]",
         className,
       )}
       {...props}
@@ -948,6 +945,7 @@ const ThinkingStepItemToolCallContentPrimitive = React.forwardRef<
         "leading-[var(--line-height-1)]",
         "font-normal",
         "text-[var(--text-tertiary)]",
+        "inline",
         className,
       )}
       {...props}

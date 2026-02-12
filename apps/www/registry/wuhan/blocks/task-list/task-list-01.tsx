@@ -18,6 +18,7 @@ const TaskListContainerPrimitive = React.forwardRef<
         "px-[var(--padding-com-xl)] py-[var(--margin-com-xl)]",
         "rounded-[var(--radius-xl)]",
         "bg-[var(--bg-container-secondary)]",
+        "font-[var(--font-family-cn)]",
         className,
       )}
       {...props}
@@ -55,7 +56,7 @@ const TaskListTitlePrimitive = React.forwardRef<
         "font-[var(--font-family-cn)]",
         "font-[var(--font-weight-600)]",
         "font-semibold",
-        "text-[var(--font-size-4)]",
+        "font-size-4",
         "leading-[var(--line-height-4)]",
         "text-[var(--text-title)]",
         className,
@@ -125,7 +126,7 @@ const TaskListLiContentPrimitive = React.forwardRef<
       className={cn(
         "font-[var(--font-family-cn)]",
         "font-[var(--font-weight-400)]",
-        "text-[var(--font-size-2)]",
+        "font-size-2",
         "leading-[var(--line-height-2)]",
         "text-[var(--text-primary)]",
         className,

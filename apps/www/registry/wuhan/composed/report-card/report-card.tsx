@@ -62,6 +62,8 @@ export interface ReportCardProps {
   action?: React.ReactNode;
   /** 是否显示默认操作按钮（仅 action 未提供时生效） */
   showAction?: boolean;
+  /** 是否显示复选框 */
+  showCheckbox?: boolean;
   /** 自定义类名 */
   className?: string;
 }
@@ -89,6 +91,10 @@ export interface ReportCardListProps {
   showCardAction?: boolean;
   /** 自定义类名 */
   className?: string;
+  /** 是否显示复选框 */
+  showCheckbox?: boolean;
+  /** 列表容器自定义类名 */
+  listClassName?: string;
 }
 
 // ==================== 操作菜单内容 ====================
@@ -130,7 +136,7 @@ const CardActionsMenu = ({
             <span
               className={cn(
                 "text-[var(--text-primary)]",
-                "text-[var(--font-size-1)]",
+                "font-size-1",
                 "leading-[var(--line-height-1)]",
               )}
             >
@@ -154,7 +160,7 @@ const CardActionsMenu = ({
             <span
               className={cn(
                 "text-[var(--text-primary)]",
-                "text-[var(--font-size-1)]",
+                "font-size-1",
                 "leading-[var(--line-height-1)]",
               )}
             >
@@ -178,7 +184,7 @@ const CardActionsMenu = ({
             <span
               className={cn(
                 "text-[var(--text-error)]",
-                "text-[var(--font-size-1)]",
+                "font-size-1",
                 "leading-[var(--line-height-1)]",
               )}
             >
@@ -216,6 +222,7 @@ export const ReportCard = React.forwardRef<HTMLDivElement, ReportCardProps>(
       title,
       description,
       icon,
+      showCheckbox = true,
       width = "280px",
       selected = false,
       disabled = false,
@@ -286,7 +293,7 @@ export const ReportCard = React.forwardRef<HTMLDivElement, ReportCardProps>(
           icon={icon ?? <ReportCardDefaultIcon />}
           title={title}
           description={description}
-          showCheckbox={true}
+          showCheckbox={showCheckbox}
           selected={selected}
           disabled={disabled}
           onSelectChange={handleSelectChange}
@@ -368,7 +375,6 @@ export const ReportCardList = React.forwardRef<
   ReportCardListProps
 >((props, ref) => {
   const {
-    title = "报告列表",
     cards = [],
     onSelectChange,
     onEdit,
@@ -377,6 +383,8 @@ export const ReportCardList = React.forwardRef<
     cardAction,
     showCardAction,
     className,
+    showCheckbox = true,
+    listClassName,
   } = props;
 
   // 处理选中变化
@@ -389,7 +397,7 @@ export const ReportCardList = React.forwardRef<
 
   return (
     <div ref={ref} className={className}>
-      {title && (
+      {/* {title && (
         <div
           className={cn(
             "font-[var(--font-family-cn)]",
@@ -402,8 +410,8 @@ export const ReportCardList = React.forwardRef<
         >
           {title}
         </div>
-      )}
-      <div className="flex flex-col gap-[var(--gap-md)]">
+      )} */}
+      <div className={cn("flex flex-col gap-[var(--gap-md)]", listClassName)}>
         {cards.map((card) => (
           <ReportCard
             key={card.id}
@@ -415,6 +423,7 @@ export const ReportCardList = React.forwardRef<
             disabled={card.disabled}
             action={cardAction?.(card)}
             showAction={showCardAction}
+            showCheckbox={showCheckbox}
             onSelectChange={handleSelectChange}
             onEdit={onEdit ? () => onEdit(card.id) : undefined}
             onDelete={onDelete ? () => onDelete(card.id) : undefined}

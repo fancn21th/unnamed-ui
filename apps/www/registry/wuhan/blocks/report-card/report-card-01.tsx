@@ -30,7 +30,6 @@ interface ReportCardHeaderPrimitiveProps {
   title?: React.ReactNode;
   /** 图标 */
   icon?: React.ReactNode;
-  [key: string]: any;
   /** 描述文本 */
   description?: React.ReactNode;
   /** 是否显示复选框 */
@@ -39,6 +38,8 @@ interface ReportCardHeaderPrimitiveProps {
   selected?: boolean;
   /** 是否禁用 */
   disabled?: boolean;
+  /** 自定义类名 */
+  className?: string;
   /** 选中状态变化回调 */
   onSelectChange?: (selected: boolean) => void;
 }

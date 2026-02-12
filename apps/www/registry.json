@@ -2656,7 +2656,8 @@
       "registryDependencies": [
         "button",
         "task-list-01",
-        "feedback"
+        "feedback",
+        "status-tag"
       ],
       "files": [
         {
@@ -3401,7 +3402,8 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "report-card-01"
+        "report-card-01",
+        "checkbox-01"
       ],
       "files": [
         {
@@ -3684,9 +3686,9 @@
       ]
     },
     {
-      "name": "report-card",
+      "name": "report-card-1",
       "type": "registry:block",
-      "title": "Report Card",
+      "title": "Report Card 1",
       "description": "报告卡片",
       "files": [
         {

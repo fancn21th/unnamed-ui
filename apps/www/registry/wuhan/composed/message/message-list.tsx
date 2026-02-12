@@ -116,7 +116,6 @@ export interface MessageListProps {
  */
 function defaultContentRenderer(
   content: React.ReactNode,
-  _message: MessageItem | AIMessageItem | UserMessageItem,
 ): React.ReactNode {
   return content;
 }
@@ -129,30 +128,6 @@ function getDefaultName(role: MessageRole): string {
   return role === "user" ? "User" : "AI";
 }
 
-/**
- * 格式化时间
- * @internal
- */
-function formatTime(timestamp: number | undefined): string | undefined {
-  if (!timestamp) return undefined;
-  const date = new Date(timestamp);
-  const now = new Date();
-  const isToday = date.toDateString() === now.toDateString();
-
-  if (isToday) {
-    return date.toLocaleTimeString("zh-CN", {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  }
-
-  return date.toLocaleDateString("zh-CN", {
-    month: "numeric",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-}
 
 /**
  * 消息列表组件
@@ -204,11 +179,7 @@ export const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
     }, [messages, autoScroll]);
 
     // 渲染头像
-    const renderAvatar = (
-      avatar: MessageAvatar | undefined,
-      role: MessageRole,
-      align: "left" | "right",
-    ): React.ReactNode => {
+    const renderAvatar = (avatar: MessageAvatar | undefined, role: MessageRole): React.ReactNode => {
       if (!avatar) return null;
 
       return (
@@ -218,6 +189,7 @@ export const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
           size={avatar.size}
           name={avatar.name ?? getDefaultName(role)}
           time={avatar.time}
+
         />
       );
     };
@@ -232,7 +204,7 @@ export const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
       const avatar = message.avatar;
 
       // 渲染头像（根据对齐方向）
-      const avatarNode = renderAvatar(avatar, message.role, align);
+      const avatarNode = renderAvatar(avatar, message.role);
 
       // 消息容器类名
       const messageContainerClass = cn(
@@ -245,9 +217,8 @@ export const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
           <div
             key={message.id}
             className={cn(
-              align === "right" &&
-                "flex flex-col gap-[var(--gap-lg)] items-end",
-              "group/message",
+              align === "right" && "flex flex-col gap-[var(--gap-lg)] items-end",
+              "group/message"
             )}
           >
             {avatarNode}
@@ -284,9 +255,8 @@ export const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
             {message.feedback && (
               <div
                 className={cn(
-                  "flex justify-end min-h-[32px]",
-                  !isLastAIMessage &&
-                    "opacity-0 group-hover/message:opacity-100 transition-opacity",
+                  "flex justify-start min-h-[32px]",
+                  !isLastAIMessage && "opacity-0 group-hover/message:opacity-100 transition-opacity"
                 )}
               >
                 {message.feedback}
@@ -303,16 +273,13 @@ export const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
       index: number,
     ): React.ReactNode => {
       // 判断是否是最后一条 AI 消息
-      const isLastAIMessage =
-        message.role === "ai" &&
-        (index === messages.length - 1 || // 最后一条
-          (index < messages.length - 1 && messages[index + 1].role === "user")); // 下一条是用户消息
+      const isLastAIMessage = message.role === "ai" && (
+        index === messages.length - 1
+      );
 
       if (renderMessage) {
         // 使用自定义渲染器
-        return renderMessage(message, () =>
-          renderDefaultMessage(message, isLastAIMessage),
-        );
+        return renderMessage(message, () => renderDefaultMessage(message, isLastAIMessage));
       }
       // 使用默认渲染
       return renderDefaultMessage(message, isLastAIMessage);
@@ -322,7 +289,7 @@ export const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
       <div ref={ref} className={cn("w-full h-full", className)} {...props}>
         <div
           ref={containerRef}
-          className="w-full h-full overflow-y-auto px-[var(--gap-lg)] py-[var(--gap-md)]"
+          className="w-full h-full overflow-y-auto flex flex-col gap-[var(--gap-2xl)]"
           role="log"
           aria-label="消息列表"
           aria-live="polite"

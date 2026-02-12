@@ -55,7 +55,7 @@ const ConfirmPanelTitlePrimitive = React.forwardRef<
         "font-[var(--font-family-cn)]",
         "font-[var(--font-weight-600)]",
         "font-semibold",
-        "text-[var(--font-size-4)]",
+        "font-size-4",
         "leading-[var(--line-height-4)]",
         "text-[var(--text-title)]",
         className,

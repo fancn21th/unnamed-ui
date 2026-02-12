@@ -22,6 +22,24 @@ import {
   type ThinkingStepItemPrimitiveProps,
 } from "@/registry/wuhan/blocks/thinking-step-item/thinking-step-item-01";
 
+/**
+ * 自定义内容渲染包装组件
+ */
+const ThinkingStepItemCustomPrimitive = ({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => {
+  if (children === null || children === undefined) {
+    return null;
+  }
+  return (
+    <div className={className} {...props}>
+      {children}
+    </div>
+  );
+};
+
 const resolveThinkingStepItemStatus = (
   status: ThinkingStepItemStatus | undefined,
 ): ThinkingSemanticStatus => {
@@ -61,6 +79,59 @@ interface ThinkingStepItemLabels {
 }
 
 /**
+ * 步骤内容项类型（支持自定义组件渲染）
+ * @public
+ *
+ * 每个 items 元素支持同时包含：
+ * - content: 普通内容
+ * - toolCall: 工具调用
+ * - files: 文件列表
+ * - render + data: 自定义渲染
+ *
+ * 渲染顺序：content → toolCall → files → custom
+ */
+type ThinkingStepItemContentItem = {
+  /**
+   * 用于 React 渲染的稳定 key
+   */
+  key?: React.Key;
+  /**
+   * 普通内容
+   */
+  content?: React.ReactNode;
+  /**
+   * 工具调用
+   */
+  toolCall?: {
+    icon?: React.ReactNode;
+    title?: React.ReactNode;
+    content?: React.ReactNode;
+  };
+  /**
+   * 文件列表
+   */
+  files?: Array<{
+    icon?: React.ReactNode;
+    status?: ThinkingStepItemFileStatus;
+    name: string;
+  }>;
+  /**
+   * 自定义渲染函数（渲染在 files 之后）
+   */
+  render?: (data: unknown) => React.ReactNode;
+  /**
+   * 传递给 render 函数的数据
+   */
+  data?: unknown;
+};
+
+/**
+ * 步骤内容项列表类型
+ * @public
+ */
+type ThinkingStepItemContentItems = ThinkingStepItemContentItem[];
+
+/**
  * 执行步骤组件属性
  * @public
  */
@@ -73,34 +144,11 @@ interface ThinkingStepItemProps extends Omit<
    */
   title: React.ReactNode;
   /**
-   * 步骤内容项列表
+   * 步骤内容项列表（支持混合渲染）
+   *
+   * 渲染顺序：按数组顺序依次渲染 content → toolCall → files → custom
    */
-  items?: Array<{
-    /**
-     * 用于 React 渲染的稳定 key（推荐传入，避免使用数组下标）
-     */
-    key?: React.Key;
-    /**
-     * 普通内容
-     */
-    content?: React.ReactNode;
-    /**
-     * 工具调用
-     */
-    toolCall?: {
-      icon?: React.ReactNode;
-      title?: React.ReactNode;
-      content?: React.ReactNode;
-    };
-    /**
-     * 文件列表
-     */
-    files?: Array<{
-      icon?: React.ReactNode;
-      status?: ThinkingStepItemFileStatus;
-      name: string;
-    }>;
-  }>;
+  items?: ThinkingStepItemContentItems;
   /**
    * 自定义状态图标
    */
@@ -199,33 +247,47 @@ const ThinkingStepItem = React.forwardRef<
             aria-labelledby={resolvedTriggerId}
           >
             <ThinkingStepItemContentListPrimitive>
-              {items.map((item, index) => (
-                <ThinkingStepItemContentItemPrimitive
-                  key={item.key ?? index}
-                  isLast={index === items.length - 1}
-                >
-                  <ThinkingStepItemTimelinePrimitive
-                    isLast={index === items.length - 1}
-                  />
-                  <ThinkingStepItemContentAreaPrimitive>
-                    {(item.content ?? null) !== null &&
-                    item.content !== undefined ? (
+              {items.map((item, index) => {
+                const itemKey = item.key ?? index;
+                const isLast = index === items.length - 1;
+
+                // 渲染 content
+                const renderContent = () => {
+                  if (item.content !== undefined && item.content !== null) {
+                    return (
                       <ThinkingStepItemRegularContentPrimitive>
                         {item.content}
                       </ThinkingStepItemRegularContentPrimitive>
-                    ) : resolvedStatus === "running" ? (
+                    );
+                  }
+                  if (resolvedStatus === "running") {
+                    return (
                       <ThinkingStepItemRegularContentPrimitive className="animate-pulse">
                         {resolvedLabels.thinking}
                       </ThinkingStepItemRegularContentPrimitive>
-                    ) : null}
-                    {item.toolCall && (
+                    );
+                  }
+                  return null;
+                };
+
+                // 渲染 toolCall
+                const renderToolCall = () => {
+                  if (item.toolCall) {
+                    return (
                       <ThinkingStepItemToolCallPrimitive
                         icon={item.toolCall.icon}
                         title={item.toolCall.title}
                         content={item.toolCall.content}
                       />
-                    )}
-                    {item.files && item.files.length > 0 && (
+                    );
+                  }
+                  return null;
+                };
+
+                // 渲染 files
+                const renderFiles = () => {
+                  if (item.files && item.files.length > 0) {
+                    return (
                       <ThinkingStepItemFileListPrimitive
                         files={item.files}
                         labels={{
@@ -233,10 +295,41 @@ const ThinkingStepItem = React.forwardRef<
                           collapseFiles: resolvedLabels.collapseFiles,
                         }}
                       />
-                    )}
-                  </ThinkingStepItemContentAreaPrimitive>
-                </ThinkingStepItemContentItemPrimitive>
-              ))}
+                    );
+                  }
+                  return null;
+                };
+
+                // 渲染 custom（files 之后）
+                const renderCustom = () => {
+                  if (typeof item.render === "function") {
+                    const node = item.render(item.data);
+                    if (node !== null && node !== undefined) {
+                      return (
+                        <ThinkingStepItemCustomPrimitive>
+                          {node}
+                        </ThinkingStepItemCustomPrimitive>
+                      );
+                    }
+                  }
+                  return null;
+                };
+
+                return (
+                  <ThinkingStepItemContentItemPrimitive
+                    key={itemKey}
+                    isLast={isLast}
+                  >
+                    <ThinkingStepItemTimelinePrimitive isLast={isLast} />
+                    <ThinkingStepItemContentAreaPrimitive>
+                      {renderContent()}
+                      {renderToolCall()}
+                      {renderFiles()}
+                      {renderCustom()}
+                    </ThinkingStepItemContentAreaPrimitive>
+                  </ThinkingStepItemContentItemPrimitive>
+                );
+              })}
             </ThinkingStepItemContentListPrimitive>
           </ThinkingStepItemContentPrimitive>
         )}
@@ -246,5 +339,10 @@ const ThinkingStepItem = React.forwardRef<
 );
 ThinkingStepItem.displayName = "ThinkingStepItem";
 
-export type { ThinkingStepItemLabels, ThinkingStepItemProps };
+export type {
+  ThinkingStepItemLabels,
+  ThinkingStepItemProps,
+  ThinkingStepItemContentItem,
+  ThinkingStepItemContentItems,
+};
 export { ThinkingStepItem };

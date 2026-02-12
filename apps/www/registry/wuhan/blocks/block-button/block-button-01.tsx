@@ -434,7 +434,7 @@ const defaultVariantStyles = cn(
   "rounded-[var(--radius-md)]",
   "px-[var(--padding-com-xl)]",
   "font-family-[var(--font-family-cn)]",
-  "text-[var(--font-size-2)]",
+  "font-size-2",
   "leading-[var(--line-height-2)]",
 );
 
@@ -442,7 +442,7 @@ const defaultVariantStyles = cn(
 const linkVariantStyles = cn(
   "gap-[var(--gap-xs)]",
   "font-family-[var(--font-family-cn)]",
-  "text-[var(--font-size-2)]",
+  "font-size-2",
   "leading-[var(--line-height-2)]",
 );
 

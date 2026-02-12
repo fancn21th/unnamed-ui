@@ -76,7 +76,7 @@ export const composed: Registry["items"] = [
       "@dnd-kit/modifiers",
       "lucide-react",
     ],
-    registryDependencies: ["button", "task-list-01", "feedback"],
+    registryDependencies: ["button", "task-list-01", "feedback", "status-tag"],
     files: [
       {
         path: "composed/task-list/task-list.tsx",
@@ -732,7 +732,7 @@ export const composed: Registry["items"] = [
     description:
       "Composed report card with icon, title, description, and hover actions",
     dependencies: ["lucide-react"],
-    registryDependencies: ["report-card-01"],
+    registryDependencies: ["report-card-01", "checkbox-01"],
     files: [
       {
         path: "composed/report-card/report-card.tsx",

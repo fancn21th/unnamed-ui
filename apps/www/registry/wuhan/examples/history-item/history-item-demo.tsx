@@ -77,7 +77,7 @@ function HoverMorePopover({
               className="flex items-center gap-2 px-2 py-1 rounded-md hover:bg-[var(--bg-neutral-light)]"
             >
               <Pin className="size-4 text-[var(--text-secondary)]" />
-              <span className="text-[var(--text-primary)] text-[var(--font-size-1)] leading-[var(--line-height-1)]">
+              <span className="text-[var(--text-primary)] font-size-1 leading-[var(--line-height-1)]">
                 Pin
               </span>
             </button>
@@ -86,7 +86,7 @@ function HoverMorePopover({
               className="flex items-center gap-2 px-2 py-1 rounded-md hover:bg-[var(--bg-neutral-light)]"
             >
               <Copy className="size-4 text-[var(--text-secondary)]" />
-              <span className="text-[var(--text-primary)] text-[var(--font-size-1)] leading-[var(--line-height-1)]">
+              <span className="text-[var(--text-primary)] font-size-1 leading-[var(--line-height-1)]">
                 Duplicate
               </span>
             </button>
@@ -95,7 +95,7 @@ function HoverMorePopover({
               className="flex items-center gap-2 px-2 py-1 rounded-md hover:bg-[var(--bg-neutral-light)]"
             >
               <Trash2 className="size-4 text-[var(--text-secondary)]" />
-              <span className="text-[var(--text-primary)] text-[var(--font-size-1)] leading-[var(--line-height-1)]">
+              <span className="text-[var(--text-primary)] font-size-1 leading-[var(--line-height-1)]">
                 Delete
               </span>
             </button>

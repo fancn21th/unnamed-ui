@@ -1642,7 +1642,12 @@ export const Index: Record<string, Record<string, any>> = {
       name: "task-list",
       description: "Composed task list with editable mode",
       type: "registry:block",
-      registryDependencies: ["button", "task-list-01", "feedback"],
+      registryDependencies: [
+        "button",
+        "task-list-01",
+        "feedback",
+        "status-tag",
+      ],
       files: [
         {
           path: "registry/wuhan/composed/task-list/task-list.tsx",
@@ -2692,7 +2697,7 @@ export const Index: Record<string, Record<string, any>> = {
       description:
         "Composed report card with icon, title, description, and hover actions",
       type: "registry:block",
-      registryDependencies: ["report-card-01"],
+      registryDependencies: ["report-card-01", "checkbox-01"],
       files: [
         {
           path: "registry/wuhan/composed/report-card/report-card.tsx",
@@ -3167,8 +3172,8 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "report-card": {
-      name: "report-card",
+    "report-card-1": {
+      name: "report-card-1",
       description: "报告卡片",
       type: "registry:block",
       registryDependencies: undefined,

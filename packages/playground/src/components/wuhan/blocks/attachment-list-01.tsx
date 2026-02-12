@@ -156,7 +156,7 @@ const AttachmentCardTitle = React.forwardRef<
       className={cn(
         "font-[var(--font-family-cn)]",
         "font-[var(--font-weight-400)]",
-        "text-[var(--font-size-3)]",
+        "font-size-3",
         "leading-[var(--line-height-2)]",
         "truncate w-full",
         "transition-all",

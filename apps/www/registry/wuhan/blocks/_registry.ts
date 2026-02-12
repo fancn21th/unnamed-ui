@@ -444,7 +444,7 @@ export const blocks: Registry["items"] = [
     type: "registry:block",
     title: "Report Card",
     description: "Report card primitives for displaying data and metrics",
-    registryDependencies: ["style"],
+    registryDependencies: ["style", "checkbox-01"],
     files: [
       {
         path: "blocks/report-card/report-card-01.tsx",

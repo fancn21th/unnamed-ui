@@ -2219,6 +2219,98 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "report-card-basic",
+    type: "registry:example",
+    registryDependencies: ["report-card"],
+    files: [
+      {
+        path: "examples/report-card/report-card-basic.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "report-card-simple",
+    type: "registry:example",
+    registryDependencies: ["report-card"],
+    files: [
+      {
+        path: "examples/report-card/report-card-simple.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "report-card-custom-action",
+    type: "registry:example",
+    registryDependencies: ["report-card"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "examples/report-card/report-card-custom-action.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "report-card-hidden-action",
+    type: "registry:example",
+    registryDependencies: ["report-card"],
+    files: [
+      {
+        path: "examples/report-card/report-card-hidden-action.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "report-card-list",
+    type: "registry:example",
+    registryDependencies: ["report-card"],
+    files: [
+      {
+        path: "examples/report-card/report-card-list.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "report-card-list-custom",
+    type: "registry:example",
+    registryDependencies: ["report-card"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "examples/report-card/report-card-list-custom.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "report-card-status",
+    type: "registry:example",
+    registryDependencies: ["report-card"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "examples/report-card/report-card-status.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "report-card-selection",
+    type: "registry:example",
+    registryDependencies: ["report-card"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "examples/report-card/report-card-selection.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
   // Merge recruitment examples
   ...recruitmentExamples,
   {

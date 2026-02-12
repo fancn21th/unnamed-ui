@@ -32,6 +32,172 @@ import { ReportCard } from "@/registry/wuhan/composed/report-card/report-card";
 />
 ```
 
+## API
+
+### ReportCard
+
+报告卡片主组件，提供完整的卡片功能和灵活的操作区域。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `React.ReactNode` | - | 标题 |
+| `description` | `React.ReactNode` | - | 描述文本 |
+| `icon` | `React.ReactNode` | `ReportCardDefaultIcon` | 左侧图标 |
+| `width` | `string` | `"280px"` | 卡片宽度 |
+| `onEdit` | `() => void` | - | 编辑回调（简单模式） |
+| `onDelete` | `() => void` | - | 删除回调（简单模式） |
+| `onDuplicate` | `() => void` | - | 复制回调（简单模式） |
+| `action` | `React.ReactNode` | - | 自定义右侧操作区域 |
+| `showAction` | `boolean` | `true` | 是否显示默认操作按钮（仅 action 未提供时生效） |
+| `className` | `string` | - | 自定义类名 |
+
+#### ReportCardItem
+
+```tsx
+interface ReportCardItem {
+  /** 唯一标识符 */
+  id: string;
+  /** 卡片标题 */
+  title: string;
+  /** 描述文本 */
+  description?: string;
+  /** 自定义图标 */
+  icon?: React.ReactNode;
+}
+```
+
+#### 示例
+
+```tsx
+import { ReportCard } from "@/registry/wuhan/composed/report-card/report-card";
+import { FileText } from "lucide-react";
+
+function ReportExample() {
+  return (
+    <ReportCard
+      title="候选人评估报告"
+      description="更新时间：08-04 13:56"
+      icon={<FileText className="text-[var(--text-brand)]" size={16} />}
+      onEdit={() => console.log("编辑")}
+      onDelete={() => console.log("删除")}
+      onDuplicate={() => console.log("复制")}
+    />
+  );
+}
+```
+
+### ReportCardList
+
+报告卡片列表组件，展示多个报告卡片。
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `React.ReactNode` | `"报告列表"` | 列表标题 |
+| `cards` | `ReportCardItem[]` | `[]` | 卡片列表数据 |
+| `onEdit` | `(id: string) => void` | - | 编辑回调 |
+| `onDelete` | `(id: string) => void` | - | 删除回调 |
+| `onDuplicate` | `(id: string) => void` | - | 复制回调 |
+| `cardAction` | `(item: ReportCardItem) => React.ReactNode` | - | 自定义每个卡片右侧操作区域 |
+| `showCardAction` | `boolean` | `true` | 是否显示默认操作按钮 |
+| `className` | `string` | - | 自定义类名 |
+
+#### 示例
+
+```tsx
+import { ReportCardList, type ReportCardItem } from "@/registry/wuhan/composed/report-card/report-card";
+
+function ReportListExample() {
+  const cards: ReportCardItem[] = [
+    {
+      id: "1",
+      title: "候选人评估报告",
+      description: "更新时间：08-04 13:56",
+    },
+    {
+      id: "2",
+      title: "数据分析报告",
+      description: "包含本月所有数据统计信息",
+    },
+    {
+      id: "3",
+      title: "绩效评估报告",
+      description: "2024年Q4绩效数据汇总",
+    },
+  ];
+
+  return (
+    <ReportCardList
+      title="我的报告"
+      cards={cards}
+      onEdit={(id) => console.log("编辑", id)}
+      onDelete={(id) => console.log("删除", id)}
+      onDuplicate={(id) => console.log("复制", id)}
+    />
+  );
+}
+```
+
+## 高级用法
+
+### 列表模式下自定义每个卡片操作
+
+```tsx
+import { ReportCardList } from "@/registry/wuhan/composed/report-card/report-card";
+import { MoreVertical, Star } from "lucide-react";
+
+<ReportCardList
+  title="可管理的报告"
+  cards={cards}
+  cardAction={(card) => (
+    <button
+      className="flex items-center justify-center w-6 h-6 rounded-md cursor-pointer bg-[var(--bg-neutral-light-hover)]"
+      onClick={() => console.log("自定义操作", card.id)}
+    >
+      <MoreVertical className="size-4 text-[var(--text-secondary)]" />
+    </button>
+  )}
+  showCardAction={false}
+/>
+```
+
+### 状态标签 + 操作组合
+
+```tsx
+<ReportCard
+  title="已发布报告"
+  description="该报告已发布到团队"
+  action={
+    <div className="flex items-center gap-2">
+      <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-[var(--bg-success-light)] text-[var(--text-success)]">
+        已发布
+      </span>
+      <button className="p-1 rounded-md bg-[var(--bg-neutral-light-hover)] cursor-pointer">
+        <MoreVertical className="size-4 text-[var(--text-secondary)]" />
+      </button>
+    </div>
+  }
+/>
+```
+
+### 开关控制
+
+```tsx
+import { Switch } from "@/registry/ui/switch";
+
+<ReportCard
+  title="已启用监控"
+  description="该报告已开启实时监控"
+  action={
+    <Switch checked onCheckedChange={() => {}} />
+  }
+  showAction={false}
+/>
+```
+
 ## 安装
 
 <CodeTabs>
@@ -71,116 +237,25 @@ npm install lucide-react @radix-ui/react-popover
 
 </CodeTabs>
 
-## 代码演示
+## 交互说明
 
-### 基础示例
+### 操作区域显示逻辑
 
-<ComponentPreview
-  name="report-card-simple"
-  description="使用简单模式快速实现常见操作"
-  className="mb-4"
-/>
+1. **有 action prop** → 显示自定义 action，忽略默认操作
+2. **无 action + showAction=true + 有回调** → 显示默认 ellipsis 按钮（hover 时）
+3. **无 action + showAction=false** → 不显示任何操作区域
+4. **无 action + showAction=true + 无回调** → 不显示任何操作区域
 
-### 自定义操作区域
+### Hover 流程（默认模式）
 
-<ComponentPreview
-  name="report-card-custom-action"
-  description="通过 action prop 完全自定义右侧操作区域"
-  className="mb-4"
-/>
+1. **移入卡片** → 显示 ellipsis 操作按钮
+2. **移入按钮** → 展开操作菜单
+3. **移入菜单** → 保持菜单打开
+4. **移出卡片区域** → 150ms 后关闭所有
 
-### 隐藏操作区域
+### 防闪烁机制
 
-<ComponentPreview
-  name="report-card-hidden-action"
-  description="通过 showAction={false} 完全隐藏操作区域"
-  className="mb-4"
-/>
-
-### 卡片列表
-
-<ComponentPreview
-  name="report-card-list"
-  description="使用 ReportCardList 展示多个报告卡片"
-  className="mb-4"
-/>
-
-### 列表自定义操作
-
-<ComponentPreview
-  name="report-card-list-custom"
-  description="列表模式下自定义每个卡片的操作区域"
-  className="mb-4"
-/>
-
-### 状态标签组合
-
-<ComponentPreview
-  name="report-card-status"
-  description="结合状态标签和操作按钮"
-  className="mb-4"
-/>
-
-### 选择功能
-
-<ComponentPreview
-  name="report-card-selection"
-  description="展示单个卡片和列表卡片的选择功能"
-  className="mb-4"
-/>
-
-## API
-
-### ReportCard
-
-报告卡片主组件，提供完整的卡片功能和灵活的操作区域。
-
-#### Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `title` | `React.ReactNode` | - | 标题 |
-| `description` | `React.ReactNode` | - | 描述文本 |
-| `icon` | `React.ReactNode` | `ReportCardDefaultIcon` | 左侧图标 |
-| `width` | `string` | `"280px"` | 卡片宽度 |
-| `onEdit` | `() => void` | - | 编辑回调（简单模式） |
-| `onDelete` | `() => void` | - | 删除回调（简单模式） |
-| `onDuplicate` | `() => void` | - | 复制回调（简单模式） |
-| `action` | `React.ReactNode` | - | 自定义右侧操作区域 |
-| `showAction` | `boolean` | `true` | 是否显示默认操作按钮（仅 action 未提供时生效） |
-| `className` | `string` | - | 自定义类名 |
-
-#### ReportCardItem
-
-```tsx
-interface ReportCardItem {
-  /** 唯一标识符 */
-  id: string;
-  /** 卡片标题 */
-  title: string;
-  /** 描述文本 */
-  description?: string;
-  /** 自定义图标 */
-  icon?: React.ReactNode;
-}
-```
-
-### ReportCardList
-
-报告卡片列表组件，展示多个报告卡片。
-
-#### Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `title` | `React.ReactNode` | `"报告列表"` | 列表标题 |
-| `cards` | `ReportCardItem[]` | `[]` | 卡片列表数据 |
-| `onEdit` | `(id: string) => void` | - | 编辑回调 |
-| `onDelete` | `(id: string) => void` | - | 删除回调 |
-| `onDuplicate` | `(id: string) => void` | - | 复制回调 |
-| `cardAction` | `(item: ReportCardItem) => React.ReactNode` | - | 自定义每个卡片右侧操作区域 |
-| `showCardAction` | `boolean` | `true` | 是否显示默认操作按钮 |
-| `className` | `string` | - | 自定义类名 |
+组件使用 150ms 延迟关闭策略，当用户鼠标从触发元素移动到菜单内容之间有间隙时，可以有效防止菜单意外关闭。
 
 ## 使用场景
 
@@ -240,22 +315,44 @@ import {
 />
 ```
 
-## 交互说明
+## 代码演示
 
-### 操作区域显示逻辑
+### 基础
 
-1. **有 action prop** → 显示自定义 action，忽略默认操作
-2. **无 action + showAction=true + 有回调** → 显示默认 ellipsis 按钮（hover 时）
-3. **无 action + showAction=false** → 不显示任何操作区域
-4. **无 action + showAction=true + 无回调** → 不显示任何操作区域
+<ComponentPreview
+  name="report-card-example"
+  description="基础报告卡片"
+  className="mb-4"
+/>
 
-### Hover 流程（默认模式）
+### 自定义操作区域
 
-1. **移入卡片** → 显示 ellipsis 操作按钮
-2. **移入按钮** → 展开操作菜单
-3. **移入菜单** → 保持菜单打开
-4. **移出卡片区域** → 150ms 后关闭所有
+<ComponentPreview
+  name="report-card-example"
+  description="自定义右侧操作区域"
+  className="mb-4"
+/>
 
-### 防闪烁机制
+### 隐藏操作
 
-组件使用 150ms 延迟关闭策略，当用户鼠标从触发元素移动到菜单内容之间有间隙时，可以有效防止菜单意外关闭。
+<ComponentPreview
+  name="report-card-example"
+  description="隐藏操作区域"
+  className="mb-4"
+/>
+
+### 卡片列表
+
+<ComponentPreview
+  name="report-card-example"
+  description="报告卡片列表"
+  className="mb-4"
+/>
+
+### 列表自定义操作
+
+<ComponentPreview
+  name="report-card-example"
+  description="列表模式下自定义每个卡片操作"
+  className="mb-4"
+/>

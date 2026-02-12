@@ -357,7 +357,7 @@
   },
   {
     "name": "report-card",
-    "description": "报告卡片"
+    "description": "Composed report card with icon, title, description, and hover actions"
   },
   {
     "name": "document-card",
@@ -430,6 +430,10 @@
   {
     "name": "thinking",
     "description": "深度思考组件"
+  },
+  {
+    "name": "report-card-recruitment",
+    "description": "报告卡片"
   },
   {
     "name": "step-detail",

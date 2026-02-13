@@ -11,12 +11,13 @@ Feedback 反馈表单组件用于收集用户反馈，支持多选项按钮、�
 ## 概述
 
 - **反馈选项**：支持多个反馈类型选项，用户可快速选择问题类型（默认为多选模式）
-- **详细描述**：提供输入框收集详细的反馈信息
+- **详细描述**：提供输入框收集详细的反馈信息，可配置 `showInputWhenSelected` 实现仅选中指定选项（如「其他」）时才显示
 - **表单提交**：内置提交按钮和表单处理逻辑
 - **多选/单选**：支持多选和单选两种模式，默认为多选模式
 - **受控/非受控**：支持受控和非受控两种使用模式
 - **可关闭**：提供关闭按钮，方便用户退出反馈界面
 - **灵活定制**：可自定义标题、选项、占位符和提交按钮文本
+- **按需显示输入框**：`showInputWhenSelected` 可配置仅在选中指定选项时显示输入框
 
 ## 快速开始
 
@@ -153,6 +154,36 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/feedback.json
   className="mb-4"
 />
 
+### 按需显示输入框
+
+仅当选中「其他」选项时才显示输入框，适用于希望用户在选定预设选项后补充说明的场景。
+
+```tsx
+import { FeedbackComposed } from "@/registry/wuhan/composed/feedback/feedback";
+import { useRef } from "react";
+
+export function Example() {
+  const feedbackRef = useRef<HTMLFormElement>(null);
+  return (
+    <FeedbackComposed
+      ref={feedbackRef}
+      title="有什么问题?"
+      options={[
+        { id: "harmful", label: "有害/不安全" },
+        { id: "false", label: "信息虚假" },
+        { id: "other", label: "其他" },
+      ]}
+      submitLabel="确认"
+      showInputWhenSelected={["other"]}
+      onInputShown={() => {
+        feedbackRef.current?.scrollIntoView?.({ behavior: "smooth", block: "end" });
+      }}
+      onSubmit={(data) => console.log("反馈数据:", data)}
+    />
+  );
+}
+```
+
 ## API
 
 ### FeedbackComposed
@@ -177,6 +208,8 @@ npx shadcn@latest add http://localhost:3000/r/wuhan/feedback.json
 | `onInputChange` | `(value: string) => void` | - | 输入框内容变化时的回调 |
 | `placeholder` | `string` | `"请输入详细描述..."` | 输入框占位符 |
 | `submitLabel` | `ReactNode` | `"提交"` | 提交按钮文本 |
+| `showInputWhenSelected` | `string \| string[]` | - | 仅当选中指定选项时显示输入框，如 `["other"]` 表示选中「其他」时才显示，未配置时始终显示 |
+| `onInputShown` | `() => void` | - | 输入框由隐藏变为显示时调用，可用于滚动到可视区域等 |
 | `onSubmit` | `(payload: { selectedId: string; selectedIds: string[]; inputValue: string }) => void` | - | 表单提交时的回调 |
 | `onClose` | `() => void` | - | 关闭按钮点击时的回调 |
 
@@ -285,6 +318,8 @@ interface FeedbackOption {
   - 多选模式下：`selectedIds` 为选中的 ID 数组，`selectedId` 为空字符串
   - 单选模式下：`selectedId` 为选中的 ID，`selectedIds` 为空数组
 - 表单提交会自动调用 `preventDefault()`，需要在 `onSubmit` 中处理实际的提交逻辑
+- `showInputWhenSelected` 未配置时输入框始终显示；配置后仅当选中指定选项时显示，如 `["other"]` 表示选中「其他」时才显示
+- `onInputShown` 在输入框由隐藏变为显示时触发，可用于滚动到可视区域等场景
 
 ## 样式定制
 

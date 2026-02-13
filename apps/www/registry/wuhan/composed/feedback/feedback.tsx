@@ -59,6 +59,10 @@ export interface FeedbackProps {
   placeholder?: string;
   /** 提交按钮显示的标签 */
   submitLabel?: React.ReactNode;
+  /** 仅当选中指定选项时显示输入框，如 ["other"] 表示选中「其他」时才显示 */
+  showInputWhenSelected?: string | string[];
+  /** 输入框由隐藏变为显示时调用（可用于滚动到可视区域） */
+  onInputShown?: () => void;
   /** 表单提交时的回调函数 */
   onSubmit?: (payload: {
     selectedId: string;
@@ -126,6 +130,8 @@ export const FeedbackComposed = React.forwardRef<
       onInputChange,
       placeholder = "请输入详细描述...",
       submitLabel = "提交",
+      showInputWhenSelected,
+      onInputShown,
       onSubmit,
       onClose,
     },
@@ -156,6 +162,27 @@ export const FeedbackComposed = React.forwardRef<
       },
       [multiple, currentSelected, currentSelectedIds],
     );
+
+    // 是否显示输入框：仅当 showInputWhenSelected 有值且选中了对应选项时显示
+    const shouldShowInput = React.useMemo(() => {
+      if (!showInputWhenSelected) return true; // 未配置时保持原有行为（始终显示）
+      const ids = Array.isArray(showInputWhenSelected)
+        ? showInputWhenSelected
+        : [showInputWhenSelected];
+      if (multiple) {
+        return ids.some((id) => currentSelectedIds.includes(id));
+      }
+      return ids.includes(currentSelected ?? "");
+    }, [showInputWhenSelected, multiple, currentSelected, currentSelectedIds]);
+
+    // 输入框从隐藏变为显示时触发 onInputShown（用于滚动等）
+    const prevShouldShowInput = React.useRef(shouldShowInput);
+    React.useEffect(() => {
+      if (shouldShowInput && !prevShouldShowInput.current && onInputShown) {
+        requestAnimationFrame(() => onInputShown());
+      }
+      prevShouldShowInput.current = shouldShowInput;
+    }, [shouldShowInput, onInputShown]);
 
     // 选项选择处理函数
     const handleSelect = React.useCallback(
@@ -220,14 +247,16 @@ export const FeedbackComposed = React.forwardRef<
             ))}
           </ToggleButtonGroupPrimitive>
 
-          {/* 详细描述输入框 */}
-          <FeedbackInputContainerPrimitive>
-            <FeedbackInputPrimitive
-              placeholder={placeholder}
-              value={currentInput}
-              onChange={(event) => handleInputChange(event.target.value)}
-            />
-          </FeedbackInputContainerPrimitive>
+          {/* 详细描述输入框 - 仅当选中指定选项时显示 */}
+          {shouldShowInput && (
+            <FeedbackInputContainerPrimitive>
+              <FeedbackInputPrimitive
+                placeholder={placeholder}
+                value={currentInput}
+                onChange={(event) => handleInputChange(event.target.value)}
+              />
+            </FeedbackInputContainerPrimitive>
+          )}
 
           {/* 提交按钮 */}
           <div>

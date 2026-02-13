@@ -1,0 +1,15 @@
+{
+  "title": "输入控件",
+  "description": "表单控件",
+  "defaultOpen": true,
+  "collapsible": true,
+  "pages": [
+    "block-input",
+    "block-select",
+    "checkbox",
+    "radio",
+    "upload",
+    "sender",
+    "sender-responsive"
+  ]
+}

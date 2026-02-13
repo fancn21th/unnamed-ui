@@ -1,0 +1,14 @@
+{
+  "title": "基础",
+  "description": "基础 UI 元素",
+  "defaultOpen": true,
+  "collapsible": true,
+  "pages": [
+    "avatar",
+    "tag",
+    "status-tag",
+    "progress",
+    "tooltip",
+    "custom-sources"
+  ]
+}

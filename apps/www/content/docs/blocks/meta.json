@@ -3,5 +3,16 @@
   "description": "AI 原生应用的基础构建模块",
   "icon": "PanelsTopLeft",
   "root": true,
-  "pages": ["---Introduction---", "index", "..."]
+  "pages": [
+    "---Introduction---",
+    "index",
+    "bubbles",
+    "cards",
+    "lists",
+    "steps",
+    "inputs",
+    "buttons",
+    "layout",
+    "base"
+  ]
 }

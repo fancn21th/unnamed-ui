@@ -1,0 +1,15 @@
+{
+  "title": "卡片",
+  "description": "可选中、可交互的卡片",
+  "defaultOpen": true,
+  "collapsible": true,
+  "pages": [
+    "report-card",
+    "document-card",
+    "file-card",
+    "goal-card",
+    "agent-card",
+    "select-card",
+    "task-card"
+  ]
+}

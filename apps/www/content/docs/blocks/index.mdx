@@ -1,4 +1,25 @@
 ---
 title: 业务组件
-description: 业务组件
+description: AI 原生应用的基础构建模块，按组件形态分类
 ---
+
+业务组件（Blocks）是 AI 原生应用的基础构建模块，提供样式原语和布局结构。本目录按 **组件形态** 分类，左侧导航支持展开/收起各分类，便于快速查找。
+
+## 分类概览
+
+| 形态 | 组件 | 说明 |
+|------|------|------|
+| **气泡/容器** | message, message-list, feedback, confirm-panel, dynamic-form, task-list, welcome, avatar-header, quote-content | 内容块 + 圆角背景，用于消息、表单、反馈等 |
+| **卡片** | report-card, document-card, file-card, goal-card, agent-card, select-card, task-card | 可选中、可交互的卡片，支持状态与进度 |
+| **列表** | attachment-list, component-panel, history-item | 列表、可编辑项 |
+| **折叠/步骤** | thinking-process, thinking-step-item, accordion, deep-thinking, execution-result | 可展开/折叠的步骤，用于 AI 思考过程展示 |
+| **输入控件** | block-input, block-select, checkbox, radio, upload, sender, sender-responsive | 表单控件与输入区 |
+| **按钮** | block-button, icon-button, toggle-button, quick-action, prompt, suggestion | 各类按钮与快捷操作 |
+| **布局** | sidebar, split-pane, page-header, divider, sources-sidebar | 页面布局与分割 |
+| **基础** | avatar, tag, status-tag, progress, tooltip, custom-sources | 基础 UI 元素 |
+
+## 使用说明
+
+- **Blocks** 为原语层，主要提供样式和布局，不含业务逻辑
+- **Composed** 为组合层，由 blocks 组合而成，包含完整交互逻辑
+- 从左侧导航按分类浏览，或使用搜索快速定位组件

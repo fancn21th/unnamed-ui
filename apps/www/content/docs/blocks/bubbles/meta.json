@@ -1,0 +1,17 @@
+{
+  "title": "气泡/容器",
+  "description": "内容块 + 圆角背景",
+  "defaultOpen": true,
+  "collapsible": true,
+  "pages": [
+    "message",
+    "message-list",
+    "feedback",
+    "confirm-panel",
+    "dynamic-form",
+    "task-list",
+    "welcome",
+    "avatar-header",
+    "quote-content"
+  ]
+}

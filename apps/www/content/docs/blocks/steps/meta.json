@@ -1,0 +1,13 @@
+{
+  "title": "折叠/步骤",
+  "description": "可展开/折叠的步骤",
+  "defaultOpen": true,
+  "collapsible": true,
+  "pages": [
+    "thinking-process",
+    "thinking-step-item",
+    "accordion",
+    "deep-thinking",
+    "execution-result"
+  ]
+}

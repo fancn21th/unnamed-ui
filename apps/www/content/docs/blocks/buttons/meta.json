@@ -1,0 +1,14 @@
+{
+  "title": "按钮",
+  "description": "各类按钮",
+  "defaultOpen": true,
+  "collapsible": true,
+  "pages": [
+    "block-button",
+    "icon-button",
+    "toggle-button",
+    "quick-action",
+    "prompt",
+    "suggestion"
+  ]
+}

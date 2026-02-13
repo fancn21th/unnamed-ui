@@ -1,0 +1,13 @@
+{
+  "title": "布局",
+  "description": "页面布局",
+  "defaultOpen": true,
+  "collapsible": true,
+  "pages": [
+    "sidebar",
+    "split-pane",
+    "page-header",
+    "divider",
+    "sources-sidebar"
+  ]
+}

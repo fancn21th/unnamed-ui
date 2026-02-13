@@ -1,0 +1,11 @@
+{
+  "title": "列表",
+  "description": "列表、可编辑项",
+  "defaultOpen": true,
+  "collapsible": true,
+  "pages": [
+    "attachment-list",
+    "component-panel",
+    "history-item"
+  ]
+}

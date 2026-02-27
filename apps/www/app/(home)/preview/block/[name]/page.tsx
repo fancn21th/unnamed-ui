@@ -1,7 +1,10 @@
 import * as React from "react"
+import Link from "next/link"
 import { notFound } from "next/navigation"
+import { ExternalLink } from "lucide-react"
 import { Index } from "@/registry/__index__"
-import { getBlockExamples, getStyleItem } from "@/app/(home)/lib/api"
+import { getBlockExamples, getStyleItem, isRecruitmentBlock } from "@/app/(home)/lib/api"
+import { getBlockDocPath } from "@/lib/source"
 import { DesignSystemClassApplier } from "@/app/(home)/components/design-system-class-applier"
 
 const getCachedBlockExamples = React.cache(
@@ -54,6 +57,9 @@ export default async function BlockExamplesPage({
     return notFound()
   }
 
+  const displayTitle = blockItem.title || paramBag.name.replace(/-01$/, "").replace(/-/g, " ")
+  const docHref = getBlockDocPath(paramBag.name, isRecruitmentBlock(blockItem))
+
   return (
     <div className="relative min-h-screen p-8 space-y-8">
       <React.Suspense fallback={null}>
@@ -61,7 +67,17 @@ export default async function BlockExamplesPage({
       </React.Suspense>
       <div className="space-y-2">
         <h1 className="text-2xl font-bold capitalize">
-          {blockItem.title || paramBag.name.replace(/-01$/, "").replace(/-/g, " ")}
+          {docHref ? (
+            <Link
+              href={docHref}
+              className="inline-flex items-center gap-2 hover:underline"
+            >
+              {displayTitle}
+              <ExternalLink className="size-4" />
+            </Link>
+          ) : (
+            displayTitle
+          )}
         </h1>
         {blockItem.description && (
           <p className="text-muted-foreground">{blockItem.description}</p>

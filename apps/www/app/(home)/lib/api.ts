@@ -39,7 +39,7 @@ export async function getStyleComponent(name: string, styleName: Style["name"] =
 /**
  * 检查是否是 recruitment block
  */
-function isRecruitmentBlock(item: any): boolean {
+export function isRecruitmentBlock(item: any): boolean {
   if (item.type !== "registry:block") {
     return false
   }

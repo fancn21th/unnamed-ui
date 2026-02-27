@@ -1,7 +1,10 @@
 import * as React from "react"
+import Link from "next/link"
+import { ExternalLink } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Index } from "@/registry/__index__"
 import { getRecruitmentBlockDemos } from "@/app/(home)/lib/api"
+import { getBlockDocPath } from "@/lib/source"
 import { DesignSystemClassApplier } from "@/app/(home)/components/design-system-class-applier"
 
 const getCachedRecruitmentBlockDemos = React.cache(async () => {
@@ -25,12 +28,14 @@ function ExampleWrapper({ className, ...props }: React.ComponentProps<"div">) {
 
 function Example({
   title,
+  docHref,
   children,
   className,
   containerClassName,
   ...props
 }: React.ComponentProps<"div"> & {
   title?: string
+  docHref?: string | null
   containerClassName?: string
 }) {
   return (
@@ -44,7 +49,17 @@ function Example({
     >
       {title && (
         <div className="text-muted-foreground px-1.5 py-2 text-xs font-medium flex-shrink-0">
-          {title}
+          {docHref ? (
+            <Link
+              href={docHref}
+              className="inline-flex items-center gap-1 hover:text-foreground hover:underline"
+            >
+              {title}
+              <ExternalLink className="size-3" />
+            </Link>
+          ) : (
+            title
+          )}
         </div>
       )}
       <div
@@ -77,9 +92,10 @@ export default async function RecruitmentBlocksPage() {
         }
 
         const title = blockName.replace(/-/g, " ")
+        const docHref = getBlockDocPath(blockName, true)
 
         return (
-          <Example key={blockName} title={title}>
+          <Example key={blockName} title={title} docHref={docHref}>
             <React.Suspense
               fallback={
                 <div className="flex items-center justify-center h-full min-h-[200px] text-muted-foreground">

@@ -51,7 +51,14 @@ export const ResponsiveContainer = React.forwardRef<
   ResponsiveContainerProps
 >(
   (
-    { children, className, maxWidth = "100%", onOverflowChange, ...props },
+    {
+      children,
+      className,
+      maxWidth = "100%",
+      forceSingleLine,
+      onOverflowChange,
+      ...props
+    },
     ref,
   ) => {
     const [isOverflow, setIsOverflow] = React.useState(false);

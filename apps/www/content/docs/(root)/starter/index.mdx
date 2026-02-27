@@ -27,21 +27,88 @@ description: Unnamed UI 新手指南
 
 我们提供了开箱即用的 [Vite 脚手架](https://github.com/fancn21th/unnamed-ui-starter-template)，已预配置 Tailwind、PostCSS、shadcn 及 Unnamed UI 样式，省去繁琐的手动配置。
 
-**第一步：克隆并安装**
+**分支说明**：
+
+脚手架提供两个分支供您选择：
+
+| 分支 | 说明 | 适用场景 |
+|------|------|---------|
+| `main` | 仅配置好运行环境 | 想要按需安装组件，自由搭建项目 |
+| `feat/layout-init` | 配置环境 + 所有组件 + 基础布局 | 快速体验完整功能，参考布局实现 |
+
+> **推荐**：初次使用建议选择 `feat/layout-init` 分支，可立即体验完整功能。
+
+---
+
+**方式一：使用 degit（推荐，无 Git 历史）**
 
 ```bash
-git clone https://github.com/fancn21th/unnamed-ui-starter-template.git unnamed-demo
+# 安装 degit（首次使用需要）
+npm install -g degit
+
+# 下载 main 分支（仅配置）
+degit fancn21th/unnamed-ui-starter-template unnamed-demo
+cd unnamed-demo
+pnpm install
+
+# 或下载 feat/layout-init 分支（完整功能）
+degit fancn21th/unnamed-ui-starter-template#feat/layout-init unnamed-demo
 cd unnamed-demo
 pnpm install
 ```
 
-**第二步：安装 Welcome 组件（用于验证）**
+> `degit` 会下载项目文件但不包含 Git 历史，这样您得到的是一个全新的项目，可以直接初始化自己的 Git 仓库。
+
+**方式二：下载压缩包（无需 Git）**
+
+```bash
+# main 分支
+curl -L https://github.com/fancn21th/unnamed-ui-starter-template/archive/refs/heads/main.zip -o unnamed-demo.zip
+unzip unnamed-demo.zip
+mv unnamed-ui-starter-template-main unnamed-demo
+cd unnamed-demo
+pnpm install
+
+# 或 feat/layout-init 分支
+curl -L https://github.com/fancn21th/unnamed-ui-starter-template/archive/refs/heads/feat/layout-init.zip -o unnamed-demo.zip
+unzip unnamed-demo.zip
+mv unnamed-ui-starter-template-feat-layout-init unnamed-demo
+cd unnamed-demo
+pnpm install
+```
+
+**方式三：Git Clone（需手动清理 Git 历史）**
+
+```bash
+# 克隆 main 分支
+git clone https://github.com/fancn21th/unnamed-ui-starter-template.git unnamed-demo
+cd unnamed-demo
+
+# 或克隆 feat/layout-init 分支
+git clone -b feat/layout-init https://github.com/fancn21th/unnamed-ui-starter-template.git unnamed-demo
+cd unnamed-demo
+
+# 删除 Git 历史，重新初始化
+rm -rf .git
+git init
+git add .
+git commit -m "Initial commit"
+
+# 安装依赖
+pnpm install
+```
+
+---
+
+**验证安装**
+
+如果您选择的是 `main` 分支，需要手动安装 Welcome 组件进行验证：
 
 ```bash
 npx shadcn@latest add -y -o "https://unnamed-ui.vercel.app/r/wuhan/welcome.json"
 ```
 
-**第三步：验证**
+**使用组件**
 
 在 `src/App.tsx` 中引入 Welcome 组件：
 
@@ -62,6 +129,8 @@ export default function App() {
 ```
 
 运行 `pnpm dev`，若页面正常显示，说明环境已就绪。
+
+> **提示**：如果选择的是 `feat/layout-init` 分支，已包含完整的布局示例，直接运行 `pnpm dev` 即可查看效果，无需手动配置。
 
 ---
 

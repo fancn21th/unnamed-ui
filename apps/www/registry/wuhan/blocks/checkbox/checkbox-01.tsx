@@ -14,7 +14,7 @@ const CheckboxRootPrimitive = React.forwardRef<
     <CheckboxPrimitive.Root
       ref={ref}
       className={cn(
-        "peer h-4 w-4 shrink-0 rounded-sm",
+        "peer flex h-4 w-4 shrink-0 items-center justify-center rounded-sm",
         "border border-[var(--Border-border-neutral)]",
         "bg-[var(--Container-bg-container)]",
         "transition-all duration-200",

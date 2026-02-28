@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { Button } from "@/registry/wuhan/ui/button";
 import { cn } from "@/lib/utils";
 import * as Popover from "@radix-ui/react-popover";
 import {
@@ -123,7 +124,9 @@ const CardActionsMenu = ({
     >
       <div className="flex flex-col">
         {onEdit && (
-          <button
+          <Button
+            variant="unstyled"
+            size="unstyled"
             type="button"
             onClick={onEdit}
             className={cn(
@@ -140,10 +143,12 @@ const CardActionsMenu = ({
             <span className="font-size-2 leading-[var(--line-height-2)]">
               编辑
             </span>
-          </button>
+          </Button>
         )}
         {onDuplicate && (
-          <button
+          <Button
+            variant="unstyled"
+            size="unstyled"
             type="button"
             onClick={onDuplicate}
             className={cn(
@@ -160,10 +165,12 @@ const CardActionsMenu = ({
             <span className="font-size-2 leading-[var(--line-height-2)]">
               复制
             </span>
-          </button>
+          </Button>
         )}
         {onDelete && (
-          <button
+          <Button
+            variant="unstyled"
+            size="unstyled"
             type="button"
             onClick={onDelete}
             className={cn(
@@ -180,7 +187,7 @@ const CardActionsMenu = ({
             <span className="font-size-2 leading-[var(--line-height-2)]">
               删除
             </span>
-          </button>
+          </Button>
         )}
       </div>
     </div>

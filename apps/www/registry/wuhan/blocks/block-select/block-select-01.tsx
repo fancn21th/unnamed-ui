@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { Button } from "@/registry/wuhan/ui/button";
 import { cn } from "@/lib/utils";
 import { Select } from "radix-ui";
 import { Check, ChevronDown, ChevronUp, X } from "lucide-react";
@@ -99,7 +100,9 @@ export const TagPrimitive = React.forwardRef<
     >
       <span>{label}</span>
       {onRemove && (
-        <button
+        <Button
+          variant="unstyled"
+          size="unstyled"
           type="button"
           onClick={(e) => {
             e.stopPropagation();
@@ -108,7 +111,7 @@ export const TagPrimitive = React.forwardRef<
           className="hover:bg-[var(--Container-bg-brand-light-hover)] rounded-sm p-0.5"
         >
           <X className="h-3 w-3" />
-        </button>
+        </Button>
       )}
     </span>
   );

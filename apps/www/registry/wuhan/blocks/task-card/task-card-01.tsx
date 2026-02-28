@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { Button } from "@/registry/wuhan/ui/button";
 import { cn } from "@/lib/utils";
 import { CheckCircle2, Clock, Loader2, ChevronDown } from "lucide-react";
 import {
@@ -484,13 +485,11 @@ export const TaskCardPrimitive = React.forwardRef<
         >
           {/* 头部：收起状态显示，展开时作为 Trigger */}
           <CollapsibleTrigger asChild>
-            <button
+            <Button
+              variant="unstyled"
+              size="unstyled"
               type="button"
               className={cn(
-                "appearance-none",
-                "border-0",
-                "bg-transparent",
-                "p-0",
                 "w-full",
                 "flex items-center",
                 "justify-between",
@@ -545,7 +544,7 @@ export const TaskCardPrimitive = React.forwardRef<
                 }
                 <TaskCardCollapseArrowPrimitive open={isOpen} />
               </div>
-            </button>
+            </Button>
           </CollapsibleTrigger>
 
           {/* 展开内容 */}

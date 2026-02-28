@@ -3,6 +3,7 @@
 import * as React from "react";
 import * as RadixAccordion from "@radix-ui/react-accordion";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { Button } from "@/registry/wuhan/ui/button";
 import { cn } from "@/lib/utils";
 
 // ==================== 类型定义 ====================
@@ -118,32 +119,34 @@ export const AccordionTriggerPrimitive = React.forwardRef<
         className,
       )}
     >
-      <RadixAccordion.Trigger
-        ref={ref}
-        data-accordion-trigger=""
-        className={cn(
-          "font-[var(--font-family-CN)]",
-          "font-[var(--font-weight-400)]",
-          "leading-[var(--line-height-2)]",
-          "text-[var(--Text-text-primary)]",
-          "font-size-2",
-          "group flex flex-1 items-center justify-between gap-2",
-          "text-left transition-all outline-none",
-          "hover:bg-[var(--Container-bg-neutral-light-hover)]",
-          "focus-visible:ring-2 focus-visible:ring-[var(--ring)]",
-        )}
-        {...props}
-      >
-        {children}
-        <div
+      <RadixAccordion.Trigger asChild ref={ref} data-accordion-trigger="">
+        <Button
+          variant="unstyled"
+          size="unstyled"
           className={cn(
-            "flex items-center justify-center",
-            "size-6 rounded-[var(--radius-md)] hover:bg-[var(--Container-bg-neutral-light)] shrink-0 text-[var(--Text-text-tertiary)] transition-transform duration-200",
+            "font-[var(--font-family-CN)]",
+            "font-[var(--font-weight-400)]",
+            "leading-[var(--line-height-2)]",
+            "text-[var(--Text-text-primary)]",
+            "font-size-2",
+            "group flex flex-1 items-center justify-between gap-2",
+            "text-left transition-all outline-none",
+            "hover:bg-[var(--Container-bg-neutral-light-hover)]",
+            "focus-visible:ring-2 focus-visible:ring-[var(--ring)]",
           )}
+          {...props}
         >
-          <ChevronDown className="size-4 rounded-[var(--radius-md)] hover:bg-[var(--Container-bg-neutral-light)] shrink-0 text-[var(--Text-text-tertiary)] transition-transform duration-200 group-data-[state=open]:hidden" />
-          <ChevronUp className="size-4 rounded-[var(--radius-md)] hover:bg-[var(--Container-bg-neutral-light)] shrink-0 text-[var(--Text-text-tertiary)] transition-transform duration-200 group-data-[state=closed]:hidden" />
-        </div>
+          {children}
+          <div
+            className={cn(
+              "flex items-center justify-center",
+              "size-6 rounded-[var(--radius-md)] hover:bg-[var(--Container-bg-neutral-light)] shrink-0 text-[var(--Text-text-tertiary)] transition-transform duration-200",
+            )}
+          >
+            <ChevronDown className="size-4 rounded-[var(--radius-md)] hover:bg-[var(--Container-bg-neutral-light)] shrink-0 text-[var(--Text-text-tertiary)] transition-transform duration-200 group-data-[state=open]:hidden" />
+            <ChevronUp className="size-4 rounded-[var(--radius-md)] hover:bg-[var(--Container-bg-neutral-light)] shrink-0 text-[var(--Text-text-tertiary)] transition-transform duration-200 group-data-[state=closed]:hidden" />
+          </div>
+        </Button>
       </RadixAccordion.Trigger>
     </RadixAccordion.Header>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { Button } from "@/registry/wuhan/ui/button";
 import { cn } from "@/lib/utils";
 import {
   Collapsible,
@@ -325,12 +326,13 @@ const ThinkingStepHeaderPrimitive = React.forwardRef<
 >(({ children, trailing, className, type: _type, disabled, ...props }, ref) => {
   return (
     <CollapsibleTrigger asChild>
-      <button
+      <Button
         ref={ref}
+        variant="unstyled"
+        size="unstyled"
         type="button"
         disabled={disabled}
         className={cn(
-          "appearance-none border-0 bg-transparent p-0",
           BOX_BORDER,
           "group/think-step-trigger",
           "flex items-center",
@@ -348,7 +350,7 @@ const ThinkingStepHeaderPrimitive = React.forwardRef<
             {trailing}
           </div>
         )}
-      </button>
+      </Button>
     </CollapsibleTrigger>
   );
 });

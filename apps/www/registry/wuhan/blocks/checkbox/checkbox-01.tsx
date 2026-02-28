@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { Button } from "@/registry/wuhan/ui/button";
 import { cn } from "@/lib/utils";
 import { Checkbox as CheckboxPrimitive } from "radix-ui";
 import { Check, Minus } from "lucide-react";
@@ -11,10 +12,11 @@ const CheckboxRootPrimitive = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>
 >(({ className, ...props }, ref) => {
   return (
-    <CheckboxPrimitive.Root
-      ref={ref}
-      className={cn(
-        "peer flex h-4 w-4 shrink-0 items-center justify-center rounded-sm",
+    <Button asChild variant="unstyled" size="unstyled">
+      <CheckboxPrimitive.Root
+        ref={ref}
+        className={cn(
+          "peer flex h-4 w-4 shrink-0 items-center justify-center rounded-sm",
         "border border-[var(--Border-border-neutral)]",
         "bg-[var(--Container-bg-container)]",
         "transition-all duration-200",
@@ -42,6 +44,7 @@ const CheckboxRootPrimitive = React.forwardRef<
       )}
       {...props}
     />
+    </Button>
   );
 });
 CheckboxRootPrimitive.displayName = "CheckboxRootPrimitive";

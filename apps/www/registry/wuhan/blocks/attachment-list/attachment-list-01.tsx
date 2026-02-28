@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { buttonVariants } from "@/registry/wuhan/ui/button";
+import { Button, buttonVariants } from "@/registry/wuhan/ui/button";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
@@ -213,11 +213,12 @@ const AttachmentCardDeleteButton = React.forwardRef<
   React.ButtonHTMLAttributes<HTMLButtonElement>
 >(({ className, ...props }, ref) => {
   return (
-    <button
+    <Button
       ref={ref}
+      variant="unstyled"
+      size="unstyled"
       type="button"
       className={cn(
-        "appearance-none border-0 bg-transparent p-0",
         "absolute",
         "-top-1 -right-1",
         "z-10",
@@ -473,11 +474,12 @@ function AttachmentListPrimitive({
             aria-hidden="true"
           />
           {/* 按钮 */}
-          <button
+          <Button
+            variant="unstyled"
+            size="unstyled"
             type="button"
             onClick={() => scroll("left")}
             className={cn(
-              "appearance-none border-0 bg-transparent p-0",
               "absolute left-2 top-1/2 -translate-y-1/2 z-10",
               "w-6 h-6",
               "rounded-[var(--radius-md)]",
@@ -492,7 +494,7 @@ function AttachmentListPrimitive({
             aria-label="Scroll left"
           >
             {leftScrollIcon || <ChevronLeft className="w-4 h-4" />}
-          </button>
+          </Button>
         </>
       )}
 
@@ -511,11 +513,12 @@ function AttachmentListPrimitive({
             aria-hidden="true"
           />
           {/* 按钮 */}
-          <button
+          <Button
+            variant="unstyled"
+            size="unstyled"
             type="button"
             onClick={() => scroll("right")}
             className={cn(
-              "appearance-none border-0 bg-transparent p-0",
               "absolute right-2 top-1/2 -translate-y-1/2 z-10",
               "w-6 h-6",
               "rounded-[var(--radius-md)]",
@@ -530,7 +533,7 @@ function AttachmentListPrimitive({
             aria-label="Scroll right"
           >
             {rightScrollIcon || <ChevronRight className="w-4 h-4" />}
-          </button>
+          </Button>
         </>
       )}
     </div>

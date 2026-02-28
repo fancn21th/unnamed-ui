@@ -19,6 +19,8 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
+        /** 仅重置样式，供 blocks 内部使用，避免被宿主全局 button 样式覆盖 */
+        unstyled: "p-0 m-0 min-w-0 min-h-0",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
@@ -27,6 +29,8 @@ const buttonVariants = cva(
         icon: "size-9",
         "icon-sm": "size-8",
         "icon-lg": "size-10",
+        /** 无尺寸样式，与 variant="unstyled" 配合使用 */
+        unstyled: "",
       },
     },
     defaultVariants: {
@@ -36,25 +40,28 @@ const buttonVariants = cva(
   },
 );
 
-function Button({
-  className,
-  variant,
-  size,
-  asChild = false,
-  ...props
-}: React.ComponentProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean;
-  }) {
+const Button = React.forwardRef<
+  HTMLButtonElement,
+  React.ComponentProps<"button"> &
+    VariantProps<typeof buttonVariants> & {
+      asChild?: boolean;
+    }
+>(function Button(
+  { className, variant, size, asChild = false, ...props },
+  ref,
+) {
   const Comp = asChild ? Slot : "button";
 
   return (
     <Comp
+      ref={ref}
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     />
   );
-}
+});
+
+Button.displayName = "Button";
 
 export { Button, buttonVariants };

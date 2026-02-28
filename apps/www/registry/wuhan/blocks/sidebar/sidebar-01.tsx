@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { Button } from "@/registry/wuhan/ui/button";
 import { cn } from "@/lib/utils";
 
 // ==================== 样式原语层（Primitives）====================
@@ -194,11 +195,12 @@ const SidebarNewButtonPrimitive = React.forwardRef<
   React.ButtonHTMLAttributes<HTMLButtonElement>
 >(({ className, ...props }, ref) => {
   return (
-    <button
+    <Button
       ref={ref}
+      variant="unstyled"
+      size="unstyled"
       type="button"
       className={cn(
-        "appearance-none border-0 bg-transparent p-0",
         "w-full",
         "h-8",
         "gap-[var(--Gap-gap-md)]",

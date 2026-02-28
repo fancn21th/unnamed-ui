@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { Button } from "@/registry/wuhan/ui/button";
 import { cn } from "@/lib/utils";
 
 // ==================== 样式原语层（Primitives）====================
@@ -120,11 +121,12 @@ const QuoteContentCloseButton = React.forwardRef<
   React.ButtonHTMLAttributes<HTMLButtonElement>
 >(({ className, ...props }, ref) => {
   return (
-    <button
+    <Button
       ref={ref}
+      variant="unstyled"
+      size="unstyled"
       type="button"
       className={cn(
-        "appearance-none border-0 bg-transparent p-0",
         "shrink-0",
         "flex items-center justify-center",
         "w-4 h-4",

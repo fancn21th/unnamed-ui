@@ -154,11 +154,12 @@ const FeedbackHeaderPrimitive = React.forwardRef<
         {title}
       </span>
       {onClose && (
-        <button
+        <Button
+          variant="unstyled"
+          size="unstyled"
           type="button"
           onClick={onClose}
           className={cn(
-            "appearance-none border-0 bg-transparent p-0",
             "inline-flex items-center justify-center",
             "size-4",
             "text-[var(--Text-text-secondary)]",
@@ -173,7 +174,7 @@ const FeedbackHeaderPrimitive = React.forwardRef<
           aria-label="关闭"
         >
           <X className="size-4" />
-        </button>
+        </Button>
       )}
     </div>
   );

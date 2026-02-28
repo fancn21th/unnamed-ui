@@ -8,6 +8,7 @@ import {
   Loader2,
 } from "lucide-react";
 import * as React from "react";
+import { Button } from "@/registry/wuhan/ui/button";
 import { cn } from "@/lib/utils";
 import {
   Collapsible,
@@ -490,12 +491,13 @@ const ThinkingStepItemHeaderPrimitive = React.forwardRef<
 
     return (
       <CollapsibleTrigger asChild>
-        <button
+        <Button
           ref={ref as React.ForwardedRef<HTMLButtonElement>}
+          variant="unstyled"
+          size="unstyled"
           type="button"
           disabled={disabled}
           className={cn(
-            "appearance-none border-0 bg-transparent p-0",
             BOX_BORDER,
             "group/step-item-trigger",
             "flex items-center",
@@ -510,7 +512,7 @@ const ThinkingStepItemHeaderPrimitive = React.forwardRef<
         >
           {children}
           {trailing && <div className="ml-auto">{trailing}</div>}
-        </button>
+        </Button>
       </CollapsibleTrigger>
     );
   },
@@ -1210,13 +1212,14 @@ const ThinkingStepItemExpandButtonPrimitive = React.forwardRef<
   ThinkingStepItemExpandButtonPrimitiveProps
 >(({ expanded = false, onToggle, children, className, ...props }, ref) => {
   return (
-    <button
+    <Button
       ref={ref}
+      variant="unstyled"
+      size="unstyled"
       type="button"
       onClick={onToggle}
       aria-expanded={expanded}
       className={cn(
-        "appearance-none border-0 bg-transparent p-0",
         BOX_BORDER,
         "h-6",
         "flex items-center justify-center",
@@ -1241,7 +1244,7 @@ const ThinkingStepItemExpandButtonPrimitive = React.forwardRef<
       {...props}
     >
       {children}
-    </button>
+    </Button>
   );
 });
 ThinkingStepItemExpandButtonPrimitive.displayName =

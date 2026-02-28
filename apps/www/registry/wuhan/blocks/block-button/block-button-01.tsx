@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { Button } from "@/registry/wuhan/ui/button";
 import { cn } from "@/lib/utils";
 
 // ==================== 类型定义 ====================
@@ -519,10 +520,10 @@ export const ButtonPrimitive = React.forwardRef<
         : "0%";
 
     return (
-      <button
-        ref={ref}
-        type="button"
-        disabled={disabled || loading || progress}
+      <Button
+        asChild
+        variant="unstyled"
+        size="unstyled"
         className={cn(
           baseStyles,
           variantBaseStyles,
@@ -530,52 +531,58 @@ export const ButtonPrimitive = React.forwardRef<
           stateStyles,
           className,
         )}
-        {...props}
       >
-        {/* 进度条背景（当有进度时显示） */}
-        {progress && (
-          <div
-            className={cn(
-              "absolute inset-0",
-              "rounded-[inherit]",
-              "bg-current",
-              "opacity-20",
-            )}
-            style={{ width: progressWidth }}
-            aria-hidden="true"
-          />
-        )}
-
-        {/* 加载状态图标 */}
-        {loading && (
-          <svg
-            className="animate-spin size-4 shrink-0"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <circle
-              className="opacity-25"
-              cx="12"
-              cy="12"
-              r="10"
-              stroke="currentColor"
-              strokeWidth="4"
+        <button
+          ref={ref}
+          type="button"
+          disabled={disabled || loading || progress}
+          {...props}
+        >
+          {/* 进度条背景（当有进度时显示） */}
+          {progress && (
+            <div
+              className={cn(
+                "absolute inset-0",
+                "rounded-[inherit]",
+                "bg-current",
+                "opacity-20",
+              )}
+              style={{ width: progressWidth }}
+              aria-hidden="true"
             />
-            <path
-              className="opacity-75"
-              fill="currentColor"
-              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-            />
-          </svg>
-        )}
+          )}
 
-        {/* 按钮内容 */}
-        <span className={loading || progress ? "opacity-70" : ""}>
-          {children}
-        </span>
-      </button>
+          {/* 加载状态图标 */}
+          {loading && (
+            <svg
+              className="animate-spin size-4 shrink-0"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              />
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              />
+            </svg>
+          )}
+
+          {/* 按钮内容 */}
+          <span className={loading || progress ? "opacity-70" : ""}>
+            {children}
+          </span>
+        </button>
+      </Button>
     );
   },
 );

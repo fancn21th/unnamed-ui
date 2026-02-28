@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { Button } from "@/registry/wuhan/ui/button";
 import { cn } from "@/lib/utils";
 import {
   FileCardPrimitive,
@@ -512,22 +513,20 @@ export const FileCardList = React.memo(
               )}
             </h3>
             {multiSelect && files.length > 0 && !disabled && (
-              <button
+              <Button
+                variant="unstyled"
+                size="unstyled"
                 type="button"
                 className={cn(
                   "text-sm",
                   "text-[var(--Text-text-brand)]",
                   "hover:underline",
-                  "appearance-none",
-                  "border-0",
-                  "bg-transparent",
-                  "p-0",
                   "cursor-pointer",
                 )}
                 onClick={() => handleSelectAll(!allSelected)}
               >
                 {allSelected ? "取消全选" : "全选"}
-              </button>
+              </Button>
             )}
           </div>
         )}

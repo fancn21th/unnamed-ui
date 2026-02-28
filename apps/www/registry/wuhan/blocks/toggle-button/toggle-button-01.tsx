@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { Button } from "@/registry/wuhan/ui/button";
 import { cn } from "@/lib/utils";
 
 // ==================== 类型定义 ====================
@@ -87,9 +88,10 @@ export const ToggleButtonPrimitive = React.forwardRef<
         ];
 
     return (
-      <button
-        ref={ref}
-        type="button"
+      <Button
+        asChild
+        variant="unstyled"
+        size="unstyled"
         className={cn(
           "[&_*]:!box-border",
           "appearance-none bg-transparent p-0",
@@ -156,11 +158,11 @@ export const ToggleButtonPrimitive = React.forwardRef<
           ],
           className,
         )}
-        aria-pressed={selected}
-        {...props}
       >
-        {props.children}
-      </button>
+        <button ref={ref} type="button" aria-pressed={selected} {...props}>
+          {props.children}
+        </button>
+      </Button>
     );
   },
 );

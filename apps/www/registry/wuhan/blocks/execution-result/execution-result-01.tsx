@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { Button } from "@/registry/wuhan/ui/button";
 import { cn } from "@/lib/utils";
 import {
   Collapsible,
@@ -656,13 +657,14 @@ const ExecutionResultCopyIconPrimitive = React.forwardRef<
   };
 
   return (
-    <button
+    <Button
       ref={ref}
+      variant="unstyled"
+      size="unstyled"
       type="button"
       onClick={handleCopy}
       className={cn(
         "[&_*]:!box-border",
-        "appearance-none border-0 bg-transparent p-0",
         "size-4",
         "flex items-center justify-center",
         "cursor-pointer",
@@ -676,7 +678,7 @@ const ExecutionResultCopyIconPrimitive = React.forwardRef<
       {...props}
     >
       <Copy className="size-3" />
-    </button>
+    </Button>
   );
 });
 ExecutionResultCopyIconPrimitive.displayName =

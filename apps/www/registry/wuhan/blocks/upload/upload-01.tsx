@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { Button } from "@/registry/wuhan/ui/button";
 import { cn } from "@/lib/utils";
 
 // ==================== 类型定义 ====================
@@ -248,8 +249,10 @@ export const UploadFileRemovePrimitive = React.forwardRef<
   UploadFileRemovePrimitiveProps
 >(({ className, ...props }, ref) => {
   return (
-    <button
+    <Button
       ref={ref}
+      variant="unstyled"
+      size="unstyled"
       type="button"
       className={cn(
         "flex h-4 w-4 items-center justify-center cursor-pointer text-[var(--Text-text-tertiary)] ",

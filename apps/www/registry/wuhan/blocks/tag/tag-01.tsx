@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { Button } from "@/registry/wuhan/ui/button";
 import { cn } from "@/lib/utils";
 import { X } from "lucide-react";
 
@@ -225,8 +226,10 @@ const TagCloseButtonPrimitive = React.forwardRef<
   TagCloseButtonPrimitiveProps
 >(({ className, closeIcon, ...props }, ref) => {
   return (
-    <button
+    <Button
       ref={ref}
+      variant="unstyled"
+      size="unstyled"
       type="button"
       className={cn(
         "inline-flex items-center justify-center",
@@ -243,7 +246,7 @@ const TagCloseButtonPrimitive = React.forwardRef<
       {...props}
     >
       {closeIcon || <X className="h-3 w-3" />}
-    </button>
+    </Button>
   );
 });
 TagCloseButtonPrimitive.displayName = "TagCloseButtonPrimitive";
@@ -265,8 +268,10 @@ const CheckableTagContainerPrimitive = React.forwardRef<
   CheckableTagContainerPrimitiveProps
 >(({ className, checked = false, disabled = false, ...props }, ref) => {
   return (
-    <button
+    <Button
       ref={ref}
+      variant="unstyled"
+      size="unstyled"
       type="button"
       disabled={disabled}
       className={cn(

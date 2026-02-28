@@ -7,7 +7,7 @@ export default function ButtonIconOnlyDemo() {
   return (
     <div className="space-y-6">
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
           纯图标按钮（不同尺寸）
         </h3>
         <div className="flex items-center gap-3">
@@ -33,7 +33,7 @@ export default function ButtonIconOnlyDemo() {
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
           纯图标按钮（不同变体）
         </h3>
         <div className="flex items-center gap-3">
@@ -56,7 +56,7 @@ export default function ButtonIconOnlyDemo() {
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
           纯图标按钮（不同颜色）
         </h3>
         <div className="flex items-center gap-3">
@@ -79,7 +79,7 @@ export default function ButtonIconOnlyDemo() {
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
           纯图标按钮（禁用状态）
         </h3>
         <div className="flex items-center gap-3">

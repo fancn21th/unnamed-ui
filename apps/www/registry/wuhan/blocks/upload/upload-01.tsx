@@ -164,10 +164,10 @@ export const UploadFileIconPrimitive = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "flex h-5 w-5 items-center justify-center text-[var(--text-tertiary)]",
-        status === "uploading" && "text-[var(--text-brand)]",
-        status === "success" && "text-[var(--text-tertiary)]",
-        status === "error" && "text-[var(--text-danger)]",
+        "flex h-5 w-5 items-center justify-center text-[var(--Text-text-tertiary)]",
+        status === "uploading" && "text-[var(--Text-text-brand)]",
+        status === "success" && "text-[var(--Text-text-tertiary)]",
+        status === "error" && "text-[var(--Text-text-error)]",
         className,
       )}
       {...props}
@@ -194,12 +194,12 @@ export const UploadFileNamePrimitive = React.forwardRef<
     <span
       ref={ref}
       className={cn(
-        // "flex-1 truncate text-sm text-[var(--text-secondary)]",
-        "font-[var(--font-family-cn)]",
+        // "flex-1 truncate text-sm text-[var(--Text-text-secondary)]",
+        "font-[var(--font-family-CN)]",
         "font-[var(--font-weight-400)]",
         "font-size-2",
         "leading-[var(--line-height-1)]",
-        "text-[var(--text-primary)]",
+        "text-[var(--Text-text-primary)]",
         "truncate",
         className,
       )}
@@ -226,7 +226,7 @@ export const UploadFileSizePrimitive = React.forwardRef<
   return (
     <span
       ref={ref}
-      className={cn("text-xs text-[var(--text-tertiary)]", className)}
+      className={cn("text-xs text-[var(--Text-text-tertiary)]", className)}
       {...props}
     />
   );
@@ -252,7 +252,7 @@ export const UploadFileRemovePrimitive = React.forwardRef<
       ref={ref}
       type="button"
       className={cn(
-        "flex h-4 w-4 items-center justify-center cursor-pointer text-[var(--text-tertiary)] ",
+        "flex h-4 w-4 items-center justify-center cursor-pointer text-[var(--Text-text-tertiary)] ",
         className,
       )}
       {...props}
@@ -278,7 +278,7 @@ export const UploadFileErrorPrimitive = React.forwardRef<
   return (
     <div
       ref={ref}
-      className={cn("mt-1 text-xs text-[var(--text-danger)]", className)}
+      className={cn("mt-1 text-xs text-[var(--Text-text-error)]", className)}
       {...props}
     />
   );

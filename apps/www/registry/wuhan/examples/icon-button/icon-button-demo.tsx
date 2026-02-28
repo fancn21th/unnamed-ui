@@ -53,21 +53,21 @@ export default function IconButtonDemo() {
     <div className="w-full max-w-[900px] mx-auto p-6 space-y-8">
       {/* 标题区域 */}
       <div className="space-y-2">
-        <h1 className="text-2xl font-semibold text-[var(--text-primary)]">
+        <h1 className="text-2xl font-semibold text-[var(--Text-text-primary)]">
           Icon Button
         </h1>
-        <p className="text-sm text-[var(--text-secondary)]">
+        <p className="text-sm text-[var(--Text-text-secondary)]">
           带 Tooltip 功能的图标按钮组件，支持多种变体、颜色、尺寸和加载状态。
         </p>
       </div>
 
       {/* 基础用法 */}
       <section className="space-y-4">
-        <h2 className="text-lg font-medium text-[var(--text-primary)]">
+        <h2 className="text-lg font-medium text-[var(--Text-text-primary)]">
           基础用法
         </h2>
-        <div className="p-6 bg-[var(--bg-container)] rounded-[var(--radius-lg)] border border-[var(--border-neutral)] space-y-4">
-          <p className="text-sm text-[var(--text-secondary)] mb-4">
+        <div className="p-6 bg-[var(--Container-bg-container)] rounded-[var(--radius-lg)] border border-[var(--Border-border-neutral)] space-y-4">
+          <p className="text-sm text-[var(--Text-text-secondary)] mb-4">
             不带 tooltip 的图标按钮：
           </p>
           <div className="flex flex-wrap gap-3">
@@ -92,11 +92,11 @@ export default function IconButtonDemo() {
 
       {/* 带 Tooltip 的图标按钮 */}
       <section className="space-y-4">
-        <h2 className="text-lg font-medium text-[var(--text-primary)]">
+        <h2 className="text-lg font-medium text-[var(--Text-text-primary)]">
           带 Tooltip 的图标按钮
         </h2>
-        <div className="p-6 bg-[var(--bg-container)] rounded-[var(--radius-lg)] border border-[var(--border-neutral)] space-y-4">
-          <p className="text-sm text-[var(--text-secondary)] mb-4">
+        <div className="p-6 bg-[var(--Container-bg-container)] rounded-[var(--radius-lg)] border border-[var(--Border-border-neutral)] space-y-4">
+          <p className="text-sm text-[var(--Text-text-secondary)] mb-4">
             悬停查看 tooltip 提示：
           </p>
           <div className="flex flex-wrap gap-3">
@@ -111,7 +111,7 @@ export default function IconButtonDemo() {
             </IconButton>
             <IconButton tooltip="复制" variant="outline" color="secondary">
               {copied === "copy" ? (
-                <Check className="size-4 text-[var(--text-success)]" />
+                <Check className="size-4 text-[var(--Text-text-success)]" />
               ) : (
                 <Copy
                   className="size-4"
@@ -131,13 +131,13 @@ export default function IconButtonDemo() {
 
       {/* 变体展示 */}
       <section className="space-y-4">
-        <h2 className="text-lg font-medium text-[var(--text-primary)]">
+        <h2 className="text-lg font-medium text-[var(--Text-text-primary)]">
           变体展示
         </h2>
-        <div className="p-6 bg-[var(--bg-container)] rounded-[var(--radius-lg)] border border-[var(--border-neutral)] space-y-6">
+        <div className="p-6 bg-[var(--Container-bg-container)] rounded-[var(--radius-lg)] border border-[var(--Border-border-neutral)] space-y-6">
           {/* Solid 变体 */}
           <div className="space-y-3">
-            <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+            <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
               Solid (实心)
             </h3>
             <div className="flex flex-wrap gap-3">
@@ -155,7 +155,7 @@ export default function IconButtonDemo() {
 
           {/* Light 变体 */}
           <div className="space-y-3">
-            <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+            <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
               Light (浅色 - 有边框)
             </h3>
             <div className="flex flex-wrap gap-3">
@@ -173,7 +173,7 @@ export default function IconButtonDemo() {
 
           {/* Light 无边框变体 */}
           <div className="space-y-3">
-            <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+            <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
               Light (浅色 - 无边框)
             </h3>
             <div className="flex flex-wrap gap-3">
@@ -206,7 +206,7 @@ export default function IconButtonDemo() {
 
           {/* Outline 变体 */}
           <div className="space-y-3">
-            <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+            <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
               Outline (边框)
             </h3>
             <div className="flex flex-wrap gap-3">
@@ -224,7 +224,7 @@ export default function IconButtonDemo() {
 
           {/* Ghost 变体 */}
           <div className="space-y-3">
-            <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+            <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
               Ghost (幽灵)
             </h3>
             <div className="flex flex-wrap gap-3">
@@ -244,10 +244,10 @@ export default function IconButtonDemo() {
 
       {/* 尺寸展示 */}
       <section className="space-y-4">
-        <h2 className="text-lg font-medium text-[var(--text-primary)]">
+        <h2 className="text-lg font-medium text-[var(--Text-text-primary)]">
           尺寸展示
         </h2>
-        <div className="p-6 bg-[var(--bg-container)] rounded-[var(--radius-lg)] border border-[var(--border-neutral)] space-y-4">
+        <div className="p-6 bg-[var(--Container-bg-container)] rounded-[var(--radius-lg)] border border-[var(--Border-border-neutral)] space-y-4">
           <div className="flex flex-wrap items-center gap-4">
             <IconButton
               tooltip="超小 (24px)"
@@ -287,10 +287,10 @@ export default function IconButtonDemo() {
 
       {/* Tooltip 位置 */}
       <section className="space-y-4">
-        <h2 className="text-lg font-medium text-[var(--text-primary)]">
+        <h2 className="text-lg font-medium text-[var(--Text-text-primary)]">
           Tooltip 位置
         </h2>
-        <div className="p-6 bg-[var(--bg-container)] rounded-[var(--radius-lg)] border border-[var(--border-neutral)] space-y-4">
+        <div className="p-6 bg-[var(--Container-bg-container)] rounded-[var(--radius-lg)] border border-[var(--Border-border-neutral)] space-y-4">
           <div className="flex flex-wrap gap-4">
             <IconButton
               tooltip="上边"
@@ -330,10 +330,10 @@ export default function IconButtonDemo() {
 
       {/* 加载状态 */}
       <section className="space-y-4">
-        <h2 className="text-lg font-medium text-[var(--text-primary)]">
+        <h2 className="text-lg font-medium text-[var(--Text-text-primary)]">
           加载状态
         </h2>
-        <div className="p-6 bg-[var(--bg-container)] rounded-[var(--radius-lg)] border border-[var(--border-neutral)] space-y-4">
+        <div className="p-6 bg-[var(--Container-bg-container)] rounded-[var(--radius-lg)] border border-[var(--Border-border-neutral)] space-y-4">
           <div className="flex flex-wrap gap-4">
             <IconButton
               tooltip="下载中..."
@@ -368,10 +368,10 @@ export default function IconButtonDemo() {
 
       {/* 禁用状态 */}
       <section className="space-y-4">
-        <h2 className="text-lg font-medium text-[var(--text-primary)]">
+        <h2 className="text-lg font-medium text-[var(--Text-text-primary)]">
           禁用状态
         </h2>
-        <div className="p-6 bg-[var(--bg-container)] rounded-[var(--radius-lg)] border border-[var(--border-neutral)] space-y-4">
+        <div className="p-6 bg-[var(--Container-bg-container)] rounded-[var(--radius-lg)] border border-[var(--Border-border-neutral)] space-y-4">
           <div className="flex flex-wrap gap-4">
             <IconButton tooltip="禁用" disabled variant="solid" color="primary">
               <Plus className="size-4" />
@@ -396,16 +396,16 @@ export default function IconButtonDemo() {
 
       {/* 实际应用场景 */}
       <section className="space-y-4">
-        <h2 className="text-lg font-medium text-[var(--text-primary)]">
+        <h2 className="text-lg font-medium text-[var(--Text-text-primary)]">
           实际应用场景
         </h2>
-        <div className="p-6 bg-[var(--bg-container)] rounded-[var(--radius-lg)] border border-[var(--border-neutral)] space-y-4">
+        <div className="p-6 bg-[var(--Container-bg-container)] rounded-[var(--radius-lg)] border border-[var(--Border-border-neutral)] space-y-4">
           {/* 工具栏场景 */}
           <div className="space-y-2">
-            <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+            <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
               工具栏按钮组（Ghost 变体）
             </h3>
-            <div className="flex items-center gap-1 p-2 bg-[var(--bg-surface)] rounded-[var(--radius-md)] border border-[var(--border-neutral)]">
+            <div className="flex items-center gap-1 p-2 bg-[var(--Page-bg-page-secondary)] rounded-[var(--radius-md)] border border-[var(--Border-border-neutral)]">
               <IconButton
                 tooltip="添加文件夹"
                 variant="ghost"
@@ -438,7 +438,7 @@ export default function IconButtonDemo() {
               >
                 <Trash2 className="size-4" />
               </IconButton>
-              <div className="w-px h-6 bg-[var(--border-neutral)] mx-2" />
+              <div className="w-px h-6 bg-[var(--Border-border-neutral)] mx-2" />
               <IconButton
                 tooltip="搜索"
                 variant="ghost"
@@ -460,10 +460,10 @@ export default function IconButtonDemo() {
 
           {/* Light 工具栏场景 */}
           <div className="space-y-2">
-            <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+            <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
               工具栏按钮组（Light 变体）
             </h3>
-            <div className="flex items-center gap-2 p-3 bg-[var(--bg-surface)] rounded-[var(--radius-md)] border border-[var(--border-neutral)]">
+            <div className="flex items-center gap-2 p-3 bg-[var(--Page-bg-page-secondary)] rounded-[var(--radius-md)] border border-[var(--Border-border-neutral)]">
               <IconButton
                 tooltip="刷新"
                 variant="light"
@@ -503,11 +503,11 @@ export default function IconButtonDemo() {
 
           {/* 更多操作场景 */}
           <div className="space-y-2">
-            <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+            <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
               卡片操作按钮
             </h3>
-            <div className="flex items-center gap-2 p-4 bg-[var(--bg-surface)] rounded-[var(--radius-md)] border border-[var(--border-neutral)]">
-              <span className="text-sm text-[var(--text-secondary)] flex-1">
+            <div className="flex items-center gap-2 p-4 bg-[var(--Page-bg-page-secondary)] rounded-[var(--radius-md)] border border-[var(--Border-border-neutral)]">
+              <span className="text-sm text-[var(--Text-text-secondary)] flex-1">
                 项目名称
               </span>
               <IconButton

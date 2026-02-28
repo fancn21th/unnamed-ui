@@ -40,27 +40,27 @@ const RadioGroupItemPrimitive = React.forwardRef<
       className={cn(
         "aspect-square h-4 w-4 rounded-full",
         // 默认边框颜色
-        "border border-[var(--border-neutral)]",
+        "border border-[var(--Border-border-neutral)]",
         // 背景色
-        "bg-[var(--bg-container)]",
+        "bg-[var(--Container-bg-container)]",
         // 过渡动画
         "transition-all duration-200",
         // Hover 状态
-        "hover:border-[var(--border-brand)]",
+        "hover:border-[var(--Border-border-brand)]",
         // Focus 状态
         "focus-visible:outline-none",
         "focus-visible:ring-2",
         "focus-visible:ring-[var(--ring)]",
         "focus-visible:ring-offset-2",
         // 选中状态
-        "data-[state=checked]:border-[var(--border-brand)]",
-        "data-[state=checked]:bg-[var(--bg-brand)]",
+        "data-[state=checked]:border-[var(--Border-border-brand)]",
+        "data-[state=checked]:bg-[var(--Container-bg-brand)]",
         // 禁用状态
         "disabled:cursor-not-allowed",
         "disabled:opacity-50",
-        "disabled:hover:border-[var(--border-neutral)]",
-        "disabled:data-[state=checked]:bg-[var(--bg-neutral)]",
-        "disabled:data-[state=checked]:border-[var(--border-neutral)]",
+        "disabled:hover:border-[var(--Border-border-neutral)]",
+        "disabled:data-[state=checked]:bg-[var(--Container-bg-neutral)]",
+        "disabled:data-[state=checked]:border-[var(--Border-border-neutral)]",
         className,
       )}
       {...props}

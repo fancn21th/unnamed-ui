@@ -22,7 +22,7 @@ export default function AccordionDemo() {
             value="item-1"
             trigger="工作目标：5"
             content={
-              <div className="text-sm text-[var(--text-secondary)]">
+              <div className="text-sm text-[var(--Text-text-secondary)]">
                 工作内容
               </div>
             }
@@ -31,7 +31,7 @@ export default function AccordionDemo() {
             value="item-2"
             trigger="工作目标：5"
             content={
-              <div className="text-sm text-[var(--text-secondary)]">
+              <div className="text-sm text-[var(--Text-text-secondary)]">
                 工作内容
               </div>
             }
@@ -40,7 +40,7 @@ export default function AccordionDemo() {
             value="item-3"
             trigger="工作目标：5"
             content={
-              <div className="text-sm text-[var(--text-secondary)]">
+              <div className="text-sm text-[var(--Text-text-secondary)]">
                 工作内容
               </div>
             }
@@ -56,7 +56,7 @@ export default function AccordionDemo() {
             value="feature-1"
             trigger="工作目标：5"
             content={
-              <div className="text-sm text-[var(--text-secondary)]">
+              <div className="text-sm text-[var(--Text-text-secondary)]">
                 工作内容
               </div>
             }
@@ -65,7 +65,7 @@ export default function AccordionDemo() {
             value="feature-2"
             trigger="工作目标：5"
             content={
-              <div className="text-sm text-[var(--text-secondary)]">
+              <div className="text-sm text-[var(--Text-text-secondary)]">
                 工作内容
               </div>
             }
@@ -74,7 +74,7 @@ export default function AccordionDemo() {
             value="feature-3"
             trigger="工作目标：5"
             content={
-              <div className="text-sm text-[var(--text-secondary)]">
+              <div className="text-sm text-[var(--Text-text-secondary)]">
                 工作内容
               </div>
             }
@@ -116,7 +116,7 @@ export default function AccordionDemo() {
           />
         </Accordion>
         <button
-          className="mt-3 px-3 py-1.5 text-sm bg-[var(--bg-brand)] text-white rounded-[var(--radius-md)]"
+          className="mt-3 px-3 py-1.5 text-sm bg-[var(--Container-bg-brand)] text-white rounded-[var(--radius-md)]"
           onClick={() => setSingleValue("")}
         >
           收起全部

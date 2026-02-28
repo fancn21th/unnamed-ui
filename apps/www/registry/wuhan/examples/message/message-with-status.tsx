@@ -41,7 +41,7 @@ export default function MessageWithStatus() {
     <div className="flex flex-col gap-6 w-full h-full max-w-2xl">
       {/* 示例 1: 正常状态 */}
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
           正常状态
         </h3>
         <div className="flex justify-start w-full">
@@ -53,7 +53,7 @@ export default function MessageWithStatus() {
 
       {/* 示例 2: 生成中状态 - 使用原语组件 */}
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
           生成中状态（使用原语组件）
         </h3>
         <div className="flex justify-start w-full">
@@ -71,14 +71,14 @@ export default function MessageWithStatus() {
 
       {/* 示例 3: 生成中状态 - 自定义内容 */}
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
           生成中状态（自定义）
         </h3>
         <div className="flex justify-start w-full">
           <AIMessage
             status="generating"
             generatingContent={
-              <span className="text-[var(--text-secondary)]">
+              <span className="text-[var(--Text-text-secondary)]">
                 正在生成回复，请稍候...
               </span>
             }
@@ -90,7 +90,7 @@ export default function MessageWithStatus() {
 
       {/* 示例 4: 生成失败状态 - 使用默认错误消息 */}
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
           生成失败状态（默认）
         </h3>
         <div className="flex justify-start w-full">
@@ -102,7 +102,7 @@ export default function MessageWithStatus() {
 
       {/* 示例 5: 生成失败状态 - 使用原语组件 */}
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
           生成失败状态（使用原语组件）
         </h3>
         <div className="flex justify-start w-full">
@@ -111,7 +111,7 @@ export default function MessageWithStatus() {
             errorContent={
               <MessageFailedPrimitive
                 icon={
-                  <AlertCircle className="size-4 text-[var(--text-error)]" />
+                  <AlertCircle className="size-4 text-[var(--Text-text-error)]" />
                 }
                 message="生成失败，请稍后重试"
               />
@@ -124,7 +124,7 @@ export default function MessageWithStatus() {
 
       {/* 示例 6: 生成失败状态 - 带重试按钮（使用原语组件） */}
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
           生成失败状态（带重试，使用原语组件）
         </h3>
         <div className="flex justify-start w-full">
@@ -133,7 +133,7 @@ export default function MessageWithStatus() {
             errorContent={
               <MessageFailedPrimitive
                 icon={
-                  <AlertCircle className="size-4 text-[var(--text-error)]" />
+                  <AlertCircle className="size-4 text-[var(--Text-text-error)]" />
                 }
                 message="生成失败，请稍后重试"
                 actions={
@@ -171,7 +171,7 @@ export default function MessageWithStatus() {
             errorContent={
               <MessageFailedPrimitive
                 icon={
-                  <AlertCircle className="size-4 text-[var(--text-error)]" />
+                  <AlertCircle className="size-4 text-[var(--Text-text-error)]" />
                 }
                 message="生成失败"
                 actions={

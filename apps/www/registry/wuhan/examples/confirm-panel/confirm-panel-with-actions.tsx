@@ -21,18 +21,18 @@ export default function ConfirmPanelWithActions() {
     >
       <div className="space-y-3">
         <div>
-          <h4 className="text-sm font-medium text-[var(--text-primary)] mb-1">
+          <h4 className="text-sm font-medium text-[var(--Text-text-primary)] mb-1">
             文章标题
           </h4>
-          <p className="text-sm text-[var(--text-secondary)]">
+          <p className="text-sm text-[var(--Text-text-secondary)]">
             如何使用 React 构建现代化应用
           </p>
         </div>
         <div>
-          <h4 className="text-sm font-medium text-[var(--text-primary)] mb-1">
+          <h4 className="text-sm font-medium text-[var(--Text-text-primary)] mb-1">
             发布设置
           </h4>
-          <ul className="text-sm text-[var(--text-tertiary)] list-disc list-inside space-y-1">
+          <ul className="text-sm text-[var(--Text-text-tertiary)] list-disc list-inside space-y-1">
             <li>分类：技术博客</li>
             <li>标签：React, JavaScript, 前端</li>
             <li>可见性：公开</li>

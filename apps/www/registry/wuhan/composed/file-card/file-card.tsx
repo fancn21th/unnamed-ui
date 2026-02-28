@@ -132,7 +132,7 @@ export function getStatusIcon(status: FileCardStatus): React.ReactNode {
     case "loading":
       return (
         <svg
-          className="w-6 h-6 animate-spin text-[var(--text-brand)]"
+          className="w-6 h-6 animate-spin text-[var(--Text-text-brand)]"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -156,11 +156,13 @@ export function getStatusIcon(status: FileCardStatus): React.ReactNode {
         </svg>
       );
     case "error":
-      return <FileCardErrorIcon className="w-6 h-6 text-[var(--text-error)]" />;
+      return (
+        <FileCardErrorIcon className="w-6 h-6 text-[var(--Text-text-error)]" />
+      );
     case "uploading":
       return (
         <svg
-          className="w-6 h-6 animate-pulse text-[var(--text-brand)]"
+          className="w-6 h-6 animate-pulse text-[var(--Text-text-brand)]"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -177,7 +179,7 @@ export function getStatusIcon(status: FileCardStatus): React.ReactNode {
     case "warning":
       return (
         <svg
-          className="w-6 h-6 text-[var(--text-warning)]"
+          className="w-6 h-6 text-[var(--Text-text-warning)]"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -196,7 +198,7 @@ export function getStatusIcon(status: FileCardStatus): React.ReactNode {
     case "success":
       return (
         <svg
-          className="w-6 h-6 text-[var(--text-success)]"
+          className="w-6 h-6 text-[var(--Text-text-success)]"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -469,7 +471,7 @@ export const FileCardList = React.memo(
     // 计算间距样式
     const gapStyle = React.useMemo(() => {
       if (spacing === undefined) {
-        return "var(--gap-sm)"; // 默认 16px
+        return "var(--Gap-gap-sm)"; // 默认 16px
       }
       if (typeof spacing === "number") {
         return `${spacing}px`;
@@ -486,14 +488,14 @@ export const FileCardList = React.memo(
     return (
       <div ref={ref} className={className}>
         {title && (
-          <div className="flex items-center justify-between mb-[var(--margin-com-md)]">
+          <div className="flex items-center justify-between mb-[var(--Margin-margin-com-md)]">
             <h3
               className={cn(
-                "font-[var(--font-family-cn)]",
+                "font-[var(--font-family-CN)]",
                 "font-[var(--font-weight-600)]",
                 "font-size-3",
                 "leading-[var(--line-height-3)]",
-                "text-[var(--text-primary)]",
+                "text-[var(--Text-text-primary)]",
               )}
             >
               {title}
@@ -502,7 +504,7 @@ export const FileCardList = React.memo(
                   className={cn(
                     "ml-2",
                     "text-sm",
-                    "text-[var(--text-tertiary)]",
+                    "text-[var(--Text-text-tertiary)]",
                   )}
                 >
                   ({selectedCount}/{files.length})
@@ -514,7 +516,7 @@ export const FileCardList = React.memo(
                 type="button"
                 className={cn(
                   "text-sm",
-                  "text-[var(--text-brand)]",
+                  "text-[var(--Text-text-brand)]",
                   "hover:underline",
                   "appearance-none",
                   "border-0",
@@ -536,9 +538,9 @@ export const FileCardList = React.memo(
             className={cn(
               "flex items-center justify-center",
               "p-8",
-              "text-[var(--text-tertiary)]",
+              "text-[var(--Text-text-tertiary)]",
               "rounded-[var(--radius-xl)]",
-              "bg-[var(--bg-page)]",
+              "bg-[var(--Page-bg-page)]",
             )}
           >
             暂无文件

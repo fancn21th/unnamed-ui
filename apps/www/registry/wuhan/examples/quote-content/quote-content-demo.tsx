@@ -12,7 +12,7 @@ export default function QuoteContentDemo() {
     <div className="w-full max-w-2xl space-y-4">
       {/* 基础用法 */}
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
           基础用法
         </h3>
         <QuoteContentComposed
@@ -25,7 +25,7 @@ export default function QuoteContentDemo() {
 
       {/* 带关闭功能 */}
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
           带关闭功能
         </h3>
         {showQuote1 && (
@@ -37,7 +37,7 @@ export default function QuoteContentDemo() {
         {!showQuote1 && (
           <button
             onClick={() => setShowQuote1(true)}
-            className="appearance-none border-0 bg-transparent p-0 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+            className="appearance-none border-0 bg-transparent p-0 text-sm text-[var(--Text-text-secondary)] hover:text-[var(--Text-text-primary)]"
           >
             重新显示引用
           </button>
@@ -46,7 +46,7 @@ export default function QuoteContentDemo() {
 
       {/* 长文本溢出 */}
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
           长文本溢出处理
         </h3>
         {showQuote2 && (
@@ -59,7 +59,7 @@ export default function QuoteContentDemo() {
 
       {/* 自定义内容 */}
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
           自定义内容
         </h3>
         {showQuote3 && (
@@ -72,7 +72,7 @@ export default function QuoteContentDemo() {
 
       {/* 无关闭按钮 */}
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
           无关闭按钮
         </h3>
         <QuoteContentComposed content="不提供关闭按钮时，引用内容会一直显示" />

@@ -115,22 +115,22 @@ const getStatusColor = (
   switch (status) {
     case "completed":
       return {
-        stroke: "var(--text-success)",
-        text: "var(--text-success)",
-        bg: "var(--bg-success-light)",
+        stroke: "var(--Text-text-success)",
+        text: "var(--Text-text-success)",
+        bg: "var(--Container-bg-success-light)",
       };
     case "failed":
       return {
-        stroke: "var(--text-error)",
-        text: "var(--text-error)",
-        bg: "var(--bg-error-light)",
+        stroke: "var(--Text-text-error)",
+        text: "var(--Text-text-error)",
+        bg: "var(--Container-bg-error-light)",
       };
     case "in_progress":
     default:
       return {
-        stroke: "var(--text-brand)",
-        text: "var(--text-brand)",
-        bg: "var(--bg-brand-light)",
+        stroke: "var(--Text-text-brand)",
+        text: "var(--Text-text-brand)",
+        bg: "var(--Container-bg-brand-light)",
       };
   }
 };
@@ -207,9 +207,9 @@ export const GoalCardContainerPrimitive = React.forwardRef<
     "sm" | "md" | "lg",
     { padding: string; gap: string }
   > = {
-    sm: { padding: "var(--padding-com-sm)", gap: "var(--gap-sm)" },
-    md: { padding: "var(--padding-com-lg)", gap: "var(--gap-md)" },
-    lg: { padding: "var(--padding-com-xl)", gap: "var(--gap-lg)" },
+    sm: { padding: "var(--Padding-padding-com-sm)", gap: "var(--Gap-gap-sm)" },
+    md: { padding: "var(--Padding-padding-com-lg)", gap: "var(--Gap-gap-md)" },
+    lg: { padding: "var(--Padding-padding-com-xl)", gap: "var(--Gap-gap-lg)" },
   };
 
   const sizeKey: "sm" | "md" | "lg" = size;
@@ -221,13 +221,13 @@ export const GoalCardContainerPrimitive = React.forwardRef<
       className={cn(
         "w-full",
         "rounded-[var(--radius-xl)]",
-        "bg-[var(--bg-container)]",
-        "border border-[var(--border-neutral)]",
+        "bg-[var(--Container-bg-container)]",
+        "border border-[var(--Border-border-neutral)]",
         "flex items-center",
         "justify-between",
         "transition-colors",
         "duration-200",
-        "hover:bg-[var(--bg-neutral-light)]",
+        "hover:bg-[var(--Container-bg-neutral-light)]",
         className,
       )}
       style={{ padding, gap }}
@@ -265,7 +265,7 @@ export const GoalCardHeaderPrimitive = React.forwardRef<
       {/* 图标 - 第一行 */}
       {icon && (
         <div className="flex items-center justify-start mb-1">
-          <span className="text-[var(--text-brand)]">
+          <span className="text-[var(--Text-text-brand)]">
             {React.isValidElement(icon)
               ? React.cloneElement(
                   icon as React.ReactElement<{ size?: number }>,
@@ -282,11 +282,11 @@ export const GoalCardHeaderPrimitive = React.forwardRef<
       {title && (
         <span
           className={cn(
-            "font-[var(--font-family-cn)]",
+            "font-[var(--font-family-CN)]",
             "font-[var(--font-weight-400)]",
             titleFontSize,
             "leading-[var(--line-height-2)]",
-            "text-[var(--text-primary)]",
+            "text-[var(--Text-text-primary)]",
             "truncate",
           )}
         >
@@ -369,7 +369,7 @@ export const GoalCardProgressPrimitive = React.forwardRef<
           size={fixedSize}
           strokeWidth={strokeWidth}
           strokeColor={statusColor.stroke}
-          trackColor="var(--bg-neutral-light)"
+          trackColor="var(--Container-bg-neutral-light)"
         />
 
         {/* 100% 完成时显示对号 */}
@@ -405,7 +405,7 @@ export const GoalCardProgressPrimitive = React.forwardRef<
           >
             <span
               className={cn(
-                "font-[var(--font-family-en)]",
+                "font-[var(--font-family-EN)]",
                 "font-[var(--font-weight-400)]",
               )}
               style={{ fontSize }}
@@ -415,7 +415,7 @@ export const GoalCardProgressPrimitive = React.forwardRef<
             <span
               className={cn(
                 "font-[var(--font-weight-400)]",
-                "text-[var(--text-secondary)]",
+                "text-[var(--Text-text-secondary)]",
               )}
               style={{
                 fontSize: `${parseInt(fontSize) * 0.65}px`,
@@ -447,7 +447,7 @@ export const GoalCardAiIcon = ({
   <Sparkles
     className={className}
     size={size}
-    style={{ color: "var(--text-brand)" }}
+    style={{ color: "var(--Text-text-brand)" }}
   />
 );
 

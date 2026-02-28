@@ -67,8 +67,10 @@ const defaultLabels: Required<DeepThinkingLabels> = {
 /** 状态对应的默认图标映射 */
 const statusIconMap: Record<DeepThinkingStatus, React.ReactNode> = {
   thinking: <ThinkingDotsPrimitive />,
-  completed: <CheckCircle2 className="size-4 text-[var(--text-success)]" />,
-  failed: <AlertCircle className="size-4 text-[var(--text-error)]" />,
+  completed: (
+    <CheckCircle2 className="size-4 text-[var(--Text-text-success)]" />
+  ),
+  failed: <AlertCircle className="size-4 text-[var(--Text-text-error)]" />,
 };
 
 /**
@@ -140,7 +142,7 @@ export const DeepThinking = React.forwardRef<HTMLDivElement, DeepThinkingProps>(
 
     // 解析图标：优先使用 icon prop，否则根据状态选择默认图标
     const resolvedIcon = icon ?? statusIconMap[status] ?? (
-      <Sparkles className="size-4 text-[var(--text-brand)]" />
+      <Sparkles className="size-4 text-[var(--Text-text-brand)]" />
     );
 
     return (
@@ -164,7 +166,7 @@ export const DeepThinking = React.forwardRef<HTMLDivElement, DeepThinkingProps>(
             <DeepThinkingTitlePrimitive
               className={
                 status === "thinking"
-                  ? "text-[var(--text-secondary)]"
+                  ? "text-[var(--Text-text-secondary)]"
                   : undefined
               }
             >

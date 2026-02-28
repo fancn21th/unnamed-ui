@@ -30,7 +30,7 @@ export default function FeedbackControlled() {
   return (
     <div className="flex flex-col gap-6 w-full max-w-md">
       <div>
-        <h3 className="text-sm font-medium text-[var(--text-secondary)] mb-4">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)] mb-4">
           受控模式反馈表单
         </h3>
         {submitted ? (
@@ -54,7 +54,7 @@ export default function FeedbackControlled() {
       </div>
 
       {/* 显示当前状态 */}
-      <div className="text-xs text-[var(--text-tertiary)] space-y-1">
+      <div className="text-xs text-[var(--Text-text-tertiary)] space-y-1">
         <div>当前选择: {selectedOption || "无"}</div>
         <div>输入内容: {inputValue || "空"}</div>
       </div>

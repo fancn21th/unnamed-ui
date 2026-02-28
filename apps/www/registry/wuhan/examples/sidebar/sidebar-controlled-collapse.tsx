@@ -22,7 +22,7 @@ export default function SidebarControlledCollapse() {
         </Button>
       </div>
       <div
-        className={`h-[500px] border border-[var(--border-neutral)] rounded-lg overflow-hidden transition-all ${
+        className={`h-[500px] border border-[var(--Border-border-neutral)] rounded-lg overflow-hidden transition-all ${
           collapsed ? "w-[56px]" : "w-[240px]"
         }`}
       >

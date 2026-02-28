@@ -19,14 +19,16 @@ const initialItems: TaskCardItem[] = [
 const getStatusIcon = (status: string) => {
   switch (status) {
     case "completed":
-      return <CheckCircle2 className="size-4 text-[var(--text-success)]" />;
+      return (
+        <CheckCircle2 className="size-4 text-[var(--Text-text-success)]" />
+      );
     case "running":
       return (
-        <Loader2 className="size-4 text-[var(--text-brand)] animate-spin" />
+        <Loader2 className="size-4 text-[var(--Text-text-brand)] animate-spin" />
       );
     case "pending":
     default:
-      return <Circle className="size-4 text-[var(--text-tertiary)]" />;
+      return <Circle className="size-4 text-[var(--Text-text-tertiary)]" />;
   }
 };
 
@@ -34,14 +36,16 @@ const getStatusIcon = (status: string) => {
 const getStatusIconForStep = (status: string) => {
   switch (status) {
     case "completed":
-      return <CheckCircle2 className="size-4 text-[var(--text-success)]" />;
+      return (
+        <CheckCircle2 className="size-4 text-[var(--Text-text-success)]" />
+      );
     case "running":
       return (
-        <Loader2 className="size-4 text-[var(--text-brand)] animate-spin" />
+        <Loader2 className="size-4 text-[var(--Text-text-brand)] animate-spin" />
       );
     case "pending":
     default:
-      return <Circle className="size-4 text-[var(--text-tertiary)]" />;
+      return <Circle className="size-4 text-[var(--Text-text-tertiary)]" />;
   }
 };
 

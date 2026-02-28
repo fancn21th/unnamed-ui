@@ -153,7 +153,7 @@ export const SidebarComposed = React.forwardRef<HTMLDivElement, SidebarProps>(
         size="icon-sm"
         onClick={toggleCollapsed}
         aria-label="收起侧边栏"
-        className="text-[var(--text-secondary)] hover:bg-[var(--bg-neutral-light)]"
+        className="text-[var(--Text-text-secondary)] hover:bg-[var(--Container-bg-neutral-light)]"
       >
         <ChevronLeft className="size-4" />
       </Button>
@@ -191,24 +191,24 @@ export const SidebarComposed = React.forwardRef<HTMLDivElement, SidebarProps>(
           };
 
     const iconButtonClassName =
-      "text-[var(--text-secondary)] hover:bg-[var(--bg-neutral-light)] appearance-none border-0 bg-transparent";
+      "text-[var(--Text-text-secondary)] hover:bg-[var(--Container-bg-neutral-light)] appearance-none border-0 bg-transparent";
 
     const resolvedClassName = cn(
       "w-[240px] min-h-[360px]",
-      "rounded-lg border border-[var(--border-neutral)] overflow-hidden bg-[var(--bg-page-secondary)]",
+      "rounded-lg border border-[var(--Border-border-neutral)] overflow-hidden bg-[var(--Page-bg-page-secondary)]",
       "transition-[width,padding] duration-200",
       isCollapsed && "w-[56px]",
       className,
     );
 
     const resolvedContentClassName = cn(
-      "p-[var(--padding-com-lg)]",
+      "p-[var(--Padding-padding-com-lg)]",
       isCollapsed && "p-2",
       contentClassName,
     );
 
     const resolvedFooterClassName = cn(
-      "px-[var(--padding-com-lg)] pb-[var(--padding-com-lg)]",
+      "px-[var(--Padding-padding-com-lg)] pb-[var(--Padding-padding-com-lg)]",
       isCollapsed && "p-2",
     );
 
@@ -226,7 +226,7 @@ export const SidebarComposed = React.forwardRef<HTMLDivElement, SidebarProps>(
           {resolvedHeader && (
             <SidebarHeaderPrimitive
               className={cn(
-                isCollapsed && "flex-col gap-[var(--gap-sm)] items-center",
+                isCollapsed && "flex-col gap-[var(--Gap-gap-sm)] items-center",
               )}
             >
               {isCollapsed ? (
@@ -297,7 +297,7 @@ export const SidebarComposed = React.forwardRef<HTMLDivElement, SidebarProps>(
           )}
 
           {showDetails && resolvedNewButton && (
-            <div className="mt-[var(--gap-lg)]">
+            <div className="mt-[var(--Gap-gap-lg)]">
               <SidebarNewButtonPrimitive onClick={resolvedNewButton.onClick}>
                 {resolvedNewButton.icon}
                 {resolvedNewButton.label}

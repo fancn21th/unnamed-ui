@@ -147,9 +147,9 @@ function TaskExample() {
       stepText={currentItem?.text || "暂无任务"}
       stepIcon={
         currentItem?.status === "running" ? (
-          <Loader2 className="size-4 animate-spin text-[var(--text-brand)]" />
+          <Loader2 className="size-4 animate-spin text-[var(--Text-text-brand)]" />
         ) : (
-          <Circle className="size-4 text-[var(--text-tertiary)]" />
+          <Circle className="size-4 text-[var(--Text-text-tertiary)]" />
         )
       }
       items={items}

@@ -20,7 +20,7 @@ const AvatarHeaderPrimitive = React.forwardRef<
       className={cn(
         "[&_*]:!box-border",
         "flex items-center",
-        "gap-[var(--gap-md)]",
+        "gap-[var(--Gap-gap-md)]",
         className,
       )}
       {...props}
@@ -65,12 +65,12 @@ const AvatarNamePrimitive = React.forwardRef<
     <span
       ref={ref}
       className={cn(
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "font-[var(--font-weight-400)]",
         "font-size-2",
         "leading-[var(--line-height-2)]",
         "tracking-[0px]",
-        "text-[var(--text-primary)]",
+        "text-[var(--Text-text-primary)]",
         className,
       )}
       style={{
@@ -95,12 +95,12 @@ const AvatarTimePrimitive = React.forwardRef<
     <span
       ref={ref}
       className={cn(
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "font-[var(--font-weight-400)]",
         "font-size-1",
         "leading-[var(--line-height-1)]",
         "tracking-[0px]",
-        "text-[var(--text-secondary)]",
+        "text-[var(--Text-text-secondary)]",
         className,
       )}
       style={{

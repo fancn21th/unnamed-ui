@@ -25,7 +25,7 @@ export default function FeedbackDemo() {
   return (
     <div className="flex flex-col gap-6 w-full max-w-md">
       <div>
-        <h3 className="text-sm font-medium text-[var(--text-secondary)] mb-4">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)] mb-4">
           反馈组件示例
         </h3>
         <FeedbackComposed

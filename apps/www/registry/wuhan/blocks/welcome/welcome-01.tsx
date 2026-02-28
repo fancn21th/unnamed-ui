@@ -33,7 +33,7 @@ export const WelcomeContainerPrimitive = React.forwardRef<
       ref={ref}
       className={cn(
         "flex items-center justify-center",
-        "gap-[var(--gap-md)]",
+        "gap-[var(--Gap-gap-md)]",
         "[&_*]:!box-border",
         className,
       )}
@@ -66,7 +66,7 @@ export const WelcomeIconPrimitive = React.forwardRef<
       className={cn(
         "inline-flex items-center justify-center",
         "size-10 rounded-full",
-        "bg-[var(--bg-brand-light)] text-[var(--text-brand)]",
+        "bg-[var(--Container-bg-brand-light)] text-[var(--Text-text-brand)]",
         "shrink-0",
         "[&_*]:!box-border",
         className,
@@ -101,7 +101,7 @@ export const WelcomeTextPrimitive = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "text-[var(--text-primary)]",
+        "text-[var(--Text-text-primary)]",
         "font-semibold",
         "text-xl leading-[var(--line-height-4)] tracking-[0px]",
         "[&_*]:!box-border",

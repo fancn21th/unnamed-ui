@@ -37,15 +37,15 @@ export const QuickActionButtonPrimitive = React.forwardRef<
         className={cn(
           "inline-flex items-center justify-center",
           "h-[38px]",
-          "p-[var(--padding-com-md)]",
-          "gap-[var(--gap-md)]",
+          "p-[var(--Padding-padding-com-md)]",
+          "gap-[var(--Gap-gap-md)]",
           "rounded-[var(--radius-lg)]",
-          "bg-[var(--bg-container)]",
-          "border border-[var(--border-neutral)]",
-          "hover:bg-[var(--bg-neutral-light)]",
+          "bg-[var(--Container-bg-container)]",
+          "border border-[var(--Border-border-neutral)]",
+          "hover:bg-[var(--Container-bg-neutral-light)]",
           "transition-colors",
-          "text-[var(--text-primary)]",
-          "font-[var(--font-family-cn)]",
+          "text-[var(--Text-text-primary)]",
+          "font-[var(--font-family-CN)]",
           "font-[var(--font-weight-400)]",
           "font-size-2",
           "leading-[var(--line-height-2)]",
@@ -54,7 +54,7 @@ export const QuickActionButtonPrimitive = React.forwardRef<
           "disabled:cursor-not-allowed",
           "focus-visible:outline-none",
           "focus-visible:ring-2",
-          "focus-visible:ring-[var(--border-brand)]",
+          "focus-visible:ring-[var(--Border-border-brand)]",
           "focus-visible:ring-offset-2",
           "[&_*]:!box-border",
           className,
@@ -84,7 +84,7 @@ export const QuickActionIconPrimitive = React.forwardRef<
   return (
     <span
       ref={ref}
-      className={cn("text-[var(--text-brand)]", className)}
+      className={cn("text-[var(--Text-text-brand)]", className)}
       aria-hidden="true"
       {...props}
     >
@@ -111,7 +111,7 @@ export const QuickActionGroupPrimitive = React.forwardRef<
       ref={ref}
       className={cn(
         "flex items-center flex-wrap justify-center",
-        "gap-[var(--gap-md)]",
+        "gap-[var(--Gap-gap-md)]",
         "[&_*]:!box-border",
         className,
       )}

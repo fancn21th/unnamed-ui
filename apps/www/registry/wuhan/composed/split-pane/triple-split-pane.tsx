@@ -303,7 +303,7 @@ export const TripleSplitPane = React.forwardRef<
           leftPopoverEnabled &&
           setIsLeftPopoverOpen(false)
         }
-        className="mr-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
+        className="mr-2 text-[var(--Text-text-secondary)] hover:text-[var(--Text-text-primary)] transition-colors cursor-pointer"
       >
         {leftCollapsibleIcon || <PanelLeft className="h-4 w-4" />}
       </button>

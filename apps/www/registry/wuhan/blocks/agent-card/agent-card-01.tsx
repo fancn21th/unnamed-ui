@@ -63,9 +63,9 @@ export const AgentCardContainerPrimitive = React.forwardRef<
     "sm" | "md" | "lg",
     { padding: string; gap: string }
   > = {
-    sm: { padding: "var(--padding-com-sm)", gap: "var(--gap-sm)" },
-    md: { padding: "var(--padding-com-lg)", gap: "var(--gap-md)" },
-    lg: { padding: "var(--padding-com-xl)", gap: "var(--gap-lg)" },
+    sm: { padding: "var(--Padding-padding-com-sm)", gap: "var(--Gap-gap-sm)" },
+    md: { padding: "var(--Padding-padding-com-lg)", gap: "var(--Gap-gap-md)" },
+    lg: { padding: "var(--Padding-padding-com-xl)", gap: "var(--Gap-gap-lg)" },
   };
 
   const sizeKey: "sm" | "md" | "lg" = size;
@@ -77,13 +77,13 @@ export const AgentCardContainerPrimitive = React.forwardRef<
       className={cn(
         "w-full",
         "rounded-[var(--radius-xl)]",
-        "[background-color:var(--bg-brand-light)]",
-        "border border-[var(--border-neutral)]",
+        "[background-color:var(--Container-bg-brand-light)]",
+        "border border-[var(--Border-border-neutral)]",
         "flex items-center",
         "justify-between",
         "transition-all",
         "duration-200",
-        "hover:[background-image:linear-gradient(0deg,var(--bg-mask-soft,rgba(0,0,0,0.08)),var(--bg-mask-soft,rgba(0,0,0,0.08)))]",
+        "hover:[background-image:linear-gradient(0deg,var(--Container-bg-mask-soft,rgba(0,0,0,0.08)),var(--Container-bg-mask-soft,rgba(0,0,0,0.08)))]",
         className,
       )}
       style={{ padding, gap }}
@@ -121,7 +121,7 @@ export const AgentCardHeaderPrimitive = React.forwardRef<
       {/* 图标 - 第一行 */}
       {icon && (
         <div className="flex items-center justify-start mb-1">
-          <span className="text-[var(--text-brand)]">
+          <span className="text-[var(--Text-text-brand)]">
             {React.isValidElement(icon)
               ? React.cloneElement(
                   icon as React.ReactElement<{ size?: number }>,
@@ -138,11 +138,11 @@ export const AgentCardHeaderPrimitive = React.forwardRef<
       {title && (
         <span
           className={cn(
-            "font-[var(--font-family-cn)]",
+            "font-[var(--font-family-CN)]",
             "font-[var(--font-weight-400)]",
             titleFontSize,
             "leading-[var(--line-height-2)]",
-            "text-[var(--text-primary)]",
+            "text-[var(--Text-text-primary)]",
             "truncate",
           )}
         >
@@ -169,7 +169,7 @@ export const AgentCardAiIcon = ({
   <Sparkles
     className={className}
     size={size}
-    style={{ color: "var(--text-brand)" }}
+    style={{ color: "var(--Text-text-brand)" }}
   />
 );
 

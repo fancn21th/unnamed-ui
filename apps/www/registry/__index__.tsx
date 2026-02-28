@@ -4214,9 +4214,10 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "message-list-demo": {
       name: "message-list-demo",
-      description: "MessageList with avatar, feedback, and custom content (ThinkingStep)",
+      description:
+        "Chat message list component demo with auto-scroll, input, and message status",
       type: "registry:example",
-      registryDependencies: ["message-list", "thinking-process"],
+      registryDependencies: ["message-list", "button", "icon-button"],
       files: [
         {
           path: "registry/wuhan/examples/message/message-list-demo.tsx",

@@ -25,12 +25,12 @@ export default function ToggleButtonDemo() {
     <div className="flex flex-col gap-8 w-full max-w-md">
       {/* 默认样式示例（用于反馈组件等场景） */}
       <div>
-        <h3 className="text-sm font-medium text-[var(--text-secondary)] mb-4">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)] mb-4">
           默认样式（Default Variant）
         </h3>
         <div className="flex flex-col gap-4">
           <div>
-            <p className="text-xs text-[var(--text-tertiary)] mb-2">
+            <p className="text-xs text-[var(--Text-text-tertiary)] mb-2">
               单选按钮组示例（反馈组件场景）
             </p>
             <ToggleButton
@@ -45,12 +45,12 @@ export default function ToggleButtonDemo() {
 
       {/* 紧凑样式示例（用于sender组件等场景） */}
       <div>
-        <h3 className="text-sm font-medium text-[var(--text-secondary)] mb-4">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)] mb-4">
           紧凑样式（Compact Variant）
         </h3>
         <div className="flex flex-col gap-4">
           <div>
-            <p className="text-xs text-[var(--text-tertiary)] mb-2">
+            <p className="text-xs text-[var(--Text-text-tertiary)] mb-2">
               多选按钮组示例（Sender组件场景）
             </p>
             <ToggleButton
@@ -66,15 +66,15 @@ export default function ToggleButtonDemo() {
 
       {/* 使用场景示例 */}
       <div>
-        <h3 className="text-sm font-medium text-[var(--text-secondary)] mb-4">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)] mb-4">
           使用场景示例
         </h3>
         <div className="flex flex-col gap-4">
           <div>
-            <p className="text-xs text-[var(--text-tertiary)] mb-2">
+            <p className="text-xs text-[var(--Text-text-tertiary)] mb-2">
               反馈组件中的使用
             </p>
-            <div className="p-4 bg-[var(--bg-page-secondary)] rounded-lg">
+            <div className="p-4 bg-[var(--Page-bg-page-secondary)] rounded-lg">
               <ToggleButton
                 options={feedbackOptions}
                 value={selectedOption}
@@ -85,10 +85,10 @@ export default function ToggleButtonDemo() {
           </div>
 
           <div>
-            <p className="text-xs text-[var(--text-tertiary)] mb-2">
+            <p className="text-xs text-[var(--Text-text-tertiary)] mb-2">
               Sender组件中的使用
             </p>
-            <div className="p-4 bg-[var(--bg-page-secondary)] rounded-lg">
+            <div className="p-4 bg-[var(--Page-bg-page-secondary)] rounded-lg">
               <ToggleButton
                 options={modeOptions}
                 values={selectedModes}

@@ -32,10 +32,10 @@ export default function ReportCardListCustomDemo() {
         cards={cards}
         cardAction={(card) => (
           <button
-            className="flex items-center justify-center w-6 h-6 rounded-md cursor-pointer bg-[var(--bg-neutral-light-hover)]"
+            className="flex items-center justify-center w-6 h-6 rounded-md cursor-pointer bg-[var(--Container-bg-neutral-light-hover)]"
             onClick={() => console.log("自定义操作", card.id)}
           >
-            <MoreVertical className="size-4 text-[var(--text-secondary)]" />
+            <MoreVertical className="size-4 text-[var(--Text-text-secondary)]" />
           </button>
         )}
         showCardAction={false}

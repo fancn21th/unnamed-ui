@@ -12,29 +12,31 @@ import * as PopoverPrimitive from "@radix-ui/react-popover";
  */
 const TRIGGER_BASE_STYLES = [
   "h-[var(--size-com-md)]",
-  "border border-[var(--border-neutral)]",
-  "bg-[var(--bg-container)]",
+  "border border-[var(--Border-border-neutral)]",
+  "bg-[var(--Container-bg-container)]",
   "flex items-center gap-2",
-  "px-[var(--padding-com-md)] py-[5px]",
+  "px-[var(--Padding-padding-com-md)] py-[5px]",
   "cursor-pointer",
   "transition-all duration-300",
 ] as const;
 
-const TRIGGER_HOVER_STYLES = ["hover:border-[var(--border-brand)]"] as const;
+const TRIGGER_HOVER_STYLES = [
+  "hover:border-[var(--Border-border-brand)]",
+] as const;
 
 const TRIGGER_MULTI_DISABLED_HOVER = [
-  "hover:border-[var(--border-neutral)]",
+  "hover:border-[var(--Border-border-neutral)]",
 ] as const;
 
 const TRIGGER_FOCUS_STYLES = [
   "focus:outline-none",
-  "focus-visible:border-[var(--border-brand)]",
+  "focus-visible:border-[var(--Border-border-brand)]",
   "focus-visible:ring-2",
   "focus-visible:ring-[var(--ring)]",
 ] as const;
 
 const TRIGGER_OPEN_STYLES = [
-  "border-[var(--border-brand)]",
+  "border-[var(--Border-border-brand)]",
   "ring-2",
   "ring-[var(--ring)]",
 ] as const;
@@ -42,25 +44,27 @@ const TRIGGER_OPEN_STYLES = [
 const TRIGGER_DISABLED_STYLES = [
   "cursor-not-allowed",
   "opacity-50",
-  "bg-[var(--bg-container-disable)]",
+  "bg-[var(--Container-bg-container-disable)]",
 ] as const;
 
 const CONTENT_BASE_STYLES = [
   "rounded-[var(--radius-md)]",
-  "border border-[var(--border-neutral)]",
-  "bg-[var(--bg-container)]",
+  "border border-[var(--Border-border-neutral)]",
+  "bg-[var(--Container-bg-container)]",
   "shadow-md",
 ] as const;
 
 const ITEM_BASE_STYLES = [
   "flex items-center gap-2",
-  "px-[var(--padding-com-md)] py-[var(--padding-com-sm)]",
+  "px-[var(--Padding-padding-com-md)] py-[var(--Padding-padding-com-sm)]",
   "rounded-[var(--radius-sm)]",
   "cursor-pointer",
   "transition-colors duration-200",
 ] as const;
 
-const ITEM_HOVER_STYLES = ["hover:bg-[var(--bg-neutral-light)]"] as const;
+const ITEM_HOVER_STYLES = [
+  "hover:bg-[var(--Container-bg-neutral-light)]",
+] as const;
 
 const ITEM_DISABLED_STYLES = ["opacity-50", "cursor-not-allowed"] as const;
 //#endregion
@@ -87,8 +91,8 @@ export const TagPrimitive = React.forwardRef<
         "inline-flex items-center gap-1",
         "px-2 py-0.5",
         "rounded-[var(--radius-sm)]",
-        "bg-[var(--bg-brand-subtle)]",
-        "text-[var(--text-brand)]",
+        "bg-[var(--Container-bg-brand-light)]",
+        "text-[var(--Text-text-brand)]",
         "text-xs font-medium",
         className,
       )}
@@ -101,7 +105,7 @@ export const TagPrimitive = React.forwardRef<
             e.stopPropagation();
             onRemove();
           }}
-          className="hover:bg-[var(--bg-brand-subtle-hover)] rounded-sm p-0.5"
+          className="hover:bg-[var(--Container-bg-brand-light-hover)] rounded-sm p-0.5"
         >
           <X className="h-3 w-3" />
         </button>
@@ -133,17 +137,17 @@ export const SelectTriggerPrimitive = React.forwardRef<
         ...TRIGGER_HOVER_STYLES,
         ...TRIGGER_FOCUS_STYLES,
         // Open 状态
-        "data-[state=open]:border-[var(--border-brand)]",
+        "data-[state=open]:border-[var(--Border-border-brand)]",
         "data-[state=open]:ring-2",
         "data-[state=open]:ring-[var(--ring)]",
         // Disabled 状态
         "disabled:cursor-not-allowed",
-        "disabled:border-[var(--border-neutral)]",
-        "disabled:bg-[var(--bg-container-disable)]",
-        "disabled:text-[var(--text-disable)]",
+        "disabled:border-[var(--Border-border-neutral)]",
+        "disabled:bg-[var(--Container-bg-container-disable)]",
+        "disabled:text-[var(--Text-text-disable)]",
         // Placeholder 样式
-        "placeholder:text-[var(--text-placeholder)]",
-        "data-[placeholder]:text-[var(--text-placeholder)]",
+        "placeholder:text-[var(--Text-text-placeholder)]",
+        "data-[placeholder]:text-[var(--Text-text-placeholder)]",
         className,
       )}
       {...props}
@@ -244,19 +248,19 @@ export const SelectItemPrimitive = React.forwardRef<
         "relative w-full select-none pr-8",
         "outline-none",
         "font-size-2",
-        "text-[var(--text-primary)]",
+        "text-[var(--Text-text-primary)]",
         // 复用共用样式
         ...ITEM_BASE_STYLES.filter((s) => !s.includes("gap-2")),
         // Hover 状态
-        "data-[highlighted]:bg-[var(--bg-neutral-light)]",
+        "data-[highlighted]:bg-[var(--Container-bg-neutral-light)]",
         // Focus 状态
-        // "focus:bg-[var(--bg-item-hover)]",
+        // "focus:bg-[var(--Container-bg-neutral-light-hover)]",
         // Selected 状态
-        "data-[state=checked]:bg-[var(--bg-brand-light)]",
-        "data-[state=checked]:text-[var(--text-brand)]",
+        "data-[state=checked]:bg-[var(--Container-bg-brand-light)]",
+        "data-[state=checked]:text-[var(--Text-text-brand)]",
         // Disabled 状态
         "data-[disabled]:pointer-events-none",
-        "data-[disabled]:text-[var(--text-disable)]",
+        "data-[disabled]:text-[var(--Text-text-disable)]",
         "data-[disabled]:cursor-not-allowed",
         className,
       )}
@@ -287,9 +291,9 @@ export const SelectLabelPrimitive = React.forwardRef<
     <Select.Label
       ref={ref}
       className={cn(
-        "px-[var(--padding-com-md)] py-[var(--padding-com-sm)]",
+        "px-[var(--Padding-padding-com-md)] py-[var(--Padding-padding-com-sm)]",
         "text-sm font-semibold",
-        "text-[var(--text-secondary)]",
+        "text-[var(--Text-text-secondary)]",
         className,
       )}
       {...props}
@@ -311,7 +315,11 @@ export const SelectSeparatorPrimitive = React.forwardRef<
   return (
     <Select.Separator
       ref={ref}
-      className={cn("-mx-1 my-1 h-px", "bg-[var(--border-neutral)]", className)}
+      className={cn(
+        "-mx-1 my-1 h-px",
+        "bg-[var(--Border-border-neutral)]",
+        className,
+      )}
       {...props}
     />
   );
@@ -336,9 +344,9 @@ export const SelectValuePrimitive = React.forwardRef<
       ref={ref}
       className={cn(
         "flex-1",
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "text-left",
-        "[&>span[data-placeholder]]:text-[var(--text-placeholder)]",
+        "[&>span[data-placeholder]]:text-[var(--Text-text-placeholder)]",
         placeholderClassName &&
           `[&>span[data-placeholder]]:${placeholderClassName}`,
         className,
@@ -406,7 +414,7 @@ export const MultiSelectTriggerPrimitive = React.forwardRef<
         fullRounded ? "rounded-full" : "rounded-[var(--radius-md)]",
         // 交互状态（复用常量）
         ...TRIGGER_HOVER_STYLES,
-        "data-[state=open]:border-[var(--border-brand)]",
+        "data-[state=open]:border-[var(--Border-border-brand)]",
         "data-[state=open]:ring-2",
         "data-[state=open]:ring-[var(--ring)]",
         disabled && TRIGGER_DISABLED_STYLES,
@@ -446,7 +454,7 @@ export const MultiSelectTriggerContainerPrimitive = React.forwardRef<
         // 复用交互状态样式
         ...TRIGGER_HOVER_STYLES,
         // Open 状态
-        "data-[state=open]:border-[var(--border-brand)]",
+        "data-[state=open]:border-[var(--Border-border-brand)]",
         "data-[state=open]:ring-2",
         "data-[state=open]:ring-[var(--ring)]",
         // Disabled 状态
@@ -523,7 +531,7 @@ export const MultiSelectPlaceholderPrimitive = React.forwardRef<
   return (
     <span
       ref={ref}
-      className={cn("text-[var(--text-placeholder)]", className)}
+      className={cn("text-[var(--Text-text-placeholder)]", className)}
       {...props}
     >
       {children}

@@ -106,12 +106,12 @@ const getLineStatusColor = (
   percent: number,
 ): string => {
   if (percent === 100 || status === "success") {
-    return "var(--bg-success)";
+    return "var(--Container-bg-success)";
   }
   if (status === "exception") {
-    return "var(--bg-error)";
+    return "var(--Container-bg-error)";
   }
-  return "var(--bg-brand)";
+  return "var(--Container-bg-brand)";
 };
 
 /**
@@ -122,12 +122,12 @@ const getCircleStatusColor = (
   percent: number,
 ): string => {
   if (percent === 100 || status === "success") {
-    return "var(--border-success)";
+    return "var(--Border-border-success)";
   }
   if (status === "exception") {
-    return "var(--border-error)";
+    return "var(--Border-border-error)";
   }
-  return "var(--text-brand)";
+  return "var(--Text-text-brand)";
 };
 
 /**
@@ -136,12 +136,12 @@ const getCircleStatusColor = (
 const getStatusColor = (status: ProgressStatus): string => {
   switch (status) {
     case "success":
-      return "var(--text-success)";
+      return "var(--Text-text-success)";
     case "exception":
-      return "var(--text-error)";
+      return "var(--Text-text-error)";
     case "normal":
     default:
-      return "var(--text-brand)";
+      return "var(--Text-text-brand)";
   }
 };
 
@@ -283,7 +283,7 @@ export const ProgressLinePrimitive = React.forwardRef<
       status = "normal",
       showInfo = true,
       strokeColor,
-      trailColor = "var(--bg-container-placeholder)",
+      trailColor = "var(--Container-bg-container-placeholder)",
       strokeWidth = 8,
       steps,
       percentPosition = { align: "end", type: "outer" },
@@ -379,10 +379,10 @@ export const ProgressLinePrimitive = React.forwardRef<
               className={cn(
                 "absolute inset-0 flex items-center px-2",
                 alignClass,
-                "font-[var(--font-family-en)]",
+                "font-[var(--font-family-EN)]",
                 "font-[var(--font-weight-400)]",
                 "font-size-1",
-                "text-[var(--text-primary)]",
+                "text-[var(--Text-text-primary)]",
               )}
             >
               {format(validPercent)}
@@ -395,17 +395,17 @@ export const ProgressLinePrimitive = React.forwardRef<
           <div
             className={cn(
               "shrink-0",
-              "font-[var(--font-family-en)]",
+              "font-[var(--font-family-EN)]",
               "font-[var(--font-weight-400)]",
               "font-size-1",
             )}
           >
             {showSuccessIcon ? (
-              <CircleCheck className="w-4 h-4 text-[var(--text-success)]" />
+              <CircleCheck className="w-4 h-4 text-[var(--Text-text-success)]" />
             ) : showErrorIcon ? (
-              <CircleX className="w-4 h-4 text-[var(--text-error)]" />
+              <CircleX className="w-4 h-4 text-[var(--Text-text-error)]" />
             ) : (
-              <span className="text-[var(--text-primary)]">
+              <span className="text-[var(--Text-text-primary)]">
                 {format(validPercent)}
               </span>
             )}
@@ -431,7 +431,7 @@ export const ProgressCirclePrimitive = React.forwardRef<
       status = "normal",
       showInfo = true,
       strokeColor,
-      trailColor = "var(--bg-neutral-light)",
+      trailColor = "var(--Container-bg-neutral-light)",
       strokeWidth = 6,
       width = 120,
       steps,
@@ -479,20 +479,20 @@ export const ProgressCirclePrimitive = React.forwardRef<
             className={cn(
               "absolute inset-0",
               "flex items-center justify-center",
-              "font-[var(--font-family-en)]",
+              "font-[var(--font-family-EN)]",
               "font-[var(--font-weight-400)]",
-              "text-[var(--text-primary)]",
+              "text-[var(--Text-text-primary)]",
             )}
             style={{ fontSize: showIcon ? undefined : width * 0.16 }}
           >
             {showSuccessIcon ? (
               <Check
-                className="text-[var(--text-success)]"
+                className="text-[var(--Text-text-success)]"
                 style={{ width: width * 0.25, height: width * 0.25 }}
               />
             ) : showErrorIcon ? (
               <X
-                className="text-[var(--text-error)]"
+                className="text-[var(--Text-text-error)]"
                 style={{ width: width * 0.25, height: width * 0.25 }}
               />
             ) : (

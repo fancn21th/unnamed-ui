@@ -139,7 +139,7 @@ npx shadcn@latest add "http://localhost:3000/r/wuhan/divider.json"
 |------|------|---------|-------------|
 | `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | 分割线方向 |
 | `variant` | `"solid" \| "dashed"` | `"solid"` | 分割线样式：实线或虚线 |
-| `color` | `string` | `"var(--divider-neutral-basic)"` | 分割线颜色 |
+| `color` | `string` | `"var(--Border-divider-neutral-basic)"` | 分割线颜色 |
 | `thickness` | `string` | `"1px"` | 分割线粗细 |
 | `children` | `ReactNode` | - | 文本内容 |
 | `textAlign` | `"left" \| "center" \| "right"` | `"center"` | 文本位置（仅在有文本时有效） |
@@ -174,7 +174,7 @@ function DividerExamples() {
       
       {/* 自定义样式 */}
       <Divider 
-        color="var(--border-brand)" 
+        color="var(--Border-border-brand)" 
         thickness="2px"
       >
         自定义分割线
@@ -247,7 +247,7 @@ function DividerExamples() {
   <p>普通内容</p>
   
   <Divider 
-    color="var(--border-brand)" 
+    color="var(--Border-border-brand)" 
     thickness="2px"
   >
     重要分隔

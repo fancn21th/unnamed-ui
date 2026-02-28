@@ -6,7 +6,7 @@ export default function ProgressDemo() {
   return (
     <div className="space-y-6 w-full">
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
           线性进度条
         </h3>
         <Progress percent={30} />
@@ -16,7 +16,7 @@ export default function ProgressDemo() {
       </div>
 
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
           圆形进度条
         </h3>
         <div className="flex gap-4 flex-wrap">

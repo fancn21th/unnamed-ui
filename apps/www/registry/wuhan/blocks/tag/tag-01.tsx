@@ -25,39 +25,39 @@ export type TagTheme = "brand" | "success" | "warning" | "error" | "neutral";
  */
 const THEME_STYLES = {
   brand: {
-    text: "text-[var(--text-brand)]",
-    bg: "bg-[var(--bg-brand)]",
-    bgLight: "bg-[var(--bg-brand-light)]",
-    border: "border-[var(--border-brand)]",
-    borderLight: "border-[var(--border-brand-light)]",
+    text: "text-[var(--Text-text-brand)]",
+    bg: "bg-[var(--Container-bg-brand)]",
+    bgLight: "bg-[var(--Container-bg-brand-light)]",
+    border: "border-[var(--Border-border-brand)]",
+    borderLight: "border-[var(--Border-border-brand-light)]",
   },
   success: {
-    text: "text-[var(--text-success)]",
-    bg: "bg-[var(--bg-success)]",
-    bgLight: "bg-[var(--bg-success-light)]",
-    border: "border-[var(--border-success)]",
-    borderLight: "border-[var(--border-success-light)]",
+    text: "text-[var(--Text-text-success)]",
+    bg: "bg-[var(--Container-bg-success)]",
+    bgLight: "bg-[var(--Container-bg-success-light)]",
+    border: "border-[var(--Border-border-success)]",
+    borderLight: "border-[var(--Border-border-success-light)]",
   },
   warning: {
-    text: "text-[var(--text-warning)]",
-    bg: "bg-[var(--bg-warning)]",
-    bgLight: "bg-[var(--bg-warning-light)]",
-    border: "border-[var(--border-warning)]",
-    borderLight: "border-[var(--border-warning-light)]",
+    text: "text-[var(--Text-text-warning)]",
+    bg: "bg-[var(--Container-bg-warning)]",
+    bgLight: "bg-[var(--Container-bg-warning-light)]",
+    border: "border-[var(--Border-border-warning)]",
+    borderLight: "border-[var(--Border-border-warning-light)]",
   },
   error: {
-    text: "text-[var(--text-error)]",
-    bg: "bg-[var(--bg-error)]",
-    bgLight: "bg-[var(--bg-error-light)]",
-    border: "border-[var(--border-error)]",
-    borderLight: "border-[var(--border-error-light)]",
+    text: "text-[var(--Text-text-error)]",
+    bg: "bg-[var(--Container-bg-error)]",
+    bgLight: "bg-[var(--Container-bg-error-light)]",
+    border: "border-[var(--Border-border-error)]",
+    borderLight: "border-[var(--Border-border-error-light)]",
   },
   neutral: {
-    text: "text-[var(--text-secondary)]",
-    bg: "bg-[var(--bg-neutral)]",
-    bgLight: "bg-[var(--bg-neutral-light)]",
-    border: "border-[var(--border-neutral)]",
-    borderLight: "border-[var(--border-neutral-light)]",
+    text: "text-[var(--Text-text-secondary)]",
+    bg: "bg-[var(--Container-bg-neutral)]",
+    bgLight: "bg-[var(--Container-bg-neutral-light)]",
+    border: "border-[var(--Border-border-neutral)]",
+    borderLight: "border-[var(--Border-divider-neutral-basic)]",
   },
 } as const;
 
@@ -102,12 +102,12 @@ const VARIANT_STYLES = {
  */
 const ADDABLE_STYLES = [
   "border border-dashed",
-  "border-[var(--border-neutral)]",
-  "text-[var(--text-secondary)]",
+  "border-[var(--Border-border-neutral)]",
+  "text-[var(--Text-text-secondary)]",
   "bg-transparent",
   "cursor-pointer",
-  "hover:border-[var(--text-brand)]",
-  "hover:text-[var(--text-brand)]",
+  "hover:border-[var(--Text-text-brand)]",
+  "hover:text-[var(--Text-text-brand)]",
 ] as const;
 
 /**
@@ -198,7 +198,7 @@ const TagTextPrimitive = React.forwardRef<
       ref={ref}
       className={cn(
         "truncate",
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "font-size-1",
         "leading-[var(--line-height-1)]",
         className,
@@ -284,40 +284,40 @@ const CheckableTagContainerPrimitive = React.forwardRef<
         // 未选中状态（neutral + filled）
         !checked &&
           !disabled && [
-            "bg-[var(--bg-neutral-light)]",
-            "border-[var(--bg-neutral-light)]",
-            "text-[var(--text-secondary)]",
+            "bg-[var(--Container-bg-neutral-light)]",
+            "border-[var(--Container-bg-neutral-light)]",
+            "text-[var(--Text-text-secondary)]",
             // hover
-            "hover:bg-[var(--bg-neutral-light-hover)]",
-            "hover:text-[var(--text-brand-hover)]",
+            "hover:bg-[var(--Container-bg-neutral-light-hover)]",
+            "hover:text-[var(--Text-text-brand-hover)]",
           ],
 
         // 未选中 + 禁用
         !checked &&
           disabled && [
-            "bg-[var(--bg-container-disable)]",
-            "border-[var(--bg-container-disable)]",
-            "text-[var(--text-disable)]",
+            "bg-[var(--Container-bg-container-disable)]",
+            "border-[var(--Container-bg-container-disable)]",
+            "text-[var(--Text-text-disable)]",
             "cursor-not-allowed",
           ],
 
         // 选中状态（brand + solid）
         checked &&
           !disabled && [
-            "bg-[var(--bg-brand)]",
-            "border-[var(--bg-brand)]",
+            "bg-[var(--Container-bg-brand)]",
+            "border-[var(--Container-bg-brand)]",
             "text-white",
             // hover
-            "hover:bg-[var(--bg-brand-hover)]",
-            "hover:text-[var(--text-inverse)]",
+            "hover:bg-[var(--Container-bg-brand-hover)]",
+            "hover:text-[var(--Text-text-inverse)]",
           ],
 
         // 选中 + 禁用
         checked &&
           disabled && [
-            "bg-[var(--bg-brand)]",
-            "border-[var(--bg-brand)]",
-            "text-[var(--text-inverse)]",
+            "bg-[var(--Container-bg-brand)]",
+            "border-[var(--Container-bg-brand)]",
+            "text-[var(--Text-text-inverse)]",
             "opacity-[var(--bg-solid-disable)]",
             "cursor-not-allowed",
           ],
@@ -363,7 +363,7 @@ const CheckableTagTextPrimitive = React.forwardRef<
       ref={ref}
       className={cn(
         "truncate",
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "font-size-1",
         "leading-[var(--line-height-1)]",
         className,

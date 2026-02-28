@@ -16,7 +16,7 @@ export default function MessageWithAvatarHeader() {
             name="User"
             time="12:25"
             icon={
-              <div className="flex items-center justify-center text-[var(--text-secondary)] size-6 rounded-full bg-[#D9D9D9]">
+              <div className="flex items-center justify-center text-[var(--Text-text-secondary)] size-6 rounded-full bg-[#D9D9D9]">
                 <UserIcon className="size-4" />
               </div>
             }
@@ -31,7 +31,7 @@ export default function MessageWithAvatarHeader() {
             name="AI"
             time="12:26"
             icon={
-              <div className="flex items-center justify-center text-[var(--text-secondary)] size-6 rounded-full bg-[#D9D9D9]">
+              <div className="flex items-center justify-center text-[var(--Text-text-secondary)] size-6 rounded-full bg-[#D9D9D9]">
                 <BotIcon className="size-4" />
               </div>
             }

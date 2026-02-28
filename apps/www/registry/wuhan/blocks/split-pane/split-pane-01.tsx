@@ -83,7 +83,7 @@ export const SplitPaneItemPrimitive = React.forwardRef<
       >
         <div
           className={cn(
-            "flex flex-col h-full bg-[var(--bg-container)]",
+            "flex flex-col h-full bg-[var(--Container-bg-container)]",
             "rounded-[var(--radius-xl)]",
           )}
         >
@@ -92,7 +92,7 @@ export const SplitPaneItemPrimitive = React.forwardRef<
             className={cn(
               "h-[48px]",
               "flex items-center",
-              "px-4 border-b border-[var(--border-neutral)]",
+              "px-4 border-b border-[var(--Border-border-neutral)]",
               headerClassName,
             )}
           >
@@ -104,11 +104,11 @@ export const SplitPaneItemPrimitive = React.forwardRef<
                   {!isCompact && (
                     <div
                       className={cn(
-                        "font-[var(--font-family-cn)]",
+                        "font-[var(--font-family-CN)]",
                         "font-semibold",
                         "font-size-3",
                         "leading-[var(--line-height-3)]",
-                        "text-[var(--text-title)]",
+                        "text-[var(--Text-text-title)]",
                       )}
                     >
                       {panelTitle}
@@ -143,11 +143,11 @@ export const SplitPaneItemPrimitive = React.forwardRef<
                 {!isCompact && (
                   <div
                     className={cn(
-                      "font-[var(--font-family-cn)]",
+                      "font-[var(--font-family-CN)]",
                       "font-semibold",
                       "font-size-3",
                       "leading-[var(--line-height-3)]",
-                      "text-[var(--text-title)]",
+                      "text-[var(--Text-text-title)]",
                     )}
                   >
                     {panelTitle}

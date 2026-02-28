@@ -26,7 +26,7 @@ export default function TagCheckableExample() {
     <div className="flex flex-col gap-8 p-8">
       {/* 单个 CheckableTag 示例 */}
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
           单个 CheckableTag
         </h3>
         <div className="flex flex-wrap gap-2">
@@ -54,7 +54,7 @@ export default function TagCheckableExample() {
 
       {/* CheckableTagGroup 单选模式 */}
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
           CheckableTagGroup - 单选模式
         </h3>
         <CheckableTagGroup
@@ -74,14 +74,14 @@ export default function TagCheckableExample() {
             tag: "",
           }}
         />
-        <p className="text-sm text-[var(--text-secondary)]">
+        <p className="text-sm text-[var(--Text-text-secondary)]">
           当前选中: {singleValue ? String(singleValue) : "无"}
         </p>
       </div>
 
       {/* CheckableTagGroup 多选模式 */}
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
           CheckableTagGroup - 多选模式
         </h3>
         <CheckableTagGroup
@@ -103,7 +103,7 @@ export default function TagCheckableExample() {
             tag: "",
           }}
         />
-        <p className="text-sm text-[var(--text-secondary)]">
+        <p className="text-sm text-[var(--Text-text-secondary)]">
           当前选中:{" "}
           {Array.isArray(multipleValue) ? multipleValue.join(", ") : "无"}
         </p>
@@ -111,7 +111,7 @@ export default function TagCheckableExample() {
 
       {/* CheckableTagGroup 禁用状态 */}
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
           CheckableTagGroup - 禁用状态
         </h3>
         <CheckableTagGroup
@@ -131,7 +131,7 @@ export default function TagCheckableExample() {
 
       {/* CheckableTagGroup 非受控模式 */}
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
           CheckableTagGroup - 非受控模式（多选）
         </h3>
         <CheckableTagGroup

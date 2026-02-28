@@ -175,7 +175,7 @@ export function MessageFeedbackActions({
               <ThumbsUp
                 className={cn(
                   "size-4",
-                  liked && "fill-current text-[var(--text-brand)]",
+                  liked && "fill-current text-[var(--Text-text-brand)]",
                 )}
               />
             </IconButton>
@@ -189,7 +189,7 @@ export function MessageFeedbackActions({
               <ThumbsDown
                 className={cn(
                   "size-4",
-                  disliked && "fill-current text-[var(--text-brand)]",
+                  disliked && "fill-current text-[var(--Text-text-brand)]",
                 )}
               />
             </IconButton>

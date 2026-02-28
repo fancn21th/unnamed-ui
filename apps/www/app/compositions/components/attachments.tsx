@@ -55,8 +55,8 @@ export function ComposerAttachmentStrip({
                 "h-14",
                 "flex items-center",
                 a.isImage
-                  ? "w-14 p-0 bg-transparent bg-[var(--bg-neutral-light)]"
-                  : "max-w-[240px] px-[var(--padding-com-md)] gap-[var(--gap-sm)]",
+                  ? "w-14 p-0 bg-transparent bg-[var(--Container-bg-neutral-light)]"
+                  : "max-w-[240px] px-[var(--Padding-padding-com-md)] gap-[var(--Gap-gap-sm)]",
               )}
               onClick={() => {}}
             >
@@ -64,7 +64,7 @@ export function ComposerAttachmentStrip({
                 className={cn(
                   a.isImage
                     ? "w-full h-full rounded-[var(--radius-xl)] overflow-hidden"
-                    : "rounded-[var(--radius-lg)] bg-[var(--bg-container)] w-10 h-10",
+                    : "rounded-[var(--radius-lg)] bg-[var(--Container-bg-container)] w-10 h-10",
                 )}
               >
                 {a.loading ? (
@@ -96,7 +96,7 @@ export function ComposerAttachmentStrip({
                   onRemove(a.id);
                 }}
               >
-                <X className="w-3 h-3 text-[var(--text-tertiary)]" />
+                <X className="w-3 h-3 text-[var(--Text-text-tertiary)]" />
               </AttachmentCardDeleteButton>
             </AttachmentCard>
           );
@@ -128,15 +128,15 @@ export function MessageAttachments({
               "h-14",
               "flex items-center",
               a.isImage
-                ? "w-14 p-0 bg-transparent bg-[var(--bg-neutral-light)]"
-                : "max-w-[240px] px-[var(--padding-com-md)] gap-[var(--gap-sm)]",
+                ? "w-14 p-0 bg-transparent bg-[var(--Container-bg-neutral-light)]"
+                : "max-w-[240px] px-[var(--Padding-padding-com-md)] gap-[var(--Gap-gap-sm)]",
             )}
           >
             <AttachmentCardLeading
               className={cn(
                 a.isImage
-                  ? "w-full h-full [var(--radius-xl)] overflow-hidden"
-                  : "rounded-[var(--radius-lg)] bg-[var(--bg-container)] w-10 h-10",
+                  ? "w-full h-full rounded-[var(--radius-xl)] overflow-hidden"
+                  : "rounded-[var(--radius-lg)] bg-[var(--Container-bg-container)] w-10 h-10",
               )}
             >
               {a.isImage && a.thumbnail ? (
@@ -163,7 +163,7 @@ export function MessageAttachments({
                   onRemove(a.id);
                 }}
               >
-                <X className="w-3 h-3 text-[var(--text-tertiary)]" />
+                <X className="w-3 h-3 text-[var(--Text-text-tertiary)]" />
               </AttachmentCardDeleteButton>
             )}
           </AttachmentCard>

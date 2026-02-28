@@ -5,7 +5,7 @@ export default function DividerVariants() {
     <div className="space-y-8 p-8">
       {/* 实线 */}
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
           实线（Solid）
         </h3>
         <Divider variant="solid" />
@@ -14,7 +14,7 @@ export default function DividerVariants() {
 
       {/* 虚线 */}
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
           虚线（Dashed）
         </h3>
         <Divider variant="dashed" />

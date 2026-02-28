@@ -13,7 +13,7 @@ export default function AccordionMultipleDemo() {
           value="feature-1"
           trigger="特性一"
           content={
-            <div className="p-4 text-sm text-[var(--text-secondary)]">
+            <div className="p-4 text-sm text-[var(--Text-text-secondary)]">
               特性一的详细内容说明
             </div>
           }
@@ -22,7 +22,7 @@ export default function AccordionMultipleDemo() {
           value="feature-2"
           trigger="特性二"
           content={
-            <div className="p-4 text-sm text-[var(--text-secondary)]">
+            <div className="p-4 text-sm text-[var(--Text-text-secondary)]">
               特性二的详细内容说明
             </div>
           }
@@ -31,7 +31,7 @@ export default function AccordionMultipleDemo() {
           value="feature-3"
           trigger="特性三"
           content={
-            <div className="p-4 text-sm text-[var(--text-secondary)]">
+            <div className="p-4 text-sm text-[var(--Text-text-secondary)]">
               特性三的详细内容说明
             </div>
           }

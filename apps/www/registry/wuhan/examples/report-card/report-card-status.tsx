@@ -11,11 +11,11 @@ export default function ReportCardStatusDemo() {
         description="该报告已发布到团队"
         action={
           <div className="flex items-center gap-2">
-            <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-[var(--bg-success-light)] text-[var(--text-success)]">
+            <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-[var(--Container-bg-success-light)] text-[var(--Text-text-success)]">
               已发布
             </span>
-            <button className="p-1 rounded-md bg-[var(--bg-neutral-light-hover)] cursor-pointer">
-              <MoreVertical className="size-4 text-[var(--text-secondary)]" />
+            <button className="p-1 rounded-md bg-[var(--Container-bg-neutral-light-hover)] cursor-pointer">
+              <MoreVertical className="size-4 text-[var(--Text-text-secondary)]" />
             </button>
           </div>
         }

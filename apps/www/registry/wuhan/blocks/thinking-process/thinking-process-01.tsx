@@ -210,14 +210,14 @@ const ThinkingLoadingDotsPrimitive = React.forwardRef<
       ref={ref}
       className={cn(
         "inline-flex items-center",
-        "gap-[var(--gap-xs)]",
+        "gap-[var(--Gap-gap-xs)]",
         className,
       )}
       {...props}
     >
       <span
         className={cn(
-          "rounded-full bg-[var(--bg-brand)]",
+          "rounded-full bg-[var(--Container-bg-brand)]",
           "w-[var(--space-2)] h-[var(--space-2)]",
           "animate-[thinking-loading-pulse_1.4s_ease-in-out_infinite]",
         )}
@@ -225,7 +225,7 @@ const ThinkingLoadingDotsPrimitive = React.forwardRef<
       />
       <span
         className={cn(
-          "rounded-full bg-[var(--bg-brand)]",
+          "rounded-full bg-[var(--Container-bg-brand)]",
           "w-[var(--space-2)] h-[var(--space-2)]",
           "animate-[thinking-loading-pulse_1.4s_ease-in-out_infinite]",
         )}
@@ -233,7 +233,7 @@ const ThinkingLoadingDotsPrimitive = React.forwardRef<
       />
       <span
         className={cn(
-          "rounded-full bg-[var(--bg-brand)]",
+          "rounded-full bg-[var(--Container-bg-brand)]",
           "w-[var(--space-2)] h-[var(--space-2)]",
           "animate-[thinking-loading-pulse_1.4s_ease-in-out_infinite]",
         )}
@@ -261,7 +261,7 @@ const ThinkingProcessContainerPrimitive = React.forwardRef<
         BOX_BORDER,
         "w-full",
         "flex flex-col",
-        "gap-[var(--gap-md)]",
+        "gap-[var(--Gap-gap-md)]",
         className,
       )}
       {...props}
@@ -337,14 +337,14 @@ const ThinkingStepHeaderPrimitive = React.forwardRef<
           "w-full",
           "cursor-pointer",
           "transition-colors",
-          "gap-[var(--gap-sm)]",
+          "gap-[var(--Gap-gap-sm)]",
           className,
         )}
         {...props}
       >
         {children}
         {trailing && (
-          <div className="flex items-center gap-[var(--gap-sm)]">
+          <div className="flex items-center gap-[var(--Gap-gap-sm)]">
             {trailing}
           </div>
         )}
@@ -368,23 +368,23 @@ const ThinkingStepContentPrimitive = React.forwardRef<
         ref={ref}
         className={cn(
           BOX_BORDER,
-          "mt-[var(--gap-xs)]",
+          "mt-[var(--Gap-gap-xs)]",
           "w-full",
           "rounded-[var(--radius-xl)]",
           "border",
-          "border-[var(--border-neutral)]",
-          "bg-[var(--bg-container)]",
-          "p-[var(--padding-com-xl)]",
+          "border-[var(--Border-border-neutral)]",
+          "bg-[var(--Container-bg-container)]",
+          "p-[var(--Padding-padding-com-xl)]",
           className,
         )}
         {...props}
       >
         <div
           className={cn(
-            "font-[var(--font-family-cn)]",
+            "font-[var(--font-family-CN)]",
             "font-size-2",
             "leading-[var(--line-height-2)]",
-            "text-[var(--text-primary)]",
+            "text-[var(--Text-text-primary)]",
             "whitespace-pre-wrap",
           )}
         >
@@ -409,12 +409,12 @@ const ThinkingStatusLabelPrimitive = React.forwardRef<
     <span
       ref={ref}
       className={cn(
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "font-size-3",
         "leading-[var(--line-height-3)]",
         "font-semibold",
-        "text-[var(--text-title)]",
-        "group-hover/step:text-[var(--text-brand)]",
+        "text-[var(--Text-text-title)]",
+        "group-hover/step:text-[var(--Text-text-brand)]",
         "transition-colors",
         resolvedStatus === "running" && "animate-pulse",
         className,
@@ -441,11 +441,11 @@ const ThinkingTimeLabelPrimitive = React.forwardRef<
     <span
       ref={ref}
       className={cn(
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "font-size-3",
         "leading-[var(--line-height-3)]",
-        "text-[var(--text-title)]",
-        "group-hover/step:text-[var(--text-brand)]",
+        "text-[var(--Text-text-title)]",
+        "group-hover/step:text-[var(--Text-text-brand)]",
         "font-normal",
         "transition-colors",
         className,
@@ -468,11 +468,11 @@ const ThinkingIconContainerPrimitive = React.forwardRef<
 >(({ children, status = "pending", className, ...props }, ref) => {
   const resolvedStatus = resolveThinkingStatus(status);
   const iconStyles: Record<ThinkingSemanticStatus, string> = {
-    idle: "text-[var(--text-tertiary)]",
-    running: "text-[var(--text-brand)]",
-    success: "text-[var(--text-success)]",
-    error: "text-[var(--text-error)]",
-    cancelled: "text-[var(--text-tertiary)]",
+    idle: "text-[var(--Text-text-tertiary)]",
+    running: "text-[var(--Text-text-brand)]",
+    success: "text-[var(--Text-text-success)]",
+    error: "text-[var(--Text-text-error)]",
+    cancelled: "text-[var(--Text-text-tertiary)]",
   };
 
   return (
@@ -508,8 +508,8 @@ const ThinkingCollapseArrowPrimitive = React.forwardRef<
       className={cn(
         "flex items-center justify-center",
         "size-4",
-        "text-[var(--text-title)]",
-        "group-hover/step:text-[var(--text-brand)]",
+        "text-[var(--Text-text-title)]",
+        "group-hover/step:text-[var(--Text-text-brand)]",
         "transition-all duration-200",
         // 默认（收起）箭头朝右：ChevronDown + (-90deg) = right
         "-rotate-90",
@@ -541,10 +541,10 @@ const ThinkingPersistHintPrimitive = React.forwardRef<
       className={cn(
         BOX_BORDER,
         "w-full",
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "font-size-2",
         "leading-[var(--line-height-2)]",
-        "text-[var(--text-secondary)]",
+        "text-[var(--Text-text-secondary)]",
         "font-normal",
         className,
       )}
@@ -570,11 +570,11 @@ const ThinkingStepHintPrimitive = React.forwardRef<
       className={cn(
         BOX_BORDER,
         "w-full",
-        "mt-[var(--gap-xs)]",
-        "font-[var(--font-family-cn)]",
+        "mt-[var(--Gap-gap-xs)]",
+        "font-[var(--font-family-CN)]",
         "font-size-2",
         "leading-[var(--line-height-2)]",
-        "text-[var(--text-secondary)]",
+        "text-[var(--Text-text-secondary)]",
         "font-normal",
         className,
       )}

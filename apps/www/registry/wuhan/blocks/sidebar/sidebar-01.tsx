@@ -44,7 +44,7 @@ const SidebarContentPrimitive = React.forwardRef<
       className={cn(
         "min-h-0",
         "flex flex-col",
-        "gap-[var(--gap-md)]",
+        "gap-[var(--Gap-gap-md)]",
         className,
       )}
       {...props}
@@ -64,9 +64,9 @@ const SidebarDividerPrimitive = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "my-[var(--gap-lg)]",
+        "my-[var(--Gap-gap-lg)]",
         "border-t",
-        "border-t-[var(--divider-neutral-basic)]",
+        "border-t-[var(--Border-divider-neutral-basic)]",
         className,
       )}
       {...props}
@@ -90,7 +90,7 @@ const SidebarHeaderPrimitive = React.forwardRef<
       className={cn(
         "[&_*]:!box-border",
         "flex items-center justify-between",
-        "gap-[var(--gap-md)]",
+        "gap-[var(--Gap-gap-md)]",
         className,
       )}
       {...props}
@@ -111,7 +111,7 @@ const SidebarHeaderLeading = React.forwardRef<
       ref={ref}
       className={cn(
         "inline-flex items-center",
-        "gap-[var(--gap-sm)]",
+        "gap-[var(--Gap-gap-sm)]",
         className,
       )}
       {...props}
@@ -134,8 +134,8 @@ const SidebarHeaderIcon = React.forwardRef<
         "inline-flex items-center justify-center",
         "size-8",
         "rounded-md",
-        "bg-[var(--bg-neutral-light)]",
-        "text-[var(--text-primary)]",
+        "bg-[var(--Container-bg-neutral-light)]",
+        "text-[var(--Text-text-primary)]",
         className,
       )}
       {...props}
@@ -155,8 +155,8 @@ const SidebarHeaderTitle = React.forwardRef<
     <span
       ref={ref}
       className={cn(
-        "text-[var(--text-primary)]",
-        "font-[var(--font-family-cn)]",
+        "text-[var(--Text-text-primary)]",
+        "font-[var(--font-family-CN)]",
         "font-[var(--font-weight-600)]",
         "font-size-2",
         "leading-[var(--line-height-2)]",
@@ -201,15 +201,15 @@ const SidebarNewButtonPrimitive = React.forwardRef<
         "appearance-none border-0 bg-transparent p-0",
         "w-full",
         "h-8",
-        "gap-[var(--gap-md)]",
+        "gap-[var(--Gap-gap-md)]",
         "rounded-[var(--radius-circle)]",
-        "px-[var(--padding-com-xl)]",
-        "bg-[var(--bg-brand)]",
-        "text-[var(--text-inverse)]",
-        "hover:bg-[var(--bg-brand-hover)]",
-        "active:bg-[var(--bg-brand-active)]",
+        "px-[var(--Padding-padding-com-xl)]",
+        "bg-[var(--Container-bg-brand)]",
+        "text-[var(--Text-text-inverse)]",
+        "hover:bg-[var(--Container-bg-brand-hover)]",
+        "active:bg-[var(--Container-bg-brand-active)]",
         "transition-colors",
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "font-[var(--font-weight-400)]",
         "text-sm",
         "leading-normal",
@@ -258,9 +258,9 @@ const SidebarHistoryTitle = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "mb-[var(--gap-sm)]",
-        "text-[var(--text-secondary)]",
-        "font-[var(--font-family-cn)]",
+        "mb-[var(--Gap-gap-sm)]",
+        "text-[var(--Text-text-secondary)]",
+        "font-[var(--font-family-CN)]",
         "font-[var(--font-weight-400)]",
         "font-size-1",
         "leading-[var(--line-height-1)]",
@@ -285,7 +285,11 @@ const SidebarHistorySearchPrimitive = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
   return (
-    <div ref={ref} className={cn("mb-[var(--gap-md)]", className)} {...props} />
+    <div
+      ref={ref}
+      className={cn("mb-[var(--Gap-gap-md)]", className)}
+      {...props}
+    />
   );
 });
 SidebarHistorySearchPrimitive.displayName = "SidebarHistorySearchPrimitive";
@@ -303,18 +307,18 @@ const SidebarHistorySearchContainer = React.forwardRef<
       className={cn(
         "w-full",
         "h-8",
-        "gap-[var(--gap-md)]",
+        "gap-[var(--Gap-gap-md)]",
         "rounded-[var(--radius-circle)]",
-        "px-[var(--padding-com-lg)]",
-        "border border-[var(--border-neutral)]",
-        "bg-[var(--bg-container)]",
+        "px-[var(--Padding-padding-com-lg)]",
+        "border border-[var(--Border-border-neutral)]",
+        "bg-[var(--Container-bg-container)]",
         "flex items-center",
         "min-w-0",
         "transition-all",
         "duration-300",
         "ease-in-out",
-        "hover:border-[var(--border-brand)]",
-        "focus-within:border-[var(--border-brand)]",
+        "hover:border-[var(--Border-border-brand)]",
+        "focus-within:border-[var(--Border-border-brand)]",
         "focus-within:ring-2",
         "focus-within:ring-[var(--ring)]",
         className,
@@ -335,7 +339,7 @@ const SidebarHistorySearchIcon = React.forwardRef<
   return (
     <span
       ref={ref}
-      className={cn("shrink-0", "text-[var(--text-secondary)]", className)}
+      className={cn("shrink-0", "text-[var(--Text-text-secondary)]", className)}
       {...props}
     />
   );
@@ -361,13 +365,13 @@ const SidebarHistorySearchInput = React.forwardRef<
         "bg-transparent",
         "outline-none",
         "focus:outline-none",
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "font-[var(--font-weight-400)]",
         "font-size-2",
         "leading-[var(--line-height-2)]",
         "tracking-[0px]",
-        "text-[var(--text-primary)]",
-        "placeholder:text-[var(--text-secondary)]",
+        "text-[var(--Text-text-primary)]",
+        "placeholder:text-[var(--Text-text-secondary)]",
         className,
       )}
       style={{
@@ -392,7 +396,7 @@ const SidebarHistoryListPrimitive = React.forwardRef<
       className={cn(
         "flex flex-col",
         "flex-1 min-h-0",
-        "gap-[var(--gap-md)]",
+        "gap-[var(--Gap-gap-md)]",
         "overflow-y-auto",
         "overflow-x-hidden",
         "w-full",
@@ -416,8 +420,8 @@ const SidebarHistoryEmpty = React.forwardRef<
       ref={ref}
       className={cn(
         "text-center",
-        "text-[var(--text-secondary)]",
-        "font-[var(--font-family-cn)]",
+        "text-[var(--Text-text-secondary)]",
+        "font-[var(--font-family-CN)]",
         "font-[var(--font-weight-400)]",
         "font-size-1",
         "leading-[var(--line-height-1)]",
@@ -448,7 +452,7 @@ const SidebarFooterPrimitive = React.forwardRef<
       ref={ref}
       className={cn(
         "[&_*]:!box-border",
-        "mt-[var(--gap-lg)]",
+        "mt-[var(--Gap-gap-lg)]",
         "shrink-0",
         className,
       )}

@@ -31,19 +31,19 @@ const HistoryItemPrimitive = React.forwardRef<
         "border-0",
         "bg-transparent",
         "flex items-center",
-        "gap-[var(--gap-md)]",
-        "pt-[var(--padding-com-sm)]",
-        "pr-[var(--padding-com-lg)]",
-        "pb-[var(--padding-com-sm)]",
-        "pl-[var(--padding-com-lg)]",
+        "gap-[var(--Gap-gap-md)]",
+        "pt-[var(--Padding-padding-com-sm)]",
+        "pr-[var(--Padding-padding-com-lg)]",
+        "pb-[var(--Padding-padding-com-sm)]",
+        "pl-[var(--Padding-padding-com-lg)]",
         "rounded-[var(--radius-circle)]",
         "transition-colors",
         "text-left",
-        "hover:bg-[var(--bg-neutral-light)]",
-        "data-[selected=true]:bg-[var(--bg-brand-light)]",
-        "data-[selected=true]:hover:bg-[var(--bg-brand-light)]",
-        "data-[active=true]:bg-[var(--bg-brand-light)]",
-        "data-[selected=true][data-active=true]:bg-[var(--bg-brand-light)]",
+        "hover:bg-[var(--Container-bg-neutral-light)]",
+        "data-[selected=true]:bg-[var(--Container-bg-brand-light)]",
+        "data-[selected=true]:hover:bg-[var(--Container-bg-brand-light)]",
+        "data-[active=true]:bg-[var(--Container-bg-brand-light)]",
+        "data-[selected=true][data-active=true]:bg-[var(--Container-bg-brand-light)]",
         className,
       )}
       {...props}
@@ -64,12 +64,12 @@ const HistoryItemTitlePrimitive = React.forwardRef<
       ref={ref}
       className={cn(
         "min-w-0 flex-1 truncate",
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "font-[var(--font-weight-400)]",
         "font-size-1",
         "leading-[calc(var(--line-height-1)-4px)]",
         "tracking-[0px]",
-        "text-[var(--text-primary)]",
+        "text-[var(--Text-text-primary)]",
         className,
       )}
       style={{
@@ -94,8 +94,8 @@ const HistoryItemTrailingPrimitive = React.forwardRef<
       ref={ref}
       className={cn(
         "shrink-0",
-        "inline-flex items-center gap-[var(--gap-xs)]",
-        "text-[var(--text-secondary)]",
+        "inline-flex items-center gap-[var(--Gap-gap-xs)]",
+        "text-[var(--Text-text-secondary)]",
         "font-size-1",
         "leading-[calc(var(--line-height-1)-4px)]",
         className,
@@ -118,8 +118,8 @@ const HistoryItemHoverTrailingPrimitive = React.forwardRef<
       ref={ref}
       className={cn(
         "shrink-0",
-        "inline-flex items-center gap-[var(--gap-xs)]",
-        "text-[var(--text-secondary)]",
+        "inline-flex items-center gap-[var(--Gap-gap-xs)]",
+        "text-[var(--Text-text-secondary)]",
         "font-size-1",
         "leading-[calc(var(--line-height-1)-4px)]",
         "opacity-0 pointer-events-none",

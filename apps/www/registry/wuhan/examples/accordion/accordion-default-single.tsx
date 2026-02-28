@@ -13,7 +13,7 @@ export default function AccordionDefaultSingleDemo() {
           value="item-1"
           trigger="项目一"
           content={
-            <div className="p-4 text-sm text-[var(--text-secondary)]">
+            <div className="p-4 text-sm text-[var(--Text-text-secondary)]">
               这个项目默认是收起的
             </div>
           }
@@ -22,7 +22,7 @@ export default function AccordionDefaultSingleDemo() {
           value="item-2"
           trigger="项目二（默认展开）"
           content={
-            <div className="p-4 text-sm text-[var(--text-secondary)]">
+            <div className="p-4 text-sm text-[var(--Text-text-secondary)]">
               这个项目默认是展开的
             </div>
           }
@@ -31,7 +31,7 @@ export default function AccordionDefaultSingleDemo() {
           value="item-3"
           trigger="项目三"
           content={
-            <div className="p-4 text-sm text-[var(--text-secondary)]">
+            <div className="p-4 text-sm text-[var(--Text-text-secondary)]">
               这个项目默认是收起的
             </div>
           }

@@ -11,24 +11,24 @@ const StyledStreamingDemo = styled.div`
   height: 100%;
   .demo-toolbar {
     position: absolute;
-    top: var(--padding-com-md);
-    right: var(--padding-com-md);
+    top: var(--Padding-padding-com-md);
+    right: var(--Padding-padding-com-md);
     z-index: 9;
     background: rgba(255, 255, 255, 0.95);
-    padding: var(--padding-com-xs) var(--padding-com-md);
+    padding: var(--Padding-padding-com-xs) var(--Padding-padding-com-md);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-basic);
     backdrop-filter: blur(8px);
 
     .status-text {
       font-size: var(--font-size-1);
-      color: var(--text-secondary);
-      margin-left: var(--margin-com-xs);
+      color: var(--Text-text-secondary);
+      margin-left: var(--Margin-margin-com-xs);
     }
   }
 
   .demo-content {
-    padding: var(--padding-com-2xl);
+    padding: var(--Padding-padding-com-2xl);
     padding-top: 64px;
     height: 100%;
     overflow-y: auto;
@@ -38,7 +38,7 @@ const StyledStreamingDemo = styled.div`
       align-items: center;
       justify-content: center;
       height: 300px;
-      color: var(--text-tertiary);
+      color: var(--Text-text-tertiary);
       font-size: var(--font-size-2);
     }
   }

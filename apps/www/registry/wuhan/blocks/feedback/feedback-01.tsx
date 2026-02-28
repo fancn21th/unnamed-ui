@@ -102,12 +102,12 @@ const FeedbackContainerPrimitive = React.forwardRef<
         "[&_*]:!box-border",
         "w-full",
         "rounded-[var(--radius-xl)]",
-        "pt-[var(--margin-com-xl)]",
-        "pr-[var(--padding-com-xl)]",
-        "pb-[var(--margin-com-xl)]",
-        "pl-[var(--padding-com-xl)]",
+        "pt-[var(--Margin-margin-com-xl)]",
+        "pr-[var(--Padding-padding-com-xl)]",
+        "pb-[var(--Margin-margin-com-xl)]",
+        "pl-[var(--Padding-padding-com-xl)]",
         "gap-3",
-        "bg-[var(--bg-page-secondary)]",
+        "bg-[var(--Page-bg-page-secondary)]",
         "flex flex-col",
         className,
       )}
@@ -139,13 +139,13 @@ const FeedbackHeaderPrimitive = React.forwardRef<
     >
       <span
         className={cn(
-          "font-[var(--font-family-cn)]",
+          "font-[var(--font-family-CN)]",
           "font-[var(--font-weight-600)]",
           "font-semibold",
           "font-size-3",
           "leading-[var(--line-height-3)]",
           "tracking-[0px]",
-          "text-[var(--text-title)]",
+          "text-[var(--Text-text-title)]",
         )}
         style={{
           fontSize: "var(--font-size-3)",
@@ -161,8 +161,8 @@ const FeedbackHeaderPrimitive = React.forwardRef<
             "appearance-none border-0 bg-transparent p-0",
             "inline-flex items-center justify-center",
             "size-4",
-            "text-[var(--text-secondary)]",
-            "hover:text-[var(--text-primary)]",
+            "text-[var(--Text-text-secondary)]",
+            "hover:text-[var(--Text-text-primary)]",
             "transition-colors",
             "cursor-pointer",
             "outline-none",
@@ -241,7 +241,7 @@ const FeedbackInputPrimitive = React.forwardRef<
       className={cn(
         "w-full",
         "rounded-[var(--radius-md)]",
-        "px-[var(--padding-com-md)]",
+        "px-[var(--Padding-padding-com-md)]",
         "py-[var(--padding-com-xss)]",
         className,
       )}
@@ -250,8 +250,8 @@ const FeedbackInputPrimitive = React.forwardRef<
         ref={ref}
         {...props}
         className={cn(
-          "placeholder:text-[var(--text-placeholder)]",
-          "caret-[var(--text-brand)]",
+          "placeholder:text-[var(--Text-text-placeholder)]",
+          "caret-[var(--Text-text-brand)]",
         )}
       />
     </SidebarHistorySearchContainer>
@@ -276,15 +276,15 @@ const FeedbackSubmitButtonPrimitive = React.forwardRef<
         "h-8",
         "min-w-[60px]",
         "rounded-[var(--radius-md)]",
-        "px-[var(--padding-com-xl)]",
+        "px-[var(--Padding-padding-com-xl)]",
         "gap-2",
-        "bg-[var(--bg-brand)]",
-        "text-[var(--text-inverse)]",
-        "hover:bg-[var(--bg-brand-hover)]",
+        "bg-[var(--Container-bg-brand)]",
+        "text-[var(--Text-text-inverse)]",
+        "hover:bg-[var(--Container-bg-brand-hover)]",
         "disabled:opacity-50 disabled:cursor-not-allowed",
         "transition-colors",
         "transition-opacity",
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "text-sm",
         "leading-normal",
         "tracking-[0px]",

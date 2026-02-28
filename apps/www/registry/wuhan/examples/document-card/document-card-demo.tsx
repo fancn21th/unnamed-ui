@@ -16,7 +16,9 @@ export default function DocumentCardDemo() {
       researchTopic: "标签",
       researchField: "商业投资",
       researchPeriod: "2015-2025",
-      icon: <FileSearch className="text-[var(--text-primary)]" size={24} />,
+      icon: (
+        <FileSearch className="text-[var(--Text-text-primary)]" size={24} />
+      ),
     },
     {
       id: "2",
@@ -47,17 +49,17 @@ export default function DocumentCardDemo() {
     <div className="flex flex-col gap-6">
       {/* 标题 */}
       <div className="flex flex-col gap-1">
-        <h2 className="text-[var(--text-primary)] font-medium">
+        <h2 className="text-[var(--Text-text-primary)] font-medium">
           Document Card
         </h2>
-        <p className="text-[var(--text-tertiary)] text-sm">
+        <p className="text-[var(--Text-text-tertiary)] text-sm">
           文档卡片组件，支持三种状态
         </p>
       </div>
 
       {/* 三种状态 */}
       <div className="flex flex-col gap-4">
-        <h3 className="font-medium text-[var(--text-primary)]">生成中</h3>
+        <h3 className="font-medium text-[var(--Text-text-primary)]">生成中</h3>
         <DocumentCard
           title="AI趋势研究"
           generating={{
@@ -68,14 +70,18 @@ export default function DocumentCardDemo() {
       </div>
 
       <div className="flex flex-col gap-4">
-        <h3 className="font-medium text-[var(--text-primary)]">完成</h3>
+        <h3 className="font-medium text-[var(--Text-text-primary)]">完成</h3>
         <DocumentCard title="AI趋势研究" updateTime="18:21" />
       </div>
 
       <div className="flex flex-col gap-4">
-        <h3 className="font-medium text-[var(--text-primary)]">有额外信息</h3>
+        <h3 className="font-medium text-[var(--Text-text-primary)]">
+          有额外信息
+        </h3>
         <DocumentCard
-          icon={<Target className="text-[var(--text-primary)]" size={24} />}
+          icon={
+            <Target className="text-[var(--Text-text-primary)]" size={24} />
+          }
           title="行业洞察"
           updateTime="14:15"
           researchTopic="洞察报告"
@@ -86,7 +92,9 @@ export default function DocumentCardDemo() {
 
       {/* 卡片列表 */}
       <div className="flex flex-col gap-4">
-        <h3 className="font-medium text-[var(--text-primary)]">卡片列表</h3>
+        <h3 className="font-medium text-[var(--Text-text-primary)]">
+          卡片列表
+        </h3>
         <DocumentCardList
           title="我的文档"
           cards={cards}

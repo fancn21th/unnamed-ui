@@ -43,7 +43,7 @@ export default function TagAddable() {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
-        <span className="text-sm text-[var(--text-secondary)]">
+        <span className="text-sm text-[var(--Text-text-secondary)]">
           动态标签列表（点击添加标签，按回车或失焦保存）:
         </span>
         <div className="flex flex-wrap gap-2 items-center">
@@ -76,7 +76,7 @@ export default function TagAddable() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <span className="text-sm text-[var(--text-secondary)]">
+        <span className="text-sm text-[var(--Text-text-secondary)]">
           自定义添加文本:
         </span>
         <div className="flex flex-wrap gap-2">

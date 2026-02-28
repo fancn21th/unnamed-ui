@@ -333,12 +333,12 @@ function EditableListItem(props: {
       style={style}
       className={isDragging ? "opacity-50" : ""}
     >
-      <div className="flex items-center gap-[var(--gap-xs)] flex-1">
+      <div className="flex items-center gap-[var(--Gap-gap-xs)] flex-1">
         <button
           type="button"
           className={cn(
             "appearance-none border-0 bg-transparent p-0",
-            "cursor-grab text-[var(--text-tertiary)]",
+            "cursor-grab text-[var(--Text-text-tertiary)]",
           )}
           aria-label="Reorder item"
           {...attributes}
@@ -355,7 +355,7 @@ function EditableListItem(props: {
         type="button"
         className={cn(
           "appearance-none border-0 bg-transparent p-0",
-          "text-[var(--text-tertiary)]",
+          "text-[var(--Text-text-tertiary)]",
         )}
         aria-label="Delete item"
         onClick={onDeleteItem}

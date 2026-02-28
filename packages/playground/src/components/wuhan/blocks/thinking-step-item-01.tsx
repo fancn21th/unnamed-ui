@@ -391,7 +391,7 @@ const ThinkingStepItemContainerPrimitive = React.forwardRef<
         BOX_BORDER,
         "w-full",
         "flex flex-col",
-        "gap-[var(--gap-xl)]",
+        "gap-[var(--Gap-gap-xl)]",
         className,
       )}
       {...props}
@@ -483,7 +483,7 @@ const ThinkingStepItemHeaderPrimitive = React.forwardRef<
             "w-full",
             "cursor-default",
             "transition-colors",
-            "gap-[var(--gap-md)]",
+            "gap-[var(--Gap-gap-md)]",
             className,
           )}
           data-collapsible="false"
@@ -509,7 +509,7 @@ const ThinkingStepItemHeaderPrimitive = React.forwardRef<
             "w-full",
             "cursor-pointer",
             "transition-colors",
-            "gap-[var(--gap-md)]",
+            "gap-[var(--Gap-gap-md)]",
             className,
           )}
           data-collapsible="true"
@@ -542,11 +542,11 @@ const ThinkingStepItemStatusIconPrimitive = React.forwardRef<
   };
 
   const colorMap: Record<ThinkingSemanticStatus, string> = {
-    idle: "text-[var(--text-tertiary)]",
-    running: "text-[var(--text-brand)]",
-    success: "text-[var(--text-success)]",
-    error: "text-[var(--text-error)]",
-    cancelled: "text-[var(--text-tertiary)]",
+    idle: "text-[var(--Text-text-tertiary)]",
+    running: "text-[var(--Text-text-brand)]",
+    success: "text-[var(--Text-text-success)]",
+    error: "text-[var(--Text-text-error)]",
+    cancelled: "text-[var(--Text-text-tertiary)]",
   };
 
   return (
@@ -581,12 +581,12 @@ const ThinkingStepItemTitlePrimitive = React.forwardRef<
     <span
       ref={ref}
       className={cn(
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "font-size-2",
         "leading-[var(--line-height-2)]",
         "font-semibold",
-        "text-[var(--text-primary)]",
-        "group-hover/step-item:text-[var(--text-brand)]",
+        "text-[var(--Text-text-primary)]",
+        "group-hover/step-item:text-[var(--Text-text-brand)]",
         "transition-colors",
         className,
       )}
@@ -611,8 +611,8 @@ const ThinkingStepItemCollapseArrowPrimitive = React.forwardRef<
       ref={ref}
       className={cn(
         "size-4",
-        "text-[var(--text-primary)]",
-        "group-hover/step-item:text-[var(--text-brand)]",
+        "text-[var(--Text-text-primary)]",
+        "group-hover/step-item:text-[var(--Text-text-brand)]",
         "transition-all duration-200",
         "group-data-[state=open]/step-item-trigger:rotate-180",
         "data-[state=open]:rotate-180",
@@ -639,7 +639,7 @@ const ThinkingStepItemContentPrimitive = React.forwardRef<
   const contentNode = (
     <div
       ref={ref}
-      className={cn(BOX_BORDER, "mt-[var(--gap-md)]", "w-full", className)}
+      className={cn(BOX_BORDER, "mt-[var(--Gap-gap-md)]", "w-full", className)}
       data-collapsible={collapsible ? "true" : "false"}
       {...props}
     >
@@ -669,7 +669,7 @@ const ThinkingStepItemContentListPrimitive = React.forwardRef<
         BOX_BORDER,
         "w-full",
         "flex flex-col",
-        "gap-[var(--gap-xl)]",
+        "gap-[var(--Gap-gap-xl)]",
         className,
       )}
       {...props}
@@ -696,9 +696,9 @@ const ThinkingStepItemContentItemPrimitive = React.forwardRef<
         BOX_BORDER,
         "w-full",
         "flex",
-        "gap-[var(--gap-md)]",
+        "gap-[var(--Gap-gap-md)]",
         "relative",
-        "pl-[calc(var(--space-6)+var(--gap-md))]",
+        "pl-[calc(var(--space-6)+var(--Gap-gap-md))]",
         className,
       )}
       data-last={isLast ? "true" : "false"}
@@ -730,10 +730,10 @@ const ThinkingStepItemTimelinePrimitive = React.forwardRef<
         "absolute",
         "top-0",
         "left-0",
-        "pt-[var(--padding-com-md)]",
-        isLast ? "h-full" : "h-[calc(100%+var(--gap-xl))]",
+        "pt-[var(--Padding-padding-com-md)]",
+        isLast ? "h-full" : "h-[calc(100%+var(--Gap-gap-xl))]",
         "flex flex-col",
-        "gap-[var(--gap-md)]",
+        "gap-[var(--Gap-gap-md)]",
         className,
       )}
       data-last={isLast ? "true" : "false"}
@@ -744,7 +744,7 @@ const ThinkingStepItemTimelinePrimitive = React.forwardRef<
         className={cn(
           "w-[var(--space-2)] h-[var(--space-2)]",
           "rounded-full",
-          "bg-[var(--text-placeholder)]",
+          "bg-[var(--Text-text-placeholder)]",
           "flex-shrink-0",
         )}
       />
@@ -752,8 +752,8 @@ const ThinkingStepItemTimelinePrimitive = React.forwardRef<
       <div
         className={cn(
           "w-[var(--border-width)]",
-          isLast ? "h-full" : "h-[calc(100%+var(--gap-xs))]",
-          "bg-[var(--divider-neutral-basic)]",
+          isLast ? "h-full" : "h-[calc(100%+var(--Gap-gap-xs))]",
+          "bg-[var(--Border-divider-neutral-basic)]",
         )}
       />
     </div>
@@ -777,7 +777,7 @@ const ThinkingStepItemContentAreaPrimitive = React.forwardRef<
         BOX_BORDER,
         "flex-1",
         "flex flex-col",
-        "gap-[var(--gap-md)]",
+        "gap-[var(--Gap-gap-md)]",
         className,
       )}
       {...props}
@@ -802,11 +802,11 @@ const ThinkingStepItemRegularContentPrimitive = React.forwardRef<
       ref={ref}
       className={cn(
         BOX_BORDER,
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "font-size-1",
         "leading-[var(--line-height-1)]",
         "font-normal",
-        "text-[var(--text-primary)]",
+        "text-[var(--Text-text-primary)]",
         className,
       )}
       {...props}
@@ -832,13 +832,13 @@ const ThinkingStepItemToolCallPrimitive = React.forwardRef<
       className={cn(
         BOX_BORDER,
         "inline-flex items-start",
-        "gap-[var(--gap-xs)]",
+        "gap-[var(--Gap-gap-xs)]",
         "rounded-[var(--radius-sm)]",
-        "pt-[var(--padding-com-2xs)]",
-        "pr-[var(--padding-com-sm)]",
-        "pb-[var(--padding-com-2xs)]",
-        "pl-[var(--padding-com-sm)]",
-        "bg-[var(--bg-neutral-light)]",
+        "pt-[var(--Padding-padding-com-2xs)]",
+        "pr-[var(--Padding-padding-com-sm)]",
+        "pb-[var(--Padding-padding-com-2xs)]",
+        "pl-[var(--Padding-padding-com-sm)]",
+        "bg-[var(--Container-bg-neutral-light)]",
         "w-fit",
         className,
       )}
@@ -853,7 +853,7 @@ const ThinkingStepItemToolCallPrimitive = React.forwardRef<
         </div>
       )}
       {/* Content 区域 - 如果同时有 title 和 content，用冒号连接 */}
-      <div className="gap-[var(--gap-xs)]">
+      <div className="gap-[var(--Gap-gap-xs)]">
         {title && (
           <ThinkingStepItemToolCallTitlePrimitive>
             {title}
@@ -910,11 +910,11 @@ const ThinkingStepItemToolCallTitlePrimitive = React.forwardRef<
     <span
       ref={ref}
       className={cn(
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "font-size-1",
         "leading-[var(--line-height-1)]",
         "font-normal",
-        "text-[var(--text-secondary)]",
+        "text-[var(--Text-text-secondary)]",
         className,
       )}
       {...props}
@@ -939,11 +939,11 @@ const ThinkingStepItemToolCallContentPrimitive = React.forwardRef<
       ref={ref}
       className={cn(
         BOX_BORDER,
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "font-size-1",
         "leading-[var(--line-height-1)]",
         "font-normal",
-        "text-[var(--text-tertiary)]",
+        "text-[var(--Text-text-tertiary)]",
         "inline",
         className,
       )}
@@ -1088,7 +1088,7 @@ const ThinkingStepItemFileListPrimitive = React.forwardRef<
         className={cn(
           BOX_BORDER,
           "flex flex-col",
-          "gap-[var(--gap-xs)]",
+          "gap-[var(--Gap-gap-xs)]",
           className,
         )}
         {...props}
@@ -1097,7 +1097,7 @@ const ThinkingStepItemFileListPrimitive = React.forwardRef<
         <div
           ref={wrapRef}
           id={listId}
-          className={cn("flex flex-wrap", "gap-[var(--gap-xs)]")}
+          className={cn("flex flex-wrap", "gap-[var(--Gap-gap-xs)]")}
         >
           {visibleFiles.map((file, index) => (
             <ThinkingStepItemFileItemPrimitive
@@ -1140,11 +1140,11 @@ const ThinkingStepItemFileItemPrimitive = React.forwardRef<
   > = {
     loading: {
       node: <Loader2 className="size-4 animate-spin" />,
-      className: "text-[var(--text-brand)]",
+      className: "text-[var(--Text-text-brand)]",
     },
     error: {
       node: <CircleAlert className="size-4" />,
-      className: "text-[var(--text-error)]",
+      className: "text-[var(--Text-text-error)]",
     },
     ready: null,
   };
@@ -1157,15 +1157,15 @@ const ThinkingStepItemFileItemPrimitive = React.forwardRef<
       className={cn(
         BOX_BORDER,
         "inline-flex items-center",
-        "gap-[var(--gap-xs)]",
+        "gap-[var(--Gap-gap-xs)]",
         "h-6",
         "rounded-[var(--radius-circle)]",
-        "pt-[var(--padding-com-2xs)]",
-        "pr-[var(--padding-com-sm)]",
-        "pb-[var(--padding-com-2xs)]",
-        "pl-[var(--padding-com-sm)]",
-        "bg-[var(--bg-container)]",
-        "border border-[var(--border-neutral)]",
+        "pt-[var(--Padding-padding-com-2xs)]",
+        "pr-[var(--Padding-padding-com-sm)]",
+        "pb-[var(--Padding-padding-com-2xs)]",
+        "pl-[var(--Padding-padding-com-sm)]",
+        "bg-[var(--Container-bg-container)]",
+        "border border-[var(--Border-border-neutral)]",
         className,
       )}
       {...props}
@@ -1184,19 +1184,19 @@ const ThinkingStepItemFileItemPrimitive = React.forwardRef<
         ) : icon ? (
           <span className="text-sm leading-none">{icon}</span>
         ) : (
-          <div className="w-full h-full bg-[var(--bg-neutral-light)] rounded flex items-center justify-center">
-            <div className="w-2 h-2 bg-[var(--text-placeholder)] rounded" />
+          <div className="w-full h-full bg-[var(--Container-bg-neutral-light)] rounded flex items-center justify-center">
+            <div className="w-2 h-2 bg-[var(--Text-text-placeholder)] rounded" />
           </div>
         )}
       </div>
       {/* 文件名 */}
       <span
         className={cn(
-          "font-[var(--font-family-cn)]",
+          "font-[var(--font-family-CN)]",
           "font-size-1",
           "leading-[var(--line-height-1)]",
           "font-normal",
-          "text-[var(--text-secondary)]",
+          "text-[var(--Text-text-secondary)]",
         )}
       >
         {name}
@@ -1226,22 +1226,22 @@ const ThinkingStepItemExpandButtonPrimitive = React.forwardRef<
         BOX_BORDER,
         "h-6",
         "flex items-center justify-center",
-        "gap-[var(--gap-xs)]",
+        "gap-[var(--Gap-gap-xs)]",
         "rounded-full",
-        "pt-[var(--padding-com-2xs)]",
-        "pr-[var(--padding-com-md)]",
-        "pb-[var(--padding-com-2xs)]",
-        "pl-[var(--padding-com-md)]",
-        "bg-[var(--bg-container)]",
-        "border border-[var(--border-neutral)]",
-        "font-[var(--font-family-cn)]",
+        "pt-[var(--Padding-padding-com-2xs)]",
+        "pr-[var(--Padding-padding-com-md)]",
+        "pb-[var(--Padding-padding-com-2xs)]",
+        "pl-[var(--Padding-padding-com-md)]",
+        "bg-[var(--Container-bg-container)]",
+        "border border-[var(--Border-border-neutral)]",
+        "font-[var(--font-family-CN)]",
         "font-size-1",
         "leading-[var(--line-height-1)]",
         "font-normal",
-        "text-[var(--text-primary)]",
+        "text-[var(--Text-text-primary)]",
         "cursor-pointer",
         "transition-colors",
-        "hover:bg-[var(--bg-neutral-light-hover)]",
+        "hover:bg-[var(--Container-bg-neutral-light-hover)]",
         className,
       )}
       {...props}

@@ -7,10 +7,10 @@ export default function WelcomeDemo() {
   return (
     <div className="flex flex-col gap-6 w-full">
       <div className="text-center">
-        <h3 className="text-lg font-medium text-[var(--text-primary)] mb-2">
+        <h3 className="text-lg font-medium text-[var(--Text-text-primary)] mb-2">
           Welcome 01
         </h3>
-        <p className="text-sm text-[var(--text-secondary)]">
+        <p className="text-sm text-[var(--Text-text-secondary)]">
           空状态欢迎语（默认 + 自定义）
         </p>
       </div>

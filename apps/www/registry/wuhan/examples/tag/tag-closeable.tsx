@@ -6,7 +6,7 @@ export default function TagCloseable() {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
-        <span className="text-sm text-[var(--text-secondary)]">
+        <span className="text-sm text-[var(--Text-text-secondary)]">
           可关闭标签:
         </span>
         <div className="flex flex-wrap gap-2">
@@ -26,7 +26,7 @@ export default function TagCloseable() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <span className="text-sm text-[var(--text-secondary)]">
+        <span className="text-sm text-[var(--Text-text-secondary)]">
           带回调的可关闭标签:
         </span>
         <div className="flex flex-wrap gap-2">

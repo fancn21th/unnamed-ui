@@ -36,7 +36,7 @@ export default function SourcesSidebarDemo() {
   );
 
   return (
-    <div className="w-[420px] rounded-lg border border-[var(--border-neutral)]">
+    <div className="w-[420px] rounded-lg border border-[var(--Border-border-neutral)]">
       <SourcesSidebar sources={sources} />
     </div>
   );

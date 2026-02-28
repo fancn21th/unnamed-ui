@@ -16,16 +16,16 @@ export const SourcesSidebarWrapper = styled.div`
   height: 100%;
   min-height: 100%;
   width: 100%;
-  background: var(--bg-container);
+  background: var(--Container-bg-container);
 `;
 
 export const SourcesSidebarTabs = styled.div`
   display: flex;
   align-items: center;
-  padding-left: var(--padding-com-md);
-  padding-right: var(--padding-com-md);
-  border-bottom: 1px solid var(--divider-neutral-basic);
-  gap: var(--gap-md);
+  padding-left: var(--Padding-padding-com-md);
+  padding-right: var(--Padding-padding-com-md);
+  border-bottom: 1px solid var(--Border-divider-neutral-basic);
+  gap: var(--Gap-gap-md);
 `;
 
 export const SourcesSidebarClose = styled.button`
@@ -40,14 +40,14 @@ export const SourcesSidebarClose = styled.button`
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-md);
-  color: var(--text-secondary);
+  color: var(--Text-text-secondary);
   transition:
     background-color 0.2s ease,
     color 0.2s ease;
 
   &:hover {
-    background-color: var(--bg-neutral-light-active);
-    color: var(--text-primary);
+    background-color: var(--Container-bg-neutral-light-active);
+    color: var(--Text-text-primary);
   }
 
   svg {
@@ -61,15 +61,15 @@ export interface SourcesSidebarTabProps {
 }
 
 export const SourcesSidebarTab = styled.button<SourcesSidebarTabProps>`
-  padding: var(--padding-com-sm) 0;
+  padding: var(--Padding-padding-com-sm) 0;
   border: none;
   background: transparent;
   cursor: pointer;
-  font-family: var(--font-family-cn);
+  font-family: var(--font-family-CN);
   font-size: var(--font-size-2);
   font-weight: 400;
   color: ${(props) =>
-    props.$active ? "var(--text-brand)" : "var(--text-secondary)"};
+    props.$active ? "var(--Text-text-brand)" : "var(--Text-text-secondary)"};
   position: relative;
   transition: color 0.2s ease;
 
@@ -81,46 +81,46 @@ export const SourcesSidebarTab = styled.button<SourcesSidebarTabProps>`
     right: 0;
     height: 2px;
     background: ${(props) =>
-      props.$active ? "var(--text-brand)" : "transparent"};
+      props.$active ? "var(--Text-text-brand)" : "transparent"};
     transition: background-color 0.2s ease;
   }
 
   &:hover {
     color: ${(props) =>
-      props.$active ? "var(--text-brand)" : "var(--text-primary)"};
+      props.$active ? "var(--Text-text-brand)" : "var(--Text-text-primary)"};
   }
 `;
 
 export const SourcesSidebarList = styled.div`
   flex: 1;
   overflow-y: auto;
-  padding: var(--padding-com-md);
+  padding: var(--Padding-padding-com-md);
   display: flex;
   flex-direction: column;
-  gap: var(--gap-md);
+  gap: var(--Gap-gap-md);
 `;
 
 export const SourcesSidebarListItem = styled.div`
   width: 100%;
-  background: var(--bg-container);
+  background: var(--Container-bg-container);
   border-radius: var(--radius-xl);
-  padding: var(--padding-com-md);
+  padding: var(--Padding-padding-com-md);
   box-sizing: border-box;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: var(--gap-xs);
+  gap: var(--Gap-gap-xs);
   transition: background-color 0.2s ease;
 
   &:hover {
-    background: var(--bg-container-secondary);
+    background: var(--Container-bg-container-secondary);
   }
 `;
 
 export const SourcesSidebarListItemHeader = styled.div`
   display: flex;
   align-items: center;
-  gap: var(--gap-xs);
+  gap: var(--Gap-gap-xs);
 `;
 
 export const SourcesSidebarListItemNumber = styled.span`
@@ -131,25 +131,25 @@ export const SourcesSidebarListItemNumber = styled.span`
   min-width: 16px;
   box-sizing: border-box;
   border-radius: var(--radius-circle);
-  font-family: var(--font-family-cn);
+  font-family: var(--font-family-CN);
   font-weight: 400;
   font-size: var(--font-size-1);
   line-height: 1;
   letter-spacing: 0;
   text-align: center;
   vertical-align: middle;
-  padding-right: var(--padding-com-xs);
-  padding-left: var(--padding-com-xs);
+  padding-right: var(--Padding-padding-com-xs);
+  padding-left: var(--Padding-padding-com-xs);
   user-select: none;
-  background: var(--bg-neutral-light-hover);
-  color: var(--text-primary);
+  background: var(--Container-bg-neutral-light-hover);
+  color: var(--Text-text-primary);
   flex-shrink: 0;
 `;
 
 export const SourcesSidebarListItemSiteInfo = styled.div`
   display: flex;
   align-items: center;
-  gap: var(--gap-xs);
+  gap: var(--Gap-gap-xs);
   flex: 1;
   min-width: 0;
 `;
@@ -175,11 +175,11 @@ export const SourcesSidebarListItemLogo = styled.div`
 `;
 
 export const SourcesSidebarListItemSiteName = styled.div`
-  font-family: var(--font-family-cn);
+  font-family: var(--font-family-CN);
   font-size: var(--font-size-1);
   line-height: var(--line-height-2);
   font-weight: 400;
-  color: var(--text-secondary);
+  color: var(--Text-text-secondary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -188,20 +188,20 @@ export const SourcesSidebarListItemSiteName = styled.div`
 `;
 
 export const SourcesSidebarListItemTitle = styled.div`
-  font-family: var(--font-family-cn);
+  font-family: var(--font-family-CN);
   font-size: var(--font-size-2);
   line-height: var(--line-height-2);
   font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: var(--margin-com-xs);
+  color: var(--Text-text-primary);
+  margin-bottom: var(--Margin-margin-com-xs);
   ${multiLineEllipsis(2)};
 `;
 
 export const SourcesSidebarListItemDescription = styled.div`
-  font-family: var(--font-family-cn);
+  font-family: var(--font-family-CN);
   font-size: var(--font-size-1);
   line-height: var(--line-height-2);
   font-weight: 400;
-  color: var(--text-secondary);
+  color: var(--Text-text-secondary);
   ${multiLineEllipsis(3)};
 `;

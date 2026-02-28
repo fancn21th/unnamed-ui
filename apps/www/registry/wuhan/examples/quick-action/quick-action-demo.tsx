@@ -18,10 +18,10 @@ export default function QuickActionDemo() {
   return (
     <div className="flex flex-col gap-6 w-full">
       <div className="text-center">
-        <h3 className="text-lg font-medium text-[var(--text-primary)] mb-2">
+        <h3 className="text-lg font-medium text-[var(--Text-text-primary)] mb-2">
           你好，我今天能帮你什么？
         </h3>
-        <p className="text-sm text-[var(--text-secondary)]">
+        <p className="text-sm text-[var(--Text-text-secondary)]">
           选择一个快速操作开始对话
         </p>
       </div>

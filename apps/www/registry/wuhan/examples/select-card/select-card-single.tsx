@@ -19,7 +19,7 @@ export default function SelectCardSingle() {
       style={{
         display: "grid",
         gridTemplateColumns: "repeat(4, 1fr)",
-        gap: "var(--gap-lg)",
+        gap: "var(--Gap-gap-lg)",
       }}
     >
       {options.map((option) => (

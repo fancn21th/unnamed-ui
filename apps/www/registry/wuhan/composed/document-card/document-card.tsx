@@ -210,11 +210,11 @@ export const DocumentCard = React.forwardRef<HTMLDivElement, DocumentCardProps>(
                     {/* 标签 */}
                     <span
                       className={cn(
-                        "font-[var(--font-family-cn)]",
+                        "font-[var(--font-family-CN)]",
                         "font-[var(--font-weight-400)]",
                         "font-size-1",
                         "leading-[var(--line-height-1)]",
-                        "text-[var(--text-tertiary)]",
+                        "text-[var(--Text-text-tertiary)]",
                         "flex-shrink-0",
                       )}
                     >
@@ -227,16 +227,16 @@ export const DocumentCard = React.forwardRef<HTMLDivElement, DocumentCardProps>(
                         className={cn(
                           "inline-flex",
                           "items-center",
-                          "px-[var(--padding-com-xs)]",
-                          "py-[var(--padding-com-2xs)]",
+                          "px-[var(--Padding-padding-com-xs)]",
+                          "py-[var(--Padding-padding-com-2xs)]",
                           "rounded-[var(--radius-sm)]",
-                          "border border-[var(--border-neutral)]",
-                          "bg-[var(--bg-container)]",
-                          "font-[var(--font-family-cn)]",
+                          "border border-[var(--Border-border-neutral)]",
+                          "bg-[var(--Container-bg-container)]",
+                          "font-[var(--font-family-CN)]",
                           "font-[var(--font-weight-400)]",
                           "font-size-1",
                           "leading-[var(--line-height-1)]",
-                          "text-[var(--text-primary)]",
+                          "text-[var(--Text-text-primary)]",
                           "truncate",
                         )}
                       >
@@ -245,11 +245,11 @@ export const DocumentCard = React.forwardRef<HTMLDivElement, DocumentCardProps>(
                     ) : (
                       <span
                         className={cn(
-                          "font-[var(--font-family-cn)]",
+                          "font-[var(--font-family-CN)]",
                           "font-[var(--font-weight-400)]",
                           "font-size-1",
                           "leading-[var(--line-height-1)]",
-                          "text-[var(--text-primary)]",
+                          "text-[var(--Text-text-primary)]",
                           "truncate",
                         )}
                       >
@@ -298,11 +298,11 @@ export const DocumentCardList = React.forwardRef<
       {title && (
         <div
           className={cn(
-            "font-[var(--font-family-cn)]",
+            "font-[var(--font-family-CN)]",
             "font-[var(--font-weight-600)]",
             "font-size-2",
             "leading-[var(--line-height-2)]",
-            "text-[var(--text-primary)]",
+            "text-[var(--Text-text-primary)]",
             "mb-4",
           )}
         >

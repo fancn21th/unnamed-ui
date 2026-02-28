@@ -9,62 +9,62 @@ export const StyledMarkdownWrapper = styled(XMarkdown)`
 
   /* Typography: headings */
   h1 {
-    font-family: var(--font-family-cn);
+    font-family: var(--font-family-CN);
     font-size: var(--font-size-5);
     line-height: var(--line-height-5);
     font-weight: 600;
-    margin-top: var(--margin-com-2xl) !important;
-    margin-bottom: var(--margin-com-md) !important;
+    margin-top: var(--Margin-margin-com-2xl) !important;
+    margin-bottom: var(--Margin-margin-com-md) !important;
   }
 
   h2 {
-    font-family: var(--font-family-cn);
+    font-family: var(--font-family-CN);
     font-size: var(--font-size-4);
     line-height: var(--line-height-4);
     font-weight: 600;
-    margin-top: var(--margin-com-2xl) !important;
-    margin-bottom: var(--margin-com-md) !important;
+    margin-top: var(--Margin-margin-com-2xl) !important;
+    margin-bottom: var(--Margin-margin-com-md) !important;
   }
 
   h3 {
-    font-family: var(--font-family-cn);
+    font-family: var(--font-family-CN);
     font-size: var(--font-size-3);
     line-height: var(--line-height-4);
     font-weight: 600;
-    margin-top: var(--margin-com-2xl) !important;
-    margin-bottom: var(--margin-com-md) !important;
+    margin-top: var(--Margin-margin-com-2xl) !important;
+    margin-bottom: var(--Margin-margin-com-md) !important;
   }
 
   /* Typography: paragraph */
   p {
-    font-family: var(--font-family-cn);
+    font-family: var(--font-family-CN);
     font-size: var(--font-size-3);
     line-height: var(--line-height-4);
     font-weight: 400;
-    margin-top: var(--margin-com-md) !important;
-    margin-bottom: var(--margin-com-md) !important;
+    margin-top: var(--Margin-margin-com-md) !important;
+    margin-bottom: var(--Margin-margin-com-md) !important;
   }
 
   /* Blockquote: left bar + tertiary text */
   blockquote {
-    font-family: var(--font-family-cn) !important;
+    font-family: var(--font-family-CN) !important;
     font-weight: 400 !important;
     font-style: normal !important;
     font-size: var(--font-size-3) !important;
     line-height: var(--line-height-4) !important;
     letter-spacing: 0 !important;
-    color: var(--text-tertiary) !important;
-    border-left: 2px solid var(--bg-neutral-light-active) !important;
+    color: var(--Text-text-tertiary) !important;
+    border-left: 2px solid var(--Container-bg-neutral-light-active) !important;
     margin: 0 !important;
-    padding-left: var(--padding-com-lg) !important;
+    padding-left: var(--Padding-padding-com-lg) !important;
   }
 
   /* Lists: spacing + nested bullets */
   ul,
   ol {
-    margin-left: var(--margin-com-xs) !important;
-    margin-top: var(--margin-com-md) !important;
-    margin-bottom: var(--margin-com-md) !important;
+    margin-left: var(--Margin-margin-com-xs) !important;
+    margin-top: var(--Margin-margin-com-md) !important;
+    margin-bottom: var(--Margin-margin-com-md) !important;
   }
 
   /* 2nd-level ul bullets */
@@ -82,8 +82,8 @@ export const StyledMarkdownWrapper = styled(XMarkdown)`
     font-size: var(--font-size-3);
     line-height: var(--line-height-4);
     font-weight: 400;
-    margin-top: var(--margin-com-md) !important;
-    margin-bottom: var(--margin-com-md) !important;
+    margin-top: var(--Margin-margin-com-md) !important;
+    margin-bottom: var(--Margin-margin-com-md) !important;
   }
 
   /* Tables: basic typography */
@@ -93,28 +93,28 @@ export const StyledMarkdownWrapper = styled(XMarkdown)`
   }
   /* Table header */
   th {
-    color: var(--text-title) !important;
-    font-family: var(--font-family-cn) !important;
+    color: var(--Text-text-title) !important;
+    font-family: var(--font-family-CN) !important;
     font-weight: 600 !important;
     font-size: var(--font-size-2) !important;
     line-height: var(--line-height-2) !important;
-    background: var(--bg-neutral-light) !important;
-    padding: var(--padding-com-lg) !important;
+    background: var(--Container-bg-neutral-light) !important;
+    padding: var(--Padding-padding-com-lg) !important;
   }
 
   /* Table cell */
   td {
-    font-family: var(--font-family-cn);
+    font-family: var(--font-family-CN);
     font-size: var(--font-size-2) !important;
     line-height: var(--line-height-2) !important;
     font-weight: 400;
-    background-color: var(--bg-container) !important;
-    color: var(--text-primary) !important;
+    background-color: var(--Container-bg-container) !important;
+    color: var(--Text-text-primary) !important;
   }
 
   /* Table caption */
   caption {
-    font-family: var(--font-family-cn);
+    font-family: var(--font-family-CN);
     font-size: var(--font-size-1);
     line-height: var(--line-height-1);
     font-weight: 400;
@@ -124,11 +124,11 @@ export const StyledMarkdownWrapper = styled(XMarkdown)`
     font-size: var(--font-size-1) !important;
     line-height: var(--line-height-1) !important;
     border-radius: var(--radius-lg) !important;
-    padding-top: var(--padding-com-md) !important;
-    padding-right: var(--padding-com-md) !important;
-    padding-bottom: var(--padding-com-md) !important;
-    padding-left: var(--padding-com-md) !important;
-    background-color: var(--bg-neutral-light) !important;
+    padding-top: var(--Padding-padding-com-md) !important;
+    padding-right: var(--Padding-padding-com-md) !important;
+    padding-bottom: var(--Padding-padding-com-md) !important;
+    padding-left: var(--Padding-padding-com-md) !important;
+    background-color: var(--Container-bg-neutral-light) !important;
   }
   .ant-codeHighlighter-header {
     padding: 0;
@@ -168,8 +168,8 @@ export const StyledMarkdownWrapper = styled(XMarkdown)`
     font-size: var(--font-size-1) !important;
     line-height: var(--line-height-1) !important;
     font-weight: 400;
-    margin-top: var(--margin-com-xl) !important;
-    margin-bottom: var(--margin-com-xl) !important;
+    margin-top: var(--Margin-margin-com-xl) !important;
+    margin-bottom: var(--Margin-margin-com-xl) !important;
   }
 
   /* Code block (note: further overridden by StyledCodeScroll) */
@@ -178,8 +178,8 @@ export const StyledMarkdownWrapper = styled(XMarkdown)`
     overflow-x: auto !important;
     white-space: pre-wrap !important;
     word-wrap: break-word !important;
-    margin-top: var(--margin-com-xl) !important;
-    margin-bottom: var(--margin-com-xl) !important;
+    margin-top: var(--Margin-margin-com-xl) !important;
+    margin-bottom: var(--Margin-margin-com-xl) !important;
   }
 
   pre code {
@@ -225,8 +225,8 @@ export const StyledMarkdownWrapper = styled(XMarkdown)`
   table th,
   table td {
     border: none !important;
-    border-bottom: 1px solid var(--border-neutral) !important;
-    padding: var(--padding-com-lg) !important;
+    border-bottom: 1px solid var(--Border-border-neutral) !important;
+    padding: var(--Padding-padding-com-lg) !important;
     box-sizing: border-box !important;
   }
 
@@ -238,20 +238,20 @@ export const StyledMarkdownWrapper = styled(XMarkdown)`
   /* Tables: keep left/right padding for edge columns */
   table th:first-child,
   table td:first-child {
-    padding-left: var(--padding-com-lg) !important;
+    padding-left: var(--Padding-padding-com-lg) !important;
   }
 
   table th:last-child,
   table td:last-child {
-    padding-right: var(--padding-com-lg) !important;
+    padding-right: var(--Padding-padding-com-lg) !important;
   }
 
   /* Divider */
   hr {
-    margin-top: var(--margin-com-2xl) !important;
-    margin-bottom: var(--margin-com-2xl) !important;
+    margin-top: var(--Margin-margin-com-2xl) !important;
+    margin-bottom: var(--Margin-margin-com-2xl) !important;
     border: none !important;
-    border-top: 1px solid var(--divider-neutral-basic) !important;
+    border-top: 1px solid var(--Border-divider-neutral-basic) !important;
     background: none !important;
     height: 0 !important;
   }
@@ -277,7 +277,7 @@ export const StyledMarkdownWrapper = styled(XMarkdown)`
 
   /* Mermaid */
   .ant-mermaid {
-    padding: var(--padding-com-md) !important;
+    padding: var(--Padding-padding-com-md) !important;
   }
 
   /* Sources 引用样式 */
@@ -287,14 +287,14 @@ export const StyledMarkdownWrapper = styled(XMarkdown)`
     border-radius: var(--radius-circle) !important;
     box-sizing: border-box;
     opacity: 1 !important;
-    padding-right: var(--padding-com-xs) !important;
-    padding-left: var(--padding-com-xs) !important;
-    gap: var(--gap-sm) !important;
-    background: var(--bg-container-disable) !important;
+    padding-right: var(--Padding-padding-com-xs) !important;
+    padding-left: var(--Padding-padding-com-xs) !important;
+    gap: var(--Gap-gap-sm) !important;
+    background: var(--Container-bg-container-disable) !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-family: var(--font-family-cn) !important;
+    font-family: var(--font-family-CN) !important;
     font-weight: 400 !important;
     font-style: normal !important;
     font-size: var(--font-size-1) !important;
@@ -302,6 +302,6 @@ export const StyledMarkdownWrapper = styled(XMarkdown)`
     letter-spacing: 0 !important;
     text-align: center !important;
     vertical-align: middle !important;
-    color: var(--text-primary, #403f4d) !important;
+    color: var(--Text-text-primary, #403f4d) !important;
   }
 `;

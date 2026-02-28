@@ -14,10 +14,10 @@ const ConfirmPanelContainerPrimitive = React.forwardRef<
       className={cn(
         "w-full",
         "flex flex-col",
-        "gap-[var(--gap-xl)]",
-        "px-[var(--padding-com-xl)] py-[var(--margin-com-xl)]",
+        "gap-[var(--Gap-gap-xl)]",
+        "px-[var(--Padding-padding-com-xl)] py-[var(--Margin-margin-com-xl)]",
         "rounded-[var(--radius-xl)]",
-        "bg-[var(--bg-container-secondary)]",
+        "bg-[var(--Container-bg-container-secondary)]",
         className,
       )}
       {...props}
@@ -52,12 +52,12 @@ const ConfirmPanelTitlePrimitive = React.forwardRef<
     <span
       ref={ref}
       className={cn(
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "font-[var(--font-weight-600)]",
         "font-semibold",
         "font-size-4",
         "leading-[var(--line-height-4)]",
-        "text-[var(--text-title)]",
+        "text-[var(--Text-text-title)]",
         className,
       )}
       {...props}
@@ -78,7 +78,7 @@ const ConfirmPanelFooterPrimitive = React.forwardRef<
       className={cn(
         "w-full",
         "flex items-center justify-end",
-        "gap-[var(--gap-md)]",
+        "gap-[var(--Gap-gap-md)]",
         className,
       )}
       {...props}

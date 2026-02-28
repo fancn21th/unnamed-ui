@@ -286,7 +286,9 @@ export const Upload = React.forwardRef<HTMLDivElement, UploadProps>(
         case "error":
           return <FileX className="h-4 w-4" />;
         default:
-          return <FileText className="h-4 w-4 text-[var(--text-secondary)]" />;
+          return (
+            <FileText className="h-4 w-4 text-[var(--Text-text-secondary)]" />
+          );
       }
     };
 

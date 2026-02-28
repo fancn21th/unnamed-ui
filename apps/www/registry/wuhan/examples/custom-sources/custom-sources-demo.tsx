@@ -46,15 +46,15 @@ export default function CustomSourcesDemo() {
 
   return (
     <div className="flex flex-wrap gap-6">
-      <div className="min-w-[280px] flex-1 rounded-lg border border-[var(--border-neutral)] p-4">
-        <p className="text-sm text-[var(--text-secondary)]">
+      <div className="min-w-[280px] flex-1 rounded-lg border border-[var(--Border-border-neutral)] p-4">
+        <p className="text-sm text-[var(--Text-text-secondary)]">
           这是一个带有来源标记的文本示例
           <CustomSources sources={sources} onOpenSidebar={handleOpenSidebar}>
             1
           </CustomSources>
           ，点击角标可打开引用来源侧边栏。
         </p>
-        <p className="mt-3 text-sm text-[var(--text-secondary)]">
+        <p className="mt-3 text-sm text-[var(--Text-text-secondary)]">
           外部引用示例
           <CustomSources sources={sources} onOpenSidebar={handleOpenSidebar}>
             3
@@ -64,7 +64,7 @@ export default function CustomSourcesDemo() {
       </div>
 
       {sidebarOpen && (
-        <div className="shrink-0 rounded-lg border border-[var(--border-neutral)]">
+        <div className="shrink-0 rounded-lg border border-[var(--Border-border-neutral)]">
           <SourcesSidebar
             sources={sources}
             onClose={() => setSidebarOpen(false)}

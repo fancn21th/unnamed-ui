@@ -26,7 +26,7 @@ export const StyledSourceMarker = styled.span<StyledSourceMarkerProps>`
   min-width: 16px;
   box-sizing: border-box;
   border-radius: var(--radius-circle);
-  font-family: var(--font-family-cn);
+  font-family: var(--font-family-CN);
   font-weight: 400;
   font-size: var(--font-size-1);
   /* 使用与 height 相同的 line-height，确保文本在容器内垂直居中 */
@@ -38,8 +38,8 @@ export const StyledSourceMarker = styled.span<StyledSourceMarkerProps>`
   /* 重置 sup 标签的默认位置偏移 */
   position: relative;
   top: 0;
-  padding-right: var(--padding-com-xs);
-  padding-left: var(--padding-com-xs);
+  padding-right: var(--Padding-padding-com-xs);
+  padding-left: var(--Padding-padding-com-xs);
   cursor: pointer;
   user-select: none;
   transition:
@@ -53,8 +53,8 @@ export const StyledSourceMarker = styled.span<StyledSourceMarkerProps>`
     !props.$isExternal &&
     !props.$isSelected &&
     css`
-      background: var(--bg-neutral-light-hover);
-      color: var(--text-primary);
+      background: var(--Container-bg-neutral-light-hover);
+      color: var(--Text-text-primary);
     `}
 
   /* 内部来源 - 选中 */
@@ -62,8 +62,8 @@ export const StyledSourceMarker = styled.span<StyledSourceMarkerProps>`
     !props.$isExternal &&
     props.$isSelected &&
     css`
-      background: var(--bg-neutral);
-      color: var(--text-inverse);
+      background: var(--Container-bg-neutral);
+      color: var(--Text-text-inverse);
     `}
 
   /* 外部来源 - 未选中 */
@@ -71,8 +71,8 @@ export const StyledSourceMarker = styled.span<StyledSourceMarkerProps>`
     props.$isExternal &&
     !props.$isSelected &&
     css`
-      background: var(--bg-brand-light-hover);
-      color: var(--text-brand);
+      background: var(--Container-bg-brand-light-hover);
+      color: var(--Text-text-brand);
     `}
 
   /* 外部来源 - 选中 */
@@ -80,8 +80,8 @@ export const StyledSourceMarker = styled.span<StyledSourceMarkerProps>`
     props.$isExternal &&
     props.$isSelected &&
     css`
-      background: var(--bg-brand);
-      color: var(--text-inverse);
+      background: var(--Container-bg-brand);
+      color: var(--Text-text-inverse);
     `}
 
   /* 默认状态（如果没有指定 props，使用内部来源未选中样式） */
@@ -89,8 +89,8 @@ export const StyledSourceMarker = styled.span<StyledSourceMarkerProps>`
     props.$isExternal === undefined &&
     props.$isSelected === undefined &&
     css`
-      background: var(--bg-neutral-light-hover);
-      color: var(--text-primary);
+      background: var(--Container-bg-neutral-light-hover);
+      color: var(--Text-text-primary);
     `}
 `;
 
@@ -99,10 +99,10 @@ export const StyledSourceCard = styled.div`
   z-index: 1000;
   width: 320px;
   max-width: calc(100vw - 32px);
-  background: var(--bg-container);
-  border: 1px solid var(--border-neutral);
+  background: var(--Container-bg-container);
+  border: 1px solid var(--Border-border-neutral);
   border-radius: var(--radius-lg);
-  padding: var(--padding-com-md);
+  padding: var(--Padding-padding-com-md);
   box-sizing: border-box;
   cursor: pointer;
   animation: fadeIn 0.2s ease-in-out;
@@ -128,27 +128,27 @@ export const StyledSourceCardHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--margin-com-xs);
-  gap: var(--gap-sm);
+  margin-bottom: var(--Margin-margin-com-xs);
+  gap: var(--Gap-gap-sm);
 `;
 
 export const StyledSourceCardContent = styled.div`
   width: 320px;
   max-width: calc(100vw - 32px);
-  background: var(--bg-container);
+  background: var(--Container-bg-container);
   border-radius: var(--radius-xl);
-  padding: var(--padding-com-md);
+  padding: var(--Padding-padding-com-md);
   box-sizing: border-box;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: var(--gap-xs);
+  gap: var(--Gap-gap-xs);
 `;
 
 export const StyledSourceCardSiteInfo = styled.div`
   display: flex;
   align-items: center;
-  gap: var(--gap-xs);
+  gap: var(--Gap-gap-xs);
   flex: 1;
   min-width: 0;
 `;
@@ -167,11 +167,11 @@ export const StyledSourceCardLogo = styled.div`
 `;
 
 export const StyledSourceCardSiteName = styled.div`
-  font-family: var(--font-family-cn);
+  font-family: var(--font-family-CN);
   font-size: var(--font-size-1);
   line-height: var(--line-height-2);
   font-weight: 400;
-  color: var(--text-secondary);
+  color: var(--Text-text-secondary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -188,29 +188,29 @@ export const StyledSourceCardAction = styled.div`
   border-radius: var(--radius-md);
   cursor: pointer;
   flex-shrink: 0;
-  color: var(--text-secondary);
+  color: var(--Text-text-secondary);
   transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: var(--bg-neutral-light-active);
+    background-color: var(--Container-bg-neutral-light-active);
   }
 `;
 
 export const StyledSourceCardTitle = styled.div`
-  font-family: var(--font-family-cn);
+  font-family: var(--font-family-CN);
   font-size: var(--font-size-2);
   line-height: var(--line-height-2);
   font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: var(--margin-com-xs);
+  color: var(--Text-text-primary);
+  margin-bottom: var(--Margin-margin-com-xs);
   ${multiLineEllipsis(2)};
 `;
 
 export const StyledSourceCardDescription = styled.div`
-  font-family: var(--font-family-cn);
+  font-family: var(--font-family-CN);
   font-size: var(--font-size-1);
   line-height: var(--line-height-2);
   font-weight: 400;
-  color: var(--text-secondary);
+  color: var(--Text-text-secondary);
   ${multiLineEllipsis(3)};
 `;

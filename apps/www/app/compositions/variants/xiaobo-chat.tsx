@@ -42,12 +42,12 @@ function XiaoboPromptCard({
       type="button"
       variant="outline"
       onClick={onClick}
-      className="w-[224px] h-auto p-[var(--padding-com-lg)] gap-[var(--gap-sm)] rounded-[var(--radius-xl)] bg-[var(--bg-container)] border border-[var(--border-neutral)] hover:bg-[var(--bg-neutral-light-hover)] transition-colors flex flex-col items-start text-left"
+      className="w-[224px] h-auto p-[var(--Padding-padding-com-lg)] gap-[var(--Gap-gap-sm)] rounded-[var(--radius-xl)] bg-[var(--Container-bg-container)] border border-[var(--Border-border-neutral)] hover:bg-[var(--Container-bg-neutral-light-hover)] transition-colors flex flex-col items-start text-left"
     >
-      <span className="inline-flex items-center justify-center w-6 h-6 p-[var(--gap-xs)] rounded-[var(--radius-sm)] bg-[var(--bg-brand-light)]">
-        <span className="text-[var(--text-brand)]">{icon}</span>
+      <span className="inline-flex items-center justify-center w-6 h-6 p-[var(--Gap-gap-xs)] rounded-[var(--radius-sm)] bg-[var(--Container-bg-brand-light)]">
+        <span className="text-[var(--Text-text-brand)]">{icon}</span>
       </span>
-      <span className="text-[var(--text-secondary)] font-[var(--font-family-cn)] font-[var(--font-weight-400)] font-size-1 leading-[var(--line-height-1)] tracking-[0px]">
+      <span className="text-[var(--Text-text-secondary)] font-[var(--font-family-CN)] font-[var(--font-weight-400)] font-size-1 leading-[var(--line-height-1)] tracking-[0px]">
         {description}
       </span>
     </Button>
@@ -75,7 +75,7 @@ function XiaoboSender({
 }) {
   return (
     <SenderContainer
-      className="bg-[var(--bg-container)]"
+      className="bg-[var(--Container-bg-container)]"
       onSubmit={(e) => {
         e.preventDefault();
         onSend();
@@ -88,7 +88,7 @@ function XiaoboSender({
       />
 
       <SenderActionBar className="flex items-center justify-between">
-        {/* 深度思考和联网搜索：未选中时使用 bg-[var(--bg-neutral-light)] */}
+        {/* 深度思考和联网搜索：未选中时使用 bg-[var(--Container-bg-neutral-light)] */}
         <div className="flex items-center gap-2">
           <ToggleButtonPrimitive
             type="button"
@@ -96,9 +96,9 @@ function XiaoboSender({
             selected={deepThink}
             onClick={onToggleDeepThink}
             className={cn(
-              "h-8 gap-[var(--gap-xs)] rounded-[var(--radius-circle)] px-[var(--padding-com-md)] border-0 transition-colors font-[var(--font-family-cn)] font-size-2 leading-[var(--line-height-2)] tracking-[0px]",
-              "hover:bg-[var(--bg-neutral-light-hover)]",
-              !deepThink && "bg-[var(--bg-neutral-light)] text-[var(--text-secondary)]"
+              "h-8 gap-[var(--Gap-gap-xs)] rounded-[var(--radius-circle)] px-[var(--Padding-padding-com-md)] border-0 transition-colors font-[var(--font-family-CN)] font-size-2 leading-[var(--line-height-2)] tracking-[0px]",
+              "hover:bg-[var(--Container-bg-neutral-light-hover)]",
+              !deepThink && "bg-[var(--Container-bg-neutral-light)] text-[var(--Text-text-secondary)]"
             )}
           >
             <Brain className="size-4" />
@@ -110,9 +110,9 @@ function XiaoboSender({
             selected={webSearch}
             onClick={onToggleWebSearch}
             className={cn(
-              "h-8 gap-[var(--gap-xs)] rounded-[var(--radius-circle)] px-[var(--padding-com-md)] border-0 transition-colors font-[var(--font-family-cn)] font-size-2 leading-[var(--line-height-2)] tracking-[0px]",
-              "hover:bg-[var(--bg-neutral-light-hover)]",
-              !webSearch && "bg-[var(--bg-neutral-light)] text-[var(--text-secondary)]"
+              "h-8 gap-[var(--Gap-gap-xs)] rounded-[var(--radius-circle)] px-[var(--Padding-padding-com-md)] border-0 transition-colors font-[var(--font-family-CN)] font-size-2 leading-[var(--line-height-2)] tracking-[0px]",
+              "hover:bg-[var(--Container-bg-neutral-light-hover)]",
+              !webSearch && "bg-[var(--Container-bg-neutral-light)] text-[var(--Text-text-secondary)]"
             )}
           >
             <Globe className="size-4" />
@@ -174,7 +174,7 @@ export function XiaoboChat({ history }: { history: UseChatHistoryReturn }) {
           <div className="w-full max-w-[800px] flex flex-col items-center gap-6">
             <div className="flex items-center justify-center gap-4">
               <img src={XIAOBO_ICON_DATA_URI} alt="" className="w-[80px] h-[80px]" />
-              <div className="text-[var(--text-primary)] font-[var(--font-family-cn)] font-semibold font-size-6 leading-[var(--line-height-6)] tracking-[0px]">
+              <div className="text-[var(--Text-text-primary)] font-[var(--font-family-CN)] font-semibold font-size-6 leading-[var(--line-height-6)] tracking-[0px]">
                 你好，我今天能帮你什么？
               </div>
             </div>
@@ -227,7 +227,7 @@ export function XiaoboChat({ history }: { history: UseChatHistoryReturn }) {
                           name="User"
                           time={getTimeForIndex(index)}
                           avatar={
-                            <Avatar className="flex items-center justify-center text-[var(--text-secondary)]">
+                            <Avatar className="flex items-center justify-center text-[var(--Text-text-secondary)]">
                             </Avatar>
                           }
                         />
@@ -244,7 +244,7 @@ export function XiaoboChat({ history }: { history: UseChatHistoryReturn }) {
                         name="AI"
                         time={getTimeForIndex(index)}
                         avatar={
-                          <Avatar className="flex items-center justify-center text-[var(--text-secondary)]">
+                          <Avatar className="flex items-center justify-center text-[var(--Text-text-secondary)]">
                           </Avatar>
                         }
                       />
@@ -253,7 +253,7 @@ export function XiaoboChat({ history }: { history: UseChatHistoryReturn }) {
                         generatingContent={
                           <div className="flex items-center gap-2">
                             <LoadingDots />
-                            <span className="text-[var(--text-secondary)]">正在思考中...</span>
+                            <span className="text-[var(--Text-text-secondary)]">正在思考中...</span>
                           </div>
                         }
                       >
@@ -277,7 +277,7 @@ export function XiaoboChat({ history }: { history: UseChatHistoryReturn }) {
               onSend={handleSend}
               isLoading={isLoading}
             />
-            <div className="mt-2 text-center align-middle text-[var(--text-tertiary)] font-[var(--font-family-cn)] font-[var(--font-weight-400)] font-size-1 leading-[var(--line-height-1)] tracking-[0px]">
+            <div className="mt-2 text-center align-middle text-[var(--Text-text-tertiary)] font-[var(--font-family-CN)] font-[var(--font-weight-400)] font-size-1 leading-[var(--line-height-1)] tracking-[0px]">
               所有内容均由人工智能模型输出，不保证信息的准确性和完整性，内容仅供参考
             </div>
           </div>

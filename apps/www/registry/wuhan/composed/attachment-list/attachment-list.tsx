@@ -266,8 +266,8 @@ export const AttachmentListComposed = React.forwardRef<
                     "h-14",
                     "flex items-center",
                     isImage
-                      ? "w-14 p-0 bg-transparent bg-[var(--bg-neutral-light)]"
-                      : "max-w-[200px] px-[var(--padding-com-md)] gap-[var(--gap-sm)]",
+                      ? "w-14 p-0 bg-transparent bg-[var(--Container-bg-neutral-light)]"
+                      : "max-w-[200px] px-[var(--Padding-padding-com-md)] gap-[var(--Gap-gap-sm)]",
                   )}
                   onClick={handleClick}
                 >
@@ -275,7 +275,7 @@ export const AttachmentListComposed = React.forwardRef<
                     className={cn(
                       isImage
                         ? "w-full h-full rounded-[var(--radius-xl)] overflow-hidden"
-                        : "rounded-[var(--radius-lg)] bg-[var(--bg-container)] w-10 h-10",
+                        : "rounded-[var(--radius-lg)] bg-[var(--Container-bg-container)] w-10 h-10",
                     )}
                   >
                     {renderLeading?.(context) ??
@@ -317,7 +317,7 @@ export const AttachmentListComposed = React.forwardRef<
                           onRemove(item.id, item);
                         }}
                       >
-                        <X className="w-3 h-3 text-[var(--text-tertiary)]" />
+                        <X className="w-3 h-3 text-[var(--Text-text-tertiary)]" />
                       </AttachmentCardDeleteButton>
                     ))}
                 </AttachmentCard>

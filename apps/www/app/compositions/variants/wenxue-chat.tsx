@@ -203,7 +203,7 @@ export function WenxueChat({ history }: { history: UseChatHistoryReturn }) {
                           name="User"
                           time={getTimeForIndex(index)}
                           avatar={
-                            <Avatar className="flex items-center justify-center text-[var(--text-secondary)]">
+                            <Avatar className="flex items-center justify-center text-[var(--Text-text-secondary)]">
                             </Avatar>
                           }
                         />
@@ -223,7 +223,7 @@ export function WenxueChat({ history }: { history: UseChatHistoryReturn }) {
                         name="AI"
                         time={getTimeForIndex(index)}
                         avatar={
-                          <Avatar className="flex items-center justify-center text-[var(--text-secondary)]">
+                          <Avatar className="flex items-center justify-center text-[var(--Text-text-secondary)]">
                           </Avatar>
                         }
                       />
@@ -232,7 +232,7 @@ export function WenxueChat({ history }: { history: UseChatHistoryReturn }) {
                         generatingContent={
                           <div className="flex items-center gap-2">
                             <LoadingDots />
-                            <span className="text-[var(--text-secondary)]">正在思考中...</span>
+                            <span className="text-[var(--Text-text-secondary)]">正在思考中...</span>
                           </div>
                         }
                       >
@@ -260,7 +260,7 @@ export function WenxueChat({ history }: { history: UseChatHistoryReturn }) {
                 (!value.trim() && composer.attachments.length === 0)
               }
             />
-            <div className="mt-2 text-center align-middle text-[var(--text-tertiary)] font-[var(--font-family-cn)] font-[var(--font-weight-400)] font-size-1 leading-[var(--line-height-1)] tracking-[0px]">
+            <div className="mt-2 text-center align-middle text-[var(--Text-text-tertiary)] font-[var(--font-family-CN)] font-[var(--font-weight-400)] font-size-1 leading-[var(--line-height-1)] tracking-[0px]">
               所有内容均由人工智能模型输出，不保证信息的准确性和完整性，内容仅供参考
             </div>
           </div>

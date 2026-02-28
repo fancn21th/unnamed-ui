@@ -20,7 +20,7 @@ export default function QuoteContentCustomIcon() {
         <button
           type="button"
           onClick={() => setVisible(true)}
-          className="appearance-none border-0 bg-transparent p-0 text-sm text-muted-foreground hover:text-[var(--text-primary)]"
+          className="appearance-none border-0 bg-transparent p-0 text-sm text-muted-foreground hover:text-[var(--Text-text-primary)]"
         >
           重新显示引用
         </button>

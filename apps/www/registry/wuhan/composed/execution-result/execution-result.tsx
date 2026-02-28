@@ -92,10 +92,12 @@ export interface ExecutionResultProps {
 
 /** 状态对应的默认图标映射 */
 const statusIconMap: Record<ExecutionResultStatus, React.ReactNode> = {
-  success: <CheckCircle2 className="size-4 text-[var(--text-success)]" />,
-  error: <XCircle className="size-4 text-[var(--text-error)]" />,
-  loading: <Loader2 className="size-4 text-[var(--text-brand)] animate-spin" />,
-  idle: <Circle className="size-4 text-[var(--text-tertiary)]" />,
+  success: <CheckCircle2 className="size-4 text-[var(--Text-text-success)]" />,
+  error: <XCircle className="size-4 text-[var(--Text-text-error)]" />,
+  loading: (
+    <Loader2 className="size-4 text-[var(--Text-text-brand)] animate-spin" />
+  ),
+  idle: <Circle className="size-4 text-[var(--Text-text-tertiary)]" />,
 };
 /** 默认箭头图标 */
 const defaultArrow = <ChevronDown className="size-4" />;

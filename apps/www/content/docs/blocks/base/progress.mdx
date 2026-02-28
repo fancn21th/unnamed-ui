@@ -172,7 +172,7 @@ npx shadcn@latest add "http://localhost:3000/r/wuhan/progress.json"
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `strokeColor` | 进度条的色彩，传入 object 时为渐变。当有 `steps` 时支持传入一个数组 | `string \| string[] \| { from: string; to: string; direction?: string }` | - |
-| `trailColor` | 轨道颜色 | `string` | `"var(--bg-container-placeholder)"` |
+| `trailColor` | 轨道颜色 | `string` | `"var(--Container-bg-container-placeholder)"` |
 | `strokeWidth` | 进度条线的宽度，单位 px | `number` | `8` |
 | `steps` | 进度条总共步数 | `number` | - |
 | `percentPosition` | 进度数值位置，`align` 表示数值的水平位置，`type` 表示数值在进度条内部还是外部 | `{ align: "start" \| "center" \| "end"; type: "inner" \| "outer" }` | `{ align: "end", type: "outer" }` |
@@ -184,7 +184,7 @@ npx shadcn@latest add "http://localhost:3000/r/wuhan/progress.json"
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `strokeColor` | 圆形进度条线的色彩，传入 object 时为渐变 | `string \| { [key: string]: string }` | - |
-| `trailColor` | 轨道颜色 | `string` | `"var(--bg-neutral-light)"` |
+| `trailColor` | 轨道颜色 | `string` | `"var(--Container-bg-neutral-light)"` |
 | `strokeWidth` | 圆形进度条线的宽度，单位是进度条画布宽度的百分比 | `number` | `6` |
 | `width` | 圆形进度条的画布宽度，单位 px | `number` | `120` |
 
@@ -200,9 +200,9 @@ type ProgressStatus = "normal" | "success" | "exception";
 
 | Status | Color |
 |--------|-------|
-| `normal` | `var(--text-brand)` |
-| `success` | `var(--text-success)` |
-| `exception` | `var(--text-error)` |
+| `normal` | `var(--Text-text-brand)` |
+| `success` | `var(--Text-text-success)` |
+| `exception` | `var(--Text-text-error)` |
 
 ## 使用场景
 
@@ -288,8 +288,8 @@ Progress 组件基于以下原语组件构建：
 ```tsx
 <div className="space-y-2">
   <div className="flex justify-between">
-    <span className="text-sm text-[var(--text-secondary)]">上传进度</span>
-    <span className="text-sm text-[var(--text-primary)]">75%</span>
+    <span className="text-sm text-[var(--Text-text-secondary)]">上传进度</span>
+    <span className="text-sm text-[var(--Text-text-primary)]">75%</span>
   </div>
   <Progress percent={75} showInfo={false} />
 </div>
@@ -326,7 +326,7 @@ Progress 组件基于以下原语组件构建：
   format={(percent) => (
     <div className="text-center">
       <div className="text-2xl font-bold">{percent}%</div>
-      <div className="text-sm text-[var(--text-secondary)]">完成度</div>
+      <div className="text-sm text-[var(--Text-text-secondary)]">完成度</div>
     </div>
   )}
 />

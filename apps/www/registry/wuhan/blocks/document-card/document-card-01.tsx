@@ -98,13 +98,13 @@ export const DocumentCardContainerPrimitive = React.forwardRef<
       className={cn(
         "w-full",
         "min-w-[320px]",
-        "gap-[var(--gap-md)]",
+        "gap-[var(--Gap-gap-md)]",
         "flex flex-col",
         "rounded-[var(--radius-xl)]",
-        "bg-[var(--bg-page-brand)]",
-        "border border-[var(--border-brand-light)]",
+        "bg-[var(--Page-bg-page-brand)]",
+        "border border-[var(--Border-border-brand-light)]",
         "shadow-[var(--shadow-sm)]",
-        "p-[var(--padding-com-xl)]",
+        "p-[var(--Padding-padding-com-xl)]",
         "transition-all",
         "duration-200",
         "cursor-pointer",
@@ -128,14 +128,14 @@ export const DocumentCardHeaderPrimitive = React.forwardRef<
 >(({ title, icon, updateTime, className, ...props }, ref) => {
   return (
     <div
-      className={cn("flex flex-col gap-[var(--gap-md)] min-w-0", className)}
+      className={cn("flex flex-col gap-[var(--Gap-gap-md)] min-w-0", className)}
       {...props}
     >
       {/* 第一行：图标 + 标题 */}
-      <div className="flex items-center gap-[var(--gap-md)] min-w-0 overflow-hidden">
+      <div className="flex items-center gap-[var(--Gap-gap-md)] min-w-0 overflow-hidden">
         {/* 图标 */}
         {icon && (
-          <span className="text-[var(--text-title)] flex-shrink-0">
+          <span className="text-[var(--Text-text-title)] flex-shrink-0">
             {React.isValidElement(icon)
               ? React.cloneElement(
                   icon as React.ReactElement<{ size?: number }>,
@@ -151,11 +151,11 @@ export const DocumentCardHeaderPrimitive = React.forwardRef<
         {title && (
           <span
             className={cn(
-              "font-[var(--font-family-cn)]",
+              "font-[var(--font-family-CN)]",
               "font-semibold",
               "font-size-4",
               "leading-[var(--line-height-4)]",
-              "text-[var(--text-title)]",
+              "text-[var(--Text-text-title)]",
               "truncate",
             )}
           >
@@ -166,7 +166,7 @@ export const DocumentCardHeaderPrimitive = React.forwardRef<
 
       {/* 第二行：更新时间 */}
       {updateTime && (
-        <div className="flex items-center text-[var(--text-secondary)] font-[var(--font-family-cn)] font-[var(--font-weight-400)] font-size-1 leading-[var(--line-height-1)] gap-[var(--gap-sm)]">
+        <div className="flex items-center text-[var(--Text-text-secondary)] font-[var(--font-family-CN)] font-[var(--font-weight-400)] font-size-1 leading-[var(--line-height-1)] gap-[var(--Gap-gap-sm)]">
           {updateTime}
         </div>
       )}
@@ -189,7 +189,7 @@ export const DocumentCardSeparatorPrimitive = React.forwardRef<
       className={cn(
         "w-full",
         "h-[1px]",
-        "bg-[var(--divider-neutral-basic)]",
+        "bg-[var(--Border-divider-neutral-basic)]",
         className,
       )}
       {...props}
@@ -209,18 +209,18 @@ export const DocumentCardFieldPrimitive = React.forwardRef<
   return (
     <div
       ref={ref}
-      className={cn("flex items-center gap-[var(--gap-xs)]", className)}
+      className={cn("flex items-center gap-[var(--Gap-gap-xs)]", className)}
       {...props}
     >
       {/* 标签 */}
       {label && (
         <span
           className={cn(
-            "font-[var(--font-family-cn)]",
+            "font-[var(--font-family-CN)]",
             "font-[var(--font-weight-400)]",
             "font-size-1",
             "leading-[var(--line-height-1)]",
-            "text-[var(--text-tertiary)]",
+            "text-[var(--Text-text-tertiary)]",
             "flex-shrink-0",
           )}
         >
@@ -235,16 +235,16 @@ export const DocumentCardFieldPrimitive = React.forwardRef<
             className={cn(
               "inline-flex",
               "items-center",
-              "px-[var(--padding-com-xs)]",
-              "py-[var(--padding-com-2xs)]",
+              "px-[var(--Padding-padding-com-xs)]",
+              "py-[var(--Padding-padding-com-2xs)]",
               "rounded-[var(--radius-sm)]",
-              "border border-[var(--border-neutral)]",
-              "bg-[var(--bg-container)]",
-              "font-[var(--font-family-cn)]",
+              "border border-[var(--Border-border-neutral)]",
+              "bg-[var(--Container-bg-container)]",
+              "font-[var(--font-family-CN)]",
               "font-[var(--font-weight-400)]",
               "font-size-1",
               "leading-[var(--line-height-1)]",
-              "text-[var(--text-primary)]",
+              "text-[var(--Text-text-primary)]",
               "truncate",
             )}
           >
@@ -253,11 +253,11 @@ export const DocumentCardFieldPrimitive = React.forwardRef<
         ) : (
           <span
             className={cn(
-              "font-[var(--font-family-cn)]",
+              "font-[var(--font-family-CN)]",
               "font-[var(--font-weight-400)]",
               "font-size-1",
               "leading-[var(--line-height-1)]",
-              "text-[var(--text-primary)]",
+              "text-[var(--Text-text-primary)]",
               "truncate",
             )}
           >
@@ -280,7 +280,7 @@ export const DocumentCardGeneratingPrimitive = React.forwardRef<
   return (
     <div
       ref={ref}
-      className={cn("flex flex-col gap-[var(--gap-md)]", className)}
+      className={cn("flex flex-col gap-[var(--Gap-gap-md)]", className)}
     >
       {/* 进度条 */}
       <div className="w-full">
@@ -289,7 +289,7 @@ export const DocumentCardGeneratingPrimitive = React.forwardRef<
             "w-full",
             "h-[var(--space-2)]",
             "rounded-[var(--radius-circle)]",
-            "bg-[var(--bg-container-placeholder)]",
+            "bg-[var(--Container-bg-container-placeholder)]",
             "overflow-hidden",
           )}
         >
@@ -297,7 +297,7 @@ export const DocumentCardGeneratingPrimitive = React.forwardRef<
             className={cn(
               "h-full",
               "rounded-[var(--radius-circle)]",
-              "bg-[var(--bg-brand)]",
+              "bg-[var(--Container-bg-brand)]",
               "transition-all duration-300",
             )}
             style={{ width: `${Math.min(Math.max(progress, 0), 100)}%` }}
@@ -308,11 +308,11 @@ export const DocumentCardGeneratingPrimitive = React.forwardRef<
       {generatingInfo && (
         <div
           className={cn(
-            "font-[var(--font-family-cn)]",
+            "font-[var(--font-family-CN)]",
             "font-[var(--font-weight-400)]",
             "font-size-1",
             "leading-[var(--line-height-1)]",
-            "text-[var(--text-secondary)]",
+            "text-[var(--Text-text-secondary)]",
           )}
         >
           {generatingInfo}
@@ -387,7 +387,7 @@ export const DocumentCardPrimitive = React.forwardRef<
       >
         {/* 生成中状态 */}
         {generating ? (
-          <div className="flex flex-col gap-[var(--gap-md)]">
+          <div className="flex flex-col gap-[var(--Gap-gap-md)]">
             {/* 头部区域 */}
             {header || (
               <DocumentCardHeaderPrimitive

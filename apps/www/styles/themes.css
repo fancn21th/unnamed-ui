@@ -114,39 +114,41 @@
 /* 字体主题 - PingFang SC (中文) */
 .theme-font-pingfang .theme-container,
 .theme-font-pingfang [data-radix-popper-content-wrapper] {
-  /* 注意：项目里大量地方直接引用 `--font-family-cn`（而非 `--font-sans`），两者都要覆盖才会真正生效 */
-  --font-family-cn: "Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", -apple-system,
+  --font-family-CN: "Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", -apple-system,
     BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-  --font-sans: var(--font-family-cn);
+  --font-family-cn: var(--font-family-CN);
+  --font-sans: var(--font-family-CN);
 }
 
 /* 字体主题 - Helvetica Neue (英文) */
 .theme-font-helvetica .theme-container,
 .theme-font-helvetica [data-radix-popper-content-wrapper] {
-  --font-family-cn: Arial, "Helvetica Neue", Helvetica, "Segoe UI", system-ui, sans-serif;
-  --font-sans: var(--font-family-cn);
+  --font-family-CN: Arial, "Helvetica Neue", Helvetica, "Segoe UI", system-ui, sans-serif;
+  --font-family-cn: var(--font-family-CN);
+  --font-sans: var(--font-family-CN);
 }
 
 /* 字体主题 - Source Han Sans SC (显示字体) */
 .theme-font-display .theme-container,
 .theme-font-display [data-radix-popper-content-wrapper] {
-  --font-family-cn: "Segoe UI Variable Display", "Segoe UI", "Microsoft YaHei UI", "Microsoft YaHei",
+  --font-family-CN: "Segoe UI Variable Display", "Segoe UI", "Microsoft YaHei UI", "Microsoft YaHei",
     "Noto Sans CJK SC", "Source Han Sans SC", "PingFang SC", system-ui, sans-serif;
-  --font-sans: var(--font-family-cn);
+  --font-family-cn: var(--font-family-CN);
+  --font-sans: var(--font-family-CN);
 }
 
 /* Neutral 主题 - 使用中性色 */
 .theme-neutral,
 .theme-neutral .theme-container,
 .theme-neutral [data-radix-popper-content-wrapper] {
-  --primary: var(--neutral-800);
-  --primary-foreground: var(--neutral-0);
-  --ring: var(--neutral-400);
+  --primary: var(--Container-bg-neutral);
+  --primary-foreground: var(--Text-text-inverse);
+  --ring: var(--Border-border-neutral);
 
   @variant dark {
-    --primary: var(--neutral-800);
-    --primary-foreground: var(--neutral-0);
-    --ring: var(--neutral-400);
+    --primary: var(--Container-bg-neutral);
+    --primary-foreground: var(--Text-text-inverse);
+    --ring: var(--Border-border-neutral);
   }
 }
 
@@ -154,14 +156,14 @@
 .theme-brand,
 .theme-brand .theme-container,
 .theme-brand [data-radix-popper-content-wrapper] {
-  --primary: var(--brand-600);
-  --primary-foreground: var(--neutral-0);
-  --ring: var(--brand-300);
+  --primary: var(--Container-bg-brand);
+  --primary-foreground: var(--Text-text-inverse);
+  --ring: var(--Focusring-focusring-brand);
 
   @variant dark {
-    --primary: var(--brand-600);
-    --primary-foreground: #ffffff;
-    --ring: var(--brand-300);
+    --primary: var(--Container-bg-brand);
+    --primary-foreground: var(--Text-text-inverse);
+    --ring: var(--Focusring-focusring-brand);
   }
 }
 
@@ -169,14 +171,14 @@
 .theme-success,
 .theme-success .theme-container,
 .theme-success [data-radix-popper-content-wrapper] {
-  --primary: var(--success-600);
-  --primary-foreground: #ffffff;
-  --ring: var(--success-300);
+  --primary: var(--Container-bg-success);
+  --primary-foreground: var(--Text-text-inverse);
+  --ring: var(--Focusring-focusring-success);
 
   @variant dark {
-    --primary: var(--success-600);
-    --primary-foreground: #ffffff;
-    --ring: var(--success-300);
+    --primary: var(--Container-bg-success);
+    --primary-foreground: var(--Text-text-inverse);
+    --ring: var(--Focusring-focusring-success);
   }
 }
 
@@ -184,14 +186,14 @@
 .theme-warning,
 .theme-warning .theme-container,
 .theme-warning [data-radix-popper-content-wrapper] {
-  --primary: var(--warning-600);
-  --primary-foreground: #ffffff;
-  --ring: var(--warning-300);
+  --primary: var(--Container-bg-warning);
+  --primary-foreground: var(--Text-text-inverse);
+  --ring: var(--Focusring-focusring-warning);
 
   @variant dark {
-    --primary: var(--warning-600);
-    --primary-foreground: #ffffff;
-    --ring: var(--warning-300);
+    --primary: var(--Container-bg-warning);
+    --primary-foreground: var(--Text-text-inverse);
+    --ring: var(--Focusring-focusring-warning);
   }
 }
 
@@ -199,14 +201,14 @@
 .theme-error,
 .theme-error .theme-container,
 .theme-error [data-radix-popper-content-wrapper] {
-  --primary: var(--error-600);
-  --primary-foreground: #ffffff;
-  --ring: var(--error-300);
+  --primary: var(--Container-bg-error);
+  --primary-foreground: var(--Text-text-inverse);
+  --ring: var(--Focusring-focusring-error);
 
   @variant dark {
-    --primary: var(--error-600);
-    --primary-foreground: #ffffff;
-    --ring: var(--error-300);
+    --primary: var(--Container-bg-error);
+    --primary-foreground: var(--Text-text-inverse);
+    --ring: var(--Focusring-focusring-error);
   }
 }
 

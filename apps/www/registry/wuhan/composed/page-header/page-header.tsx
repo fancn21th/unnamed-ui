@@ -81,9 +81,14 @@ export const PageHeaderButtonGroup = ({
   children: React.ReactNode;
   className?: string;
 }) => (
-  <div className={cn("flex items-center", "gap-[var(--gap-sm)]", className)}>
+  <div
+    className={cn("flex items-center", "gap-[var(--Gap-gap-sm)]", className)}
+  >
     {React.Children.map(children, (child, index) => (
-      <span key={index} className="[&>*:not(:first-child)]:ml-[var(--gap-sm)]">
+      <span
+        key={index}
+        className="[&>*:not(:first-child)]:ml-[var(--Gap-gap-sm)]"
+      >
         {child}
       </span>
     ))}

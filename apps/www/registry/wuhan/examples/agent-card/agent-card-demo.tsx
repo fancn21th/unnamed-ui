@@ -30,13 +30,13 @@ export default function AgentCardDemo() {
   return (
     <div className="w-full max-w-[650px] mx-auto p-4 space-y-4">
       {/* 标题 */}
-      <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-4">
+      <h2 className="text-lg font-semibold text-[var(--Text-text-primary)] mb-4">
         Agent Card 组件示例
       </h2>
 
       {/* 基础展示 */}
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
           基础卡片
         </h3>
         {agentExamples.map((agent, index) => (
@@ -51,7 +51,7 @@ export default function AgentCardDemo() {
 
       {/* 不同尺寸展示 */}
       <div className="mt-6 space-y-3">
-        <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
           不同尺寸
         </h3>
         <AgentCardPrimitive title="小型卡片" description="小尺寸" size="sm" />

@@ -30,7 +30,7 @@ export const AvatarPrimitive = React.forwardRef<
       ref={ref}
       className={cn(
         "shrink-0 rounded-full overflow-hidden flex items-center justify-center",
-        "bg-[#D9D9D9] text-[var(--text-primary)]",
+        "bg-[#D9D9D9] text-[var(--Text-text-primary)]",
         size === "sm" && "size-6 text-xs",
         size === "md" && "size-8 text-sm",
         size === "lg" && "size-10 text-base",
@@ -84,7 +84,7 @@ export const AvatarTextPrimitive = React.forwardRef<
     <span
       ref={ref}
       className={cn(
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "leading-[var(--line-height-2)]",
         className,
         "font-size-2",
@@ -161,7 +161,7 @@ export const AvatarHeaderPrimitive = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "[&_*]:!box-border flex items-center gap-[var(--gap-md)]",
+        "[&_*]:!box-border flex items-center gap-[var(--Gap-gap-md)]",
         className,
       )}
       {...props}
@@ -188,10 +188,10 @@ export const AvatarNamePrimitive = React.forwardRef<
     <span
       ref={ref}
       className={cn(
-        "font-[var(--font-family-cn)] font-[var(--font-weight-400)]",
+        "font-[var(--font-family-CN)] font-[var(--font-weight-400)]",
         "leading-[var(--line-height-2)]",
         "font-size-2",
-        "tracking-[0px] text-[var(--text-primary)]",
+        "tracking-[0px] text-[var(--Text-text-primary)]",
         className,
       )}
       style={{
@@ -222,9 +222,9 @@ export const AvatarTimePrimitive = React.forwardRef<
     <span
       ref={ref}
       className={cn(
-        "font-[var(--font-family-cn)] font-[var(--font-weight-400)]",
+        "font-[var(--font-family-CN)] font-[var(--font-weight-400)]",
         "font-size-1 leading-[var(--line-height-1)]",
-        "tracking-[0px] text-[var(--text-secondary)]",
+        "tracking-[0px] text-[var(--Text-text-secondary)]",
         className,
       )}
       style={{

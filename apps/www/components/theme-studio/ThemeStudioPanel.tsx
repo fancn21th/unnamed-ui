@@ -133,6 +133,45 @@ const NEUTRAL_STEPS = ["0", "10", "50", "100", "200", "300", "400", "500", "600"
 const BASE_STEPS = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "1000"] as const;
 const EXTREME_STEPS = ["10000"] as const;
 
+/** 将 palette 前缀+档位 映射为 Figma 变量名 */
+function toFigmaVarKey(prefix: string, step: string, mode: "light" | "dark"): string {
+  const modePrefix = mode === "light" ? "Light" : "Dark";
+  const cap = prefix.charAt(0).toUpperCase() + prefix.slice(1);
+  return `${modePrefix}-${cap}-${prefix}-${step}`;
+}
+
+const PALETTE_PREFIXES = ["neutral", "brand", "success", "warning", "error"] as const;
+
+/** 判断是否为旧版 palette key（如 neutral-0, brand-600） */
+function isLegacyPaletteKey(key: string): boolean {
+  for (const p of PALETTE_PREFIXES) {
+    if (key.startsWith(`${p}-`) && key.length > p.length + 1) return true;
+  }
+  return false;
+}
+
+/** 将旧版 palette key 迁移为 Figma 变量名 */
+function migrateLegacyPaletteKey(key: string, mode: "light" | "dark"): string {
+  for (const p of PALETTE_PREFIXES) {
+    if (key.startsWith(`${p}-`)) {
+      const step = key.slice(p.length + 1);
+      return toFigmaVarKey(p, step, mode);
+    }
+  }
+  return key;
+}
+
+/** 清理并迁移单模式的 overrides */
+function cleanAndMigrateMode(obj: Record<string, unknown>, mode: "light" | "dark"): ThemeOverrides {
+  const out: ThemeOverrides = {};
+  for (const [k, v] of Object.entries(obj)) {
+    if (typeof v !== "string" || !v.trim()) continue;
+    const key = isLegacyPaletteKey(k) ? migrateLegacyPaletteKey(k, mode) : k;
+    out[key] = v.trim();
+  }
+  return out;
+}
+
 function isNonEmptyObject(value: unknown): value is Record<string, unknown> {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
 }
@@ -222,6 +261,7 @@ function PaletteEditor({
   description,
   prefix,
   steps,
+  mode,
   activeOverrides,
   activeTheme,
   onSetOverride,
@@ -231,6 +271,7 @@ function PaletteEditor({
   description?: string;
   prefix: string;
   steps: readonly string[];
+  mode: "light" | "dark";
   activeOverrides: ThemeOverrides;
   activeTheme: string;
   onSetOverride: (key: string, value: string) => void;
@@ -239,7 +280,8 @@ function PaletteEditor({
   const [mounted, setMounted] = React.useState(false);
   const [selected, setSelected] = React.useState<string>(steps[0] ?? "500");
 
-  const keyFor = (step: string) => `${prefix}-${step}`;
+  const keyFor = (step: string) => toFigmaVarKey(prefix, step, mode);
+  const legacyKeyFor = (step: string) => `${prefix}-${step}`;
   const selectedKey = keyFor(selected);
 
   // 如果某些极端档位不存在（比如只有 light 有 10000），就隐藏。
@@ -247,7 +289,7 @@ function PaletteEditor({
     // SSR/首帧 hydration：不要读取 computed style，否则会造成 server/client 文本不一致
     if (!mounted) return [...steps];
     return steps.filter((s) => Boolean(readComputedCssVar(keyFor(s))));
-  }, [mounted, steps, prefix, activeTheme]);
+  }, [mounted, steps, prefix, mode, activeTheme]);
 
   React.useEffect(() => {
     setMounted(true);
@@ -298,8 +340,8 @@ function PaletteEditor({
       <div className="mt-4">
         <ThemeVarRow
           def={{ key: selectedKey, label: `${title} ${selected}`, kind: "color" }}
-          overriddenValue={activeOverrides[selectedKey]}
-          isOverridden={Boolean(activeOverrides[selectedKey])}
+          overriddenValue={activeOverrides[selectedKey] ?? activeOverrides[legacyKeyFor(selected)]}
+          isOverridden={Boolean(activeOverrides[selectedKey] ?? activeOverrides[legacyKeyFor(selected)])}
           activeTheme={activeTheme}
           showComputedValues={false}
           onSetOverride={onSetOverride}
@@ -337,6 +379,7 @@ const PaletteTab = React.memo(
             description="中性色阶（最基础、影响背景/文字/边框）"
             prefix="neutral"
             steps={NEUTRAL_STEPS}
+            mode={mode === "light" ? "light" : "dark"}
             activeOverrides={activeOverrides}
             activeTheme={activeTheme}
             onSetOverride={onSetOverride}
@@ -347,6 +390,7 @@ const PaletteTab = React.memo(
             description="品牌色阶（影响 primary/ring 等）"
             prefix="brand"
             steps={BASE_STEPS}
+            mode={mode === "light" ? "light" : "dark"}
             activeOverrides={activeOverrides}
             activeTheme={activeTheme}
             onSetOverride={onSetOverride}
@@ -357,6 +401,7 @@ const PaletteTab = React.memo(
             description="成功色阶"
             prefix="success"
             steps={BASE_STEPS}
+            mode={mode === "light" ? "light" : "dark"}
             activeOverrides={activeOverrides}
             activeTheme={activeTheme}
             onSetOverride={onSetOverride}
@@ -367,6 +412,7 @@ const PaletteTab = React.memo(
             description="警告色阶（包含部分极端档位）"
             prefix="warning"
             steps={[...BASE_STEPS, ...EXTREME_STEPS]}
+            mode={mode === "light" ? "light" : "dark"}
             activeOverrides={activeOverrides}
             activeTheme={activeTheme}
             onSetOverride={onSetOverride}
@@ -377,6 +423,7 @@ const PaletteTab = React.memo(
             description="错误色阶（包含部分极端档位）"
             prefix="error"
             steps={[...BASE_STEPS, ...EXTREME_STEPS]}
+            mode={mode === "light" ? "light" : "dark"}
             activeOverrides={activeOverrides}
             activeTheme={activeTheme}
             onSetOverride={onSetOverride}
@@ -438,28 +485,16 @@ export function ThemeStudioPanel({ className }: { className?: string }) {
         const lightObj = isNonEmptyObject((parsed as any).light) ? (parsed as any).light : {};
         const darkObj = isNonEmptyObject((parsed as any).dark) ? (parsed as any).dark : {};
 
-        const cleanMode = (obj: Record<string, unknown>): ThemeOverrides => {
-          const out: ThemeOverrides = {};
-          for (const [k, v] of Object.entries(obj)) {
-            if (typeof v === "string" && v.trim()) out[k] = v.trim();
-          }
-          return out;
-        };
-
         setOverridesByMode({
-          light: cleanMode(lightObj),
-          dark: cleanMode(darkObj),
+          light: cleanAndMigrateMode(lightObj, "light"),
+          dark: cleanAndMigrateMode(darkObj, "dark"),
         });
         return;
       }
 
       // v2 fallback: { key: value } -> 只当作 light，dark 为空（避免暗色被意外污染）
       const obj = parsed as Record<string, unknown>;
-      const clean: ThemeOverrides = {};
-      for (const [k, v] of Object.entries(obj)) {
-        if (typeof v === "string" && v.trim()) clean[k] = v.trim();
-      }
-      setOverridesByMode({ light: clean, dark: {} });
+      setOverridesByMode({ light: cleanAndMigrateMode(obj, "light"), dark: {} });
     } catch {
       // ignore
     }
@@ -643,25 +678,20 @@ export function ThemeStudioPanel({ className }: { className?: string }) {
       const parsed = JSON.parse(rawJson) as unknown;
       if (!isNonEmptyObject(parsed)) return;
 
-      const cleanMode = (obj: Record<string, unknown>): ThemeOverrides => {
-        const out: ThemeOverrides = {};
-        for (const [k, v] of Object.entries(obj)) {
-          if (typeof v === "string" && v.trim()) out[k] = v.trim();
-        }
-        return out;
-      };
-
       if ("light" in parsed || "dark" in parsed) {
         const lightObj = isNonEmptyObject((parsed as any).light) ? (parsed as any).light : {};
         const darkObj = isNonEmptyObject((parsed as any).dark) ? (parsed as any).dark : {};
-        setOverridesByMode({ light: cleanMode(lightObj), dark: cleanMode(darkObj) });
+        setOverridesByMode({
+          light: cleanAndMigrateMode(lightObj, "light"),
+          dark: cleanAndMigrateMode(darkObj, "dark"),
+        });
         return;
       }
 
       // 兼容：如果用户粘贴的是扁平对象，就只应用到当前模式
       const obj = parsed as Record<string, unknown>;
-      const clean = cleanMode(obj);
-      setOverridesByMode((prev) => ({ ...prev, [mode]: clean }));
+      const m = mode === "dark" ? "dark" : "light";
+      setOverridesByMode((prev) => ({ ...prev, [mode]: cleanAndMigrateMode(obj, m) }));
     } catch {
       // ignore
     }
@@ -669,16 +699,26 @@ export function ThemeStudioPanel({ className }: { className?: string }) {
 
   // 解析设计令牌格式（Design Tokens Format）
   // 格式：{ Light: { Brand: { "brand-900": { "$value": "#..." } } }, Dark: { ... } }
+  // 导入后映射为 Figma 变量名：Light-Brand-brand-900, Dark-Brand-brand-900 等
   const parseDesignTokensFormat = React.useCallback((jsonData: unknown): OverridesByMode => {
     const result: OverridesByMode = { light: {}, dark: {} };
 
     if (!isNonEmptyObject(jsonData)) return result;
 
-    const processColorGroup = (group: Record<string, unknown>, target: ThemeOverrides) => {
+    const processColorGroup = (
+      group: Record<string, unknown>,
+      target: ThemeOverrides,
+      mode: "light" | "dark",
+      groupName: string,
+    ) => {
+      const prefix = groupName.toLowerCase();
       for (const [key, value] of Object.entries(group)) {
-        if (isNonEmptyObject(value) && "$value" in value && typeof value.$value === "string") {
-          target[key] = value.$value;
-        }
+        if (!isNonEmptyObject(value) || !("$value" in value) || typeof value.$value !== "string")
+          continue;
+        // key 格式为 prefix-step，如 brand-900、neutral-0
+        const step = key.startsWith(`${prefix}-`) ? key.slice(prefix.length + 1) : key;
+        const figmaKey = toFigmaVarKey(prefix, step, mode);
+        target[figmaKey] = value.$value;
       }
     };
 
@@ -688,7 +728,12 @@ export function ThemeStudioPanel({ className }: { className?: string }) {
       const colorGroups = ["Brand", "Neutral", "Success", "Warning", "Error"] as const;
       for (const groupName of colorGroups) {
         if (groupName in light && isNonEmptyObject(light[groupName])) {
-          processColorGroup(light[groupName] as Record<string, unknown>, result.light);
+          processColorGroup(
+            light[groupName] as Record<string, unknown>,
+            result.light,
+            "light",
+            groupName,
+          );
         }
       }
     }
@@ -699,7 +744,12 @@ export function ThemeStudioPanel({ className }: { className?: string }) {
       const colorGroups = ["Brand", "Neutral", "Success", "Warning", "Error"] as const;
       for (const groupName of colorGroups) {
         if (groupName in dark && isNonEmptyObject(dark[groupName])) {
-          processColorGroup(dark[groupName] as Record<string, unknown>, result.dark);
+          processColorGroup(
+            dark[groupName] as Record<string, unknown>,
+            result.dark,
+            "dark",
+            groupName,
+          );
         }
       }
     }
@@ -710,30 +760,26 @@ export function ThemeStudioPanel({ className }: { className?: string }) {
   // 解析主题覆盖格式（Theme Overrides Format）
   // 格式1：{ light: { "brand-900": "#...", ... }, dark: { ... } }
   // 格式2：{ "brand-900": "#...", ... } （扁平对象，只应用到当前模式）
+  // 旧 key（neutral-0、brand-600）会自动迁移为 Figma 变量名
   const parseThemeOverridesFormat = React.useCallback(
     (jsonData: unknown, currentMode: keyof OverridesByMode): OverridesByMode => {
       const result: OverridesByMode = { light: {}, dark: {} };
 
       if (!isNonEmptyObject(jsonData)) return result;
 
-      const cleanMode = (obj: Record<string, unknown>): ThemeOverrides => {
-        const out: ThemeOverrides = {};
-        for (const [k, v] of Object.entries(obj)) {
-          if (typeof v === "string" && v.trim()) out[k] = v.trim();
-        }
-        return out;
-      };
-
       // 格式1：包含 light/dark 键
       if ("light" in jsonData || "dark" in jsonData) {
         const lightObj = isNonEmptyObject((jsonData as any).light) ? (jsonData as any).light : {};
         const darkObj = isNonEmptyObject((jsonData as any).dark) ? (jsonData as any).dark : {};
-        return { light: cleanMode(lightObj), dark: cleanMode(darkObj) };
+        return {
+          light: cleanAndMigrateMode(lightObj, "light"),
+          dark: cleanAndMigrateMode(darkObj, "dark"),
+        };
       }
 
       // 格式2：扁平对象，只应用到当前模式
-      const clean = cleanMode(jsonData as Record<string, unknown>);
-      result[currentMode] = clean;
+      const mode = currentMode === "dark" ? "dark" : "light";
+      result[currentMode] = cleanAndMigrateMode(jsonData as Record<string, unknown>, mode);
       return result;
     },
     [],
@@ -1021,15 +1067,18 @@ export function ThemeStudioPanel({ className }: { className?: string }) {
                       </div>
                       <div>
                         <div className="font-medium mb-1">格式2：主题覆盖格式（双模式）</div>
+                        <p className="text-muted-foreground/80 mb-1">
+                          支持 Figma 变量名（Light-Brand-brand-600）或旧 key（brand-600，导入时自动迁移）
+                        </p>
                         <pre className="bg-muted/50 p-2 rounded text-[10px] overflow-x-auto">
 {`{
   "light": {
-    "brand-900": "#00142b",
-    "brand-600": "#00589f"
+    "Light-Brand-brand-900": "#00142b",
+    "Light-Brand-brand-600": "#00589f"
   },
   "dark": {
-    "brand-900": "#12172a",
-    "brand-600": "#424cdc"
+    "Dark-Brand-brand-900": "#12172a",
+    "Dark-Brand-brand-600": "#424cdc"
   }
 }`}
                         </pre>
@@ -1038,12 +1087,13 @@ export function ThemeStudioPanel({ className }: { className?: string }) {
                         <div className="font-medium mb-1">格式3：主题覆盖格式（单模式）</div>
                         <pre className="bg-muted/50 p-2 rounded text-[10px] overflow-x-auto">
 {`{
-  "brand-900": "#00142b",
-  "brand-600": "#00589f",
-  "neutral-0": "#ffffff"
+  "Light-Brand-brand-600": "#00589f",
+  "Light-Neutral-neutral-0": "#ffffff"
 }`}
                         </pre>
-                        <p className="text-[10px] mt-1">（扁平对象，只应用到当前模式）</p>
+                        <p className="text-[10px] mt-1">
+                          （扁平对象，只应用到当前模式。旧 key 如 brand-600 导入时自动迁移）
+                        </p>
                       </div>
                     </div>
                   </details>

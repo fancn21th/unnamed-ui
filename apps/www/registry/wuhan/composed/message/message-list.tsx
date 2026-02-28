@@ -204,7 +204,7 @@ const MessageListItem = React.memo(function MessageListItem({
         <div
           className={cn(
             align === "right" &&
-              "flex flex-col gap-[var(--gap-lg)] items-end",
+              "flex flex-col gap-[var(--Gap-gap-lg)] items-end",
             "group/message",
           )}
         >
@@ -214,7 +214,7 @@ const MessageListItem = React.memo(function MessageListItem({
               {renderContent(message.content, message)}
             </UserMessage>
             {(message.feedback !== undefined || showDefaultFeedback) && (
-              <div className="flex justify-end opacity-0 group-hover/message:opacity-100 transition-opacity min-h-[32px] mt-[var(--gap-xs)]">
+              <div className="flex justify-end opacity-0 group-hover/message:opacity-100 transition-opacity min-h-[32px] mt-[var(--Gap-gap-xs)]">
                 {message.feedback ?? (
                   <MessageFeedbackActions
                     role="user"
@@ -245,7 +245,7 @@ const MessageListItem = React.memo(function MessageListItem({
             {(message.feedback !== undefined || showDefaultFeedback) && (
               <div
                 className={cn(
-                  "flex justify-start min-h-[32px] mt-[var(--gap-xs)]",
+                  "flex justify-start min-h-[32px] mt-[var(--Gap-gap-xs)]",
                   !isLastAIMessage &&
                     "opacity-0 group-hover/message:opacity-100 transition-opacity",
                 )}
@@ -325,7 +325,7 @@ export const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
 
     const messagesLength = messages.length;
     const lastMessage =
-      messagesLength > 0 ? messages[messagesLength - 1] ?? null : null;
+      messagesLength > 0 ? (messages[messagesLength - 1] ?? null) : null;
 
     // 智能自动滚动：仅当用户靠近底部且消息有变化时滚动（含流式更新）
     React.useEffect(() => {
@@ -353,7 +353,7 @@ export const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
 
     const emptyContent = React.useMemo(
       () => (
-        <div className="flex items-center justify-center h-full text-[var(--text-tertiary)] text-sm">
+        <div className="flex items-center justify-center h-full text-[var(--Text-text-tertiary)] text-sm">
           暂无消息
         </div>
       ),
@@ -395,7 +395,7 @@ export const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
       <div ref={ref} className={cn("w-full h-full", className)} {...props}>
         <div
           ref={containerRef}
-          className="w-full h-full overflow-y-auto flex flex-col gap-[var(--gap-2xl)]"
+          className="w-full h-full overflow-y-auto flex flex-col gap-[var(--Gap-gap-2xl)]"
           role="log"
           aria-label="消息列表"
           aria-live="polite"

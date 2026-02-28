@@ -10,12 +10,12 @@ export const StyledMarkdownTableWrapper = styled.div`
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  margin-top: var(--margin-com-xl) !important;
-  margin-bottom: var(--margin-com-xl) !important;
+  margin-top: var(--Margin-margin-com-xl) !important;
+  margin-bottom: var(--Margin-margin-com-xl) !important;
 
-  border-top: 1px solid var(--border-neutral);
-  border-bottom: 1px solid var(--border-neutral);
-  background: var(--bg-container);
+  border-top: 1px solid var(--Border-border-neutral);
+  border-bottom: 1px solid var(--Border-border-neutral);
+  background: var(--Container-bg-container);
 
   &:hover .md-table-toolbar {
     opacity: 1;
@@ -46,9 +46,9 @@ export const StyledMarkdownTable = styled.table`
 
   th,
   td {
-    padding: var(--padding-com-sm) var(--padding-com-xl);
-    border-right: 1px solid var(--divider-neutral-basic);
-    border-bottom: 1px solid var(--divider-neutral-basic);
+    padding: var(--Padding-padding-com-sm) var(--Padding-padding-com-xl);
+    border-right: 1px solid var(--Border-divider-neutral-basic);
+    border-bottom: 1px solid var(--Border-divider-neutral-basic);
     white-space: nowrap;
     text-align: left;
     background: inherit;
@@ -63,7 +63,7 @@ export const StyledMarkdownTable = styled.table`
     position: sticky;
     top: 0;
     z-index: 2;
-    background: var(--bg-neutral-light);
+    background: var(--Container-bg-neutral-light);
     font-weight: 600;
   }
 
@@ -75,17 +75,17 @@ export const StyledMarkdownTable = styled.table`
     /* 提高层级，避免阴影被后面的单元格盖住 */
     z-index: 4;
     /* 固定列需要自己有背景，否则会透出后面的列 */
-    background: var(--bg-container);
+    background: var(--Container-bg-container);
   }
 
   thead th:first-child {
     z-index: 5;
-    background: var(--bg-neutral-light);
+    background: var(--Container-bg-neutral-light);
   }
 
   /* 斑马纹时首列背景跟随行背景 */
   tbody tr:nth-child(even) td:first-child {
-    background: var(--bg-neutral-light);
+    background: var(--Container-bg-neutral-light);
   }
 
   /* 固定首列右侧阴影：用 ::after 画在最上层 */
@@ -111,20 +111,20 @@ export const StyledMarkdownTable = styled.table`
   }
 
   tbody tr {
-    background: var(--bg-container);
+    background: var(--Container-bg-container);
     transition: background-color 0.2s ease;
   }
 
   tbody tr:nth-child(even) {
-    background: var(--bg-neutral-light);
+    background: var(--Container-bg-neutral-light);
   }
 
   tbody tr:hover {
-    background: var(--bg-container-secondary);
+    background: var(--Container-bg-container-secondary);
   }
 
   tbody tr:nth-child(even):hover {
-    background: var(--bg-neutral-light-hover);
+    background: var(--Container-bg-neutral-light-hover);
   }
 
   tbody tr:last-child td {
@@ -135,16 +135,16 @@ export const StyledMarkdownTable = styled.table`
 /** hover 工具栏（下载/复制） */
 export const StyledCodeToolbar = styled.div`
   position: absolute;
-  top: var(--padding-com-md);
-  right: var(--padding-com-md);
+  top: var(--Padding-padding-com-md);
+  right: var(--Padding-padding-com-md);
   height: 28px;
   display: flex;
   align-items: center;
-  gap: var(--gap-2xs);
-  padding: var(--padding-com-2xs);
+  gap: var(--Gap-gap-2xs);
+  padding: var(--Padding-padding-com-2xs);
 
-  background: var(--bg-container);
-  border: 1px solid var(--border-neutral);
+  background: var(--Container-bg-container);
+  border: 1px solid var(--Border-border-neutral);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-basic);
 
@@ -158,7 +158,7 @@ export const StyledCodeToolbar = styled.div`
 export const StyledCodeToolButton = styled.button`
   width: 24px;
   height: 24px;
-  padding: var(--padding-com-xs);
+  padding: var(--Padding-padding-com-xs);
   border-radius: var(--radius-md);
   border: none;
   background: transparent;
@@ -168,7 +168,7 @@ export const StyledCodeToolButton = styled.button`
   justify-content: center;
 
   &:hover {
-    background: var(--bg-neutral-light-active);
+    background: var(--Container-bg-neutral-light-active);
   }
 
   svg {

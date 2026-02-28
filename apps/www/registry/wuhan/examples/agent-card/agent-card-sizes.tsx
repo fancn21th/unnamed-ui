@@ -6,7 +6,7 @@ export default function AgentCardSizesDemo() {
   return (
     <div className="w-full max-w-[650px] space-y-4">
       <div>
-        <h3 className="text-sm font-medium text-[var(--text-secondary)] mb-2">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)] mb-2">
           小尺寸 (sm)
         </h3>
         <AgentCardPrimitive
@@ -16,7 +16,7 @@ export default function AgentCardSizesDemo() {
         />
       </div>
       <div>
-        <h3 className="text-sm font-medium text-[var(--text-secondary)] mb-2">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)] mb-2">
           中尺寸 (md)
         </h3>
         <AgentCardPrimitive
@@ -26,7 +26,7 @@ export default function AgentCardSizesDemo() {
         />
       </div>
       <div>
-        <h3 className="text-sm font-medium text-[var(--text-secondary)] mb-2">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)] mb-2">
           大尺寸 (lg)
         </h3>
         <AgentCardPrimitive

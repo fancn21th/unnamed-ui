@@ -81,7 +81,7 @@ export default function FeedbackReport() {
   return (
     <div className="flex flex-col gap-6 w-full max-w-md">
       <div>
-        <h3 className="text-sm font-medium text-[var(--text-secondary)] mb-4">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)] mb-4">
           内容举报场景
         </h3>
         <FeedbackComposed
@@ -94,7 +94,7 @@ export default function FeedbackReport() {
         />
       </div>
 
-      <div className="text-xs text-[var(--text-tertiary)] p-3 bg-[var(--bg-tertiary)] rounded">
+      <div className="text-xs text-[var(--Text-text-tertiary)] p-3 bg-[var(--Container-bg-container-secondary)] rounded">
         <p>💡 提示：举报信息将严格保密，我们会在24小时内处理。</p>
       </div>
     </div>

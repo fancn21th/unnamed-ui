@@ -15,7 +15,7 @@ export default function ReportCardExample() {
       id: "1",
       title: "候选人评估报告",
       description: "更新时间：08-04 13:56",
-      icon: <FileText className="text-[var(--text-brand)]" size={16} />,
+      icon: <FileText className="text-[var(--Text-text-brand)]" size={16} />,
     },
     {
       id: "2",
@@ -39,7 +39,9 @@ export default function ReportCardExample() {
     <div className="flex flex-col gap-6">
       {/* 选中状态示例 */}
       <div className="flex flex-col gap-4">
-        <h3 className="font-medium text-[var(--text-primary)]">选中状态</h3>
+        <h3 className="font-medium text-[var(--Text-text-primary)]">
+          选中状态
+        </h3>
 
         {/* 单个卡片选中示例 */}
         <ReportCard
@@ -61,7 +63,9 @@ export default function ReportCardExample() {
 
       {/* 单个卡片示例 */}
       <div className="flex flex-col gap-4">
-        <h3 className="font-medium text-[var(--text-primary)]">单个卡片</h3>
+        <h3 className="font-medium text-[var(--Text-text-primary)]">
+          单个卡片
+        </h3>
 
         {/* 默认示例 */}
         <ReportCard
@@ -74,7 +78,9 @@ export default function ReportCardExample() {
 
         {/* 自定义图标示例 */}
         <ReportCard
-          icon={<FileText className="text-[var(--text-brand)]" size={16} />}
+          icon={
+            <FileText className="text-[var(--Text-text-brand)]" size={16} />
+          }
           title="数据分析报告"
           description="包含本月所有数据统计信息"
         />
@@ -85,11 +91,11 @@ export default function ReportCardExample() {
           description="收藏后可在侧边栏快速访问"
           action={
             <button
-              className="flex items-center justify-center w-6 h-6 rounded-md cursor-pointer bg-[var(--bg-neutral-light-hover)]"
+              className="flex items-center justify-center w-6 h-6 rounded-md cursor-pointer bg-[var(--Container-bg-neutral-light-hover)]"
               onClick={() => console.log("切换收藏")}
             >
               <Star
-                className="size-4 text-[var(--text-warning)]"
+                className="size-4 text-[var(--Text-text-warning)]"
                 fill="currentColor"
               />
             </button>
@@ -102,7 +108,7 @@ export default function ReportCardExample() {
           description="该报告已开启实时监控"
           action={
             <button
-              className="flex items-center justify-center w-8 h-6 rounded-full cursor-pointer bg-[var(--bg-success)]"
+              className="flex items-center justify-center w-8 h-6 rounded-full cursor-pointer bg-[var(--Container-bg-success)]"
               onClick={() => console.log("关闭监控")}
             >
               <CheckCircle className="size-4 text-white" />
@@ -120,7 +126,9 @@ export default function ReportCardExample() {
 
       {/* 卡片列表示例 */}
       <div className="flex flex-col gap-4">
-        <h3 className="font-medium text-[var(--text-primary)]">卡片列表</h3>
+        <h3 className="font-medium text-[var(--Text-text-primary)]">
+          卡片列表
+        </h3>
 
         {/* 卡片列表 - 带选中功能 */}
         <ReportCardList
@@ -140,10 +148,10 @@ export default function ReportCardExample() {
           cards={cards}
           cardAction={(card) => (
             <button
-              className="flex items-center justify-center w-6 h-6 rounded-md cursor-pointer bg-[var(--bg-neutral-light-hover)]"
+              className="flex items-center justify-center w-6 h-6 rounded-md cursor-pointer bg-[var(--Container-bg-neutral-light-hover)]"
               onClick={() => console.log("自定义操作", card.id)}
             >
-              <MoreVertical className="size-4 text-[var(--text-secondary)]" />
+              <MoreVertical className="size-4 text-[var(--Text-text-secondary)]" />
             </button>
           )}
           showCardAction={false}
@@ -152,8 +160,8 @@ export default function ReportCardExample() {
 
       {/* 选中的卡片 ID */}
       {selectedIds.length > 0 && (
-        <div className="p-4 rounded-lg bg-[var(--bg-neutral-light)]">
-          <p className="text-sm text-[var(--text-secondary)]">
+        <div className="p-4 rounded-lg bg-[var(--Container-bg-neutral-light)]">
+          <p className="text-sm text-[var(--Text-text-secondary)]">
             选中的卡片 ID: {selectedIds.join(", ")}
           </p>
         </div>

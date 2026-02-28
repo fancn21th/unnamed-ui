@@ -291,16 +291,16 @@ export const FileCardContainerPrimitive = React.memo(
             "min-w-[180px] sm:min-w-[200px]",
             "flex flex-row",
             "items-center",
-            "gap-[var(--gap-md)]",
+            "gap-[var(--Gap-gap-md)]",
             "rounded-[var(--radius-xl)]",
-            "p-[var(--padding-com-md)]",
+            "p-[var(--Padding-padding-com-md)]",
             "transition-all duration-200",
             // 边框样式
-            bordered && "border border-[var(--border-neutral)]",
+            bordered && "border border-[var(--Border-border-neutral)]",
             // 交互状态
             disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer",
             // hover 状态（非禁用）
-            !disabled && "hover:bg-[var(--bg-neutral-light)]",
+            !disabled && "hover:bg-[var(--Container-bg-neutral-light)]",
             // 焦点状态（非禁用）
             !disabled &&
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2",
@@ -362,7 +362,9 @@ export const FileCardFileIconPrimitive = React.memo(
       // 安全渲染图标
       const renderIcon = () => {
         if (!isValidIcon(icon)) {
-          return <FileIcon className="w-6 h-6 text-[var(--text-secondary)]" />;
+          return (
+            <FileIcon className="w-6 h-6 text-[var(--Text-text-secondary)]" />
+          );
         }
         return React.isValidElement(icon)
           ? React.cloneElement(icon as React.ReactElement<{ size?: number }>, {
@@ -378,7 +380,7 @@ export const FileCardFileIconPrimitive = React.memo(
             "w-10 h-10",
             "flex items-center justify-center",
             "rounded-[var(--radius-lg)]",
-            "bg-[var(--bg-neutral-light)]",
+            "bg-[var(--Container-bg-neutral-light)]",
             "flex-shrink-0",
             "overflow-hidden",
             className,
@@ -440,7 +442,7 @@ export const FileCardStatusIconPrimitive = React.memo(
             "w-10 h-10",
             "flex items-center justify-center",
             "rounded-[var(--radius-lg)]",
-            "bg-[var(--bg-container-placeholder)]",
+            "bg-[var(--Container-bg-container-placeholder)]",
             "flex-shrink-0",
             "overflow-hidden",
             className,
@@ -504,7 +506,7 @@ export const FileCardInfoPrimitive = React.memo(
         <div
           ref={ref}
           className={cn(
-            "flex flex-col flex-1 min-w-0 gap-[var(--gap-xs)]",
+            "flex flex-col flex-1 min-w-0 gap-[var(--Gap-gap-xs)]",
             className,
           )}
           {...props}
@@ -513,11 +515,11 @@ export const FileCardInfoPrimitive = React.memo(
           {isValidIcon(title) && (
             <span
               className={cn(
-                "font-[var(--font-family-cn)]",
+                "font-[var(--font-family-CN)]",
                 "font-[var(--font-weight-400)]",
                 "font-size-2",
                 "leading-[var(--line-height-2)]",
-                "text-[var(--text-primary)]",
+                "text-[var(--Text-text-primary)]",
                 "truncate",
               )}
             >
@@ -529,11 +531,11 @@ export const FileCardInfoPrimitive = React.memo(
           {isValidIcon(date) && (
             <span
               className={cn(
-                "font-[var(--font-family-cn)]",
+                "font-[var(--font-family-CN)]",
                 "font-[var(--font-weight-400)]",
                 "font-size-1",
                 "leading-[var(--line-height-1)]",
-                "text-[var(--text-tertiary)]",
+                "text-[var(--Text-text-tertiary)]",
                 "truncate",
               )}
             >
@@ -605,7 +607,7 @@ export const FileCardActionPrimitive = React.memo(
       const renderIcon = () => {
         if (!isValidIcon(icon)) {
           return (
-            <MoreHorizontal className="w-4 h-4 text-[var(--text-secondary)]" />
+            <MoreHorizontal className="w-4 h-4 text-[var(--Text-text-secondary)]" />
           );
         }
 
@@ -627,14 +629,14 @@ export const FileCardActionPrimitive = React.memo(
             "w-6 h-6",
             "flex items-center justify-center",
             "rounded-[var(--radius-md)]",
-            "p-[var(--gap-xs)]",
+            "p-[var(--Gap-gap-xs)]",
             "transition-all duration-200",
             "flex-shrink-0",
             // 默认隐藏，hover 卡片时显示（此时无底色）
             "opacity-0",
             "group-hover/file-card:opacity-100",
             // 仅 hover icon 时底色变化
-            "hover:bg-[var(--bg-neutral-light-hover)]",
+            "hover:bg-[var(--Container-bg-neutral-light-hover)]",
             // 禁用状态
             disabled && "cursor-not-allowed opacity-50",
             // 焦点状态（非禁用）
@@ -767,26 +769,28 @@ export const FileCardActionPopoverPrimitive = React.memo(
               aria-disabled={item.disabled}
               className={cn(
                 // 基础布局（与 report-card 保持一致，使用全局变量）
-                "flex items-center gap-[var(--gap-md)]",
-                "py-[var(--gap-xs)] px-[var(--padding-com-md)]",
+                "flex items-center gap-[var(--Gap-gap-md)]",
+                "py-[var(--Gap-gap-xs)] px-[var(--Padding-padding-com-md)]",
                 "rounded-[var(--radius-lg)]",
                 "cursor-pointer",
                 "outline-none",
                 // 文字样式
-                "font-[var(--font-family-cn)]",
+                "font-[var(--font-family-CN)]",
                 "font-[var(--font-weight-400)]",
                 "font-size-2",
                 "leading-[var(--line-height-2)]",
                 // 交互状态
                 item.disabled
-                  ? "text-[var(--text-tertiary)] cursor-not-allowed opacity-50"
-                  : "text-[var(--text-primary)]",
+                  ? "text-[var(--Text-text-tertiary)] cursor-not-allowed opacity-50"
+                  : "text-[var(--Text-text-primary)]",
                 !item.disabled &&
                   (item.danger
-                    ? "hover:bg-[var(--bg-error-light)]"
-                    : "hover:bg-[var(--bg-neutral-light)]"),
+                    ? "hover:bg-[var(--Container-bg-error-light)]"
+                    : "hover:bg-[var(--Container-bg-neutral-light)]"),
                 // 危险操作样式
-                item.danger && !item.disabled && "text-[var(--text-error)]",
+                item.danger &&
+                  !item.disabled &&
+                  "text-[var(--Text-text-error)]",
                 item.className,
               )}
               onClick={handleItemClick}
@@ -805,8 +809,8 @@ export const FileCardActionPopoverPrimitive = React.memo(
                     "flex-shrink-0",
                     "w-4 h-4",
                     item.danger && !item.disabled
-                      ? "text-[var(--text-error)]"
-                      : "text-[var(--text-secondary)]",
+                      ? "text-[var(--Text-text-error)]"
+                      : "text-[var(--Text-text-secondary)]",
                   )}
                 >
                   {React.isValidElement(item.icon)
@@ -837,7 +841,7 @@ export const FileCardActionPopoverPrimitive = React.memo(
                 "w-6 h-6",
                 "flex items-center justify-center",
                 "rounded-[var(--radius-md)]",
-                "p-[var(--gap-xs)]",
+                "p-[var(--Gap-gap-xs)]",
                 "transition-all duration-200",
                 "flex-shrink-0",
                 // 默认隐藏，hover 卡片时显示（此时无底色）
@@ -845,9 +849,9 @@ export const FileCardActionPopoverPrimitive = React.memo(
                 "group-hover/file-card:opacity-100",
                 // popover 展开时 icon 保持显示且保持底色
                 openValue && "opacity-100",
-                openValue && "bg-[var(--bg-neutral-light-hover)]",
+                openValue && "bg-[var(--Container-bg-neutral-light-hover)]",
                 // 仅 hover icon 时底色变化
-                "hover:bg-[var(--bg-neutral-light-hover)]",
+                "hover:bg-[var(--Container-bg-neutral-light-hover)]",
                 // 禁用状态
                 disabled && "cursor-not-allowed opacity-50",
                 // 焦点状态（非禁用）
@@ -869,7 +873,7 @@ export const FileCardActionPopoverPrimitive = React.memo(
                   { size: 16 },
                 )
               ) : (
-                <MoreHorizontal className="w-4 h-4 text-[var(--text-secondary)]" />
+                <MoreHorizontal className="w-4 h-4 text-[var(--Text-text-secondary)]" />
               )}
             </div>
           </PopoverPrimitive.Trigger>
@@ -879,10 +883,10 @@ export const FileCardActionPopoverPrimitive = React.memo(
               "z-50",
               "min-w-[120px]",
               "rounded-[var(--radius-xl)]",
-              "bg-[var(--bg-container)]",
-              "border border-[var(--border-neutral)]",
+              "bg-[var(--Container-bg-container)]",
+              "border border-[var(--Border-border-neutral)]",
               "shadow-[var(--shadow-basic)]",
-              "p-[var(--padding-com-xs)]",
+              "p-[var(--Padding-padding-com-xs)]",
               // 动画
               "data-[state=open]:animate-in data-[state=closed]:animate-out",
               "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
@@ -1006,22 +1010,22 @@ export const FileCardPrimitive = React.memo(
       const statusIconMap: Record<FileCardStatus, React.ReactNode> = {
         loading: (
           <LoaderCircle
-            className="w-6 h-6 animate-spin text-[var(--text-brand)]"
+            className="w-6 h-6 animate-spin text-[var(--Text-text-brand)]"
             aria-label="加载中"
           />
         ),
         error: (
-          <FileCardErrorIcon className="w-6 h-6 text-[var(--text-error)]" />
+          <FileCardErrorIcon className="w-6 h-6 text-[var(--Text-text-error)]" />
         ),
         uploading: (
           <LoaderCircle
-            className="w-6 h-6 animate-pulse text-[var(--text-brand)]"
+            className="w-6 h-6 animate-pulse text-[var(--Text-text-brand)]"
             aria-label="上传中"
           />
         ),
         warning: (
           <svg
-            className="w-6 h-6 text-[var(--text-warning)]"
+            className="w-6 h-6 text-[var(--Text-text-warning)]"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -1039,7 +1043,7 @@ export const FileCardPrimitive = React.memo(
         ),
         success: (
           <svg
-            className="w-6 h-6 text-[var(--text-success)]"
+            className="w-6 h-6 text-[var(--Text-text-success)]"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -1166,7 +1170,7 @@ FileCardPrimitive.displayName = "FileCardPrimitive";
  *
  * @example
  * ```tsx
- * <FileCardErrorIcon className="w-6 h-6 text-[var(--text-error)]" />
+ * <FileCardErrorIcon className="w-6 h-6 text-[var(--Text-text-error)]" />
  * ```
  */
 export const FileCardErrorIcon = ({ className }: { className?: string }) => (

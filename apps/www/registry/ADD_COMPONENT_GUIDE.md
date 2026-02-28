@@ -85,11 +85,11 @@ export const MyComponentPrimitive = React.forwardRef<
         BOX_BORDER,
         "w-full",
         "rounded-[var(--radius-xl)]",
-        "bg-[var(--bg-container)]",
-        "border border-[var(--border-neutral)]",
-        "p-[var(--padding-com-lg)]",
+        "bg-[var(--Container-bg-container)]",
+        "border border-[var(--Border-border-neutral)]",
+        "p-[var(--Padding-padding-com-lg)]",
         "flex items-center",
-        "gap-[var(--gap-md)]",
+        "gap-[var(--Gap-gap-md)]",
         className,
       )}
       {...props}
@@ -299,7 +299,7 @@ export default function MyComponentDemo() {
 
       {/* 交互式演示 */}
       <div className="mt-6">
-        <h3 className="text-sm font-medium text-[var(--text-secondary)] mb-3">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)] mb-3">
           交互式演示
         </h3>
         <MyComponent
@@ -309,13 +309,13 @@ export default function MyComponentDemo() {
         />
         <div className="flex gap-2 mt-3">
           <button
-            className="px-3 py-1.5 text-sm bg-[var(--bg-brand)] text-white rounded-[var(--radius-md)]"
+            className="px-3 py-1.5 text-sm bg-[var(--Container-bg-brand)] text-white rounded-[var(--radius-md)]"
             onClick={() => setStatus("pending")}
           >
             待处理
           </button>
           <button
-            className="px-3 py-1.5 text-sm bg-[var(--bg-success)] text-white rounded-[var(--radius-md)]"
+            className="px-3 py-1.5 text-sm bg-[var(--Container-bg-success)] text-white rounded-[var(--radius-md)]"
             onClick={() => setStatus("completed")}
           >
             完成
@@ -513,7 +513,7 @@ dependencies: ["lucide-react", "@radix-ui/react-dialog"]
 
 ### 4. 样式使用
 
-- 使用 CSS 变量：`var(--bg-container)`, `var(--text-primary)` 等
+- 使用 CSS 变量：`var(--Container-bg-container)`, `var(--Text-text-primary)` 等（Figma 命名）
 - 使用 Tailwind 类：`rounded-[var(--radius-md)]`
 - 避免硬编码颜色值
 
@@ -597,7 +597,7 @@ export const ComponentPrimitive = React.forwardRef<
         BOX_BORDER,
         "w-full",
         "rounded-[var(--radius-xl)]",
-        "bg-[var(--bg-container)]",
+        "bg-[var(--Container-bg-container)]",
         className,
       )}
       {...props}

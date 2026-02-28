@@ -31,7 +31,7 @@ const PageHeaderPrimitive = React.forwardRef<
         "flex items-center",
         "justify-between",
         "w-full",
-        "px-[var(--padding-com-xl)]",
+        "px-[var(--Padding-padding-com-xl)]",
         className,
       )}
       {...props}
@@ -51,7 +51,7 @@ const PageHeaderLeftPrimitive = React.forwardRef<
   return (
     <div
       ref={ref}
-      className={cn("flex items-center", "gap-[var(--gap-md)]", className)}
+      className={cn("flex items-center", "gap-[var(--Gap-gap-md)]", className)}
       {...props}
     />
   );
@@ -95,11 +95,11 @@ const PageHeaderTitlePrimitive = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "font-[var(--font-weight-600)]",
         "font-size-4",
         "leading-[var(--line-height-4)]",
-        "text-[var(--text-title)]",
+        "text-[var(--Text-text-title)]",
         "tracking-[0px]",
         className,
       )}
@@ -124,7 +124,7 @@ const PageHeaderRightPrimitive = React.forwardRef<
   return (
     <div
       ref={ref}
-      className={cn("flex items-center", "gap-[var(--gap-lg)]", className)}
+      className={cn("flex items-center", "gap-[var(--Gap-gap-lg)]", className)}
       {...props}
     />
   );
@@ -141,7 +141,7 @@ const PageHeaderButtonGroupPrimitive = React.forwardRef<
   return (
     <div
       ref={ref}
-      className={cn("flex items-center", "gap-[var(--gap-sm)]", className)}
+      className={cn("flex items-center", "gap-[var(--Gap-gap-sm)]", className)}
       {...props}
     />
   );

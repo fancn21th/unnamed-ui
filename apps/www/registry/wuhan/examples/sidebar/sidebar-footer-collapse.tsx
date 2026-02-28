@@ -14,7 +14,7 @@ export default function SidebarFooterCollapse() {
   ];
 
   return (
-    <div className="w-[240px] h-[500px] border border-[var(--border-neutral)] rounded-lg overflow-hidden">
+    <div className="w-[240px] h-[500px] border border-[var(--Border-border-neutral)] rounded-lg overflow-hidden">
       <SidebarComposed
         conversations={conversations.map((conv) => ({
           id: conv.id,

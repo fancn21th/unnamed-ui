@@ -21,7 +21,7 @@ export const StyledCodeScroll = styled.div`
   overflow: auto;
   box-sizing: border-box;
   border-radius: var(--radius-lg) !important;
-  background-color: var(--bg-neutral-light) !important;
+  background-color: var(--Container-bg-neutral-light) !important;
   /* 覆盖 Markdown 全局 pre-wrap，确保横向滚动条生效 */
   pre,
   pre code {
@@ -48,16 +48,16 @@ export const StyledCodeScroll = styled.div`
 /** hover 工具栏（下载/复制） */
 export const StyledCodeToolbar = styled.div`
   position: absolute;
-  top: var(--padding-com-md);
-  right: var(--padding-com-md);
+  top: var(--Padding-padding-com-md);
+  right: var(--Padding-padding-com-md);
   height: 28px;
   display: flex;
   align-items: center;
-  gap: var(--gap-2xs);
-  padding: var(--padding-com-2xs);
+  gap: var(--Gap-gap-2xs);
+  padding: var(--Padding-padding-com-2xs);
 
-  background: var(--bg-container);
-  border: 1px solid var(--border-neutral);
+  background: var(--Container-bg-container);
+  border: 1px solid var(--Border-border-neutral);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-basic);
 
@@ -71,7 +71,7 @@ export const StyledCodeToolbar = styled.div`
 export const StyledCodeToolButton = styled.button`
   width: 24px;
   height: 24px;
-  padding: var(--padding-com-xs);
+  padding: var(--Padding-padding-com-xs);
   border-radius: var(--radius-md);
   border: none;
   background: transparent;
@@ -81,7 +81,7 @@ export const StyledCodeToolButton = styled.button`
   justify-content: center;
 
   &:hover {
-    background: var(--bg-neutral-light-active);
+    background: var(--Container-bg-neutral-light-active);
   }
 
   svg {

@@ -22,28 +22,28 @@ function applyThemeVars(root: HTMLElement, theme: string) {
 
   const primary =
     t === "neutral"
-      ? "var(--neutral-800)"
+      ? "var(--Container-bg-neutral)"
       : t === "success" || t === "green"
-        ? "var(--success-600)"
+        ? "var(--Container-bg-success)"
         : t === "warning" || t === "orange"
-          ? "var(--warning-600)"
+          ? "var(--Container-bg-warning)"
           : t === "error" || t === "red"
-            ? "var(--error-600)"
-            : "var(--brand-600)"
+            ? "var(--Container-bg-error)"
+            : "var(--Container-bg-brand)"
 
   const ring =
     t === "neutral"
-      ? "var(--neutral-400)"
+      ? "var(--Border-border-neutral)"
       : t === "success" || t === "green"
-        ? "var(--success-300)"
+        ? "var(--Focusring-focusring-success)"
         : t === "warning" || t === "orange"
-          ? "var(--warning-300)"
+          ? "var(--Focusring-focusring-warning)"
           : t === "error" || t === "red"
-            ? "var(--error-300)"
-            : "var(--brand-300)"
+            ? "var(--Focusring-focusring-error)"
+            : "var(--Focusring-focusring-brand)"
 
   root.style.setProperty("--primary", primary)
-  root.style.setProperty("--primary-foreground", "var(--neutral-0)")
+  root.style.setProperty("--primary-foreground", "var(--Text-text-inverse)")
   root.style.setProperty("--ring", ring)
 }
 
@@ -96,7 +96,7 @@ function applyFontVars(root: HTMLElement, font: string) {
       "--font-family-cn",
       `"Microsoft YaHei UI","Microsoft YaHei","PingFang SC",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif`
     )
-    root.style.setProperty("--font-sans", "var(--font-family-cn)")
+    root.style.setProperty("--font-sans", "var(--font-family-CN)")
     return
   }
 
@@ -105,7 +105,7 @@ function applyFontVars(root: HTMLElement, font: string) {
       "--font-family-cn",
       `Arial,"Helvetica Neue",Helvetica,"Segoe UI",system-ui,sans-serif`
     )
-    root.style.setProperty("--font-sans", "var(--font-family-cn)")
+    root.style.setProperty("--font-sans", "var(--font-family-CN)")
     return
   }
 
@@ -114,7 +114,7 @@ function applyFontVars(root: HTMLElement, font: string) {
       "--font-family-cn",
       `"Segoe UI Variable Display","Segoe UI","Microsoft YaHei UI","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC","PingFang SC",system-ui,sans-serif`
     )
-    root.style.setProperty("--font-sans", "var(--font-family-cn)")
+    root.style.setProperty("--font-sans", "var(--font-family-CN)")
     return
   }
 

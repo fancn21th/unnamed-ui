@@ -115,10 +115,10 @@ const CardActionsMenu = ({
       className={cn(
         "min-w-[120px]",
         "rounded-[var(--radius-xl)]",
-        "border border-[var(--border-neutral)]",
-        "bg-[var(--bg-container)]",
+        "border border-[var(--Border-border-neutral)]",
+        "bg-[var(--Container-bg-container)]",
         "shadow-[var(--shadow-basic)]",
-        "p-[var(--padding-com-xs)]",
+        "p-[var(--Padding-padding-com-xs)]",
       )}
     >
       <div className="flex flex-col">
@@ -127,16 +127,16 @@ const CardActionsMenu = ({
             type="button"
             onClick={onEdit}
             className={cn(
-              "flex items-center gap-[var(--gap-md)]",
-              "py-[var(--gap-xs)] px-[var(--padding-com-md)]",
+              "flex items-center gap-[var(--Gap-gap-md)]",
+              "py-[var(--Gap-gap-xs)] px-[var(--Padding-padding-com-md)]",
               "rounded-[var(--radius-lg)]",
               "cursor-pointer",
               "outline-none",
-              "text-[var(--text-primary)]",
-              "hover:bg-[var(--bg-neutral-light)]",
+              "text-[var(--Text-text-primary)]",
+              "hover:bg-[var(--Container-bg-neutral-light)]",
             )}
           >
-            <Pencil className="size-4 text-[var(--text-secondary)]" />
+            <Pencil className="size-4 text-[var(--Text-text-secondary)]" />
             <span className="font-size-2 leading-[var(--line-height-2)]">
               编辑
             </span>
@@ -147,16 +147,16 @@ const CardActionsMenu = ({
             type="button"
             onClick={onDuplicate}
             className={cn(
-              "flex items-center gap-[var(--gap-md)]",
-              "py-[var(--gap-xs)] px-[var(--padding-com-md)]",
+              "flex items-center gap-[var(--Gap-gap-md)]",
+              "py-[var(--Gap-gap-xs)] px-[var(--Padding-padding-com-md)]",
               "rounded-[var(--radius-lg)]",
               "cursor-pointer",
               "outline-none",
-              "text-[var(--text-primary)]",
-              "hover:bg-[var(--bg-neutral-light)]",
+              "text-[var(--Text-text-primary)]",
+              "hover:bg-[var(--Container-bg-neutral-light)]",
             )}
           >
-            <Copy className="size-4 text-[var(--text-secondary)]" />
+            <Copy className="size-4 text-[var(--Text-text-secondary)]" />
             <span className="font-size-2 leading-[var(--line-height-2)]">
               复制
             </span>
@@ -167,16 +167,16 @@ const CardActionsMenu = ({
             type="button"
             onClick={onDelete}
             className={cn(
-              "flex items-center gap-[var(--gap-md)]",
-              "py-[var(--gap-xs)] px-[var(--padding-com-md)]",
+              "flex items-center gap-[var(--Gap-gap-md)]",
+              "py-[var(--Gap-gap-xs)] px-[var(--Padding-padding-com-md)]",
               "rounded-[var(--radius-lg)]",
               "cursor-pointer",
               "outline-none",
-              "text-[var(--text-error)]",
-              "hover:bg-[var(--bg-error-light)]",
+              "text-[var(--Text-text-error)]",
+              "hover:bg-[var(--Container-bg-error-light)]",
             )}
           >
-            <Trash2 className="size-4 text-[var(--text-error)]" />
+            <Trash2 className="size-4 text-[var(--Text-text-error)]" />
             <span className="font-size-2 leading-[var(--line-height-2)]">
               删除
             </span>
@@ -293,7 +293,7 @@ export const ReportCard = React.forwardRef<HTMLDivElement, ReportCardProps>(
                   "flex items-center justify-center",
                   "w-6 h-6",
                   "rounded-[var(--radius-md)]",
-                  "p-[var(--gap-xs)]",
+                  "p-[var(--Gap-gap-xs)]",
                   "transition-all duration-200",
                   "flex-shrink-0",
                   // 默认隐藏，hover 卡片时显示（此时无底色）
@@ -301,9 +301,9 @@ export const ReportCard = React.forwardRef<HTMLDivElement, ReportCardProps>(
                   "group-hover/report-card:opacity-100",
                   // popover 展开时 icon 保持显示且保持底色
                   open && "opacity-100",
-                  open && "bg-[var(--bg-neutral-light-hover)]",
+                  open && "bg-[var(--Container-bg-neutral-light-hover)]",
                   // 仅 hover icon 时底色变化
-                  "hover:bg-[var(--bg-neutral-light-hover)]",
+                  "hover:bg-[var(--Container-bg-neutral-light-hover)]",
                   "cursor-pointer",
                 )}
                 aria-label="更多操作"
@@ -313,7 +313,7 @@ export const ReportCard = React.forwardRef<HTMLDivElement, ReportCardProps>(
                 }}
                 onMouseLeave={scheduleClose}
               >
-                <Ellipsis className="size-4 text-[var(--text-secondary)]" />
+                <Ellipsis className="size-4 text-[var(--Text-text-secondary)]" />
               </span>
             </Popover.Trigger>
             <Popover.Portal>
@@ -389,18 +389,20 @@ export const ReportCardList = React.forwardRef<
       {/* {title && (
         <div
           className={cn(
-            "font-[var(--font-family-cn)]",
+            "font-[var(--font-family-CN)]",
             "font-[var(--font-weight-600)]",
             "font-size-2",
             "leading-[var(--line-height-2)]",
-            "text-[var(--text-primary)]",
-            "mb-[var(--margin-com-md)]",
+            "text-[var(--Text-text-primary)]",
+            "mb-[var(--Margin-margin-com-md)]",
           )}
         >
           {title}
         </div>
       )} */}
-      <div className={cn("flex flex-col gap-[var(--gap-md)]", listClassName)}>
+      <div
+        className={cn("flex flex-col gap-[var(--Gap-gap-md)]", listClassName)}
+      >
         {cards.map((card) => (
           <ReportCard
             key={card.id}

@@ -9,17 +9,17 @@ export default function AgentCardCustomIconDemo() {
       <AgentCard
         title="写作助手"
         description="智能写作辅助"
-        icon={<Bot className="size-5 text-[var(--text-brand)]" />}
+        icon={<Bot className="size-5 text-[var(--Text-text-brand)]" />}
       />
       <AgentCard
         title="计算引擎"
         description="高性能计算"
-        icon={<Cpu className="size-5 text-[var(--text-brand)]" />}
+        icon={<Cpu className="size-5 text-[var(--Text-text-brand)]" />}
       />
       <AgentCard
         title="翻译官"
         description="多语言翻译"
-        icon={<Sparkles className="size-5 text-[var(--text-brand)]" />}
+        icon={<Sparkles className="size-5 text-[var(--Text-text-brand)]" />}
       />
     </div>
   );

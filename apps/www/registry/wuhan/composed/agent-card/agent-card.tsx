@@ -128,18 +128,18 @@ export const AgentCardList = React.forwardRef<
       {title && (
         <h3
           className={cn(
-            "font-[var(--font-family-cn)]",
+            "font-[var(--font-family-CN)]",
             "font-[var(--font-weight-600)]",
             "font-size-3",
             "leading-[var(--line-height-3)]",
-            "text-[var(--text-primary)]",
-            "mb-[var(--margin-com-md)]",
+            "text-[var(--Text-text-primary)]",
+            "mb-[var(--Margin-margin-com-md)]",
           )}
         >
           {title}
         </h3>
       )}
-      <div className="flex flex-col gap-[var(--gap-md)]">
+      <div className="flex flex-col gap-[var(--Gap-gap-md)]">
         {agents.map((agent) => (
           <AgentCard
             key={agent.id}

@@ -595,7 +595,7 @@ function CustomGeneratingDemo() {
       content: "",
       status: "generating",
       generatingContent: (
-        <div className="flex items-center gap-2 text-[var(--text-secondary)]">
+        <div className="flex items-center gap-2 text-[var(--Text-text-secondary)]">
           <LoadingDots />
           <span>正在分析...</span>
         </div>
@@ -664,8 +664,8 @@ function RetryableMessageList() {
       content: "",
       status: "failed",
       errorContent: (
-        <div className="flex flex-col gap-2 p-3 bg-[var(--bg-error-light)] rounded-lg">
-          <p className="text-[var(--text-error)]">请求失败，请稍后重试</p>
+        <div className="flex flex-col gap-2 p-3 bg-[var(--Container-bg-error-light)] rounded-lg">
+          <p className="text-[var(--Text-text-error)]">请求失败，请稍后重试</p>
           <Button
             variant="outline"
             size="sm"
@@ -771,7 +771,7 @@ export function ChatApp() {
       </div>
 
       {/* 输入区域 */}
-      <div className="border-t p-4 bg-[var(--bg-secondary)]">
+      <div className="border-t p-4 bg-[var(--Container-bg-neutral)]">
         <div className="flex gap-2">
           <input
             type="text"

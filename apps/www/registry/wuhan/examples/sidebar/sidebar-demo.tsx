@@ -25,8 +25,8 @@ export default function SidebarDemo() {
   }, [conversations, searchQuery]);
 
   return (
-    <div className="w-full max-w-[240px] h-[600px] border border-[var(--border-neutral)] rounded-lg overflow-hidden">
-      <div className="h-full p-[var(--padding-com-lg)] bg-[var(--bg-page-secondary)]">
+    <div className="w-full max-w-[240px] h-[600px] border border-[var(--Border-border-neutral)] rounded-lg overflow-hidden">
+      <div className="h-full p-[var(--Padding-padding-com-lg)] bg-[var(--Page-bg-page-secondary)]">
         <SidebarComposed
           header={{
             title: "问学",
@@ -37,7 +37,7 @@ export default function SidebarDemo() {
                 variant="ghost"
                 size="icon-sm"
                 aria-label="展开/收起侧边栏"
-                className="hover:bg-[var(--bg-neutral-light)] text-[var(--text-secondary)]"
+                className="hover:bg-[var(--Container-bg-neutral-light)] text-[var(--Text-text-secondary)]"
               >
                 <Menu className="size-4" />
               </Button>
@@ -82,7 +82,7 @@ export default function SidebarDemo() {
                       console.log("删除对话:", conv.id);
                     }
                   }}
-                  className="inline-flex items-center justify-center h-6 w-6 rounded-md hover:bg-[var(--bg-neutral-light-hover)] text-[var(--text-secondary)] cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--ring)] focus:ring-offset-1"
+                  className="inline-flex items-center justify-center h-6 w-6 rounded-md hover:bg-[var(--Container-bg-neutral-light-hover)] text-[var(--Text-text-secondary)] cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--ring)] focus:ring-offset-1"
                   aria-label="删除对话"
                 >
                   <Trash2 className="size-3" />

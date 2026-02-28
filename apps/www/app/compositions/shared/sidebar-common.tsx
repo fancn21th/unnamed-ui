@@ -74,7 +74,7 @@ export function SidebarCommon({
               variant="ghost"
               size="icon-sm"
               aria-label="展开/收起侧边栏"
-              className="hover:bg-[var(--bg-neutral-light)] text-[var(--text-secondary)]"
+              className="hover:bg-[var(--Container-bg-neutral-light)] text-[var(--Text-text-secondary)]"
             >
               <Menu className="size-4" />
             </Button>
@@ -82,7 +82,7 @@ export function SidebarCommon({
         </SidebarHeaderPrimitive>
 
         {/* New Button */}
-        <div className="mt-[var(--gap-lg)]">
+        <div className="mt-[var(--Gap-gap-lg)]">
           <SidebarNewButtonPrimitive onClick={onCreateConversation}>
             <Plus className="size-4" />
             新对话
@@ -142,7 +142,7 @@ export function SidebarCommon({
                               onDeleteConversation(conv.id);
                             }
                           }}
-                          className="inline-flex items-center justify-center h-6 w-6 rounded-md hover:bg-[var(--bg-neutral-light-hover)] text-[var(--text-secondary)] cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--ring)] focus:ring-offset-1"
+                          className="inline-flex items-center justify-center h-6 w-6 rounded-md hover:bg-[var(--Container-bg-neutral-light-hover)] text-[var(--Text-text-secondary)] cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--ring)] focus:ring-offset-1"
                           aria-label="删除对话"
                         >
                           <Trash2 className="size-3" />

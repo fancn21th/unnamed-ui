@@ -51,9 +51,9 @@ function ZijinQuickActionButton({
       type="button"
       variant="outline"
       onClick={onClick}
-      className="h-[34px] gap-[var(--gap-xs)] rounded-[var(--radius-circle)] py-[var(--padding-com-sm)] px-[var(--padding-com-lg)] border border-[var(--border-neutral)] bg-[var(--bg-container)] hover:bg-[var(--bg-neutral-light-hover)] transition-colors font-[var(--font-family-cn)] font-[var(--font-weight-400)] font-size-2 leading-[var(--line-height-2)] tracking-[0px] text-[var(--text-primary)]"
+      className="h-[34px] gap-[var(--Gap-gap-xs)] rounded-[var(--radius-circle)] py-[var(--Padding-padding-com-sm)] px-[var(--Padding-padding-com-lg)] border border-[var(--Border-border-neutral)] bg-[var(--Container-bg-container)] hover:bg-[var(--Container-bg-neutral-light-hover)] transition-colors font-[var(--font-family-CN)] font-[var(--font-weight-400)] font-size-2 leading-[var(--line-height-2)] tracking-[0px] text-[var(--Text-text-primary)]"
     >
-      <span className="text-[var(--text-brand)]">{icon}</span>
+      <span className="text-[var(--Text-text-brand)]">{icon}</span>
       <span>{children}</span>
     </Button>
   );
@@ -88,7 +88,7 @@ function ZijinSender({
 }) {
   return (
     <SenderContainer
-      className="bg-[var(--bg-container)]"
+      className="bg-[var(--Container-bg-container)]"
       onSubmit={(e) => {
         e.preventDefault();
         onSend();
@@ -196,7 +196,7 @@ export function ZijinChat({ history }: { history: UseChatHistoryReturn }) {
         <div className="flex-1 min-h-0 flex items-center justify-center">
           <div className="w-full max-w-[800px] flex flex-col items-center gap-6">
             <img src={ZIJIN_ORANGE_ICON_DATA_URI} alt="" className="w-[98px] h-[98px]" />
-            <div className="text-[var(--text-primary)] font-[var(--font-family-cn)] font-[var(--font-weight-600)] font-size-4 leading-[var(--line-height-2)] tracking-[0px]">你好，我今天能帮你什么？</div>
+            <div className="text-[var(--Text-text-primary)] font-[var(--font-family-CN)] font-[var(--font-weight-600)] font-size-4 leading-[var(--line-height-2)] tracking-[0px]">你好，我今天能帮你什么？</div>
             <div className="w-full">
               <ZijinSender
                 value={value}
@@ -278,7 +278,7 @@ export function ZijinChat({ history }: { history: UseChatHistoryReturn }) {
                         generatingContent={
                           <div className="flex items-center gap-2">
                             <LoadingDots />
-                            <span className="text-[var(--text-secondary)]">正在思考中...</span>
+                            <span className="text-[var(--Text-text-secondary)]">正在思考中...</span>
                           </div>
                         }
                       >
@@ -310,7 +310,7 @@ export function ZijinChat({ history }: { history: UseChatHistoryReturn }) {
                 (!value.trim() && composer.attachments.length === 0)
               }
             />
-            <div className="mt-2 text-center align-middle text-[var(--text-tertiary)] font-[var(--font-family-cn)] font-[var(--font-weight-400)] font-size-1 leading-[var(--line-height-1)] tracking-[0px]">
+            <div className="mt-2 text-center align-middle text-[var(--Text-text-tertiary)] font-[var(--font-family-CN)] font-[var(--font-weight-400)] font-size-1 leading-[var(--line-height-1)] tracking-[0px]">
               所有内容均由人工智能模型输出，不保证信息的准确性和完整性，内容仅供参考
             </div>
           </div>

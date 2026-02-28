@@ -14,14 +14,14 @@ const DynamicFormLayoutPrimitive = React.forwardRef<
       className={cn(
         "w-full",
         "flex flex-col",
-        "gap-[var(--gap-xl)]",
-        "px-[var(--padding-com-xl)] py-[var(--margin-com-xl)]",
+        "gap-[var(--Gap-gap-xl)]",
+        "px-[var(--Padding-padding-com-xl)] py-[var(--Margin-margin-com-xl)]",
         "rounded-[var(--radius-xl)]",
-        "bg-[var(--bg-container-secondary)]",
-        "font-[var(--font-family-cn)]",
+        "bg-[var(--Container-bg-container-secondary)]",
+        "font-[var(--font-family-CN)]",
         className,
       )}
-      style={{ fontFamily: "var(--font-family-cn)", ...style }}
+      style={{ fontFamily: "var(--font-family-CN)", ...style }}
       {...props}
     />
   );
@@ -54,12 +54,12 @@ const DynamicFormTitlePrimitive = React.forwardRef<
     <span
       ref={ref}
       className={cn(
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "font-[var(--font-weight-600)]",
         "font-semibold",
         "font-size-4",
         "leading-[var(--line-height-4)]",
-        "text-[var(--text-title)]",
+        "text-[var(--Text-text-title)]",
         className,
       )}
       {...props}
@@ -79,7 +79,7 @@ const DynamicFormBodyLayout = React.forwardRef<
       className={cn(
         "w-full",
         "flex flex-col",
-        "gap-[var(--gap-xl)]",
+        "gap-[var(--Gap-gap-xl)]",
         className,
       )}
       {...props}
@@ -100,7 +100,7 @@ const DynamicFormFooterPrimitive = React.forwardRef<
       className={cn(
         "w-full",
         "flex items-center justify-end",
-        "gap-[var(--gap-md)]",
+        "gap-[var(--Gap-gap-md)]",
         className,
       )}
       {...props}

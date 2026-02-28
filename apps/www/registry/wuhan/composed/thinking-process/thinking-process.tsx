@@ -292,7 +292,9 @@ const ThinkingStep = React.forwardRef<HTMLDivElement, ThinkingStepProps>(
       : [];
     const hasBlocksContent = renderedBlocks.length > 0;
     const blocksNode = hasBlocksContent ? (
-      <div className="flex flex-col gap-[var(--gap-md)]">{renderedBlocks}</div>
+      <div className="flex flex-col gap-[var(--Gap-gap-md)]">
+        {renderedBlocks}
+      </div>
     ) : null;
 
     const showHeaderMeta = headerMeta !== undefined && headerMeta !== null;
@@ -332,11 +334,11 @@ const ThinkingStep = React.forwardRef<HTMLDivElement, ThinkingStepProps>(
               {showHeaderMeta && (
                 <span
                   className={cn(
-                    "font-[var(--font-family-cn)]",
+                    "font-[var(--font-family-CN)]",
                     "font-size-2",
                     "leading-[var(--line-height-2)]",
                     "font-normal",
-                    "text-[var(--text-secondary)]",
+                    "text-[var(--Text-text-secondary)]",
                   )}
                 >
                   {headerMeta}
@@ -387,7 +389,7 @@ const ThinkingStep = React.forwardRef<HTMLDivElement, ThinkingStepProps>(
                 className={cn(
                   // 覆盖 ContentPrimitive 内部的 `whitespace-pre-wrap` 继承，避免影响子组件布局
                   "whitespace-normal",
-                  hasContent && "mt-[var(--gap-md)]",
+                  hasContent && "mt-[var(--Gap-gap-md)]",
                 )}
               >
                 {subStepsNode}

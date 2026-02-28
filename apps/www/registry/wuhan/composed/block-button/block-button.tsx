@@ -131,7 +131,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         <div
           className={cn(
             "flex items-center",
-            hasChildren && "gap-[var(--gap-md)]",
+            hasChildren && "gap-[var(--Gap-gap-md)]",
           )}
         >
           {/* 左侧图标 */}

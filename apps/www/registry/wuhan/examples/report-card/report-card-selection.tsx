@@ -18,21 +18,21 @@ export default function ReportCardSelectionDemo() {
       id: "1",
       title: "候选人评估报告",
       description: "更新时间：08-04 13:56",
-      icon: <FileText className="text-[var(--text-brand)]" size={16} />,
+      icon: <FileText className="text-[var(--Text-text-brand)]" size={16} />,
       selected: false,
     },
     {
       id: "2",
       title: "数据分析报告",
       description: "包含本月所有数据统计信息",
-      icon: <BarChart3 className="text-[var(--text-success)]" size={16} />,
+      icon: <BarChart3 className="text-[var(--Text-text-success)]" size={16} />,
       selected: false,
     },
     {
       id: "3",
       title: "团队绩效报告",
       description: "2024年Q4绩效数据汇总",
-      icon: <Users className="text-[var(--text-warning)]" size={16} />,
+      icon: <Users className="text-[var(--Text-text-warning)]" size={16} />,
       selected: false,
     },
   ]);
@@ -59,17 +59,19 @@ export default function ReportCardSelectionDemo() {
       {/* 单个卡片选择 */}
       <div className="space-y-4">
         <div className="space-y-2">
-          <h3 className="text-sm font-medium text-[var(--text-primary)]">
+          <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
             单个卡片选择
           </h3>
-          <p className="text-xs text-[var(--text-secondary)]">
+          <p className="text-xs text-[var(--Text-text-secondary)]">
             选中状态: {singleSelected ? "已选中" : "未选中"}
           </p>
         </div>
         <ReportCard
           title="候选人评估报告"
           description="更新时间：08-04 13:56"
-          icon={<FileText className="text-[var(--text-brand)]" size={16} />}
+          icon={
+            <FileText className="text-[var(--Text-text-brand)]" size={16} />
+          }
           showCheckbox={true}
           selected={singleSelected}
           onSelectChange={handleSingleSelectChange}
@@ -79,10 +81,10 @@ export default function ReportCardSelectionDemo() {
       {/* 列表卡片选择 */}
       <div className="space-y-4">
         <div className="space-y-2">
-          <h3 className="text-sm font-medium text-[var(--text-primary)]">
+          <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
             列表卡片选择
           </h3>
-          <p className="text-xs text-[var(--text-secondary)]">
+          <p className="text-xs text-[var(--Text-text-secondary)]">
             已选中 {selectedCount} / {listCards.length} 个卡片
           </p>
         </div>

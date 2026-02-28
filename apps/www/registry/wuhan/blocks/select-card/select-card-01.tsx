@@ -50,10 +50,10 @@ export const SelectCardItemPrimitive = React.forwardRef<
       className={cn(
         "h-[40px]",
         "w-full",
-        "gap-[var(--gap-md)]",
+        "gap-[var(--Gap-gap-md)]",
         "rounded-[var(--radius-lg)]",
-        "px-[var(--padding-com-lg)]",
-        "py-[var(--margin-com-md)]",
+        "px-[var(--Padding-padding-com-lg)]",
+        "py-[var(--Margin-margin-com-md)]",
         "justify-start",
         className,
       )}

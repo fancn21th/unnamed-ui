@@ -45,7 +45,7 @@ export default function QuickActionInteractive() {
       </QuickActionGroup>
 
       {selectedAction && (
-        <div className="p-4 rounded-lg bg-[var(--bg-neutral-light)] text-[var(--text-primary)] text-sm">
+        <div className="p-4 rounded-lg bg-[var(--Container-bg-neutral-light)] text-[var(--Text-text-primary)] text-sm">
           <p className="font-medium mb-1">已选择操作：</p>
           <p>{selectedAction}</p>
         </div>

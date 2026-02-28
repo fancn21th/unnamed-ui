@@ -10,7 +10,7 @@ export default function PromptDemo() {
   return (
     <div className="flex flex-col gap-8 w-full">
       <div>
-        <h4 className="text-sm font-medium text-[var(--text-primary)] mb-4">
+        <h4 className="text-sm font-medium text-[var(--Text-text-primary)] mb-4">
           Prompt 01
         </h4>
         <PromptGroup variant="horizontal">
@@ -39,7 +39,7 @@ export default function PromptDemo() {
       </div>
 
       <div>
-        <h4 className="text-sm font-medium text-[var(--text-primary)] mb-4">
+        <h4 className="text-sm font-medium text-[var(--Text-text-primary)] mb-4">
           Prompt 02
         </h4>
         <PromptGroup variant="vertical">

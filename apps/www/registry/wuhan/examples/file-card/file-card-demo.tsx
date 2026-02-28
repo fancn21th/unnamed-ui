@@ -31,20 +31,20 @@ const fileExamples = [
     id: "1",
     title: "项目需求文档.pdf",
     date: "2024-01-15 10:30",
-    fileIcon: <FileText className="w-6 h-6 text-[var(--text-brand)]" />,
+    fileIcon: <FileText className="w-6 h-6 text-[var(--Text-text-brand)]" />,
   },
   {
     id: "2",
     title: "设计稿.png",
     date: "2024-01-14 15:20",
-    fileIcon: <FileImage className="w-6 h-6 text-[var(--text-success)]" />,
+    fileIcon: <FileImage className="w-6 h-6 text-[var(--Text-text-success)]" />,
   },
   {
     id: "3",
     title: "数据统计表.xlsx",
     date: "2024-01-13 09:45",
     fileIcon: (
-      <FileSpreadsheet className="w-6 h-6 text-[var(--text-warning)]" />
+      <FileSpreadsheet className="w-6 h-6 text-[var(--Text-text-warning)]" />
     ),
   },
 ] as const;
@@ -101,13 +101,13 @@ export default function FileCardDemo() {
   return (
     <div className="w-full max-w-[650px] mx-auto p-4 space-y-4">
       {/* 标题 */}
-      <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-4">
+      <h2 className="text-lg font-semibold text-[var(--Text-text-primary)] mb-4">
         File Card 组件示例
       </h2>
 
       {/* 带操作菜单的文件卡片 */}
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
           带操作菜单的文件卡片
         </h3>
         {fileExamples.map((file) => (
@@ -129,14 +129,16 @@ export default function FileCardDemo() {
 
       {/* 不同状态展示 */}
       <div className="mt-6 space-y-3">
-        <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
           不同状态
         </h3>
         <FileCardPrimitive
           id="status-loading"
           title="加载中的文件.pdf"
           date="2024-01-15 10:30"
-          fileIcon={<FileText className="w-6 h-6 text-[var(--text-brand)]" />}
+          fileIcon={
+            <FileText className="w-6 h-6 text-[var(--Text-text-brand)]" />
+          }
           status="loading"
           actionMenuItems={defaultActionMenuItems}
         />
@@ -144,7 +146,9 @@ export default function FileCardDemo() {
           id="status-error"
           title="失败文件.jpg"
           date="2024-01-14 15:20"
-          fileIcon={<FileImage className="w-6 h-6 text-[var(--text-brand)]" />}
+          fileIcon={
+            <FileImage className="w-6 h-6 text-[var(--Text-text-brand)]" />
+          }
           status="error"
           actionMenuItems={defaultActionMenuItems}
         />
@@ -152,7 +156,7 @@ export default function FileCardDemo() {
 
       {/* 选中状态展示 */}
       <div className="mt-6 space-y-3">
-        <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
           选中状态
         </h3>
         <FileCardPrimitive
@@ -167,7 +171,7 @@ export default function FileCardDemo() {
 
       {/* 禁用状态展示 */}
       <div className="mt-6 space-y-3">
-        <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
           禁用状态
         </h3>
         <FileCardPrimitive
@@ -181,7 +185,7 @@ export default function FileCardDemo() {
 
       {/* 无操作菜单的卡片 */}
       <div className="mt-6 space-y-3">
-        <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
           简单操作按钮
         </h3>
         <FileCardPrimitive
@@ -194,12 +198,14 @@ export default function FileCardDemo() {
 
       {/* 原语组件展示 */}
       <div className="mt-6 space-y-3">
-        <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
           原语组件组合
         </h3>
         <FileCardContainerPrimitive>
           <FileCardFileIconPrimitive
-            icon={<FileText className="w-6 h-6 text-[var(--text-brand)]" />}
+            icon={
+              <FileText className="w-6 h-6 text-[var(--Text-text-brand)]" />
+            }
           />
           <FileCardInfoPrimitive title="使用原语组件" date="2024-01-15 10:30" />
           <FileCardActionPopoverPrimitive

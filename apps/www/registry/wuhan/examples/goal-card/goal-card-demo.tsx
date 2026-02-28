@@ -91,13 +91,13 @@ export default function GoalCardDemo() {
   return (
     <div className="w-full max-w-[650px] mx-auto p-4 space-y-4">
       {/* 标题 */}
-      <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-4">
+      <h2 className="text-lg font-semibold text-[var(--Text-text-primary)] mb-4">
         Goal Card 组件示例
       </h2>
 
       {/* 进行中状态 - 品牌色 */}
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
           进行中（品牌色）
         </h3>
         {goalExamples
@@ -116,7 +116,7 @@ export default function GoalCardDemo() {
 
       {/* 完成状态 - 绿色 + 对号 */}
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
           完成（绿色 + 对号）
         </h3>
         {goalExamples
@@ -135,7 +135,7 @@ export default function GoalCardDemo() {
 
       {/* 失败状态 - 红色 + 叉号 + 进度条填满 */}
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
           失败（错误色 + 叉号 + 进度条填满）
         </h3>
         {failedExamples.map((goal, index) => (
@@ -152,7 +152,7 @@ export default function GoalCardDemo() {
 
       {/* 交互式演示 */}
       <div className="mt-6 space-y-3">
-        <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
           交互式演示
         </h3>
         <GoalCardPrimitive
@@ -164,25 +164,25 @@ export default function GoalCardDemo() {
         />
         <div className="flex gap-2">
           <button
-            className="px-3 py-1.5 text-sm bg-[var(--bg-brand)] text-white rounded-[var(--radius-md)] hover:bg-[var(--bg-brand-hover)] transition-colors"
+            className="px-3 py-1.5 text-sm bg-[var(--Container-bg-brand)] text-white rounded-[var(--radius-md)] hover:bg-[var(--Container-bg-brand-hover)] transition-colors"
             onClick={() => updateProgress(10)}
           >
             +10%
           </button>
           <button
-            className="px-3 py-1.5 text-sm bg-[var(--bg-neutral-light)] text-[var(--text-primary)] rounded-[var(--radius-md)] hover:bg-[var(--bg-neutral-light-active)] transition-colors"
+            className="px-3 py-1.5 text-sm bg-[var(--Container-bg-neutral-light)] text-[var(--Text-text-primary)] rounded-[var(--radius-md)] hover:bg-[var(--Container-bg-neutral-light-active)] transition-colors"
             onClick={() => updateProgress(-10)}
           >
             -10%
           </button>
           <button
-            className="px-3 py-1.5 text-sm bg-[var(--bg-success)] text-white rounded-[var(--radius-md)] hover:bg-[var(--bg-success-hover)] transition-colors"
+            className="px-3 py-1.5 text-sm bg-[var(--Container-bg-success)] text-white rounded-[var(--radius-md)] hover:bg-[var(--Container-bg-success-hover)] transition-colors"
             onClick={setCompleted}
           >
             完成
           </button>
           <button
-            className="px-3 py-1.5 text-sm bg-[var(--bg-error)] text-white rounded-[var(--radius-md)] hover:bg-[var(--bg-error-hover)] transition-colors"
+            className="px-3 py-1.5 text-sm bg-[var(--Container-bg-error)] text-white rounded-[var(--radius-md)] hover:bg-[var(--Container-bg-error-hover)] transition-colors"
             onClick={setFailed}
           >
             失败
@@ -192,7 +192,7 @@ export default function GoalCardDemo() {
 
       {/* 不同尺寸展示 */}
       <div className="mt-6 space-y-3">
-        <h3 className="text-sm font-medium text-[var(--text-secondary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)]">
           不同尺寸
         </h3>
         <GoalCardPrimitive

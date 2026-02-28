@@ -66,21 +66,21 @@ const LoadingDots = React.forwardRef<
         {...props}
       >
         <div
-          className="w-1 h-1 rounded-full bg-[var(--bg-brand)]"
+          className="w-1 h-1 rounded-full bg-[var(--Container-bg-brand)]"
           style={{
             animation: "loading-dot-bounce 1.4s ease-in-out infinite",
             animationDelay: "-0.32s",
           }}
         />
         <div
-          className="w-1 h-1 rounded-full bg-[var(--bg-brand)]"
+          className="w-1 h-1 rounded-full bg-[var(--Container-bg-brand)]"
           style={{
             animation: "loading-dot-bounce 1.4s ease-in-out infinite",
             animationDelay: "-0.16s",
           }}
         />
         <div
-          className="w-1 h-1 rounded-full bg-[var(--bg-brand)]"
+          className="w-1 h-1 rounded-full bg-[var(--Container-bg-brand)]"
           style={{
             animation: "loading-dot-bounce 1.4s ease-in-out infinite",
           }}
@@ -118,7 +118,9 @@ const MessageGeneratingPrimitive = React.forwardRef<
       {...props}
     >
       {indicator}
-      {text && <span className="text-[var(--text-secondary)]">{text}</span>}
+      {text && (
+        <span className="text-[var(--Text-text-secondary)]">{text}</span>
+      )}
     </div>
   );
 });
@@ -154,7 +156,7 @@ const MessageFailedPrimitive = React.forwardRef<
         <div className="flex items-center gap-2">
           {icon}
           {typeof message === "string" ? (
-            <span className="text-[var(--text-error)]">{message}</span>
+            <span className="text-[var(--Text-text-error)]">{message}</span>
           ) : (
             message
           )}
@@ -200,14 +202,14 @@ const MessageAIPrimitive = React.forwardRef<
         <div
           className={cn(
             "w-full",
-            "pt-[var(--gap-md)]",
-            "pb-[var(--gap-md)]",
+            "pt-[var(--Gap-gap-md)]",
+            "pb-[var(--Gap-gap-md)]",
             "rounded-[var(--radius-xl)]",
-            "font-[var(--font-family-cn)]",
+            "font-[var(--font-family-CN)]",
             "font-normal",
             "leading-[var(--line-height-2)]",
             "tracking-[0px]",
-            "text-[var(--text-primary,#403F4D)]",
+            "text-[var(--Text-text-primary, #403F4D)]",
             className,
           )}
           style={{
@@ -220,7 +222,7 @@ const MessageAIPrimitive = React.forwardRef<
         </div>
         {feedback && (
           <div
-            className={cn("mt-[var(--gap-xs)]", "[&_*]:!box-border")}
+            className={cn("mt-[var(--Gap-gap-xs)]", "[&_*]:!box-border")}
             role="group"
             aria-label="Message feedback"
           >
@@ -265,17 +267,17 @@ const MessageUserPrimitive = React.forwardRef<
         <div
           className={cn(
             "w-full",
-            "pt-[var(--gap-md)]",
-            "pr-[var(--gap-lg)]",
-            "pb-[var(--gap-md)]",
-            "pl-[var(--gap-lg)]",
+            "pt-[var(--Gap-gap-md)]",
+            "pr-[var(--Gap-gap-lg)]",
+            "pb-[var(--Gap-gap-md)]",
+            "pl-[var(--Gap-gap-lg)]",
             "rounded-[var(--radius-xl)]",
-            "bg-[var(--bg-neutral-light)]",
-            "font-[var(--font-family-cn)]",
+            "bg-[var(--Container-bg-neutral-light)]",
+            "font-[var(--font-family-CN)]",
             "font-normal",
             "leading-[var(--line-height-2)]",
             "tracking-[0px]",
-            "text-[var(--text-primary,#403F4D)]",
+            "text-[var(--Text-text-primary, #403F4D)]",
             className,
           )}
           style={{
@@ -288,7 +290,7 @@ const MessageUserPrimitive = React.forwardRef<
         </div>
         {feedback && (
           <div
-            className={cn("mt-[var(--gap-xs)]", "[&_*]:!box-border")}
+            className={cn("mt-[var(--Gap-gap-xs)]", "[&_*]:!box-border")}
             role="group"
             aria-label="Message feedback"
           >

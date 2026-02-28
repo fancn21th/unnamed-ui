@@ -23,7 +23,7 @@ export default function PageHeaderDemo() {
     <div className="w-full space-y-8">
       {/* 示例 1：最简用法 */}
       <div>
-        <h3 className="text-sm font-medium text-[var(--text-secondary)] mb-3">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)] mb-3">
           最简用法
         </h3>
         <PageHeader logo={<Settings />} title="页面标题" />
@@ -31,7 +31,7 @@ export default function PageHeaderDemo() {
 
       {/* 示例 2：带用户 */}
       <div>
-        <h3 className="text-sm font-medium text-[var(--text-secondary)] mb-3">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)] mb-3">
           带用户信息
         </h3>
         <PageHeader
@@ -43,7 +43,7 @@ export default function PageHeaderDemo() {
 
       {/* 示例 3：带按钮 */}
       <div>
-        <h3 className="text-sm font-medium text-[var(--text-secondary)] mb-3">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)] mb-3">
           带操作按钮
         </h3>
         <PageHeader
@@ -62,7 +62,7 @@ export default function PageHeaderDemo() {
 
       {/* 示例 4：完整用法 */}
       <div>
-        <h3 className="text-sm font-medium text-[var(--text-secondary)] mb-3">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)] mb-3">
           完整用法
         </h3>
         <PageHeader
@@ -91,10 +91,10 @@ export default function PageHeaderDemo() {
 
       {/* 原语组件示例 */}
       <div>
-        <h3 className="text-sm font-medium text-[var(--text-secondary)] mb-3">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)] mb-3">
           原语组件组合（完全自定义）
         </h3>
-        <PageHeaderPrimitive className="bg-[var(--bg-container)]">
+        <PageHeaderPrimitive className="bg-[var(--Container-bg-container)]">
           <PageHeaderLeftPrimitive>
             <PageHeaderLogoPrimitive>
               <div className="flex items-center justify-center w-full h-full bg-gradient-to-br from-indigo-500 to-blue-600 rounded-lg">

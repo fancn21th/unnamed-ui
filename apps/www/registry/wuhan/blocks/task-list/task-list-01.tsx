@@ -14,11 +14,11 @@ const TaskListContainerPrimitive = React.forwardRef<
       className={cn(
         "w-full",
         "flex flex-col",
-        "gap-[var(--gap-xl)]",
-        "px-[var(--padding-com-xl)] py-[var(--margin-com-xl)]",
+        "gap-[var(--Gap-gap-xl)]",
+        "px-[var(--Padding-padding-com-xl)] py-[var(--Margin-margin-com-xl)]",
         "rounded-[var(--radius-xl)]",
-        "bg-[var(--bg-container-secondary)]",
-        "font-[var(--font-family-cn)]",
+        "bg-[var(--Container-bg-container-secondary)]",
+        "font-[var(--font-family-CN)]",
         className,
       )}
       {...props}
@@ -53,12 +53,12 @@ const TaskListTitlePrimitive = React.forwardRef<
     <span
       ref={ref}
       className={cn(
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "font-[var(--font-weight-600)]",
         "font-semibold",
         "font-size-4",
         "leading-[var(--line-height-4)]",
-        "text-[var(--text-title)]",
+        "text-[var(--Text-text-title)]",
         className,
       )}
       {...props}
@@ -80,7 +80,7 @@ const TaskListUlPrimitive = React.forwardRef<
         "not-prose",
         "w-full",
         "flex flex-col",
-        "gap-[var(--gap-md)]",
+        "gap-[var(--Gap-gap-md)]",
         "pl-[10px]",
         "m-0",
         "list-disc list-inside",
@@ -124,11 +124,11 @@ const TaskListLiContentPrimitive = React.forwardRef<
     <span
       ref={ref}
       className={cn(
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "font-[var(--font-weight-400)]",
         "font-size-2",
         "leading-[var(--line-height-2)]",
-        "text-[var(--text-primary)]",
+        "text-[var(--Text-text-primary)]",
         className,
       )}
       {...props}
@@ -149,7 +149,7 @@ const TaskListFooterPrimitive = React.forwardRef<
       className={cn(
         "w-full",
         "flex items-center justify-end",
-        "gap-[var(--gap-md)]",
+        "gap-[var(--Gap-gap-md)]",
         className,
       )}
       {...props}
@@ -170,7 +170,7 @@ const TaskListEditableContainerPrimitive = React.forwardRef<
       className={cn(
         "w-full",
         "flex flex-col",
-        "gap-[var(--gap-md)]",
+        "gap-[var(--Gap-gap-md)]",
         className,
       )}
       {...props}
@@ -192,7 +192,7 @@ const TaskListEditableListItemPrimitive = React.forwardRef<
       className={cn(
         "w-full",
         "flex items-center",
-        "gap-[var(--gap-xs)]",
+        "gap-[var(--Gap-gap-xs)]",
         className,
       )}
       {...props}

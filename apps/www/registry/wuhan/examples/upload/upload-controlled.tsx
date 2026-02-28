@@ -31,13 +31,13 @@ export default function UploadControlled() {
       />
 
       <div className="flex items-center gap-4 text-sm">
-        <span className="text-[var(--text-tertiary)]">
+        <span className="text-[var(--Text-text-tertiary)]">
           已选择 {fileList.length} 个文件
         </span>
         {fileList.length > 0 && (
           <button
             onClick={handleClear}
-            className="text-[var(--text-brand)] hover:underline"
+            className="text-[var(--Text-text-brand)] hover:underline"
           >
             清空列表
           </button>

@@ -238,7 +238,7 @@ const ExecutionResultContainerPrimitive = React.forwardRef<
             "w-full",
             "overflow-hidden",
             "flex flex-col",
-            "gap-[var(--gap-md)]",
+            "gap-[var(--Gap-gap-md)]",
             className,
           )}
           {...props}
@@ -266,14 +266,14 @@ const ExecutionResultTitlePrimitive = React.forwardRef<
         ref={ref}
         className={cn(
           "[&_*]:!box-border",
-          "flex items-center gap-[var(--gap-md)]",
+          "flex items-center gap-[var(--Gap-gap-md)]",
           "text-sm",
           "w-full",
           "leading-[var(--line-height-2)]",
-          "text-[var(--text-secondary)]",
+          "text-[var(--Text-text-secondary)]",
           "cursor-pointer",
           "group", // 添加 group 类以支持子元素的状态选择
-          "hover:text-[var(--text-brand-hover)]",
+          "hover:text-[var(--Text-text-brand-hover)]",
           "transition-colors",
           className,
         )}
@@ -282,7 +282,7 @@ const ExecutionResultTitlePrimitive = React.forwardRef<
         {arrow}
         <div
           className={cn(
-            "font-[var(--font-family-cn)]",
+            "font-[var(--font-family-CN)]",
             "text-sm",
             "leading-[var(--line-height-2)]",
           )}
@@ -312,7 +312,7 @@ const ExecutionResultContentPrimitive = React.forwardRef<
           "flex flex-col",
           "rounded-[var(--radius-xl)]",
           "overflow-hidden",
-          "border border-[var(--border-neutral)]",
+          "border border-[var(--Border-border-neutral)]",
           className,
         )}
         {...props}
@@ -349,7 +349,7 @@ const ExecutionResultItemPrimitive = React.forwardRef<
             "w-full",
             "overflow-hidden",
             "flex flex-col",
-            "gap-[var(--gap-md)]",
+            "gap-[var(--Gap-gap-md)]",
             className,
           )}
           {...props}
@@ -378,20 +378,20 @@ const ExecutionResultItemHeaderPrimitive = React.forwardRef<
           "[&_*]:!box-border",
           "flex items-center justify-between",
           "w-full",
-          "gap-[var(--gap-xs)]",
+          "gap-[var(--Gap-gap-xs)]",
           "cursor-pointer",
           "group", // 添加 group 类以支持子元素的状态选择
-          "p-[var(--padding-com-lg)]",
-          "hover:bg-[var(--bg-neutral-light)]",
+          "p-[var(--Padding-padding-com-lg)]",
+          "hover:bg-[var(--Container-bg-neutral-light)]",
           "transition-colors",
           className,
         )}
         {...props}
       >
-        <div className="flex items-center gap-[var(--gap-md)] flex-1 overflow-hidden text-ellipsis whitespace-nowrap">
+        <div className="flex items-center gap-[var(--Gap-gap-md)] flex-1 overflow-hidden text-ellipsis whitespace-nowrap">
           {children}
         </div>
-        <div className="flex items-center gap-[var(--gap-xs)] text-[var(--text-secondary)]">
+        <div className="flex items-center gap-[var(--Gap-gap-xs)] text-[var(--Text-text-secondary)]">
           {arrow}
         </div>
       </div>
@@ -430,10 +430,10 @@ const ExecutionResultItemTitlePrimitive = React.forwardRef<
     <span
       ref={ref}
       className={cn(
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "text-sm",
         "leading-[var(--line-height-2)]",
-        "text-[var(--text-primary)]",
+        "text-[var(--Text-text-primary)]",
         className,
       )}
       {...props}
@@ -485,10 +485,10 @@ const ExecutionResultItemToolNamePrimitive = React.forwardRef<
     <span
       ref={ref}
       className={cn(
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "text-sm",
         "leading-[var(--line-height-2)]",
-        "text-[var(--text-primary)]",
+        "text-[var(--Text-text-primary)]",
         "flex-1",
         "overflow-hidden text-ellipsis whitespace-nowrap",
         className,
@@ -517,9 +517,9 @@ const ExecutionResultItemContentPrimitive = React.forwardRef<
         className={cn(
           "[&_*]:!box-border",
           "flex flex-col",
-          "gap-[var(--gap-md)]",
-          "px-[var(--padding-com-lg)]",
-          "pb-[var(--padding-com-lg)]",
+          "gap-[var(--Gap-gap-md)]",
+          "px-[var(--Padding-padding-com-lg)]",
+          "pb-[var(--Padding-padding-com-lg)]",
           className,
         )}
         {...props}
@@ -554,14 +554,14 @@ const ExecutionResultSectionPrimitive = React.forwardRef<
           <div
             className={cn(
               "flex items-center justify-between",
-              "gap-[var(--gap-md)]",
-              "bg-[var(--bg-container-secondary)]",
-              "p-[var(--padding-com-sm)]",
-              "pr-[var(--padding-com-md)]",
-              "pb-[var(--padding-com-sm)]",
-              "pl-[var(--padding-com-md)]",
+              "gap-[var(--Gap-gap-md)]",
+              "bg-[var(--Container-bg-container-secondary)]",
+              "p-[var(--Padding-padding-com-sm)]",
+              "pr-[var(--Padding-padding-com-md)]",
+              "pb-[var(--Padding-padding-com-sm)]",
+              "pl-[var(--Padding-padding-com-md)]",
               "rounded-t-[var(--radius-md)]",
-              "border-b-[1px] border-[var(--border-neutral)]",
+              "border-b-[1px] border-[var(--Border-border-neutral)]",
               className,
             )}
           >
@@ -589,14 +589,14 @@ const ExecutionResultSectionPrimitive = React.forwardRef<
 
           <div
             className={cn(
-              "font-[var(--font-family-cn)]",
+              "font-[var(--font-family-CN)]",
               "text-xs",
               "leading-[var(--line-height-1)]",
-              "text-[var(--text-secondary)]",
+              "text-[var(--Text-text-secondary)]",
               "whitespace-pre-wrap",
-              "bg-[var(--bg-neutral-light)]",
-              "py-[var(--padding-com-sm)]",
-              "px-[var(--padding-com-md)]",
+              "bg-[var(--Container-bg-neutral-light)]",
+              "py-[var(--Padding-padding-com-sm)]",
+              "px-[var(--Padding-padding-com-md)]",
               "rounded-[var(--radius-md)]",
               (title || showCopyIcon) && "rounded-b-[var(--radius-md)]",
               "max-h-[calc(var(--line-height-1)*8)]", // 8行的高度
@@ -626,10 +626,10 @@ const ExecutionResultSectionTitlePrimitive = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "text-xs",
         "leading-[var(--line-height-2)]",
-        "text-[var(--text-tertiary)]",
+        "text-[var(--Text-text-tertiary)]",
         className,
       )}
       {...props}
@@ -666,8 +666,8 @@ const ExecutionResultCopyIconPrimitive = React.forwardRef<
         "size-4",
         "flex items-center justify-center",
         "cursor-pointer",
-        "text-[var(--text-secondary)]",
-        "hover:text-[var(--text-primary)]",
+        "text-[var(--Text-text-secondary)]",
+        "hover:text-[var(--Text-text-primary)]",
         "transition-colors",
         "outline-none",
         "focus-visible:outline-none",
@@ -695,7 +695,7 @@ const ExecutionResultArrowPrimitive = React.forwardRef<
       ref={ref}
       className={cn(
         "size-4",
-        "text-[var(--text-secondary)]",
+        "text-[var(--Text-text-secondary)]",
         "transition-transform duration-200",
         "group-data-[state=open]:rotate-180", // 当父元素 CollapsibleTrigger 的 data-state 为 open 时旋转
         "flex items-center justify-center",

@@ -11,7 +11,7 @@ export default function QuickActionFlexibleLayout() {
   return (
     <div className="flex flex-col gap-6 w-full">
       <div>
-        <h4 className="text-sm font-medium text-[var(--text-primary)] mb-3">
+        <h4 className="text-sm font-medium text-[var(--Text-text-primary)] mb-3">
           图标在前面（默认）
         </h4>
         <QuickActionGroup>
@@ -25,7 +25,7 @@ export default function QuickActionFlexibleLayout() {
       </div>
 
       <div>
-        <h4 className="text-sm font-medium text-[var(--text-primary)] mb-3">
+        <h4 className="text-sm font-medium text-[var(--Text-text-primary)] mb-3">
           图标在后面
         </h4>
         <QuickActionGroup>
@@ -39,7 +39,7 @@ export default function QuickActionFlexibleLayout() {
       </div>
 
       <div>
-        <h4 className="text-sm font-medium text-[var(--text-primary)] mb-3">
+        <h4 className="text-sm font-medium text-[var(--Text-text-primary)] mb-3">
           两侧都有图标
         </h4>
         <QuickActionGroup>
@@ -56,7 +56,7 @@ export default function QuickActionFlexibleLayout() {
       </div>
 
       <div>
-        <h4 className="text-sm font-medium text-[var(--text-primary)] mb-3">
+        <h4 className="text-sm font-medium text-[var(--Text-text-primary)] mb-3">
           纯图标按钮
         </h4>
         <QuickActionGroup>
@@ -74,7 +74,7 @@ export default function QuickActionFlexibleLayout() {
       </div>
 
       <div>
-        <h4 className="text-sm font-medium text-[var(--text-primary)] mb-3">
+        <h4 className="text-sm font-medium text-[var(--Text-text-primary)] mb-3">
           无图标按钮
         </h4>
         <QuickActionGroup>

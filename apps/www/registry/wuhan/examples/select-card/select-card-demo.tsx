@@ -11,25 +11,27 @@ export default function SelectCardDemo() {
     {
       value: "dashboard",
       label: "仪表盘",
-      icon: <LayoutDashboard className="w-6 h-6 text-[var(--text-brand)]" />,
+      icon: (
+        <LayoutDashboard className="w-6 h-6 text-[var(--Text-text-brand)]" />
+      ),
       tooltip: "数据可视化与分析",
     },
     {
       value: "agent",
       label: "智能体",
-      icon: <Bot className="w-6 h-6 text-[var(--text-brand)]" />,
+      icon: <Bot className="w-6 h-6 text-[var(--Text-text-brand)]" />,
       tooltip: "AI 智能对话助手",
     },
     {
       value: "workflow",
       label: "工作流",
-      icon: <Workflow className="w-6 h-6 text-[var(--text-brand)]" />,
+      icon: <Workflow className="w-6 h-6 text-[var(--Text-text-brand)]" />,
       tooltip: "自动化流程编排",
     },
     {
       value: "plugin",
       label: "插件",
-      icon: <Puzzle className="w-6 h-6 text-[var(--text-brand)]" />,
+      icon: <Puzzle className="w-6 h-6 text-[var(--Text-text-brand)]" />,
       tooltip: "扩展功能集成",
     },
   ];
@@ -48,7 +50,7 @@ export default function SelectCardDemo() {
       style={{
         display: "grid",
         gridTemplateColumns: "repeat(4, 1fr)",
-        gap: "var(--gap-lg)",
+        gap: "var(--Gap-gap-lg)",
       }}
     >
       {options.map((option) => (

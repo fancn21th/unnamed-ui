@@ -83,117 +83,117 @@ const iconButtonSizeStyles: Record<IconButtonSize, string> = {
 const primaryColors = {
   solid: {
     default: cn(
-      "bg-[var(--bg-brand)]",
-      "text-[var(--text-inverse)]",
+      "bg-[var(--Container-bg-brand)]",
+      "text-[var(--Text-text-inverse)]",
       // hover 状态
-      "hover:bg-[var(--bg-brand-hover)]",
-      "hover:text-[var(--text-inverse)]",
+      "hover:bg-[var(--Container-bg-brand-hover)]",
+      "hover:text-[var(--Text-text-inverse)]",
       // active/pressed 状态
-      "active:bg-[var(--bg-brand-active)]",
-      "active:text-[var(--text-inverse)]",
+      "active:bg-[var(--Container-bg-brand-active)]",
+      "active:text-[var(--Text-text-inverse)]",
     ),
     disabled: cn(
-      "bg-[var(--bg-brand)]",
+      "bg-[var(--Container-bg-brand)]",
       "opacity-50",
-      "text-[var(--text-inverse)]",
+      "text-[var(--Text-text-inverse)]",
       "cursor-not-allowed",
     ),
     loading: cn(
-      "bg-[var(--bg-brand)]",
+      "bg-[var(--Container-bg-brand)]",
       "opacity-50",
-      "text-[var(--text-inverse)]",
+      "text-[var(--Text-text-inverse)]",
       "cursor-not-allowed",
     ),
   },
   light: {
     default: cn(
-      "bg-[var(--bg-brand-light)]",
-      "text-[var(--text-brand)]",
+      "bg-[var(--Container-bg-brand-light)]",
+      "text-[var(--Text-text-brand)]",
       "border",
-      "border-[var(--border-brand-light)]",
+      "border-[var(--Border-border-brand-light)]",
       // hover 状态
-      "hover:bg-[var(--bg-brand-light-hover)]",
-      "hover:border-[var(--border-brand-light-hover)]",
+      "hover:bg-[var(--Container-bg-brand-light-hover)]",
+      "hover:border-[var(--Border-border-brand-light-hover)]",
       // active/pressed 状态
-      "active:bg-[var(--bg-brand-light-active)]",
-      "active:border-[var(--border-brand-light-active)]",
+      "active:bg-[var(--Container-bg-brand-light-active)]",
+      "active:border-[var(--Border-border-brand-light-active)]",
     ),
     disabled: cn(
-      "bg-[var(--bg-brand-light)]",
+      "bg-[var(--Container-bg-brand-light)]",
       "opacity-50",
-      "text-[var(--text-brand)]",
+      "text-[var(--Text-text-brand)]",
       "cursor-not-allowed",
     ),
     loading: cn(
-      "bg-[var(--bg-brand-light)]",
+      "bg-[var(--Container-bg-brand-light)]",
       "opacity-50",
-      "text-[var(--text-brand)]",
+      "text-[var(--Text-text-brand)]",
       "cursor-not-allowed",
     ),
   },
   lightBorderless: {
     default: cn(
-      "bg-[var(--bg-brand-light)]",
-      "text-[var(--text-brand)]",
+      "bg-[var(--Container-bg-brand-light)]",
+      "text-[var(--Text-text-brand)]",
       // hover 状态
-      "hover:bg-[var(--bg-brand-light-hover)]",
+      "hover:bg-[var(--Container-bg-brand-light-hover)]",
       // active/pressed 状态
-      "active:bg-[var(--bg-brand-light-active)]",
+      "active:bg-[var(--Container-bg-brand-light-active)]",
     ),
     disabled: cn(
-      "bg-[var(--bg-brand-light)]",
+      "bg-[var(--Container-bg-brand-light)]",
       "opacity-50",
-      "text-[var(--text-brand)]",
+      "text-[var(--Text-text-brand)]",
       "cursor-not-allowed",
     ),
     loading: cn(
-      "bg-[var(--bg-brand-light)]",
+      "bg-[var(--Container-bg-brand-light)]",
       "opacity-50",
-      "text-[var(--text-brand)]",
+      "text-[var(--Text-text-brand)]",
       "cursor-not-allowed",
     ),
   },
   outline: {
     default: cn(
-      "bg-[var(--bg-container)]",
-      "text-[var(--text-brand)]",
+      "bg-[var(--Container-bg-container)]",
+      "text-[var(--Text-text-brand)]",
       "border",
-      "border-[var(--border-brand)]",
+      "border-[var(--Border-border-brand)]",
       // hover 状态
-      "hover:border-[var(--border-brand-hover)]",
-      "hover:text-[var(--text-brand-hover)]",
+      "hover:border-[var(--Border-border-brand-hover)]",
+      "hover:text-[var(--Text-text-brand-hover)]",
       // active/pressed 状态
-      "active:border-[var(--border-brand-active)]",
-      "active:text-[var(--text-brand-active)]",
+      "active:border-[var(--Border-border-brand-active)]",
+      "active:text-[var(--Text-text-brand-active)]",
     ),
     disabled: cn(
-      "bg-[var(--bg-container-disable)]",
-      "text-[var(--text-disable)]",
+      "bg-[var(--Container-bg-container-disable)]",
+      "text-[var(--Text-text-disable)]",
       "cursor-not-allowed",
     ),
     loading: cn(
-      "bg-[var(--bg-container-disable)]",
-      "text-[var(--text-disable)]",
+      "bg-[var(--Container-bg-container-disable)]",
+      "text-[var(--Text-text-disable)]",
       "cursor-not-allowed",
     ),
   },
   ghost: {
     default: cn(
       "bg-transparent",
-      "text-[var(--text-brand)]",
+      "text-[var(--Text-text-brand)]",
       // hover 状态
-      "hover:bg-[var(--bg-brand-light)]",
+      "hover:bg-[var(--Container-bg-brand-light)]",
       // active/pressed 状态
-      "active:bg-[var(--bg-brand-light-active)]",
+      "active:bg-[var(--Container-bg-brand-light-active)]",
     ),
     disabled: cn(
       "bg-transparent",
-      "text-[var(--text-disable)]",
+      "text-[var(--Text-text-disable)]",
       "cursor-not-allowed",
     ),
     loading: cn(
       "bg-transparent",
-      "text-[var(--text-disable)]",
+      "text-[var(--Text-text-disable)]",
       "cursor-not-allowed",
     ),
   },
@@ -203,117 +203,117 @@ const primaryColors = {
 const secondaryColors = {
   solid: {
     default: cn(
-      "bg-[var(--bg-secondary)]",
-      "text-[var(--text-inverse)]",
+      "bg-[var(--Container-bg-neutral)]",
+      "text-[var(--Text-text-inverse)]",
       // hover 状态
-      "hover:bg-[var(--bg-secondary-hover)]",
-      "hover:text-[var(--text-inverse)]",
+      "hover:bg-[var(--Container-bg-neutral-hover)]",
+      "hover:text-[var(--Text-text-inverse)]",
       // active/pressed 状态
-      "active:bg-[var(--bg-secondary-active)]",
-      "active:text-[var(--text-inverse)]",
+      "active:bg-[var(--Container-bg-neutral-active)]",
+      "active:text-[var(--Text-text-inverse)]",
     ),
     disabled: cn(
-      "bg-[var(--bg-secondary)]",
+      "bg-[var(--Container-bg-neutral)]",
       "opacity-50",
       "text-[(--text-inverse)]",
       "cursor-not-allowed",
     ),
     loading: cn(
-      "bg-[var(--bg-secondary)]",
+      "bg-[var(--Container-bg-neutral)]",
       "opacity-50",
-      "text-[var(--text-inverse)]",
+      "text-[var(--Text-text-inverse)]",
       "cursor-not-allowed",
     ),
   },
   outline: {
     default: cn(
-      "bg-[var(--bg-container)]",
-      "text-[var(--text-primary)]",
+      "bg-[var(--Container-bg-container)]",
+      "text-[var(--Text-text-primary)]",
       "border",
-      "border-[var(--border-neutral)]",
+      "border-[var(--Border-border-neutral)]",
       // hover 状态
-      "hover:text-[var(--text-primary)]",
-      "hover:bg-[var(--bg-neutral-light)]",
+      "hover:text-[var(--Text-text-primary)]",
+      "hover:bg-[var(--Container-bg-neutral-light)]",
       // active/pressed 状态
-      "active:text-[var(--text-primary)]",
-      "active:bg-[var(--bg-neutral-light-hover)]",
+      "active:text-[var(--Text-text-primary)]",
+      "active:bg-[var(--Container-bg-neutral-light-hover)]",
     ),
     disabled: cn(
-      "bg-[var(--bg-container-disable)]",
-      "text-[var(--text-disable)]",
+      "bg-[var(--Container-bg-container-disable)]",
+      "text-[var(--Text-text-disable)]",
       "cursor-not-allowed",
     ),
     loading: cn(
-      "bg-[var(--bg-container-disable)]",
-      "text-[var(--text-disable)]",
+      "bg-[var(--Container-bg-container-disable)]",
+      "text-[var(--Text-text-disable)]",
       "cursor-not-allowed",
     ),
   },
   ghost: {
     default: cn(
       "bg-transparent",
-      "text-[var(--text-primary)]",
+      "text-[var(--Text-text-primary)]",
       // hover 状态
-      "hover:bg-[var(--bg-neutral-light)]",
+      "hover:bg-[var(--Container-bg-neutral-light)]",
       // active/pressed 状态
-      "active:bg-[var(--bg-neutral-light-hover)]",
+      "active:bg-[var(--Container-bg-neutral-light-hover)]",
     ),
     disabled: cn(
       "bg-transparent",
-      "text-[var(--text-disable)]",
+      "text-[var(--Text-text-disable)]",
       "cursor-not-allowed",
     ),
     loading: cn(
       "bg-transparent",
-      "text-[var(--text-disable)]",
+      "text-[var(--Text-text-disable)]",
       "cursor-not-allowed",
     ),
   },
   light: {
     default: cn(
-      "bg-[var(--bg-secondary-light)]",
-      "text-[var(--text-primary)]",
+      "bg-[var(--Container-bg-neutral-light)]",
+      "text-[var(--Text-text-primary)]",
       "border",
-      "border-[var(--border-secondary-light)]",
+      "border-[var(--Border-border-neutral)]",
       // hover 状态
-      "hover:bg-[var(--bg-secondary-light-hover)]",
-      "hover:border-[var(--border-secondary-light-hover)]",
+      "hover:bg-[var(--Container-bg-neutral-light-hover)]",
+      "hover:border-[var(--Border-border-neutral)]",
       // active/pressed 状态
-      "active:bg-[var(--bg-secondary-light-active)]",
-      "active:border-[var(--border-secondary-light-active)]",
+      "active:bg-[var(--Container-bg-neutral-light-active)]",
+      "active:border-[var(--Border-border-neutral)]",
     ),
     disabled: cn(
-      "bg-[var(--bg-secondary-light)]",
+      "bg-[var(--Container-bg-neutral-light)]",
       "opacity-50",
-      "text-[var(--text-primary)]",
+      "text-[var(--Text-text-primary)]",
       "cursor-not-allowed",
     ),
     loading: cn(
-      "bg-[var(--bg-secondary-light)]",
+      "bg-[var(--Container-bg-neutral-light)]",
       "opacity-50",
-      "text-[var(--text-primary)]",
+      "text-[var(--Text-text-primary)]",
       "cursor-not-allowed",
     ),
   },
   lightBorderless: {
     default: cn(
-      "bg-[var(--bg-secondary-light)]",
-      "text-[var(--text-primary)]",
+      "bg-[var(--Container-bg-neutral-light)]",
+      "text-[var(--Text-text-primary)]",
       // hover 状态
-      "hover:bg-[var(--bg-secondary-light-hover)]",
+      "hover:bg-[var(--Container-bg-neutral-light-hover)]",
       // active/pressed 状态
-      "active:bg-[var(--bg-secondary-light-active)]",
+      "active:bg-[var(--Container-bg-neutral-light-active)]",
     ),
     disabled: cn(
-      "bg-[var(--bg-secondary-light)]",
+      "bg-[var(--Container-bg-neutral-light)]",
       "opacity-50",
-      "text-[var(--text-primary)]",
+      "text-[var(--Text-text-primary)]",
       "cursor-not-allowed",
     ),
     loading: cn(
-      "bg-[var(--bg-secondary-light)]",
+      "bg-[var(--Container-bg-neutral-light)]",
       "opacity-50",
-      "text-[var(--text-primary)]",
+      "text-[var(--Text-text-primary)]",
       "cursor-not-allowed",
     ),
   },
@@ -323,117 +323,117 @@ const secondaryColors = {
 const dangerColors = {
   solid: {
     default: cn(
-      "bg-[var(--bg-error)]",
-      "text-[var(--text-inverse)]",
+      "bg-[var(--Container-bg-error)]",
+      "text-[var(--Text-text-inverse)]",
       // hover 状态
-      "hover:bg-[var(--bg-error-hover)]",
-      "hover:text-[var(--text-inverse)]",
+      "hover:bg-[var(--Container-bg-error-hover)]",
+      "hover:text-[var(--Text-text-inverse)]",
       // active/pressed 状态
-      "active:bg-[var(--bg-error-active)]",
-      "active:text-[var(--text-inverse)]",
+      "active:bg-[var(--Container-bg-error-active)]",
+      "active:text-[var(--Text-text-inverse)]",
     ),
     disabled: cn(
-      "bg-[var(--bg-error)]",
+      "bg-[var(--Container-bg-error)]",
       "opacity-50",
-      "text-[var(--text-inverse)]",
+      "text-[var(--Text-text-inverse)]",
       "cursor-not-allowed",
     ),
     loading: cn(
-      "bg-[var(--bg-error)]",
+      "bg-[var(--Container-bg-error)]",
       "opacity-50",
-      "text-[var(--text-inverse)]",
+      "text-[var(--Text-text-inverse)]",
       "cursor-not-allowed",
     ),
   },
   outline: {
     default: cn(
-      "bg-[var(--bg-container)]",
-      "text-[var(--text-error)]",
+      "bg-[var(--Container-bg-container)]",
+      "text-[var(--Text-text-error)]",
       "border",
-      "border-[var(--border-error)]",
+      "border-[var(--Border-border-error)]",
       // hover 状态
-      "hover:border-[var(--border-error-hover)]",
-      "hover:text-[var(--text-error-hover)]",
+      "hover:border-[var(--Border-border-error-hover)]",
+      "hover:text-[var(--Text-text-error-hover)]",
       // active/pressed 状态
-      "active:border-[var(--border-error-active)]",
-      "active:text-[var(--text-error-active)]",
+      "active:border-[var(--Border-border-error-active)]",
+      "active:text-[var(--Text-text-error-active)]",
     ),
     disabled: cn(
-      "bg-[var(--bg-container-disable)]",
-      "text-[var(--text-disable)]",
+      "bg-[var(--Container-bg-container-disable)]",
+      "text-[var(--Text-text-disable)]",
       "cursor-not-allowed",
     ),
     loading: cn(
-      "bg-[var(--bg-container-disable)]",
-      "text-[var(--text-disable)]",
+      "bg-[var(--Container-bg-container-disable)]",
+      "text-[var(--Text-text-disable)]",
       "cursor-not-allowed",
     ),
   },
   ghost: {
     default: cn(
       "bg-transparent",
-      "text-[var(--text-error)]",
+      "text-[var(--Text-text-error)]",
       // hover 状态
-      "hover:bg-[var(--bg-error-light)]",
+      "hover:bg-[var(--Container-bg-error-light)]",
       // active/pressed 状态
-      "active:bg-[var(--bg-error-light-active)]",
+      "active:bg-[var(--Container-bg-error-light-active)]",
     ),
     disabled: cn(
       "bg-transparent",
-      "text-[var(--text-disable)]",
+      "text-[var(--Text-text-disable)]",
       "cursor-not-allowed",
     ),
     loading: cn(
       "bg-transparent",
-      "text-[var(--text-disable)]",
+      "text-[var(--Text-text-disable)]",
       "cursor-not-allowed",
     ),
   },
   light: {
     default: cn(
-      "bg-[var(--bg-error-light)]",
-      "text-[var(--text-error)]",
+      "bg-[var(--Container-bg-error-light)]",
+      "text-[var(--Text-text-error)]",
       "border",
-      "border-[var(--border-error-light)]",
+      "border-[var(--Border-border-error-light)]",
       // hover 状态
-      "hover:bg-[var(--bg-error-light-hover)]",
-      "hover:border-[var(--border-error-light-hover)]",
+      "hover:bg-[var(--Container-bg-error-light-hover)]",
+      "hover:border-[var(--Border-border-error-light-hover)]",
       // active/pressed 状态
-      "active:bg-[var(--bg-error-light-active)]",
-      "active:border-[var(--border-error-light-active)]",
+      "active:bg-[var(--Container-bg-error-light-active)]",
+      "active:border-[var(--Border-border-error-light-active)]",
     ),
     disabled: cn(
-      "bg-[var(--bg-error-light)]",
+      "bg-[var(--Container-bg-error-light)]",
       "opacity-50",
-      "text-[var(--text-error)]",
+      "text-[var(--Text-text-error)]",
       "cursor-not-allowed",
     ),
     loading: cn(
-      "bg-[var(--bg-error-light)]",
+      "bg-[var(--Container-bg-error-light)]",
       "opacity-50",
-      "text-[var(--text-error)]",
+      "text-[var(--Text-text-error)]",
       "cursor-not-allowed",
     ),
   },
   lightBorderless: {
     default: cn(
-      "bg-[var(--bg-error-light)]",
-      "text-[var(--text-error)]",
+      "bg-[var(--Container-bg-error-light)]",
+      "text-[var(--Text-text-error)]",
       // hover 状态
-      "hover:bg-[var(--bg-error-light-hover)]",
+      "hover:bg-[var(--Container-bg-error-light-hover)]",
       // active/pressed 状态
-      "active:bg-[var(--bg-error-light-active)]",
+      "active:bg-[var(--Container-bg-error-light-active)]",
     ),
     disabled: cn(
-      "bg-[var(--bg-error-light)]",
+      "bg-[var(--Container-bg-error-light)]",
       "opacity-50",
-      "text-[var(--text-error)]",
+      "text-[var(--Text-text-error)]",
       "cursor-not-allowed",
     ),
     loading: cn(
-      "bg-[var(--bg-error-light)]",
+      "bg-[var(--Container-bg-error-light)]",
       "opacity-50",
-      "text-[var(--text-error)]",
+      "text-[var(--Text-text-error)]",
       "cursor-not-allowed",
     ),
   },
@@ -467,7 +467,7 @@ const baseStyles = cn(
   // 聚焦状态
   "focus-visible:outline-none",
   "focus-visible:ring-2",
-  "focus-visible:ring-[var(--ring-brand,var(--bg-brand))]",
+  "focus-visible:ring-[var(--Focusring-focusring-brand,var(--Container-bg-brand))]",
   "focus-visible:ring-offset-2",
   // SVG 图标样式
   "[&_svg]:pointer-events-none",

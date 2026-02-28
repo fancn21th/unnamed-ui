@@ -100,7 +100,7 @@ export function NewPage() {
   );
 
   return (
-    <div className="flex h-[100vh] w-full flex-col overflow-hidden bg-[var(--bg-page)] text-slate-900">
+    <div className="flex h-[100vh] w-full flex-col overflow-hidden bg-[var(--Page-bg-page)] text-slate-900">
       <header className="flex flex-shrink-0 h-14 items-center justify-between border-b border-slate-200 bg-white px-4">
         <div className="text-sm font-semibold">Agent Console</div>
         <div className="flex items-center gap-2 text-xs text-slate-500">

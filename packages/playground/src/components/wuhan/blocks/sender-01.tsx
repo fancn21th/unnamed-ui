@@ -94,8 +94,8 @@ export const ContainerPrimitive = React.forwardRef<
       className={cn(
         "relative flex w-full flex-col border transition-colors",
         "rounded-[var(--radius-2xl)]",
-        "p-[var(--padding-com-lg)]",
-        "gap-[var(--gap-xl)]",
+        "p-[var(--Padding-padding-com-lg)]",
+        "gap-[var(--Gap-gap-xl)]",
         className,
       )}
       {...props}
@@ -137,7 +137,7 @@ export function RegionPrimitive({
   };
 
   const borderClasses = bordered
-    ? "border-b border-[var(--border-neutral)]"
+    ? "border-b border-[var(--Border-border-neutral)]"
     : "";
 
   return (
@@ -175,11 +175,11 @@ export const AttachmentButtonPrimitive = React.forwardRef<
         "p-2 gap-2 border",
         "h-[var(--size-com-md)]",
         "w-[var(--size-com-md)]",
-        "text-[var(--text-primary)]",
+        "text-[var(--Text-text-primary)]",
         "rounded-[var(--radius-lg)]",
-        "bg-[var(--bg-container)]",
-        "border-[var(--border-neutral)]",
-        "hover:bg-[var(--bg-neutral-light)] transition-colors",
+        "bg-[var(--Container-bg-container)]",
+        "border-[var(--Border-border-neutral)]",
+        "hover:bg-[var(--Container-bg-neutral-light)] transition-colors",
         className,
       )}
     >
@@ -208,17 +208,17 @@ export const ModeButtonPrimitive = React.forwardRef<
         // 覆盖边框样式：未选中和选中都无边框
         "!border-0",
         "rounded-[var(--radius-lg)]",
-        "px-[var(--padding-com-md)]",
-        "py-[var(--padding-com-md)]",
+        "px-[var(--Padding-padding-com-md)]",
+        "py-[var(--Padding-padding-com-md)]",
         // 覆盖背景色样式
-        !selected && ["!bg-transparent", "hover:!bg-[var(--bg-neutral-light)]"],
+        !selected && ["!bg-transparent", "hover:!bg-[var(--Container-bg-neutral-light)]"],
         selected && [
-          "!bg-[var(--bg-neutral-light)]",
-          "hover:!bg-[var(--bg-neutral-light)]",
+          "!bg-[var(--Container-bg-neutral-light)]",
+          "hover:!bg-[var(--Container-bg-neutral-light)]",
         ],
         // 覆盖文字颜色：统一使用 text-primary
-        "!text-[var(--text-primary)]",
-        "hover:!text-[var(--text-primary)]",
+        "!text-[var(--Text-text-primary)]",
+        "hover:!text-[var(--Text-text-primary)]",
         className,
       )}
     />
@@ -267,7 +267,7 @@ export const SendButtonPrimitive = React.forwardRef<
         className={cn(
           "w-8 h-8 rounded-full p-2 gap-2",
           "bg-[var(--primary)]",
-          "text-[var(--text-inverse)]",
+          "text-[var(--Text-text-inverse)]",
           "transition-opacity",
           // 禁用状态：添加透明度（使用 bg-mask 的 alpha 值 0.8）
           disabled && "opacity-80",

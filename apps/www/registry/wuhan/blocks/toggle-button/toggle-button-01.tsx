@@ -73,13 +73,17 @@ export const ToggleButtonPrimitive = React.forwardRef<
           // default 状态边框
           !isCompact &&
             !selected && [
-              "border-[var(--border-neutral)]",
-              "hover:border-[var(--border-neutral)]",
+              "border-[var(--Border-border-neutral)]",
+              "hover:border-[var(--Border-border-neutral)]",
             ],
-          !isCompact && selected && "border-[var(--border-brand-light-hover)]",
+          !isCompact &&
+            selected &&
+            "border-[var(--Border-border-brand-light-hover)]",
           // compact 状态边框
-          isCompact && !selected && "border-[var(--border-neutral)]",
-          isCompact && selected && "border-[var(--border-brand-light-hover)]",
+          isCompact && !selected && "border-[var(--Border-border-neutral)]",
+          isCompact &&
+            selected &&
+            "border-[var(--Border-border-brand-light-hover)]",
         ];
 
     return (
@@ -93,7 +97,7 @@ export const ToggleButtonPrimitive = React.forwardRef<
           borderStyles,
           "gap-1", // gap: 4px
           "transition-colors",
-          "font-[var(--font-family-cn)]",
+          "font-[var(--font-family-CN)]",
           "text-sm",
           "leading-normal",
           "tracking-[0px]",
@@ -102,7 +106,7 @@ export const ToggleButtonPrimitive = React.forwardRef<
           "outline-none",
           "focus-visible:outline-none",
           "focus-visible:ring-2",
-          "focus-visible:ring-[var(--ring-brand)]",
+          "focus-visible:ring-[var(--Focusring-focusring-brand)]",
           "focus-visible:ring-offset-2",
           "disabled:pointer-events-none",
           "disabled:opacity-50",
@@ -110,22 +114,22 @@ export const ToggleButtonPrimitive = React.forwardRef<
           // 默认样式（用于反馈组件等场景）
           !isCompact && [
             "h-8",
-            "px-[var(--padding-com-md)]",
+            "px-[var(--Padding-padding-com-md)]",
             // default 状态
             !selected && [
-              "bg-[var(--bg-container)]",
-              "text-[var(--text-primary)]",
-              !borderless && "hover:bg-[var(--bg-neutral-light)]",
-              !borderless && "hover:text-[var(--text-primary)]",
+              "bg-[var(--Container-bg-container)]",
+              "text-[var(--Text-text-primary)]",
+              !borderless && "hover:bg-[var(--Container-bg-neutral-light)]",
+              !borderless && "hover:text-[var(--Text-text-primary)]",
             ],
             // selected 状态
             selected && [
               shouldHaveBackground
-                ? "bg-[var(--bg-brand-light)]"
+                ? "bg-[var(--Container-bg-brand-light)]"
                 : "bg-transparent",
-              "text-[var(--text-brand)]",
+              "text-[var(--Text-text-brand)]",
               shouldHaveBackground && !borderless
-                ? "hover:bg-[var(--bg-brand-light-hover)]"
+                ? "hover:bg-[var(--Container-bg-brand-light-hover)]"
                 : "hover:bg-transparent",
             ],
           ],
@@ -136,17 +140,17 @@ export const ToggleButtonPrimitive = React.forwardRef<
             // default 状态
             !selected && [
               "bg-transparent",
-              "text-[var(--text-primary)]",
-              !borderless && "hover:bg-[var(--bg-neutral-light)]",
+              "text-[var(--Text-text-primary)]",
+              !borderless && "hover:bg-[var(--Container-bg-neutral-light)]",
             ],
             // selected 状态
             selected && [
               shouldHaveBackground
-                ? "bg-[var(--bg-brand-light)]"
+                ? "bg-[var(--Container-bg-brand-light)]"
                 : "bg-transparent",
-              "text-[var(--text-brand)]",
+              "text-[var(--Text-text-brand)]",
               shouldHaveBackground && !borderless
-                ? "hover:bg-[var(--bg-brand-light-hover)]"
+                ? "hover:bg-[var(--Container-bg-brand-light-hover)]"
                 : "hover:bg-transparent",
             ],
           ],

@@ -30,7 +30,7 @@ const BlockInputContainerPrimitive = React.forwardRef<
         "relative flex items-center gap-2",
         "px-2 py-[5px]",
         "border",
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         // 圆角
         fullRounded ? "rounded-full" : "rounded-[var(--radius-lg)]",
         // 背景色
@@ -42,12 +42,12 @@ const BlockInputContainerPrimitive = React.forwardRef<
         !danger &&
           !disabled && [
             // 默认状态
-            "border-[var(--border-neutral)]",
+            "border-[var(--Border-border-neutral)]",
             // Hover 状态
-            "hover:border-[var(--border-brand)]",
+            "hover:border-[var(--Border-border-brand)]",
             // Focus 状态
             isFocused && [
-              "border-[var(--border-brand)]",
+              "border-[var(--Border-border-brand)]",
               "ring-2",
               "ring-[var(--ring)]",
             ],
@@ -57,21 +57,21 @@ const BlockInputContainerPrimitive = React.forwardRef<
         danger &&
           !disabled && [
             // 默认状态
-            "border-[var(--border-error)]",
+            "border-[var(--Border-border-error)]",
             // Hover 状态
-            "hover:border-[var(--border-error)]",
+            "hover:border-[var(--Border-border-error)]",
             // Focus 状态
             isFocused && [
-              "border-[var(--border-error)]",
+              "border-[var(--Border-border-error)]",
               "ring-2",
-              "ring-[var(--border-error)]/20",
+              "ring-[var(--Border-border-error)]/20",
             ],
           ],
 
         // Disabled 状态
         disabled && [
-          "border-[var(--border-neutral)]",
-          "bg-[var(--bg-container-disable)]",
+          "border-[var(--Border-border-neutral)]",
+          "bg-[var(--Container-bg-container-disable)]",
           "opacity-50",
           "cursor-not-allowed",
         ],
@@ -96,7 +96,7 @@ const BlockInputPrefixPrimitive = React.forwardRef<
       ref={ref}
       className={cn(
         "flex items-center justify-center",
-        "text-[var(--text-secondary)]",
+        "text-[var(--Text-text-secondary)]",
         "shrink-0",
         className,
       )}
@@ -118,7 +118,7 @@ const BlockInputSuffixPrimitive = React.forwardRef<
       ref={ref}
       className={cn(
         "flex items-center justify-center",
-        "text-[var(--text-secondary)]",
+        "text-[var(--Text-text-secondary)]",
         "shrink-0",
         className,
       )}
@@ -145,8 +145,8 @@ const BlockInputPrimitive = React.forwardRef<
         "bg-transparent",
         "outline-none",
         "font-size-2",
-        "text-[var(--text-primary)]",
-        "placeholder:text-[var(--text-placeholder)]",
+        "text-[var(--Text-text-primary)]",
+        "placeholder:text-[var(--Text-text-placeholder)]",
         "disabled:cursor-not-allowed",
         className,
       )}
@@ -172,8 +172,8 @@ const BlockTextareaPrimitive = React.forwardRef<
         "flex-1 w-full",
         "bg-transparent",
         "outline-none",
-        "text-[var(--text-primary)]",
-        "placeholder:text-[var(--text-placeholder)]",
+        "text-[var(--Text-text-primary)]",
+        "placeholder:text-[var(--Text-text-placeholder)]",
         "disabled:cursor-not-allowed",
         "resize-none",
         "min-h-[80px]",

@@ -7,14 +7,14 @@ export default function BlockInputDefault() {
   return (
     <div className="flex flex-col gap-4 max-w-md">
       <div className="flex flex-col gap-2">
-        <span className="text-sm text-[var(--text-secondary)]">
+        <span className="text-sm text-[var(--Text-text-secondary)]">
           基础输入框:
         </span>
         <BlockInput placeholder="请输入内容..." />
       </div>
 
       <div className="flex flex-col gap-2">
-        <span className="text-sm text-[var(--text-secondary)]">
+        <span className="text-sm text-[var(--Text-text-secondary)]">
           带前缀图标:
         </span>
         <BlockInput
@@ -24,7 +24,7 @@ export default function BlockInputDefault() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <span className="text-sm text-[var(--text-secondary)]">
+        <span className="text-sm text-[var(--Text-text-secondary)]">
           带后缀图标:
         </span>
         <BlockInput
@@ -34,7 +34,7 @@ export default function BlockInputDefault() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <span className="text-sm text-[var(--text-secondary)]">
+        <span className="text-sm text-[var(--Text-text-secondary)]">
           前后缀图标:
         </span>
         <BlockInput

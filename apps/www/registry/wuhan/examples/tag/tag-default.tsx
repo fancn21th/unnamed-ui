@@ -6,7 +6,7 @@ export default function TagDefault() {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">
-        <span className="text-sm text-[var(--text-secondary)]">
+        <span className="text-sm text-[var(--Text-text-secondary)]">
           Default 变体:
         </span>
         <div className="flex flex-wrap gap-2">
@@ -29,7 +29,7 @@ export default function TagDefault() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <span className="text-sm text-[var(--text-secondary)]">
+        <span className="text-sm text-[var(--Text-text-secondary)]">
           Solid 变体:
         </span>
         <div className="flex flex-wrap gap-2">
@@ -52,7 +52,7 @@ export default function TagDefault() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <span className="text-sm text-[var(--text-secondary)]">
+        <span className="text-sm text-[var(--Text-text-secondary)]">
           Outline 变体:
         </span>
         <div className="flex flex-wrap gap-2">
@@ -75,7 +75,7 @@ export default function TagDefault() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <span className="text-sm text-[var(--text-secondary)]">
+        <span className="text-sm text-[var(--Text-text-secondary)]">
           Filled 变体:
         </span>
         <div className="flex flex-wrap gap-2">
@@ -98,7 +98,7 @@ export default function TagDefault() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <span className="text-sm text-[var(--text-secondary)]">
+        <span className="text-sm text-[var(--Text-text-secondary)]">
           Filled-outline 变体:
         </span>
         <div className="flex flex-wrap gap-2">

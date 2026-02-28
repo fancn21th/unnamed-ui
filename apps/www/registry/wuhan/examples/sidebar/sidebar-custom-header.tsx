@@ -22,7 +22,7 @@ export default function SidebarCustomHeader() {
           action: (
             <button
               type="button"
-              className="inline-flex items-center justify-center h-8 w-8 rounded-md hover:bg-[var(--bg-neutral-light-hover)] text-[var(--text-secondary)] transition-colors"
+              className="inline-flex items-center justify-center h-8 w-8 rounded-md hover:bg-[var(--Container-bg-neutral-light-hover)] text-[var(--Text-text-secondary)] transition-colors"
               aria-label="设置"
             >
               <Settings className="size-4" />

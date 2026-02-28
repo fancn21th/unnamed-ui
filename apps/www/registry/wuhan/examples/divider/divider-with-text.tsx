@@ -5,7 +5,7 @@ export default function DividerWithText() {
     <div className="space-y-8 p-8">
       {/* 文本居中 */}
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
           文本居中
         </h3>
         <Divider>默认居中</Divider>
@@ -14,7 +14,7 @@ export default function DividerWithText() {
 
       {/* 文本左对齐 */}
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
           文本左对齐
         </h3>
         <Divider textAlign="left">左对齐文本</Divider>
@@ -25,7 +25,7 @@ export default function DividerWithText() {
 
       {/* 文本右对齐 */}
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
           文本右对齐
         </h3>
         <Divider textAlign="right">右对齐文本</Divider>

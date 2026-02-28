@@ -87,7 +87,7 @@ export type AccordionProps = AccordionSingleProps | AccordionMultipleProps;
  * <AccordionItem
  *   value="item-1"
  *   trigger="点击展开"
- *   content={<div className="p-4 text-sm text-[var(--text-secondary)]">内容</div>}
+ *   content={<div className="p-4 text-sm text-[var(--Text-text-secondary)]">内容</div>}
  * />
  * ```
  *

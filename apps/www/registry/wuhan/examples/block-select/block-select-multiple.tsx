@@ -19,7 +19,7 @@ export default function BlockSelectMultiple() {
     <div className="flex flex-col gap-8">
       {/* 普通多选 */}
       <div className="flex flex-col gap-4">
-        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
           普通多选
         </h3>
         <BlockSelect
@@ -36,14 +36,14 @@ export default function BlockSelectMultiple() {
           ]}
           placeholder="选择框架"
         />
-        <div className="text-sm text-[var(--text-secondary)]">
+        <div className="text-sm text-[var(--Text-text-secondary)]">
           已选择: {values.join(", ") || "无"}
         </div>
       </div>
 
       {/* 禁用多选 */}
       <div className="flex flex-col gap-4">
-        <h3 className="text-sm font-medium text-[var(--text-primary)]">
+        <h3 className="text-sm font-medium text-[var(--Text-text-primary)]">
           禁用状态
         </h3>
         <BlockSelect
@@ -61,7 +61,7 @@ export default function BlockSelectMultiple() {
           ]}
           placeholder="选择框架"
         />
-        <div className="text-sm text-[var(--text-secondary)]">
+        <div className="text-sm text-[var(--Text-text-secondary)]">
           已选择: {valuesDisabled.join(", ")}
         </div>
       </div>

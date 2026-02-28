@@ -91,7 +91,7 @@ const DividerLinePrimitive = React.forwardRef<
       className,
       orientation = "horizontal",
       variant = "solid",
-      color = "var(--divider-neutral-basic)",
+      color = "var(--Border-divider-neutral-basic)",
       thickness = "1px",
       isPartial = false,
       style,
@@ -154,8 +154,8 @@ const DividerTextPrimitive = React.forwardRef<
       ref={ref}
       className={cn(
         "flex-shrink-0",
-        "text-[var(--text-secondary)]",
-        "font-[var(--font-family-cn)]",
+        "text-[var(--Text-text-secondary)]",
+        "font-[var(--font-family-CN)]",
         "font-size-1",
         "leading-[var(--line-height-1)]",
         // 水平方向的文本间距

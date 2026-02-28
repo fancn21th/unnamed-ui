@@ -122,14 +122,14 @@ export const AccordionTriggerPrimitive = React.forwardRef<
         ref={ref}
         data-accordion-trigger=""
         className={cn(
-          "font-[var(--font-family-cn)]",
+          "font-[var(--font-family-CN)]",
           "font-[var(--font-weight-400)]",
           "leading-[var(--line-height-2)]",
-          "text-[var(--text-primary)]",
+          "text-[var(--Text-text-primary)]",
           "font-size-2",
           "group flex flex-1 items-center justify-between gap-2",
           "text-left transition-all outline-none",
-          "hover:bg-[var(--bg-hover)]",
+          "hover:bg-[var(--Container-bg-neutral-light-hover)]",
           "focus-visible:ring-2 focus-visible:ring-[var(--ring)]",
         )}
         {...props}
@@ -138,11 +138,11 @@ export const AccordionTriggerPrimitive = React.forwardRef<
         <div
           className={cn(
             "flex items-center justify-center",
-            "size-6 rounded-[var(--radius-md)] hover:bg-[var(--bg-neutral-light)] shrink-0 text-[var(--text-tertiary)] transition-transform duration-200",
+            "size-6 rounded-[var(--radius-md)] hover:bg-[var(--Container-bg-neutral-light)] shrink-0 text-[var(--Text-text-tertiary)] transition-transform duration-200",
           )}
         >
-          <ChevronDown className="size-4 rounded-[var(--radius-md)] hover:bg-[var(--bg-neutral-light)] shrink-0 text-[var(--text-tertiary)] transition-transform duration-200 group-data-[state=open]:hidden" />
-          <ChevronUp className="size-4 rounded-[var(--radius-md)] hover:bg-[var(--bg-neutral-light)] shrink-0 text-[var(--text-tertiary)] transition-transform duration-200 group-data-[state=closed]:hidden" />
+          <ChevronDown className="size-4 rounded-[var(--radius-md)] hover:bg-[var(--Container-bg-neutral-light)] shrink-0 text-[var(--Text-text-tertiary)] transition-transform duration-200 group-data-[state=open]:hidden" />
+          <ChevronUp className="size-4 rounded-[var(--radius-md)] hover:bg-[var(--Container-bg-neutral-light)] shrink-0 text-[var(--Text-text-tertiary)] transition-transform duration-200 group-data-[state=closed]:hidden" />
         </div>
       </RadixAccordion.Trigger>
     </RadixAccordion.Header>

@@ -102,17 +102,17 @@ export const ReportCardContainerPrimitive = React.forwardRef<
         "flex flex-row",
         "items-center",
         "justify-between",
-        "gap-[var(--gap-lg)]",
-        "p-[var(--padding-com-lg)]",
+        "gap-[var(--Gap-gap-lg)]",
+        "p-[var(--Padding-padding-com-lg)]",
         "rounded-[var(--radius-xl)]",
-        "bg-[var(--bg-container)]",
-        "border border-[var(--border-neutral)]",
+        "bg-[var(--Container-bg-container)]",
+        "border border-[var(--Border-border-neutral)]",
         "transition-all",
         "duration-200",
         // 交互状态
         disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer",
         // hover 状态（非禁用）
-        !disabled && "hover:bg-[var(--bg-neutral-light)]",
+        !disabled && "hover:bg-[var(--Container-bg-neutral-light)]",
         // 焦点状态（非禁用）
         !disabled &&
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2",
@@ -174,7 +174,7 @@ export const ReportCardHeaderPrimitive = React.forwardRef<
       <div
         ref={ref}
         className={cn(
-          "flex flex-row items-center gap-[var(--gap-md)] min-w-0 flex-1",
+          "flex flex-row items-center gap-[var(--Gap-gap-md)] min-w-0 flex-1",
           className,
         )}
         {...props}
@@ -201,12 +201,12 @@ export const ReportCardHeaderPrimitive = React.forwardRef<
           </div>
         )}
 
-        <div className="flex flex-col gap-[var(--gap-xs)]">
+        <div className="flex flex-col gap-[var(--Gap-gap-xs)]">
           {/* 图标 + 标题（水平排列） */}
-          <div className="flex items-center gap-[var(--gap-md)] min-w-0 overflow-hidden">
+          <div className="flex items-center gap-[var(--Gap-gap-md)] min-w-0 overflow-hidden">
             {/* 图标 */}
             {icon && (
-              <span className="text-[var(--text-brand)] flex-shrink-0">
+              <span className="text-[var(--Text-text-brand)] flex-shrink-0">
                 {React.isValidElement(icon)
                   ? React.cloneElement(
                       icon as React.ReactElement<{ size?: number }>,
@@ -222,11 +222,11 @@ export const ReportCardHeaderPrimitive = React.forwardRef<
             {title && (
               <span
                 className={cn(
-                  "font-[var(--font-family-en)]",
+                  "font-[var(--font-family-EN)]",
                   "font-[var(--font-weight-400)]",
                   "font-size-2",
                   "leading-[var(--line-height-2)]",
-                  "text-[var(--text-primary)]",
+                  "text-[var(--Text-text-primary)]",
                   "truncate",
                 )}
               >
@@ -239,11 +239,11 @@ export const ReportCardHeaderPrimitive = React.forwardRef<
           {description && (
             <span
               className={cn(
-                "font-[var(--font-family-cn)]",
+                "font-[var(--font-family-CN)]",
                 "font-[var(--font-weight-400)]",
                 "font-size-1",
                 "leading-[var(--line-height-1)]",
-                "text-[var(--text-tertiary)]",
+                "text-[var(--Text-text-tertiary)]",
                 "truncate",
               )}
             >

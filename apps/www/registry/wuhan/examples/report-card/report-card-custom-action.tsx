@@ -11,11 +11,11 @@ export default function ReportCardCustomActionDemo() {
         description="包含本月所有数据统计信息"
         action={
           <div className="flex items-center gap-2">
-            <button className="p-1.5 rounded-md bg-[var(--bg-neutral-light-hover)] cursor-pointer">
-              <Star className="size-4 text-[var(--text-warning)]" />
+            <button className="p-1.5 rounded-md bg-[var(--Container-bg-neutral-light-hover)] cursor-pointer">
+              <Star className="size-4 text-[var(--Text-text-warning)]" />
             </button>
-            <button className="p-1.5 rounded-md bg-[var(--bg-neutral-light-hover)] cursor-pointer">
-              <Download className="size-4 text-[var(--text-secondary)]" />
+            <button className="p-1.5 rounded-md bg-[var(--Container-bg-neutral-light-hover)] cursor-pointer">
+              <Download className="size-4 text-[var(--Text-text-secondary)]" />
             </button>
           </div>
         }

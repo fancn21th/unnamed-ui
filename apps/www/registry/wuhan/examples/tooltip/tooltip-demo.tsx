@@ -8,10 +8,10 @@ export default function TooltipDemo() {
   return (
     <div className="flex flex-col gap-8 w-full">
       <div className="text-center">
-        <h3 className="text-lg font-medium text-[var(--text-primary)] mb-2">
+        <h3 className="text-lg font-medium text-[var(--Text-text-primary)] mb-2">
           Tooltip 组件演示
         </h3>
-        <p className="text-sm text-[var(--text-secondary)]">
+        <p className="text-sm text-[var(--Text-text-secondary)]">
           简洁易用的 Tooltip 组件
         </p>
       </div>
@@ -19,7 +19,7 @@ export default function TooltipDemo() {
       <div className="flex flex-col gap-6">
         {/* 基础用法 */}
         <div className="flex flex-col gap-4">
-          <h4 className="text-sm font-medium text-[var(--text-primary)]">
+          <h4 className="text-sm font-medium text-[var(--Text-text-primary)]">
             基础用法
           </h4>
           <div className="flex items-center gap-4">
@@ -37,7 +37,7 @@ export default function TooltipDemo() {
 
         {/* 不同位置 */}
         <div className="flex flex-col gap-4">
-          <h4 className="text-sm font-medium text-[var(--text-primary)]">
+          <h4 className="text-sm font-medium text-[var(--Text-text-primary)]">
             不同位置
           </h4>
           <div className="flex items-center justify-center gap-4 flex-wrap">
@@ -61,7 +61,7 @@ export default function TooltipDemo() {
 
         {/* 长文本 */}
         <div className="flex flex-col gap-4">
-          <h4 className="text-sm font-medium text-[var(--text-primary)]">
+          <h4 className="text-sm font-medium text-[var(--Text-text-primary)]">
             长文本（最大宽度 480px）
           </h4>
           <div className="flex items-center gap-4">
@@ -76,7 +76,7 @@ export default function TooltipDemo() {
 
         {/* 带图标 */}
         <div className="flex flex-col gap-4">
-          <h4 className="text-sm font-medium text-[var(--text-primary)]">
+          <h4 className="text-sm font-medium text-[var(--Text-text-primary)]">
             带图标的触发器
           </h4>
           <div className="flex items-center gap-4">

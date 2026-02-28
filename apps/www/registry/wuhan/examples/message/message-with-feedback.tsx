@@ -22,7 +22,7 @@ export default function MessageWithFeedback() {
       <div className="flex justify-start w-full">
         <AIMessage
           feedback={
-            <div className="flex items-center gap-[var(--gap-xs)]">
+            <div className="flex items-center gap-[var(--Gap-gap-xs)]">
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button
@@ -31,7 +31,10 @@ export default function MessageWithFeedback() {
                     className="h-6 !px-1 cursor-pointer"
                   >
                     <ThumbsUp
-                      className={cn("size-4", "text-[var(--text-secondary)]")}
+                      className={cn(
+                        "size-4",
+                        "text-[var(--Text-text-secondary)]",
+                      )}
                     />
                   </Button>
                 </TooltipTrigger>
@@ -47,7 +50,10 @@ export default function MessageWithFeedback() {
                     className="h-6 !px-1 cursor-pointer"
                   >
                     <ThumbsDown
-                      className={cn("size-4", "text-[var(--text-secondary)]")}
+                      className={cn(
+                        "size-4",
+                        "text-[var(--Text-text-secondary)]",
+                      )}
                     />
                   </Button>
                 </TooltipTrigger>
@@ -63,7 +69,10 @@ export default function MessageWithFeedback() {
                     className="h-6 !px-1 cursor-pointer"
                   >
                     <Copy
-                      className={cn("size-4", "text-[var(--text-secondary)]")}
+                      className={cn(
+                        "size-4",
+                        "text-[var(--Text-text-secondary)]",
+                      )}
                     />
                   </Button>
                 </TooltipTrigger>

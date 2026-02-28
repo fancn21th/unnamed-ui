@@ -81,7 +81,7 @@ export const ResponsiveContainer = React.forwardRef<
         <form
           ref={ref}
           className={cn(
-            "relative flex w-full flex-col border rounded-[var(--radius-2xl)] p-[var(--padding-com-lg)] gap-[var(--gap-md)]",
+            "relative flex w-full flex-col border rounded-[var(--radius-2xl)] p-[var(--Padding-padding-com-lg)] gap-[var(--Gap-gap-md)]",
           )}
           {...props}
         >
@@ -286,9 +286,7 @@ export const ResponsiveTextarea = React.forwardRef<
         rows={1}
         style={{
           minHeight: `${singleLineHeight}px`,
-          height: isOverflow
-            ? `${contentHeight}px`
-            : `${singleLineHeight}px`,
+          height: isOverflow ? `${contentHeight}px` : `${singleLineHeight}px`,
           maxHeight: isOverflow
             ? `${multiLineMaxHeight}px`
             : `${singleLineHeight}px`,
@@ -345,11 +343,11 @@ export const ResponsiveAttachmentButton = React.forwardRef<
         "p-2 gap-2 border",
         "h-[var(--size-com-md)]",
         "w-[var(--size-com-md)]",
-        "text-[var(--text-primary)]",
+        "text-[var(--Text-text-primary)]",
         "rounded-[var(--radius-lg)]",
-        "bg-[var(--bg-container)]",
-        "border-[var(--border-neutral)]",
-        "hover:bg-[var(--bg-neutral-light)] transition-colors",
+        "bg-[var(--Container-bg-container)]",
+        "border-[var(--Border-border-neutral)]",
+        "hover:bg-[var(--Container-bg-neutral-light)] transition-colors",
         className,
       )}
     >
@@ -383,8 +381,8 @@ export const ResponsiveSendButton = React.forwardRef<
         disabled={disabled}
         className={cn(
           "w-8 h-8 rounded-full p-2 gap-2",
-          "bg-[var(--bg-brand)]",
-          "text-[var(--text-inverse)]",
+          "bg-[var(--Container-bg-brand)]",
+          "text-[var(--Text-text-inverse)]",
           "transition-opacity",
           disabled && "opacity-80",
           className,

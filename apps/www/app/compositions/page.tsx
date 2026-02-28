@@ -55,10 +55,10 @@ export default function CompositionsPage() {
       <div className="flex flex-1 min-h-0 gap-4">
         <aside
           className={cn(
-            "shrink-0 w-[240px] p-[var(--padding-com-lg)] opacity-100",
+            "shrink-0 w-[240px] p-[var(--Padding-padding-com-lg)] opacity-100",
             variant === "zijin" || variant === "medical"
-              ? "bg-[var(--bg-page)]"
-              : "bg-[var(--bg-page-secondary)]"
+              ? "bg-[var(--Page-bg-page)]"
+              : "bg-[var(--Page-bg-page-secondary)]"
           )}
         >
           <SidebarCommon
@@ -80,7 +80,7 @@ export default function CompositionsPage() {
           className={cn(
             "flex-1 min-w-0 min-h-0 flex flex-col pt-[60px]",
             variant === "zijin" || variant === "medical"
-              ? "bg-[var(--bg-page-brand)]"
+              ? "bg-[var(--Page-bg-page-brand)]"
               : ""
           )}
         >

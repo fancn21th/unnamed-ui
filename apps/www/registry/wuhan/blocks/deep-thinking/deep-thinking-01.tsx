@@ -122,21 +122,21 @@ const ThinkingDotsPrimitive = React.forwardRef<
         {...props}
       >
         <div
-          className="w-1 h-1 rounded-full bg-[var(--bg-brand)]"
+          className="w-1 h-1 rounded-full bg-[var(--Container-bg-brand)]"
           style={{
             animation: "thinking-pulse 1.4s ease-in-out infinite",
             animationDelay: "0s",
           }}
         />
         <div
-          className="w-1 h-1 rounded-full bg-[var(--bg-brand)]"
+          className="w-1 h-1 rounded-full bg-[var(--Container-bg-brand)]"
           style={{
             animation: "thinking-pulse 1.4s ease-in-out infinite",
             animationDelay: "0.2s",
           }}
         />
         <div
-          className="w-1 h-1 rounded-full bg-[var(--bg-brand)]"
+          className="w-1 h-1 rounded-full bg-[var(--Container-bg-brand)]"
           style={{
             animation: "thinking-pulse 1.4s ease-in-out infinite",
             animationDelay: "0.4s",
@@ -174,7 +174,7 @@ const DeepThinkingContainerPrimitive = React.forwardRef<
             "rounded-[var(--radius-lg)]",
             "overflow-hidden",
             "flex flex-col",
-            "gap-[var(--gap-xs)]",
+            "gap-[var(--Gap-gap-xs)]",
             className,
           )}
           {...props}
@@ -201,7 +201,7 @@ const DeepThinkingHeaderPrimitive = React.forwardRef<
         ref={ref}
         className={cn(
           "[&_*]:!box-border",
-          "flex items-center gap-[var(--gap-md)]",
+          "flex items-center gap-[var(--Gap-gap-md)]",
           "w-full",
           "cursor-pointer",
           className,
@@ -228,10 +228,10 @@ const DeepThinkingTitlePrimitive = React.forwardRef<
     <span
       ref={ref}
       className={cn(
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "text-sm",
         "leading-[var(--line-height-2)]",
-        "text-[var(--text-primary)]",
+        "text-[var(--Text-text-primary)]",
         className,
       )}
       {...props}
@@ -280,15 +280,15 @@ const DeepThinkingContentPrimitive = React.forwardRef<
         {/* 内容  竖线和内容区域 */}
         <div
           className={cn(
-            "font-[var(--font-family-cn)]",
+            "font-[var(--font-family-CN)]",
             "text-sm",
             "leading-[var(--line-height-2)]",
-            "text-[var(--text-secondary)]",
+            "text-[var(--Text-text-secondary)]",
             "whitespace-pre-wrap",
-            "flex items-stretch gap-[var(--gap-md)]",
+            "flex items-stretch gap-[var(--Gap-gap-md)]",
           )}
         >
-          <div className="w-0 ml-[calc(var(--margin-com-md)-1px)] mr-[var(--margin-com-md)] self-stretch border border-[var(--divider-neutral-basic)]" />
+          <div className="w-0 ml-[calc(var(--Margin-margin-com-md)-1px)] mr-[var(--Margin-margin-com-md)] self-stretch border border-[var(--Border-divider-neutral-basic)]" />
           <div className="flex-1">{children}</div>
         </div>
       </div>
@@ -310,7 +310,7 @@ const DeepThinkingArrowPrimitive = React.forwardRef<
       ref={ref}
       className={cn(
         "size-4",
-        "text-[var(--text-secondary)]",
+        "text-[var(--Text-text-secondary)]",
         "transition-transform duration-200",
         "[data-state=open]_&:rotate-180",
         className,

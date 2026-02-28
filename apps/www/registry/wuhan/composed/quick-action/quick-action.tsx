@@ -102,12 +102,12 @@ export const QuickActionPanel = React.forwardRef<
       {(title || description) && (
         <div className="text-center mb-6">
           {title && (
-            <h3 className="text-lg font-medium text-[var(--text-primary)] mb-2">
+            <h3 className="text-lg font-medium text-[var(--Text-text-primary)] mb-2">
               {title}
             </h3>
           )}
           {description && (
-            <p className="text-sm text-[var(--text-secondary)]">
+            <p className="text-sm text-[var(--Text-text-secondary)]">
               {description}
             </p>
           )}

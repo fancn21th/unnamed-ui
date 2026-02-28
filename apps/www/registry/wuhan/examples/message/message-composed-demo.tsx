@@ -58,7 +58,7 @@ function FeedbackButtons({ feedback, className }: FeedbackButtonsProps) {
           className="h-6 w-6"
           onClick={feedback.onCopy}
         >
-          <Copy className={cn("size-4", "text-[var(--text-secondary)]")} />
+          <Copy className={cn("size-4", "text-[var(--Text-text-secondary)]")} />
         </Button>
       )}
     </div>

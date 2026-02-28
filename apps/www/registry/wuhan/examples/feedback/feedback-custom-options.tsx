@@ -52,7 +52,7 @@ export default function FeedbackCustomOptions() {
   return (
     <div className="flex flex-col gap-6 w-full max-w-md">
       <div>
-        <h3 className="text-sm font-medium text-[var(--text-secondary)] mb-4">
+        <h3 className="text-sm font-medium text-[var(--Text-text-secondary)] mb-4">
           自定义选项（带图标）
         </h3>
         <FeedbackComposed

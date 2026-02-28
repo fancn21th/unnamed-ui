@@ -15,29 +15,29 @@ const CheckboxRootPrimitive = React.forwardRef<
       ref={ref}
       className={cn(
         "peer h-4 w-4 shrink-0 rounded-sm",
-        "border border-[var(--border-neutral)]",
-        "bg-[var(--bg-container)]",
+        "border border-[var(--Border-border-neutral)]",
+        "bg-[var(--Container-bg-container)]",
         "transition-all duration-200",
         // Hover state
-        "hover:border-[var(--border-brand)]",
+        "hover:border-[var(--Border-border-brand)]",
         // Focus state
         "focus-visible:outline-none",
         "focus-visible:ring-2",
         "focus-visible:ring-[var(--ring)]",
         "focus-visible:ring-offset-2",
         // Checked state
-        "data-[state=checked]:bg-[var(--bg-brand)]",
-        "data-[state=checked]:border-[var(--border-brand)]",
+        "data-[state=checked]:bg-[var(--Container-bg-brand)]",
+        "data-[state=checked]:border-[var(--Border-border-brand)]",
         "data-[state=checked]:text-white",
         // Indeterminate state
-        "data-[state=indeterminate]:bg-[var(--bg-brand)]",
-        "data-[state=indeterminate]:border-[var(--border-brand)]",
+        "data-[state=indeterminate]:bg-[var(--Container-bg-brand)]",
+        "data-[state=indeterminate]:border-[var(--Border-border-brand)]",
         "data-[state=indeterminate]:text-white",
         // Disabled state
         "disabled:cursor-not-allowed",
         "disabled:opacity-50",
-        "disabled:bg-[var(--bg-container-disable)]",
-        "disabled:border-[var(--border-neutral)]",
+        "disabled:bg-[var(--Container-bg-container-disable)]",
+        "disabled:border-[var(--Border-border-neutral)]",
         className,
       )}
       {...props}
@@ -80,11 +80,11 @@ const CheckboxLabelPrimitive = React.forwardRef<
     <label
       ref={ref}
       className={cn(
-        "font-[var(--font-family-cn)]",
+        "font-[var(--font-family-CN)]",
         "font-[var(--font-weight-400)]",
         "font-size-2",
         "leading-[var(--line-height-2)]",
-        "text-[var(--text-primary)]",
+        "text-[var(--Text-text-primary)]",
         "truncate",
         "peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
         className,

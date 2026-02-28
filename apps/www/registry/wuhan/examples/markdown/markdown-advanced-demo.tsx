@@ -12,13 +12,13 @@ import { ThinkingLoadingDotsPrimitive } from "@/registry/wuhan/blocks/thinking-p
 import type { ThinkingStepItemProps } from "@/registry/wuhan/composed/thinking-step-item/thinking-step-item";
 
 const Badge: React.FC<React.PropsWithChildren> = ({ children }) => (
-  <span className="inline-flex items-center rounded-full bg-[var(--bg-brand-light-hover)] px-2 py-0.5 text-xs text-[var(--text-brand)]">
+  <span className="inline-flex items-center rounded-full bg-[var(--Container-bg-brand-light-hover)] px-2 py-0.5 text-xs text-[var(--Text-text-brand)]">
     {children}
   </span>
 );
 
 const Callout: React.FC<React.PropsWithChildren> = ({ children }) => (
-  <div className="rounded-lg border border-[var(--border-neutral)] bg-[var(--bg-container)] p-3 text-sm text-[var(--text-secondary)]">
+  <div className="rounded-lg border border-[var(--Border-border-neutral)] bg-[var(--Container-bg-container)] p-3 text-sm text-[var(--Text-text-secondary)]">
     {children}
   </div>
 );
@@ -172,7 +172,7 @@ const DataSourceBadge: React.FC<any> = ({
   return (
     <button
       type="button"
-      className="inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-[var(--bg-neutral-light-hover)] px-1 text-[10px] text-[var(--text-primary)]"
+      className="inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-[var(--Container-bg-neutral-light-hover)] px-1 text-[10px] text-[var(--Text-text-primary)]"
       onClick={(event) => {
         event.stopPropagation();
         if (onOpenSidebar && Array.isArray(sources)) {
@@ -229,7 +229,7 @@ export const hello = () => "Markdown is powerful";
 
   return (
     <div className="flex flex-wrap gap-6">
-      <div className="min-w-[800px] flex-1 rounded-lg border border-[var(--border-neutral)] p-4">
+      <div className="min-w-[800px] flex-1 rounded-lg border border-[var(--Border-border-neutral)] p-4">
         <Markdown
           content={content}
           status="success"
@@ -252,7 +252,7 @@ export const hello = () => "Markdown is powerful";
       </div>
 
       {sidebarOpen && (
-        <div className="shrink-0 rounded-lg border border-[var(--border-neutral)]">
+        <div className="shrink-0 rounded-lg border border-[var(--Border-border-neutral)]">
           <SourcesSidebar
             sources={sources}
             onClose={() => setSidebarOpen(false)}

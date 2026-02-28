@@ -65,37 +65,37 @@ function HoverMorePopover({
             "z-50",
             "min-w-[160px]",
             "rounded-[var(--radius-lg)]",
-            "border border-[var(--border-neutral)]",
-            "bg-[var(--bg-container)]",
+            "border border-[var(--Border-border-neutral)]",
+            "bg-[var(--Container-bg-container)]",
             "shadow-[var(--shadow-basic)]",
-            "p-[var(--padding-com-sm)]",
+            "p-[var(--Padding-padding-com-sm)]",
           )}
         >
           <div className="flex flex-col">
             <button
               type="button"
-              className="flex items-center gap-2 px-2 py-1 rounded-md hover:bg-[var(--bg-neutral-light)]"
+              className="flex items-center gap-2 px-2 py-1 rounded-md hover:bg-[var(--Container-bg-neutral-light)]"
             >
-              <Pin className="size-4 text-[var(--text-secondary)]" />
-              <span className="text-[var(--text-primary)] font-size-1 leading-[var(--line-height-1)]">
+              <Pin className="size-4 text-[var(--Text-text-secondary)]" />
+              <span className="text-[var(--Text-text-primary)] font-size-1 leading-[var(--line-height-1)]">
                 Pin
               </span>
             </button>
             <button
               type="button"
-              className="flex items-center gap-2 px-2 py-1 rounded-md hover:bg-[var(--bg-neutral-light)]"
+              className="flex items-center gap-2 px-2 py-1 rounded-md hover:bg-[var(--Container-bg-neutral-light)]"
             >
-              <Copy className="size-4 text-[var(--text-secondary)]" />
-              <span className="text-[var(--text-primary)] font-size-1 leading-[var(--line-height-1)]">
+              <Copy className="size-4 text-[var(--Text-text-secondary)]" />
+              <span className="text-[var(--Text-text-primary)] font-size-1 leading-[var(--line-height-1)]">
                 Duplicate
               </span>
             </button>
             <button
               type="button"
-              className="flex items-center gap-2 px-2 py-1 rounded-md hover:bg-[var(--bg-neutral-light)]"
+              className="flex items-center gap-2 px-2 py-1 rounded-md hover:bg-[var(--Container-bg-neutral-light)]"
             >
-              <Trash2 className="size-4 text-[var(--text-secondary)]" />
-              <span className="text-[var(--text-primary)] font-size-1 leading-[var(--line-height-1)]">
+              <Trash2 className="size-4 text-[var(--Text-text-secondary)]" />
+              <span className="text-[var(--Text-text-primary)] font-size-1 leading-[var(--line-height-1)]">
                 Delete
               </span>
             </button>
@@ -111,12 +111,12 @@ export default function HistoryItemDemo() {
   const [moreOpen2, setMoreOpen2] = React.useState(false);
 
   return (
-    <div className="flex flex-col gap-[var(--gap-md)]">
+    <div className="flex flex-col gap-[var(--Gap-gap-md)]">
       <HistoryItem
         active={moreOpen1}
         title="默认历史记录项"
         trailing={
-          <div className="inline-flex items-center gap-[var(--gap-xs)]">
+          <div className="inline-flex items-center gap-[var(--Gap-gap-xs)]">
             <HoverMorePopover open={moreOpen1} onOpenChange={setMoreOpen1}>
               <span className="inline-flex items-center" aria-label="More">
                 <Ellipsis className="size-4" />
@@ -130,7 +130,7 @@ export default function HistoryItemDemo() {
         selected
         title="选中状态历史记录项"
         trailing={
-          <div className="inline-flex items-center gap-[var(--gap-xs)]">
+          <div className="inline-flex items-center gap-[var(--Gap-gap-xs)]">
             <Clock className="size-4" />
           </div>
         }
@@ -140,7 +140,7 @@ export default function HistoryItemDemo() {
         active={moreOpen2}
         title="Hover 展示操作：删除 + 更多(popover)"
         hoverTrailing={
-          <div className="inline-flex items-center gap-[var(--gap-xs)]">
+          <div className="inline-flex items-center gap-[var(--Gap-gap-xs)]">
             <HoverMorePopover open={moreOpen2} onOpenChange={setMoreOpen2}>
               <span className="inline-flex items-center" aria-label="More">
                 <Ellipsis className="size-4" />

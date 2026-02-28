@@ -641,7 +641,7 @@ function renderFieldControl(
           disabled={disabled}
           aria-invalid={!!error}
           className={cn(
-            "bg-[var(--bg-container)]",
+            "bg-[var(--Container-bg-container)]",
           )}
           {...formField}
         />
@@ -655,7 +655,7 @@ function renderFieldControl(
           disabled={disabled}
           aria-invalid={!!error}
           className={cn(
-            "bg-[var(--bg-container)]",
+            "bg-[var(--Container-bg-container)]",
           )}
           {...formField}
         />

@@ -58,7 +58,7 @@ export default function SelectCardControlled() {
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(6, 1fr)",
-          gap: "var(--gap-lg)",
+          gap: "var(--Gap-gap-lg)",
         }}
       >
         {options.map((option) => (
@@ -85,7 +85,7 @@ export default function SelectCardControlled() {
         >
           全选
         </Button>
-        <span className="text-sm text-[var(--text-secondary)] self-center">
+        <span className="text-sm text-[var(--Text-text-secondary)] self-center">
           已选择: {selectedValues.length} 项
         </span>
       </div>

@@ -74,19 +74,19 @@ const BlockTooltipContent = React.forwardRef<
         data-slot="block-tooltip-content"
         sideOffset={sideOffset}
         className={cn(
-          "bg-[var(--bg-mask)]",
+          "bg-[var(--Container-bg-mask)]",
           "min-w-[36px] max-w-[480px]",
           "opacity-100",
           "rounded-[var(--radius-sm)]",
-          "pt-[var(--gap-xs)] pb-[var(--gap-xs)] pl-[var(--gap-sm)] pr-[var(--gap-sm)]",
-          "font-[var(--font-family-cn)]",
+          "pt-[var(--Gap-gap-xs)] pb-[var(--Gap-gap-xs)] pl-[var(--Gap-gap-sm)] pr-[var(--Gap-gap-sm)]",
+          "font-[var(--font-family-CN)]",
           "font-[var(--font-weight-400)]",
           "text-xs",
           "leading-[var(--line-height-1)]",
           "tracking-[0px]",
           "text-center",
           "align-middle",
-          "text-[var(--text-inverse)]",
+          "text-[var(--Text-text-inverse)]",
           "animate-in fade-in-0 zoom-in-95",
           "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
           "data-[side=bottom]:slide-in-from-top-2",

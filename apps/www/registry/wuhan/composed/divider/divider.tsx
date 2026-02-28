@@ -39,7 +39,7 @@ export const Divider = React.forwardRef<HTMLDivElement, DividerProps>(
     {
       orientation = "horizontal",
       variant = "solid",
-      color = "var(--divider-neutral-basic)",
+      color = "var(--Border-divider-neutral-basic)",
       thickness = "1px",
       children,
       textAlign = "center",

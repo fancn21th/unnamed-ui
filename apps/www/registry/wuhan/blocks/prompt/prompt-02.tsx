@@ -87,7 +87,7 @@ export const PromptButton = React.forwardRef<
         "group/prompt-button",
         "flex-col items-start justify-start",
         "rounded-[var(--radius-xl)]",
-        "p-[var(--padding-com-lg)]",
+        "p-[var(--Padding-padding-com-lg)]",
         "max-w-[224px]",
         className,
       )}
@@ -97,11 +97,11 @@ export const PromptButton = React.forwardRef<
         className={cn(
           "inline-flex items-center justify-center",
           "size-[var(--space-8)]",
-          "p-[var(--padding-com-xs)]",
+          "p-[var(--Padding-padding-com-xs)]",
           "rounded-[var(--radius-sm)]",
-          "bg-[var(--bg-brand-light)]",
+          "bg-[var(--Container-bg-brand-light)]",
           "transition-colors",
-          "group-hover/prompt-button:bg-[var(--bg-container)]",
+          "group-hover/prompt-button:bg-[var(--Container-bg-container)]",
         )}
       >
         <QuickActionIcon>{withIconSize(icon, "size-4")}</QuickActionIcon>

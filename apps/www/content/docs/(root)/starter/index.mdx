@@ -12,6 +12,7 @@ description: Unnamed UI 新手指南
    - [1.2 可选：从零开始手动配置](#12-可选从零开始手动配置)
    - [1.3 批量安装所有组件](#13-批量安装所有组件可选)
    - [1.4 重要：组件引用路径说明](#14-重要组件引用路径说明)
+   - [1.5 Token 定制说明](#15-token-定制说明)
 2. [实战演练：搭建 Proposal 页面](#2-实战演练搭建-proposal-页面)
 3. [核心功能：对话与流式输出](#3-核心功能对话与流式输出)
 
@@ -216,7 +217,7 @@ npx shadcn@latest init --yes --src-dir --base-color neutral --no-base-style
 npx shadcn@latest add https://unnamed-ui.vercel.app/r/wuhan/style.json -y -o
 ```
 
-样式安装后，在 `src/index.css`（或 `app/globals.css`）顶部追加引入：
+样式安装后，在 `src/index.css`（或 `app/globals.css`）**顶部追加**引入：
 
 ```css
 @import "./components/globals.css";
@@ -304,19 +305,37 @@ import { WelcomeMessage } from "@/registry/wuhan/composed/welcome/welcome";
 
 // ✅ 您项目中应使用的路径
 import { WelcomeMessage } from "@/components/wuhan/composed/welcome";
-
-// ❌ 文档示例中的路径（不能直接使用）
-import { PageHeader } from "@/registry/wuhan/composed/page-header/page-header";
-
-// ✅ 您项目中应使用的路径
-import { PageHeader } from "@/components/wuhan/composed/page-header";
 ```
 
-**简单规则**：
-
-将文档示例中的 `@/registry/wuhan/` 替换为 `@/components/wuhan/`，并移除末尾重复的文件名部分（如 `/welcome`、`/page-header` 等）。
+**简单规则**：将文档示例中的 `@/registry/wuhan/` 替换为 `@/components/wuhan/`，并移除末尾重复的文件名部分（如 `/welcome`、`/page-header` 等）。
 
 > **提示**：在后续章节的代码示例中，我们已经为您调整为正确的 `@/components/` 路径，可以直接使用。但查看在线文档或 Storybook 时，请记得进行路径转换。
+
+---
+
+### 1.5 Token 定制说明
+
+如需自定义主题色，请新建 `theme.css`，在入口 CSS 中 globals 引入**之后**追加引入：
+
+```css
+@import "./components/globals.css";
+@import "./theme.css";   /* 您的主题覆盖 */
+```
+
+在 `theme.css` 中覆盖变量，例如：
+
+```css
+:root {
+  --Light-Brand-brand-600: #00589f;
+  --Container-bg-brand: #00589f;
+}
+
+.dark {
+  --Dark-Brand-brand-600: #424cdc;
+}
+```
+
+**不要直接修改 `globals.css`**，以便后续升级 Unnamed UI 样式时不受影响。变量名可参考 [设计变量使用指南](/docs/design-tokens)。也可使用主题工作台（Theme Studio）调整后复制生成的 CSS 到 `theme.css`。
 
 ---
 

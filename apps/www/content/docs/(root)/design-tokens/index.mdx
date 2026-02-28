@@ -230,7 +230,29 @@ className="active:bg-[var(--Container-bg-brand-light-active)]"
 
 ### 如何自定义主题色？
 
-可使用主题工作台（Theme Studio）或直接修改 `globals.css` 中的变量定义。详见新手指南中的 [Token 定制说明](/docs/starter#token-定制)。
+**推荐做法**：新建 `theme.css`（或任意命名），在入口 CSS 中**紧接在 globals 引入之后**引入，用于覆盖变量。不要直接修改 `globals.css`，以便后续升级样式时不受影响。
+
+```css
+/* src/index.css 或 app/globals.css */
+@import "tailwindcss";
+@import "./components/globals.css";  /* Unnamed UI 样式 */
+@import "./theme.css";              /* 您的主题覆盖，放在 globals 下方 */
+```
+
+在 `theme.css` 中覆盖变量：
+
+```css
+:root {
+  --Light-Brand-brand-600: #00589f;
+  --Container-bg-brand: #00589f;
+}
+
+.dark {
+  --Dark-Brand-brand-600: #424cdc;
+}
+```
+
+也可使用主题工作台（Theme Studio）调整后复制生成的 CSS 到 `theme.css`。详见新手指南中的 [Token 定制说明](/docs/starter#15-token-定制说明)。
 
 ### 需要把 Figma 复制的 CSS 转成 Tailwind？
 

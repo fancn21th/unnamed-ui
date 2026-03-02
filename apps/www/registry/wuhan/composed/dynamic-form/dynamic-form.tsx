@@ -824,7 +824,7 @@ function renderFieldControl(
 
     case "radio":
       return (
-        <div className="flex gap-2">
+        <div className="flex gap-[var(--gap-2xl)]">
           {options?.map((option) => (
             <label
               key={String(option.value)}

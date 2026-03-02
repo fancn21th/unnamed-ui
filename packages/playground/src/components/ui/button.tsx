@@ -19,12 +19,16 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        /** 仅重置样式，供 blocks 内部使用 */
+        unstyled: "p-0 m-0 min-w-0 min-h-0",
       },
       size: {
         default: "h-9 px-4 py-2",
         sm: "h-8 rounded-md px-3 text-xs",
         lg: "h-10 rounded-md px-8",
         icon: "h-9 w-9",
+        /** 无尺寸样式，与 variant="unstyled" 配合使用 */
+        unstyled: "",
       },
     },
     defaultVariants: {

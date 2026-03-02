@@ -103,7 +103,6 @@ export const DocumentCardContainerPrimitive = React.forwardRef<
         "rounded-[var(--radius-xl)]",
         "bg-[var(--Page-bg-page-brand)]",
         "border border-[var(--Border-border-brand-light)]",
-        "shadow-[var(--shadow-sm)]",
         "p-[var(--Padding-padding-com-xl)]",
         "transition-all",
         "duration-200",

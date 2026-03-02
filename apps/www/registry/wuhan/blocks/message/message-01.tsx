@@ -268,9 +268,9 @@ const MessageUserPrimitive = React.forwardRef<
           className={cn(
             "w-full",
             "pt-[var(--Gap-gap-md)]",
-            // "pr-[var(--Gap-gap-lg)]",
+            "pr-[var(--Gap-gap-lg)]",
             "pb-[var(--Gap-gap-md)]",
-            // "pl-[var(--Gap-gap-lg)]",
+            "pl-[var(--Gap-gap-lg)]",
             "rounded-[var(--radius-xl)]",
             "bg-[var(--Container-bg-neutral-light)]",
             "font-[var(--font-family-CN)]",

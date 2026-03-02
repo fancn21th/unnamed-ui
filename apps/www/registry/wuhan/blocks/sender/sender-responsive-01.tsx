@@ -51,16 +51,11 @@ export const ResponsiveContainer = React.forwardRef<
   ResponsiveContainerProps
 >(
   (
-    {
-      children,
-      className,
-      maxWidth = "100%",
-      forceSingleLine,
-      onOverflowChange,
-      ...props
-    },
+    { children, className, maxWidth = "100%", onOverflowChange, ...props },
     ref,
   ) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars -- 保留 forceSingleLine 接口兼容，暂未实现
+    const { forceSingleLine, ...formProps } = props;
     const [isOverflow, setIsOverflow] = React.useState(false);
 
     const handleOverflowChange = React.useCallback(
@@ -83,7 +78,7 @@ export const ResponsiveContainer = React.forwardRef<
           className={cn(
             "relative flex w-full flex-col border rounded-[var(--radius-2xl)] p-[var(--Padding-padding-com-lg)] gap-[var(--Gap-gap-md)]",
           )}
-          {...props}
+          {...formProps}
         >
           {React.Children.map(children, (child) => {
             if (React.isValidElement(child)) {
@@ -165,7 +160,9 @@ export const ResponsiveTextarea = React.forwardRef<
   );
   const [multiLineMaxHeight, setMultiLineMaxHeight] = React.useState(120);
   const onOverflowChangeRef = React.useRef(onOverflowChange);
-  onOverflowChangeRef.current = onOverflowChange;
+  React.useEffect(() => {
+    onOverflowChangeRef.current = onOverflowChange;
+  }, [onOverflowChange]);
 
   const singleLineWidthRef = React.useRef<number>(0);
   const rafRef = React.useRef<number | null>(null);

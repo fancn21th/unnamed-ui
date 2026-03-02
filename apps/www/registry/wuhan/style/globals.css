@@ -362,8 +362,8 @@ button.unnamed-btn-reset[class*="Margin-margin-com-md"] { padding-top: var(--Mar
   --code-foreground: #1e1d26;
   --code-highlight: #f0f0f4;
   --code-number: #9e9ca6;
-  --selection: #1e1d26;
-  --selection-foreground: #ffffff;
+  --selection: var(--Container-bg-brand-light-hover);
+  --selection-foreground: var(--Text-text-primary);
   --bg-mask: var(--Container-bg-mask);
   --bg-mask-soft: var(--Container-bg-mask-soft);
   --bg-surface: var(--Page-bg-page-secondary);
@@ -567,8 +567,8 @@ button.unnamed-btn-reset[class*="Margin-margin-com-md"] { padding-top: var(--Mar
   --code-foreground: #b2afba;
   --code-highlight: #232326;
   --code-number: #7c7a85;
-  --selection: #b2afba;
-  --selection-foreground: #141414;
+  --selection: var(--Container-bg-brand-light-hover);
+  --selection-foreground: var(--Text-text-primary);
   --shadow-focus: 0 0 0 2px var(--Focusring-focusring-brand);
 }
 

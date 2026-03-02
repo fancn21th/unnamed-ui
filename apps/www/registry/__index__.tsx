@@ -2148,12 +2148,22 @@ export const Index: Record<string, Record<string, any>> = {
         "field",
         "dynamic-form-01",
         "status-tag",
+        "toggle-button",
+        "block-button",
+        "block-input",
+        "block-select",
+        "radio-group",
       ],
       files: [
         {
           path: "registry/wuhan/composed/dynamic-form/dynamic-form.tsx",
           type: "registry:component",
           target: "components/wuhan/composed/dynamic-form.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/dynamic-form/dynamic-form-utils.ts",
+          type: "registry:component",
+          target: "components/wuhan/composed/dynamic-form-utils.ts",
         },
       ],
       component: React.lazy(async () => {
@@ -2407,7 +2417,7 @@ export const Index: Record<string, Record<string, any>> = {
       description:
         "Composed toggle button with single and multiple selection modes",
       type: "registry:block",
-      registryDependencies: ["toggle-button-01"],
+      registryDependencies: ["toggle-button-01", "tooltip"],
       files: [
         {
           path: "registry/wuhan/composed/toggle-button/toggle-button.tsx",

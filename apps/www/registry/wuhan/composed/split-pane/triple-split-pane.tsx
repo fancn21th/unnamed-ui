@@ -55,6 +55,8 @@ export interface PanelConfig {
     header?: string;
     /** 内容区域类名 */
     body?: string;
+    /** 内容内层类名（body 内的 padding 容器） */
+    content?: string;
   };
 }
 
@@ -380,6 +382,7 @@ export const TripleSplitPane = React.forwardRef<
           containerClassName={leftClassNames?.container}
           headerClassName={leftClassNames?.header}
           bodyClassName={leftClassNames?.body}
+          contentClassName={leftClassNames?.content}
         >
           {leftChildren}
         </SplitPaneItemPrimitive>
@@ -403,6 +406,7 @@ export const TripleSplitPane = React.forwardRef<
             containerClassName={centerClassNames?.container}
             headerClassName={centerClassNames?.header}
             bodyClassName={centerClassNames?.body}
+            contentClassName={centerClassNames?.content}
           >
             {centerChildren}
           </SplitPaneItemPrimitive>
@@ -424,6 +428,7 @@ export const TripleSplitPane = React.forwardRef<
           containerClassName={rightClassNames?.container}
           headerClassName={rightClassNames?.header}
           bodyClassName={rightClassNames?.body}
+          contentClassName={rightClassNames?.content}
         >
           {rightChildren}
         </SplitPaneItemPrimitive>

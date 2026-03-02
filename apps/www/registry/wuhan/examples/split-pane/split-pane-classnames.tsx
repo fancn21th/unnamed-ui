@@ -33,7 +33,7 @@ export default function SplitPaneClassnamesDemo() {
           classNames: {
             container: "shadow-lg",
             header: "bg-gradient-to-r from-blue-50 to-indigo-50",
-            body: "bg-blue-50/30 p-6",
+            content: "bg-blue-50/30 p-6",
           },
         }}
         center={{
@@ -55,7 +55,7 @@ export default function SplitPaneClassnamesDemo() {
           classNames: {
             container: "border-2 border-green-200",
             header: "bg-green-50 border-b-2 border-green-200",
-            body: "p-8",
+            content: "p-8",
           },
         }}
         right={{
@@ -78,7 +78,7 @@ export default function SplitPaneClassnamesDemo() {
           ),
           classNames: {
             header: "bg-purple-50",
-            body: "bg-purple-50/20 p-4",
+            content: "bg-purple-50/20 p-4",
           },
         }}
       />

@@ -581,7 +581,8 @@ const ThinkingStepItemTitlePrimitive = React.forwardRef<
         "leading-[var(--line-height-2)]",
         "font-semibold",
         "text-[var(--Text-text-primary)]",
-        "group-hover/step-item:text-[var(--Text-text-brand)]",
+        // "group-hover/step-item:text-[var(--Text-text-brand)]",
+        "hover:text-[var(--Text-text-brand)]",
         "transition-colors",
         className,
       )}
@@ -607,7 +608,7 @@ const ThinkingStepItemCollapseArrowPrimitive = React.forwardRef<
       className={cn(
         "size-4",
         "text-[var(--Text-text-primary)]",
-        "group-hover/step-item:text-[var(--Text-text-brand)]",
+        // "group-hover/step-item:text-[var(--Text-text-brand)]",
         "transition-all duration-200",
         "group-data-[state=open]/step-item-trigger:rotate-180",
         "data-[state=open]:rotate-180",
@@ -1162,6 +1163,7 @@ const ThinkingStepItemFileItemPrimitive = React.forwardRef<
         "pl-[var(--Padding-padding-com-sm)]",
         "bg-[var(--Container-bg-container)]",
         "border border-[var(--Border-border-neutral)]",
+        "hover:bg-[var(--Container-bg-neutral-light)]",
         className,
       )}
       {...props}

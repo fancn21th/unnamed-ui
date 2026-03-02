@@ -209,7 +209,7 @@ export const DocumentCard = React.forwardRef<HTMLDivElement, DocumentCardProps>(
               <div
                 className={cn(
                   "absolute right-0 top-1/2 -translate-y-1/2",
-                  "flex size-8 items-center justify-center rounded-[var(--radius-md)]",
+                  "flex size-6 items-center justify-center rounded-[var(--radius-md)]",
                   "opacity-0 transition-opacity duration-200 group-hover/card:opacity-100",
                   "hover:bg-[var(--Container-bg-neutral-light)]",
                   onDownload && "cursor-pointer",

@@ -131,300 +131,305 @@ export const TripleSplitPane = React.forwardRef<
     },
     ref,
   ) => {
-  const {
-    children: leftChildren,
-    title: leftTitle,
-    width: leftWidth = "300px",
-    minWidth: leftMinWidth = "200px",
-    collapsedWidth: leftCollapsedWidth = "0px",
-    collapsibleIcon: leftCollapsibleIcon,
-    showIconWhenCompact: leftShowIconWhenCompact = true,
-    defaultCollapsed: leftDefaultCollapsed = false,
-    classNames: leftClassNames,
-  } = left;
+    const {
+      children: leftChildren,
+      title: leftTitle,
+      width: leftWidth = "300px",
+      minWidth: leftMinWidth = "200px",
+      collapsedWidth: leftCollapsedWidth = "0px",
+      collapsibleIcon: leftCollapsibleIcon,
+      showIconWhenCompact: leftShowIconWhenCompact = true,
+      defaultCollapsed: leftDefaultCollapsed = false,
+      classNames: leftClassNames,
+    } = left;
 
-  const {
-    children: centerChildren,
-    title: centerTitle,
-    centerHeaderContent,
-    minWidth: centerMinWidth = "400px",
-    classNames: centerClassNames,
-  } = center;
+    const {
+      children: centerChildren,
+      title: centerTitle,
+      centerHeaderContent,
+      minWidth: centerMinWidth = "400px",
+      classNames: centerClassNames,
+    } = center;
 
-  const {
-    enabled: leftPopoverEnabled = false,
-    content: leftPopoverContent,
-    width: leftPopoverWidth = "240px",
-    height: leftPopoverHeight = "300px",
-    className: leftPopoverClassName,
-    alwaysOpen: leftPopoverAlwaysOpen = false,
-  } = leftPopover || {};
+    const {
+      enabled: leftPopoverEnabled = false,
+      content: leftPopoverContent,
+      width: leftPopoverWidth = "240px",
+      height: leftPopoverHeight = "300px",
+      className: leftPopoverClassName,
+      alwaysOpen: leftPopoverAlwaysOpen = false,
+    } = leftPopover || {};
 
-  const {
-    children: rightChildren,
-    title: rightTitle,
-    width: rightWidth = "300px",
-    minWidth: rightMinWidth = "200px",
-    collapsedWidth: rightCollapsedWidth = "0px",
-    collapsibleIcon: rightCollapsibleIcon,
-    showIconWhenCompact: rightShowIconWhenCompact = true,
-    defaultCollapsed: rightDefaultCollapsed = false,
-    classNames: rightClassNames,
-  } = right;
+    const {
+      children: rightChildren,
+      title: rightTitle,
+      width: rightWidth = "300px",
+      minWidth: rightMinWidth = "200px",
+      collapsedWidth: rightCollapsedWidth = "0px",
+      collapsibleIcon: rightCollapsibleIcon,
+      showIconWhenCompact: rightShowIconWhenCompact = true,
+      defaultCollapsed: rightDefaultCollapsed = false,
+      classNames: rightClassNames,
+    } = right;
 
-  const [isLeftCollapsed, setIsLeftCollapsed] =
-    React.useState(leftDefaultCollapsed);
-  const [isRightCollapsed, setIsRightCollapsed] = React.useState(
-    rightDefaultCollapsed,
-  );
-  const [isLeftPopoverOpen, setIsLeftPopoverOpen] = React.useState(false);
+    const [isLeftCollapsed, setIsLeftCollapsed] =
+      React.useState(leftDefaultCollapsed);
+    const [isRightCollapsed, setIsRightCollapsed] = React.useState(
+      rightDefaultCollapsed,
+    );
+    const [isLeftPopoverOpen, setIsLeftPopoverOpen] = React.useState(false);
 
-  // 保存计算后的约束宽度
-  const [constrainedWidths, setConstrainedWidths] = React.useState({
-    leftWidth: isLeftCollapsed ? leftCollapsedWidth : leftWidth,
-    rightWidth: isRightCollapsed ? rightCollapsedWidth : rightWidth,
-  });
+    // 保存计算后的约束宽度
+    const [constrainedWidths, setConstrainedWidths] = React.useState({
+      leftWidth: isLeftCollapsed ? leftCollapsedWidth : leftWidth,
+      rightWidth: isRightCollapsed ? rightCollapsedWidth : rightWidth,
+    });
 
-  const internalRef = React.useRef<HTMLDivElement>(null);
+    const internalRef = React.useRef<HTMLDivElement>(null);
 
-  // 合并外部 ref 和内部 ref
-  const mergedRef = React.useCallback(
-    (node: HTMLDivElement | null) => {
-      internalRef.current = node;
-      if (typeof ref === "function") {
-        ref(node);
-      } else if (ref) {
-        ref.current = node;
-      }
-    },
-    [ref],
-  );
-
-  // 计算并约束宽度
-  const calculateConstrainedWidths = React.useCallback(() => {
-    if (!internalRef.current) {
-      return {
-        leftWidth: isLeftCollapsed ? leftCollapsedWidth : leftWidth,
-        rightWidth: isRightCollapsed ? rightCollapsedWidth : rightWidth,
-      };
-    }
-
-    const containerWidth = internalRef.current.offsetWidth;
-
-    // 解析所有宽度为像素值
-    const leftExpandedPx = parseWidth(leftWidth, containerWidth);
-    const leftCollapsedPx = parseWidth(leftCollapsedWidth, containerWidth);
-    const leftMinPx = parseWidth(leftMinWidth, containerWidth);
-
-    const rightExpandedPx = parseWidth(rightWidth, containerWidth);
-    const rightCollapsedPx = parseWidth(rightCollapsedWidth, containerWidth);
-    const rightMinPx = parseWidth(rightMinWidth, containerWidth);
-
-    const centerMinPx = parseWidth(centerMinWidth, containerWidth);
-
-    // 当前左右面板实际宽度
-    let currentLeftPx = isLeftCollapsed ? leftCollapsedPx : leftExpandedPx;
-    let currentRightPx = isRightCollapsed ? rightCollapsedPx : rightExpandedPx;
-
-    // 计算剩余空间
-    const remainingSpace = containerWidth - currentLeftPx - currentRightPx;
-
-    // 约束条件：左宽度 + 右宽度 + 中间最小宽度 <= 容器宽度
-    if (remainingSpace < centerMinPx) {
-      // 空间不足，需要调整左右面板宽度
-      const totalRequired = currentLeftPx + currentRightPx + centerMinPx;
-      const excessWidth = totalRequired - containerWidth;
-
-      // 按比例缩小左右面板（保证不小于各自的最小宽度或折叠宽度）
-      const leftRatio = currentLeftPx / (currentLeftPx + currentRightPx);
-      const rightRatio = currentRightPx / (currentLeftPx + currentRightPx);
-
-      const leftReduction = excessWidth * leftRatio;
-      const rightReduction = excessWidth * rightRatio;
-
-      currentLeftPx = Math.max(
-        isLeftCollapsed ? leftCollapsedPx : leftMinPx,
-        currentLeftPx - leftReduction,
-      );
-      currentRightPx = Math.max(
-        isRightCollapsed ? rightCollapsedPx : rightMinPx,
-        currentRightPx - rightReduction,
-      );
-    }
-
-    return {
-      leftWidth: `${currentLeftPx}px`,
-      rightWidth: `${currentRightPx}px`,
-    };
-  }, [
-    isLeftCollapsed,
-    isRightCollapsed,
-    leftWidth,
-    leftCollapsedWidth,
-    leftMinWidth,
-    rightWidth,
-    rightCollapsedWidth,
-    rightMinWidth,
-    centerMinWidth,
-  ]);
-
-  // 在布局效果中计算约束宽度
-  React.useLayoutEffect(() => {
-    const widths = calculateConstrainedWidths();
-    setConstrainedWidths(widths);
-  }, [calculateConstrainedWidths]);
-
-  // 监听窗口大小变化
-  React.useEffect(() => {
-    const handleResize = () => {
-      const widths = calculateConstrainedWidths();
-      setConstrainedWidths(widths);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [calculateConstrainedWidths]);
-
-  const { leftWidth: constrainedLeftWidth, rightWidth: constrainedRightWidth } =
-    constrainedWidths;
-
-  const toggleLeftPanel = () => {
-    setIsLeftCollapsed(!isLeftCollapsed);
-  };
-
-  const toggleRightPanel = () => {
-    setIsRightCollapsed(!isRightCollapsed);
-  };
-
-  // 判断是否为紧凑模式
-  const isLeftCompact =
-    isLeftCollapsed && parseWidth(leftCollapsedWidth, 0) > 0;
-  const isRightCompact =
-    isRightCollapsed && parseWidth(rightCollapsedWidth, 0) > 0;
-
-  // 渲染左侧展开按钮
-  const renderLeftExpandButton = () => {
-    const button = (
-      <button
-        type="button"
-        onClick={leftExpandButtonDisabled ? undefined : toggleLeftPanel}
-        onMouseEnter={() =>
-          !leftPopoverAlwaysOpen &&
-          leftPopoverEnabled &&
-          setIsLeftPopoverOpen(true)
+    // 合并外部 ref 和内部 ref
+    const mergedRef = React.useCallback(
+      (node: HTMLDivElement | null) => {
+        internalRef.current = node;
+        if (typeof ref === "function") {
+          ref(node);
+        } else if (ref) {
+          ref.current = node;
         }
-        onMouseLeave={() =>
-          !leftPopoverAlwaysOpen &&
-          leftPopoverEnabled &&
-          setIsLeftPopoverOpen(false)
-        }
-        className="mr-2 text-[var(--Text-text-secondary)] hover:text-[var(--Text-text-primary)] transition-colors cursor-pointer"
-      >
-        {leftCollapsibleIcon || <PanelLeft className="h-4 w-4" />}
-      </button>
+      },
+      [ref],
     );
 
-    if (leftPopoverEnabled && leftPopoverContent) {
-      return (
-        <Popover
-          open={leftPopoverAlwaysOpen || isLeftPopoverOpen}
-          onOpenChange={
-            leftPopoverAlwaysOpen ? undefined : setIsLeftPopoverOpen
+    // 计算并约束宽度
+    const calculateConstrainedWidths = React.useCallback(() => {
+      if (!internalRef.current) {
+        return {
+          leftWidth: isLeftCollapsed ? leftCollapsedWidth : leftWidth,
+          rightWidth: isRightCollapsed ? rightCollapsedWidth : rightWidth,
+        };
+      }
+
+      const containerWidth = internalRef.current.offsetWidth;
+
+      // 解析所有宽度为像素值
+      const leftExpandedPx = parseWidth(leftWidth, containerWidth);
+      const leftCollapsedPx = parseWidth(leftCollapsedWidth, containerWidth);
+      const leftMinPx = parseWidth(leftMinWidth, containerWidth);
+
+      const rightExpandedPx = parseWidth(rightWidth, containerWidth);
+      const rightCollapsedPx = parseWidth(rightCollapsedWidth, containerWidth);
+      const rightMinPx = parseWidth(rightMinWidth, containerWidth);
+
+      const centerMinPx = parseWidth(centerMinWidth, containerWidth);
+
+      // 当前左右面板实际宽度
+      let currentLeftPx = isLeftCollapsed ? leftCollapsedPx : leftExpandedPx;
+      let currentRightPx = isRightCollapsed
+        ? rightCollapsedPx
+        : rightExpandedPx;
+
+      // 计算剩余空间
+      const remainingSpace = containerWidth - currentLeftPx - currentRightPx;
+
+      // 约束条件：左宽度 + 右宽度 + 中间最小宽度 <= 容器宽度
+      if (remainingSpace < centerMinPx) {
+        // 空间不足，需要调整左右面板宽度
+        const totalRequired = currentLeftPx + currentRightPx + centerMinPx;
+        const excessWidth = totalRequired - containerWidth;
+
+        // 按比例缩小左右面板（保证不小于各自的最小宽度或折叠宽度）
+        const leftRatio = currentLeftPx / (currentLeftPx + currentRightPx);
+        const rightRatio = currentRightPx / (currentLeftPx + currentRightPx);
+
+        const leftReduction = excessWidth * leftRatio;
+        const rightReduction = excessWidth * rightRatio;
+
+        currentLeftPx = Math.max(
+          isLeftCollapsed ? leftCollapsedPx : leftMinPx,
+          currentLeftPx - leftReduction,
+        );
+        currentRightPx = Math.max(
+          isRightCollapsed ? rightCollapsedPx : rightMinPx,
+          currentRightPx - rightReduction,
+        );
+      }
+
+      return {
+        leftWidth: `${currentLeftPx}px`,
+        rightWidth: `${currentRightPx}px`,
+      };
+    }, [
+      isLeftCollapsed,
+      isRightCollapsed,
+      leftWidth,
+      leftCollapsedWidth,
+      leftMinWidth,
+      rightWidth,
+      rightCollapsedWidth,
+      rightMinWidth,
+      centerMinWidth,
+    ]);
+
+    // 在布局效果中计算约束宽度
+    React.useLayoutEffect(() => {
+      const widths = calculateConstrainedWidths();
+      setConstrainedWidths(widths);
+    }, [calculateConstrainedWidths]);
+
+    // 监听窗口大小变化
+    React.useEffect(() => {
+      const handleResize = () => {
+        const widths = calculateConstrainedWidths();
+        setConstrainedWidths(widths);
+      };
+
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }, [calculateConstrainedWidths]);
+
+    const {
+      leftWidth: constrainedLeftWidth,
+      rightWidth: constrainedRightWidth,
+    } = constrainedWidths;
+
+    const toggleLeftPanel = () => {
+      setIsLeftCollapsed(!isLeftCollapsed);
+    };
+
+    const toggleRightPanel = () => {
+      setIsRightCollapsed(!isRightCollapsed);
+    };
+
+    // 判断是否为紧凑模式
+    const isLeftCompact =
+      isLeftCollapsed && parseWidth(leftCollapsedWidth, 0) > 0;
+    const isRightCompact =
+      isRightCollapsed && parseWidth(rightCollapsedWidth, 0) > 0;
+
+    // 渲染左侧展开按钮
+    const renderLeftExpandButton = () => {
+      const button = (
+        <button
+          type="button"
+          onClick={leftExpandButtonDisabled ? undefined : toggleLeftPanel}
+          onMouseEnter={() =>
+            !leftPopoverAlwaysOpen &&
+            leftPopoverEnabled &&
+            setIsLeftPopoverOpen(true)
           }
+          onMouseLeave={() =>
+            !leftPopoverAlwaysOpen &&
+            leftPopoverEnabled &&
+            setIsLeftPopoverOpen(false)
+          }
+          className="mr-2 text-[var(--Text-text-secondary)] hover:text-[var(--Text-text-primary)] transition-colors cursor-pointer"
         >
-          <PopoverTrigger asChild>{button}</PopoverTrigger>
-          <PopoverContent
-            className={leftPopoverClassName}
-            style={{
-              width: leftPopoverWidth,
-              height: leftPopoverHeight,
-              padding: 0,
-            }}
-            side="bottom"
-            align="start"
-            onMouseEnter={() =>
-              !leftPopoverAlwaysOpen && setIsLeftPopoverOpen(true)
-            }
-            onMouseLeave={() =>
-              !leftPopoverAlwaysOpen && setIsLeftPopoverOpen(false)
+          {leftCollapsibleIcon || <PanelLeft className="h-4 w-4" />}
+        </button>
+      );
+
+      if (leftPopoverEnabled && leftPopoverContent) {
+        return (
+          <Popover
+            open={leftPopoverAlwaysOpen || isLeftPopoverOpen}
+            onOpenChange={
+              leftPopoverAlwaysOpen ? undefined : setIsLeftPopoverOpen
             }
           >
-            {leftPopoverContent}
-          </PopoverContent>
-        </Popover>
-      );
-    }
+            <PopoverTrigger asChild>{button}</PopoverTrigger>
+            <PopoverContent
+              className={leftPopoverClassName}
+              style={{
+                width: leftPopoverWidth,
+                height: leftPopoverHeight,
+                padding: 0,
+              }}
+              side="bottom"
+              align="start"
+              onMouseEnter={() =>
+                !leftPopoverAlwaysOpen && setIsLeftPopoverOpen(true)
+              }
+              onMouseLeave={() =>
+                !leftPopoverAlwaysOpen && setIsLeftPopoverOpen(false)
+              }
+            >
+              {leftPopoverContent}
+            </PopoverContent>
+          </Popover>
+        );
+      }
 
-    return button;
-  };
+      return button;
+    };
 
-  return (
-    <SplitPaneContainerPrimitive
-      ref={mergedRef}
-      className={`gap-3 ${className}`}
-    >
-      {/* 左侧面板 */}
-      <SplitPaneItemPrimitive
-        width={constrainedLeftWidth}
-        isCompact={isLeftCompact}
-        showIconWhenCompact={leftShowIconWhenCompact}
-        panelTitle={leftTitle}
-        collapsibleIcon={
-          leftCollapsibleIcon || <PanelLeft className="h-4 w-4" />
-        }
-        onCollapsibleClick={toggleLeftPanel}
-        containerClassName={leftClassNames?.container}
-        headerClassName={leftClassNames?.header}
-        bodyClassName={leftClassNames?.body}
+    return (
+      <SplitPaneContainerPrimitive
+        ref={mergedRef}
+        className={`gap-3 ${className}`}
       >
-        {leftChildren}
-      </SplitPaneItemPrimitive>
-
-      {/* 分隔符 */}
-      {/* <SplitPaneSeparatorPrimitive /> */}
-
-      {/* 中间面板 */}
-      <div className="flex-1 min-w-0 h-full">
+        {/* 左侧面板 */}
         <SplitPaneItemPrimitive
-          width="100%"
-          panelTitle={
-            <div className="flex items-center">
-              {isLeftCollapsed && renderLeftExpandButton()}
-              {centerTitle}
-            </div>
+          width={constrainedLeftWidth}
+          isCompact={isLeftCompact}
+          showIconWhenCompact={leftShowIconWhenCompact}
+          panelTitle={leftTitle}
+          collapsibleIcon={
+            leftCollapsibleIcon || <PanelLeft className="h-4 w-4" />
           }
-          centerHeaderContent={centerHeaderContent}
-          showCollapsibleIcon={false}
-          style={{ minWidth: centerMinWidth }}
-          containerClassName={centerClassNames?.container}
-          headerClassName={centerClassNames?.header}
-          bodyClassName={centerClassNames?.body}
+          onCollapsibleClick={toggleLeftPanel}
+          containerClassName={leftClassNames?.container}
+          headerClassName={leftClassNames?.header}
+          bodyClassName={leftClassNames?.body}
         >
-          {centerChildren}
+          {leftChildren}
         </SplitPaneItemPrimitive>
-      </div>
 
-      {/* 分隔符 */}
-      {/* <SplitPaneSeparatorPrimitive /> */}
+        {/* 分隔符 */}
+        {/* <SplitPaneSeparatorPrimitive /> */}
 
-      {/* 右侧面板 */}
-      <SplitPaneItemPrimitive
-        width={constrainedRightWidth}
-        isCompact={isRightCompact}
-        showIconWhenCompact={rightShowIconWhenCompact}
-        panelTitle={rightTitle}
-        collapsibleIcon={
-          rightCollapsibleIcon || <PanelRight className="h-4 w-4" />
-        }
-        onCollapsibleClick={toggleRightPanel}
-        containerClassName={rightClassNames?.container}
-        headerClassName={rightClassNames?.header}
-        bodyClassName={rightClassNames?.body}
-      >
-        {rightChildren}
-      </SplitPaneItemPrimitive>
-    </SplitPaneContainerPrimitive>
-  );
-});
+        {/* 中间面板 */}
+        <div className="flex-1 min-w-0 h-full">
+          <SplitPaneItemPrimitive
+            width="100%"
+            panelTitle={
+              <div className="flex items-center">
+                {isLeftCollapsed && renderLeftExpandButton()}
+                {centerTitle}
+              </div>
+            }
+            centerHeaderContent={centerHeaderContent}
+            showCollapsibleIcon={false}
+            style={{ minWidth: centerMinWidth }}
+            containerClassName={centerClassNames?.container}
+            headerClassName={centerClassNames?.header}
+            bodyClassName={centerClassNames?.body}
+          >
+            {centerChildren}
+          </SplitPaneItemPrimitive>
+        </div>
+
+        {/* 分隔符 */}
+        {/* <SplitPaneSeparatorPrimitive /> */}
+
+        {/* 右侧面板 */}
+        <SplitPaneItemPrimitive
+          width={constrainedRightWidth}
+          isCompact={isRightCompact}
+          showIconWhenCompact={rightShowIconWhenCompact}
+          panelTitle={rightTitle}
+          collapsibleIcon={
+            rightCollapsibleIcon || <PanelRight className="h-4 w-4" />
+          }
+          onCollapsibleClick={toggleRightPanel}
+          containerClassName={rightClassNames?.container}
+          headerClassName={rightClassNames?.header}
+          bodyClassName={rightClassNames?.body}
+        >
+          {rightChildren}
+        </SplitPaneItemPrimitive>
+      </SplitPaneContainerPrimitive>
+    );
+  },
+);
 
 TripleSplitPane.displayName = "TripleSplitPane";

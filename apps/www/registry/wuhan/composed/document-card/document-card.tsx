@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { Download } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   DocumentCardHeaderPrimitive,
@@ -33,6 +34,8 @@ export interface DocumentCardItem {
   icon?: React.ReactNode;
   /** 点击事件 */
   onClick?: () => void;
+  /** 下载点击事件 */
+  onDownload?: () => void;
   /** 生成中状态配置 */
   generating?: {
     /** 进度百分比 (0-100) */
@@ -61,6 +64,8 @@ export interface DocumentCardProps {
   icon?: React.ReactNode;
   /** 点击事件 */
   onClick?: () => void;
+  /** 下载点击事件（hover 时显示下载图标，点击时触发） */
+  onDownload?: () => void;
   /** 生成中状态配置 */
   generating?: {
     /** 进度百分比 (0-100) */
@@ -83,6 +88,8 @@ export interface DocumentCardListProps {
   cards?: DocumentCardItem[];
   /** 点击卡片回调 */
   onCardClick?: (id: string) => void;
+  /** 点击下载回调 */
+  onCardDownload?: (id: string) => void;
   /** 自定义类名 */
   className?: string;
 }
@@ -133,6 +140,7 @@ export const DocumentCard = React.forwardRef<HTMLDivElement, DocumentCardProps>(
       researchPeriod,
       icon,
       onClick,
+      onDownload,
       generating,
       className,
     } = props;
@@ -171,7 +179,7 @@ export const DocumentCard = React.forwardRef<HTMLDivElement, DocumentCardProps>(
     return (
       <DocumentCardContainerPrimitive
         ref={ref}
-        className={className}
+        className={cn("group/card relative", className)}
         onClick={generating ? undefined : onClick}
       >
         {/* 生成中状态 */}
@@ -191,13 +199,33 @@ export const DocumentCard = React.forwardRef<HTMLDivElement, DocumentCardProps>(
           </>
         ) : (
           <>
-            {/* 头部区域 */}
-
-            <DocumentCardHeaderPrimitive
-              icon={icon ?? <DocumentCardDefaultIcon />}
-              title={title}
-              updateTime={updateTime ? `更新时间：${updateTime}` : undefined}
-            />
+            {/* 头部区域：下载图标仅在此区域内 Y 轴居中，且仅 hover 当前卡片时显示 */}
+            <div className="relative">
+              <DocumentCardHeaderPrimitive
+                icon={icon ?? <DocumentCardDefaultIcon />}
+                title={title}
+                updateTime={updateTime ? `更新时间：${updateTime}` : undefined}
+              />
+              <div
+                className={cn(
+                  "absolute right-0 top-1/2 -translate-y-1/2",
+                  "flex size-8 items-center justify-center rounded-[var(--radius-md)]",
+                  "opacity-0 transition-opacity duration-200 group-hover/card:opacity-100",
+                  "hover:bg-[var(--Container-bg-neutral-light)]",
+                  onDownload && "cursor-pointer",
+                )}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onDownload?.();
+                }}
+                aria-label="下载"
+              >
+                <Download
+                  className="size-4 text-[var(--Text-text-secondary)]"
+                  aria-hidden
+                />
+              </div>
+            </div>
 
             {/* 分割线 */}
             {hasExtraInfo && <DocumentCardSeparatorPrimitive />}
@@ -291,7 +319,13 @@ export const DocumentCardList = React.forwardRef<
   HTMLDivElement,
   DocumentCardListProps
 >((props, ref) => {
-  const { title = "文档列表", cards = [], onCardClick, className } = props;
+  const {
+    title = "文档列表",
+    cards = [],
+    onCardClick,
+    onCardDownload,
+    className,
+  } = props;
 
   return (
     <div ref={ref} className={className}>
@@ -323,6 +357,10 @@ export const DocumentCardList = React.forwardRef<
             onClick={
               card.onClick ||
               (onCardClick ? () => onCardClick(card.id) : undefined)
+            }
+            onDownload={
+              card.onDownload ||
+              (onCardDownload ? () => onCardDownload(card.id) : undefined)
             }
           />
         ))}

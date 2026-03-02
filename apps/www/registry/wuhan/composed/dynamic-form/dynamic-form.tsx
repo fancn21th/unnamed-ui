@@ -20,15 +20,9 @@ import {
   DynamicFormBodyLayout,
   DynamicFormFooterPrimitive,
 } from "@/registry/wuhan/blocks/dynamic-form/dynamic-form-01";
-import { Input } from "@/registry/wuhan/ui/input";
-import { Textarea } from "@/registry/wuhan/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/registry/wuhan/ui/select";
+import { BlockInput } from "@/registry/wuhan/composed/block-input/block-input";
+import { BlockSelect } from "@/registry/wuhan/composed/block-select/block-select";
+import { RadioGroup, RadioGroupItem } from "@/registry/wuhan/ui/radio-group";
 import { Switch } from "@/registry/wuhan/ui/switch";
 import { Slider } from "@/registry/wuhan/ui/slider";
 import {
@@ -709,52 +703,50 @@ function renderFieldControl(
   switch (type) {
     case "input":
       return (
-        <Input
-          id={field.name}
+        <BlockInput
+          className="bg-[var(--Container-bg-container)]"
+          value={(formField.value as string) ?? ""}
+          onChange={(val) => formField.onChange(val)}
+          onBlur={formField.onBlur}
           placeholder={placeholder}
           disabled={disabled}
-          aria-invalid={!!error}
-          className={cn("bg-[var(--Container-bg-container)]")}
-          {...formField}
-          value={formField.value as string}
+          danger={!!error}
         />
       );
 
     case "textarea":
       return (
-        <Textarea
-          id={field.name}
+        <BlockInput
+          className="bg-[var(--Container-bg-container)]"
+          multiline
+          rows={3}
+          value={(formField.value as string) ?? ""}
+          onChange={(val) => formField.onChange(val)}
+          onBlur={formField.onBlur}
           placeholder={placeholder}
           disabled={disabled}
-          aria-invalid={!!error}
-          className={cn("bg-[var(--Container-bg-container)]")}
-          {...formField}
-          value={formField.value as string}
+          danger={!!error}
         />
       );
 
     case "select":
       return (
-        <Select
+        <BlockSelect
           value={String(formField.value ?? "")}
-          onValueChange={formField.onChange}
+          onValueChange={(val) => {
+            const option = options?.find((o) => String(o.value) === val);
+            formField.onChange(option ? option.value : val);
+          }}
+          options={
+            options?.map((opt) => ({
+              label: opt.label,
+              value: String(opt.value),
+              disabled: opt.disabled,
+            })) ?? []
+          }
+          placeholder={placeholder}
           disabled={disabled}
-        >
-          <SelectTrigger id={field.name} aria-invalid={!!error}>
-            <SelectValue placeholder={placeholder} />
-          </SelectTrigger>
-          <SelectContent>
-            {options?.map((option) => (
-              <SelectItem
-                key={String(option.value)}
-                value={String(option.value)}
-                disabled={option.disabled}
-              >
-                {option.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        />
       );
 
     case "switch":
@@ -804,56 +796,60 @@ function renderFieldControl(
 
     case "number":
       return (
-        <Input
-          id={field.name}
+        <BlockInput
+          className="bg-[var(--Container-bg-container)]"
           type="number"
-          placeholder={placeholder}
-          disabled={disabled}
-          min={min}
-          max={max}
-          step={step}
-          aria-invalid={!!error}
-          {...formField}
-          value={formField.value as string | number}
-          onChange={(e) => {
-            const value = e.target.value === "" ? "" : Number(e.target.value);
+          value={
+            formField.value !== undefined && formField.value !== ""
+              ? String(formField.value)
+              : ""
+          }
+          onChange={(val) => {
+            const value = val === "" ? "" : Number(val);
             formField.onChange(value);
           }}
+          onBlur={formField.onBlur}
+          placeholder={placeholder}
+          disabled={disabled}
+          danger={!!error}
         />
       );
 
     case "radio":
       return (
-        <div className="flex gap-[var(--gap-2xl)]">
+        <RadioGroup
+          value={String(formField.value ?? "")}
+          onValueChange={(val) => {
+            const option = options?.find((o) => String(o.value) === val);
+            formField.onChange(option ? option.value : val);
+          }}
+          className="flex flex-row gap-[var(--gap-2xl)]"
+        >
           {options?.map((option) => (
             <label
               key={String(option.value)}
               className="flex items-center gap-2 cursor-pointer"
             >
-              <input
-                type="radio"
-                name={field.name}
+              <RadioGroupItem
                 value={String(option.value)}
-                checked={formField.value === option.value}
-                onChange={() => formField.onChange(option.value)}
                 disabled={disabled || option.disabled}
-                className="h-4 w-4"
               />
               <span className="text-sm">{option.label}</span>
             </label>
           ))}
-        </div>
+        </RadioGroup>
       );
 
     default:
       return (
-        <Input
-          id={field.name}
+        <BlockInput
+          className="bg-[var(--Container-bg-container)]"
+          value={(formField.value as string) ?? ""}
+          onChange={(val) => formField.onChange(val)}
+          onBlur={formField.onBlur}
           placeholder={placeholder}
           disabled={disabled}
-          aria-invalid={!!error}
-          {...formField}
-          value={formField.value as string}
+          danger={!!error}
         />
       );
   }

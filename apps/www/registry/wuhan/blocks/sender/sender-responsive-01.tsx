@@ -171,9 +171,9 @@ export const ResponsiveTextarea = React.forwardRef<
   const rafRef = React.useRef<number | null>(null);
   const lastHeightsRef = React.useRef({ single: 0, content: 0, multiMax: 0 });
   const lastOverflowRef = React.useRef<boolean | null>(null);
-  const overflowDebounceRef = React.useRef<ReturnType<typeof setTimeout> | null>(
-    null,
-  );
+  const overflowDebounceRef = React.useRef<ReturnType<
+    typeof setTimeout
+  > | null>(null);
 
   const runCheck = React.useCallback(
     (
@@ -211,8 +211,7 @@ export const ResponsiveTextarea = React.forwardRef<
         const sh = textarea.scrollHeight;
         textarea.style.height = origH;
         textarea.style.width = origW;
-        overflowLines =
-          Math.ceil((sh - pt - pb) / lineHeight) || 1;
+        overflowLines = Math.ceil((sh - pt - pb) / lineHeight) || 1;
       }
 
       // 单行高度取 lineHeight+padding 与实测 scrollHeight 的较大值，避免硬编码导致滚动条
@@ -244,7 +243,8 @@ export const ResponsiveTextarea = React.forwardRef<
       const newOverflow = overflowLines > 1;
       if (lastOverflowRef.current === newOverflow) return;
 
-      if (overflowDebounceRef.current) clearTimeout(overflowDebounceRef.current);
+      if (overflowDebounceRef.current)
+        clearTimeout(overflowDebounceRef.current);
       overflowDebounceRef.current = setTimeout(() => {
         overflowDebounceRef.current = null;
         if (lastOverflowRef.current === newOverflow) return;
@@ -281,7 +281,9 @@ export const ResponsiveTextarea = React.forwardRef<
       rafRef.current = requestAnimationFrame(() => {
         rafRef.current = null;
         if (!isOverflow) singleLineWidthRef.current = textarea.offsetWidth;
-        const overflowWidth = isOverflow ? singleLineWidthRef.current : undefined;
+        const overflowWidth = isOverflow
+          ? singleLineWidthRef.current
+          : undefined;
         runCheck(textarea, textarea.offsetWidth, overflowWidth);
       });
     });
@@ -290,7 +292,8 @@ export const ResponsiveTextarea = React.forwardRef<
     return () => {
       textarea.removeEventListener("input", handleInput);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      if (overflowDebounceRef.current) clearTimeout(overflowDebounceRef.current);
+      if (overflowDebounceRef.current)
+        clearTimeout(overflowDebounceRef.current);
       resizeObserver.disconnect();
     };
   }, [runCheck, isOverflow]);

@@ -37,6 +37,8 @@ export interface SplitPaneItemPrimitiveProps extends React.HTMLAttributes<HTMLDi
   headerClassName?: string;
   /** body 的自定义类名 */
   bodyClassName?: string;
+  /** body 的 content 自定义类名 */
+  contentClassName?: string;
   /** 容器的自定义类名 */
   containerClassName?: string;
   /** 是否为紧凑模式（收起状态），紧凑模式下会移除内边距和圆角，只显示图标 */
@@ -60,6 +62,7 @@ export const SplitPaneItemPrimitive = React.forwardRef<
       onCollapsibleClick,
       headerClassName,
       bodyClassName,
+      contentClassName,
       children,
       containerClassName,
       isCompact = false,
@@ -174,8 +177,8 @@ export const SplitPaneItemPrimitive = React.forwardRef<
 
           {/* Body 部分 - 滚动容器无 padding 使滚动条贴边，内容层保留 padding */}
           {!isCompact && (
-            <div className="flex-1 overflow-auto min-h-0">
-              <div className={cn("p-4", bodyClassName)}>{children}</div>
+            <div className={cn("flex-1 overflow-auto min-h-0", bodyClassName)}>
+              <div className={cn("p-4", contentClassName)}>{children}</div>
             </div>
           )}
         </div>

@@ -76,6 +76,10 @@ export interface TripleSplitPaneProps {
    */
   leftPopover?: PopoverConfig;
   /**
+   * 是否禁用中间面板的左侧展开按钮（当左侧面板收起时显示的展开按钮）
+   */
+  leftExpandButtonDisabled?: boolean;
+  /**
    * 容器的类名
    */
   className?: string;
@@ -115,7 +119,18 @@ const parseWidth = (
 export const TripleSplitPane = React.forwardRef<
   HTMLDivElement,
   TripleSplitPaneProps
->(({ left = {}, center = {}, right = {}, leftPopover, className }, ref) => {
+>(
+  (
+    {
+      left = {},
+      center = {},
+      right = {},
+      leftPopover,
+      leftExpandButtonDisabled = false,
+      className,
+    },
+    ref,
+  ) => {
   const {
     children: leftChildren,
     title: leftTitle,
@@ -292,7 +307,7 @@ export const TripleSplitPane = React.forwardRef<
     const button = (
       <button
         type="button"
-        onClick={toggleLeftPanel}
+        onClick={leftExpandButtonDisabled ? undefined : toggleLeftPanel}
         onMouseEnter={() =>
           !leftPopoverAlwaysOpen &&
           leftPopoverEnabled &&

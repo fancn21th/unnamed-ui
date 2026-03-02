@@ -292,7 +292,7 @@ const ThinkingStep = React.forwardRef<HTMLDivElement, ThinkingStepProps>(
       : [];
     const hasBlocksContent = renderedBlocks.length > 0;
     const blocksNode = hasBlocksContent ? (
-      <div className="flex flex-col gap-[var(--Gap-gap-md)]">
+      <div className="flex flex-col gap-[var(--Gap-gap-xl)]">
         {renderedBlocks}
       </div>
     ) : null;

@@ -239,6 +239,7 @@ const ThinkingStepItem = React.forwardRef<
           <ThinkingStepItemTitlePrimitive>
             {title}
           </ThinkingStepItemTitlePrimitive>
+          <ThinkingStepItemCollapseArrowPrimitive className="rotate-180" />
         </ThinkingStepItemHeaderPrimitive>
         {hasContent && (
           <ThinkingStepItemContentPrimitive

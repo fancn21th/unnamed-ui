@@ -207,10 +207,20 @@ export const ToggleButton = React.forwardRef<HTMLDivElement, ToggleButtonProps>(
 
     const isControlled = valueProp !== undefined || valuesProp !== undefined;
     const value = isControlled ? valueProp : internalValue;
-    const values = isControlled ? (valuesProp ?? []) : internalValues;
+    const values = React.useMemo(
+      () => (isControlled ? (valuesProp ?? []) : internalValues),
+      [isControlled, valuesProp, internalValues],
+    );
 
-    // 开发环境校验
-    if (process.env.NODE_ENV === "development") {
+    // 开发环境校验（兼容 Vite import.meta.env 与 Next.js process.env）
+    const isDev =
+      (typeof import.meta !== "undefined" &&
+        (import.meta as { env?: { DEV?: boolean } }).env?.DEV) ||
+      (typeof (globalThis as { process?: { env?: { NODE_ENV?: string } } })
+        .process !== "undefined" &&
+        (globalThis as { process?: { env?: { NODE_ENV?: string } } }).process
+          ?.env?.NODE_ENV === "development");
+    if (isDev) {
       if (valueProp !== undefined && valuesProp !== undefined) {
         console.warn(
           "[ToggleButton] 不能同时使用 value 和 values，请根据 multiple 选择其一",

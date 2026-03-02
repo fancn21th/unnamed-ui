@@ -172,10 +172,10 @@ export const SplitPaneItemPrimitive = React.forwardRef<
             )}
           </div>
 
-          {/* Body 部分 - 占满剩余空间 */}
+          {/* Body 部分 - 滚动容器无 padding 使滚动条贴边，内容层保留 padding */}
           {!isCompact && (
-            <div className={cn("flex-1 overflow-auto p-4", bodyClassName)}>
-              {children}
+            <div className="flex-1 overflow-auto min-h-0">
+              <div className={cn("p-4", bodyClassName)}>{children}</div>
             </div>
           )}
         </div>

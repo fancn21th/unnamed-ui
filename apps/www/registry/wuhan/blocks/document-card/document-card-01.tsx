@@ -103,7 +103,6 @@ export const DocumentCardContainerPrimitive = React.forwardRef<
         "rounded-[var(--radius-xl)]",
         "bg-[var(--Page-bg-page-brand)]",
         "border border-[var(--Border-border-brand-light)]",
-        "shadow-[var(--shadow-sm)]",
         "p-[var(--Padding-padding-com-xl)]",
         "transition-all",
         "duration-200",
@@ -153,7 +152,7 @@ export const DocumentCardHeaderPrimitive = React.forwardRef<
             className={cn(
               "font-[var(--font-family-CN)]",
               "font-semibold",
-              "font-size-4",
+              "font-size-3",
               "leading-[var(--line-height-4)]",
               "text-[var(--Text-text-title)]",
               "truncate",

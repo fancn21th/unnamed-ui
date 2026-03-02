@@ -504,7 +504,7 @@ function DateRangePicker({ value, onChange, disabled }: CustomFieldComponentProp
 根据字段配置生成 AI 兼容的 JSON Schema。
 
 ```tsx
-import { generateJsonSchema } from "@/registry/wuhan/composed/dynamic-form";
+import { generateJsonSchema } from "@/registry/wuhan/composed/dynamic-form-utils";
 
 const jsonSchema = generateJsonSchema(schema.fields);
 // 将 jsonSchema 提供给 AI，让 AI 按照这个规范输出
@@ -515,7 +515,7 @@ const jsonSchema = generateJsonSchema(schema.fields);
 从字段配置中提取默认值。
 
 ```tsx
-import { extractDefaultValues } from "@/registry/wuhan/composed/dynamic-form";
+import { extractDefaultValues } from "@/registry/wuhan/composed/dynamic-form-utils";
 
 const defaultValues = extractDefaultValues(schema.fields);
 ```
@@ -525,7 +525,7 @@ const defaultValues = extractDefaultValues(schema.fields);
 获取只读模式下的显示标签。
 
 ```tsx
-import { getDisplayLabel } from "@/registry/wuhan/composed/dynamic-form";
+import { getDisplayLabel } from "@/registry/wuhan/composed/dynamic-form-utils";
 
 const displayText = getDisplayLabel(value, field);
 // 对于 select: 返回对应的 label

@@ -35,7 +35,7 @@ export const StyledSender = styled.div`
       }
 
       &::placeholder {
-        color: #bfbfbf;
+        color: var(--Text-text-placeholder);
       }
     }
 

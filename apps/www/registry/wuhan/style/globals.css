@@ -405,6 +405,25 @@ button.unnamed-btn-reset[class*="Margin-margin-com-md"] { padding-top: var(--Mar
   --border-4: 4px;
 }
 
+/* 滚动条样式 - 仅显示滑块，使用设计 token */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--Border-divider-neutral-basic) transparent;
+}
+*::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-button,
+*::-webkit-scrollbar-corner {
+  display: none;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--Border-divider-neutral-basic);
+  border-radius: var(--radius-circle);
+}
+
 .dark {
   /* ==================== Semantic 语义化 - Dark (Figma) ==================== */
   --Page-bg-page: var(--Dark-Neutral-neutral-10);
@@ -548,8 +567,8 @@ button.unnamed-btn-reset[class*="Margin-margin-com-md"] { padding-top: var(--Mar
   --code-foreground: #b2afba;
   --code-highlight: #232326;
   --code-number: #7c7a85;
-  --selection: #b2afba;
-  --selection-foreground: #141414;
+  --selection: var(--Container-bg-brand-light-hover);
+  --selection-foreground: var(--Text-text-primary);
   --shadow-focus: 0 0 0 2px var(--Focusring-focusring-brand);
 }
 

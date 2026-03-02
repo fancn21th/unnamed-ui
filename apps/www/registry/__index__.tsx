@@ -313,6 +313,30 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "radio-group": {
+      name: "radio-group",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/wuhan/ui/radio-group.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/wuhan/ui/radio-group.tsx");
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object",
+          ) || item.name;
+        return { default: mod.default || mod[exportName] };
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     resizable: {
       name: "resizable",
       description: "",
@@ -2124,12 +2148,22 @@ export const Index: Record<string, Record<string, any>> = {
         "field",
         "dynamic-form-01",
         "status-tag",
+        "toggle-button",
+        "block-button",
+        "block-input",
+        "block-select",
+        "radio-group",
       ],
       files: [
         {
           path: "registry/wuhan/composed/dynamic-form/dynamic-form.tsx",
           type: "registry:component",
           target: "components/wuhan/composed/dynamic-form.tsx",
+        },
+        {
+          path: "registry/wuhan/composed/dynamic-form/dynamic-form-utils.ts",
+          type: "registry:component",
+          target: "components/wuhan/composed/dynamic-form-utils.ts",
         },
       ],
       component: React.lazy(async () => {
@@ -2383,7 +2417,7 @@ export const Index: Record<string, Record<string, any>> = {
       description:
         "Composed toggle button with single and multiple selection modes",
       type: "registry:block",
-      registryDependencies: ["toggle-button-01"],
+      registryDependencies: ["toggle-button-01", "tooltip"],
       files: [
         {
           path: "registry/wuhan/composed/toggle-button/toggle-button.tsx",

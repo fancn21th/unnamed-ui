@@ -492,17 +492,17 @@ export const ui: Registry["items"] = [
   //     },
   //   ],
   // },
-  // {
-  //   name: "radio-group",
-  //   type: "registry:ui",
-  //   dependencies: ["@radix-ui/react-radio-group"],
-  //   files: [
-  //     {
-  //       path: "ui/radio-group.tsx",
-  //       type: "registry:ui",
-  //     },
-  //   ],
-  // },
+  {
+    name: "radio-group",
+    type: "registry:ui",
+    dependencies: ["@radix-ui/react-radio-group"],
+    files: [
+      {
+        path: "ui/radio-group.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
   {
     name: "resizable",
     type: "registry:ui",

@@ -209,6 +209,19 @@
       ]
     },
     {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-radio-group"
+      ],
+      "files": [
+        {
+          "path": "registry/wuhan/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "resizable",
       "type": "registry:ui",
       "dependencies": [
@@ -1522,13 +1535,23 @@
         "slider",
         "field",
         "dynamic-form-01",
-        "status-tag"
+        "status-tag",
+        "toggle-button",
+        "block-button",
+        "block-input",
+        "block-select",
+        "radio-group"
       ],
       "files": [
         {
           "path": "registry/wuhan/composed/dynamic-form/dynamic-form.tsx",
           "type": "registry:component",
           "target": "components/wuhan/composed/dynamic-form.tsx"
+        },
+        {
+          "path": "registry/wuhan/composed/dynamic-form/dynamic-form-utils.ts",
+          "type": "registry:component",
+          "target": "components/wuhan/composed/dynamic-form-utils.ts"
         }
       ]
     },
@@ -1733,7 +1756,8 @@
       "title": "Toggle Button",
       "description": "Composed toggle button with single and multiple selection modes",
       "registryDependencies": [
-        "toggle-button-01"
+        "toggle-button-01",
+        "tooltip"
       ],
       "files": [
         {

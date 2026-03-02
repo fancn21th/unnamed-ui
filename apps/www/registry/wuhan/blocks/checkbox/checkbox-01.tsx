@@ -17,33 +17,33 @@ const CheckboxRootPrimitive = React.forwardRef<
         ref={ref}
         className={cn(
           "peer flex h-4 w-4 shrink-0 items-center justify-center rounded-sm",
-        "border border-[var(--Border-border-neutral)]",
-        "bg-[var(--Container-bg-container)]",
-        "transition-all duration-200",
-        // Hover state
-        "hover:border-[var(--Border-border-brand)]",
-        // Focus state
-        "focus-visible:outline-none",
-        "focus-visible:ring-2",
-        "focus-visible:ring-[var(--ring)]",
-        "focus-visible:ring-offset-2",
-        // Checked state
-        "data-[state=checked]:bg-[var(--Container-bg-brand)]",
-        "data-[state=checked]:border-[var(--Border-border-brand)]",
-        "data-[state=checked]:text-white",
-        // Indeterminate state
-        "data-[state=indeterminate]:bg-[var(--Container-bg-brand)]",
-        "data-[state=indeterminate]:border-[var(--Border-border-brand)]",
-        "data-[state=indeterminate]:text-white",
-        // Disabled state
-        "disabled:cursor-not-allowed",
-        "disabled:opacity-50",
-        "disabled:bg-[var(--Container-bg-container-disable)]",
-        "disabled:border-[var(--Border-border-neutral)]",
-        className,
-      )}
-      {...props}
-    />
+          "border border-[var(--Border-border-neutral)]",
+          "bg-[var(--Container-bg-container)]",
+          "transition-all duration-200",
+          // Hover state
+          "hover:border-[var(--Border-border-brand)]",
+          // Focus state
+          "focus-visible:outline-none",
+          "focus-visible:ring-2",
+          "focus-visible:ring-[var(--ring)]",
+          "focus-visible:ring-offset-2",
+          // Checked state
+          "data-[state=checked]:bg-[var(--Container-bg-brand)]",
+          "data-[state=checked]:border-[var(--Border-border-brand)]",
+          "data-[state=checked]:text-white",
+          // Indeterminate state
+          "data-[state=indeterminate]:bg-[var(--Container-bg-brand)]",
+          "data-[state=indeterminate]:border-[var(--Border-border-brand)]",
+          "data-[state=indeterminate]:text-white",
+          // Disabled state
+          "disabled:cursor-not-allowed",
+          "disabled:opacity-50",
+          "disabled:bg-[var(--Container-bg-container-disable)]",
+          "disabled:border-[var(--Border-border-neutral)]",
+          className,
+        )}
+        {...props}
+      />
     </Button>
   );
 });

@@ -12,7 +12,7 @@ import {
 } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { z } from "zod";
-import { Button } from "@/registry/wuhan/ui/button";
+import { Button } from "@/registry/wuhan/composed/block-button/block-button";
 import {
   DynamicFormLayoutPrimitive,
   DynamicFormHeaderPrimitive,
@@ -20,15 +20,9 @@ import {
   DynamicFormBodyLayout,
   DynamicFormFooterPrimitive,
 } from "@/registry/wuhan/blocks/dynamic-form/dynamic-form-01";
-import { Input } from "@/registry/wuhan/ui/input";
-import { Textarea } from "@/registry/wuhan/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/registry/wuhan/ui/select";
+import { BlockInput } from "@/registry/wuhan/composed/block-input/block-input";
+import { BlockSelect } from "@/registry/wuhan/composed/block-select/block-select";
+import { RadioGroup, RadioGroupItem } from "@/registry/wuhan/ui/radio-group";
 import { Switch } from "@/registry/wuhan/ui/switch";
 import { Slider } from "@/registry/wuhan/ui/slider";
 import {
@@ -39,10 +33,12 @@ import {
   FieldError as FieldErrorComponent,
 } from "@/registry/wuhan/ui/field";
 import { cn } from "@/lib/utils";
+import { StatusTag } from "@/registry/wuhan/composed/status-tag/status-tag";
 import {
-  StatusTag,
-  type StatusType,
-} from "@/registry/wuhan/composed/status-tag/status-tag";
+  extractDefaultValues,
+  getDisplayLabel,
+  pickValues,
+} from "./dynamic-form-utils";
 
 // ==================== 类型定义 ====================
 
@@ -357,7 +353,7 @@ export const DynamicForm = React.forwardRef<DynamicFormRef, DynamicFormProps>(
 
     // 初始化表单
     const form = useForm({
-      // @ts-ignore - zodResolver type compatibility issue with different zod versions
+      // @ts-expect-error - zodResolver type compatibility issue with different zod versions
       resolver: validateSchema ? zodResolver(validateSchema) : undefined,
       defaultValues: mergedDefaultValues,
       mode: "onChange",
@@ -542,6 +538,7 @@ export const DynamicForm = React.forwardRef<DynamicFormRef, DynamicFormProps>(
               <Button
                 type="button"
                 variant="outline"
+                color="secondary"
                 onClick={() => reset(mergedDefaultValues)}
               >
                 {resetText}
@@ -708,52 +705,50 @@ function renderFieldControl(
   switch (type) {
     case "input":
       return (
-        <Input
-          id={field.name}
+        <BlockInput
+          className="bg-[var(--Container-bg-container)]"
+          value={(formField.value as string) ?? ""}
+          onChange={(val) => formField.onChange(val)}
+          onBlur={formField.onBlur}
           placeholder={placeholder}
           disabled={disabled}
-          aria-invalid={!!error}
-          className={cn("bg-[var(--Container-bg-container)]")}
-          {...formField}
-          value={formField.value as string}
+          danger={!!error}
         />
       );
 
     case "textarea":
       return (
-        <Textarea
-          id={field.name}
+        <BlockInput
+          className="bg-[var(--Container-bg-container)]"
+          multiline
+          rows={3}
+          value={(formField.value as string) ?? ""}
+          onChange={(val) => formField.onChange(val)}
+          onBlur={formField.onBlur}
           placeholder={placeholder}
           disabled={disabled}
-          aria-invalid={!!error}
-          className={cn("bg-[var(--Container-bg-container)]")}
-          {...formField}
-          value={formField.value as string}
+          danger={!!error}
         />
       );
 
     case "select":
       return (
-        <Select
+        <BlockSelect
           value={String(formField.value ?? "")}
-          onValueChange={formField.onChange}
+          onValueChange={(val) => {
+            const option = options?.find((o) => String(o.value) === val);
+            formField.onChange(option ? option.value : val);
+          }}
+          options={
+            options?.map((opt) => ({
+              label: opt.label,
+              value: String(opt.value),
+              disabled: opt.disabled,
+            })) ?? []
+          }
+          placeholder={placeholder}
           disabled={disabled}
-        >
-          <SelectTrigger id={field.name} aria-invalid={!!error}>
-            <SelectValue placeholder={placeholder} />
-          </SelectTrigger>
-          <SelectContent>
-            {options?.map((option) => (
-              <SelectItem
-                key={String(option.value)}
-                value={String(option.value)}
-                disabled={option.disabled}
-              >
-                {option.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        />
       );
 
     case "switch":
@@ -803,204 +798,61 @@ function renderFieldControl(
 
     case "number":
       return (
-        <Input
-          id={field.name}
+        <BlockInput
+          className="bg-[var(--Container-bg-container)]"
           type="number"
-          placeholder={placeholder}
-          disabled={disabled}
-          min={min}
-          max={max}
-          step={step}
-          aria-invalid={!!error}
-          {...formField}
-          value={formField.value as string | number}
-          onChange={(e) => {
-            const value = e.target.value === "" ? "" : Number(e.target.value);
+          value={
+            formField.value !== undefined && formField.value !== ""
+              ? String(formField.value)
+              : ""
+          }
+          onChange={(val) => {
+            const value = val === "" ? "" : Number(val);
             formField.onChange(value);
           }}
+          onBlur={formField.onBlur}
+          placeholder={placeholder}
+          disabled={disabled}
+          danger={!!error}
         />
       );
 
     case "radio":
       return (
-        <div className="flex gap-2">
+        <RadioGroup
+          value={String(formField.value ?? "")}
+          onValueChange={(val) => {
+            const option = options?.find((o) => String(o.value) === val);
+            formField.onChange(option ? option.value : val);
+          }}
+          className="flex flex-row gap-[var(--gap-2xl)]"
+        >
           {options?.map((option) => (
             <label
               key={String(option.value)}
               className="flex items-center gap-2 cursor-pointer"
             >
-              <input
-                type="radio"
-                name={field.name}
+              <RadioGroupItem
                 value={String(option.value)}
-                checked={formField.value === option.value}
-                onChange={() => formField.onChange(option.value)}
                 disabled={disabled || option.disabled}
-                className="h-4 w-4"
               />
               <span className="text-sm">{option.label}</span>
             </label>
           ))}
-        </div>
+        </RadioGroup>
       );
 
     default:
       return (
-        <Input
-          id={field.name}
+        <BlockInput
+          className="bg-[var(--Container-bg-container)]"
+          value={(formField.value as string) ?? ""}
+          onChange={(val) => formField.onChange(val)}
+          onBlur={formField.onBlur}
           placeholder={placeholder}
           disabled={disabled}
-          aria-invalid={!!error}
-          {...formField}
-          value={formField.value as string}
+          danger={!!error}
         />
       );
-  }
-}
-
-// ==================== Schema 工具函数 ====================
-
-/**
- * 从字段 Schema 中提取默认值
- * @param fields 字段配置数组
- * @returns 默认值对象
- * @public
- */
-export function extractDefaultValues(
-  fields: FieldSchema[],
-): Record<string, unknown> {
-  const defaultValues: Record<string, unknown> = {};
-
-  fields.forEach((field) => {
-    if (field.defaultValue !== undefined) {
-      defaultValues[field.name] = field.defaultValue;
-    } else {
-      // 根据字段类型设置合理的默认值
-      switch (field.type) {
-        case "checkbox":
-          defaultValues[field.name] = false;
-          break;
-        case "switch":
-          defaultValues[field.name] = false;
-          break;
-        case "number":
-          defaultValues[field.name] = field.min ?? 0;
-          break;
-        case "slider":
-          defaultValues[field.name] = field.range?.min ?? 0;
-          break;
-        default:
-          defaultValues[field.name] = "";
-      }
-    }
-  });
-
-  return defaultValues;
-}
-
-/**
- * 根据字段值和选项获取显示标签
- * 用于只读模式下显示选择类字段的标签
- * @param value 字段值
- * @param field 字段配置
- * @returns 显示标签
- * @public
- */
-export function getDisplayLabel(value: unknown, field: FieldSchema): string {
-  if (value === undefined || value === null || value === "") {
-    return "-";
-  }
-
-  // 对于选择类字段，查找对应的 label
-  if (field.options && (field.type === "select" || field.type === "radio")) {
-    const option = field.options.find((opt) => opt.value === value);
-    return option?.label ?? String(value);
-  }
-
-  // 对于 checkbox 和 switch，转换为是/否
-  if (field.type === "checkbox" || field.type === "switch") {
-    return value ? "是" : "否";
-  }
-
-  // 其他类型直接返回字符串值
-  return String(value);
-}
-
-/**
- * 过滤出指定的字段值
- * @param values 所有字段值
- * @param nameList 需要过滤的字段名列表
- * @returns 过滤后的字段值
- * @public
- */
-export function pickValues(
-  values: Record<string, unknown>,
-  nameList: string[],
-): Record<string, unknown> {
-  const picked: Record<string, unknown> = {};
-  nameList.forEach((name) => {
-    if (name in values) {
-      picked[name] = values[name];
-    }
-  });
-  return picked;
-}
-
-/**
- * 根据字段配置生成 AI 消息输出规范的 JSON Schema
- * 这个函数可以帮助 AI 理解表单结构并生成符合规范的表单配置
- * @param fields 字段配置数组
- * @returns JSON Schema
- */
-export function generateJsonSchema(fields: FieldSchema[]) {
-  const properties: Record<string, unknown> = {};
-  const required: string[] = [];
-
-  fields.forEach((field) => {
-    const property: Record<string, unknown> = {
-      type: getJsonSchemaType(field.type),
-      description: field.description || field.label,
-    };
-
-    // 为选择类字段添加枚举
-    if (field.options && field.type !== "checkbox") {
-      property.enum = field.options.map((opt) => opt.value);
-    }
-
-    // 为数字类型添加范围
-    if (field.type === "number" || field.type === "slider") {
-      if (field.min !== undefined) property.minimum = field.min;
-      if (field.max !== undefined) property.maximum = field.max;
-    }
-
-    properties[field.name] = property;
-
-    if (field.required) {
-      required.push(field.name);
-    }
-  });
-
-  return {
-    type: "object",
-    properties,
-    required,
-  };
-}
-
-/**
- * 将表单字段类型映射到 JSON Schema 类型
- * @param fieldType 字段类型
- * @returns JSON Schema 类型
- */
-function getJsonSchemaType(fieldType: string): string {
-  switch (fieldType) {
-    case "number":
-    case "slider":
-      return "number";
-    case "checkbox":
-    case "switch":
-      return "boolean";
-    default:
-      return "string";
   }
 }

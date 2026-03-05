@@ -110,7 +110,7 @@ interface MessageGeneratingPrimitiveProps extends React.HTMLAttributes<HTMLDivEl
 const MessageGeneratingPrimitive = React.forwardRef<
   HTMLDivElement,
   MessageGeneratingPrimitiveProps
->(({ indicator, text, className, ...props }, ref) => {
+>(({ indicator = <LoadingDots />, text, className, ...props }, ref) => {
   return (
     <div
       ref={ref}

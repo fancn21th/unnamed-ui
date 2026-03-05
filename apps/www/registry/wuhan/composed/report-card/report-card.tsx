@@ -9,7 +9,7 @@ import {
   ReportCardContainerPrimitive,
   ReportCardDefaultIcon,
 } from "@/registry/wuhan/blocks/report-card/report-card-01";
-import { Ellipsis, Trash2, Pencil, Copy } from "lucide-react";
+import { MoreHorizontal, Trash2, Pencil, Copy } from "lucide-react";
 
 // ==================== 类型定义 ====================
 
@@ -130,7 +130,8 @@ const CardActionsMenu = ({
             type="button"
             onClick={onEdit}
             className={cn(
-              "flex items-center gap-[var(--Gap-gap-md)]",
+              "flex items-center justify-start gap-[var(--Gap-gap-md)]",
+              "w-full",
               "py-[var(--Gap-gap-xs)] px-[var(--Padding-padding-com-md)]",
               "rounded-[var(--radius-lg)]",
               "cursor-pointer",
@@ -152,7 +153,8 @@ const CardActionsMenu = ({
             type="button"
             onClick={onDuplicate}
             className={cn(
-              "flex items-center gap-[var(--Gap-gap-md)]",
+              "flex items-center justify-start gap-[var(--Gap-gap-md)]",
+              "w-full",
               "py-[var(--Gap-gap-xs)] px-[var(--Padding-padding-com-md)]",
               "rounded-[var(--radius-lg)]",
               "cursor-pointer",
@@ -174,7 +176,8 @@ const CardActionsMenu = ({
             type="button"
             onClick={onDelete}
             className={cn(
-              "flex items-center gap-[var(--Gap-gap-md)]",
+              "flex items-center justify-start gap-[var(--Gap-gap-md)]",
+              "w-full",
               "py-[var(--Gap-gap-xs)] px-[var(--Padding-padding-com-md)]",
               "rounded-[var(--radius-lg)]",
               "cursor-pointer",
@@ -232,28 +235,6 @@ export const ReportCard = React.forwardRef<HTMLDivElement, ReportCardProps>(
       className,
     } = props;
     const [open, setOpen] = React.useState(false);
-    const closeTimer = React.useRef<number | null>(null);
-
-    // 清除关闭定时器
-    const clearCloseTimer = () => {
-      if (closeTimer.current) {
-        window.clearTimeout(closeTimer.current);
-        closeTimer.current = null;
-      }
-    };
-
-    // 延迟关闭
-    const scheduleClose = () => {
-      clearCloseTimer();
-      closeTimer.current = window.setTimeout(() => {
-        setOpen(false);
-      }, 150); // 150ms 延迟，给用户时间跨过间隙
-    };
-
-    // 清理定时器
-    React.useEffect(() => {
-      return () => clearCloseTimer();
-    }, []);
 
     // 处理 checkbox 变化
     const handleSelectChange = React.useCallback(
@@ -292,13 +273,17 @@ export const ReportCard = React.forwardRef<HTMLDivElement, ReportCardProps>(
           // 用户自定义操作区域
           <div onClick={(e) => e.stopPropagation()}>{action}</div>
         ) : showDefaultAction ? (
-          // 默认操作按钮（与 file-card 一致：默认隐藏，hover 卡片时显示）
+          // 默认操作按钮（与 file-card 一致：默认隐藏，hover 卡片时显示，点击打开菜单）
           <Popover.Root open={open} onOpenChange={setOpen}>
             <Popover.Trigger asChild>
-              <span
+              <div
+                role="button"
+                tabIndex={disabled ? -1 : 0}
+                aria-label="更多操作"
+                aria-disabled={disabled}
                 className={cn(
-                  "flex items-center justify-center",
                   "w-6 h-6",
+                  "flex items-center justify-center",
                   "rounded-[var(--radius-md)]",
                   "p-[var(--Gap-gap-xs)]",
                   "transition-all duration-200",
@@ -311,25 +296,29 @@ export const ReportCard = React.forwardRef<HTMLDivElement, ReportCardProps>(
                   open && "bg-[var(--Container-bg-neutral-light-hover)]",
                   // 仅 hover icon 时底色变化
                   "hover:bg-[var(--Container-bg-neutral-light-hover)]",
+                  // 禁用状态
+                  disabled && "cursor-not-allowed opacity-50",
+                  // 焦点状态（非禁用）
+                  !disabled &&
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]",
                   "cursor-pointer",
                 )}
-                aria-label="更多操作"
-                onMouseEnter={() => {
-                  clearCloseTimer();
-                  setOpen(true);
+                onKeyDown={(e) => {
+                  if (disabled) return;
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setOpen((prev) => !prev);
+                  }
                 }}
-                onMouseLeave={scheduleClose}
               >
-                <Ellipsis className="size-4 text-[var(--Text-text-secondary)]" />
-              </span>
+                <MoreHorizontal className="size-4 text-[var(--Text-text-secondary)]" />
+              </div>
             </Popover.Trigger>
             <Popover.Portal>
               <Popover.Content
                 side="bottom"
                 align="end"
                 sideOffset={8}
-                onMouseEnter={clearCloseTimer}
-                onMouseLeave={scheduleClose}
                 className={cn("z-50")}
               >
                 <CardActionsMenu

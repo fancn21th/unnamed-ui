@@ -16,8 +16,7 @@ import {
   ThinkingStepItemRegularContentPrimitive,
   ThinkingStepItemToolCallPrimitive,
   ThinkingStepItemFileListPrimitive,
-  type ThinkingSemanticStatus,
-  type ThinkingStepItemStatus,
+  resolveThinkingStepItemStatus,
   type ThinkingStepItemFileStatus,
   type ThinkingStepItemPrimitiveProps,
 } from "@/registry/wuhan/blocks/thinking-step-item/thinking-step-item-01";
@@ -38,25 +37,6 @@ const ThinkingStepItemCustomPrimitive = ({
       {children}
     </div>
   );
-};
-
-const resolveThinkingStepItemStatus = (
-  status: ThinkingStepItemStatus | undefined,
-): ThinkingSemanticStatus => {
-  switch (status) {
-    case "loading":
-      return "running";
-    case "cancel":
-      return "cancelled";
-    case "success":
-    case "error":
-    case "idle":
-    case "running":
-    case "cancelled":
-      return status;
-    default:
-      return "running";
-  }
 };
 
 /**
@@ -239,7 +219,6 @@ const ThinkingStepItem = React.forwardRef<
           <ThinkingStepItemTitlePrimitive>
             {title}
           </ThinkingStepItemTitlePrimitive>
-          <ThinkingStepItemCollapseArrowPrimitive className="rotate-180" />
         </ThinkingStepItemHeaderPrimitive>
         {hasContent && (
           <ThinkingStepItemContentPrimitive

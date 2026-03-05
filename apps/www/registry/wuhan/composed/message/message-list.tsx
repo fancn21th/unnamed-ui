@@ -62,8 +62,12 @@ export interface AIMessageItem extends Omit<MessageItem, "role"> {
   role: "ai";
   /** AI 消息状态 */
   status?: AIMessageStatus;
-  /** 生成中自定义内容 */
+  /** 生成中且无内容时的自定义内容 */
   generatingContent?: React.ReactNode;
+  /** 生成中且有流式内容时的后缀（默认无） */
+  generatingSuffix?: React.ReactNode;
+  /** 生成中默认文案，用于 i18n */
+  generatingText?: string;
   /** 失败自定义内容 */
   errorContent?: React.ReactNode;
 }
@@ -237,28 +241,31 @@ const MessageListItem = React.memo(function MessageListItem({
             <AIMessage
               status={message.status}
               generatingContent={message.generatingContent}
+              generatingSuffix={message.generatingSuffix}
+              generatingText={message.generatingText}
               errorContent={message.errorContent}
               onClick={handleClick}
             >
               {renderContent(message.content, message)}
             </AIMessage>
-            {(message.feedback !== undefined || showDefaultFeedback) && (
-              <div
-                className={cn(
-                  "flex justify-start min-h-[32px] mt-[var(--Gap-gap-xs)]",
-                  !isLastAIMessage &&
-                    "opacity-0 group-hover/message:opacity-100 transition-opacity",
-                )}
-              >
-                {message.feedback ?? (
-                  <MessageFeedbackActions
-                    role="ai"
-                    textToCopy={message.contentForCopy}
-                    align="left"
-                  />
-                )}
-              </div>
-            )}
+            {(message.feedback !== undefined || showDefaultFeedback) &&
+              message.status !== "generating" && (
+                <div
+                  className={cn(
+                    "flex justify-start min-h-[32px] mt-[var(--Gap-gap-xs)]",
+                    !isLastAIMessage &&
+                      "opacity-0 group-hover/message:opacity-100 transition-opacity",
+                  )}
+                >
+                  {message.feedback ?? (
+                    <MessageFeedbackActions
+                      role="ai"
+                      textToCopy={message.contentForCopy}
+                      align="left"
+                    />
+                  )}
+                </div>
+              )}
           </div>
         </div>
       );

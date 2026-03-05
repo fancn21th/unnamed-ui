@@ -4,6 +4,7 @@ import * as React from "react";
 import {
   MessageAIPrimitive,
   MessageUserPrimitive,
+  MessageGeneratingPrimitive,
   type AIMessagePrimitiveProps,
   type UserMessagePrimitiveProps,
 } from "@/registry/wuhan/blocks/message/message-01";
@@ -34,10 +35,20 @@ interface AIMessageProps extends AIMessagePrimitiveProps {
    */
   errorMessage?: React.ReactNode;
   /**
-   * 生成中时的自定义内容
-   * 可用于显示骨架屏、加载动画等
+   * 生成中且无内容时的自定义内容（如骨架屏、完整 loading 等）
+   * 不传时使用内置默认 MessageGeneratingPrimitive
    */
   generatingContent?: React.ReactNode;
+  /**
+   * 生成中且有流式内容时的后缀
+   * 不传时默认无后缀
+   */
+  generatingSuffix?: React.ReactNode;
+  /**
+   * 内置默认的生成中文案，用于 i18n
+   * @default "正在思考中..."
+   */
+  generatingText?: string;
   /**
    * 生成失败时的自定义内容
    * 可用于显示自定义错误界面
@@ -58,11 +69,8 @@ interface AIMessageProps extends AIMessagePrimitiveProps {
  * // 正常状态
  * <AIMessage>这是 AI 的回复内容</AIMessage>
  *
- * // 生成中状态
- * <AIMessage
- *   status="generating"
- *   generatingContent={<LoadingDots />}
- * />
+ * // 生成中状态（默认仅文案，无动画）
+ * <AIMessage status="generating" generatingText="正在思考中..." />
  *
  * // 失败状态
  * <AIMessage
@@ -80,6 +88,8 @@ const AIMessage = React.forwardRef<HTMLDivElement, AIMessageProps>(
       status = "idle",
       errorMessage,
       generatingContent,
+      generatingSuffix,
+      generatingText = "正在思考中...",
       errorContent,
       className,
       ...props
@@ -87,15 +97,45 @@ const AIMessage = React.forwardRef<HTMLDivElement, AIMessageProps>(
     ref,
   ) => {
     // 根据状态计算要显示的内容
+    // generating 时：
+    // - 无内容：显示 generatingContent 或内置 MessageGeneratingPrimitive（仅文案，无动画）
+    // - 有内容：显示流式内容 + generatingSuffix（默认无后缀）
     const content = React.useMemo(() => {
       if (status === "generating") {
-        return generatingContent !== undefined ? generatingContent : null;
+        const hasContent = children != null && children !== "";
+        if (hasContent) {
+          const suffix =
+            generatingSuffix !== undefined
+              ? generatingSuffix
+              : generatingContent;
+          return (
+            <>
+              {children}
+              {suffix}
+            </>
+          );
+        }
+        const fullNode =
+          generatingContent !== undefined ? (
+            generatingContent
+          ) : (
+            <MessageGeneratingPrimitive text={generatingText} />
+          );
+        return fullNode;
       }
       if (status === "failed") {
         return errorContent !== undefined ? errorContent : errorMessage;
       }
       return children;
-    }, [status, generatingContent, errorContent, errorMessage, children]);
+    }, [
+      status,
+      generatingContent,
+      generatingSuffix,
+      generatingText,
+      errorContent,
+      errorMessage,
+      children,
+    ]);
 
     // 生成中时使用 polite 让屏幕阅读器播报更新
     const ariaLive = status === "generating" ? "polite" : undefined;

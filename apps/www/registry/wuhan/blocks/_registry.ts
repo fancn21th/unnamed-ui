@@ -318,9 +318,37 @@ export const blocks: Registry["items"] = [
     registryDependencies: ["style", "collapsible"],
     files: [
       {
+        path: "blocks/thinking-step-item/types.ts",
+        type: "registry:component",
+        target: "components/wuhan/blocks/thinking-step-item/types.ts",
+      },
+      {
+        path: "blocks/thinking-step-item/step-item-primitives.tsx",
+        type: "registry:component",
+        target:
+          "components/wuhan/blocks/thinking-step-item/step-item-primitives.tsx",
+      },
+      {
+        path: "blocks/thinking-step-item/step-item-status.tsx",
+        type: "registry:component",
+        target:
+          "components/wuhan/blocks/thinking-step-item/step-item-status.tsx",
+      },
+      {
+        path: "blocks/thinking-step-item/tool-call-chip.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/thinking-step-item/tool-call-chip.tsx",
+      },
+      {
+        path: "blocks/thinking-step-item/file-list-chip.tsx",
+        type: "registry:component",
+        target: "components/wuhan/blocks/thinking-step-item/file-list-chip.tsx",
+      },
+      {
         path: "blocks/thinking-step-item/thinking-step-item-01.tsx",
         type: "registry:component",
-        target: "components/wuhan/blocks/thinking-step-item-01.tsx",
+        target:
+          "components/wuhan/blocks/thinking-step-item/thinking-step-item-01.tsx",
       },
     ],
   },

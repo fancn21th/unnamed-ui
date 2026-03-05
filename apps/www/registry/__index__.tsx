@@ -905,14 +905,44 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["style", "collapsible"],
       files: [
         {
+          path: "registry/wuhan/blocks/thinking-step-item/types.ts",
+          type: "registry:component",
+          target: "components/wuhan/blocks/thinking-step-item/types.ts",
+        },
+        {
+          path: "registry/wuhan/blocks/thinking-step-item/step-item-primitives.tsx",
+          type: "registry:component",
+          target:
+            "components/wuhan/blocks/thinking-step-item/step-item-primitives.tsx",
+        },
+        {
+          path: "registry/wuhan/blocks/thinking-step-item/step-item-status.tsx",
+          type: "registry:component",
+          target:
+            "components/wuhan/blocks/thinking-step-item/step-item-status.tsx",
+        },
+        {
+          path: "registry/wuhan/blocks/thinking-step-item/tool-call-chip.tsx",
+          type: "registry:component",
+          target:
+            "components/wuhan/blocks/thinking-step-item/tool-call-chip.tsx",
+        },
+        {
+          path: "registry/wuhan/blocks/thinking-step-item/file-list-chip.tsx",
+          type: "registry:component",
+          target:
+            "components/wuhan/blocks/thinking-step-item/file-list-chip.tsx",
+        },
+        {
           path: "registry/wuhan/blocks/thinking-step-item/thinking-step-item-01.tsx",
           type: "registry:component",
-          target: "components/wuhan/blocks/thinking-step-item-01.tsx",
+          target:
+            "components/wuhan/blocks/thinking-step-item/thinking-step-item-01.tsx",
         },
       ],
       component: React.lazy(async () => {
         const mod =
-          await import("@/registry/wuhan/blocks/thinking-step-item/thinking-step-item-01.tsx");
+          await import("@/registry/wuhan/blocks/thinking-step-item/types.ts");
         const exportName =
           Object.keys(mod).find(
             (key) =>

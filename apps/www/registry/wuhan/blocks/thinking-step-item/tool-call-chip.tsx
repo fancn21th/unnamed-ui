@@ -122,13 +122,13 @@ export const ThinkingStepItemToolCallPrimitive = React.forwardRef<
     {...props}
   >
     {icon && (
-      <div className="flex-shrink-0 h-[var(--line-height-1)] flex items-center justify-center">
+      <div className="flex-shrink-0 h-6 flex items-center justify-center">
         <ThinkingStepItemToolCallIconPrimitive>
           {icon}
         </ThinkingStepItemToolCallIconPrimitive>
       </div>
     )}
-    <div>
+    <div className="leading-[var(--line-height-2)]">
       {title && (
         <ThinkingStepItemToolCallTitlePrimitive>
           {title}

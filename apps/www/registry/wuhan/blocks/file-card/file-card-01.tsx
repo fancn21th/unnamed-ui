@@ -633,8 +633,8 @@ export const FileCardActionPrimitive = React.memo(
             "transition-all duration-200",
             "flex-shrink-0",
             // 默认隐藏，hover 卡片时显示（此时无底色）
-            "opacity-0",
-            "group-hover/file-card:opacity-100",
+            "hidden",
+            "group-hover/file-card:flex",
             // 仅 hover icon 时底色变化
             "hover:bg-[var(--Container-bg-neutral-light-hover)]",
             // 禁用状态
@@ -736,6 +736,18 @@ export const FileCardActionPopoverPrimitive = React.memo(
       const isControlled = open !== undefined;
       const [localOpen, setLocalOpen] = React.useState(false);
       const openValue = isControlled ? open : localOpen;
+
+      // 关闭时延迟隐藏 trigger，避免 popover 内容在定位参考丢失后跳到左上角
+      const [isClosing, setIsClosing] = React.useState(false);
+      const prevOpenRef = React.useRef(openValue);
+      React.useEffect(() => {
+        if (prevOpenRef.current && !openValue) {
+          setIsClosing(true);
+          const t = setTimeout(() => setIsClosing(false), 250);
+          return () => clearTimeout(t);
+        }
+        prevOpenRef.current = openValue;
+      }, [openValue]);
 
       const handleOpenChange = React.useCallback(
         (newOpen: boolean) => {
@@ -845,10 +857,10 @@ export const FileCardActionPopoverPrimitive = React.memo(
                 "transition-all duration-200",
                 "flex-shrink-0",
                 // 默认隐藏，hover 卡片时显示（此时无底色）
-                "opacity-0",
-                "group-hover/file-card:opacity-100",
-                // popover 展开时 icon 保持显示且保持底色
-                openValue && "opacity-100",
+                "hidden",
+                "group-hover/file-card:flex",
+                // popover 展开或关闭动画中 icon 保持显示，避免内容跳到左上角
+                (openValue || isClosing) && "flex",
                 openValue && "bg-[var(--Container-bg-neutral-light-hover)]",
                 // 仅 hover icon 时底色变化
                 "hover:bg-[var(--Container-bg-neutral-light-hover)]",
@@ -1193,7 +1205,3 @@ export const FileCardErrorIcon = ({ className }: { className?: string }) => (
     <line x1="9" y1="9" x2="15" y2="15" />
   </svg>
 );
-
-// ==================== 工具函数导出 ====================
-
-export { resolveStatus, isValidIcon };

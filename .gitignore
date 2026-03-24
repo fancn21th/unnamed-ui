@@ -38,3 +38,4 @@ pnpm-debug.log*
 *.swp
 *.swo
 *~
+apps/www/registry/error.log

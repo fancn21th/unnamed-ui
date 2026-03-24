@@ -6,12 +6,26 @@ import { AvatarHeader } from "@/registry/wuhan/composed/avatar-header/avatar-hea
 import { Button } from "@/registry/wuhan/ui/button";
 import { Menu, Plus, Search, Sparkles, Trash2 } from "lucide-react";
 
+const DEMO_CONVERSATIONS_UPDATED_AT = 1_700_000_000_000;
+
 export default function SidebarDemo() {
   const [searchQuery, setSearchQuery] = React.useState("");
   const [conversations] = React.useState([
-    { id: "1", title: "如何学习 React", updatedAt: Date.now() },
-    { id: "2", title: "TypeScript 最佳实践", updatedAt: Date.now() },
-    { id: "3", title: "前端性能优化技巧", updatedAt: Date.now() },
+    {
+      id: "1",
+      title: "如何学习 React",
+      updatedAt: DEMO_CONVERSATIONS_UPDATED_AT,
+    },
+    {
+      id: "2",
+      title: "TypeScript 最佳实践",
+      updatedAt: DEMO_CONVERSATIONS_UPDATED_AT,
+    },
+    {
+      id: "3",
+      title: "前端性能优化技巧",
+      updatedAt: DEMO_CONVERSATIONS_UPDATED_AT,
+    },
   ]);
   const [currentConversationId, setCurrentConversationId] = React.useState<
     string | null

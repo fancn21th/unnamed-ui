@@ -90,7 +90,7 @@ export default function DynamicFormAIScenario() {
     <div className="space-y-4">
       <div className="rounded-md border p-4">
         <p className="mb-2 text-sm text-muted-foreground">
-          💡 AI 场景：用户说 "帮我规划一次旅行"，AI
+          💡 AI 场景：用户说「帮我规划一次旅行」，AI
           返回以下表单让用户填写详细信息
         </p>
         <Button

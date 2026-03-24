@@ -209,7 +209,7 @@ export default function MarkdownDemo() {
           <Markdown content={content} status={status} />
         ) : (
           <div className="empty-placeholder">
-            <p>点击右上角\"重新渲染\"按钮开始流式输出演示</p>
+            <p>点击右上角「重新渲染」按钮开始流式输出演示</p>
           </div>
         )}
       </div>

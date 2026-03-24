@@ -32,25 +32,8 @@ const getStatusIcon = (status: string) => {
   }
 };
 
-// 根据状态获取图标
-const getStatusIconForStep = (status: string) => {
-  switch (status) {
-    case "completed":
-      return (
-        <CheckCircle2 className="size-4 text-[var(--Text-text-success)]" />
-      );
-    case "running":
-      return (
-        <Loader2 className="size-4 text-[var(--Text-text-brand)] animate-spin" />
-      );
-    case "pending":
-    default:
-      return <Circle className="size-4 text-[var(--Text-text-tertiary)]" />;
-  }
-};
-
 export default function TaskCardDemo() {
-  const [items, setItems] = useState<TaskCardItem[]>(initialItems);
+  const [items] = useState<TaskCardItem[]>(initialItems);
   const [isOpen, setIsOpen] = useState(false);
 
   // 获取当前进行中的步骤

@@ -4,10 +4,6 @@ import * as React from "react";
 import { useState } from "react";
 import {
   GoalCardPrimitive,
-  GoalCardContainerPrimitive,
-  GoalCardHeaderPrimitive,
-  GoalCardProgressPrimitive,
-  GoalCardAiIcon,
   type GoalCardSemanticStatus,
 } from "@/registry/wuhan/blocks/goal-card/goal-card-01";
 

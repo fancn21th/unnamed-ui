@@ -8,6 +8,8 @@ import type {
 import { markdownConfig } from "./config";
 // import CustomSource from '@/components/Chat/CustomSource';
 import CustomSources from "@/registry/wuhan/composed/custom-sources/custom-sources";
+import type { CustomSourcesProps } from "@/registry/wuhan/composed/custom-sources/custom-sources";
+import * as React from "react";
 import { lazy, Suspense, useDeferredValue } from "react";
 const GptVis = lazy(() =>
   import("./components/GptVis").then((mod) => ({ default: mod.GptVis })),
@@ -51,8 +53,7 @@ const Markdown: React.FC<MarkdownProps> = ({
    * **/
   const deferredValue = useDeferredValue(content);
   const CustomSourcesCb = useCallback(
-    // @ts-ignore
-    (props) => (
+    (props: CustomSourcesProps) => (
       <CustomSources
         messageId={messageId}
         sources={sources}
@@ -87,11 +88,10 @@ const Markdown: React.FC<MarkdownProps> = ({
   } as MarkdownComponents;
 
   const resolvedSupComponent = useCallback(
-    // @ts-ignore
-    (props) => {
+    (props: CustomSourcesProps) => {
       const userSup = mergedComponents.sup;
       if (typeof userSup === "function") {
-        const Sup = userSup as any;
+        const Sup = userSup as React.ComponentType<CustomSourcesProps>;
         return (
           <Sup
             messageId={messageId}
@@ -102,8 +102,7 @@ const Markdown: React.FC<MarkdownProps> = ({
         );
       }
       if (typeof userSup === "string") {
-        const Tag = userSup as any;
-        return <Tag {...props} />;
+        return React.createElement(userSup, props as Record<string, unknown>);
       }
       return (
         <CustomSources

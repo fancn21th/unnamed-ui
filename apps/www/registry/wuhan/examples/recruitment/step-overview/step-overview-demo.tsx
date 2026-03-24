@@ -2,7 +2,6 @@
 
 import React from "react";
 import StepOverview, { StepItem } from "../../../recruitment/StepOverview";
-import steps from "antd/es/steps";
 
 export default function StepOverviewDemo() {
   const steps: StepItem[] = [

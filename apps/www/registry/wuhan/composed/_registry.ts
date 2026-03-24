@@ -132,6 +132,16 @@ export const composed: Registry["items"] = [
     ],
     files: [
       {
+        path: "composed/component-panel/component-panel-types.ts",
+        type: "registry:lib",
+        target: "components/wuhan/composed/component-panel-types.ts",
+      },
+      {
+        path: "composed/component-panel/component-panel-utils.ts",
+        type: "registry:lib",
+        target: "components/wuhan/composed/component-panel-utils.ts",
+      },
+      {
         path: "composed/component-panel/component-panel.tsx",
         type: "registry:component",
         target: "components/wuhan/composed/component-panel.tsx",
@@ -610,6 +620,11 @@ export const composed: Registry["items"] = [
     registryDependencies: ["checkbox-01"],
     files: [
       {
+        path: "composed/checkbox/checkbox-context.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/checkbox-context.tsx",
+      },
+      {
         path: "composed/checkbox/checkbox.tsx",
         type: "registry:component",
         target: "components/wuhan/composed/checkbox.tsx",
@@ -623,6 +638,11 @@ export const composed: Registry["items"] = [
     description: "单选框",
     registryDependencies: ["radio-01"],
     files: [
+      {
+        path: "composed/radio/radio-context.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/radio-context.tsx",
+      },
       {
         path: "composed/radio/radio.tsx",
         type: "registry:component",
@@ -807,6 +827,11 @@ export const composed: Registry["items"] = [
     dependencies: ["lucide-react"],
     registryDependencies: ["file-card-01", "checkbox-01"],
     files: [
+      {
+        path: "composed/file-card/file-card-get-status-icon.tsx",
+        type: "registry:component",
+        target: "components/wuhan/composed/file-card-get-status-icon.tsx",
+      },
       {
         path: "composed/file-card/file-card.tsx",
         type: "registry:component",

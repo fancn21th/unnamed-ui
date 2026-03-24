@@ -29,10 +29,11 @@ function BlockTooltipProvider({
  * Tooltip 根组件
  */
 function BlockTooltip({
+  delayDuration = 0,
   ...props
 }: React.ComponentProps<typeof TooltipPrimitive.Root>) {
   return (
-    <BlockTooltipProvider>
+    <BlockTooltipProvider delayDuration={delayDuration}>
       <TooltipPrimitive.Root data-slot="block-tooltip" {...props} />
     </BlockTooltipProvider>
   );

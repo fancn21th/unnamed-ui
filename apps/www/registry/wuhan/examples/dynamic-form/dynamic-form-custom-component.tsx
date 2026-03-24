@@ -133,7 +133,7 @@ function PriceRangeInput({
   onChange,
   disabled,
   error,
-  field,
+  field: _field,
 }: CustomFieldComponentProps) {
   const rangeValue = (value as PriceRangeValue) || {};
   const [minValue, setMinValue] = React.useState<number | "">(

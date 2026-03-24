@@ -20,12 +20,14 @@ interface AgentCardContainerPrimitiveProps extends React.HTMLAttributes<HTMLDivE
  * Agent Card 头部原语属性
  * @public
  */
-interface AgentCardHeaderPrimitiveProps {
+interface AgentCardHeaderPrimitiveProps extends Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  "title"
+> {
   /** 标题 */
   title?: React.ReactNode;
   /** 图标 */
   icon?: React.ReactNode;
-  [key: string]: any;
   /** 描述文本 */
   description?: React.ReactNode;
   /** 尺寸 */
@@ -183,6 +185,7 @@ export const AgentCardPrimitive = React.forwardRef<
   HTMLDivElement,
   AgentCardPrimitiveProps
 >(({ title, description, icon, size = "md", className, ...props }, ref) => {
+  void description;
   return (
     <AgentCardContainerPrimitive
       ref={ref}

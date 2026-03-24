@@ -6,6 +6,8 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
+    "check:www": "pnpm --filter www check",
+    "lint:eslint:fix:www": "pnpm --filter www lint:eslint:fix",
     "test": "turbo test",
     "clean": "turbo clean"
   },

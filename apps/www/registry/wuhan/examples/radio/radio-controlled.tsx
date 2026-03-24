@@ -8,7 +8,7 @@ export default function RadioControlled() {
 
   return (
     <div className="flex flex-col gap-4">
-      <RadioGroup value={value} onChange={setValue}>
+      <RadioGroup value={value} onChange={(v) => setValue(String(v))}>
         <Radio value="option1" id="controlled-1">
           选项 1
         </Radio>

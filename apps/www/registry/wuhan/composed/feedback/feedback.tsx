@@ -147,9 +147,10 @@ export const FeedbackComposed = React.forwardRef<
     const currentSelected = multiple
       ? undefined
       : (selectedId ?? localSelected);
-    const currentSelectedIds = multiple
-      ? (selectedIds ?? localSelectedIds)
-      : [];
+    const currentSelectedIds = React.useMemo(
+      () => (multiple ? (selectedIds ?? localSelectedIds) : []),
+      [multiple, selectedIds, localSelectedIds],
+    );
     const currentInput = inputValue ?? localInput;
 
     // 判断选项是否选中

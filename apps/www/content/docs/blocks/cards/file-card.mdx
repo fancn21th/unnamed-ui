@@ -311,7 +311,8 @@ FileCard 基于以下原语组件构建：
 也可以使用 `getStatusIcon` 函数根据状态获取对应图标：
 
 ```tsx
-import { getStatusIcon, type FileCardStatus } from "@/registry/wuhan/composed/file-card/file-card";
+import { getStatusIcon } from "@/registry/wuhan/composed/file-card/file-card-get-status-icon";
+import type { FileCardStatus } from "@/registry/wuhan/blocks/file-card/file-card-01";
 
 const status: FileCardStatus = "uploading";
 const icon = getStatusIcon(status);

@@ -1,7 +1,7 @@
 "use client";
 
 import { AvatarHeader } from "@/registry/wuhan/composed/avatar-header/avatar-header";
-import { User, Bot, Settings, Crown } from "lucide-react";
+import { Bot, Crown } from "lucide-react";
 
 export default function AvatarHeaderDefault() {
   return (

@@ -3,12 +3,6 @@
 import * as React from "react";
 import {
   TaskCardPrimitive,
-  TaskCardContainerPrimitive,
-  TaskCardCollapsedHeaderPrimitive,
-  TaskCardTitlePrimitive,
-  TaskCardStepListPrimitive,
-  TaskCardStepItemPrimitive,
-  TaskCardCollapseArrowPrimitive,
   type TaskCardStatus,
 } from "@/registry/wuhan/blocks/task-card/task-card-01";
 

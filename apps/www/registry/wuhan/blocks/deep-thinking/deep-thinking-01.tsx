@@ -88,7 +88,7 @@ interface DeepThinkingContentPrimitiveProps extends React.HTMLAttributes<HTMLDiv
  * 思考点动画原语属性
  * @public
  */
-interface ThinkingDotsPrimitiveProps extends React.HTMLAttributes<HTMLDivElement> {}
+type ThinkingDotsPrimitiveProps = React.HTMLAttributes<HTMLDivElement>;
 
 // ==================== 样式原语组件 ====================
 

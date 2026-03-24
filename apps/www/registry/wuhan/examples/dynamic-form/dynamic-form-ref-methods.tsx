@@ -57,7 +57,7 @@ export default function DynamicFormRefMethods() {
     try {
       const values = await formRef.current?.validateFields();
       setOutput(`验证通过: ${JSON.stringify(values, null, 2)}`);
-    } catch (error) {
+    } catch {
       setOutput(`验证失败`);
     }
   };

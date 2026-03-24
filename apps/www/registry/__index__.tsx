@@ -80,13 +80,18 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: undefined,
       files: [
         {
+          path: "registry/wuhan/ui/button-variants.ts",
+          type: "registry:lib",
+          target: "components/ui/button-variants.ts",
+        },
+        {
           path: "registry/wuhan/ui/button.tsx",
           type: "registry:ui",
           target: "components/ui/button.tsx",
         },
       ],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/wuhan/ui/button.tsx");
+        const mod = await import("@/registry/wuhan/ui/button-variants.ts");
         const exportName =
           Object.keys(mod).find(
             (key) =>
@@ -1489,6 +1494,11 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["style", "checkbox-01"],
       files: [
         {
+          path: "registry/wuhan/blocks/file-card/file-card-01-utils.ts",
+          type: "registry:lib",
+          target: "components/wuhan/blocks/file-card-01-utils.ts",
+        },
+        {
           path: "registry/wuhan/blocks/file-card/file-card-01.tsx",
           type: "registry:component",
           target: "components/wuhan/blocks/file-card-01.tsx",
@@ -1496,7 +1506,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       component: React.lazy(async () => {
         const mod =
-          await import("@/registry/wuhan/blocks/file-card/file-card-01.tsx");
+          await import("@/registry/wuhan/blocks/file-card/file-card-01-utils.ts");
         const exportName =
           Object.keys(mod).find(
             (key) =>
@@ -1836,6 +1846,16 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       files: [
         {
+          path: "registry/wuhan/composed/component-panel/component-panel-types.ts",
+          type: "registry:lib",
+          target: "components/wuhan/composed/component-panel-types.ts",
+        },
+        {
+          path: "registry/wuhan/composed/component-panel/component-panel-utils.ts",
+          type: "registry:lib",
+          target: "components/wuhan/composed/component-panel-utils.ts",
+        },
+        {
           path: "registry/wuhan/composed/component-panel/component-panel.tsx",
           type: "registry:component",
           target: "components/wuhan/composed/component-panel.tsx",
@@ -1843,7 +1863,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       component: React.lazy(async () => {
         const mod =
-          await import("@/registry/wuhan/composed/component-panel/component-panel.tsx");
+          await import("@/registry/wuhan/composed/component-panel/component-panel-types.ts");
         const exportName =
           Object.keys(mod).find(
             (key) =>
@@ -2552,6 +2572,11 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["checkbox-01"],
       files: [
         {
+          path: "registry/wuhan/composed/checkbox/checkbox-context.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/checkbox-context.tsx",
+        },
+        {
           path: "registry/wuhan/composed/checkbox/checkbox.tsx",
           type: "registry:component",
           target: "components/wuhan/composed/checkbox.tsx",
@@ -2559,7 +2584,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       component: React.lazy(async () => {
         const mod =
-          await import("@/registry/wuhan/composed/checkbox/checkbox.tsx");
+          await import("@/registry/wuhan/composed/checkbox/checkbox-context.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>
@@ -2577,13 +2602,19 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["radio-01"],
       files: [
         {
+          path: "registry/wuhan/composed/radio/radio-context.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/radio-context.tsx",
+        },
+        {
           path: "registry/wuhan/composed/radio/radio.tsx",
           type: "registry:component",
           target: "components/wuhan/composed/radio.tsx",
         },
       ],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/wuhan/composed/radio/radio.tsx");
+        const mod =
+          await import("@/registry/wuhan/composed/radio/radio-context.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>
@@ -2880,6 +2911,11 @@ export const Index: Record<string, Record<string, any>> = {
       registryDependencies: ["file-card-01", "checkbox-01"],
       files: [
         {
+          path: "registry/wuhan/composed/file-card/file-card-get-status-icon.tsx",
+          type: "registry:component",
+          target: "components/wuhan/composed/file-card-get-status-icon.tsx",
+        },
+        {
           path: "registry/wuhan/composed/file-card/file-card.tsx",
           type: "registry:component",
           target: "components/wuhan/composed/file-card.tsx",
@@ -2887,7 +2923,7 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       component: React.lazy(async () => {
         const mod =
-          await import("@/registry/wuhan/composed/file-card/file-card.tsx");
+          await import("@/registry/wuhan/composed/file-card/file-card-get-status-icon.tsx");
         const exportName =
           Object.keys(mod).find(
             (key) =>

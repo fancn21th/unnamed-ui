@@ -1,6 +1,8 @@
 import { Skeleton } from "antd";
 import { StyledGptVisWrapper } from "./style";
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useSyncExternalStore, lazy, Suspense } from "react";
+
+const emptySubscribe = () => () => {};
 
 const Line = lazy(() =>
   import("@antv/gpt-vis").then((mod) => ({ default: mod.Line })),
@@ -9,13 +11,32 @@ const Column = lazy(() =>
   import("@antv/gpt-vis").then((mod) => ({ default: mod.Column })),
 );
 
-export const GptVis = (props: Record<string, any>) => {
-  const { type, axisXTitle, axisYTitle, x, y, streamStatus } = props;
-  const [mounted, setMounted] = useState(false);
+export interface GptVisProps {
+  type?: string;
+  axisXTitle?: string;
+  axisYTitle?: string;
+  x?: unknown;
+  y?: unknown;
+  streamStatus?: string;
+}
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+function parseAxisArray(v: unknown): string[] {
+  if (typeof v === "string") {
+    return JSON.parse(v.replace(/'/g, '"')) as string[];
+  }
+  if (Array.isArray(v)) {
+    return v.map((item) => String(item));
+  }
+  return [];
+}
+
+export const GptVis = (props: GptVisProps) => {
+  const { type, axisXTitle, axisYTitle, x, y, streamStatus } = props;
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false,
+  );
 
   const LoadingFallback = (
     <Skeleton.Image active={true} style={{ width: "100%", height: "300px" }} />
@@ -23,8 +44,8 @@ export const GptVis = (props: Record<string, any>) => {
 
   if (streamStatus === "loading" || !mounted) return LoadingFallback;
 
-  const parsedX = typeof x === "string" ? JSON.parse(x.replace(/'/g, '"')) : x;
-  const parsedY = typeof y === "string" ? JSON.parse(y.replace(/'/g, '"')) : y;
+  const parsedX = parseAxisArray(x);
+  const parsedY = parseAxisArray(y);
 
   if (type === "line") {
     const data = parsedX.map((item: string, index: number) => ({

@@ -83,6 +83,49 @@ pnpm registry:build
 - `dayjs`: ^1.11.19 - 日期处理库
 - `mitt`: ^3.0.1 - 事件总线库
 
+## 代码检查（Lint / 类型）
+
+组件库源码在 **`registry/`**（对外注册给其它项目用），日常门禁只扫这里即可；全站检查用单独命令。
+
+**一般只记这一条：**
+
+```bash
+pnpm check
+```
+
+等价于：仅对 **`registry/`** 跑 ESLint（Next / React / TS 规则）。
+
+| 命令 | 说明 |
+|------|------|
+| **`pnpm check`** | **仅 `registry/` ESLint**（推荐：组件库门禁） |
+| `pnpm lint:eslint:full` | 对整个 `apps/www` 跑 ESLint（需要时再开） |
+| `pnpm typecheck` | 全项目 `tsc --noEmit`（不限于 registry） |
+| `pnpm lint` | Biome（全项目） |
+| `pnpm check:all` | Biome + 全站 ESLint + typecheck（最重） |
+
+在仓库根目录：
+
+```bash
+pnpm check:www
+```
+
+**注意：** `registry` 目录在 **`apps/www/registry`**。若在仓库根目录直接执行 `pnpm exec eslint registry`，会找不到路径。请要么 **先 `cd apps/www`**，要么用上面的 `pnpm check:www`，或根目录：
+
+```bash
+pnpm lint:eslint:fix:www   # 仅 registry，自动 fix（改文件，提交前看 diff）
+```
+
+在 **`apps/www`** 内可选：
+
+```bash
+pnpm lint:eslint:fix
+```
+
+ESLint 配置见 `apps/www/eslint.config.mjs`（`eslint-config-next` 扁平配置）。  
+对 **`registry/**`** 额外启用 `eslint-plugin-unused-imports`：未使用的 import / 变量会报 **error**（更接近 Vite/严格 TS 消费侧体验）。
+
+输出太多时，可写入文件：`pnpm check 2>&1 \| tee registry-lint.txt`。
+
 ## Learn More
 
 To learn more about Next.js and Fumadocs, take a look at the following

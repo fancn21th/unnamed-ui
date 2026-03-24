@@ -1,8 +1,4 @@
-import type React from "react";
-import {
-  type ComponentProps,
-  type XMarkdownProps,
-} from "@ant-design/x-markdown";
+import { type XMarkdownProps } from "@ant-design/x-markdown";
 import type { MarkdownConfig } from "./config";
 import type { SourceItem } from "../custom-sources/utils";
 
@@ -30,5 +26,4 @@ export interface MarkdownProps extends XMarkdownProps {
   }) => void;
   preset?: MarkdownPreset;
   renderPlugins?: MarkdownPlugin[];
-  [props: string]: any;
 }

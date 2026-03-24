@@ -8,7 +8,7 @@ export default function UploadRestrictions() {
       <div>
         <h3 className="mb-2 text-sm font-medium">只允许上传图片</h3>
         <p className="mb-3 text-xs text-[var(--Text-text-tertiary)]">
-          accept="image/*"
+          {`accept="image/*"`}
         </p>
         <Upload accept="image/*" buttonText="选择图片" />
       </div>
@@ -38,7 +38,7 @@ export default function UploadRestrictions() {
           只允许上传 PDF 和 Word 文档
         </h3>
         <p className="mb-3 text-xs text-[var(--Text-text-tertiary)]">
-          accept=".pdf,.doc,.docx"
+          {`accept=".pdf,.doc,.docx"`}
         </p>
         <Upload accept=".pdf,.doc,.docx" buttonText="选择文档" />
       </div>

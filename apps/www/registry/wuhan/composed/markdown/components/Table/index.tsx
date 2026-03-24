@@ -1,5 +1,25 @@
 import type { ComponentProps } from "@ant-design/x-markdown";
 import React, { useCallback, useEffect, useRef, useState } from "react";
+
+/** hast 风格节点（简化，仅覆盖 table 解析所需） */
+interface HastText {
+  type: "text";
+  data?: string;
+}
+interface HastElement {
+  type: "tag";
+  name: string;
+  attribs?: Record<string, string>;
+  children?: HastNode[];
+}
+type HastNode =
+  | HastText
+  | HastElement
+  | { type?: string; children?: HastNode[] };
+
+function isTag(node: HastNode | undefined): node is HastElement {
+  return node !== undefined && node.type === "tag";
+}
 import { DownloadIcon, CopyIcon } from "../../icons";
 import {
   StyledMarkdownTableWrapper,
@@ -41,11 +61,11 @@ export const Table: React.FC<ComponentProps> = (props) => {
     // domNode 变化意味着表格结构变化，需要重新测量
   }, [domNode, updateXOverflow]);
 
-  const extractText = (node: any): string => {
+  const extractText = (node: HastNode | null | undefined): string => {
     if (!node) return "";
-    if (node.type === "text") return node.data || "";
-    if (node.children)
-      return node.children.map((child: any) => extractText(child)).join("");
+    if (node.type === "text") return (node as HastText).data || "";
+    if ("children" in node && node.children)
+      return node.children.map((child) => extractText(child)).join("");
     return "";
   };
 
@@ -53,36 +73,46 @@ export const Table: React.FC<ComponentProps> = (props) => {
     if (!domNode || domNode.type !== "tag" || domNode.name !== "table")
       return null;
 
-    const children = domNode.children || [];
-    let theadNode: any = null;
-    let tbodyNode: any = null;
+    const children = (domNode.children || []) as HastNode[];
+    let theadNode: HastElement | null = null;
+    let tbodyNode: HastElement | null = null;
 
     for (const child of children) {
-      if (child.type === "tag") {
+      if (isTag(child)) {
         if (child.name === "thead") theadNode = child;
         if (child.name === "tbody") tbodyNode = child;
       }
     }
 
-    const headers: string[] = [];
-    const rows: string[][] = [];
+    const theadTrNode = theadNode?.children?.find(
+      (child): child is HastElement => isTag(child) && child.name === "tr",
+    );
+    const thNodes =
+      theadTrNode?.children?.filter(
+        (child): child is HastElement => isTag(child) && child.name === "th",
+      ) || [];
+    const headers = thNodes.map((th) => extractText(th));
+
+    const trNodes =
+      tbodyNode?.children?.filter(
+        (child): child is HastElement => isTag(child) && child.name === "tr",
+      ) || [];
+    const rows: string[][] = trNodes.map((tr) => {
+      const tdNodes =
+        tr.children?.filter(
+          (child): child is HastElement => isTag(child) && child.name === "td",
+        ) || [];
+      return tdNodes.map((td) => extractText(td));
+    });
 
     const renderThead = () => {
       if (!theadNode) return null;
-      const trNode = theadNode.children?.find(
-        (child: any) => child.type === "tag" && child.name === "tr",
-      );
-      if (!trNode) return null;
-      const thNodes =
-        trNode.children?.filter(
-          (child: any) => child.type === "tag" && child.name === "th",
-        ) || [];
-      headers.push(...thNodes.map((th: any) => extractText(th)));
+      if (!theadTrNode) return null;
 
       return (
         <thead>
           <tr>
-            {thNodes.map((th: any, index: number) => {
+            {thNodes.map((th, index: number) => {
               const text = extractText(th);
               const attribs = th.attribs || {};
               const rowSpan = attribs.rowspan
@@ -104,21 +134,17 @@ export const Table: React.FC<ComponentProps> = (props) => {
 
     const renderTbody = () => {
       if (!tbodyNode) return null;
-      const trNodes =
-        tbodyNode.children?.filter(
-          (child: any) => child.type === "tag" && child.name === "tr",
-        ) || [];
       return (
         <tbody>
-          {trNodes.map((tr: any, rowIndex: number) => {
+          {trNodes.map((tr, rowIndex: number) => {
             const tdNodes =
               tr.children?.filter(
-                (child: any) => child.type === "tag" && child.name === "td",
+                (child): child is HastElement =>
+                  isTag(child) && child.name === "td",
               ) || [];
-            rows[rowIndex] = tdNodes.map((td: any) => extractText(td));
             return (
               <tr key={rowIndex}>
-                {tdNodes.map((td: any, colIndex: number) => {
+                {tdNodes.map((td, colIndex: number) => {
                   const text = extractText(td);
                   const attribs = td.attribs || {};
                   const rowSpan = attribs.rowspan

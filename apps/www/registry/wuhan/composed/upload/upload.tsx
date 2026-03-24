@@ -63,7 +63,7 @@ export interface UploadFile {
   /**
    * 响应数据
    */
-  response?: any;
+  response?: unknown;
 }
 
 export interface UploadProps {
@@ -118,7 +118,7 @@ export interface UploadProps {
    * 自定义上传请求
    * 返回 Promise，resolve 时传入响应数据，reject 时传入错误信息
    */
-  customRequest?: (file: File) => Promise<any>;
+  customRequest?: (file: File) => Promise<unknown>;
   /**
    * 自定义类名
    */
@@ -260,7 +260,7 @@ export const Upload = React.forwardRef<HTMLDivElement, UploadProps>(
       uid: string,
       status: UploadStatus,
       error?: string,
-      response?: any,
+      response?: unknown,
     ) => {
       const updatedFileList = fileList.map((file) =>
         file.uid === uid ? { ...file, status, error, response } : file,

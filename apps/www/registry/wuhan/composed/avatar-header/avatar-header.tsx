@@ -162,7 +162,7 @@ export const AvatarHeader = React.forwardRef<HTMLDivElement, AvatarHeaderProps>(
             >
               <img
                 src={src}
-                alt={alt}
+                alt={alt ?? ""}
                 crossOrigin={crossOrigin}
                 onError={handleImgError}
                 className="w-full h-full object-cover m-0!"

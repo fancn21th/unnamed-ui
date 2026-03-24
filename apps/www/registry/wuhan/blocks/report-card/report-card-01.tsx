@@ -94,8 +94,7 @@ export const ReportCardContainerPrimitive = React.forwardRef<
   return (
     <div
       ref={ref}
-      role="listitem"
-      aria-selected={selected}
+      data-selected={selected ? "" : undefined}
       aria-disabled={disabled}
       className={cn(
         "w-full",

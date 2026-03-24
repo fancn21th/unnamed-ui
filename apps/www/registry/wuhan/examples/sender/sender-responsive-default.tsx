@@ -8,7 +8,7 @@ import {
   SenderResponsiveAttachmentButton,
   SenderResponsiveSendButton,
 } from "@/registry/wuhan/blocks/sender/sender-responsive-01";
-import { Send, Paperclip } from "lucide-react";
+import { Paperclip } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
 export default function SenderResponsiveDefault() {

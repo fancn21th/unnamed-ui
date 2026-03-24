@@ -10,7 +10,6 @@ import {
   StyledSubTitle,
   StyledFlexColumn,
   StyledLabel,
-  StyledBodyText,
 } from "../common";
 
 export interface CostBenefitAssessmentProps {

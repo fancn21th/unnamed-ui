@@ -10,7 +10,7 @@ export default function RadioGroupControlled() {
     <div className="flex flex-col gap-4">
       <RadioGroup
         value={value}
-        onChange={setValue}
+        onChange={(v) => setValue(String(v))}
         options={[
           { label: "React", value: "react" },
           { label: "Vue", value: "vue" },

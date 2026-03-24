@@ -226,7 +226,7 @@ const PageHeaderAvatarPrimitive = React.forwardRef<
           >
             <img
               src={src}
-              alt={alt}
+              alt={alt ?? ""}
               onError={handleImgError}
               className="w-full h-full object-cover m-0!"
             />

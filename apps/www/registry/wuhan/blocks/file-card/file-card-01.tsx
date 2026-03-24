@@ -8,68 +8,15 @@ import {
   CheckboxRootPrimitive,
   CheckboxIndicatorPrimitive,
 } from "@/registry/wuhan/blocks/checkbox/checkbox-01";
+import {
+  resolveStatus,
+  isValidIcon,
+  type FileCardStatus,
+} from "./file-card-01-utils";
+
+export type { FileCardStatus } from "./file-card-01-utils";
 
 // ==================== 类型定义 ====================
-
-/**
- * 文件卡片状态类型
- * @public
- *
- * @example
- * ```tsx
- * // 基本状态
- * type Status1 = "loading" | "error";
- *
- * // 扩展状态
- * type Status2 = "loading" | "error" | "uploading" | "warning" | "success";
- * ```
- */
-export type FileCardStatus =
-  | "loading"
-  | "error"
-  | "uploading"
-  | "warning"
-  | "success";
-
-/**
- * 有效的文件卡片状态列表
- * @internal
- */
-const VALID_FILE_CARD_STATUSES: readonly FileCardStatus[] = [
-  "loading",
-  "error",
-  "uploading",
-  "warning",
-  "success",
-] as const;
-
-/**
- * 解析状态，处理 undefined/null/无效值情况
- * @param status - 输入的状态值
- * @returns 有效的 FileCardStatus
- * @internal
- */
-const resolveStatus = (
-  status: FileCardStatus | undefined | null,
-): FileCardStatus => {
-  if (
-    status !== undefined &&
-    status !== null &&
-    VALID_FILE_CARD_STATUSES.includes(status as FileCardStatus)
-  ) {
-    return status as FileCardStatus;
-  }
-  // 默认状态
-  return "loading";
-};
-
-/**
- * 检查是否是有效的 React 节点
- * @internal
- */
-const isValidIcon = (icon: React.ReactNode): icon is React.ReactElement => {
-  return icon !== null && icon !== undefined && icon !== false;
-};
 
 /**
  * 文件卡片容器原语属性
@@ -283,8 +230,7 @@ export const FileCardContainerPrimitive = React.memo(
       return (
         <div
           ref={ref}
-          role="listitem"
-          aria-selected={selected}
+          data-selected={selected ? "" : undefined}
           aria-disabled={disabled}
           className={cn(
             // 基础布局 - 响应式最小宽度

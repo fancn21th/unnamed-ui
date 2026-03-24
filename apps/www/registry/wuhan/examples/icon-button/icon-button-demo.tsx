@@ -1,10 +1,7 @@
 "use client";
 
 import * as React from "react";
-import {
-  IconButton,
-  type IconButtonProps,
-} from "@/registry/wuhan/composed/icon-button/icon-button";
+import { IconButton } from "@/registry/wuhan/composed/icon-button/icon-button";
 import {
   Plus,
   Minus,

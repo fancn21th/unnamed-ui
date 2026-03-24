@@ -76,6 +76,45 @@ export interface AccordionMultipleProps {
  */
 export type AccordionProps = AccordionSingleProps | AccordionMultipleProps;
 
+/** 多选模式根节点：单独组件以保证 hooks 在每次渲染时顺序一致 */
+const AccordionMultipleRoot = React.forwardRef<
+  HTMLDivElement,
+  Omit<AccordionMultipleProps, "type">
+>(({ defaultValue, expandAll, children, ...rest }, ref) => {
+  const computedDefaultValue = React.useMemo(() => {
+    if (expandAll && children) {
+      const values: string[] = [];
+      React.Children.forEach(children, (child) => {
+        if (
+          React.isValidElement<AccordionItemProps>(child) &&
+          child.props.value
+        ) {
+          values.push(child.props.value);
+        }
+      });
+      return values;
+    }
+
+    if (typeof defaultValue === "string") {
+      return [defaultValue];
+    }
+
+    return defaultValue;
+  }, [expandAll, defaultValue, children]);
+
+  return (
+    <AccordionMultipleRootPrimitive
+      ref={ref}
+      type="multiple"
+      defaultValue={computedDefaultValue}
+      {...rest}
+    >
+      {children}
+    </AccordionMultipleRootPrimitive>
+  );
+});
+AccordionMultipleRoot.displayName = "AccordionMultipleRoot";
+
 // ==================== 主组件 ====================
 
 /**
@@ -145,43 +184,9 @@ export const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
       );
     }
 
-    // multiple 模式
-    const { defaultValue, expandAll, children, ...rest } = props;
-
-    // 计算实际的 defaultValue
-    const computedDefaultValue = React.useMemo(() => {
-      // 如果设置了 expandAll，收集所有子项的 value
-      if (expandAll && children) {
-        const values: string[] = [];
-        React.Children.forEach(children, (child) => {
-          if (
-            React.isValidElement<AccordionItemProps>(child) &&
-            child.props.value
-          ) {
-            values.push(child.props.value);
-          }
-        });
-        return values;
-      }
-
-      // 如果 defaultValue 是字符串，转换为数组
-      if (typeof defaultValue === "string") {
-        return [defaultValue];
-      }
-
-      // 否则直接返回 defaultValue（可能是 string[] 或 undefined）
-      return defaultValue;
-    }, [expandAll, defaultValue, children]);
-
-    return (
-      <AccordionMultipleRootPrimitive
-        ref={ref}
-        defaultValue={computedDefaultValue}
-        {...rest}
-      >
-        {children}
-      </AccordionMultipleRootPrimitive>
-    );
+    const { type, ...multipleProps } = props;
+    void type;
+    return <AccordionMultipleRoot ref={ref} {...multipleProps} />;
   },
 );
 

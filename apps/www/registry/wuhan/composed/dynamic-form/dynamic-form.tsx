@@ -372,10 +372,11 @@ export const DynamicForm = React.forwardRef<DynamicFormRef, DynamicFormProps>(
       trigger,
     } = form;
 
-    // 监听表单值变化
+    // 监听表单值变化（RHF watch 订阅无法被 React Compiler 安全 memoize）
     React.useEffect(() => {
       if (!onValuesChange) return;
 
+      // eslint-disable-next-line react-hooks/incompatible-library -- react-hook-form watch() subscription
       const subscription = watch((values) => {
         onValuesChange(values as Record<string, unknown>);
       });

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { FileCardList } from "@/registry/wuhan/composed/file-card/file-card";
-import { FileText, Image, FileCode } from "lucide-react";
+import { FileText, Image as ImageIcon, FileCode } from "lucide-react";
 
 export default function FileCardListControlled() {
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
@@ -18,7 +18,7 @@ export default function FileCardListControlled() {
       id: "2",
       title: "设计稿.png",
       date: "2024-01-14",
-      fileIcon: <Image className="w-6 h-6 text-green-500" />,
+      fileIcon: <ImageIcon className="w-6 h-6 text-green-500" />,
     },
     {
       id: "3",

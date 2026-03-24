@@ -40,12 +40,14 @@ interface GoalCardContainerPrimitiveProps extends React.HTMLAttributes<HTMLDivEl
  * Goal Card 头部原语属性
  * @public
  */
-interface GoalCardHeaderPrimitiveProps {
+interface GoalCardHeaderPrimitiveProps extends Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  "title"
+> {
   /** 标题 */
   title?: React.ReactNode;
   /** 图标 */
   icon?: React.ReactNode;
-  [key: string]: any;
   /** 描述文本 */
   description?: React.ReactNode;
   /** 尺寸 */
@@ -393,7 +395,7 @@ export const GoalCardProgressPrimitive = React.forwardRef<
         )}
 
         {/* 百分比文字 - 不显示对号或叉号时 */}
-        {!showCheckmark && !showCross && (
+        {!showCheckmark && !showCross && showPercentage && (
           <div
             className={cn(
               "absolute",
@@ -477,14 +479,12 @@ export const GoalCardPrimitive = React.forwardRef<
     },
     ref,
   ) => {
+    void description;
     const percentage = getProgressPercentage(progress, max);
 
     // 根据进度自动推断状态（除非用户已指定状态）
     const inferredStatus: GoalCardSemanticStatus =
       status ?? (percentage >= 100 ? "completed" : "in_progress");
-
-    // 根据实际状态获取颜色
-    const statusColor = getStatusColor(inferredStatus);
 
     return (
       <GoalCardContainerPrimitive

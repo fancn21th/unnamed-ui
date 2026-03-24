@@ -1,12 +1,7 @@
 "use client";
 
 import * as React from "react";
-import {
-  AgentCardPrimitive,
-  AgentCardContainerPrimitive,
-  AgentCardHeaderPrimitive,
-  AgentCardAiIcon,
-} from "@/registry/wuhan/blocks/agent-card/agent-card-01";
+import { AgentCardPrimitive } from "@/registry/wuhan/blocks/agent-card/agent-card-01";
 
 /**
  * Agent Card 示例数据

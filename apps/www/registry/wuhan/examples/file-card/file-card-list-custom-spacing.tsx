@@ -1,7 +1,7 @@
 "use client";
 
 import { FileCardList } from "@/registry/wuhan/composed/file-card/file-card";
-import { FileText, Image, FileCode } from "lucide-react";
+import { FileText, Image as ImageIcon, FileCode } from "lucide-react";
 
 export default function FileCardListCustomSpacing() {
   const files = [
@@ -15,7 +15,7 @@ export default function FileCardListCustomSpacing() {
       id: "2",
       title: "图片B.png",
       date: "2024-01-14",
-      fileIcon: <Image className="w-6 h-6 text-green-500" />,
+      fileIcon: <ImageIcon className="w-6 h-6 text-green-500" />,
     },
     {
       id: "3",

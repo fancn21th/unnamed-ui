@@ -4,8 +4,6 @@ import * as React from "react";
 import {
   ProgressLinePrimitive,
   ProgressCirclePrimitive,
-  type ProgressLinePrimitiveProps,
-  type ProgressCirclePrimitiveProps,
   type ProgressType,
   type ProgressStatus,
   type ProgressGradient,

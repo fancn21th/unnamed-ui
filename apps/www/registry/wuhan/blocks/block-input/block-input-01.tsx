@@ -131,7 +131,7 @@ BlockInputSuffixPrimitive.displayName = "BlockInputSuffixPrimitive";
 /**
  * 单行输入框原语
  */
-interface BlockInputPrimitiveProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+type BlockInputPrimitiveProps = React.InputHTMLAttributes<HTMLInputElement>;
 
 const BlockInputPrimitive = React.forwardRef<
   HTMLInputElement,
@@ -159,7 +159,8 @@ BlockInputPrimitive.displayName = "BlockInputPrimitive";
 /**
  * 多行输入框原语
  */
-interface BlockTextareaPrimitiveProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
+type BlockTextareaPrimitiveProps =
+  React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 const BlockTextareaPrimitive = React.forwardRef<
   HTMLTextAreaElement,

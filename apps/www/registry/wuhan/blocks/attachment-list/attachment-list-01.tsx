@@ -1,7 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { Button, buttonVariants } from "@/registry/wuhan/ui/button";
+import { Button } from "@/registry/wuhan/ui/button";
+import { buttonVariants } from "@/registry/wuhan/ui/button-variants";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import {

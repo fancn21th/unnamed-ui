@@ -72,7 +72,7 @@ interface MessageItemRendererProps {
 
 function MessageItemRenderer({
   message,
-  onFeedbackChange,
+  onFeedbackChange: _onFeedbackChange,
 }: MessageItemRendererProps) {
   const handleCopy = () => {
     if (typeof message.content === "string") {

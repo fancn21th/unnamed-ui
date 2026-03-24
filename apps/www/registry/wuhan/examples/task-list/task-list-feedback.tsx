@@ -20,7 +20,7 @@ export default function TaskListPending() {
   return (
     <div className="space-y-4 w-full">
       <p className="text-sm text-muted-foreground">
-        Pending 状态：显示"修改方案"和"确认并执行"按钮
+        Pending 状态：显示「修改方案」和「确认并执行」按钮
       </p>
       <TaskList
         dataSource={tasks}

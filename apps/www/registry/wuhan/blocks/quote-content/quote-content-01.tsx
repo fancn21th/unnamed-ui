@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
  * 引用内容容器样式原语 Props
  * 提供引用内容容器的基础样式配置
  */
-interface QuoteContentPrimitiveProps extends React.HTMLAttributes<HTMLDivElement> {}
+type QuoteContentPrimitiveProps = React.HTMLAttributes<HTMLDivElement>;
 
 /**
  * 引用内容容器样式原语

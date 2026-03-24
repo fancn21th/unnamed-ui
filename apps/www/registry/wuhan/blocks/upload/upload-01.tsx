@@ -136,6 +136,7 @@ export const UploadFileItemPrimitive = React.forwardRef<
   return (
     <div
       ref={ref}
+      data-upload-status={status}
       className={cn("flex items-center justify-between", className)}
       {...props}
     />

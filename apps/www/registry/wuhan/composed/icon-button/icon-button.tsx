@@ -4,14 +4,8 @@ import * as React from "react";
 import {
   IconButtonPrimitive,
   type IconButtonPrimitiveProps,
-  type IconButtonVariant,
-  type IconButtonColor,
-  type IconButtonSize,
 } from "@/registry/wuhan/blocks/icon-button/icon-button-01";
-import {
-  Tooltip,
-  type TooltipProps,
-} from "@/registry/wuhan/composed/tooltip/tooltip";
+import { Tooltip } from "@/registry/wuhan/composed/tooltip/tooltip";
 
 // ==================== 类型定义 ====================
 

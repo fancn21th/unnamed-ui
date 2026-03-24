@@ -18,7 +18,7 @@ export default function TaskListEditable() {
   return (
     <div className="space-y-2 w-full">
       <p className="text-sm text-muted-foreground">
-        可编辑模式：点击"修改方案"按钮可以添加、编辑、删除和排序任务
+        可编辑模式：点击「修改方案」按钮可以添加、编辑、删除和排序任务
       </p>
       <TaskList
         dataSource={tasks}

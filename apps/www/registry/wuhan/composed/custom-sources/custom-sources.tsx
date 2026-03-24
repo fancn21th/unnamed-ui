@@ -47,6 +47,7 @@ const CustomSources: React.FC<CustomSourcesProps> = ({
   onOpenSidebar,
   ...props
 }) => {
+  void messageId;
   const [hoveredKey, setHoveredKey] = useState<number | null>(null);
 
   const resolvedActiveKey = useMemo(() => {

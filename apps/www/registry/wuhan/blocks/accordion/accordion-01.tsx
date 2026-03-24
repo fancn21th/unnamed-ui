@@ -175,25 +175,21 @@ AccordionContentPrimitive.displayName = "AccordionContentPrimitive";
 export const AccordionSingleRootPrimitive = React.forwardRef<
   HTMLDivElement,
   AccordionSingleRootPrimitiveProps
->(
-  (
-    { className, children, gap, collapsible = true, type: _type, ...props },
-    ref,
-  ) => {
-    return (
-      <RadixAccordion.Root
-        ref={ref}
-        data-accordion=""
-        className={cn("flex flex-col", gap, className)}
-        type="single"
-        collapsible={collapsible}
-        {...props}
-      >
-        {children}
-      </RadixAccordion.Root>
-    );
-  },
-);
+>(({ className, children, gap, collapsible = true, type, ...props }, ref) => {
+  void type;
+  return (
+    <RadixAccordion.Root
+      ref={ref}
+      data-accordion=""
+      className={cn("flex flex-col", gap, className)}
+      type="single"
+      collapsible={collapsible}
+      {...props}
+    >
+      {children}
+    </RadixAccordion.Root>
+  );
+});
 AccordionSingleRootPrimitive.displayName = "AccordionSingleRootPrimitive";
 
 /**
@@ -203,7 +199,8 @@ AccordionSingleRootPrimitive.displayName = "AccordionSingleRootPrimitive";
 export const AccordionMultipleRootPrimitive = React.forwardRef<
   HTMLDivElement,
   AccordionMultipleRootPrimitiveProps
->(({ className, children, gap, type: _type, ...props }, ref) => {
+>(({ className, children, gap, type, ...props }, ref) => {
+  void type;
   return (
     <RadixAccordion.Root
       ref={ref}

@@ -36,12 +36,6 @@ const TRIGGER_FOCUS_STYLES = [
   "focus-visible:ring-[var(--ring)]",
 ] as const;
 
-const TRIGGER_OPEN_STYLES = [
-  "border-[var(--Border-border-brand)]",
-  "ring-2",
-  "ring-[var(--ring)]",
-] as const;
-
 const TRIGGER_DISABLED_STYLES = [
   "cursor-not-allowed",
   "opacity-50",
@@ -549,9 +543,9 @@ MultiSelectPlaceholderPrimitive.displayName = "MultiSelectPlaceholderPrimitive";
  * MultiSelect Content 原语
  * 多选模式下的下拉内容，基于 Popover.Content
  */
-export interface MultiSelectContentPrimitiveProps extends React.ComponentPropsWithoutRef<
+export type MultiSelectContentPrimitiveProps = React.ComponentPropsWithoutRef<
   typeof PopoverPrimitive.Content
-> {}
+>;
 
 export const MultiSelectContentPrimitive = React.forwardRef<
   React.ElementRef<typeof PopoverPrimitive.Content>,

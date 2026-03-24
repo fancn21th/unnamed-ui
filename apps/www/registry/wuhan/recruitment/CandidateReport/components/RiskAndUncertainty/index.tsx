@@ -177,8 +177,8 @@ const RiskAndUncertainty: React.FC<RiskAndUncertaintyProps> = ({ data }) => {
 
                 {risk.interviewerComment && (
                   <StyledInterviewerComment>
-                    面试官{risk.interviewerComment.name}："
-                    {risk.interviewerComment.comment}"
+                    面试官{risk.interviewerComment.name}：「
+                    {risk.interviewerComment.comment}」
                   </StyledInterviewerComment>
                 )}
               </StyledFlexColumn>

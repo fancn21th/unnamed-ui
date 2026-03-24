@@ -194,7 +194,7 @@ interface ThinkingStepHintPrimitiveProps extends React.HTMLAttributes<HTMLDivEle
  * 加载动画点原语属性
  * @public
  */
-interface ThinkingLoadingDotsPrimitiveProps extends React.HTMLAttributes<HTMLDivElement> {}
+type ThinkingLoadingDotsPrimitiveProps = React.HTMLAttributes<HTMLDivElement>;
 
 // ==================== 动画原语组件 ====================
 
@@ -323,7 +323,8 @@ ThinkingStepPrimitive.displayName = "ThinkingStepPrimitive";
 const ThinkingStepHeaderPrimitive = React.forwardRef<
   HTMLButtonElement,
   ThinkingStepHeaderPrimitiveProps
->(({ children, trailing, className, type: _type, disabled, ...props }, ref) => {
+>(({ children, trailing, className, type, disabled, ...props }, ref) => {
+  void type;
   return (
     <CollapsibleTrigger asChild>
       <Button

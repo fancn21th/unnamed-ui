@@ -131,21 +131,6 @@ const getCircleStatusColor = (
 };
 
 /**
- * 获取状态对应的颜色（旧版，保留兼容）
- */
-const getStatusColor = (status: ProgressStatus): string => {
-  switch (status) {
-    case "success":
-      return "var(--Text-text-success)";
-    case "exception":
-      return "var(--Text-text-error)";
-    case "normal":
-    default:
-      return "var(--Text-text-brand)";
-  }
-};
-
-/**
  * 解析渐变色配置
  */
 const parseGradient = (gradient: ProgressGradient): string => {
@@ -441,6 +426,7 @@ export const ProgressCirclePrimitive = React.forwardRef<
     },
     ref,
   ) => {
+    void steps;
     const validPercent = Math.min(100, Math.max(0, percent));
     const color =
       parseStrokeColor(strokeColor, status, validPercent, "circle") ||

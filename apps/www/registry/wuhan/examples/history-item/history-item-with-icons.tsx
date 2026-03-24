@@ -2,7 +2,12 @@
 
 import * as React from "react";
 import { HistoryItem } from "@/registry/wuhan/composed/history-item/history-item";
-import { MessageSquare, Code, FileText, Image } from "lucide-react";
+import {
+  MessageSquare,
+  Code,
+  FileText,
+  Image as ImageIcon,
+} from "lucide-react";
 
 export default function HistoryItemWithIcons() {
   const [selected, setSelected] = React.useState("1");
@@ -37,7 +42,7 @@ export default function HistoryItemWithIcons() {
     {
       id: "4",
       title: "设计稿",
-      icon: <Image className="w-4 h-4" />,
+      icon: <ImageIcon className="w-4 h-4" />,
       badge: (
         <span className="px-1.5 py-0.5 text-xs bg-purple-100 text-purple-700 rounded">
           5

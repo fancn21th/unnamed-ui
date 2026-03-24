@@ -55,10 +55,12 @@ export interface AvatarImagePrimitiveProps extends React.ImgHTMLAttributes<HTMLI
 export const AvatarImagePrimitive = React.forwardRef<
   HTMLImageElement,
   AvatarImagePrimitiveProps
->(({ className, ...props }, ref) => {
+>(({ className, alt = "", ...props }, ref) => {
   return (
+    // 原语层使用原生 img，便于 ref 与任意图片 URL；消费端可换用 next/image
     <img
       ref={ref}
+      alt={alt}
       className={cn("h-full w-full object-cover", className)}
       {...props}
     />

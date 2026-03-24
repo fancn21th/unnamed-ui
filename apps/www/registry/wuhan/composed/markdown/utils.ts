@@ -20,24 +20,41 @@ export const findFirstForbiddenCharIndex = (() => {
   ]);
   const CHINESE_REGEX = /[\u4e00-\u9fa5]/;
 
-  let segmenter: any = null;
+  type SegmenterLike = {
+    segment: (input: string) => Iterable<{ segment: string }>;
+  };
+
+  let segmenter: SegmenterLike | null = null;
 
   // 检查是否支持 Intl.Segmenter
   const isSegmenterSupported = (): boolean => {
     return (
       typeof window !== "undefined" &&
       "Intl" in window &&
-      "Segmenter" in (Intl as any)
+      typeof (
+        Intl as unknown as {
+          Segmenter?: new (
+            loc: string,
+            opts: { granularity: string },
+          ) => SegmenterLike;
+        }
+      ).Segmenter === "function"
     );
   };
 
   // 获取或初始化 segmenter
-  const getSegmenter = (): any => {
+  const getSegmenter = (): SegmenterLike | null => {
     if (segmenter !== null) return segmenter;
 
     if (isSegmenterSupported()) {
       try {
-        segmenter = new (Intl as any).Segmenter("zh", {
+        const IntlWithSegmenter = Intl as unknown as {
+          Segmenter: new (
+            loc: string,
+            opts: { granularity: string },
+          ) => SegmenterLike;
+        };
+        segmenter = new IntlWithSegmenter.Segmenter("zh", {
           granularity: "grapheme",
         });
       } catch {

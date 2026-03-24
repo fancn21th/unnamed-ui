@@ -1,11 +1,10 @@
 import { WelcomeMessage } from "@/registry/wuhan/composed/welcome/welcome";
-import Image from "next/image";
 
 export default function WelcomeBranded() {
   return (
     <WelcomeMessage
       icon={
-        <Image
+        <img
           src="/logo.png"
           alt="Logo"
           width={48}

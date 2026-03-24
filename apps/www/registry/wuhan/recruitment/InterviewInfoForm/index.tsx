@@ -73,9 +73,10 @@ const InterviewInfoForm: React.FC<InterviewInfoFormProps> = ({
     externalStatus || "pending",
   );
 
-  // 同步外部状态
+  // 受控模式下将外部 status 同步到内部，便于取消受控后仍保留最近状态
   useEffect(() => {
     if (externalStatus !== undefined) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- 与外部受控 status 对齐
       setInternalStatus(externalStatus);
     }
   }, [externalStatus]);

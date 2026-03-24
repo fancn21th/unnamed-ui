@@ -91,7 +91,11 @@ const SourcesSidebar: React.FC<SourcesSidebarProps> = ({
               <SourcesSidebarListItemSiteInfo>
                 <SourcesSidebarListItemLogo>
                   {source.favicon ? (
-                    <img src={source.favicon} alt={source.domain || ""} />
+                    <img
+                      src={source.favicon}
+                      alt={source.domain || "站点图标"}
+                      className="size-4 object-contain"
+                    />
                   ) : (
                     <GlobalOutlined />
                   )}

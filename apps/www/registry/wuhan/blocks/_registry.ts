@@ -644,6 +644,11 @@ export const blocks: Registry["items"] = [
     registryDependencies: ["style", "checkbox-01"],
     files: [
       {
+        path: "blocks/file-card/file-card-01-utils.ts",
+        type: "registry:lib",
+        target: "components/wuhan/blocks/file-card-01-utils.ts",
+      },
+      {
         path: "blocks/file-card/file-card-01.tsx",
         type: "registry:component",
         target: "components/wuhan/blocks/file-card-01.tsx",

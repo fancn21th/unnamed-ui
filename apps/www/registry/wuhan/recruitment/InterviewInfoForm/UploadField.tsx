@@ -59,6 +59,7 @@ const UploadField: React.FC<UploadFieldProps> = ({
   useEffect(() => {
     if (readOnly) {
       const value = getFileListValue();
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- 只读模式下列表来自表单/初始值
       setFileList(value);
     }
   }, [readOnly, getFileListValue]);
@@ -73,6 +74,7 @@ const UploadField: React.FC<UploadFieldProps> = ({
       Array.isArray(formValue) &&
       formValue.length > 0
     ) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- 表单 reset / 外部改值时对齐本地列表
       setFileList(formValue);
     }
   }, [formValue, readOnly]);

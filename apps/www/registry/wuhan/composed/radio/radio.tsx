@@ -8,31 +8,13 @@ import {
   RadioGroupIndicatorPrimitive,
   RadioLabelPrimitive,
 } from "@/registry/wuhan/blocks/radio/radio-01";
+import {
+  RadioGroupContext,
+  useRadioGroup,
+  type RadioValue,
+} from "./radio-context";
 
-//#region Radio Context
-/**
- * Radio 组 Context 值类型
- */
-interface RadioGroupContextValue {
-  value?: any;
-  onChange?: (value: any) => void;
-  name?: string;
-  disabled?: boolean;
-}
-
-// 创建 Radio 组 Context
-const RadioGroupContext = React.createContext<
-  RadioGroupContextValue | undefined
->(undefined);
-
-/**
- * 获取 Radio 组 Context
- * 用于在 RadioGroup 的子 Radio 中访问组的状态和配置
- */
-export function useRadioGroup() {
-  return React.useContext(RadioGroupContext);
-}
-//#endregion
+export type { RadioValue } from "./radio-context";
 
 //#region Radio Types
 /**
@@ -67,7 +49,7 @@ export interface RadioProps {
     | RadioClassNames
     | ((info: { props: RadioProps }) => RadioClassNames); // 各部分的类名配置，支持对象或函数
   styles?: RadioStyles | ((info: { props: RadioProps }) => RadioStyles); // 各部分的样式配置，支持对象或函数
-  value?: any; // 根据 value 进行比较，判断是否选中
+  value?: RadioValue; // 根据 value 进行比较，判断是否选中
   id?: string; // Radio 的 id 属性
   name?: string; // Radio 的 name 属性
 }
@@ -97,10 +79,9 @@ export const Radio = React.forwardRef<HTMLButtonElement, RadioProps>(
 
     // 从 context 或 props 获取配置
     const isDisabled = disabled || groupContext?.disabled;
-    const radioName = name || groupContext?.name;
     const isChecked =
-      groupContext?.value !== undefined
-        ? groupContext.value === value
+      groupContext?.value !== undefined && value !== undefined
+        ? String(groupContext.value) === String(value)
         : checked;
 
     // 处理 classNames 配置（支持对象或函数）
@@ -136,9 +117,10 @@ export const Radio = React.forwardRef<HTMLButtonElement, RadioProps>(
         : stylesProp;
 
     const handleClick = () => {
-      if (!isDisabled && groupContext?.onChange) {
-        groupContext.onChange(value);
+      if (value === undefined || isDisabled || !groupContext?.onChange) {
+        return;
       }
+      groupContext.onChange(value);
     };
 
     return (
@@ -149,7 +131,7 @@ export const Radio = React.forwardRef<HTMLButtonElement, RadioProps>(
         <RadioGroupItemPrimitive
           ref={ref}
           id={id}
-          value={value}
+          value={value === undefined ? "" : String(value)}
           disabled={isDisabled}
           checked={isChecked}
           onClick={handleClick}
@@ -201,7 +183,7 @@ export interface RadioGroupProps {
   classNames?:
     | RadioClassNames
     | ((info: { props: RadioGroupProps }) => RadioClassNames); // 各部分的类名配置，支持对象或函数
-  defaultValue?: any; // 默认选中的值
+  defaultValue?: RadioValue; // 默认选中的值
   disabled?: boolean; // 禁选所有子单选器
   name?: string; // RadioGroup 下所有 input[type="radio"] 的 name 属性
   options?: (string | number | RadioOptionType)[]; // 以配置形式设置子元素
@@ -209,9 +191,9 @@ export interface RadioGroupProps {
   orientation?: "horizontal" | "vertical"; // 排列方向
   size?: "large" | "middle" | "small"; // 大小，只对按钮样式生效
   styles?: RadioStyles | ((info: { props: RadioGroupProps }) => RadioStyles); // 各部分的样式配置，支持对象或函数
-  value?: any; // 用于设置当前选中的值
+  value?: RadioValue; // 用于设置当前选中的值
   vertical?: boolean; // 值为 true，Radio Group 为垂直方向
-  onChange?: (value: any) => void; // 选项变化时的回调函数
+  onChange?: (value: RadioValue) => void; // 选项变化时的回调函数
   children?: React.ReactNode; // 子元素
   className?: string; // 组容器的类名
   style?: React.CSSProperties; // 组容器的内联样式
@@ -247,31 +229,32 @@ export function RadioGroup({
   title,
 }: RadioGroupProps) {
   // 非受控模式下的内部状态
-  const [internalValue, setInternalValue] = React.useState<any>(defaultValue);
+  const [internalValue, setInternalValue] = React.useState<
+    RadioValue | undefined
+  >(defaultValue);
   // 判断是否为受控模式
   const isControlled = valueProp !== undefined;
   // 获取当前选中值（受控模式使用外部状态，非受控模式使用内部状态）
   const value = isControlled ? valueProp : internalValue;
 
-  // 处理选中值变更
-  const handleChange = (newValue: any) => {
-    // 非受控模式下更新内部状态
+  const commitValue = (next: RadioValue) => {
     if (!isControlled) {
-      setInternalValue(newValue);
+      setInternalValue(next);
     }
+    onChange?.(next);
+  };
 
-    // 触发 onChange 回调
-    if (onChange) {
-      onChange(newValue);
-    }
+  /** Radix RadioGroup 回调为 string */
+  const handleRadixValueChange = (newValue: string) => {
+    commitValue(newValue as RadioValue);
   };
 
   // 确定最终的排列方向
   const finalOrientation =
     orientation || (vertical ? "vertical" : "horizontal");
 
-  // 处理 classNames 配置（支持对象或函数）
-  const classNames =
+  // 处理 classNames / styles 配置（支持对象或函数），应用到组容器
+  const groupClassNames =
     typeof classNamesProp === "function"
       ? classNamesProp({
           props: {
@@ -295,8 +278,7 @@ export function RadioGroup({
         })
       : classNamesProp;
 
-  // 处理 styles 配置（支持对象或函数）
-  const styles =
+  const groupStyles =
     typeof stylesProp === "function"
       ? stylesProp({
           props: {
@@ -323,22 +305,26 @@ export function RadioGroup({
   // 如果提供了 options，渲染选项列表
   if (options.length > 0) {
     return (
-      <div className={cn(block && "w-full")}>
+      <div
+        className={cn(block && "w-full", groupClassNames?.wrapper)}
+        style={groupStyles?.wrapper}
+      >
         {title && <div className="text-sm font-medium mb-2">{title}</div>}
         <RadioGroupContext.Provider
-          value={{ value, onChange: handleChange, name, disabled }}
+          value={{ value, onChange: commitValue, name, disabled }}
         >
           <RadioGroupRootPrimitive
-            value={value}
-            onValueChange={handleChange}
+            value={value === undefined ? undefined : String(value)}
+            onValueChange={handleRadixValueChange}
             disabled={disabled}
             name={name}
             className={cn(
               "flex gap-4",
               finalOrientation === "vertical" ? "flex-col" : "flex-row",
               className,
+              groupClassNames?.root,
             )}
-            style={style}
+            style={{ ...style, ...groupStyles?.root }}
           >
             {options.map((option, index) => {
               // 判断选项是对象还是简单值
@@ -393,22 +379,26 @@ export function RadioGroup({
 
   // 如果提供了 children，使用 context 传递 value 和 onChange
   return (
-    <div className={cn(block && "w-full")}>
+    <div
+      className={cn(block && "w-full", groupClassNames?.wrapper)}
+      style={groupStyles?.wrapper}
+    >
       {title && <div className="text-sm font-medium mb-2">{title}</div>}
       <RadioGroupContext.Provider
-        value={{ value, onChange: handleChange, name, disabled }}
+        value={{ value, onChange: commitValue, name, disabled }}
       >
         <RadioGroupRootPrimitive
-          value={value}
-          onValueChange={handleChange}
+          value={value === undefined ? undefined : String(value)}
+          onValueChange={handleRadixValueChange}
           disabled={disabled}
           name={name}
           className={cn(
             "flex gap-4",
             finalOrientation === "vertical" ? "flex-col" : "flex-row",
             className,
+            groupClassNames?.root,
           )}
-          style={style}
+          style={{ ...style, ...groupStyles?.root }}
         >
           {children}
         </RadioGroupRootPrimitive>

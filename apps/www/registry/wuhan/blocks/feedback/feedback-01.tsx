@@ -95,6 +95,7 @@ const FeedbackContainerPrimitive = React.forwardRef<
   HTMLDivElement,
   FeedbackContainerPrimitiveProps
 >(({ className, onClose, children, ...props }, ref) => {
+  void onClose;
   return (
     <div
       ref={ref}

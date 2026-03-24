@@ -4,12 +4,8 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import {
   GoalCardPrimitive,
-  GoalCardContainerPrimitive,
-  GoalCardHeaderPrimitive,
-  GoalCardProgressPrimitive,
   GoalCardAiIcon,
   type GoalCardSemanticStatus,
-  type GoalCardProgress,
 } from "@/registry/wuhan/blocks/goal-card/goal-card-01";
 
 // ==================== 类型定义 ====================

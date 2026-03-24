@@ -47,7 +47,7 @@ export interface WorkResultListProps {
 
 // 默认图标组件
 const getDefaultIcon = (
-  type: WorkResultIconType = "document",
+  _type: WorkResultIconType = "document",
 ): React.ReactNode => {
   return <FeatherIcon color={"#4765FF"} />;
 };
@@ -61,20 +61,15 @@ export const WorkResultItemComponent: React.FC<{
   onMoreClick?: (item: WorkResultItem, event: React.MouseEvent) => void;
 }> = ({
   item,
-  sourceLabel = "来源",
+  sourceLabel: _sourceLabel = "来源",
   showMoreAction = true,
   onItemClick,
-  onMoreClick,
+  onMoreClick: _onMoreClick,
 }) => {
   const icon = item.customIcon || getDefaultIcon(item.iconType);
 
   const handleItemClick = () => {
     onItemClick?.(item);
-  };
-
-  const handleMoreClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    onMoreClick?.(item, e);
   };
 
   return (

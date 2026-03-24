@@ -5,18 +5,14 @@ import {
   FileCardPrimitive,
   FileCardContainerPrimitive,
   FileCardFileIconPrimitive,
-  FileCardStatusIconPrimitive,
   FileCardInfoPrimitive,
-  FileCardActionPrimitive,
   FileCardActionPopoverPrimitive,
   FileCardActionMenuItemProps,
-  FileCardErrorIcon,
 } from "@/registry/wuhan/blocks/file-card/file-card-01";
 import {
   FileText,
   FileImage,
   FileSpreadsheet,
-  MoreHorizontal,
   Download,
   Trash2,
   Eye,

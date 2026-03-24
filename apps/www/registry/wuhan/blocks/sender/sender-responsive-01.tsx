@@ -51,11 +51,17 @@ export const ResponsiveContainer = React.forwardRef<
   ResponsiveContainerProps
 >(
   (
-    { children, className, maxWidth = "100%", onOverflowChange, ...props },
+    {
+      children,
+      className,
+      maxWidth = "100%",
+      onOverflowChange,
+      forceSingleLine,
+      ...formProps
+    },
     ref,
   ) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars -- 保留 forceSingleLine 接口兼容，暂未实现
-    const { forceSingleLine, ...formProps } = props;
+    void forceSingleLine;
     const [isOverflow, setIsOverflow] = React.useState(false);
 
     const handleOverflowChange = React.useCallback(

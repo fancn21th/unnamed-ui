@@ -1,6 +1,5 @@
-import React from "react";
 import styled from "styled-components";
-import { Typography, Space } from "antd";
+import { Typography } from "antd";
 
 const { Text, Paragraph } = Typography;
 

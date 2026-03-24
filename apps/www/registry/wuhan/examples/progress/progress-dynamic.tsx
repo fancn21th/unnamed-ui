@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Progress } from "@/registry/wuhan/composed/progress/progress";
 import { Button } from "@/registry/wuhan/composed/block-button/block-button";
-import { Minus, Plus } from "lucide-react";
 
 export default function ProgressDynamicDemo() {
   const [percent, setPercent] = useState(0);

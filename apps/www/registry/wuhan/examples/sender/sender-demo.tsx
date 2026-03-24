@@ -4,7 +4,13 @@ import { useState } from "react";
 import type { ComponentType, SVGProps } from "react";
 import { ComposedSender } from "@/registry/wuhan/composed/sender/sender";
 import { QuoteContentComposed } from "@/registry/wuhan/composed/quote-content/quote-content";
-import { Brain, Search, FileText, Image, Trash2 } from "lucide-react";
+import {
+  Brain,
+  Search,
+  FileText,
+  Image as ImageIcon,
+  Trash2,
+} from "lucide-react";
 
 export default function SenderDemo() {
   const [value, setValue] = useState("");
@@ -54,7 +60,7 @@ export default function SenderDemo() {
           isImage: item.kind === "image",
           icon:
             item.kind === "image" ? (
-              <Image className="size-4" />
+              <ImageIcon className="size-4" />
             ) : (
               <FileText className="size-4" />
             ),

@@ -70,7 +70,9 @@ export const InterviewQuestionItemComponent: React.FC<{
           能力标签：<span className="ability-tags-text">{abilityTagsText}</span>
         </div>
       )}
-      {item.context && <div className="question-context">"{item.context}"</div>}
+      {item.context && (
+        <div className="question-context">「{item.context}」</div>
+      )}
       {item.followUpQuestions.length > 0 && (
         <div className="follow-up-section">
           <div className="follow-up-title">追问方向：</div>

@@ -5,15 +5,7 @@ import { Button } from "@/registry/wuhan/ui/button";
 import { cn } from "@/lib/utils";
 import {
   FileCardPrimitive,
-  // FileCardContainerPrimitive,
-  // FileCardFileIconPrimitive,
-  // FileCardStatusIconPrimitive,
-  // FileCardInfoPrimitive,
-  // FileCardActionPrimitive,
-  // FileCardActionPopoverPrimitive,
-  FileCardErrorIcon,
   type FileCardActionMenuItemProps,
-  // isValidIcon,
   type FileCardStatus,
 } from "@/registry/wuhan/blocks/file-card/file-card-01";
 // import { MoreHorizontal } from "lucide-react";
@@ -114,109 +106,6 @@ export interface FileCardListProps {
   spacing?: number | string;
   /** 自定义类名 */
   className?: string;
-}
-
-// ==================== 工具函数 ====================
-
-/**
- * 根据状态获取图标
- * @public
- *
- * @example
- * ```tsx
- * const icon = getStatusIcon("loading");
- * const errorIcon = getStatusIcon("error");
- * ```
- */
-export function getStatusIcon(status: FileCardStatus): React.ReactNode {
-  switch (status) {
-    case "loading":
-      return (
-        <svg
-          className="w-6 h-6 animate-spin text-[var(--Text-text-brand)]"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-          role="img"
-          aria-label="加载中"
-        >
-          <circle
-            className="opacity-25"
-            cx="12"
-            cy="12"
-            r="10"
-            stroke="currentColor"
-            strokeWidth="4"
-          />
-          <path
-            className="opacity-75"
-            fill="currentColor"
-            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-          />
-        </svg>
-      );
-    case "error":
-      return (
-        <FileCardErrorIcon className="w-6 h-6 text-[var(--Text-text-error)]" />
-      );
-    case "uploading":
-      return (
-        <svg
-          className="w-6 h-6 animate-pulse text-[var(--Text-text-brand)]"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-          role="img"
-          aria-label="上传中"
-        >
-          <path
-            fill="currentColor"
-            d="M4 16v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4h-4v4H8v-4H4zm4-8v2h8V8l4 4-4 4v-2H8v-4h4z"
-          />
-        </svg>
-      );
-    case "warning":
-      return (
-        <svg
-          className="w-6 h-6 text-[var(--Text-text-warning)]"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden="true"
-          role="img"
-          aria-label="警告"
-        >
-          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-          <line x1="12" y1="9" x2="12" y2="13" />
-          <line x1="12" y1="17" x2="12.01" y2="17" />
-        </svg>
-      );
-    case "success":
-      return (
-        <svg
-          className="w-6 h-6 text-[var(--Text-text-success)]"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden="true"
-          role="img"
-          aria-label="成功"
-        >
-          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-          <polyline points="22 4 12 14.01 9 11.01" />
-        </svg>
-      );
-    default:
-      return null;
-  }
 }
 
 // ==================== 主组件：FileCard ====================
@@ -423,17 +312,15 @@ export const FileCardList = React.memo(
       className,
     } = props;
 
-    // 优先使用 value，向后兼容 selectedIds
-    const currentValue = value ?? selectedIds ?? [];
-
     // 优先使用 onChange，向后兼容 onSelectionChange
     const handleChange = onChange ?? onSelectionChange;
 
-    // 转换为 Set 以便操作
+    // 转换为 Set 以便操作（依赖 value / selectedIds，避免每次 render 新引用导致 memo 失效）
     const selectedSet = React.useMemo(() => {
-      if (currentValue instanceof Set) return currentValue;
-      return new Set(currentValue);
-    }, [currentValue]);
+      const raw = value ?? selectedIds ?? [];
+      if (raw instanceof Set) return raw;
+      return new Set(raw);
+    }, [value, selectedIds]);
 
     // 处理选中状态变化
     const handleSelectChange = React.useCallback(
@@ -551,7 +438,7 @@ export const FileCardList = React.memo(
           <div
             className={listClassName}
             style={{ gap: gapStyle }}
-            role="list"
+            role="group"
             aria-label={typeof title === "string" ? title : "文件列表"}
           >
             {files.map((file) => (
@@ -579,11 +466,5 @@ export const FileCardList = React.memo(
   }),
 );
 FileCardList.displayName = "FileCardList";
-
-// ==================== 状态图标导出 ====================
-
-export { FileCardErrorIcon };
-
-// ==================== 类型导出（仅内部使用）====================
 
 // 注意：FileItem, FileCardStatus, FileCardActionMenuItemProps 仅在 composed 组件内部使用

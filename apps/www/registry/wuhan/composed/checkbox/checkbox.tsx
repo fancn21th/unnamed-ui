@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { CheckboxGroupContext } from "./checkbox-context";
 import {
   CheckboxRootPrimitive,
   CheckboxIndicatorPrimitive,
@@ -191,33 +192,6 @@ export const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
 Checkbox.displayName = "Checkbox";
 //#endregion
 
-//#region CheckboxGroup Context
-/**
- * 复选框组 Context 值类型
- */
-interface CheckboxGroupContextValue<T = string | number | boolean> {
-  value: T[]; // 当前选中的值数组
-  onChange: (value: T, checked: boolean) => void; // 值变更回调
-  name?: string; // 表单 name 属性
-  disabled?: boolean; // 是否禁用整个组
-}
-
-// 创建复选框组 Context
-const CheckboxGroupContext = React.createContext<
-  CheckboxGroupContextValue<any> | undefined
->(undefined);
-
-/**
- * 获取复选框组 Context
- * 用于在 CheckboxGroup 的子 Checkbox 中访问组的状态和配置
- */
-export function useCheckboxGroup<T = string | number | boolean>() {
-  return React.useContext(CheckboxGroupContext) as
-    | CheckboxGroupContextValue<T>
-    | undefined;
-}
-//#endregion
-
 //#region CheckboxGroup Types
 /**
  * 复选框选项配置（用于 options 属性）
@@ -347,7 +321,12 @@ export function CheckboxGroup<T = string | number | boolean>({
   // 如果提供了 children，使用 context 传递 value 和 onChange
   return (
     <CheckboxGroupContext.Provider
-      value={{ value, onChange: handleChange, name, disabled }}
+      value={{
+        value,
+        onChange: (v, checked) => handleChange(v as T, checked),
+        name,
+        disabled,
+      }}
     >
       <div className={cn("flex flex-col gap-2", className)} style={style}>
         {title && <div className="text-sm font-medium mb-2">{title}</div>}

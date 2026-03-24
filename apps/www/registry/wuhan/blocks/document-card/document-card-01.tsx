@@ -17,14 +17,16 @@ interface DocumentCardContainerPrimitiveProps extends React.HTMLAttributes<HTMLD
  * Document Card 头部原语属性
  * @public
  */
-interface DocumentCardHeaderPrimitiveProps {
+interface DocumentCardHeaderPrimitiveProps extends Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  "title"
+> {
   /** 标题 */
   title?: React.ReactNode;
   /** 图标 */
   icon?: React.ReactNode;
   /** 更新时间 */
   updateTime?: React.ReactNode;
-  [key: string]: any;
 }
 
 /**
@@ -127,6 +129,7 @@ export const DocumentCardHeaderPrimitive = React.forwardRef<
 >(({ title, icon, updateTime, className, ...props }, ref) => {
   return (
     <div
+      ref={ref}
       className={cn("flex flex-col gap-[var(--Gap-gap-md)] min-w-0", className)}
       {...props}
     >

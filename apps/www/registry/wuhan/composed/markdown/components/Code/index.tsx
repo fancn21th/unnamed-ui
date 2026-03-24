@@ -8,15 +8,17 @@ import {
   StyledCodeToolButton,
 } from "./style";
 
-export const Code: React.FC<ComponentProps<"code">> = (props) => {
-  const { className, children } = props;
+type CodeProps = ComponentProps<"code"> & { inline?: boolean };
+
+export const Code: React.FC<CodeProps> = (props) => {
+  const { className, children, inline } = props;
   const lang = className?.match(/language-([^\s]+)/)?.[1] || "";
 
   if (typeof children !== "string") return null;
   if (lang === "mermaid") return <Mermaid>{children}</Mermaid>;
 
   // x-markdown 的 code 组件同时用于 inline / block，inline 时一般没有 className
-  const isInline = (props as any)?.inline;
+  const isInline = inline;
   if (isInline || !className) {
     return <code className={className}>{children}</code>;
   }

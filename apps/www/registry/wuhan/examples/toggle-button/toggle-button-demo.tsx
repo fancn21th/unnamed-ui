@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { ToggleButton } from "@/registry/wuhan/composed/toggle-button/toggle-button";
-import { Brain, Zap, Sparkles } from "lucide-react";
 
 export default function ToggleButtonDemo() {
   const [selectedOption, setSelectedOption] = React.useState<string>();

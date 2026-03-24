@@ -16,7 +16,7 @@ import {
   PageHeaderButton,
   PageHeaderUserPrimitive,
 } from "@/registry/wuhan/blocks/page-header/page-header-01";
-import { Settings, Bell, Search, HelpCircle } from "lucide-react";
+import { Settings } from "lucide-react";
 
 export default function PageHeaderDemo() {
   return (
